@@ -5,6 +5,8 @@ import { HeroSection } from "./components/home/HeroSection";
 import { NewsSection } from "./components/home/NewsSection";
 import { ProductsSection } from "./components/home/ProductsSection";
 import { ScrollReveal } from "./components/home/ScrollReveal";
+import { SolutionsCardDeckSection } from "./components/home/SolutionsCardDeckSection";
+import { SolutionsFadeSection } from "./components/home/SolutionsFadeSection";
 import { SolutionsSection } from "./components/home/SolutionsSection";
 import { TechnologySection } from "./components/home/TechnologySection";
 import { TrustSection } from "./components/home/TrustSection";
@@ -18,6 +20,12 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <SolutionsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <SolutionsCardDeckSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <SolutionsFadeSection />
       </ScrollReveal>
       <ScrollReveal>
         <ProductsSection />
