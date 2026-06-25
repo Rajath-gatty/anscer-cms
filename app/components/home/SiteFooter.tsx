@@ -4,15 +4,6 @@ import { imagePath } from "./assets";
 
 const footerColumns = [
   {
-    heading: "Insights",
-    links: [
-      { label: "Home", href: "#" },
-      { label: "Products", href: "#robots" },
-      { label: "Software", href: "#software" },
-      { label: "Contact Us", href: "#contact" },
-    ],
-  },
-  {
     heading: "Products",
     links: [
       { label: "AR 250", href: "#robots" },
@@ -25,6 +16,15 @@ const footerColumns = [
       { label: "PSR 2000R", href: "#robots" },
       { label: "LBR 500", href: "#robots" },
       { label: "AGV 100", href: "#robots" },
+    ],
+  },
+  {
+    heading: "Insights",
+    links: [
+      { label: "Home", href: "#" },
+      { label: "Products", href: "#robots" },
+      { label: "Software", href: "#software" },
+      { label: "Contact Us", href: "#contact" },
     ],
   },
   {
