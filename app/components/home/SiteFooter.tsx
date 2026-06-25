@@ -155,7 +155,7 @@ export function SiteFooter() {
 
           <div>
             <div className="relative overflow-hidden rounded-2xl bg-[#2a2a2f] px-5 py-6 md:px-7 md:py-7">
-              <div className="pointer-events-none absolute -left-10 top-[-25%] h-[500px] w-[25px] rotate-45 bg-[linear-gradient(104deg,rgba(255,255,255,0.3)_42%,rgba(255,255,255,0.2))]" />
+              <div className="footer-card-reflection" />
               <h2 className="text-base font-semibold md:text-xl">
                 Get the latest in news about ANSCER
               </h2>

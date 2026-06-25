@@ -3,7 +3,7 @@ import { SolutionsStickyStack } from "./SolutionsStickyStack";
 
 export function SolutionsSection() {
   return (
-    <section id="solutions" className="bg-[#fafafa] py-14 md:py-20 lg:pb-10">
+    <section id="solutions" className="bg-[#fafafa] py-14 md:py-20 lg:pb-0">
       <div className="site-container">
         <div className="mx-auto max-w-3xl pb-8 pt-1 text-center">
           <Kicker>Solutions That Solve, Everywhere.</Kicker>

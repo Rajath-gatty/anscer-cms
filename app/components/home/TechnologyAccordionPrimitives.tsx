@@ -1,5 +1,5 @@
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function TechnologyAccordionRoot({ className, ...props }: AccordionPrimitive.Root.Props) {
@@ -41,11 +41,6 @@ function TechnologyAccordionTrigger({
         <ChevronDownIcon
           aria-hidden="true"
           className="size-5 shrink-0 text-[#011f40] group-aria-expanded/technology-accordion-trigger:hidden"
-          strokeWidth={2}
-        />
-        <ChevronUpIcon
-          aria-hidden="true"
-          className="hidden size-5 shrink-0 text-[#011f40] group-aria-expanded/technology-accordion-trigger:block"
           strokeWidth={2}
         />
       </AccordionPrimitive.Trigger>
