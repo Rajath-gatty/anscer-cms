@@ -169,6 +169,10 @@ function SolutionSlide({
   progress: number;
   staticMode?: boolean;
 }) {
+  if (staticMode) {
+    return <StaticSolutionCard solution={solution} />;
+  }
+
   const relative = index - progress;
   const translateY = staticMode
     ? 0
@@ -230,6 +234,54 @@ function SolutionSlide({
         >
           <source src={solution.video} type="video/mp4" />
         </video>
+      </div>
+    </article>
+  );
+}
+
+function StaticSolutionCard({ solution }: { solution: (typeof solutions)[number] }) {
+  return (
+    <article className="relative bg-[#fafafa]">
+      <div className="relative mx-auto flex min-h-[230px] items-center justify-center overflow-hidden">
+        <p className="absolute left-1/2 top-7 -translate-x-1/2 text-center text-[42px] font-bold uppercase leading-[0.95] text-[#011f40]/10">
+          {solution.title.includes(" ")
+            ? solution.title.split(" ").map((word) => (
+                <span key={word} className="block">
+                  {word}
+                </span>
+              ))
+            : solution.title}
+        </p>
+        <video
+          className="relative z-10 h-[215px] w-full object-contain"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+        >
+          <source src={solution.video} type="video/mp4" />
+        </video>
+      </div>
+
+      <div className="mt-3 flex items-center gap-3">
+        <Image src={`${imagePath}${solution.icon}`} alt="" width={28} height={28} className="size-7" />
+        <h3 className="text-xs font-bold uppercase text-[#005ead]">{solution.title}</h3>
+      </div>
+      <p className="mt-5 text-xs leading-5 text-[#011f40]">{solution.copy}</p>
+
+      <div className="relative mt-5 aspect-[1.42] overflow-hidden rounded-md bg-[#dfe7ee]">
+        <Image
+          src={`${imagePath}${solution.image}`}
+          alt={`${solution.title} application`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 390px"
+          className="object-cover"
+        />
+      </div>
+
+      <div className="mt-4">
+        <ArrowButton>Talk to us</ArrowButton>
       </div>
     </article>
   );
