@@ -9,6 +9,8 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    ".webflow-source/**",
+    ".pnpm-store/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
