@@ -119,7 +119,22 @@ export function CaseStudiesSection() {
           </div>
 
           <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#011f40] md:absolute md:bottom-7 md:left-7 md:mt-0 md:text-white">
-            <span className="grid h-8 min-w-[62px] place-items-center rounded-full border border-[#011f40] px-4 md:h-auto md:min-w-0 md:border-0 md:px-0">
+            <div className="flex h-8 items-center gap-2 rounded-full border border-[#011f40]/25 px-3 md:hidden">
+              {caseStudies.map((caseStudy, index) => (
+                <button
+                  key={caseStudy.title}
+                  type="button"
+                  aria-label={`Show case study ${index + 1}`}
+                  aria-current={activeIndex === index ? "true" : undefined}
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "size-2 rounded-full transition-all duration-300",
+                    activeIndex === index ? "w-5 bg-[#005ead]" : "bg-[#9db4cb]",
+                  )}
+                />
+              ))}
+            </div>
+            <span className="hidden h-8 min-w-[62px] place-items-center rounded-full border border-[#011f40] px-4 md:grid md:h-auto md:min-w-0 md:border-0 md:px-0">
               {String(activeIndex + 1).padStart(2, "0")}/{String(caseStudies.length).padStart(2, "0")}
             </span>
             <button
