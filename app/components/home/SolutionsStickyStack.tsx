@@ -36,32 +36,136 @@ const solutions = [
 
 export function SolutionsStickyStack() {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
+  const snapFrameRef = useRef<number | null>(null);
+  const isSnappingRef = useRef(false);
+  const wheelLockRef = useRef(false);
+  const wheelUnlockTimeoutRef = useRef<number | null>(null);
   const [progress, setProgress] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktopMedia = window.matchMedia("(min-width: 1024px)");
     const updateReducedMotion = () => setReducedMotion(media.matches);
     updateReducedMotion();
     media.addEventListener("change", updateReducedMotion);
 
-    const updateProgress = () => {
+    const getWrapperMetrics = () => {
       const wrapper = wrapperRef.current;
-      if (!wrapper) return;
+      if (!wrapper) return null;
 
       const rect = wrapper.getBoundingClientRect();
-      const scrollable = Math.max(wrapper.offsetHeight - window.innerHeight, 1);
-      const nextProgress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+      const sticky = stickyRef.current;
+      const stickyTop = sticky ? Number.parseFloat(window.getComputedStyle(sticky).top) || 0 : 0;
+      const stickyHeight = sticky?.offsetHeight ?? window.innerHeight;
+      const scrollable = Math.max(wrapper.offsetHeight - stickyHeight, 1);
+      const wrapperTop = window.scrollY + rect.top;
+      const startY = wrapperTop - stickyTop;
+      const endY = startY + scrollable;
+
+      return { rect, scrollable, startY, endY };
+    };
+
+    const updateProgress = () => {
+      const metrics = getWrapperMetrics();
+      if (!metrics) return;
+
+      const nextProgress = Math.min(Math.max((window.scrollY - metrics.startY) / metrics.scrollable, 0), 1);
       setProgress(nextProgress);
     };
 
+    const snapToIndex = (
+      snapIndex: number,
+      metrics: NonNullable<ReturnType<typeof getWrapperMetrics>>,
+      currentY: number,
+    ) => {
+      const targetProgress = snapIndex / (solutions.length - 1);
+      const targetY = metrics.startY + targetProgress * metrics.scrollable;
+
+      if (Math.abs(currentY - targetY) < 6) return;
+
+      isSnappingRef.current = true;
+      wheelLockRef.current = true;
+      const startY = currentY;
+      const distance = targetY - startY;
+      const duration = 560;
+      const startTime = performance.now();
+
+      const tick = (time: number) => {
+        const elapsed = Math.min((time - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - elapsed, 3);
+        window.scrollTo(0, startY + distance * eased);
+
+        if (elapsed < 1) {
+          snapFrameRef.current = window.requestAnimationFrame(tick);
+          return;
+        }
+
+        snapFrameRef.current = null;
+        isSnappingRef.current = false;
+      };
+
+      if (snapFrameRef.current) {
+        window.cancelAnimationFrame(snapFrameRef.current);
+      }
+      snapFrameRef.current = window.requestAnimationFrame(tick);
+    };
+
+    const scheduleWheelUnlock = () => {
+      if (wheelUnlockTimeoutRef.current) {
+        window.clearTimeout(wheelUnlockTimeoutRef.current);
+      }
+      wheelUnlockTimeoutRef.current = window.setTimeout(() => {
+        wheelLockRef.current = false;
+      }, 220);
+    };
+
+    const handleScroll = () => {
+      updateProgress();
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      const metrics = getWrapperMetrics();
+      if (!metrics || media.matches || !desktopMedia.matches) return;
+
+      const currentY = window.scrollY;
+      const isInsideStickyRange = currentY > metrics.startY && currentY < metrics.endY;
+      if (!isInsideStickyRange) return;
+
+      const direction = event.deltaY > 0 ? "down" : "up";
+      const rawProgress = (currentY - metrics.startY) / metrics.scrollable;
+      const currentIndex = Math.min(
+        Math.max(Math.round(rawProgress * (solutions.length - 1)), 0),
+        solutions.length - 1,
+      );
+      const targetIndex = direction === "down" ? currentIndex + 1 : currentIndex - 1;
+
+      if (targetIndex < 0 || targetIndex >= solutions.length) return;
+
+      event.preventDefault();
+      scheduleWheelUnlock();
+
+      if (wheelLockRef.current || isSnappingRef.current) return;
+
+      snapToIndex(targetIndex, metrics, currentY);
+    };
+
     updateProgress();
-    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", updateProgress);
 
     return () => {
+      if (snapFrameRef.current) {
+        window.cancelAnimationFrame(snapFrameRef.current);
+      }
+      if (wheelUnlockTimeoutRef.current) {
+        window.clearTimeout(wheelUnlockTimeoutRef.current);
+      }
       media.removeEventListener("change", updateReducedMotion);
-      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", updateProgress);
     };
   }, []);
@@ -112,9 +216,9 @@ export function SolutionsStickyStack() {
 
       <div
         ref={wrapperRef}
-        className="relative mt-10 hidden h-[300vh] lg:block"
+        className="relative mt-10 hidden h-[260vh] lg:block"
       >
-        <div className="sticky top-[84px] h-[calc(100vh-84px)] min-h-[640px] overflow-hidden">
+        <div ref={stickyRef} className="sticky top-[112px] h-[calc(100vh-112px)] min-h-[620px] overflow-hidden">
           <div className="absolute left-0 top-0 z-20">
             <Kicker>Robots Designed to Deliver</Kicker>
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
