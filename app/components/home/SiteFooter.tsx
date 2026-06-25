@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { imagePath } from "./assets";
 
 const footerColumns = [
@@ -61,13 +61,18 @@ export function SiteFooter() {
             />
 
             <div>
-              <h3 className="text-sm font-semibold md:text-base">India Office</h3>
+              <h3 className="text-sm font-semibold md:text-base">
+                India Office
+              </h3>
               <p className="mt-1 text-xs leading-6 md:text-base md:leading-[1.25]">
                 28B, 4th Main, Industrial Area, Bommasandra, Bengaluru,
                 <br />
                 Karnataka 560099
                 <br />
-                Phone: <a href="tel:+919739499716" className="font-bold">(+91) 9739499716</a>
+                Phone:{" "}
+                <a href="tel:+919739499716" className="font-bold">
+                  (+91) 9739499716
+                </a>
               </p>
             </div>
 
@@ -78,7 +83,10 @@ export function SiteFooter() {
                 <br />
                 United States
                 <br />
-                Phone: <a href="tel:+19714318811" className="font-bold">(+1) 971-431-8811</a>
+                Phone:{" "}
+                <a href="tel:+19714318811" className="font-bold">
+                  (+1) 971-431-8811
+                </a>
               </p>
             </div>
 
@@ -123,8 +131,13 @@ export function SiteFooter() {
           </div>
 
           {footerColumns.map((column) => (
-            <div key={column.heading} className="flex flex-col items-start gap-4">
-              <h3 className="text-base font-semibold md:text-xl">{column.heading}</h3>
+            <div
+              key={column.heading}
+              className="flex flex-col items-start gap-4"
+            >
+              <h3 className="text-base font-semibold md:text-xl">
+                {column.heading}
+              </h3>
               <ul className="space-y-2">
                 {column.links.map((link) => (
                   <li key={link.label} className="py-1">
@@ -146,7 +159,9 @@ export function SiteFooter() {
               <h2 className="text-base font-semibold md:text-xl">
                 Get the latest in news about ANSCER
               </h2>
-              <p className="mt-4 text-xs md:text-base">Sign up for our newsletter!</p>
+              <p className="mt-4 text-xs md:text-base">
+                Sign up for our newsletter!
+              </p>
 
               <form className="relative mt-10">
                 <label htmlFor="footer-email" className="sr-only">
