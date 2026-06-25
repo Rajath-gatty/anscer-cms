@@ -174,25 +174,21 @@ function SolutionSlide({
   }
 
   const relative = index - progress;
-  const translateY = staticMode
-    ? 0
-    : Math.max(Math.min(relative * 100, 100), 0);
+  const translateY = Math.max(Math.min(relative * 100, 100), 0);
 
   return (
     <article
       className={cn(
         "grid min-h-[520px] items-start gap-10 bg-[#fafafa] pt-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-[0.42fr_0.58fr]",
-        staticMode ? "relative" : "absolute inset-0",
+        "absolute inset-0",
       )}
       style={
-        staticMode
-          ? undefined
-          : {
-              transform: `translateY(${translateY}%)`,
-              zIndex: index + 1,
-            }
+        {
+          transform: `translateY(${translateY}%)`,
+          zIndex: index + 1,
+        }
       }
-      aria-hidden={!staticMode && activeIndex !== index}
+      aria-hidden={activeIndex !== index}
     >
       <div className="relative z-10 max-w-xl">
         <div className="flex items-center gap-4">
@@ -240,20 +236,20 @@ function SolutionSlide({
 }
 
 function StaticSolutionCard({ solution }: { solution: (typeof solutions)[number] }) {
+  const titleWords = solution.title.split(/\s+/);
+
   return (
     <article className="relative bg-[#fafafa]">
-      <div className="relative mx-auto flex min-h-[230px] items-center justify-center overflow-hidden">
-        <p className="absolute left-1/2 top-7 -translate-x-1/2 text-center text-[42px] font-bold uppercase leading-[0.95] text-[#011f40]/10">
-          {solution.title.includes(" ")
-            ? solution.title.split(" ").map((word) => (
-                <span key={word} className="block">
-                  {word}
-                </span>
-              ))
-            : solution.title}
+      <div className="relative -mx-2 flex min-h-[220px] items-center justify-center overflow-hidden">
+        <p className="pointer-events-none absolute left-1/2 top-5 w-full -translate-x-1/2 text-center text-[42px] font-bold uppercase leading-[0.96] text-[#011f40]/10 sm:text-[54px]">
+          {titleWords.map((word) => (
+            <span key={word} className="block">
+              {word}
+            </span>
+          ))}
         </p>
         <video
-          className="relative z-10 h-[215px] w-full object-contain"
+          className="relative z-10 h-[205px] w-full object-contain"
           autoPlay
           loop
           muted
@@ -264,13 +260,21 @@ function StaticSolutionCard({ solution }: { solution: (typeof solutions)[number]
         </video>
       </div>
 
-      <div className="mt-3 flex items-center gap-3">
-        <Image src={`${imagePath}${solution.icon}`} alt="" width={28} height={28} className="size-7" />
-        <h3 className="text-xs font-bold uppercase text-[#005ead]">{solution.title}</h3>
+      <div className="mt-1 flex items-center gap-3">
+        <Image
+          src={`${imagePath}${solution.icon}`}
+          alt=""
+          width={28}
+          height={28}
+          className="size-7 shrink-0"
+        />
+        <h3 className="text-[10px] font-bold uppercase tracking-wide text-[#005ead]">
+          {solution.title}
+        </h3>
       </div>
-      <p className="mt-5 text-xs leading-5 text-[#011f40]">{solution.copy}</p>
+      <p className="mt-4 text-xs leading-5 text-[#011f40]">{solution.copy}</p>
 
-      <div className="relative mt-5 aspect-[1.42] overflow-hidden rounded-md bg-[#dfe7ee]">
+      <div className="relative mt-5 aspect-[1.45] overflow-hidden rounded-md bg-[#dfe7ee]">
         <Image
           src={`${imagePath}${solution.image}`}
           alt={`${solution.title} application`}
@@ -280,7 +284,7 @@ function StaticSolutionCard({ solution }: { solution: (typeof solutions)[number]
         />
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 flex">
         <ArrowButton>Talk to us</ArrowButton>
       </div>
     </article>
