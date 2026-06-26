@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { createElement, useEffect, useState } from "react";
 import type { CSSProperties } from "react";
+import { createElement, useEffect, useState } from "react";
 import { imagePath } from "../home/assets";
 
 type ModelViewerElementProps = {
@@ -32,7 +32,11 @@ type ProductHeroModelProps = {
   title: string;
 };
 
-export function ProductHeroModel({ modelUrl, fallbackImage, title }: ProductHeroModelProps) {
+export function ProductHeroModel({
+  modelUrl,
+  fallbackImage,
+  title,
+}: ProductHeroModelProps) {
   const [isReady, setIsReady] = useState(false);
   const poster = `${imagePath}${fallbackImage}`;
 
@@ -53,34 +57,31 @@ export function ProductHeroModel({ modelUrl, fallbackImage, title }: ProductHero
   return (
     <div className="absolute inset-0">
       {isReady ? (
-        createElement<ModelViewerElementProps>(
-          "model-viewer",
-          {
-            src: modelUrl,
-            poster,
-            alt: `${title} 3D model`,
-            autoplay: true,
-            "camera-controls": true,
-            "disable-zoom": true,
-            "disable-pan": true,
-            "ar-modes": "webxr scene-viewer quick-look",
-            "tone-mapping": "neutral",
-            "shadow-intensity": "1",
-            "camera-orbit": "-35deg 76deg 4.8m",
-            "min-camera-orbit": "auto 76deg auto",
-            "max-camera-orbit": "auto 76deg auto",
-            "field-of-view": "36deg",
-            "interaction-prompt": "auto",
-            "interaction-prompt-style": "basic",
-            style: {
-              width: "100%",
-              height: "100%",
-              display: "block",
-              backgroundColor: "transparent",
-              "--poster-color": "transparent",
-            },
+        createElement<ModelViewerElementProps>("model-viewer", {
+          src: modelUrl,
+          poster,
+          alt: `${title} 3D model`,
+          autoplay: true,
+          "camera-controls": true,
+          "disable-zoom": true,
+          "disable-pan": true,
+          "ar-modes": "webxr scene-viewer quick-look",
+          "tone-mapping": "neutral",
+          "shadow-intensity": "1",
+          "camera-orbit": "-35deg 76deg 20m",
+          "min-camera-orbit": "auto 76deg auto",
+          "max-camera-orbit": "auto 76deg auto",
+          "field-of-view": "20deg",
+          "interaction-prompt": "auto",
+          "interaction-prompt-style": "wiggle",
+          style: {
+            width: "100%",
+            height: "100%",
+            display: "block",
+            backgroundColor: "transparent",
+            "--poster-color": "transparent",
           },
-        )
+        })
       ) : (
         <div className="relative size-full">
           <Image

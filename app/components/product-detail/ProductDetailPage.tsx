@@ -1,18 +1,28 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+import {
+  ArrowRight,
+  ChevronDown,
+  Layers,
+  LocateFixed,
+  ShieldCheck,
+  Workflow,
+} from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-import { ArrowRight, ChevronDown, Layers, LocateFixed, ShieldCheck, Workflow } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { cn } from "@/lib/utils";
 import { imagePath } from "../home/assets";
 import { ProductFaqAccordion } from "../products/ProductFaqAccordion";
 import type { ProductDetailData } from "./product-detail-data";
 
-const ProductHeroModel = dynamic(() => import("./ProductHeroModel").then((mod) => mod.ProductHeroModel), {
-  ssr: false,
-});
+const ProductHeroModel = dynamic(
+  () => import("./ProductHeroModel").then((mod) => mod.ProductHeroModel),
+  {
+    ssr: false,
+  },
+);
 
 export function ProductDetailPage({ data }: { data: ProductDetailData }) {
   return (
@@ -35,7 +45,9 @@ function ProductHero({ data }: { data: ProductDetailData }) {
   return (
     <section className="relative overflow-hidden bg-[#fafafa] pt-10 md:pt-12">
       <div className="site-container flex min-h-[430px] flex-col items-center justify-center text-center md:min-h-[680px]">
-        <h1 className="relative z-10 text-[38px] font-bold leading-none tracking-tight md:text-[40px]">{data.title}</h1>
+        <h1 className="relative z-10 text-[38px] font-bold leading-none tracking-tight md:text-[40px]">
+          {data.title}
+        </h1>
         <div className="relative mt-7 h-[240px] w-full max-w-[960px] md:h-[430px]">
           {data.backgroundText ? (
             <Image
@@ -49,7 +61,11 @@ function ProductHero({ data }: { data: ProductDetailData }) {
           ) : null}
           {data.modelUrl ? (
             <div className="absolute inset-0 z-10">
-              <ProductHeroModel modelUrl={data.modelUrl} fallbackImage={data.heroImage} title={data.title} />
+              <ProductHeroModel
+                modelUrl={data.modelUrl}
+                fallbackImage={data.heroImage}
+                title={data.title}
+              />
             </div>
           ) : (
             <Image
@@ -62,9 +78,6 @@ function ProductHero({ data }: { data: ProductDetailData }) {
             />
           )}
         </div>
-        <div className="mt-4 h-5 w-5 rounded-full border border-[#c9d5df]">
-          <div className="mx-auto mt-[7px] size-1 rounded-full bg-[#9aa9b5]" />
-        </div>
       </div>
     </section>
   );
@@ -76,7 +89,9 @@ function ProductTabs({ hasModules }: { hasModules: boolean }) {
       { label: "Overview", href: "#overview", id: "overview" },
       { label: "Advantages", href: "#advantages", id: "advantages" },
       { label: "Features", href: "#features", id: "features" },
-      ...(hasModules ? [{ label: "Attachments", href: "#attachments", id: "attachments" }] : []),
+      ...(hasModules
+        ? [{ label: "Attachments", href: "#attachments", id: "attachments" }]
+        : []),
       { label: "Applications", href: "#applications", id: "applications" },
       { label: "Case Studies", href: "#case-studies", id: "case-studies" },
     ],
@@ -130,7 +145,9 @@ function ProductTabs({ hasModules }: { hasModules: boolean }) {
               type="button"
               className={cn(
                 "flex h-full shrink-0 items-center border-b-2 px-1 transition hover:text-[#005ead]",
-                activeTab === tab.id ? "border-[#005ead] text-[#005ead]" : "border-transparent",
+                activeTab === tab.id
+                  ? "border-[#005ead] text-[#005ead]"
+                  : "border-transparent",
               )}
               onClick={() => handleTabClick(tab.id)}
             >
@@ -148,12 +165,21 @@ function ProductOverview({ data }: { data: ProductDetailData }) {
   const isImperial = unit === "imperial";
 
   return (
-    <section id="overview" className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]">
+    <section
+      id="overview"
+      className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]"
+    >
       <div className="site-container grid gap-9 lg:grid-cols-[0.56fr_0.44fr]">
         <div>
-          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">Overview</p>
-          <h2 className="mt-3 text-[28px] font-bold leading-[1.15] md:text-4xl">{data.subtitle}</h2>
-          <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">{data.overview}</p>
+          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            Overview
+          </p>
+          <h2 className="mt-3 text-[28px] font-bold leading-[1.15] md:text-4xl">
+            {data.subtitle}
+          </h2>
+          <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+            {data.overview}
+          </p>
           <div className="relative mt-8 aspect-[1.72] overflow-hidden rounded-[4px] bg-[#e6ebf0]">
             <Image
               src={`${imagePath}${data.overviewImage ?? data.useCases[0]?.image ?? data.heroImage}`}
@@ -167,41 +193,78 @@ function ProductOverview({ data }: { data: ProductDetailData }) {
 
         <div className="pt-1">
           <div className="mb-7">
-            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">Key Applications</p>
+            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+              Key Applications
+            </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {data.applications.map((application) => (
-                <span key={application} className="rounded-[4px] bg-[#e6ebf0] px-4 py-1.5 text-xs font-medium text-[#011f40]">
+                <span
+                  key={application}
+                  className="rounded-[4px] bg-[#e6ebf0] px-4 py-1.5 text-xs font-medium text-[#011f40]"
+                >
                   {application}
                 </span>
               ))}
             </div>
           </div>
           <div className="mb-2 flex items-center justify-between gap-4">
-            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">Key Specifications</p>
+            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+              Key Specifications
+            </p>
             <button
               type="button"
               aria-pressed={isImperial}
               className="flex items-center gap-2 text-xs font-semibold uppercase text-[#011f40]"
               onClick={() => setUnit(isImperial ? "metric" : "imperial")}
             >
-              <span className={cn("transition-opacity duration-200", isImperial && "opacity-45")}>Metric</span>
-              <span className="relative h-5 w-9 rounded-full bg-[#011f40]">
-                <span className={cn("absolute left-0.5 top-0.5 size-4 rounded-full bg-white transition-transform duration-300 ease-out", isImperial && "translate-x-[18px]")} />
+              <span
+                className={cn(
+                  "transition-opacity duration-200",
+                  isImperial && "opacity-45",
+                )}
+              >
+                Metric
               </span>
-              <span className={cn("transition-opacity duration-200", !isImperial && "opacity-45")}>Imperial</span>
+              <span className="relative h-5 w-9 rounded-full bg-[#011f40]">
+                <span
+                  className={cn(
+                    "absolute left-0.5 top-0.5 size-4 rounded-full bg-white transition-transform duration-300 ease-out",
+                    isImperial && "translate-x-[18px]",
+                  )}
+                />
+              </span>
+              <span
+                className={cn(
+                  "transition-opacity duration-200",
+                  !isImperial && "opacity-45",
+                )}
+              >
+                Imperial
+              </span>
             </button>
           </div>
           <dl>
             {data.specs.map((spec) => (
-              <div key={spec.label} className="grid grid-cols-[0.75fr_1fr] border-b border-[#dfe6ee] py-[14px]">
-                <dt className="text-[12px] font-semibold uppercase leading-5 text-[#3a3a3a]/65">{spec.label}</dt>
-                <dd key={`${spec.label}-${unit}`} className="text-base font-medium leading-6 text-[#011f40] transition duration-200 md:text-[18px]">
-                  {isImperial ? spec.imperial ?? spec.value : spec.value}
+              <div
+                key={spec.label}
+                className="grid grid-cols-[0.75fr_1fr] border-b border-[#dfe6ee] py-[14px]"
+              >
+                <dt className="text-[12px] font-semibold uppercase leading-5 text-[#3a3a3a]/65">
+                  {spec.label}
+                </dt>
+                <dd
+                  key={`${spec.label}-${unit}`}
+                  className="text-base font-medium leading-6 text-[#011f40] transition duration-200 md:text-[18px]"
+                >
+                  {isImperial ? (spec.imperial ?? spec.value) : spec.value}
                 </dd>
               </div>
             ))}
           </dl>
-          <a className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[10px] pl-4 pr-2 text-[11px] font-semibold uppercase tracking-wide text-white" href="#contact">
+          <a
+            className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[10px] pl-4 pr-2 text-[11px] font-semibold uppercase tracking-wide text-white"
+            href="#contact"
+          >
             {data.overviewCtaLabel ?? "Product Details"}
             <ArrowRight aria-hidden="true" className="size-4" />
           </a>
@@ -240,7 +303,9 @@ function ProductAccordionRows({
             className={cn(
               "overflow-hidden rounded-[4px] transition-all duration-300 ease-out",
               surface === "white" ? "bg-white" : "bg-[#e6ebf0]",
-              isOpen ? "p-5 shadow-[0_12px_30px_rgba(1,31,64,.08)]" : "px-5 py-4",
+              isOpen
+                ? "p-5 shadow-[0_12px_30px_rgba(1,31,64,.08)]"
+                : "px-5 py-4",
             )}
           >
             <button
@@ -249,12 +314,34 @@ function ProductAccordionRows({
               aria-expanded={isOpen}
               onClick={() => onActiveChange(index)}
             >
-              <h3 className={cn("font-semibold text-[#005ead]", titleClassName ?? "text-base md:text-xl")}>{item.title}</h3>
-              <ChevronDown aria-hidden="true" className={cn("size-4 shrink-0 transition-transform duration-300", isOpen && "rotate-180")} />
+              <h3
+                className={cn(
+                  "font-semibold text-[#005ead]",
+                  titleClassName ?? "text-base md:text-xl",
+                )}
+              >
+                {item.title}
+              </h3>
+              <ChevronDown
+                aria-hidden="true"
+                className={cn(
+                  "size-4 shrink-0 transition-transform duration-300",
+                  isOpen && "rotate-180",
+                )}
+              />
             </button>
-            <div className={cn("grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-out", isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0")}>
+            <div
+              className={cn(
+                "grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-out",
+                isOpen
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0",
+              )}
+            >
               <div className="min-h-0 overflow-hidden">
-                <p className="mt-4 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">{item.copy}</p>
+                <p className="mt-4 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+                  {item.copy}
+                </p>
               </div>
             </div>
           </article>
@@ -269,10 +356,15 @@ function AdvantagesSection({ data }: { data: ProductDetailData }) {
   const activeAdvantage = data.advantages[activeIndex] ?? data.advantages[0];
 
   return (
-    <section id="advantages" className="scroll-mt-28 bg-[#e6ebf0] py-12 md:py-[56px]">
+    <section
+      id="advantages"
+      className="scroll-mt-28 bg-[#e6ebf0] py-12 md:py-[56px]"
+    >
       <div className="site-container">
         <div className="max-w-[760px]">
-          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">Advantages</p>
+          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            Advantages
+          </p>
           <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
             Why <span className="text-[#005ead]">Choose</span> {data.title}
           </h2>
@@ -282,7 +374,12 @@ function AdvantagesSection({ data }: { data: ProductDetailData }) {
           </p>
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
-          <ProductAccordionRows items={data.advantages} activeIndex={activeIndex} onActiveChange={setActiveIndex} surface="white" />
+          <ProductAccordionRows
+            items={data.advantages}
+            activeIndex={activeIndex}
+            onActiveChange={setActiveIndex}
+            surface="white"
+          />
           <div className="relative aspect-[1.75] overflow-hidden rounded-[4px] bg-white">
             <Image
               key={activeAdvantage?.title}
@@ -303,33 +400,63 @@ function FeaturesSection({ data }: { data: ProductDetailData }) {
   const icons = [Layers, Workflow, LocateFixed, ShieldCheck];
 
   return (
-    <section id="features" className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]">
+    <section
+      id="features"
+      className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]"
+    >
       <div className="site-container">
         <div className="max-w-[760px]">
-          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">Features</p>
+          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            Features
+          </p>
           <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
-            Engineered For <span className="text-[#005ead]">Intelligent</span> Material Handling
+            Engineered For <span className="text-[#005ead]">Intelligent</span>{" "}
+            Material Handling
           </h2>
           <p className="mt-4 max-w-[690px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-            The {data.title} combines intelligent navigation with purpose-built hardware to automate material handling while enabling rapid deployment and scalable operations.
+            The {data.title} combines intelligent navigation with purpose-built
+            hardware to automate material handling while enabling rapid
+            deployment and scalable operations.
           </p>
         </div>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {data.features.slice(0, 2).map((feature, index) => (
-            <FeatureCard key={feature.title} title={feature.title} copy={feature.copy} Icon={icons[index]} />
+            <FeatureCard
+              key={feature.title}
+              title={feature.title}
+              copy={feature.copy}
+              Icon={icons[index]}
+            />
           ))}
           <article className="relative row-span-2 min-h-[320px] overflow-hidden rounded-[4px] bg-[#011f40] p-5 text-white lg:min-h-[380px]">
-            <Image src={`${imagePath}Frame-1321317289.jpg`} alt="" fill sizes="(max-width: 1024px) 100vw, 430px" className="object-cover opacity-70" />
+            <Image
+              src={`${imagePath}Frame-1321317289.jpg`}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 430px"
+              className="object-cover opacity-70"
+            />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,.04),rgba(1,31,64,.86))]" />
             <div className="absolute bottom-5 left-5 right-5">
-              <h3 className="text-3xl font-bold leading-[1.1]">Ready To Automate Your Workflow?</h3>
-              <a href="#contact" className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[10px] pl-4 pr-2 text-[11px] font-semibold uppercase tracking-wide text-white">
-                Talk to an Expert <ArrowRight aria-hidden="true" className="size-4" />
+              <h3 className="text-3xl font-bold leading-[1.1]">
+                Ready To Automate Your Workflow?
+              </h3>
+              <a
+                href="#contact"
+                className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[10px] pl-4 pr-2 text-[11px] font-semibold uppercase tracking-wide text-white"
+              >
+                Talk to an Expert{" "}
+                <ArrowRight aria-hidden="true" className="size-4" />
               </a>
             </div>
           </article>
           {data.features.slice(2, 4).map((feature, index) => (
-            <FeatureCard key={feature.title} title={feature.title} copy={feature.copy} Icon={icons[index + 2]} />
+            <FeatureCard
+              key={feature.title}
+              title={feature.title}
+              copy={feature.copy}
+              Icon={icons[index + 2]}
+            />
           ))}
         </div>
       </div>
@@ -337,11 +464,25 @@ function FeaturesSection({ data }: { data: ProductDetailData }) {
   );
 }
 
-function FeatureCard({ title, copy, Icon }: { title: string; copy: string; Icon: typeof Layers }) {
+function FeatureCard({
+  title,
+  copy,
+  Icon,
+}: {
+  title: string;
+  copy: string;
+  Icon: typeof Layers;
+}) {
   return (
     <article className="min-h-[170px] rounded-[4px] bg-[#e6ebf0] p-5">
-      <Icon aria-hidden="true" className="size-8 text-[#005ead]" strokeWidth={1.7} />
-      <h3 className="mt-5 text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">{title}</h3>
+      <Icon
+        aria-hidden="true"
+        className="size-8 text-[#005ead]"
+        strokeWidth={1.7}
+      />
+      <h3 className="mt-5 text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
+        {title}
+      </h3>
       <p className="mt-3 text-sm leading-5 text-[#3a3a3a]">{copy}</p>
     </article>
   );
@@ -356,15 +497,23 @@ function ModulesSection({ data }: { data: ProductDetailData }) {
   if (!modules.length || !active) return null;
 
   return (
-    <section id="attachments" className="scroll-mt-28 bg-[#e6ebf0] py-12 md:py-[56px]">
+    <section
+      id="attachments"
+      className="scroll-mt-28 bg-[#e6ebf0] py-12 md:py-[56px]"
+    >
       <div className="site-container">
         <div className="max-w-[760px]">
-          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">Attachments</p>
+          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            Attachments
+          </p>
           <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
-            {data.title} <span className="text-[#005ead]">Compatible</span> With The Top Modules
+            {data.title} <span className="text-[#005ead]">Compatible</span> With
+            The Top Modules
           </h2>
           <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-            The {data.title} seamlessly integrates with leading top modules and attachments, enabling flexible material handling for diverse warehouse and industrial operations.
+            The {data.title} seamlessly integrates with leading top modules and
+            attachments, enabling flexible material handling for diverse
+            warehouse and industrial operations.
           </p>
         </div>
         <div className="mt-8 grid gap-8 lg:grid-cols-[0.25fr_0.5fr_0.25fr] lg:items-center">
@@ -375,7 +524,8 @@ function ModulesSection({ data }: { data: ProductDetailData }) {
                 type="button"
                 className={cn(
                   "rounded-[3px] px-2 py-1 text-left transition hover:bg-white/70 hover:text-[#005ead]",
-                  activeIndex === index && "bg-white/80 font-bold text-[#005ead]",
+                  activeIndex === index &&
+                    "bg-white/80 font-bold text-[#005ead]",
                 )}
                 onClick={() => setActiveIndex(index)}
               >
@@ -385,7 +535,13 @@ function ModulesSection({ data }: { data: ProductDetailData }) {
           </div>
           <div className="relative mx-auto h-[290px] w-full max-w-[540px]">
             {data.backgroundText ? (
-              <Image src={`${imagePath}${data.backgroundText}`} alt="" fill sizes="540px" className="object-contain opacity-[0.07]" />
+              <Image
+                src={`${imagePath}${data.backgroundText}`}
+                alt=""
+                fill
+                sizes="540px"
+                className="object-contain opacity-[0.07]"
+              />
             ) : null}
             <Image
               key={activeModuleImage}
@@ -397,8 +553,12 @@ function ModulesSection({ data }: { data: ProductDetailData }) {
             />
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-[#005ead]">{active.title}</h3>
-            <p className="mt-3 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">{active.copy}</p>
+            <h3 className="text-xl font-semibold text-[#005ead]">
+              {active.title}
+            </h3>
+            <p className="mt-3 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+              {active.copy}
+            </p>
           </div>
         </div>
       </div>
@@ -412,15 +572,22 @@ function ApplicationsSection({ data }: { data: ProductDetailData }) {
   const active = items[activeIndex] ?? items[0];
 
   return (
-    <section id="applications" className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]">
+    <section
+      id="applications"
+      className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]"
+    >
       <div className="site-container">
         <div className="max-w-[760px]">
-          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">Applications</p>
+          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            Applications
+          </p>
           <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
             Built For Smart Material Movement
           </h2>
           <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-            Designed to automate internal transport across warehouses, production floors, and distribution environments with safe and efficient autonomous navigation.
+            Designed to automate internal transport across warehouses,
+            production floors, and distribution environments with safe and
+            efficient autonomous navigation.
           </p>
         </div>
         <div className="mt-8 grid gap-5 lg:grid-cols-[0.55fr_0.45fr]">
@@ -434,7 +601,9 @@ function ApplicationsSection({ data }: { data: ProductDetailData }) {
               className="object-cover opacity-85 transition-opacity duration-300"
             />
             <div className="absolute inset-0 bg-[linear-gradient(360deg,rgba(0,0,0,.86),rgba(255,255,255,0)_60%)]" />
-            <h3 className="absolute bottom-6 left-6 text-2xl font-semibold">{active?.title}</h3>
+            <h3 className="absolute bottom-6 left-6 text-2xl font-semibold">
+              {active?.title}
+            </h3>
           </article>
           <ProductAccordionRows
             items={items}
@@ -451,22 +620,50 @@ function ApplicationsSection({ data }: { data: ProductDetailData }) {
 
 function CaseStudiesSection({ data }: { data: ProductDetailData }) {
   return (
-    <section id="case-studies" className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]">
+    <section
+      id="case-studies"
+      className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]"
+    >
       <div className="site-container">
-        <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead]">Case Studies</p>
-        <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">{data.title} Success Stories</h2>
+        <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead]">
+          Case Studies
+        </p>
+        <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
+          {data.title} Success Stories
+        </h2>
         <p className="mt-4 max-w-[700px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-          Discover how manufacturers, warehouses, and industrial facilities use ANSCER robots to improve workflow efficiency and reduce manual handling.
+          Discover how manufacturers, warehouses, and industrial facilities use
+          ANSCER robots to improve workflow efficiency and reduce manual
+          handling.
         </p>
         <article className="relative mt-8 aspect-[2.04] overflow-hidden rounded-[8px] bg-[#011f40] text-white">
-          <Image src={`${imagePath}${data.caseStudyImage ?? "case-study-manufacturing.jpg"}`} alt="Manufacturing case study" fill sizes="100vw" className="object-cover opacity-75" />
+          <Image
+            src={`${imagePath}${data.caseStudyImage ?? "case-study-manufacturing.jpg"}`}
+            alt="Manufacturing case study"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-75"
+          />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.48),rgba(1,31,64,.08))]" />
-          <h3 className="absolute left-7 top-7 text-3xl font-bold">Manufacturing</h3>
+          <h3 className="absolute left-7 top-7 text-3xl font-bold">
+            Manufacturing
+          </h3>
           <div className="absolute bottom-7 right-7 w-[270px] rounded-[4px] bg-white p-5 text-[#011f40]">
-            <p className="text-xl font-bold text-[#66bd6a]">Schneider<br />Electric</p>
-            <p className="mt-4 text-xs leading-5 text-[#3a3a3a]">Address the change and scale of your warehouse operations with robotic automation.</p>
-            <a className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-[3px] bg-[#005ead] py-3 text-[11px] font-semibold uppercase text-white" href="#">
-              Read Their Story <ArrowRight aria-hidden="true" className="size-4" />
+            <p className="text-xl font-bold text-[#66bd6a]">
+              Schneider
+              <br />
+              Electric
+            </p>
+            <p className="mt-4 text-xs leading-5 text-[#3a3a3a]">
+              Address the change and scale of your warehouse operations with
+              robotic automation.
+            </p>
+            <a
+              className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-[3px] bg-[#005ead] py-3 text-[11px] font-semibold uppercase text-white"
+              href="#"
+            >
+              Read Their Story{" "}
+              <ArrowRight aria-hidden="true" className="size-4" />
             </a>
           </div>
         </article>
@@ -480,9 +677,12 @@ function FaqSection({ data }: { data: ProductDetailData }) {
     <section id="faqs" className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]">
       <div className="site-container grid gap-10 lg:grid-cols-[0.38fr_0.62fr]">
         <div>
-          <h2 className="text-[28px] font-bold tracking-tight md:text-4xl">FAQs</h2>
+          <h2 className="text-[28px] font-bold tracking-tight md:text-4xl">
+            FAQs
+          </h2>
           <p className="mt-4 max-w-[310px] text-sm leading-6 text-[#4b5563]">
-            We&apos;ve heard it all - here&apos;s what people are really asking behind the scenes.
+            We&apos;ve heard it all - here&apos;s what people are really asking
+            behind the scenes.
           </p>
         </div>
         <ProductFaqAccordion items={data.faqs} />
@@ -494,21 +694,37 @@ function FaqSection({ data }: { data: ProductDetailData }) {
 function ProductCta({ data }: { data: ProductDetailData }) {
   return (
     <section className="relative overflow-hidden bg-[#005ead] py-20 text-white">
-      <Image src={`${imagePath}footer-banner.png`} alt="" fill sizes="100vw" className="object-cover opacity-45" />
+      <Image
+        src={`${imagePath}footer-banner.png`}
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover opacity-45"
+      />
       <div className="absolute inset-0 bg-[#005ead]/70" />
       <div className="site-container relative z-10">
         <h2 className="max-w-[760px] text-[40px] font-semibold leading-[1.1] md:text-[60px]">
-          {data.ctaTitle ?? `Know More About The ${data.title.replaceAll(" ", "")}`}
+          {data.ctaTitle ??
+            `Know More About The ${data.title.replaceAll(" ", "")}`}
         </h2>
         <p className="mt-5 max-w-[560px] text-sm leading-6 text-white/85 md:text-lg">
-          Access detailed specifications, features, and performance data for the {data.title} in one compact product datasheet.
+          Access detailed specifications, features, and performance data for the{" "}
+          {data.title} in one compact product datasheet.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#contact" className="inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-white ring-1 ring-white/20">
-            Download Product Datasheet <ArrowRight aria-hidden="true" className="size-4" />
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-white ring-1 ring-white/20"
+          >
+            Download Product Datasheet{" "}
+            <ArrowRight aria-hidden="true" className="size-4" />
           </a>
-          <Link href={`/${data.seriesSlug}`} className="inline-flex items-center gap-3 rounded-[3px] border border-white/50 py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-white">
-            Back to {data.seriesLabel} <ArrowRight aria-hidden="true" className="size-4" />
+          <Link
+            href={`/${data.seriesSlug}`}
+            className="inline-flex items-center gap-3 rounded-[3px] border border-white/50 py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-white"
+          >
+            Back to {data.seriesLabel}{" "}
+            <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </div>
       </div>
