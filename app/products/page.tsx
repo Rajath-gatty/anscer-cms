@@ -160,11 +160,11 @@ function FeaturesSection() {
 
 function FaqSection() {
   return (
-    <section className="bg-[#fafafa] py-16 md:py-20">
-      <div className="site-container grid gap-10 lg:grid-cols-[0.38fr_0.62fr]">
+    <section className="bg-[#fafafa] py-14">
+      <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">
         <div>
-          <h2 className="text-[30px] font-bold tracking-tight md:text-[40px]">FAQs</h2>
-          <p className="mt-4 max-w-[310px] text-sm leading-6 text-[#4b5563]">
+          <h2 className="mt-5 text-[32px] font-bold leading-9 text-[#011f40]">FAQs</h2>
+          <p className="mt-4 max-w-[380px] text-base leading-6 text-[#3a3a3a]">
             We&apos;ve heard it all — here&apos;s what people are really asking behind the scenes.
           </p>
         </div>

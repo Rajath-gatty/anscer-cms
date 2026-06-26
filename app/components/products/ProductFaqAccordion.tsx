@@ -25,7 +25,7 @@ export function ProductFaqAccordion({ items }: { items: ProductFaq[] }) {
       onValueChange={(nextValue) => {
         setValue(Array.isArray(nextValue) ? nextValue.slice(0, 1) : []);
       }}
-      className="flex flex-col gap-3"
+      className="w-full"
     >
       {items.map((item, index) => {
         const itemValue = `faq-${index}`;
@@ -36,18 +36,29 @@ export function ProductFaqAccordion({ items }: { items: ProductFaq[] }) {
             key={item.question}
             value={itemValue}
             className={cn(
-              "overflow-hidden rounded-xl border-0 transition-colors duration-300 [&:not(:last-child)]:border-b-0",
-              isOpen ? "bg-[#f1f1f1]" : "bg-transparent",
+              "overflow-hidden border-0 border-transparent transition-colors duration-300 [&:not(:last-child)]:border-b-0",
+              isOpen ? "rounded-xl bg-[#f1f1f1]" : "bg-transparent",
             )}
           >
-            <AccordionTrigger className="min-h-[68px] items-center gap-5 px-5 py-5 text-left hover:no-underline focus-visible:ring-[#005ead]/30 **:data-[slot=accordion-trigger-icon]:hidden">
-              <span className="text-sm font-bold leading-5 text-[#011f40]">{item.question}</span>
-              <span className="ml-auto grid size-4 shrink-0 place-items-center text-[#011f40]" aria-hidden="true">
-                {isOpen ? <Minus className="size-4" strokeWidth={2} /> : <Plus className="size-4" strokeWidth={2} />}
+            <AccordionTrigger className="items-center gap-4 rounded-xl px-3 py-3 text-left hover:no-underline focus-visible:ring-[#005ead]/25 md:gap-4 md:px-6 md:py-3 **:data-[slot=accordion-trigger-icon]:hidden">
+              <span className="text-[18px] font-semibold leading-6 text-[#3a3a3a]">
+                {item.question}
+              </span>
+              <span
+                className="ml-auto grid size-6 shrink-0 place-items-center text-[#3a3a3a]"
+                aria-hidden="true"
+              >
+                {isOpen ? (
+                  <Minus className="size-5" strokeWidth={2} />
+                ) : (
+                  <Plus className="size-5" strokeWidth={2} />
+                )}
               </span>
             </AccordionTrigger>
-            <AccordionContent className="px-5 pb-5">
-              <p className="max-w-[660px] text-sm leading-6 text-[#4b5563]">{item.answer}</p>
+            <AccordionContent className="px-3 pb-3 md:px-6">
+              <p className="max-w-[760px] pt-2.5 text-base leading-6 text-[#222228]">
+                {item.answer}
+              </p>
             </AccordionContent>
           </AccordionItem>
         );
