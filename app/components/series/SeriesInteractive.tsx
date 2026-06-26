@@ -1,0 +1,406 @@
+"use client";
+
+import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useMemo, useState } from "react";
+import { cn } from "@/lib/utils";
+import { imagePath } from "../home/assets";
+import type { SeriesPageData } from "./series-data";
+
+export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const total = data.applications.length;
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(data.slug === "agv-series" ? 3 : 3);
+      }
+    };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, [data.slug]);
+
+  const maxIndex = Math.max(0, total - visibleCount);
+  const start = activeIndex + 1;
+  const end = Math.min(activeIndex + visibleCount, total);
+  const counter = visibleCount > 1 && start !== end ? `${pad(start)}-${pad(end)}/${pad(total)}` : `${pad(start)}/${pad(total)}`;
+
+  const move = (direction: 1 | -1) => {
+    setActiveIndex((current) => Math.min(maxIndex, Math.max(0, current + direction)));
+  };
+
+  return (
+    <section id="applications" className="overflow-hidden bg-white py-16 md:py-24">
+      <div className="site-container">
+        <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">Applications</p>
+        <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-[700px]">
+            <h2 className="text-[34px] font-extrabold leading-tight tracking-[-0.02em] md:text-[44px]">
+              {data.applicationsHeading}
+            </h2>
+            <p className="mt-4 max-w-[610px] text-[15px] leading-6 text-[#4b5563]">{data.applicationsIntro}</p>
+          </div>
+
+          <div className="hidden items-center gap-4 md:flex">
+            <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">{counter}</span>
+            <button
+              type="button"
+              onClick={() => move(-1)}
+              disabled={activeIndex === 0}
+              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              aria-label="Previous application"
+            >
+              <ArrowLeft className="size-5" strokeWidth={1.8} />
+            </button>
+            <button
+              type="button"
+              onClick={() => move(1)}
+              disabled={activeIndex >= maxIndex}
+              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              aria-label="Next application"
+            >
+              <ArrowRight className="size-5" strokeWidth={1.8} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10 overflow-hidden">
+        <div
+          className="flex gap-5 pl-[max(20px,calc((100vw-1340px)/2+20px))] pr-5 transition-transform duration-500 ease-out"
+          style={{
+            transform: `translateX(calc(${activeIndex} * (min(390px, 82vw) + 20px) * -1))`,
+          }}
+        >
+          {data.applications.map((application) => (
+            <article
+              key={application.title}
+              className="relative h-[460px] w-[min(390px,82vw)] shrink-0 overflow-hidden rounded-lg bg-[#dfe7ee]"
+            >
+              {application.image ? (
+                <Image
+                  src={`${imagePath}${application.image}`}
+                  alt={application.title}
+                  fill
+                  sizes="(max-width: 640px) 82vw, 390px"
+                  className="object-cover"
+                />
+              ) : null}
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,0)_30%,rgba(1,31,64,.82)_100%)]" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                <h3 className="text-[24px] font-extrabold leading-tight">{application.title}</h3>
+                <p className="mt-2 text-[14px] leading-5 text-white/88">{application.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
+        <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">{counter}</span>
+        <button
+          type="button"
+          onClick={() => move(-1)}
+          disabled={activeIndex === 0}
+          className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+          aria-label="Previous application"
+        >
+          <ArrowLeft className="size-5" strokeWidth={1.8} />
+        </button>
+        <button
+          type="button"
+          onClick={() => move(1)}
+          disabled={activeIndex >= maxIndex}
+          className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+          aria-label="Next application"
+        >
+          <ArrowRight className="size-5" strokeWidth={1.8} />
+        </button>
+      </div>
+    </section>
+  );
+}
+
+export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+  const reducedMotion = useReducedMotion();
+  const activeProduct = data.products[activeIndex] ?? data.products[0];
+
+  const specs = useMemo(
+    () =>
+      activeProduct.specs.map((spec) => ({
+        label: spec.label,
+        value: unit === "imperial" && spec.imperial ? spec.imperial : spec.value,
+      })),
+    [activeProduct, unit],
+  );
+
+  const transition = reducedMotion
+    ? { duration: 0 }
+    : { duration: 0.48, ease: [0.22, 1, 0.36, 1] as const };
+
+  return (
+    <section id="modals" className="relative overflow-hidden bg-[#e8f1f8] py-14 md:min-h-screen md:py-20">
+      <Image
+        src={`${imagePath}ar-series-application-bg.png`}
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-contain object-bottom opacity-36"
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_72%,rgba(232,241,248,.08)_0%,rgba(232,241,248,.6)_48%,rgba(232,241,248,.92)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(232,241,248,.86)_0%,rgba(232,241,248,.34)_46%,rgba(214,230,242,.9)_100%)]" />
+      <div className="site-container relative z-10">
+        <div className="min-h-[700px] md:min-h-[calc(100vh-160px)]">
+          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={transition}
+            >
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">Modals</p>
+              <h2 className="mt-5 text-[34px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
+              Explore <span className="text-[#005ead]">{data.eyebrow}</span> Robots
+            </h2>
+            </motion.div>
+            <UnitToggle unit={unit} onChange={setUnit} />
+          </div>
+
+          <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]">
+            <div className="relative z-20 grid gap-8 lg:grid-cols-[400px_390px_1fr]">
+              <motion.div
+                className="flex flex-col gap-3"
+                initial={reducedMotion ? false : { opacity: 0, x: -20 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ ...transition, delay: reducedMotion ? 0 : 0.08 }}
+              >
+                {data.products.map((product, index) => {
+                  const isActive = activeIndex === index;
+
+                  return (
+                    <motion.button
+                      key={product.name}
+                      type="button"
+                      onClick={() => setActiveIndex(index)}
+                      className={cn(
+                        "relative grid overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
+                        isActive ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]" : "bg-white/55 hover:bg-white/86",
+                      )}
+                      whileHover={reducedMotion ? undefined : { x: 4 }}
+                      whileTap={reducedMotion ? undefined : { scale: 0.985 }}
+                      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      {isActive ? (
+                        <motion.span
+                          layoutId={`series-active-tab-${data.slug}`}
+                          className="absolute inset-0 rounded-lg bg-white"
+                          transition={transition}
+                        />
+                      ) : null}
+                      <span className={cn("relative z-10 text-[16px] font-normal", isActive ? "font-semibold text-[#005ead]" : "text-[#011f40]")}>
+                        {product.name}
+                      </span>
+                      <AnimatePresence initial={false}>
+                        {isActive ? (
+                          <motion.span
+                            key={`${product.name}-description`}
+                            className="relative z-10 mt-3 text-[14px] font-normal leading-[22px] text-[#011f40]"
+                            initial={reducedMotion ? false : { opacity: 0, y: -8 }}
+                            animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                            exit={reducedMotion ? undefined : { opacity: 0, y: -6 }}
+                            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+                          >
+                            {product.tabDescription}
+                          </motion.span>
+                        ) : null}
+                      </AnimatePresence>
+                    </motion.button>
+                  );
+                })}
+              </motion.div>
+
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.div
+                  key={`${activeProduct.name}-details`}
+                  className="lg:pt-7"
+                  initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+                  animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                  exit={reducedMotion ? undefined : { opacity: 0, y: -12 }}
+                  transition={transition}
+                >
+                  <h3 className="text-[20px] font-semibold text-[#011f40]">{activeProduct.name}</h3>
+                  <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
+                  <motion.a
+                    href={activeProduct.href}
+                    className="mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                    whileHover={reducedMotion ? undefined : { y: -2 }}
+                    whileTap={reducedMotion ? undefined : { scale: 0.97 }}
+                  >
+                    Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+                  </motion.a>
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="grid grid-cols-2 gap-x-14 gap-y-10 lg:pt-7">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  {specs.map((spec, index) => (
+                    <motion.div
+                      key={`${activeProduct.name}-${unit}-${spec.label}`}
+                      initial={reducedMotion ? false : { opacity: 0, y: 14 }}
+                      animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                      exit={reducedMotion ? undefined : { opacity: 0, y: -10 }}
+                      transition={{ ...transition, delay: reducedMotion ? 0 : index * 0.035 }}
+                    >
+                      <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
+                      <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-152px] lg:left-[470px] lg:h-[500px]">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.div
+                  key={`${activeProduct.name}-visual`}
+                  className="absolute inset-0"
+                  initial={reducedMotion ? false : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }}
+                  animate={reducedMotion ? undefined : { opacity: 1, x: 0, rotateY: 0, scale: 1 }}
+                  exit={reducedMotion ? undefined : { opacity: 0, x: -45, rotateY: 8, scale: 0.98 }}
+                  transition={transition}
+                  style={{ transformPerspective: 1200 }}
+                >
+                  {activeProduct.bgText ? (
+                    <motion.div
+                      className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%]"
+                      initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+                      animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                      exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
+                      transition={transition}
+                    >
+                      <Image
+                        src={`${imagePath}${activeProduct.bgText}`}
+                        alt=""
+                        fill
+                        sizes="100vw"
+                        className="object-contain object-center opacity-32"
+                      />
+                    </motion.div>
+                  ) : null}
+                  <Image
+                    src={`${imagePath}${activeProduct.image}`}
+                    alt={activeProduct.name}
+                    fill
+                    sizes="(max-width: 1024px) 110vw, 1180px"
+                    className={cn(
+                      "relative z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
+                      selectorImageClass(activeProduct.name),
+                    )}
+                  />
+                  <FloatingTags product={activeProduct} reducedMotion={Boolean(reducedMotion)} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UnitToggle({
+  unit,
+  onChange,
+}: {
+  unit: "metric" | "imperial";
+  onChange: (unit: "metric" | "imperial") => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onChange(unit === "metric" ? "imperial" : "metric")}
+      className="inline-flex items-center gap-2 self-start text-[13px] font-extrabold uppercase tracking-wide text-[#011f40]"
+      aria-label="Toggle metric and imperial units"
+    >
+      <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>Metric</span>
+      <span className="relative h-6 w-11 rounded-full bg-[#011f40] p-0.5">
+        <motion.span
+          className={cn(
+            "block size-5 rounded-full bg-white",
+          )}
+          animate={{ x: unit === "imperial" ? 20 : 0 }}
+          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </span>
+      <span className={unit === "imperial" ? "opacity-100" : "opacity-45"}>Imperial</span>
+    </button>
+  );
+}
+
+function pad(value: number) {
+  return String(value).padStart(2, "0");
+}
+
+function FloatingTags({
+  product,
+  reducedMotion,
+}: {
+  product: SeriesPageData["products"][number];
+  reducedMotion: boolean;
+}) {
+  return (
+    <div className="absolute inset-0 hidden md:block">
+      {product.tags.map((tag, index) => (
+        <motion.span
+          key={`${product.name}-${tag}`}
+          className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[16px] font-normal text-[#011f40] shadow-[0_10px_30px_rgba(1,31,64,.12)]"
+          style={{
+            left: index === 0 ? "43%" : index === 1 ? "72%" : "28%",
+            top: index === 0 ? "30%" : index === 1 ? "52%" : "58%",
+          }}
+          initial={reducedMotion ? false : { opacity: 0, y: 16, scale: 0.96 }}
+          animate={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.4, delay: reducedMotion ? 0 : 0.16 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {tag}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
+function selectorImageClass(name: string) {
+  switch (name) {
+    case "AR 250":
+      return "scale-[0.9] translate-y-[8%]";
+    case "AR 500":
+      return "scale-[0.84] translate-y-[6%]";
+    case "AR 650":
+      return "scale-[0.84] translate-y-[7%]";
+    case "AR 1250":
+      return "scale-[0.86] translate-y-[8%]";
+    case "PSR 2000":
+    case "PSR 2000R":
+    case "PSR 1000R":
+    case "PSR G2G":
+      return "scale-[0.84] translate-y-[4%]";
+    case "LBR 500":
+      return "scale-[0.8] translate-y-[4%]";
+    case "AGV 100":
+      return "scale-[0.88] translate-y-[9%]";
+    default:
+      return "scale-[1.2] translate-y-[8%]";
+  }
+}

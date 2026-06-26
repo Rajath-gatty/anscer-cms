@@ -1,42 +1,72 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import type { ReactNode } from "react";
 import { imagePath } from "./assets";
+
+const CONTACT_HREF = "mailto:sales@anscer.com";
 
 const footerColumns = [
   {
     heading: "Products",
     links: [
-      { label: "AR 250", href: "#robots" },
-      { label: "AR 500", href: "#robots" },
-      { label: "AR 650", href: "#robots" },
-      { label: "AR 1250", href: "#robots" },
-      { label: "PSR G2G", href: "#robots" },
-      { label: "PSR 2000", href: "#robots" },
-      { label: "PSR 1000R", href: "#robots" },
-      { label: "PSR 2000R", href: "#robots" },
-      { label: "LBR 500", href: "#robots" },
-      { label: "AGV 100", href: "#robots" },
+      { label: "AR 250", href: "/ar-series/ar-250" },
+      { label: "AR 500", href: "/ar-series/ar-500" },
+      { label: "AR 650", href: "/ar-series/ar-650" },
+      { label: "AR 1250", href: "/ar-series/ar-1250" },
+      { label: "PSR G2G", href: "/psr-series/psr-g2g" },
+      { label: "PSR 2000", href: "/psr-series/psr-2000" },
+      { label: "PSR 1000R", href: "/psr-series/psr-1000r" },
+      { label: "PSR 2000R", href: "/psr-series/psr-2000r" },
+      { label: "LBR 500", href: "/psr-series/lbr-500" },
+      { label: "AGV 100", href: "/agv-series/agv-100" },
     ],
   },
   {
     heading: "Insights",
     links: [
-      { label: "Home", href: "#" },
-      { label: "Products", href: "#robots" },
-      { label: "Software", href: "#software" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "Home", href: "/" },
+      { label: "Products", href: "/products" },
+      { label: "Software", href: "/software-solutions" },
+      { label: "Contact Us", href: CONTACT_HREF, external: true },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About us", href: "#company" },
-      { label: "Newsroom", href: "#news" },
+      { label: "About us", href: "/about-us" },
+      { label: "Newsroom", href: "/newsroom" },
     ],
   },
 ];
 
 const legalLinks = ["Policy", "Terms & Conditions", "Cookie settings"];
+
+function FooterLink({
+  href,
+  children,
+  className,
+  external = false,
+}: {
+  href: string;
+  children: ReactNode;
+  className?: string;
+  external?: boolean;
+}) {
+  if (external || href.startsWith("mailto:") || href.startsWith("tel:")) {
+    return (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
+}
 
 export function SiteFooter() {
   return (
@@ -52,13 +82,15 @@ export function SiteFooter() {
       <div className="site-container relative pt-14 md:pt-20">
         <div className="grid gap-x-4 gap-y-10 border-b border-[#fafafa99] pb-14 md:grid-cols-2 lg:grid-cols-[1fr_.35fr_.35fr_.35fr_1fr]">
           <div className="flex flex-col items-start gap-5">
-            <Image
-              src={`${imagePath}ANSCER-logo-light.svg`}
-              alt="ANSCER Robotics"
-              width={127}
-              height={37}
-              className="h-auto w-[127px]"
-            />
+            <Link href="/" aria-label="ANSCER Robotics home">
+              <Image
+                src={`${imagePath}ANSCER-logo-light.svg`}
+                alt="ANSCER Robotics"
+                width={127}
+                height={37}
+                className="h-auto w-[127px]"
+              />
+            </Link>
 
             <div>
               <h3 className="text-sm font-semibold md:text-base">
@@ -141,12 +173,13 @@ export function SiteFooter() {
               <ul className="space-y-2">
                 {column.links.map((link) => (
                   <li key={link.label} className="py-1">
-                    <a
+                    <FooterLink
                       href={link.href}
+                      external={link.external}
                       className="text-sm text-white/60 transition hover:text-white md:text-[15px]"
                     >
                       {link.label}
-                    </a>
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
@@ -192,9 +225,12 @@ export function SiteFooter() {
           <ul className="order-1 flex flex-col items-start gap-2 text-white/60 md:order-2 md:flex-row md:items-center md:gap-[30px]">
             {legalLinks.map((link) => (
               <li key={link}>
-                <a href="#" className="transition hover:text-white">
+                <span
+                  className="cursor-default transition"
+                  aria-disabled="true"
+                >
                   {link}
-                </a>
+                </span>
               </li>
             ))}
           </ul>

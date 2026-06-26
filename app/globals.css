@@ -246,3 +246,6 @@ html {
     @apply font-sans;
   }
 }
+.model-viewer::part(default-progress-bar) {
+  display: none;
+}

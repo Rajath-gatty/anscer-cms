@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { imagePath } from "./assets";
 import { navItems } from "./home-data";
 
+const CONTACT_HREF = "mailto:sales@anscer.com";
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -64,7 +66,7 @@ export function SiteHeader() {
               item === "Robots" ? (
                 <RobotsDropdown key={item} active={isRobotsActive} />
               ) : (
-                <a
+                <Link
                   key={item}
                   className={`transition hover:text-[#005ead] ${
                     navActive(item) ? "font-bold text-[#005ead]" : ""
@@ -72,13 +74,13 @@ export function SiteHeader() {
                   href={navHref(item)}
                 >
                   {item}
-                </a>
+                </Link>
               ),
             )}
           </nav>
           <a
             className="inline-flex py-2 px-3 items-center justify-center gap-6 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white"
-            href="#contact"
+            href={CONTACT_HREF}
           >
             Contact us{" "}
             <ArrowRight aria-hidden="true" className="size-5" strokeWidth={2} />
@@ -138,7 +140,7 @@ export function SiteHeader() {
                   >
                     <div className="overflow-hidden">
                       <div className="pb-4 pt-2">
-                        <a
+                        <Link
                           href="/products"
                           onClick={closeMenu}
                           className="flex items-center gap-3 text-xl font-bold text-[#011f40]"
@@ -149,7 +151,7 @@ export function SiteHeader() {
                             className="size-5"
                             strokeWidth={2}
                           />
-                        </a>
+                        </Link>
                         <p className="mt-2 max-w-[310px] text-xs leading-5 text-[#657382]">
                           Explore ANSCER&apos;s robotic platforms for flexible
                           industrial automation
@@ -163,14 +165,14 @@ export function SiteHeader() {
                             ["PSR Series", "/psr-series"],
                             ["AGV Series", "/agv-series"],
                           ].map(([series, href]) => (
-                            <a
+                            <Link
                               key={series}
                               className="transition hover:text-[#005ead]"
                               href={href}
                               onClick={closeMenu}
                             >
                               {series}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -178,7 +180,7 @@ export function SiteHeader() {
                   </div>
                 </div>
               ) : (
-                <a
+                <Link
                   key={item}
                   className={`flex min-h-12 items-center border-b border-[#cfd7df] transition hover:text-[#005ead] ${
                     navActive(item) ? "font-bold text-[#005ead]" : ""
@@ -187,13 +189,13 @@ export function SiteHeader() {
                   onClick={closeMenu}
                 >
                   {item}
-                </a>
+                </Link>
               ),
             )}
           </nav>
           <a
             className="mt-5 inline-flex px-2 h-8 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white"
-            href="#contact"
+            href={CONTACT_HREF}
             onClick={closeMenu}
           >
             Contact us{" "}
@@ -208,7 +210,7 @@ export function SiteHeader() {
 function RobotsDropdown({ active }: { active: boolean }) {
   return (
     <div className="group relative flex h-[60px] items-center">
-      <a
+      <Link
         className={`flex h-full items-center border-b-[3px] px-0 pt-[3px] transition group-hover:border-[#005ead] group-hover:text-[#005ead] ${
           active
             ? "border-[#005ead] font-bold text-[#005ead]"
@@ -217,10 +219,10 @@ function RobotsDropdown({ active }: { active: boolean }) {
         href="/products"
       >
         Robots
-      </a>
+      </Link>
       <div className="invisible absolute left-1/2 top-[60px] z-50 w-[400px] -translate-x-1/2 rounded-xl bg-white opacity-0 shadow-[0_18px_45px_rgba(1,31,64,.22)] transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
         <div className="p-5">
-          <a
+          <Link
             href="/products"
             className="group/link flex items-center gap-3 text-xl font-bold text-[#011f40]"
           >
@@ -230,7 +232,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
               className="size-5 transition group-hover/link:translate-x-1"
               strokeWidth={2}
             />
-          </a>
+          </Link>
           <p className="mt-2 text-xs leading-5 text-[#7b8794]">
             Explore ANSCER&apos;s robotic platforms for flexible industrial
             automation
@@ -241,15 +243,15 @@ function RobotsDropdown({ active }: { active: boolean }) {
             Robot Series
           </p>
           <div className="mt-6 grid grid-cols-2 gap-x-14 gap-y-7 text-base font-medium text-[#011f40]">
-            <a className="transition hover:text-[#005ead]" href="/ar-series">
+            <Link className="transition hover:text-[#005ead]" href="/ar-series">
               AR Series
-            </a>
-            <a className="transition hover:text-[#005ead]" href="/psr-series">
+            </Link>
+            <Link className="transition hover:text-[#005ead]" href="/psr-series">
               PSR Series
-            </a>
-            <a className="transition hover:text-[#005ead]" href="/agv-series">
+            </Link>
+            <Link className="transition hover:text-[#005ead]" href="/agv-series">
               AGV Series
-            </a>
+            </Link>
           </div>
         </div>
       </div>

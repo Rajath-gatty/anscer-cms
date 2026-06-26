@@ -56,7 +56,7 @@ function ProductHero({ data }: { data: ProductDetailData }) {
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 900px"
-              className="z-0 object-contain opacity-[0.22]"
+              className="z-0 object-contain opacity-100"
             />
           ) : null}
           {data.modelUrl ? (
