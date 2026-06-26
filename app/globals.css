@@ -88,6 +88,10 @@ body {
   font-family: "Plus Jakarta Sans", "Aptos", "Segoe UI", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .site-container {
   width: 100%;
   max-width: 1340px;
