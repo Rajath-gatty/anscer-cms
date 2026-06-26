@@ -44,11 +44,13 @@ function ProductHero({ data }: { data: ProductDetailData }) {
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 900px"
-              className="object-contain opacity-[0.08]"
+              className="z-0 object-contain opacity-[0.22]"
             />
           ) : null}
           {data.modelUrl ? (
-            <ProductHeroModel modelUrl={data.modelUrl} fallbackImage={data.heroImage} title={data.title} />
+            <div className="absolute inset-0 z-10">
+              <ProductHeroModel modelUrl={data.modelUrl} fallbackImage={data.heroImage} title={data.title} />
+            </div>
           ) : (
             <Image
               src={`${imagePath}${data.heroImage}`}
@@ -56,7 +58,7 @@ function ProductHero({ data }: { data: ProductDetailData }) {
               fill
               priority
               sizes="(max-width: 1024px) 90vw, 760px"
-              className="object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
+              className="z-10 object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
             />
           )}
         </div>

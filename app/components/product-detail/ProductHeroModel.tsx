@@ -22,7 +22,7 @@ type ModelViewerElementProps = {
   "field-of-view"?: string;
   "interaction-prompt"?: string;
   "interaction-prompt-style"?: string;
-  style?: CSSProperties;
+  style?: CSSProperties & Record<"--poster-color", string>;
   children?: React.ReactNode;
 };
 
@@ -72,7 +72,13 @@ export function ProductHeroModel({ modelUrl, fallbackImage, title }: ProductHero
             "field-of-view": "36deg",
             "interaction-prompt": "auto",
             "interaction-prompt-style": "basic",
-            style: { width: "100%", height: "100%", display: "block" },
+            style: {
+              width: "100%",
+              height: "100%",
+              display: "block",
+              backgroundColor: "transparent",
+              "--poster-color": "transparent",
+            },
           },
         )
       ) : (
