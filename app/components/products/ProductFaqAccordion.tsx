@@ -41,7 +41,7 @@ export function ProductFaqAccordion({ items }: { items: ProductFaq[] }) {
             )}
           >
             <AccordionTrigger className="items-center gap-4 rounded-xl px-3 py-3 text-left hover:no-underline focus-visible:ring-[#005ead]/25 md:gap-4 md:px-6 md:py-3 **:data-[slot=accordion-trigger-icon]:hidden">
-              <span className="text-[18px] font-semibold leading-6 text-[#3a3a3a]">
+              <span className="text-sm font-semibold leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6">
                 {item.question}
               </span>
               <span
@@ -56,7 +56,7 @@ export function ProductFaqAccordion({ items }: { items: ProductFaq[] }) {
               </span>
             </AccordionTrigger>
             <AccordionContent className="px-3 pb-3 md:px-6">
-              <p className="max-w-[760px] pt-2.5 text-base leading-6 text-[#222228]">
+              <p className="max-w-[760px] pt-2.5 text-[12px] leading-[18px] text-[#222228] md:text-base md:leading-6">
                 {item.answer}
               </p>
             </AccordionContent>

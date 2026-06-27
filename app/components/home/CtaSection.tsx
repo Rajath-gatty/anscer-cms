@@ -4,7 +4,7 @@ import { ArrowButton } from "./SectionPrimitives";
 
 export function CtaSection() {
   return (
-    <section id="contact" className="relative overflow-hidden bg-[#005ead] py-24 text-white">
+    <section id="contact" className="relative overflow-hidden bg-[#005fad] py-24 text-white">
       <Image src={`${imagePath}footer-banner-p-1600.png`} alt="" fill sizes="100vw" className="object-cover opacity-50" />
       <div className="absolute inset-0 bg-[#005ead]/82" />
       <div className="site-container relative">

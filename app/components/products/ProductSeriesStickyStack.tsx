@@ -179,17 +179,17 @@ function SeriesPanel({
       <div className="site-container relative z-10 grid min-h-[720px] items-center py-16 lg:min-h-[calc(100vh-60px)]">
         <div className="max-w-[455px]">
           <p className="text-xs font-semibold text-[#005ead]">{series.index}</p>
-          <h2 className="mt-5 text-[34px] font-bold tracking-tight md:text-[44px]">
+          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
             {series.title}
           </h2>
-          <p className="mt-4 max-w-[430px] text-sm leading-6 text-[#4b5563]">
+          <p className="mt-4 max-w-[430px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
             {series.copy}
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {series.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-white px-3 py-1.5 text-xs font-semibold text-[#011f40]"
+                className="rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-[#011f40] md:text-base"
               >
                 {tag}
               </span>
@@ -197,7 +197,7 @@ function SeriesPanel({
           </div>
           <a
             href={series.href}
-            className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[11px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
             <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
@@ -252,17 +252,17 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
       <div className="site-container relative z-10 grid min-h-[720px] items-center py-16 lg:min-h-[calc(100vh-60px)]">
         <div className="max-w-[455px]">
           <p className="text-xs font-semibold text-[#005ead]">{series.index}</p>
-          <h2 className="mt-5 text-[34px] font-bold tracking-tight md:text-[44px]">
+          <h2 className="mt-5 text-[36px] font-bold tracking-tight">
             {series.title}
           </h2>
-          <p className="mt-4 max-w-[430px] text-sm leading-6 text-[#4b5563]">
+          <p className="mt-4 max-w-[430px] text-base leading-6 text-[#4b5563]">
             {series.copy}
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {series.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-white px-3 py-1.5 text-xs font-semibold text-[#011f40]"
+                className="rounded-md bg-white px-3 py-1.5 text-base font-semibold text-[#011f40]"
               >
                 {tag}
               </span>
@@ -270,7 +270,7 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
           </div>
           <a
             href={series.href}
-            className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[11px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
             <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />

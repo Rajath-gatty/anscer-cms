@@ -72,11 +72,11 @@ function SmartNavigationSection() {
       <div className="site-container">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#005ead]">Real Solutions For Real Challenges</p>
-            <h2 className="mt-4 text-[30px] font-bold leading-tight tracking-tight md:text-[42px]">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">Real Solutions For Real Challenges</p>
+            <h2 className="mt-4 text-[28px] font-bold leading-tight tracking-tight md:text-[36px]">
               Smarter Navigation, <span className="text-[#005ead]">Anywhere</span>
             </h2>
-            <p className="mt-4 max-w-[620px] text-sm leading-6 text-[#4b5563]">
+            <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
               Lorem ipsum dolor sit amet consectetur adipisicing elit Ut et massa mi. Aliquam in hendrerit urna.
               Pellentesque sit amet sapien.
             </p>
@@ -108,7 +108,7 @@ function NavigationCard({ image, title, large = false }: { image: string; title:
     <article className={`relative overflow-hidden rounded-lg bg-[#011f40] ${large ? "min-h-[470px]" : "min-h-[470px]"}`}>
       <Image src={`${imagePath}${image}`} alt={title} fill sizes="(max-width: 1024px) 100vw, 900px" className="object-cover opacity-88" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,.04),rgba(1,31,64,.72))]" />
-      <p className="absolute bottom-6 left-6 right-6 text-sm leading-5 text-white/90">
+      <p className="absolute bottom-6 left-6 right-6 text-sm leading-5 text-white/90 md:text-base md:leading-6">
         {title}. Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna.
       </p>
     </article>
@@ -119,9 +119,9 @@ function FeaturesSection() {
   return (
     <section className="bg-[#fafafa] py-14 md:py-20">
       <div className="site-container">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#005ead]">How Our Robots Deliver Excellence</p>
-        <h2 className="mt-4 text-[30px] font-bold tracking-tight md:text-[40px]">Key Features of All Our Robots</h2>
-        <p className="mt-4 max-w-[600px] text-sm leading-6 text-[#4b5563]">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">How Our Robots Deliver Excellence</p>
+        <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">Key Features of All Our Robots</h2>
+        <p className="mt-4 max-w-[600px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
           Never worry about maintenance. ANSCER Robotics ensures seamless software updates, reliable hardware, and ongoing support to keep your robots operating at peak performance.
         </p>
 
@@ -132,8 +132,8 @@ function FeaturesSection() {
                 <div className="grid size-9 place-items-center rounded-md text-[#005ead]">
                   <Plus aria-hidden="true" className="size-6" strokeWidth={2} />
                 </div>
-                <h3 className="mt-5 text-lg font-bold text-[#005ead]">{feature.title}</h3>
-                <p className="mt-3 text-xs leading-5 text-[#4b5563]">{feature.copy}</p>
+                <h3 className="mt-5 text-xl font-bold text-[#005ead] md:text-2xl">{feature.title}</h3>
+                <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{feature.copy}</p>
               </article>
             ))}
           </div>
@@ -141,8 +141,8 @@ function FeaturesSection() {
             <Image src={`${imagePath}Frame-1321316466.jpg`} alt="" fill sizes="680px" className="object-cover opacity-55" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.72),rgba(1,31,64,.18))]" />
             <div className="relative z-10 max-w-[340px]">
-              <h3 className="text-2xl font-bold">Let&apos;s Build Together</h3>
-              <p className="mt-3 text-sm leading-6 text-white/84">Join us in shaping the future of robotics.</p>
+              <h3 className="text-xl font-bold md:text-2xl">Let&apos;s Build Together</h3>
+              <p className="mt-3 text-sm leading-5 text-white/84 md:text-base md:leading-6">Join us in shaping the future of robotics.</p>
             </div>
             <Image
               src={`${imagePath}agv-100-new.png`}
@@ -163,8 +163,8 @@ function FaqSection() {
     <section className="bg-[#fafafa] py-14">
       <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">
         <div>
-          <h2 className="mt-5 text-[32px] font-bold leading-9 text-[#011f40]">FAQs</h2>
-          <p className="mt-4 max-w-[380px] text-base leading-6 text-[#3a3a3a]">
+          <h2 className="mt-5 text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">FAQs</h2>
+          <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-6">
             We&apos;ve heard it all — here&apos;s what people are really asking behind the scenes.
           </p>
         </div>
@@ -176,17 +176,17 @@ function FaqSection() {
 
 function ProductsCta() {
   return (
-    <section className="relative overflow-hidden bg-[#005ead] py-20 text-white">
+    <section className="relative overflow-hidden bg-[#005fad] py-20 text-white">
       <Image src={`${imagePath}96cdc152cb608044ef4fbddf84c5978fac86d350.png`} alt="" fill sizes="100vw" className="object-cover opacity-35" />
-      <div className="absolute inset-0 bg-[#005ead]/72" />
+      <div className="absolute inset-0 bg-[#0020ad73]" />
       <div className="site-container relative z-10">
-        <h2 className="max-w-[760px] text-[34px] font-bold leading-tight tracking-tight md:text-[52px]">Dive Into The Future Factory</h2>
-        <p className="mt-4 max-w-[560px] text-sm leading-6 text-white/85 md:text-base">
+        <h2 className="max-w-[760px] text-[48px] font-bold leading-tight tracking-tight md:text-[60px]">Dive Into The Future Factory</h2>
+        <p className="mt-4 max-w-[560px] text-sm leading-5 text-white/85 md:text-[18px] md:leading-[26px]">
           Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation solutions engineered to transform your operations.
         </p>
         <a
           href="#contact"
-          className="mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-white px-5 text-[12px] font-bold uppercase tracking-wide text-[#005ead] transition hover:bg-[#edf6ff]"
+          className="mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#0174ad]"
         >
           Talk to our experts <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
         </a>

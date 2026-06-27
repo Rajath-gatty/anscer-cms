@@ -59,7 +59,7 @@ export function ProductHeroSlider() {
     <section className="bg-[#fafafa]">
       <div className="site-container grid min-h-[calc(100svh-60px)] items-center gap-8 py-12 md:min-h-[calc(100svh-110px)] md:grid-cols-2 md:py-16">
         <div>
-          <h1 className="text-[42px] font-bold leading-[1.06] tracking-tight md:text-[56px] xl:whitespace-nowrap xl:text-[58px]">
+          <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
             {active.title}{" "}
             <span className="relative inline-grid overflow-hidden align-bottom text-[#005ead]">
               <AnimatePresence mode="popLayout" initial={false}>
@@ -75,13 +75,13 @@ export function ProductHeroSlider() {
               </AnimatePresence>
             </span>
           </h1>
-          <p className="mt-5 max-w-[470px] text-sm leading-6 text-[#3f4b57]">
+          <p className="mt-5 max-w-[470px] text-sm leading-5 text-[#3f4b57] md:text-[18px] md:leading-[26px]">
             Explore ANSCER&apos;s cutting-edge lineup: powerful, smart
             automation solutions engineered to transform your operations.
           </p>
           <a
             href="#robot-series"
-            className="mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[11px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
             <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />

@@ -41,13 +41,13 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   return (
     <section id="applications" className="overflow-hidden bg-white py-16 md:py-24">
       <div className="site-container">
-        <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">Applications</p>
+        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Applications</p>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-[700px]">
-            <h2 className="text-[34px] font-extrabold leading-tight tracking-[-0.02em] md:text-[44px]">
+            <h2 className="text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
               {data.applicationsHeading}
             </h2>
-            <p className="mt-4 max-w-[610px] text-[15px] leading-6 text-[#4b5563]">{data.applicationsIntro}</p>
+            <p className="mt-4 max-w-[610px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{data.applicationsIntro}</p>
           </div>
 
           <div className="hidden items-center gap-4 md:flex">
@@ -97,8 +97,8 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               ) : null}
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,0)_30%,rgba(1,31,64,.82)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                <h3 className="text-[24px] font-extrabold leading-tight">{application.title}</h3>
-                <p className="mt-2 text-[14px] leading-5 text-white/88">{application.copy}</p>
+                <h3 className="text-xl font-extrabold leading-tight md:text-2xl">{application.title}</h3>
+                <p className="mt-2 text-sm leading-5 text-white/88 md:text-base md:leading-6">{application.copy}</p>
               </div>
             </article>
           ))}
@@ -174,8 +174,8 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
             viewport={{ once: true, margin: "-80px" }}
             transition={transition}
           >
-            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">Modals</p>
-            <h2 className="mt-5 text-[34px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
+            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Modals</p>
+            <h2 className="mt-5 text-[28px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
               Explore <span className="text-[#005ead]">{data.eyebrow}</span> Robots
             </h2>
           </motion.div>
@@ -200,11 +200,11 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
 
                       {/* Text content — name, description, explore button */}
                       <div className="p-5 pb-0">
-                        <h3 className="text-[22px] font-bold text-[#011f40]">{product.name}</h3>
+                        <h3 className="text-xl font-bold text-[#011f40]">{product.name}</h3>
                         <p className="mt-2 text-[14px] leading-[22px] text-[#3a3a3a] line-clamp-3">{product.description}</p>
                         <a
                           href={product.href}
-                          className="mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                          className="mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                         >
                           Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
                         </a>
@@ -252,8 +252,8 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         <div className="grid grid-cols-2 gap-x-8 gap-y-4 border-t border-[#d6e6f2] pt-5">
                           {productSpecs.map((spec) => (
                             <div key={spec.label}>
-                              <h4 className="text-[11px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
-                              <p className="mt-1 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
+                              <h4 className="text-[10px] font-medium uppercase leading-4 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
+                              <p className="mt-1 text-[12px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
                             </div>
                           ))}
                         </div>
@@ -361,7 +361,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                     <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
                     <motion.a
                       href={activeProduct.href}
-                      className="mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                      className="mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                       whileHover={reducedMotion ? undefined : { y: -2 }}
                       whileTap={reducedMotion ? undefined : { scale: 0.97 }}
                     >
@@ -449,7 +449,7 @@ function UnitToggle({
     <button
       type="button"
       onClick={() => onChange(unit === "metric" ? "imperial" : "metric")}
-      className="inline-flex items-center gap-2 self-start text-[13px] font-extrabold uppercase tracking-wide text-[#011f40]"
+      className="inline-flex items-center gap-2 self-start text-[12px] font-extrabold uppercase tracking-wide text-[#011f40]"
       aria-label="Toggle metric and imperial units"
     >
       <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>Metric</span>

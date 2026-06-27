@@ -44,6 +44,15 @@ export type ProductDetailData = {
     title: string;
     copy: string;
     image?: string;
+    overlay?: {
+      width?: string;
+      height?: string;
+      top?: string;
+      left?: string;
+      translateX?: string;
+      translateY?: string;
+      sizes?: string;
+    };
   }[];
   faqs: {
     question: string;
@@ -88,15 +97,60 @@ const psrUseCases = [
 ];
 
 const topModules = [
-  { title: "Shelf Lifter", copy: "Autonomous trolley lifting and transport operations.", image: "ar-250-shelf-lifter.png" },
-  { title: "Belt Conveyor", copy: "Gentle transfer for small, irregular, and unstable loads.", image: "ar-250-belt-conveyer.png" },
-  { title: "Mobile Robotic Arm", copy: "Mobile manipulation for pick, place, and service workflows.", image: "ar-250-pallet-lifter.png" },
-  { title: "Combined Lifter & Tunneling", copy: "Combined lifting and under-load movement in one module.", image: "ar-250-belt-conveyer.png" },
-  { title: "Pallet Lifter", copy: "Pallet pickup and transfer for flexible intralogistics.", image: "ar-250-pallet-lifter.png" },
-  { title: "Auto Tugger", copy: "Autonomous tugging for carts, racks, and trolley trains.", image: "ar-250-belt-conveyer.png" },
-  { title: "Roller Conveyor", copy: "Automated handoff between mobile robots and conveyor lines.", image: "ar-250-pallet-lifter.png" },
-  { title: "Manual Tugger", copy: "Assisted tugging workflows for mixed manual and autonomous use.", image: "ar-250-belt-conveyer.png" },
-  { title: "Custom Unit Load", copy: "Tailored modules for application-specific load handling.", image: "ar-250-pallet-lifter.png" },
+  {
+    title: "Shelf Lifter",
+    copy: "Autonomous trolley lifting and transport operations.",
+    image: "ar-250-shelf-lifter.png",
+    overlay: { width: "340px", height: "250px", sizes: "300px",top:"5px" },
+  },
+  {
+    title: "Belt Conveyor",
+    copy: "Gentle transfer for small, irregular, and unstable loads.",
+    image: "ar-250-belt-conveyer.png",
+    overlay: { width: "300px", height: "200px", sizes: "300px",top:"-5px" },
+  },
+  {
+    title: "Mobile Robotic Arm",
+    copy: "Mobile manipulation for pick, place, and service workflows.",
+    image: "ar-250-pallet-lifter.png",
+    overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
+  },
+  {
+    title: "Combined Lifter & Tunneling",
+    copy: "Combined lifting and under-load movement in one module.",
+    image: "ar-250-belt-conveyer.png",
+    overlay: { width: "300px", height: "200px", sizes: "300px", top: "-5px" },
+  },
+  {
+    title: "Pallet Lifter",
+    copy: "Pallet pickup and transfer for flexible intralogistics.",
+    image: "ar-250-pallet-lifter.png",
+    overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
+  },
+  {
+    title: "Auto Tugger",
+    copy: "Autonomous tugging for carts, racks, and trolley trains.",
+    image: "ar-250-belt-conveyer.png",
+    overlay: { width: "300px", height: "200px", sizes: "300px", top: "-5px" },
+  },
+  {
+    title: "Roller Conveyor",
+    copy: "Automated handoff between mobile robots and conveyor lines.",
+    image: "ar-250-pallet-lifter.png",
+    overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
+  },
+  {
+    title: "Manual Tugger",
+    copy: "Assisted tugging workflows for mixed manual and autonomous use.",
+    image: "ar-250-belt-conveyer.png",
+    overlay: { width: "300px", height: "200px", sizes: "300px", top: "-5px" },
+  },
+  {
+    title: "Custom Unit Load",
+    copy: "Tailored modules for application-specific load handling.",
+    image: "ar-250-pallet-lifter.png",
+    overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
+  },
 ];
 
 export const productDetails: Record<string, ProductDetailData> = {
