@@ -180,7 +180,7 @@ function ProductOverview({ data }: { data: ProductDetailData }) {
           <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
             {data.overview}
           </p>
-          <div className="relative mt-8 aspect-[1.72] overflow-hidden rounded-[4px] bg-[#e6ebf0]">
+          <div className="relative mt-8 aspect-[1.72] overflow-hidden rounded-[12px] bg-[#e6ebf0]">
             <Image
               src={`${imagePath}${data.overviewImage ?? data.useCases[0]?.image ?? data.heroImage}`}
               alt={`${data.title} overview`}
@@ -301,11 +301,11 @@ function ProductAccordionRows({
           <article
             key={item.title}
             className={cn(
-              "overflow-hidden rounded-[4px] transition-all duration-300 ease-out",
-              surface === "white" ? "bg-white" : "bg-[#e6ebf0]",
+              "overflow-hidden rounded-[12px] transition-all duration-300 ease-out",
+              surface === "white" ? "bg-white" : "bg-[#fafafa]",
               isOpen
                 ? "p-5 shadow-[0_12px_30px_rgba(1,31,64,.08)]"
-                : "px-5 py-4",
+                : "px-5 py-4 shadow-[0_12px_30px_rgba(1,31,64,.08)]",
             )}
           >
             <button
@@ -380,7 +380,7 @@ function AdvantagesSection({ data }: { data: ProductDetailData }) {
             onActiveChange={setActiveIndex}
             surface="white"
           />
-          <div className="relative aspect-[1.75] overflow-hidden rounded-[4px] bg-white">
+          <div className="relative aspect-[1.75] overflow-hidden rounded-[12px] bg-white">
             <Image
               key={activeAdvantage?.title}
               src={`${imagePath}${data.advantageImage ?? data.overviewImage ?? data.heroImage}`}
@@ -428,7 +428,7 @@ function FeaturesSection({ data }: { data: ProductDetailData }) {
               Icon={icons[index]}
             />
           ))}
-          <article className="relative row-span-2 min-h-[320px] overflow-hidden rounded-[4px] bg-[#011f40] p-5 text-white lg:min-h-[380px]">
+          <article className="relative row-span-2 min-h-[320px] overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:min-h-[380px]">
             <Image
               src={`${imagePath}Frame-1321317289.jpg`}
               alt=""
@@ -474,7 +474,7 @@ function FeatureCard({
   Icon: typeof Layers;
 }) {
   return (
-    <article className="min-h-[170px] rounded-[4px] bg-[#e6ebf0] p-5">
+    <article className="min-h-[170px] rounded-[12px] bg-[#FFFFFF] p-5">
       <Icon
         aria-hidden="true"
         className="size-8 text-[#005ead]"
@@ -493,15 +493,24 @@ function ModulesSection({ data }: { data: ProductDetailData }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = modules[activeIndex] ?? modules[0];
   const activeModuleImage = active?.image ?? data.heroImage;
+  const baseImage = data.modulesBaseImage;
+  const isLayeredModule = Boolean(baseImage && active?.image);
 
   if (!modules.length || !active) return null;
 
   return (
     <section
       id="attachments"
-      className="scroll-mt-28 bg-[#e6ebf0] py-12 md:py-[56px]"
+      className="relative scroll-mt-28 overflow-hidden bg-[#e6ebf0] py-16 md:py-[84px]"
     >
-      <div className="site-container">
+      {data.backgroundText ? (
+        <img
+          src={`${imagePath}${data.backgroundText}`}
+          alt=""
+          className="pointer-events-none absolute left-1/2 top-2/3 z-0 h-[220px] w-[600px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.72]"
+        />
+      ) : null}
+      <div className="site-container relative z-10">
         <div className="max-w-[760px]">
           <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
             Attachments
@@ -516,45 +525,48 @@ function ModulesSection({ data }: { data: ProductDetailData }) {
             warehouse and industrial operations.
           </p>
         </div>
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.25fr_0.5fr_0.25fr] lg:items-center">
-          <div className="flex flex-col gap-2 text-[12px] font-medium text-[#3a3a3a]">
-            {modules.map((module, index) => (
-              <button
-                key={module.title}
-                type="button"
-                className={cn(
-                  "rounded-[3px] px-2 py-1 text-left transition hover:bg-white/70 hover:text-[#005ead]",
-                  activeIndex === index &&
-                    "bg-white/80 font-bold text-[#005ead]",
-                )}
-                onClick={() => setActiveIndex(index)}
-              >
+	        <div className="mt-10 grid gap-8 lg:grid-cols-[0.25fr_0.5fr_0.25fr] lg:items-center">
+	          <div className="flex flex-col gap-2 text-[12px] font-medium text-[#3a3a3a]">
+	            {modules.map((module, index) => (
+	              <button
+	                key={module.title}
+	                type="button"
+	                className={cn(
+	                  "px-2 py-1 text-left transition-colors hover:text-[#005ead]",
+	                  activeIndex === index && "font-bold text-[#005ead]",
+	                )}
+	                onClick={() => setActiveIndex(index)}
+	              >
                 {module.title}
               </button>
             ))}
           </div>
-          <div className="relative mx-auto h-[290px] w-full max-w-[540px]">
-            {data.backgroundText ? (
+          <div className="relative mx-auto h-[200px] w-[300px]">
+
+            {baseImage ? (
               <Image
-                src={`${imagePath}${data.backgroundText}`}
-                alt=""
-                fill
-                sizes="540px"
-                className="object-contain opacity-[0.07]"
-              />
-            ) : null}
+                src={`${imagePath}${baseImage}`}
+	                alt=""
+	                fill
+	                sizes="(max-width: 1024px) 100vw, 540px"
+	                className="z-10 translate-y-28 object-contain"
+	              />
+	            ) : null}
             <Image
               key={activeModuleImage}
               src={`${imagePath}${activeModuleImage}`}
               alt={active.title}
               fill
-              sizes="540px"
-              className="object-contain transition-transform duration-300"
+              sizes="(max-width: 1024px) 100vw, 240px"
+              className={cn(
+                "z-20 object-contain transition-opacity duration-300",
+                isLayeredModule && "object-top",
+              )}
             />
           </div>
-          <div>
-            <h3 className="text-xl font-semibold text-[#005ead]">
-              {active.title}
+	          <div className="pt-10 lg:pl-10 lg:pt-48 xl:pl-16">
+	            <h3 className="text-xl font-semibold text-[#005ead]">
+	              {active.title}
             </h3>
             <p className="mt-3 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
               {active.copy}
@@ -582,7 +594,7 @@ function ApplicationsSection({ data }: { data: ProductDetailData }) {
             Applications
           </p>
           <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
-            Built For Smart Material Movement
+            Built For Smart <span className="text-[#005ead]">Material</span> Movement
           </h2>
           <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
             Designed to automate internal transport across warehouses,
@@ -591,7 +603,7 @@ function ApplicationsSection({ data }: { data: ProductDetailData }) {
           </p>
         </div>
         <div className="mt-8 grid gap-5 lg:grid-cols-[0.55fr_0.45fr]">
-          <article className="relative aspect-[1.43] overflow-hidden rounded-[4px] bg-[#011f40] text-white">
+          <article className="relative aspect-[1.43] overflow-hidden rounded-[12px] bg-[#011f40] text-white">
             <Image
               key={active?.image}
               src={`${imagePath}${active?.image ?? data.overviewImage ?? data.heroImage}`}
@@ -629,14 +641,14 @@ function CaseStudiesSection({ data }: { data: ProductDetailData }) {
           Case Studies
         </p>
         <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
-          {data.title} Success Stories
+          {data.title} <span className="text-[#005ead]">Success</span> Stories
         </h2>
         <p className="mt-4 max-w-[700px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
           Discover how manufacturers, warehouses, and industrial facilities use
           ANSCER robots to improve workflow efficiency and reduce manual
           handling.
         </p>
-        <article className="relative mt-8 aspect-[2.04] overflow-hidden rounded-[8px] bg-[#011f40] text-white">
+        <article className="relative mt-8 aspect-[2.04] overflow-hidden rounded-[12px] bg-[#011f40] text-white">
           <Image
             src={`${imagePath}${data.caseStudyImage ?? "case-study-manufacturing.jpg"}`}
             alt="Manufacturing case study"
@@ -648,7 +660,7 @@ function CaseStudiesSection({ data }: { data: ProductDetailData }) {
           <h3 className="absolute left-7 top-7 text-3xl font-bold">
             Manufacturing
           </h3>
-          <div className="absolute bottom-7 right-7 w-[270px] rounded-[4px] bg-white p-5 text-[#011f40]">
+          <div className="absolute bottom-7 right-7 w-[270px] rounded-[12px] bg-white p-5 text-[#011f40]">
             <p className="text-xl font-bold text-[#66bd6a]">
               Schneider
               <br />
@@ -701,7 +713,7 @@ function ProductCta({ data }: { data: ProductDetailData }) {
         sizes="100vw"
         className="object-cover opacity-45"
       />
-      <div className="absolute inset-0 bg-[#005ead]/70" />
+      <div className="absolute inset-0 bg-[#005ead]/60" />
       <div className="site-container relative z-10">
         <h2 className="max-w-[760px] text-[40px] font-semibold leading-[1.1] md:text-[60px]">
           {data.ctaTitle ??
@@ -714,7 +726,7 @@ function ProductCta({ data }: { data: ProductDetailData }) {
         <div className="mt-8 flex flex-wrap gap-3">
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-white ring-1 ring-white/20"
+            className="inline-flex items-center gap-3 rounded-[3px] bg-[#0048ad] py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-white"
           >
             Download Product Datasheet{" "}
             <ArrowRight aria-hidden="true" className="size-4" />

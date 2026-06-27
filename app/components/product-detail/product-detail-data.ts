@@ -39,6 +39,7 @@ export type ProductDetailData = {
     copy: string;
     image: string;
   }[];
+  modulesBaseImage?: string;
   modules?: {
     title: string;
     copy: string;
@@ -87,7 +88,7 @@ const psrUseCases = [
 ];
 
 const topModules = [
-  { title: "Shelf Lifter", copy: "Autonomous trolley lifting and transport operations.", image: "ar-250-pallet-lifter.png" },
+  { title: "Shelf Lifter", copy: "Autonomous trolley lifting and transport operations.", image: "ar-250-shelf-lifter.png" },
   { title: "Belt Conveyor", copy: "Gentle transfer for small, irregular, and unstable loads.", image: "ar-250-belt-conveyer.png" },
   { title: "Mobile Robotic Arm", copy: "Mobile manipulation for pick, place, and service workflows.", image: "ar-250-pallet-lifter.png" },
   { title: "Combined Lifter & Tunneling", copy: "Combined lifting and under-load movement in one module.", image: "ar-250-belt-conveyer.png" },
@@ -153,6 +154,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       { title: "Cart Tugging", copy: "Automated trolley material flow.", image: "Frame-1321317334.jpg" },
       { title: "Cobot Integration Module", copy: "Enables robotic handling applications with cobot integration module.", image: "Frame-1321317332.jpg" },
     ],
+    modulesBaseImage: "ar-250-base.png",
     modules: topModules,
     faqs: [
       { question: "What kind of loads can the AR 250 carry?", answer: "The AR 250 carries payloads up to 250 kg. It is suited for light to medium material transport like trolleys, shelves, cartons, totes, and unit load structures in factories and warehouses. If your loads regularly exceed 250 kg, the AR 650 or higher would be the right fit." },
