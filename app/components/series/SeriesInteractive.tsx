@@ -149,6 +149,11 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
     ? { duration: 0 }
     : { duration: 0.48, ease: [0.22, 1, 0.36, 1] as const };
 
+  const total = data.products.length;
+  const mobileMove = (direction: 1 | -1) => {
+    setActiveIndex((current) => Math.min(total - 1, Math.max(0, current + direction)));
+  };
+
   return (
     <section id="modals" className="relative overflow-hidden bg-[#e8f1f8] py-14 md:min-h-screen md:py-20">
       <Image
@@ -161,157 +166,270 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_72%,rgba(232,241,248,.08)_0%,rgba(232,241,248,.6)_48%,rgba(232,241,248,.92)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(232,241,248,.86)_0%,rgba(232,241,248,.34)_46%,rgba(214,230,242,.9)_100%)]" />
       <div className="site-container relative z-10">
-        <div className="min-h-[700px] md:min-h-[calc(100vh-160px)]">
-          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-            <motion.div
-              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={transition}
-            >
+        {/* Header — always visible */}
+        <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={transition}
+          >
             <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">Modals</p>
-              <h2 className="mt-5 text-[34px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
+            <h2 className="mt-5 text-[34px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
               Explore <span className="text-[#005ead]">{data.eyebrow}</span> Robots
             </h2>
-            </motion.div>
-            <UnitToggle unit={unit} onChange={setUnit} />
+          </motion.div>
+          <UnitToggle unit={unit} onChange={setUnit} />
+        </div>
+
+        {/* ── MOBILE CARD CAROUSEL (hidden on md+) ── */}
+        <div className="mt-8 md:hidden">
+          <div className="overflow-hidden rounded-2xl">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(calc(${activeIndex} * -100%))` }}
+            >
+              {data.products.map((product) => {
+                const productSpecs = product.specs.map((spec) => ({
+                  label: spec.label,
+                  value: unit === "imperial" && spec.imperial ? spec.imperial : spec.value,
+                }));
+                return (
+                  <div key={product.name} className="flex w-full shrink-0">
+                    <div className="h-full w-full rounded-2xl bg-white shadow-[0_18px_48px_rgba(1,31,64,.12)] overflow-hidden [transform:translateZ(0)]">
+
+                      {/* Text content — name, description, explore button */}
+                      <div className="p-5 pb-0">
+                        <h3 className="text-[22px] font-bold text-[#011f40]">{product.name}</h3>
+                        <p className="mt-2 text-[14px] leading-[22px] text-[#3a3a3a] line-clamp-3">{product.description}</p>
+                        <a
+                          href={product.href}
+                          className="mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                        >
+                          Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+                        </a>
+                      </div>
+
+                      {/* Robot image — sits inside the white card */}
+                      <div className="relative mt-4 h-[220px] bg-white overflow-hidden">
+                        {/* Watermark text — constrained within the card */}
+                        {product.bgText ? (
+                          <div className="absolute inset-x-[8%] top-[10%] h-[55%] z-0">
+                            <Image
+                              src={`${imagePath}${product.bgText}`}
+                              alt=""
+                              fill
+                              sizes="80vw"
+                              className="object-contain object-center opacity-20"
+                            />
+                          </div>
+                        ) : null}
+                        {/* Floating tags */}
+                        {product.tags.map((tag, tagIndex) => (
+                          <span
+                            key={`${product.name}-mobile-${tag}`}
+                            className="absolute z-20 rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-normal text-[#011f40] shadow-[0_6px_20px_rgba(1,31,64,.12)]"
+                            style={{
+                              left: tagIndex === 0 ? "44%" : tagIndex === 1 ? "62%" : "6%",
+                              top: tagIndex === 0 ? "12%" : tagIndex === 1 ? "48%" : "48%",
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {/* Robot image — no desktop scale/translate transforms */}
+                        <Image
+                          src={`${imagePath}${product.image}`}
+                          alt={product.name}
+                          fill
+                          sizes="100vw"
+                          className="object-contain object-bottom drop-shadow-[0_12px_20px_rgba(1,31,64,.15)] z-10"
+                        />
+                      </div>
+
+                      {/* Specs grid */}
+                      <div className="p-5">
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-4 border-t border-[#d6e6f2] pt-5">
+                          {productSpecs.map((spec) => (
+                            <div key={spec.label}>
+                              <h4 className="text-[11px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
+                              <p className="mt-1 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]">
-            <div className="relative z-20 grid gap-8 lg:grid-cols-[400px_390px_1fr]">
-              <motion.div
-                className="flex flex-col gap-3"
-                initial={reducedMotion ? false : { opacity: 0, x: -20 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ ...transition, delay: reducedMotion ? 0 : 0.08 }}
-              >
-                {data.products.map((product, index) => {
-                  const isActive = activeIndex === index;
+          {/* Mobile navigation */}
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
+              {pad(activeIndex + 1)}/{pad(total)}
+            </span>
+            <button
+              type="button"
+              onClick={() => mobileMove(-1)}
+              disabled={activeIndex === 0}
+              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+              aria-label="Previous robot"
+            >
+              <ArrowLeft className="size-5" strokeWidth={1.8} />
+            </button>
+            <button
+              type="button"
+              onClick={() => mobileMove(1)}
+              disabled={activeIndex >= total - 1}
+              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+              aria-label="Next robot"
+            >
+              <ArrowRight className="size-5" strokeWidth={1.8} />
+            </button>
+          </div>
+        </div>
 
-                  return (
-                    <motion.button
-                      key={product.name}
-                      type="button"
-                      onClick={() => setActiveIndex(index)}
-                      className={cn(
-                        "relative grid overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
-                        isActive ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]" : "bg-white/55 hover:bg-white/86",
-                      )}
-                      whileHover={reducedMotion ? undefined : { x: 4 }}
-                      whileTap={reducedMotion ? undefined : { scale: 0.985 }}
-                      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      {isActive ? (
-                        <motion.span
-                          layoutId={`series-active-tab-${data.slug}`}
-                          className="absolute inset-0 rounded-lg bg-white"
-                          transition={transition}
-                        />
-                      ) : null}
-                      <span className={cn("relative z-10 text-[16px] font-normal", isActive ? "font-semibold text-[#005ead]" : "text-[#011f40]")}>
-                        {product.name}
-                      </span>
-                      <AnimatePresence initial={false}>
+        {/* ── DESKTOP LAYOUT (hidden below md) ── */}
+        <div className="hidden md:block">
+          <div className="min-h-[700px] md:min-h-[calc(100vh-160px)]">
+            <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]">
+              <div className="relative z-20 grid gap-8 lg:grid-cols-[400px_390px_1fr]">
+                <motion.div
+                  className="flex flex-col gap-3"
+                  initial={reducedMotion ? false : { opacity: 0, x: -20 }}
+                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ ...transition, delay: reducedMotion ? 0 : 0.08 }}
+                >
+                  {data.products.map((product, index) => {
+                    const isActive = activeIndex === index;
+
+                    return (
+                      <motion.button
+                        key={product.name}
+                        type="button"
+                        onClick={() => setActiveIndex(index)}
+                        className={cn(
+                          "relative grid overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
+                          isActive ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]" : "bg-white/55 hover:bg-white/86",
+                        )}
+                        whileHover={reducedMotion ? undefined : { x: 4 }}
+                        whileTap={reducedMotion ? undefined : { scale: 0.985 }}
+                        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                      >
                         {isActive ? (
                           <motion.span
-                            key={`${product.name}-description`}
-                            className="relative z-10 mt-3 text-[14px] font-normal leading-[22px] text-[#011f40]"
-                            initial={reducedMotion ? false : { opacity: 0, y: -8 }}
-                            animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                            exit={reducedMotion ? undefined : { opacity: 0, y: -6 }}
-                            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
-                          >
-                            {product.tabDescription}
-                          </motion.span>
+                            layoutId={`series-active-tab-${data.slug}`}
+                            className="absolute inset-0 rounded-lg bg-white"
+                            transition={transition}
+                          />
                         ) : null}
-                      </AnimatePresence>
-                    </motion.button>
-                  );
-                })}
-              </motion.div>
-
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.div
-                  key={`${activeProduct.name}-details`}
-                  className="lg:pt-7"
-                  initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-                  animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  exit={reducedMotion ? undefined : { opacity: 0, y: -12 }}
-                  transition={transition}
-                >
-                  <h3 className="text-[20px] font-semibold text-[#011f40]">{activeProduct.name}</h3>
-                  <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
-                  <motion.a
-                    href={activeProduct.href}
-                    className="mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
-                    whileHover={reducedMotion ? undefined : { y: -2 }}
-                    whileTap={reducedMotion ? undefined : { scale: 0.97 }}
-                  >
-                    Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
-                  </motion.a>
+                        <span className={cn("relative z-10 text-[16px] font-normal", isActive ? "font-semibold text-[#005ead]" : "text-[#011f40]")}>
+                          {product.name}
+                        </span>
+                        <AnimatePresence initial={false}>
+                          {isActive ? (
+                            <motion.span
+                              key={`${product.name}-description`}
+                              className="relative z-10 mt-3 text-[14px] font-normal leading-[22px] text-[#011f40]"
+                              initial={reducedMotion ? false : { opacity: 0, y: -8 }}
+                              animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                              exit={reducedMotion ? undefined : { opacity: 0, y: -6 }}
+                              transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                              {product.tabDescription}
+                            </motion.span>
+                          ) : null}
+                        </AnimatePresence>
+                      </motion.button>
+                    );
+                  })}
                 </motion.div>
-              </AnimatePresence>
 
-              <div className="grid grid-cols-2 gap-x-14 gap-y-10 lg:pt-7">
                 <AnimatePresence mode="popLayout" initial={false}>
-                  {specs.map((spec, index) => (
-                    <motion.div
-                      key={`${activeProduct.name}-${unit}-${spec.label}`}
-                      initial={reducedMotion ? false : { opacity: 0, y: 14 }}
-                      animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                      exit={reducedMotion ? undefined : { opacity: 0, y: -10 }}
-                      transition={{ ...transition, delay: reducedMotion ? 0 : index * 0.035 }}
+                  <motion.div
+                    key={`${activeProduct.name}-details`}
+                    className="lg:pt-7"
+                    initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+                    animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                    exit={reducedMotion ? undefined : { opacity: 0, y: -12 }}
+                    transition={transition}
+                  >
+                    <h3 className="text-[20px] font-semibold text-[#011f40]">{activeProduct.name}</h3>
+                    <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
+                    <motion.a
+                      href={activeProduct.href}
+                      className="mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                      whileHover={reducedMotion ? undefined : { y: -2 }}
+                      whileTap={reducedMotion ? undefined : { scale: 0.97 }}
                     >
-                      <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
-                      <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
-                    </motion.div>
-                  ))}
+                      Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+                    </motion.a>
+                  </motion.div>
+                </AnimatePresence>
+
+                <div className="grid grid-cols-2 gap-x-14 gap-y-10 lg:pt-7">
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {specs.map((spec, index) => (
+                      <motion.div
+                        key={`${activeProduct.name}-${unit}-${spec.label}`}
+                        initial={reducedMotion ? false : { opacity: 0, y: 14 }}
+                        animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                        exit={reducedMotion ? undefined : { opacity: 0, y: -10 }}
+                        transition={{ ...transition, delay: reducedMotion ? 0 : index * 0.035 }}
+                      >
+                        <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
+                        <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-152px] lg:left-[470px] lg:h-[500px]">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.div
+                    key={`${activeProduct.name}-visual`}
+                    className="absolute inset-0"
+                    initial={reducedMotion ? false : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }}
+                    animate={reducedMotion ? undefined : { opacity: 1, x: 0, rotateY: 0, scale: 1 }}
+                    exit={reducedMotion ? undefined : { opacity: 0, x: -45, rotateY: 8, scale: 0.98 }}
+                    transition={transition}
+                    style={{ transformPerspective: 1200 }}
+                  >
+                    {activeProduct.bgText ? (
+                      <motion.div
+                        className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%]"
+                        initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+                        animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                        exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
+                        transition={transition}
+                      >
+                        <Image
+                          src={`${imagePath}${activeProduct.bgText}`}
+                          alt=""
+                          fill
+                          sizes="100vw"
+                          className="object-contain object-center opacity-32"
+                        />
+                      </motion.div>
+                    ) : null}
+                    <Image
+                      src={`${imagePath}${activeProduct.image}`}
+                      alt={activeProduct.name}
+                      fill
+                      sizes="(max-width: 1024px) 110vw, 1180px"
+                      className={cn(
+                        "relative z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
+                        selectorImageClass(activeProduct.name),
+                      )}
+                    />
+                    <FloatingTags product={activeProduct} reducedMotion={Boolean(reducedMotion)} />
+                  </motion.div>
                 </AnimatePresence>
               </div>
-            </div>
-
-            <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-152px] lg:left-[470px] lg:h-[500px]">
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.div
-                  key={`${activeProduct.name}-visual`}
-                  className="absolute inset-0"
-                  initial={reducedMotion ? false : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }}
-                  animate={reducedMotion ? undefined : { opacity: 1, x: 0, rotateY: 0, scale: 1 }}
-                  exit={reducedMotion ? undefined : { opacity: 0, x: -45, rotateY: 8, scale: 0.98 }}
-                  transition={transition}
-                  style={{ transformPerspective: 1200 }}
-                >
-                  {activeProduct.bgText ? (
-                    <motion.div
-                      className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%]"
-                      initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-                      animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                      exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
-                      transition={transition}
-                    >
-                      <Image
-                        src={`${imagePath}${activeProduct.bgText}`}
-                        alt=""
-                        fill
-                        sizes="100vw"
-                        className="object-contain object-center opacity-32"
-                      />
-                    </motion.div>
-                  ) : null}
-                  <Image
-                    src={`${imagePath}${activeProduct.image}`}
-                    alt={activeProduct.name}
-                    fill
-                    sizes="(max-width: 1024px) 110vw, 1180px"
-                    className={cn(
-                      "relative z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
-                      selectorImageClass(activeProduct.name),
-                    )}
-                  />
-                  <FloatingTags product={activeProduct} reducedMotion={Boolean(reducedMotion)} />
-                </motion.div>
-              </AnimatePresence>
             </div>
           </div>
         </div>

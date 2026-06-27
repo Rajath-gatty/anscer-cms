@@ -428,7 +428,7 @@ function FeaturesSection({ data }: { data: ProductDetailData }) {
               Icon={icons[index]}
             />
           ))}
-          <article className="relative row-span-2 min-h-[320px] overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:min-h-[380px]">
+          <article className="relative order-last row-span-2 min-h-[320px] overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:order-none lg:min-h-[380px]">
             <Image
               src={`${imagePath}Frame-1321317289.jpg`}
               alt=""
@@ -648,19 +648,43 @@ function CaseStudiesSection({ data }: { data: ProductDetailData }) {
           ANSCER robots to improve workflow efficiency and reduce manual
           handling.
         </p>
-        <article className="relative mt-8 aspect-[2.04] overflow-hidden rounded-[12px] bg-[#011f40] text-white">
-          <Image
-            src={`${imagePath}${data.caseStudyImage ?? "case-study-manufacturing.jpg"}`}
-            alt="Manufacturing case study"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-75"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.48),rgba(1,31,64,.08))]" />
-          <h3 className="absolute left-7 top-7 text-3xl font-bold">
-            Manufacturing
-          </h3>
-          <div className="absolute bottom-7 right-7 w-[270px] rounded-[12px] bg-white p-5 text-[#011f40]">
+        {/* Mobile: image on top, white card OUTSIDE below with slight overlap. Desktop: card inside image */}
+        <div className="relative mt-8">
+          {/* Image block — has its own rounded corners + overflow-hidden on mobile */}
+          <div className="relative h-[260px] overflow-hidden rounded-[12px] md:aspect-[2.04] md:h-auto md:rounded-[12px] bg-[#011f40]">
+            <Image
+              src={`${imagePath}${data.caseStudyImage ?? "case-study-manufacturing.jpg"}`}
+              alt="Manufacturing case study"
+              fill
+              sizes="100vw"
+              className="object-cover opacity-75"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.48),rgba(1,31,64,.08))]" />
+            <h3 className="absolute left-7 top-7 text-3xl font-bold text-white">
+              Manufacturing
+            </h3>
+            {/* Desktop-only card — absolutely inside the image */}
+            <div className="absolute bottom-7 right-7 hidden w-[270px] rounded-[12px] bg-white p-5 text-[#011f40] md:block">
+              <p className="text-xl font-bold text-[#66bd6a]">
+                Schneider
+                <br />
+                Electric
+              </p>
+              <p className="mt-4 text-xs leading-5 text-[#3a3a3a]">
+                Address the change and scale of your warehouse operations with
+                robotic automation.
+              </p>
+              <a
+                className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-[3px] bg-[#005ead] py-3 text-[11px] font-semibold uppercase text-white"
+                href="#"
+              >
+                Read Their Story{" "}
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+            </div>
+          </div>
+          {/* Mobile-only card — sibling OUTSIDE the image, -mt pulls it up to overlap image bottom */}
+          <div className="relative z-10 -mt-8 mx-4 rounded-[12px] bg-white p-5 shadow-md text-[#011f40] md:hidden">
             <p className="text-xl font-bold text-[#66bd6a]">
               Schneider
               <br />
@@ -678,7 +702,8 @@ function CaseStudiesSection({ data }: { data: ProductDetailData }) {
               <ArrowRight aria-hidden="true" className="size-4" />
             </a>
           </div>
-        </article>
+        </div>
+
       </div>
     </section>
   );
