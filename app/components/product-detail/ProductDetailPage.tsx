@@ -13,6 +13,7 @@ import {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
@@ -501,6 +502,7 @@ function FeatureCard({
 function ModulesSection({ data }: { data: ProductDetailData }) {
   const modules = data.modules ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
   const active = modules[activeIndex] ?? modules[0];
   const activeModuleImage = active?.image ?? data.heroImage;
   const baseImage = data.modulesBaseImage;
@@ -706,29 +708,69 @@ function ModulesSection({ data }: { data: ProductDetailData }) {
                 />
               ) : null}
               <div
-                key={activeModuleImage}
-                className="absolute z-20 transition-opacity duration-300"
+                className="absolute z-20"
                 style={overlayStyle}
               >
-                <Image
-                  src={`${imagePath}${activeModuleImage}`}
-                  alt={active.title}
-                  fill
-                  sizes={overlay?.sizes ?? "(max-width: 1024px) 100vw, 240px"}
-                  className={cn(
-                    "object-contain",
-                    isLayeredModule && "object-top",
-                  )}
-                />
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.div
+                    key={`${active.title}-${activeModuleImage}`}
+                    className="absolute inset-0 will-change-transform"
+                    initial={{
+                      opacity: shouldReduceMotion ? 1 : 0,
+                      x: shouldReduceMotion ? 0 : 92,
+                      scale: shouldReduceMotion ? 1 : 0.98,
+                    }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{
+                      opacity: shouldReduceMotion ? 1 : 0,
+                      x: shouldReduceMotion ? 0 : -44,
+                      scale: shouldReduceMotion ? 1 : 0.98,
+                    }}
+                    transition={{
+                      duration: shouldReduceMotion ? 0 : 0.42,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <Image
+                      src={`${imagePath}${activeModuleImage}`}
+                      alt={active.title}
+                      fill
+                      sizes={overlay?.sizes ?? "(max-width: 1024px) 100vw, 240px"}
+                      className={cn(
+                        "object-contain",
+                        isLayeredModule && "object-top",
+                      )}
+                    />
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
             <div className="pt-10 lg:pl-10 lg:pt-48 xl:pl-16">
-              <h3 className="text-2xl font-semibold leading-7 text-[#005ead]">
-                {active.title}
-              </h3>
-              <p className="mt-3 text-[18px] leading-[26px] text-[#3a3a3a]">
-                {active.copy}
-              </p>
+              <AnimatePresence initial={false} mode="popLayout">
+                <motion.div
+                  key={`${active.title}-copy`}
+                  initial={{
+                    opacity: shouldReduceMotion ? 1 : 0,
+                    x: shouldReduceMotion ? 0 : 42,
+                  }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{
+                    opacity: shouldReduceMotion ? 1 : 0,
+                    x: shouldReduceMotion ? 0 : -24,
+                  }}
+                  transition={{
+                    duration: shouldReduceMotion ? 0 : 0.34,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  <h3 className="text-2xl font-semibold leading-7 text-[#005ead]">
+                    {active.title}
+                  </h3>
+                  <p className="mt-3 text-[18px] leading-[26px] text-[#3a3a3a]">
+                    {active.copy}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>
