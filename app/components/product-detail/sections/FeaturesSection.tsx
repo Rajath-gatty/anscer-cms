@@ -1,44 +1,72 @@
 "use client";
 
-import { ArrowRight, Layers, LocateFixed, ShieldCheck, Workflow } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpDown,
+  Box,
+  Boxes,
+  DiamondPlus,
+  Expand,
+  Gauge,
+  Layers,
+  Minimize,
+  Minimize2,
+  MoveDiagonal,
+  MoveHorizontal,
+  PackageCheck,
+  QrCode,
+  ScanSearch,
+  PackagePlus
+} from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../../home/assets";
 import { ScrollReveal } from "../../home/ScrollReveal";
 import type { ProductDetailData } from "../product-detail-data";
 
-export function FeaturesSection({ data }: { data: ProductDetailData }) {
-  const icons = [Layers, Workflow, LocateFixed, ShieldCheck];
+const featureIcons = {
+  Layers,
+  DiamondPlus,
+  MoveDiagonal,
+  PackageCheck,
+  Box,
+  QrCode,
+  Expand,
+  Gauge,
+  ScanSearch,
+  MoveHorizontal,
+  ArrowUpDown,
+  Boxes,
+  Minimize,
+  Minimize2,
+  PackagePlus
+} as const;
 
+export function FeaturesSection({ data }: { data: ProductDetailData }) {
   return (
     <section
       id="features"
-      className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]"
+      className="scroll-mt-28 bg-[#fafafa] py-12 md:py-14"
     >
       <div className="site-container">
-        <ScrollReveal className="max-w-[760px]">
+        <ScrollReveal className="max-w-190">
           <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
             Features
           </p>
-          <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
-            Engineered For <span className="text-[#005ead]">Intelligent</span>{" "}
-            Material Handling
-          </h2>
-          <p className="mt-4 max-w-[690px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
-            The {data.title} combines intelligent navigation with purpose-built
-            hardware to automate material handling while enabling rapid
-            deployment and scalable operations.
+          <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl" dangerouslySetInnerHTML={{ __html: data.features.title }} />
+          <p className="mt-4 max-w-172.5 text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6.5">
+            {data.features.content}
           </p>
         </ScrollReveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {data.features.slice(0, 2).map((feature, index) => (
+          {data.features.features.slice(0, 2).map((feature) => (
             <FeatureCard
               key={feature.title}
               title={feature.title}
               copy={feature.copy}
-              Icon={icons[index]}
+              Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
             />
           ))}
-          <article className="relative order-last row-span-2 min-h-[320px] overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:order-none lg:min-h-[380px]">
+          <article className="relative order-last row-span-2 min-h-80 overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:order-0 lg:min-h-95">
             <Image
               src={`${imagePath}Frame-1321317289.jpg`}
               alt=""
@@ -53,19 +81,19 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
               </h3>
               <a
                 href="#contact"
-                className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[10px] pl-4 pr-2 text-[11px] font-semibold uppercase tracking-wide text-white"
+                className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-2.5 pl-4 pr-2 text-[11px] font-semibold uppercase tracking-wide text-white"
               >
                 Talk to an Expert{" "}
                 <ArrowRight aria-hidden="true" className="size-4" />
               </a>
             </div>
           </article>
-          {data.features.slice(2, 4).map((feature, index) => (
+          {data.features.features.slice(2, 4).map((feature) => (
             <FeatureCard
               key={feature.title}
               title={feature.title}
               copy={feature.copy}
-              Icon={icons[index + 2]}
+              Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
             />
           ))}
         </div>
@@ -81,10 +109,10 @@ function FeatureCard({
 }: {
   title: string;
   copy: string;
-  Icon: typeof Layers;
+  Icon: (typeof featureIcons)[keyof typeof featureIcons];
 }) {
   return (
-    <article className="min-h-[170px] rounded-[12px] bg-[#FFFFFF] p-5">
+    <article className="min-h-42.5 rounded-[12px] bg-[#FFFFFF] p-5">
       <Icon
         aria-hidden="true"
         className="size-8 text-[#005ead]"
@@ -93,7 +121,7 @@ function FeatureCard({
       <h3 className="mt-5 text-xl font-semibold leading-6 text-[#005ead] md:text-2xl md:leading-7">
         {title}
       </h3>
-      <p className="mt-3 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+      <p className="mt-3 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-5.5">
         {copy}
       </p>
     </article>

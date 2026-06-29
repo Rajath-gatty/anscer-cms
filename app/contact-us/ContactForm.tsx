@@ -120,7 +120,7 @@ export function ContactForm() {
 
     function handleNativeSubmit(event: SubmitEvent) {
       event.preventDefault();
-      void submitHandler(event);
+      void submitHandler();
     }
 
     form.dataset.hydrated = "true";

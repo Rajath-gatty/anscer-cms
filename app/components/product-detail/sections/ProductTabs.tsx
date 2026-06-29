@@ -13,7 +13,7 @@ export function ProductTabs({ hasModules }: { hasModules: boolean }) {
         ? [{ label: "Attachments", href: "#attachments", id: "attachments" }]
         : []),
       { label: "Applications", href: "#applications", id: "applications" },
-      { label: "Case Studies", href: "#case-studies", id: "case-studies" },
+      // { label: "Case Studies", href: "#case-studies", id: "case-studies" },
     ],
     [hasModules],
   );

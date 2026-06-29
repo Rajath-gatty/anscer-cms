@@ -23,7 +23,7 @@ export type ProductDetailSectionKey =
   | "features"
   | "modules"
   | "applications"
-  | "case-studies"
+  // | "case-studies"
   | "faqs"
   | "cta";
 
@@ -35,7 +35,7 @@ export const defaultProductDetailSectionOrder: ProductDetailSectionKey[] = [
   "features",
   "modules",
   "applications",
-  "case-studies",
+  // "case-studies",
   "faqs",
   "cta",
 ];
@@ -51,7 +51,7 @@ const productDetailSections: Record<
   features: FeaturesSection,
   modules: ProductDetailModulesSection,
   applications: ApplicationsSection,
-  "case-studies": CaseStudiesSection,
+  // "case-studies": CaseStudiesSection,
   faqs: FaqSection,
   cta: ProductCta,
 };

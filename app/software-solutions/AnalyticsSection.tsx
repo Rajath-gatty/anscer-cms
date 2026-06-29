@@ -1,8 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+} from "motion/react";
 import { imagePath } from "../components/home/assets";
 
 const capabilities = [
@@ -51,36 +58,25 @@ const BG = "linear-gradient(150deg, #c9d6e3 0%, #e6ebf0 100%)";
 
 export function AnalyticsSection() {
   const stickyZoneRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const rafRef = useRef<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: stickyZoneRef,
+    offset: ["start start", "end end"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 28,
+    mass: 0.55,
+  });
 
-  const handleScroll = useCallback(() => {
-    const zone = stickyZoneRef.current;
-    if (!zone) return;
-    const rect = zone.getBoundingClientRect();
-    const scrolled = -rect.top;
-    const totalScrollable = zone.offsetHeight - window.innerHeight;
-    if (scrolled < 0) { setActiveIndex(-1); return; }
-    const clamped = Math.min(scrolled, totalScrollable);
-    const idx = Math.min(
-      Math.floor((clamped / totalScrollable) * capabilities.length),
-      capabilities.length - 1
+  useMotionValueEvent(smoothProgress, "change", (latest) => {
+    const nextIndex = Math.min(
+      capabilities.length - 1,
+      Math.max(0, Math.floor(latest * capabilities.length))
     );
-    setActiveIndex(idx);
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(handleScroll);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    handleScroll();
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [handleScroll]);
+    setActiveIndex(nextIndex);
+  });
 
   return (
     <>
@@ -124,13 +120,21 @@ export function AnalyticsSection() {
                 const tabletX = textLeft ? "9%" : "-9%";
 
                 return (
-                  <div
+                  <motion.div
                     key={cap.title}
                     className="absolute inset-0 flex items-center"
-                    style={{
+                    initial={false}
+                    animate={{
                       opacity: isActive ? 1 : 0,
-                      transition: "opacity 0.35s ease",
+                      scale: reduceMotion || isActive ? 1 : 0.985,
+                    }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.42,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    style={{
                       pointerEvents: isActive ? "auto" : "none",
+                      willChange: "opacity, transform",
                     }}
                   >
                     <div
@@ -138,16 +142,21 @@ export function AnalyticsSection() {
                         }`}
                     >
                       {/* ── TEXT (no card, plain on background) ── */}
-                      <div
+                      <motion.div
                         className="w-[400px] shrink-0"
-                        style={{
-                          transform: isActive
-                            ? "translate(0px, 0px)"
-                            : `translate(${textOffX}px, 50px)`,
+                        initial={false}
+                        animate={{
+                          x: reduceMotion || isActive ? 0 : textOffX,
+                          y: reduceMotion || isActive ? 0 : 46,
                           opacity: isActive ? 1 : 0,
-                          transition: isActive
-                            ? "transform 0.75s cubic-bezier(0.16,1,0.3,1), opacity 0.55s ease"
-                            : "none",
+                          filter: reduceMotion || isActive ? "blur(0px)" : "blur(5px)",
+                        }}
+                        transition={{
+                          duration: reduceMotion ? 0 : 0.68,
+                          ease: [0.16, 1, 0.3, 1],
+                        }}
+                        style={{
+                          willChange: "opacity, transform, filter",
                         }}
                       >
                         <p className="text-[14px] font-bold uppercase tracking-[0.14em] text-[#005ead]">
@@ -179,18 +188,22 @@ export function AnalyticsSection() {
                             </div>
                           </div>
                         )}
-                      </div>
+                      </motion.div>
 
                       {/* ── TABLET FRAME ── */}
-                      <div
+                      <motion.div
                         className="flex-1"
+                        initial={false}
+                        animate={{
+                          x: reduceMotion || !isActive ? "0%" : tabletX,
+                          scale: reduceMotion || isActive ? 1 : 0.96,
+                        }}
+                        transition={{
+                          duration: reduceMotion ? 0 : 0.78,
+                          ease: [0.16, 1, 0.3, 1],
+                        }}
                         style={{
-                          transform: isActive
-                            ? `translateX(${tabletX})`
-                            : "translateX(0px)",
-                          transition: isActive
-                            ? "transform 0.85s cubic-bezier(0.16,1,0.3,1)"
-                            : "transform 0.3s ease",
+                          willChange: "transform",
                         }}
                       >
                         <div
@@ -208,12 +221,18 @@ export function AnalyticsSection() {
                           {/* Screen */}
                           <div className="relative overflow-hidden rounded-[18px] bg-white" style={{ height: "calc(100% - 26px)" }}>
                             {capabilities.map((c, ci) => (
-                              <div
+                              <motion.div
                                 key={c.title}
                                 className="absolute inset-0"
-                                style={{
+                                initial={false}
+                                animate={{
                                   opacity: activeIndex === ci ? 1 : 0,
-                                  transition: "opacity 0.4s ease",
+                                  scale:
+                                    reduceMotion || activeIndex === ci ? 1 : 1.025,
+                                }}
+                                transition={{
+                                  duration: reduceMotion ? 0 : 0.42,
+                                  ease: [0.22, 1, 0.36, 1],
                                 }}
                               >
                                 <Image
@@ -224,13 +243,13 @@ export function AnalyticsSection() {
                                   sizes="560px"
                                   className="object-contain p-2"
                                 />
-                              </div>
+                              </motion.div>
                             ))}
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
 
