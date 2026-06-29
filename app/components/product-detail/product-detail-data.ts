@@ -1,3 +1,4 @@
+
 export type ProductDetailData = {
   slug: string;
   seriesSlug: "ar-series" | "psr-series" | "agv-series";
@@ -9,6 +10,7 @@ export type ProductDetailData = {
   modelUrl?: string;
   modelViewerConfig?: ProductModelViewerConfig;
   backgroundText?: string;
+  overviewVideo?: string;
   overviewImage?: string;
   advantageImage?: string;
   advantageIntro?: string;
@@ -23,13 +25,21 @@ export type ProductDetailData = {
     imperial?: string;
   }[];
   advantages: {
-    title: string;
-    copy: string;
-  }[];
+    content: string;
+    advantages: {
+      title: string;
+      copy: string;
+    }[];
+  };
   features: {
     title: string;
-    copy: string;
-  }[];
+    content: string;
+    features: {
+      title: string;
+      copy: string;
+      icon: string;
+    }[];
+  }
   useCases: {
     title: string;
     copy: string;
@@ -189,6 +199,7 @@ export const productDetails: Record<string, ProductDetailData> = {
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/ar-250.glb",
     modelViewerConfig: defaultSideViewModelConfig,
     backgroundText: "AR-250.svg",
+    overviewVideo: "AR-250-overview.mp4",
     overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
     advantageImage: "Frame-1321316064_1.jpg",
     advantageIntro:
@@ -199,27 +210,37 @@ export const productDetails: Record<string, ProductDetailData> = {
     ctaTitle: "Know More About The AR250",
     applications: ["Tugging", "Lifting", "Tunneling"],
     specs: [
-      { label: "Dimensions", value: "900 * 580 * 275 mm", imperial: "35.43 x 22.83 x 10.83 in" },
       { label: "Payload Capacity", value: "up to 250 kg", imperial: "up to 551 lbs" },
+      { label: "Navigation", value: "SLAM Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      { label: "Dimensions", value: "900 * 580 * 275 mm", imperial: "35.43 x 22.83 x 10.83 in" },
+      { label: "Type of Payload", value: "Suitable for handling pallets, trolleys, carts, and various unit loads" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
-      { label: "Ground Clearance", value: "30 mm", imperial: "1.18 in" },
-      { label: "Navigation", value: "Advanced SLAM Navigation" },
-      { label: "Safety Coverage", value: "360 deg LiDAR + 3D Depth Camera" },
-      { label: "Battery", value: "48V Lithium-ion, 45Ah" },
-      { label: "Charging Time", value: "1.5 hrs (10-90%)" },
+      { label: "Accuracy", value: "X,Y: 10 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP" },
+      { label: "Charging Time", value: "1.5 hrs" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48V" },
     ],
-    advantages: [
+    advantages: {
+      content: "",
+      advantages: [
       { title: "Improved Operational Efficiency", copy: "Automates repetitive material transport tasks to increase throughput, minimize delays, and ensure predictable logistics performance throughout operations." },
       { title: "One Platform, Multiple Applications", copy: "Supports interchangeable top modules that enable diverse workflows without deploying multiple dedicated robotic systems." },
       { title: "Scalable Deployment", copy: "Expand automation progressively across facilities using a standardized platform designed for future operational requirements." },
       { title: "Reduced Manual Intervention", copy: "Eliminates non-value-added material movement, allowing operators to focus on higher-value production activities." },
     ],
-    features: [
-      { title: "Interchangeable Top Modules", copy: "Supports multiple applications using a single standardized robotic platform." },
-      { title: "Compact Footprint", copy: "Navigates efficiently through space-constrained warehouse and manufacturing environments." },
-      { title: "Precision Docking", copy: "Enables accurate positioning within tight and space-constrained environments." },
-      { title: "Safe Load Handling", copy: "Ensures controlled loading and unloading for secure material transfer." },
-    ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Intelligent</span> Material Handling`,
+      content: "The AR 250 combines intelligent navigation with modular top modules to automate diverse intralogistics applications while enabling rapid deployment and scalable operations.",
+      features: [
+      { title: "Interchangeable Top Modules", copy: "Supports multiple applications using a single standardized robotic platform.", icon: "Layers"  },
+      { title: "Compact Footprint", copy: "Navigates efficiently through space-constrained warehouse and manufacturing environments.", icon: "MoveDiagonal" },
+      { title: "Precision Docking", copy: "Enables accurate positioning within tight and space-constrained environments.", icon: "DiamondPlus" },
+      { title: "Safe Load Handling", copy: "Ensures controlled loading and unloading for secure material transfer.", icon: "PackageCheck" },
+    ]
+    },
     useCases: [
       { title: "Shelf Lifter", copy: "Autonomous trolley lifting and transport operations.", image: "Frame-1321316064_1.jpg" },
       ...arUseCases,
@@ -233,7 +254,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       { title: "Cobot Integration Module", copy: "Enables robotic handling applications with cobot integration module.", image: "Frame-1321317332.jpg" },
     ],
     modulesBaseImage: "ar-250-base.png",
-    modules: topModules,
+    // modules: topModules,
     faqs: [
       { question: "What kind of loads can the AR 250 carry?", answer: "The AR 250 carries payloads up to 250 kg. It is suited for light to medium material transport like trolleys, shelves, cartons, totes, and unit load structures in factories and warehouses. If your loads regularly exceed 250 kg, the AR 650 or higher would be the right fit." },
       { question: "What can the AR 250 actually do in my facility?", answer: "Depending on the top module fitted, the AR 250 can lift and transport trolleys and shelves, transfer cartons and totes via belt or roller conveyor, perform mobile manipulation tasks when paired with a third-party cobot, handle multi-trolley transport via tugger modules, or carry custom unit load structures. It covers most light-duty intralogistics workflows in a single platform." },
@@ -252,31 +273,43 @@ export const productDetails: Record<string, ProductDetailData> = {
     heroImage: "ar-500-main.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/TR%20500.glb",
     backgroundText: "AR-500-bg-text.png",
+    overviewVideo: "AR-500-overview.mp4",
     overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
     advantageImage: "Frame-1321316064_1.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Tugging", "Lifting", "Tunneling"],
     specs: [
-      { label: "Dimensions", value: "900 * 580 * 295 mm" },
-      { label: "Payload Capacity", value: "500 kg" },
-      { label: "Max Speed", value: "1.5 m/s" },
+      { label: "Payload Capacity", value: "500 kg", imperial: "1102.31 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      { label: "Dimensions", value: "900 * 580 * 295 mm", imperial: "35.43 x 22.83 x 11.61 in" },
       { label: "Type of Payload", value: "Pallets, trolleys, carts, and unit loads" },
-      { label: "Battery Type", value: "LFP" },
+      { label: "Max Speed", value: "1.5 m/s", imperial: "3.35 mph" },
+      { label: "Accuracy", value: "X,Y: 15 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.59 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP" },
       { label: "Charging Time", value: "1.5 hrs" },
-      { label: "Battery Runtime", value: "8 Hrs" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48V" },
     ],
-    advantages: [
-      { title: "Balanced Payload Capacity", copy: "Handles medium payload operations with compact movement and modular application flexibility." },
-      { title: "Flexible Top Modules", copy: "Supports multiple attachments so a single AMR platform can serve changing workflows." },
-      { title: "Reliable Navigation", copy: "SLAM navigation enables safe movement across live warehouse and factory environments." },
-    ],
-    features: [
-      { title: "Medium Payload Capacity", copy: "Carries up to 500 kg for compact yet capable material movement." },
-      { title: "Precision Docking", copy: "Aligns accurately with workstations, conveyors, and handoff points." },
-      { title: "Safe Load Handling", copy: "Designed for controlled material transfer in mixed-traffic environments." },
-    ],
+    advantages: {
+      content: "Choose the AR 500 for agile intralogistics automation with modular flexibility, compact movement, and balanced payload handling.",
+      advantages: [
+        { title: "Balanced Payload Capacity", copy: "Handles medium payload operations with compact movement and modular application flexibility." },
+        { title: "Flexible Top Modules", copy: "Supports multiple attachments so a single AMR platform can serve changing workflows." },
+        { title: "Reliable Navigation", copy: "SLAM navigation enables safe movement across live warehouse and factory environments." },
+      ],
+    },
+    features: {
+      title: `Built For <span class="text-[#005ead]">Agile</span> Material Movement`,
+      content: "The AR 500 combines medium payload capacity with compact form factor and modular top modules, enabling flexible automation for diverse material handling applications and scalable facility-wide deployment.",
+      features: [ 
+      { title: "Medium Payload Capacity", copy: "Moves heavier loads efficiently across manufacturing and warehouse operations", icon: "Box" },
+      { title: "Interchangeable Top Modules", copy: "Supports diverse applications using one standardized robotic platform.", icon: "Layers" },
+      { title: "Precision Docking", copy: "Aligns accurately with workstations, conveyors, and handoff points.", icon: "DiamondPlus" },
+      { title: "Safe Load Handling", copy: "Designed for controlled material transfer in mixed-traffic environments.", icon: "PackageCheck" },
+    ]
+    },
     useCases: arUseCases,
     faqs: [
       { question: "What types of material handling tasks is the AR 500 built for?", answer: "It is built for pallet movement, cart tugging, conveyor transfer, lifting, and modular intralogistics workflows." },
@@ -296,31 +329,42 @@ export const productDetails: Record<string, ProductDetailData> = {
     heroImage: "ar-650.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/AR_650%20render.glb",
     backgroundText: "ar-650-bg-text.png",
-    overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
+    overviewImage: "AR-650-overview.png",
     advantageImage: "Frame-1321316064_1.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Tugging", "Lifting", "Tunneling"],
     specs: [
-      { label: "Dimensions", value: "1400 * 950 * 300 mm" },
-      { label: "Payload Capacity", value: "650 Kg" },
-      { label: "Max Speed", value: "1.5 m/s" },
+      { label: "Payload Capacity", value: "650 Kg", imperial: "1433.0 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
-      { label: "Battery Type", value: "LFP" },
+      { label: "Dimensions", value: "1400 * 950 * 300 mm", imperial: "55.12 x 37.40 x 11.81 in" },
+      { label: "Type of Payload", value: "Suitable for handling pallets, trolleys, carts, and various unit loads" },
+      { label: "Max Speed", value: "1.5 m/s", imperial: "3.35 mph" },
+      { label: "Accuracy", value: "X,Y: 15 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.59 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP" },
       { label: "Charging Time", value: "1.5 hrs" },
-      { label: "Battery Runtime", value: "8 Hrs" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48V" },
     ],
-    advantages: [
+    advantages: {
+      content: "Choose the AR 650 for greater payload capability, modular adaptability, and standardized automation that boosts throughput while reducing operational complexity.",
+      advantages:  [
       { title: "Demanding Material Movement", copy: "Supports heavier workflows while maintaining modularity across material handling tasks." },
       { title: "Scalable Intralogistics", copy: "Deploys across manufacturing and warehouse operations with standardized automation workflows." },
       { title: "Safe Mixed-Traffic Operation", copy: "Safety scanners and autonomous navigation help manage unexpected obstacles." },
     ],
-    features: [
-      { title: "Medium Payload Capacity", copy: "Handles up to 650 kg for demanding material transport operations." },
-      { title: "Precision Docking", copy: "Supports accurate handoffs and reliable positioning." },
-      { title: "Safe Load Handling", copy: "Moves loads predictably through shared industrial environments." },
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Flexible</span> Material Automation`,
+      content: "The AR 650 combines medium payload capacity with modular top modules, enabling flexible automation for diverse material handling applications and scalable facility-wide deployment.",
+      features: [  
+      { title: "Medium Payload Capacity", copy: "Moves heavier loads efficiently across manufacturing and warehouse operations.", icon: "Box" },
+      { title: "Interchangeable Top Modules", copy: "Supports diverse applications using one standardized robotic platform.", icon: "Layers" },
+      { title: "Precision Docking", copy: "Enables accurate positioning within tight and space-constrained environments.", icon: "DiamondPlus" },
+      { title: "Safe Load Handling", copy: "Ensures controlled loading and unloading for secure material transfer.", icon: "PackageCheck" },
     ],
+    },
     useCases: arUseCases,
     faqs: [
       { question: "What makes the AR 650 different from the AR 500?", answer: "The AR 650 supports higher payload requirements and demanding material movement while retaining modular top-module flexibility." },
@@ -340,31 +384,43 @@ export const productDetails: Record<string, ProductDetailData> = {
     heroImage: "ar-1250.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/AR%201250.glb",
     backgroundText: "ar-1250-bg-text.png",
+    overviewVideo: "AR-1250_mp4.mp4",
     overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
     advantageImage: "Frame-1321316064_1.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Tugging", "Lifting", "Tunneling"],
     specs: [
-      { label: "Dimensions", value: "1400 * 950 * 300 mm" },
-      { label: "Payload Capacity", value: "1250 kg" },
-      { label: "Max Speed", value: "1.7 m/s" },
+      { label: "Payload Capacity", value: "1250 kg", imperial: "2755.78 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
-      { label: "Battery Type", value: "LFP" },
+      { label: "Dimensions", value: "1400 * 950 * 300 mm", imperial: "55.12 x 37.40 x 11.81 in" },
+      { label: "Type of Payload", value: "Suitable for handling pallets, trolleys, carts, and various unit loads" },
+      { label: "Max Speed", value: "1.7 m/s", imperial: "3.81 mph" },
+      { label: "Accuracy", value: "X,Y: 15 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.59 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP" },
       { label: "Charging Time", value: "1.5 hrs" },
-      { label: "Runtime", value: "8 Hrs" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48V" },
     ],
-    advantages: [
-      { title: "High-Throughput Movement", copy: "Automates intensive material movement for heavier, faster intralogistics operations." },
-      { title: "Reduced Forklift Dependency", copy: "Moves large loads autonomously in areas where manual handling is limited or inefficient." },
-      { title: "Fleet-Ready Scalability", copy: "Supports expansion from one robot to larger fleets through consistent workflows." },
-    ],
-    features: [
-      { title: "Higher Payload Capacity", copy: "Carries up to 1250 kg for intensive material movement." },
-      { title: "Precision Docking", copy: "Supports accurate positioning and repeatable transfer operations." },
-      { title: "Safe Load Handling", copy: "Designed for controlled movement of heavier loads in industrial spaces." },
-    ],
+    advantages: {
+      content: "Choose the AR 1250 to automate heavy-load transport with one adaptable platform that improves throughput, simplifies deployment, and supports evolving workflows.",
+      advantages: [
+        { title: "High-Throughput Movement", copy: "Automates intensive material movement for heavier, faster intralogistics operations." },
+        { title: "Reduced Forklift Dependency", copy: "Moves large loads autonomously in areas where manual handling is limited or inefficient." },
+        { title: "Fleet-Ready Scalability", copy: "Supports expansion from one robot to larger fleets through consistent workflows." },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Heavy-Duty</span> Material Handling`,
+      content: "The AR 1250 combines high payload capability with modular top modules to automate demanding material handling applications while delivering scalable operational flexibility.",
+      features: [
+        { title: "Higher Payload Capacity", copy: "Moves heavier loads efficiently across manufacturing and warehouse operations.", icon: "Box" },
+        { title: "Interchangeable Top Modules", copy: "Supports diverse applications using one standardized robotic platform.", icon: "Layers" },
+        { title: "Precision Docking", copy: "Enables accurate positioning within tight and space-constrained environments.", icon: "DiamondPlus" },
+        { title: "Safe Load Handling", copy: "Ensures controlled loading and unloading for secure material transfer.", icon: "PackageCheck" },
+      ],
+    },
     useCases: arUseCases,
     faqs: [
       { question: "What is the AR 1250 designed for and who typically uses it?", answer: "It is designed for heavy-payload material movement in manufacturing, warehousing, and high-throughput intralogistics operations." },
@@ -384,33 +440,44 @@ export const productDetails: Record<string, ProductDetailData> = {
     heroImage: "PSR-2000_1.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/PSR%202000.glb",
     backgroundText: "psr-2000.svg",
+    overviewVideo: "PSR-2000-overview.mp4",
     overviewImage: "psr-advantages-image.jpg",
     advantageImage: "psr-advantages-image.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Open Pallet Stacking"],
     specs: [
-      { label: "Dimensions", value: "2050 * 1050 * 1500 mm" },
-      { label: "Payload Capacity", value: "2000 kg" },
-      { label: "Max Speed", value: "1.2 m/s" },
+      { label: "Payload Capacity", value: "2000 kg", imperial: "4409.25 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      { label: "Dimensions", value: "2050 * 1050 * 1500 mm", imperial: "80.71 x 41.34 x 59.06 in" },
       { label: "Type of Payload", value: "Open Pallet" },
-      { label: "Battery Type", value: "LFP" },
+      { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
+      { label: "Accuracy", value: "X,Y: 10 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP" },
       { label: "Charging Time", value: "1 hr" },
-      { label: "Runtime", value: "8 Hrs" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48V" },
     ],
-    advantages: [
-      { title: "Automated Pallet Stacking", copy: "Enables autonomous pickup, lifting, placement, and repeatable pallet handling." },
-      { title: "Flexible Pallet Compatibility", copy: "Supports open pallet handling across storage and staging workflows." },
-      { title: "Improved Storage Utilization", copy: "Automates stacking to help improve warehouse space usage." },
-      { title: "Reduced Manual Dependency", copy: "Reduces repetitive forklift and operator involvement in pallet movement." },
-    ],
-    features: [
-      { title: "Automated Pallet Pickup", copy: "Detects and picks pallets for efficient transport and stacking." },
-      { title: "Precision Pallet Placement", copy: "Places pallets accurately in staging, buffer, or storage locations." },
-      { title: "Configurable Lift Heights", copy: "Adapts to different pallet workflows and stack heights." },
-      { title: "Open Pallet Handling", copy: "Built for reliable movement of open pallet formats." },
-    ],
+    advantages: {
+      content: "Choose the PSR 2000 to automate pallet stacking with precision, improve storage efficiency, and reduce manual intervention across warehouse operations.",
+      advantages: [
+        { title: "Automated Pallet Stacking", copy: "Enables autonomous pickup, lifting, placement, and repeatable pallet handling." },
+        { title: "Flexible Pallet Compatibility", copy: "Supports open pallet handling across storage and staging workflows." },
+        { title: "Improved Storage Utilization", copy: "Automates stacking to help improve warehouse space usage." },
+        { title: "Reduced Manual Dependency", copy: "Reduces repetitive forklift and operator involvement in pallet movement." },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Intelligent</span> Pallet Stacking`,
+      content: "The PSR 2000 combines automated pallet stacking with configurable lift heights up to 3.6 m, delivering precise, scalable, and efficient pallet handling.",
+      features: [
+        { title: "Automated Pallet Pickup", copy: "Retrieves pallets autonomously and accurately with repeatable positioning performance.", icon: "PackagePlus" },
+        { title: "Precision Pallet Placement", copy: "Ensures consistent stacking and staging across operations.", icon: "DiamondPlus" },
+        { title: "Configurable Lift Heights", copy: "Features a 1.6 m standard lift height, configurable up to 3.6 m for diverse pallet handling requirements.", icon: "ArrowUpDown" },
+        { title: "Open Pallet Handling", copy: "Automates transport of open pallets from rack and floor level and closed pallets from rack level.", icon: "Boxes" },
+      ],
+    },
     useCases: psrUseCases,
     faqs: [
       { question: "What types of pallets can the PSR 2000 handle?", answer: "It is designed for open pallet workflows and heavy-duty pallet stacking applications." },
@@ -429,31 +496,41 @@ export const productDetails: Record<string, ProductDetailData> = {
       "The PSR 2000R is a heavy-duty pallet stacking AMR with extended fork reach, designed to optimize high-density storage through precise pallet handling and automated retrieval operations.",
     heroImage: "PSR-2000R.png",
     backgroundText: "Group-1321315869.svg",
-    overviewImage: "psr-advantages-image.jpg",
+    overviewImage: "PSR-2000R-overview.jpg",
     advantageImage: "psr-advantages-image.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Open/Closed Pallet Stacking"],
     specs: [
-      { label: "Dimensions", value: "2700 * 1700 * 2100 mm" },
-      { label: "Payload Capacity", value: "2000 kg" },
-      { label: "Max Speed", value: "1.2 m/s" },
+      { label: "Payload Capacity", value: "2000 kg", imperial: "4409.25 lbs" },
+      { label: "Navigation", value: "SLAM Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      { label: "Dimensions", value: "2700 * 1700 * 2100 mm", imperial: "106.30 x 66.93 x 82.68 in" },
       { label: "Type of Payload", value: "Open/Closed Pallet" },
-      { label: "Battery Type", value: "LFP/TO" },
+      { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
+      { label: "Accuracy", value: "X,Y: 10 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP/TO" },
       { label: "Charging Time", value: "1 hr" },
-      { label: "Runtime", value: "8 Hrs" },
-      { label: "Voltage", value: "48 V" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48 V" },
     ],
-    advantages: [
-      { title: "High-Density Storage Optimization", copy: "Extended fork reach supports dense storage and retrieval workflows." },
-      { title: "Reduced Manual Intervention", copy: "Automates repetitive high-reach pallet handling operations." },
-    ],
-    features: [
-      { title: "Extended Fork Reach", copy: "Reaches pallets in dense storage layouts." },
-      { title: "Automated Pallet Pickup", copy: "Automates pickup for open and closed pallet formats." },
-      { title: "Diverse Pallet Handling", copy: "Supports open and closed pallet movement." },
-      { title: "Precision Pallet Placement", copy: "Places pallets accurately in high-density environments." },
-    ],
+    advantages: {
+      content: "Choose the PSR 2000R to maximize storage density, automate high-bay pallet handling of heavier loads, and improve throughput in demanding warehouse environments.",
+      advantages: [
+        { title: "High-Density Storage Optimization", copy: "Extended fork reach supports dense storage and retrieval workflows." },
+        { title: "Reduced Manual Intervention", copy: "Automates repetitive high-reach pallet handling operations." },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Heavy-Duty Pallet</span>  Automation`,
+      content: "The PSR 2000R combines extended fork reach with precision heavy-duty pallet handling to automate high-density storage, retrieval, and elevated material movement operations.",
+      features: [
+        { title: "Extended Fork Reach", copy: "Enables precise pallet placement into deep storage locations.", icon: "MoveHorizontal" },
+        { title: "Automated Pallet Pickup", copy: "Retrieves pallets autonomously and accurately with repeatable positioning performance.", icon: "PackagePlus" },
+        { title: "Diverse Pallet Handling", copy: "Automates transport of open and closed pallets from rack and floor level.", icon: "Boxes" },
+        { title: "Precision Pallet Placement", copy: "Ensures consistent stacking and staging across operations.", icon: "DiamondPlus" },
+      ],
+    },
     useCases: psrUseCases,
     faqs: [
       { question: "When do I need the PSR 2000R instead of the PSR 1000R?", answer: "Choose the PSR 2000R when your workflow requires a 2000 kg payload and extended-reach pallet handling." },
@@ -473,31 +550,42 @@ export const productDetails: Record<string, ProductDetailData> = {
     heroImage: "PSR1000R-final.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/PSR%201000_R.glb",
     backgroundText: "1000r-bg-text.png",
+    overviewVideo: "PSR-1000R-overview.mp4",
     overviewImage: "advantages-psr1000r.jpg",
     advantageImage: "advantages-psr1000r.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Open/Closed Pallet Stacking"],
     specs: [
-      { label: "Dimensions", value: "2750 * 1300 * 1500 mm" },
-      { label: "Payload Capacity", value: "1000 kg" },
-      { label: "Max Speed", value: "1.2 m/s" },
+      { label: "Payload Capacity", value: "1000 kg", imperial: "2204.62 lbs" },
+      { label: "Navigation", value: "SLAM Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      { label: "Dimensions", value: "2750 * 1300 * 1500 mm", imperial: "108.27 x 51.18 x 59.06 in" },
       { label: "Type of Payload", value: "Open/Closed Pallet" },
-      { label: "Battery Type", value: "LFP/TO" },
+      { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
+      { label: "Accuracy", value: "X,Y: 10 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP/TO" },
       { label: "Charging Time", value: "1 hr" },
-      { label: "Runtime", value: "8 Hrs" },
-      { label: "Voltage", value: "48 V" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48 V" },
     ],
-    advantages: [
-      { title: "High-Density Storage Optimization", copy: "Optimizes pallet movement and retrieval in dense storage layouts." },
-      { title: "Reduced Manual Intervention", copy: "Automates repetitive pallet handling and retrieval workflows." },
-    ],
-    features: [
-      { title: "Extended Fork Reach", copy: "Reaches pallets efficiently in high-density storage." },
-      { title: "Automated Pallet Pickup", copy: "Automates pickup for open and closed pallets." },
-      { title: "Diverse Pallet Handling", copy: "Supports flexible pallet formats." },
-      { title: "Precision Pallet Placement", copy: "Places pallets accurately at defined storage and handoff points." },
-    ],
+    advantages: {
+      content: "Choose the PSR 1000R to maximize storage density, automate high-bay pallet handling, and improve throughput in space-constrained environments.",
+      advantages: [
+        { title: "High-Density Storage Optimization", copy: "Optimizes pallet movement and retrieval in dense storage layouts." },
+        { title: "Reduced Manual Intervention", copy: "Automates repetitive pallet handling and retrieval workflows." },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">High-Density Pallet</span> Handling`,
+      content: "The PSR 1000R combines extended fork reach with precision pallet handling to automate high-density storage, retrieval, and elevated material movement operations.",
+      features: [
+        { title: "Extended Fork Reach", copy: "Enables precise pallet placement into deep storage locations.", icon: "MoveHorizontal" },
+        { title: "Automated Pallet Pickup", copy: "Retrieves pallets autonomously and accurately with repeatable positioning performance.", icon: "PackagePlus" },
+        { title: "Diverse Pallet Handling", copy: "Automates transport of open and closed pallets from rack and floor level", icon: "Boxes" },
+        { title: "Precision Pallet Placement", copy: "Ensures consistent stacking and staging across operations.", icon: "DiamondPlus" },
+      ],
+    },
     useCases: psrUseCases,
     faqs: [
       { question: "What does the R in PSR 1000R stand for, and how is it different from the PSR 2000?", answer: "The R model indicates extended fork reach for high-density pallet handling, while payload and workflow needs determine the best model." },
@@ -516,31 +604,43 @@ export const productDetails: Record<string, ProductDetailData> = {
       "The PSR G2G is a heavy-duty autonomous mobile robot designed for automated ground-to-ground pallet transport, enabling precise staging and efficient material flow across warehouses and factories.",
     heroImage: "PSR-G2G-FINAL.png",
     backgroundText: "psr-g2g.svg",
+    overviewVideo: "PSR-G2G-overview.mp4",
     overviewImage: "psr-product-application.jpg",
     advantageImage: "psr-advantages-image.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Open Pallet Lifting"],
     specs: [
-      { label: "Dimensions", value: "2050 * 1050 * 1500 mm" },
-      { label: "Payload Capacity", value: "2000 kg" },
-      { label: "Max Speed", value: "1.2 m/s" },
-      { label: "Type of Payload", value: "Open Pallet" },
-      { label: "Battery Type", value: "LFP" },
+      { label: "Payload Capacity", value: "2000 kg", imperial: "4409.25 lbs" },
+      { label: "Navigation", value: "SLAM Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      { label: "Dimensions", value: "2050 * 1050 * 1500 mm", imperial: "80.71 x 41.34 x 59.06 in" },
+      { label: "Type of Payload", value: "Trolley, Carts" },
+      { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
+      { label: "Accuracy", value: "X,Y: 10 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP" },
       { label: "Charging Time", value: "1 hr" },
-      { label: "Runtime", value: "8 Hrs" },
-      { label: "Voltage", value: "48 V" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48 V" },
     ],
-    advantages: [
-      { title: "Automated Ground-to-Ground Transport", copy: "Moves pallets from floor position to floor position without manual transport." },
-      { title: "Improved Material Flow", copy: "Enables precise staging and efficient movement across warehouses and factories." },
-      { title: "Reduced Manual Intervention", copy: "Reduces repetitive forklift movement in ground-level pallet workflows." },
-    ],
-    features: [
-      { title: "Ground-to-Ground Pallet Transport", copy: "Automates point-to-point ground pallet movement." },
-      { title: "Precise Pallet Staging", copy: "Stages pallets accurately for downstream operations." },
-      { title: "Real-Time Pallet Detection", copy: "Supports reliable pallet pickup and transport." },
-    ],
+    advantages: {
+      content: "Choose the PSR G2G to eliminate manual pallet transport, improve staging accuracy, and ensure uninterrupted pallet movement with predictable performance.",
+      advantages: [
+        { title: "Automated Ground-to-Ground Transport", copy: "Moves pallets from floor position to floor position without manual transport." },
+        { title: "Improved Material Flow", copy: "Enables precise staging and efficient movement across warehouses and factories." },
+        { title: "Reduced Manual Intervention", copy: "Reduces repetitive forklift movement in ground-level pallet workflows." },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Seamless</span> Pallet Transport`,
+      content: "The PSR G2G automates floor-level pallet transport with precise positioning and reliable performance, delivering efficient ground-to-ground material movement for demanding operations. ",
+      features: [
+        { title: "Ground-to-Ground Pallet Transport", copy: "Automates floor-level pallet movement across operational zones.", icon: "MoveHorizontal" },
+        { title: "Precise Pallet Staging", copy: "Positions pallets accurately for smoother intralogistics workflows.", icon: "DiamondPlus" },
+        { title: "Heavy-Duty Performance", copy: "Handles demanding pallet transport applications with reliable consistency and accuracy.", icon: "Box" },
+        { title: "Real-Time Pallet Detection", copy: "Detects and identifies pallets in real time for accurate handling.", icon: "ScanSearch" },
+      ], 
+    },
     useCases: psrUseCases,
     faqs: [
       { question: "What does ground-to-ground mean, and is this robot right for my operation?", answer: "It means the robot moves pallets between ground-level positions, ideal for staging, dock, dispatch, and line-side workflows." },
@@ -560,36 +660,46 @@ export const productDetails: Record<string, ProductDetailData> = {
     heroImage: "LBR-500.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/LBR%20500.glb",
     backgroundText: "LBR-501.svg",
+    overviewVideo: "LBR-overview.mp4",
     overviewImage: "updated-image.jpg",
     advantageImage: "updated-image.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Trolley Lifting"],
     specs: [
-      { label: "Dimensions", value: "1260 * 655 * 1270 mm" },
-      { label: "Payload Capacity", value: "500 kg" },
-      { label: "Max Speed", value: "1.2 m/s" },
+      { label: "Dimensions", value: "1260 * 655 * 1270 mm", imperial: "49.61 x 25.83 x 49.61 in" },
+      { label: "Payload Capacity", value: "500 kg", imperial: "1102.31 lbs" },
+      { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
+      { label: "Accuracy", value: "X,Y: 10 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees" },
       { label: "Type of Payload", value: "Trolley, Carts" },
       { label: "Battery Type", value: "LFP" },
       { label: "Charging Time", value: "1 hr" },
       { label: "Runtime", value: "8 Hrs" },
       { label: "Voltage", value: "48 V" },
     ],
-    advantages: [
-      { title: "Universal Trolley Compatibility", copy: "Designed to work with trolley movement in low-clearance environments." },
-      { title: "Flexible Shop-Floor Transport", copy: "Automates reliable material movement across dynamic production floors." },
-    ],
-    features: [
-      { title: "Integrated Free-Lift Mechanism", copy: "Lifts compatible trolleys for autonomous transport." },
-      { title: "Slim Low-Profile Lift Bed", copy: "Works in low-clearance environments." },
-      { title: "Precision Docking", copy: "Aligns with trolley and workstation positions." },
-    ],
+    advantages: {
+      content: "Choose the LBR 500 to automate diverse trolley transport applications with universal compatibility, seamless integration, and reliable performance in constrained environments.",
+      advantages: [
+        { title: "Universal Trolley Compatibility", copy: "Designed to work with trolley movement in low-clearance environments." },
+        { title: "Flexible Shop-Floor Transport", copy: "Automates reliable material movement across dynamic production floors." },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Smart Trolley Automation</span>`,
+      content: "The LBR 500 combines compact free-lift design with universal trolley compatibility to automate reliable material movement in low-clearance manufacturing and intralogistics environments.",
+      features: [
+        { title: "Integrated Free-Lift Mechanism", copy: "Designed with an integrated lifting mechanism for seamless trolley engagement.", icon: "ArrowUpDown" },
+        { title: "Slim Low-Profile Lift Bed", copy: "Features an ultra-low, narrow lift bed compatible with diverse trolley designs.", icon: "Minimize2" },
+        { title: "Precision Docking", copy: "Enables accurate positioning within tight and space-constrained environments.", icon: "DiamondPlus" },
+        { title: "Compact Footprint", copy: "Its compact form factor enables easy maneuverability in confined spaces. ", icon: "Minimize" },
+      ],
+    },
     useCases: [
       { title: "Small Load & Cart Transport", copy: "Moves small loads and carts across shop-floor workflows.", image: "Frame-427322841.jpg" },
       { title: "Low-Clearance Trolley Handling", copy: "Handles trolley transport where clearance is constrained.", image: "updated-image.jpg" },
       { title: "Assembly Line Feeding", copy: "Feeds workstations and assembly lines with predictable material flow.", image: "Frame-427322849_1.jpg" },
     ],
-    faqs: [
+    faqs: [ 
       { question: "What environments is the LBR 500 built for?", answer: "It is built for low-clearance trolley movement across dynamic shop floors and manufacturing environments." },
       { question: "Does the LBR 500 handle pallets?", answer: "The LBR 500 is focused on trolley and cart movement rather than pallet stacking." },
       { question: "What does routine maintenance look like for the LBR 500?", answer: "Maintenance depends on deployment conditions, but routine checks typically cover lift, safety, wheels, battery, and software status." },
@@ -606,30 +716,42 @@ export const productDetails: Record<string, ProductDetailData> = {
       "The AGV 100 is a compact QR-guided vehicle designed for efficient point-to-point material transport, delivering reliable, predictable, and high-throughput movement across warehouses and manufacturing facilities.",
     heroImage: "agv-100_1.png",
     backgroundText: "agv-background-text.png",
+    overviewVideo: "AGV-100-overview.mp4",
     overviewImage: "9fb92fd488b484f5f7cafac3fb0bc76fe3040c5b.jpg",
     advantageImage: "9fb92fd488b484f5f7cafac3fb0bc76fe3040c5b.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Lifting", "Sorting"],
     specs: [
-      { label: "Dimensions", value: "680 * 600 * 235 mm" },
-      { label: "Payload Capacity", value: "100 kg" },
-      { label: "Max Speed", value: "2 m/s" },
+      { label: "Payload Capacity", value: "100 kg", imperial: "220.46 lbs" },
       { label: "Navigation", value: "QR Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      { label: "Dimensions", value: "680 * 600 * 235 mm", imperial: "26.77 x 23.62 x 9.25 in" },
       { label: "Type of Payload", value: "Bins and Totes" },
-      { label: "Battery Type", value: "LFP" },
+      { label: "Max Speed", value: "2 m/s", imperial: "4.47 mph" },
+      { label: "Accuracy", value: "X,Y: 10 mm, Yaw: 1.5 degrees", imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees" },
+      { label: "BATTERY TYPE", value: "LFP" },
       { label: "Charging Time", value: "1.5 hrs" },
-      { label: "Runtime", value: "8 Hrs" },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48V" },
     ],
-    advantages: [
-      { title: "Reliable QR-Guided Navigation", copy: "Delivers repeatable point-to-point routes with predictable material movement." },
-      { title: "Reduced Manual Handling", copy: "Automates tote, bin, and light-load transfers across facilities." },
-    ],
-    features: [
-      { title: "QR-Guided Navigation", copy: "Uses QR routes for structured material transport." },
-      { title: "High Speed", copy: "Moves up to 2 m/s for efficient point-to-point tasks." },
-      { title: "Precision Docking", copy: "Aligns with stations and transfer points for reliable handoff." },
-    ],
+    advantages: {
+      content: "Choose the AGV 100 to automate repetitive transport tasks with simple navigation, optimized routing, and dependable material movement performance.",
+      advantages: [
+        { title: "Reliable QR-Guided Navigation", copy: "Delivers repeatable point-to-point routes with predictable material movement." },
+        { title: "Reduced Manual Handling", copy: "Automates tote, bin, and light-load transfers across facilities." },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">High-Speed</span> Material Transport`,
+      content: "The AGV 100 combines compact design with QR-guided navigation to deliver fast, reliable, and efficient point-to-point material transport for high-throughput operations.",
+      features: [
+        { title: "QR-Guided Navigation", copy: "Follows predefined routes with reliable positioning accuracy.", icon: "QrCode" },
+        { title: "Compact Design", copy: "Compact design enables efficient movement within existing layouts.", icon: "Expand" },
+        { title: "High Speed", copy: "Designed for operating at high speed for rapid material transport across warehouse layouts.", icon: "Gauge" },
+        { title: "Precision Docking", copy: "Enables reliable positioning at designated pickup and drop-off points.", icon: "DiamondPlus" },
+      ],
+    },
     useCases: [
       { title: "Bin Transfer", copy: "Moves bins between storage, processing, and workstation areas.", image: "9fb92fd488b484f5f7cafac3fb0bc76fe3040c5b.jpg" },
       { title: "Tote & Bin Replenishment", copy: "Automates replenishment to picking zones and assembly stations.", image: "Frame-1321317267.jpg" },

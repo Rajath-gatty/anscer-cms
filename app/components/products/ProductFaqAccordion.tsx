@@ -25,7 +25,7 @@ export function ProductFaqAccordion({ items }: { items: ProductFaq[] }) {
       onValueChange={(nextValue) => {
         setValue(Array.isArray(nextValue) ? nextValue.slice(0, 1) : []);
       }}
-      className="w-full"
+      className="w-full flex flex-col gap-4"
     >
       {items.map((item, index) => {
         const itemValue = `faq-${index}`;
