@@ -98,28 +98,34 @@ const stats = [
 
 const teamSlides = [
   {
-    image: "1af2086220affecd5f498aeca93f64918a91bf86.jpg",
-    name: "ANSCER Robotics",
-    role: "The team behind the tech",
-    alt: "ANSCER team member portrait from Webflow",
+    image: "about-team-ribin.jpg",
+    name: "Ribin Mathew",
+    role: "Global CEO, Co-founder",
+    alt: "Ribin Mathew portrait",
   },
   {
-    image: "1caa4163dc3f1c3c3c49b87e9ad9c750db3f30df-1.jpg",
-    name: "ANSCER Team",
-    role: "Built by believers",
-    alt: "ANSCER team celebrating a milestone",
+    image: "about-team-mark.jpg",
+    name: "Mark Messina",
+    role: "MD & CEO ANSCER AMERICAS",
+    alt: "Mark Messina portrait",
   },
   {
-    image: "1850236eda6ba48b3a4bfe7084528816a27e9c32.jpg",
-    name: "Global Team",
-    role: "Automation partners",
-    alt: "ANSCER team at an exhibition booth",
+    image: "about-team-ebin.jpg",
+    name: "Ebin Sunny",
+    role: "COO, Co-founder",
+    alt: "Ebin Sunny portrait",
   },
   {
-    image: "Desktop---28.jpg",
-    name: "ANSCER Robotics",
-    role: "Driven by vision",
-    alt: "ANSCER Robotics team group photo",
+    image: "about-team-raghu.jpg",
+    name: "Raghu Venkatesh",
+    role: "CBO, Co-founder",
+    alt: "Raghu Venkatesh portrait",
+  },
+  {
+    image: "about-team-raj.jpg",
+    name: "Raj Mohan",
+    role: "CTO & Co-founder",
+    alt: "Raj Mohan portrait",
   },
 ] as const;
 
