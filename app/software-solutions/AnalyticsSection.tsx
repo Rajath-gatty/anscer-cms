@@ -1,308 +1,416 @@
 "use client";
 
-import { useRef, useState } from "react";
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-} from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { imagePath } from "../components/home/assets";
 
+/* ─── Slide data ────────────────────────────────────────────────────── */
 const capabilities = [
   {
     title: "Utilization Reports",
-    copy: "Monitor robot activity, operational efficiency, and fleet performance through detailed utilization reports. This platform presents visibility into active time, idle time, mission execution, and utilization rates to maximize fleet productivity.",
-    chips: [],
+    copy: "Monitor robot activity, operational efficiency, and fleet performance through detailed utilization reports. The platform provides visibility into robot active time, idle time, mission execution, and utilization rates to help maximize fleet productivity.",
+    chipsIntro: "",
+    chips: [] as string[],
+    // index 0 → even → tablet right, content left, text right-aligned
     image: "0a650615d6addc613e5e73d23c9a69411bf9f542.png.jpg",
   },
   {
     title: "KPI Dashboards",
     copy: "Access centralized dashboards that display critical operational metrics and performance indicators in real time.",
     chipsIntro: "Key analytics include:",
-    chips: ["Request success rate", "Mission volume", "Robot utilization rate", "Active station & stores", "Fleet performance trends", "Operational efficiency metrics"],
+    chips: [
+      "Request success rate",
+      "Mission volume",
+      "Robot utilization rate",
+      "Active stations and stores",
+      "Fleet performance trends",
+      "Operational efficiency metrics",
+    ],
+    // index 1 → odd → tablet left, content right, text left-aligned
     image: "Group-1321315891.jpg",
   },
   {
     title: "Request Overview Analytics",
     copy: "Analyze all mission and transport requests generated across stations, production areas, and storage locations.",
     chipsIntro: "The Request Overview module provides detailed insights into:",
-    chips: ["Total request volume", "Completed & failed requests", "Success rates", "High-demand stations and areas", "Workflow activity trends"],
+    chips: [
+      "Total request volume",
+      "Completed and failed requests",
+      "Success rates",
+      "High-demand stations and stores",
+      "Workflow activity trends",
+    ],
     image: "Group-1321315892.jpg",
   },
   {
     title: "Heatmaps",
-    copy: "Visualize operational incidents and traffic patterns across facility maps using intelligent heatmap analytics. This feature provides visibility into high-activity and high-risk zones while monitoring facility traffic.",
-    chips: ["Emergency stop locations", "Robot errors", "Traffic congestion zones", "Connection interruptions", "Navigation bottlenecks"],
+    copy: "Visualize operational incidents and traffic patterns across facility maps using intelligent heatmap analytics. The Heatmap module helps identify high-activity and high-risk areas within the facility.",
+    chipsIntro: "Displaying:",
+    chips: [
+      "Emergency stop locations",
+      "Robot errors",
+      "Traffic congestion zones",
+      "Connection interruptions",
+      "Navigation bottlenecks",
+    ],
     image: "Group-1321315893.jpg",
   },
   {
     title: "Predictive Alerts",
-    copy: "Receive proactive notifications related to robot performance, traffic congestion, operational anomalies, and potential system issues. Actionable insights help reduce downtime and improve operational continuity.",
-    chips: [],
+    copy: "Receive proactive notifications and predictive alerts related to robot performance, traffic congestion, operational anomalies, and potential system issues. Predictive insights help reduce downtime and improve operational continuity.",
+    chipsIntro: "",
+    chips: [] as string[],
     image: "Group-1321315894.jpg",
   },
   {
     title: "Historical Data Filtering",
-    copy: "Filter analytics and operational reports based on custom date ranges, robots, locations, missions, or event types to support deep analysis and reporting.",
-    chips: [],
+    copy: "Filter analytics and operational reports based on custom date ranges, robots, locations, missions, or event types to support detailed performance analysis and reporting.",
+    chipsIntro: "",
+    chips: [] as string[],
     image: "Group-1321315895.jpg",
   },
 ];
 
-type AnalyticsCapability = (typeof capabilities)[number];
+/* ─── Animation constants ────────────────────────────────────────────── */
+const BG = "linear-gradient(12deg, #c9d6e3 0%, #e6ebf0 100%)";
+const PIN_TOP = 160;
+const PIN_SCROLL_SCREENS = 14;
+const TIMELINE_DURATION = 24;
 
-const SLIDE_HEIGHT = 800;
-const BG = "linear-gradient(150deg, #c9d6e3 0%, #e6ebf0 100%)";
+// For each slide the tablet & content animate from the centre of the viewport
+// outward to their "rest" columns. We express shifts in px (applied as CSS
+// transform on top of absolute centering) to match the Webflow GSAP values.
+const TABLET_SHIFT = 250; // px rightward for even, leftward for odd
+const CONTENT_SHIFT = 300; // px leftward for even, rightward for odd
 
+type AnimState = {
+  /** fractional progress 0-1 within the intro animation */
+  introP: number;
+  /** fractional progress 0-1 within the current slide */
+  slideP: number;
+  /** fractional progress 0-1 within the exit of the current slide */
+  exitP: number;
+  slideIndex: number;
+  imageIndex: number;
+};
+
+const clamp = (v: number, lo = 0, hi = 1) => Math.min(Math.max(v, lo), hi);
+const ease = (t: number) => 0.5 - Math.cos(clamp(t) * Math.PI) / 2;
+
+/**
+ * Returns per-element opacity & x-offset based on scroll progress.
+ * All offsets are in px and will be used as translateX values on top of the
+ * absolute centering transform, exactly mirroring the Webflow GSAP timeline.
+ */
+function getState(progress: number) {
+  const time = clamp(progress) * TIMELINE_DURATION;
+
+  // ── Intro (0 → 2 s): tablet rises from below, content invisible ──
+  if (time < 2) {
+    const t = clamp(time / 1.5);
+    return {
+      tabletX: 0,
+      tabletY: 100 - 100 * ease(t),
+      tabletScale: 1.5 - 0.5 * ease(t),
+      tabletOp: ease(t),
+      contentOp: 0,
+      contentX: 0,
+      slideIndex: 0,
+      imageIndex: 0,
+    };
+  }
+
+  // ── Zigzag slides ─────────────────────────────────────────────────
+  let cursor = 2;
+
+  for (let i = 0; i < capabilities.length; i++) {
+    const isLast = i === capabilities.length - 1;
+    const segLen = isLast ? 2.5 : 4; // s (Webflow: 1.5 slide-out + 1 hold [+ 1.5 return])
+    const local = time - cursor;
+    if (local < 0) break;
+
+    if (local <= segLen || isLast) {
+      const isEven = i % 2 === 0;
+      const tgtTabletX = isEven ? TABLET_SHIFT : -TABLET_SHIFT;
+      const tgtContentX = isEven ? -CONTENT_SHIFT : CONTENT_SHIFT;
+
+      // Phase 1 – slide out from centre (0 → 1.5 s)
+      if (local <= 1.5) {
+        const e = ease(local / 1.5);
+        return {
+          tabletX: tgtTabletX * e,
+          tabletY: 0,
+          tabletScale: 1,
+          tabletOp: 1,
+          contentOp: e,
+          contentX: tgtContentX * e,
+          slideIndex: i,
+          imageIndex: i,
+        };
+      }
+
+      // Phase 2 – hold (1.5 → 2.5 s)
+      if (local <= 2.5 || isLast) {
+        return {
+          tabletX: tgtTabletX,
+          tabletY: 0,
+          tabletScale: 1,
+          tabletOp: 1,
+          contentOp: 1,
+          contentX: tgtContentX,
+          slideIndex: i,
+          imageIndex: i,
+        };
+      }
+
+      // Phase 3 – return to centre (2.5 → 4 s)
+      const e = ease((local - 2.5) / 1.5);
+      return {
+        tabletX: tgtTabletX * (1 - e),
+        tabletY: 0,
+        tabletScale: 1,
+        tabletOp: 1,
+        contentOp: 1 - e,
+        contentX: tgtContentX * (1 - e),
+        slideIndex: i,
+        imageIndex: local >= 3.9 ? i + 1 : i,
+      };
+    }
+
+    cursor += segLen;
+  }
+
+  // Past end – freeze on last slide
+  const last = capabilities.length - 1;
+  const isLastEven = last % 2 === 0;
+  return {
+    tabletX: isLastEven ? TABLET_SHIFT : -TABLET_SHIFT,
+    tabletY: 0,
+    tabletScale: 1,
+    tabletOp: 1,
+    contentOp: 1,
+    contentX: isLastEven ? -CONTENT_SHIFT : CONTENT_SHIFT,
+    slideIndex: last,
+    imageIndex: last,
+  };
+}
+
+/* ─── Component ─────────────────────────────────────────────────────── */
 export function AnalyticsSection() {
-  const stickyZoneRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: stickyZoneRef,
-    offset: ["start start", "end end"],
-  });
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 28,
-    mass: 0.55,
-  });
+  const scrollZoneRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const [progress, setProgress] = useState(0);
 
-  useMotionValueEvent(smoothProgress, "change", (latest) => {
-    const nextIndex = Math.min(
-      capabilities.length - 1,
-      Math.max(0, Math.floor(latest * capabilities.length))
-    );
-    setActiveIndex(nextIndex);
-  });
+  const updateProgress = useCallback(() => {
+    const zone = scrollZoneRef.current;
+    if (!zone) return;
+    const rect = zone.getBoundingClientRect();
+    const scrollRoom = window.innerHeight * PIN_SCROLL_SCREENS;
+    setProgress(clamp((PIN_TOP - rect.top) / scrollRoom));
+  }, []);
+
+  useEffect(() => {
+    const tick = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(updateProgress);
+    };
+    window.addEventListener("scroll", tick, { passive: true });
+    window.addEventListener("resize", tick);
+    updateProgress();
+    return () => {
+      window.removeEventListener("scroll", tick);
+      window.removeEventListener("resize", tick);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [updateProgress]);
+
+  const s = getState(progress);
+  const cap = capabilities[s.slideIndex];
+  const isEven = s.slideIndex % 2 === 0;
+  // Even: tablet → right, content → left → text right-aligned
+  // Odd:  tablet → left, content → right → text left-aligned
+  const textAlign = isEven ? ("right" as const) : ("left" as const);
+  const chipJustify = isEven ? "flex-end" : "flex-start";
 
   return (
     <>
-      {/* ── HEADER: empty background state (Desktop only) ── */}
-      <div style={{ background: BG }} className="hidden lg:block py-20 lg:py-28">
-        <div className="site-container">
+      {/* ════════════════════════════════════════════════════════════
+          DESKTOP (lg+) – sticky scroll animation
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="hidden lg:block" style={{ background: BG }}>
+        {/* Section header (outside scroll zone so it stays visible) */}
+        <div className="site-container py-14">
           <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
-            KEY CAPABILITIES
+            Key Capabilities
           </p>
           <h2 className="mt-3 max-w-[680px] text-[30px] font-bold leading-tight text-[#011f40] md:text-[36px]">
             Turning Industry Workflows Into Autonomous Operations
           </h2>
         </div>
-      </div>
 
-      {/* ── STICKY SCROLL ZONE — Desktop only ── */}
-      <div
-        ref={stickyZoneRef}
-        className="relative hidden lg:block"
-        style={{ height: `${capabilities.length * SLIDE_HEIGHT}px`, background: BG }}
-      >
-        {/* Sticky pin: full viewport, content absolutely centered */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Scroll room — the sticky stage pins inside this tall div */}
+        <div
+          ref={scrollZoneRef}
+          className="relative"
+          style={{ height: `calc(${PIN_SCROLL_SCREENS * 100}vh + 70vh)` }}
+        >
+          {/*
+           * Sticky stage.
+           * height: 70vh matches Webflow's .tablet-scroll-container.
+           * overflow: visible so the intro "slide up from below" isn't clipped.
+           */}
           <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{ paddingTop: "var(--navbar-h, 60px)" }}
+            className="sticky w-full"
+            style={{ top: PIN_TOP, height: "70vh", overflow: "visible" }}
           >
-            {/* Fixed-size stage so absolute children fill a known height */}
-            <div
-              className="relative w-full max-w-[1220px] px-10"
-              style={{ height: "clamp(420px, 70vh, 600px)" }}
-            >
-              {capabilities.map((cap, index) => {
-                const isActive = index === activeIndex;
-                // even index → text left, tablet right; odd → tablet left, text right
-                const textLeft = index % 2 === 0;
-
-                // Text and image enter from opposite sides of the viewport.
-                const textOffX = textLeft ? -180 : 180;
-                const imageOffX = textLeft ? 180 : -180;
-                // Tablet settles offset to its side when active
-                const tabletX = textLeft ? 64 : -64;
-
-                return (
-                  <motion.div
-                    key={cap.title}
-                    className="absolute inset-0 flex items-center"
-                    initial={false}
-                    animate={{
-                      opacity: isActive ? 1 : 0,
-                      scale: reduceMotion || isActive ? 1 : 0.985,
-                    }}
-                    transition={{
-                      duration: reduceMotion ? 0 : isActive ? 0.58 : 0.28,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{
-                      pointerEvents: isActive ? "auto" : "none",
-                      willChange: "opacity, transform",
-                    }}
-                  >
+            {/*
+             * Full-width centred row.
+             * We split it into two halves using absolute positioning relative
+             * to site-container width so content and tablet never share space.
+             * This mirrors the Webflow layout where:
+             *   .div-block-360 (content column) and .div-block-364 (tablet column)
+             *   sit side-by-side, each absolutely centred at their half, then
+             *   GSAP moves the shared ".tablet" element by ±250 px and each
+             *   ".analytics-key-content" by ±300 px from the shared centre point.
+             */}
+            <div className="site-container relative h-full">
+              {/* ── Content panel ────────────────────────────────── */}
+              <div
+                className="pointer-events-none absolute top-1/2 left-1/2 w-[380px]"
+                style={{
+                  opacity: s.contentOp,
+                  transform: `translate(calc(-50% + ${s.contentX}px), -50%)`,
+                  textAlign,
+                  willChange: "transform, opacity",
+                }}
+              >
+                <h3 className="text-[22px] font-bold leading-snug text-[#011f40] xl:text-[26px]">
+                  {cap.title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.6] text-[#333333]">
+                  {cap.copy}
+                </p>
+                {cap.chips.length > 0 && (
+                  <div className="mt-4">
+                    {cap.chipsIntro && (
+                      <p className="mb-3 text-[14px] leading-snug text-[#333333]">
+                        {cap.chipsIntro}
+                      </p>
+                    )}
                     <div
-                      className={`flex w-full items-center gap-14 ${textLeft ? "flex-row" : "flex-row-reverse"
-                        }`}
+                      className="flex flex-wrap gap-2"
+                      style={{ justifyContent: chipJustify }}
                     >
-                      {/* ── TEXT (no card, plain on background) ── */}
-                      <motion.div
-                        className="w-[400px] shrink-0"
-                        initial={false}
-                        animate={{
-                          x: reduceMotion || isActive ? 0 : textOffX,
-                          y: 0,
-                          opacity: isActive ? 1 : 0,
-                          filter: reduceMotion || isActive ? "blur(0px)" : "blur(5px)",
-                        }}
-                        transition={{
-                          duration: reduceMotion ? 0 : 0.68,
-                          ease: [0.16, 1, 0.3, 1],
-                        }}
-                        style={{
-                          willChange: "opacity, transform, filter",
-                        }}
-                      >
-                        <p className="text-[14px] font-bold uppercase tracking-[0.14em] text-[#005ead]">
-                          {String(index + 1).padStart(2, "0")} / {String(capabilities.length).padStart(2, "0")}
-                        </p>
-                        <h3 className="mt-4 text-[24px] font-bold leading-snug text-[#011f40]">
-                          {cap.title}
-                        </h3>
-                        <p className="mt-3 text-[14px] leading-[1.75] text-[#333333]">
-                          {cap.copy}
-                        </p>
-                        {cap.chips.length > 0 && (
-                          <div className="mt-6">
-                            {cap.chipsIntro && (
-                              <p className="mb-2 text-[13px] font-semibold text-[#011f40]">
-                                {cap.chipsIntro}
-                              </p>
-                            )}
-                            <div className="flex flex-wrap gap-2">
-                              {cap.chips.map((chip) => (
-                                <span
-                                  key={chip}
-                                  className="inline-flex items-center gap-1.5 rounded-full border border-[#005ead]/25 bg-white/50 px-3.5 py-1.5 text-[11px] font-semibold text-[#005ead] backdrop-blur-sm"
-                                >
-                                  <CheckCircle2 className="size-3" strokeWidth={2.5} />
-                                  {chip}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </motion.div>
-
-                      {/* ── TABLET FRAME ── */}
-                      <motion.div
-                        className="flex-1"
-                        initial={false}
-                        animate={{
-                          x: reduceMotion ? 0 : isActive ? tabletX : imageOffX,
-                          scale: reduceMotion || isActive ? 1 : 0.96,
-                        }}
-                        transition={{
-                          duration: reduceMotion ? 0 : 0.78,
-                          ease: [0.16, 1, 0.3, 1],
-                        }}
-                        style={{
-                          willChange: "transform",
-                        }}
-                      >
-                        <div
-                          className="relative mx-auto w-full overflow-hidden rounded-[18px]"
-                          style={{ maxWidth: 560, aspectRatio: "4/3" }}
+                      {cap.chips.map((chip) => (
+                        <span
+                          key={chip}
+                          className="rounded-full bg-white px-3 py-1.5 text-[13px] leading-none text-[#011f40] shadow-sm"
                         >
-                          <motion.div
-                            className="absolute inset-0"
-                            initial={false}
-                            animate={{
-                              opacity: isActive ? 1 : 0,
-                            }}
-                            transition={{
-                              duration: reduceMotion ? 0 : isActive ? 0.54 : 0.24,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
-                          >
-                            <Image
-                              src={`${imagePath}${cap.image}`}
-                              alt={cap.title}
-                              fill
-                              priority={index === 0}
-                              sizes="560px"
-                              className="rounded-[18px] object-contain"
-                            />
-                          </motion.div>
-                        </div>
-                      </motion.div>
+                          {chip}
+                        </span>
+                      ))}
                     </div>
-                  </motion.div>
-                );
-              })}
+                  </div>
+                )}
+              </div>
 
-              {/* Progress dots */}
-              <div className="absolute -bottom-10 left-1/2 flex -translate-x-1/2 gap-2.5">
-                {capabilities.map((_, idx) => (
-                  <div
-                    key={idx}
-                    className={`h-[5px] rounded-full transition-all duration-400 ${activeIndex === idx
-                        ? "w-8 bg-[#005ead]"
-                        : "w-[5px] bg-[#005ead]/25"
-                      }`}
+              {/* ── Tablet frame + images ─────────────────────────── */}
+              <div
+                className="absolute top-1/2 left-1/2"
+                style={{
+                  // Webflow: .div-block-359.tablet → width:600px, overflow:hidden
+                  // .div-block-364 → position:absolute; top:50%; left:50%;
+                  //   transform:translate(-50%,-50%)
+                  width: 600,
+                  overflow: "hidden",
+                  opacity: s.tabletOp,
+                  transform: `translate(calc(-50% + ${s.tabletX}px), calc(-50% + ${s.tabletY}%)) scale(${s.tabletScale})`,
+                  transformOrigin: "center center",
+                  willChange: "transform, opacity",
+                }}
+              >
+                {/* aspect-ratio matches Tabletframe.png: 1396×1108 px */}
+                <div className="relative" style={{ aspectRatio: "1396/1108" }}>
+                  {/* Analytics screenshots – opacity-switched */}
+                  {capabilities.map((c, idx) => (
+                    <Image
+                      key={c.title}
+                      src={`${imagePath}${c.image}`}
+                      alt={c.title}
+                      fill
+                      priority={idx === 0}
+                      sizes="600px"
+                      className="rounded-[27px] object-fill transition-opacity duration-150"
+                      style={{ opacity: s.imageIndex === idx ? 1 : 0 }}
+                    />
+                  ))}
+                  {/* Tablet bezel on top */}
+                  <Image
+                    src={`${imagePath}Tabletframe.png`}
+                    alt=""
+                    fill
+                    sizes="600px"
+                    className="pointer-events-none object-fill"
+                    style={{ zIndex: 2 }}
                   />
-                ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── MOBILE fallback ── */}
-      <div className="lg:hidden py-14" style={{ background: BG }}>
+      {/* ════════════════════════════════════════════════════════════
+          MOBILE / TABLET fallback (< lg)
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-14 lg:hidden" style={{ background: BG }}>
         <div className="site-container">
           <p className="mb-2 text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
-            KEY CAPABILITIES
+            Key Capabilities
           </p>
           <h2 className="mb-12 max-w-[680px] text-[26px] font-bold leading-tight text-[#011f40]">
             Turning Industry Workflows Into Autonomous Operations
           </h2>
+
           <div className="space-y-16">
-            {capabilities.map((cap) => (
-              <article key={cap.title} className="flex flex-col items-center max-w-[560px] mx-auto">
-                {/* Tablet Frame */}
+            {capabilities.map((c) => (
+              <article
+                key={c.title}
+                className="mx-auto flex max-w-[560px] flex-col items-center"
+              >
+                {/* Screenshot without tablet chrome */}
                 <div
-                  className="relative w-full overflow-hidden rounded-[16px] sm:rounded-[18px]"
-                  style={{ aspectRatio: "4/3" }}
+                  className="relative w-4/5 overflow-hidden rounded-[26px] max-[479px]:rounded-[12px]"
+                  style={{ aspectRatio: "1239/956" }}
                 >
                   <Image
-                    src={`${imagePath}${cap.image}`}
-                    alt={cap.title}
+                    src={`${imagePath}${c.image}`}
+                    alt={c.title}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 560px"
-                    className="rounded-[16px] object-contain sm:rounded-[18px]"
+                    sizes="(max-width: 1024px) 80vw, 560px"
+                    className="object-contain"
                   />
                 </div>
 
-                <h3 className="mt-6 text-[22px] sm:text-[24px] font-bold text-[#011f40] text-center">
-                  {cap.title}
+                <h3 className="mt-6 text-center text-[22px] font-bold text-[#011f40] sm:text-[24px]">
+                  {c.title}
                 </h3>
-                <p className="mt-3 text-[14px] sm:text-[15px] leading-[1.7] text-[#333333] text-center">
-                  {cap.copy}
+                <p className="mt-3 text-center text-[14px] leading-[1.7] text-[#333333] sm:text-[15px]">
+                  {c.copy}
                 </p>
 
-                {cap.chips && cap.chips.length > 0 && (
-                  <div className="mt-5 flex flex-col items-center w-full">
-                    {cap.chipsIntro && (
-                      <p className="mb-3 text-[13px] font-semibold text-[#011f40] text-center">
-                        {cap.chipsIntro}
+                {c.chips.length > 0 && (
+                  <div className="mt-5 flex w-full flex-col items-center">
+                    {c.chipsIntro && (
+                      <p className="mb-3 text-center text-[13px] font-semibold text-[#011f40]">
+                        {c.chipsIntro}
                       </p>
                     )}
                     <div className="flex flex-wrap justify-center gap-2">
-                      {cap.chips.map((chip) => (
+                      {c.chips.map((chip) => (
                         <span
                           key={chip}
-                          className="inline-flex items-center rounded-full bg-white px-4 py-2 text-[12px] font-semibold text-[#011f40] shadow-sm"
+                          className="rounded-full bg-white px-4 py-2 text-[12px] font-semibold text-[#011f40] shadow-sm"
                         >
                           {chip}
                         </span>
@@ -314,7 +422,7 @@ export function AnalyticsSection() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }
