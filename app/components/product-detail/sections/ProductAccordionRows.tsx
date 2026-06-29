@@ -31,7 +31,6 @@ export function ProductAccordionRows({
     <div className="flex flex-col gap-3">
       {items.map((item, index) => {
         const isOpen = activeIndex === index;
-
         return (
           <article
             key={item.title}
@@ -74,8 +73,8 @@ export function ProductAccordionRows({
               )}
             >
               <div className="min-h-0 overflow-hidden rounded-md">
-                {type === "applications" && item.imageUrl && isOpen && (
-                  <article className="relative aspect-[1.43] overflow-hidden rounded-[12px] block md:hidden bg-[#011f40] text-white">
+                {type === "applications" && isOpen && (
+                  <article className="relative aspect-[1.43] overflow-hidden rounded-[12px] block md:hidden bg-[#011f40] text-white mt-3">
                     <Image
                       key={imageUrl}
                       src={`${imageUrl}`}
@@ -90,7 +89,7 @@ export function ProductAccordionRows({
                     </h3>
                   </article>
                 )}
-                <p className="mt-4 text-[12px] leading-[18px] mb-3 text-[#3a3a3a] md:text-base md:leading-[22px]">
+                <p className={cn("mt-4 text-[12px] leading-[18px] text-[#3a3a3a] md:text-base md:leading-[22px]", type !== "applications" && "mb-3")}>
                   {item.copy}
                 </p>
                 {type !== "applications" && imageUrl && isOpen && (

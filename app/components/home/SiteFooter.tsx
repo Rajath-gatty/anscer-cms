@@ -84,7 +84,7 @@ export function SiteFooter() {
           <div className="flex flex-col items-start gap-5">
             <Link href="/" aria-label="ANSCER Robotics home">
               <Image
-                src={`${imagePath}ANSCER-logo-light.svg`}
+                src={`${imagePath}ANSCER-logo-white.png`}
                 alt="ANSCER Robotics"
                 width={127}
                 height={37}
