@@ -197,10 +197,21 @@ function SeriesPanel({
           </div>
           <a
             href={series.href}
-            className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="group mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
-            <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+            <span className="relative flex size-4 overflow-hidden">
+              <ArrowRight
+                aria-hidden="true"
+                className="size-4 transition group-hover:translate-x-5"
+                strokeWidth={2}
+              />
+              <ArrowRight
+                aria-hidden="true"
+                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                strokeWidth={2}
+              />
+            </span>
           </a>
         </div>
       </div>
@@ -270,10 +281,21 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
           </div>
           <a
             href={series.href}
-            className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="group mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
-            <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+            <span className="relative flex size-4 overflow-hidden">
+              <ArrowRight
+                aria-hidden="true"
+                className="size-4 transition group-hover:translate-x-5"
+                strokeWidth={2}
+              />
+              <ArrowRight
+                aria-hidden="true"
+                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                strokeWidth={2}
+              />
+            </span>
           </a>
         </div>
       </div>
