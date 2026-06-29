@@ -26,6 +26,7 @@ import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
 import { AnalyticsSection } from "./AnalyticsSection";
 import { InteractiveWorkflow } from "./InteractiveWorkflow";
 import { SoftwareTabs } from "./SoftwareTabs";
+import { TabbedCapabilities } from "./TabbedCapabilities";
 
 export const metadata: Metadata = {
   title: "Software Solutions | ANSCER Robotics",
