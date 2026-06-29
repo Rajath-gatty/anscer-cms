@@ -533,24 +533,24 @@ const desktopTagPositionsByProduct: Record<string, Record<string, FloatingTagPos
     Tunneling: { left: "84%", top: "59%" },
   },
   "PSR 2000": {
-    "Open Pallet": { left: "38%", top: "28%" },
-    Stacking: { left: "85%", top: "58%" },
+    "Open Pallet": { left: "18%", top: "28%" },
+    Stacking: { left: "75%", top: "78%" },
   },
   "PSR 2000R": {
-    "Open/Closed Pallet": { left: "38%", top: "28%" },
-    Lifting: { left: "85%", top: "58%" },
+    "Open/Closed Pallet": { left: "18%", top: "48%" },
+    Lifting: { left: "70%", top: "74%" },
   },
   "PSR 1000R": {
-    "Open/Closed Pallet": { left: "38%", top: "28%" },
-    Lifting: { left: "85%", top: "58%" },
+    "Open/Closed Pallet": { left: "15%", top: "35%" },
+    Lifting: { left: "75%", top: "67%" },
   },
   "PSR G2G": {
-    "Open Pallet": { left: "38%", top: "28%" },
-    Stacking: { left: "85%", top: "58%" },
+    "Open Pallet": { left: "17%", top: "38%" },
+    Stacking: { left: "72%", top: "78%" },
   },
   "LBR 500": {
-    Trolley: { left: "38%", top: "28%" },
-    Lifting: { left: "85%", top: "58%" },
+    Trolley: { left: "40%", top: "30%" },
+    Lifting: { left: "80%", top: "78%" },
   },
   "AGV 100": {
     Lifting: { left: "38%", top: "28%" },
@@ -578,29 +578,29 @@ const mobileTagPositionsByProduct: Record<string, Record<string, FloatingTagPosi
     Lifting: { left: "51%", top: "49%" },
     Tunneling: { left: "77%", top: "79%" },
   },
-  "PSR 2000": {
-    "Open Pallet": { left: "44%", top: "12%" },
-    Stacking: { left: "62%", top: "48%" },
+   "PSR 2000": {
+    "Open Pallet": { left: "1%", top: "28%" },
+    Stacking: { left: "70%", top: "76%" },
   },
   "PSR 2000R": {
-    "Open/Closed Pallet": { left: "44%", top: "12%" },
-    Lifting: { left: "62%", top: "48%" },
+    "Open/Closed Pallet": { left: "1%", top: "38%" },
+    Lifting: { left: "68%", top: "74%" },
   },
   "PSR 1000R": {
-    "Open/Closed Pallet": { left: "44%", top: "12%" },
-    Lifting: { left: "62%", top: "48%" },
+    "Open/Closed Pallet": { left: "1%", top: "35%" },
+    Lifting: { left: "70%", top: "60%" },
   },
   "PSR G2G": {
-    "Open Pallet": { left: "44%", top: "12%" },
-    Stacking: { left: "62%", top: "48%" },
+    "Open Pallet": { left: "1%", top: "38%" },
+    Stacking: { left: "60%", top: "75%" },
   },
   "LBR 500": {
-    Trolley: { left: "44%", top: "12%" },
-    Lifting: { left: "62%", top: "48%" },
+    Trolley: { left: "20%", top: "30%" },
+    Lifting: { left: "65%", top: "75%" },
   },
   "AGV 100": {
-    Lifting: { left: "44%", top: "12%" },
-    Sorting: { left: "62%", top: "48%" },
+    Lifting: { left: "38%", top: "28%" },
+    Sorting: { left: "80%", top: "58%" },
   },
 };
 
