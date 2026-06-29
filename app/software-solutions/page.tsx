@@ -233,7 +233,7 @@ export default function SoftwareSolutionsPage() {
 
 function SoftwareHero() {
   return (
-    <section className="relative min-h-[calc(100svh-108px)] overflow-hidden bg-[#011f40] text-white">
+    <section className="relative min-h-[calc(100svh-60px)] overflow-hidden bg-[#011f40] text-white md:min-h-[calc(100svh-110px)]">
       <Image
         src={`${imagePath}Desktop---27.jpg`}
         alt=""
@@ -243,7 +243,7 @@ function SoftwareHero() {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.58)_42%,rgba(0,0,0,0)_86%)]" />
-      <div className="site-container relative z-10 flex min-h-[calc(100svh-108px)] items-center py-16">
+      <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
         <div className="max-w-[807px]">
           <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-white/85">
             Software solutions
@@ -270,7 +270,7 @@ function SoftwareHero() {
 
 function SoftwareTabs() {
   return (
-    <nav className="sticky top-[108px] z-30 hidden border-b border-[#d6e0e8] bg-[#fafafa]/95 backdrop-blur lg:block">
+    <nav className="sticky top-[60px] z-30 hidden border-b border-[#d6e0e8] bg-[#fafafa]/95 backdrop-blur lg:block">
       <div className="site-container flex h-[58px] items-center justify-center gap-16 text-[13px] font-semibold text-[#3a3a3a]">
         {tabs.map(([label, id]) => (
           <a key={id} href={`#${id}`} className="transition hover:text-[#005ead]">

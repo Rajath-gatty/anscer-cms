@@ -74,10 +74,10 @@ export default function AboutUsPage() {
 
 function AboutHero() {
   return (
-    <section className="relative min-h-[calc(100svh-108px)] overflow-hidden bg-[#011f40] text-white">
+    <section className="relative min-h-[calc(100svh-60px)] overflow-hidden bg-[#011f40] text-white md:min-h-[calc(100svh-110px)]">
       <Image src={`${imagePath}Desktop---28.jpg`} alt="" fill priority sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-[linear-gradient(59deg,rgba(0,0,0,.76),rgba(0,0,0,.12)_68%,rgba(0,0,0,0))]" />
-      <div className="site-container relative z-10 flex min-h-[calc(100svh-108px)] items-center py-16">
+      <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
         <div className="max-w-[680px]">
           <h1 className="text-[42px] font-extrabold leading-[1.1] text-white md:text-[60px]">
             Powering What&apos;s Next, Today
