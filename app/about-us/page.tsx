@@ -12,6 +12,7 @@ import {
 import { imagePath } from "../components/home/assets";
 import { FloatingValueText } from "./FloatingValueText";
 import { PathToPowerInteractive } from "./PathToPowerInteractive";
+import { StatsAnimatedSection } from "./StatsAnimatedSection";
 
 export const metadata: Metadata = {
   title: "About Us | ANSCER Robotics",
@@ -391,37 +392,7 @@ function TestimonialsSection() {
 }
 
 function StatsSection() {
-  return (
-    <section className="relative overflow-hidden bg-white py-12 md:py-20">
-      <div className="absolute left-0 right-0 top-10 hidden h-px bg-[#ccd2d9] md:block" />
-      <div className="site-container relative">
-        <div className="grid gap-9 md:grid-cols-3">
-          {stats.map((stat, index) => (
-            <article key={stat.label} className="relative text-center">
-              <Image
-                src={`${imagePath}robot.png`}
-                alt=""
-                width={58}
-                height={58}
-                className={`mx-auto mb-8 h-[58px] w-auto object-contain ${
-                  index === 2 ? "md:-translate-y-5" : ""
-                }`}
-              />
-              <h3 className="text-[32px] font-extrabold leading-none text-[#011f40] md:text-[40px]">
-                <span className="text-[#005ead]">{stat.value}</span>
-              </h3>
-              <p className="mt-4 text-[14px] font-extrabold text-[#011f40]">
-                {stat.label}
-              </p>
-              <p className="mx-auto mt-3 max-w-[340px] text-[13px] leading-[1.6] text-[#3a3a3a]">
-                {stat.copy}
-              </p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <StatsAnimatedSection stats={stats} />;
 }
 
 function TeamSection() {
