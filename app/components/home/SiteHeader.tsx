@@ -54,7 +54,7 @@ export function SiteHeader() {
       <div className="site-container flex h-[60px] items-center justify-between">
         <Link href="/" aria-label="ANSCER Robotics home" onClick={closeMenu}>
           <Image
-            src={`${imagePath}ANSCER-logo-1.svg`}
+            src={`${imagePath}Anscer-logo-final-dark.png`}
             alt="ANSCER Robotics"
             width={120}
             height={32}

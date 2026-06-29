@@ -254,7 +254,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       { title: "Cobot Integration Module", copy: "Enables robotic handling applications with cobot integration module.", image: "Frame-1321317332.jpg" },
     ],
     modulesBaseImage: "ar-250-base.png",
-    // modules: topModules,
+    modules: topModules,
     faqs: [
       { question: "What kind of loads can the AR 250 carry?", answer: "The AR 250 carries payloads up to 250 kg. It is suited for light to medium material transport like trolleys, shelves, cartons, totes, and unit load structures in factories and warehouses. If your loads regularly exceed 250 kg, the AR 650 or higher would be the right fit." },
       { question: "What can the AR 250 actually do in my facility?", answer: "Depending on the top module fitted, the AR 250 can lift and transport trolleys and shelves, transfer cartons and totes via belt or roller conveyor, perform mobile manipulation tasks when paired with a third-party cobot, handle multi-trolley transport via tugger modules, or carry custom unit load structures. It covers most light-duty intralogistics workflows in a single platform." },
