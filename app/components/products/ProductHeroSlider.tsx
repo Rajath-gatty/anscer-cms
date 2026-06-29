@@ -144,7 +144,7 @@ export function ProductHeroSlider() {
             </span>
             <button
               type="button"
-              className="grid size-8 place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
               aria-label="Previous hero slide"
               onClick={() => goToSlide(-1)}
             >
@@ -152,7 +152,7 @@ export function ProductHeroSlider() {
             </button>
             <button
               type="button"
-              className="grid size-8 place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
               aria-label="Next hero slide"
               onClick={() => goToSlide(1)}
             >

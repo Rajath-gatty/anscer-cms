@@ -141,7 +141,7 @@ export function CaseStudiesSection() {
               type="button"
               aria-label="Previous case study"
               onClick={goToPrevious}
-              className="grid size-8 place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
             >
               <ArrowLeft aria-hidden="true" className="size-4" strokeWidth={2} />
             </button>
@@ -149,7 +149,7 @@ export function CaseStudiesSection() {
               type="button"
               aria-label="Next case study"
               onClick={goToNext}
-              className="grid size-8 place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
             >
               <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
             </button>

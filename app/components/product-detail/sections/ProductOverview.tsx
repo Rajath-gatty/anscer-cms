@@ -79,7 +79,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
             <button
               type="button"
               aria-pressed={isImperial}
-              className="flex items-center gap-2 text-xs font-semibold uppercase text-[#011f40]"
+              className="flex cursor-pointer items-center gap-2 text-xs font-semibold uppercase text-[#011f40]"
               onClick={() => setUnit(isImperial ? "metric" : "imperial")}
             >
               <span
@@ -130,7 +130,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
           </dl>
           <button
             type="button"
-            className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-2.5 pl-4 pr-2 text-[14px] font-semibold uppercase tracking-wide text-white"
+            className="mt-6 inline-flex cursor-pointer items-center gap-3 rounded-[3px] bg-[#005ead] py-2.5 pl-4 pr-2 text-[14px] font-semibold uppercase tracking-wide text-white"
             onClick={() => setIsDialogOpen(true)}
           >
             {data.overviewCtaLabel ?? "DOWNLOAD PRODUCT PROFILE"}

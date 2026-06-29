@@ -59,7 +59,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => move(-1)}
               disabled={activeIndex === 0}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Previous application"
             >
               <ArrowLeft className="size-5" strokeWidth={1.8} />
@@ -68,7 +68,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => move(1)}
               disabled={activeIndex >= maxIndex}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Next application"
             >
               <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -114,7 +114,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           type="button"
           onClick={() => move(-1)}
           disabled={activeIndex === 0}
-          className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
           aria-label="Previous application"
         >
           <ArrowLeft className="size-5" strokeWidth={1.8} />
@@ -123,7 +123,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           type="button"
           onClick={() => move(1)}
           disabled={activeIndex >= maxIndex}
-          className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
           aria-label="Next application"
         >
           <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -286,7 +286,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => mobileMove(-1)}
               disabled={activeIndex === 0}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Previous robot"
             >
               <ArrowLeft className="size-5" strokeWidth={1.8} />
@@ -295,7 +295,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => mobileMove(1)}
               disabled={activeIndex >= total - 1}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Next robot"
             >
               <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -324,7 +324,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         type="button"
                         onClick={() => setActiveIndex(index)}
                         className={cn(
-                          "relative grid overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
+                          "relative grid cursor-pointer overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
                           isActive ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]" : "bg-white/55 hover:bg-white/86",
                         )}
                         whileHover={reducedMotion ? undefined : { x: 4 }}
@@ -473,7 +473,7 @@ function UnitToggle({
     <button
       type="button"
       onClick={() => onChange(unit === "metric" ? "imperial" : "metric")}
-      className="inline-flex items-center gap-2 self-start text-[12px] font-extrabold uppercase tracking-wide text-[#011f40]"
+      className="inline-flex cursor-pointer items-center gap-2 self-start text-[12px] font-extrabold uppercase tracking-wide text-[#011f40]"
       aria-label="Toggle metric and imperial units"
     >
       <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>Metric</span>
