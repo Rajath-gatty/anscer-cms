@@ -38,9 +38,9 @@ const labelClass =
 export default function ContactUsPage() {
   return (
     <main className="bg-white text-[#011f40]">
-      <section className="pb-14 pt-12 md:pb-[56px] md:pt-[58px]">
+      <section className="pb-14 pt-12 md:pb-14 md:pt-15">
         <div className="site-container">
-          <div className="flex max-w-[760px] flex-col gap-6">
+          <div className="flex max-w-[760px] flex-col gap-6 pt-10">
             <p className="text-base font-medium uppercase tracking-[0.16em] text-[#005ead]">
               Contact us
             </p>
@@ -56,12 +56,12 @@ export default function ContactUsPage() {
             </p>
           </div>
 
-          <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
+          <div className="contact-form-layout mt-10">
             <form
               action="mailto:sales@anscer.com"
               method="post"
               encType="text/plain"
-              className="flex w-full flex-col gap-6 lg:flex-1"
+              className="contact-form-panel flex flex-col gap-6"
             >
               <div className="grid gap-6 md:grid-cols-2 md:gap-x-7">
                 <div>
@@ -185,24 +185,24 @@ export default function ContactUsPage() {
               </div>
             </form>
 
-            <aside className="flex w-full flex-col gap-4 lg:w-[320px] lg:shrink-0">
+            <aside className="contact-info-column flex flex-col gap-3">
               {contactCards.map(({ title, copy, items, cta }) => (
                 <article
                   key={title}
-                  className="rounded-lg bg-[#f5f7fa] p-5 text-[#011f40]"
+                  className="rounded-lg bg-[#f5f7fa] px-6 py-[25px] text-[#011f40]"
                 >
-                  <h2 className="text-[15px] font-bold leading-tight text-[#011f40]">
+                  <h2 className="text-[17px] font-bold leading-tight text-[#011f40]">
                     {title}
                   </h2>
-                  <p className="mt-3 text-[13px] leading-[1.5] text-[#555]">
+                  <p className="mt-2.5 max-w-[360px] text-[13px] leading-[1.35] text-[#3a3a3a]">
                     {copy}
                   </p>
-                  <div className="mt-4 flex flex-col gap-2">
+                  <div className="mt-3.5 flex flex-col gap-2">
                     {items.map((item) => (
                       <a
                         key={item.href}
                         href={item.href}
-                        className="text-[14px] font-semibold text-[#011f40] transition hover:text-[#005ead]"
+                        className="text-[14px] font-bold leading-tight text-[#011f40] transition hover:text-[#005ead]"
                       >
                         {item.label}
                       </a>
@@ -211,7 +211,7 @@ export default function ContactUsPage() {
                   {cta ? (
                     <a
                       href="mailto:service@anscer.com"
-                      className="mt-4 inline-flex h-9 items-center gap-2 rounded border border-[#005ead] px-3 text-[12px] font-semibold uppercase tracking-wide text-[#005ead] transition hover:bg-[#005ead] hover:text-white"
+                      className="mt-3.5 inline-flex h-8 items-center gap-4 rounded-[2px] border border-[#005ead] px-4 text-[12px] font-medium uppercase tracking-wide text-[#005ead] transition hover:bg-[#005ead] hover:text-white"
                     >
                       {cta}{" "}
                       <ArrowRight aria-hidden="true" className="size-3.5" />
