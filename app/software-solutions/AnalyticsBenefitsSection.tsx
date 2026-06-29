@@ -91,26 +91,26 @@ export function AnalyticsBenefitsSection() {
           <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             BENEFITS
           </p>
-          <h2 className="mt-3 max-w-[480px] text-[30px] font-bold leading-tight text-[#011f40] md:text-4xl">
+          <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
             Turning Operational Data Into Actionable Insights
           </h2>
 
           {/* ── MOBILE VERTICAL CARDS (< lg) ── */}
-          <div className="mt-10 flex flex-col gap-4 lg:hidden">
+          <div className="mt-10 flex flex-col gap-3 lg:hidden">
             {benefitCards.map((card) => {
               const Icon = card.mobileIcon || card.icon;
               return (
                 <div
                   key={card.title}
-                  className="flex flex-col rounded-2xl border border-[#d6e0e8] bg-white p-6 sm:p-8 shadow-sm"
+                  className="flex flex-col items-start gap-3 rounded-[12px] border border-[#005ead]/20 bg-white p-5"
                 >
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40]">
                     <Icon className="size-5" strokeWidth={1.7} />
                   </div>
-                  <h3 className="mt-4 text-[16px] font-semibold text-[#011f40]">
+                  <h3 className="text-[16px] font-semibold text-[#011f40]">
                     {card.title}
                   </h3>
-                  <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  <p className="text-[14px] leading-[150%] text-[#333333]">
                     {card.copy}
                   </p>
                 </div>
@@ -121,15 +121,16 @@ export function AnalyticsBenefitsSection() {
       </div>
 
       {/* Dark area with warehouse bg (Desktop >= lg only) */}
-      <div className="relative hidden lg:block overflow-hidden bg-[#011f40] py-10">
+      <div className="relative hidden h-[600px] flex-col justify-end overflow-hidden bg-[#011f40] pb-[60px] lg:flex">
         {/* Warehouse background image */}
         <Image
           src={`${imagePath}783ae8688601ff1806be870305aedfcf9b385868.jpg`}
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-30"
+          className="object-cover object-[50%_20%]"
         />
+        <div className="absolute inset-0 bg-black/60" />
 
         {/*
           Navigation arrows — in normal document flow, above the cards.
@@ -142,14 +143,14 @@ export function AnalyticsBenefitsSection() {
           <button
             onClick={() => scroll("left")}
             aria-label="Scroll benefits left"
-            className="flex size-10 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20"
+            className="flex size-11 cursor-pointer items-center justify-center rounded-full text-white transition hover:text-white/80"
           >
             <ChevronLeft className="size-5" />
           </button>
           <button
             onClick={() => scroll("right")}
             aria-label="Scroll benefits right"
-            className="flex size-10 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20"
+            className="flex size-11 cursor-pointer items-center justify-center rounded-full text-white transition hover:text-white/80"
           >
             <ChevronRight className="size-5" />
           </button>
@@ -172,15 +173,15 @@ export function AnalyticsBenefitsSection() {
             return (
               <article
                 key={card.title}
-                className="w-[260px] shrink-0 snap-start rounded-xl bg-white p-6 shadow-xl sm:w-[300px]"
+                className="flex h-[224px] w-[300px] shrink-0 snap-start flex-col items-start gap-3 rounded-[12px] bg-white p-5"
               >
-                <div className="flex size-9 items-center justify-center rounded-lg bg-[#f4f7fa] text-[#005ead]">
-                  <Icon className="size-[18px]" strokeWidth={1.8} />
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40]">
+                  <Icon className="size-5" strokeWidth={1.7} />
                 </div>
-                <h3 className="mt-4 text-[16px] font-semibold text-[#011f40]">
+                <h3 className="text-[16px] font-semibold text-[#011f40]">
                   {card.title}
                 </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                <p className="text-[14px] leading-[150%] text-[#333333]">
                   {card.copy}
                 </p>
               </article>
