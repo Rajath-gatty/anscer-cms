@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { m, useInView, useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import { imagePath } from "../components/home/assets";
 import { StatsMotionRail, statsRobotRoutes } from "./StatsMotionRail";
@@ -52,7 +52,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
 
         <div className="hidden gap-9 md:grid md:grid-cols-3">
           {stats.map((stat, index) => (
-            <motion.article
+            <m.article
               key={stat.label}
               className="relative text-center"
               initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
@@ -68,7 +68,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
               }}
             >
               <StatCardContent stat={stat} />
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </div>
@@ -91,3 +91,4 @@ function StatCardContent({ stat }: { stat: Stat }) {
     </>
   );
 }
+

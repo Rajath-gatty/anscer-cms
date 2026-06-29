@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { imagePath } from "../components/home/assets";
 
 export const statsRobotRoutes = [
@@ -104,7 +104,7 @@ export function StatsMotionRail({
                 ];
 
           return (
-          <motion.g
+          <m.g
             key={index}
             initial={{
               opacity: reduceMotion ? 1 : 0,
@@ -148,10 +148,11 @@ export function StatsMotionRail({
               height="130"
               preserveAspectRatio="xMidYMid meet"
             />
-          </motion.g>
+          </m.g>
           );
         })}
       </svg>
     </div>
   );
 }
+

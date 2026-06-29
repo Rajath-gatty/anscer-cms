@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { imagePath } from "../home/assets";
@@ -171,7 +171,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
       <div className="site-container relative z-10">
         {/* Header — always visible */}
         <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-          <motion.div
+          <m.div
             initial={reducedMotion ? false : { opacity: 0, y: 18 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -181,7 +181,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
             <h2 className="mt-5 text-[28px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
               Explore <span className="text-[#005ead]">{data.eyebrow}</span> Robots
             </h2>
-          </motion.div>
+          </m.div>
           <UnitToggle unit={unit} onChange={setUnit} />
         </div>
 
@@ -308,7 +308,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
           <div className="min-h-[700px] md:min-h-[calc(100vh-160px)]">
             <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]">
               <div className="relative z-20 grid gap-8 lg:grid-cols-[400px_390px_1fr]">
-                <motion.div
+                <m.div
                   className="flex flex-col gap-3"
                   initial={reducedMotion ? false : { opacity: 0, x: -20 }}
                   whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
@@ -319,7 +319,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                     const isActive = activeIndex === index;
 
                     return (
-                      <motion.button
+                      <m.button
                         key={product.name}
                         type="button"
                         onClick={() => setActiveIndex(index)}
@@ -332,7 +332,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                       >
                         {isActive ? (
-                          <motion.span
+                          <m.span
                             layoutId={`series-active-tab-${data.slug}`}
                             className="absolute inset-0 rounded-lg bg-white"
                             transition={transition}
@@ -343,7 +343,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         </span>
                         <AnimatePresence initial={false}>
                           {isActive ? (
-                            <motion.span
+                            <m.span
                               key={`${product.name}-description`}
                               className="relative z-10 mt-3 text-[14px] font-normal leading-[22px] text-[#011f40]"
                               initial={reducedMotion ? false : { opacity: 0, y: -8 }}
@@ -352,16 +352,16 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                               transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
                             >
                               {product.tabDescription}
-                            </motion.span>
+                            </m.span>
                           ) : null}
                         </AnimatePresence>
-                      </motion.button>
+                      </m.button>
                     );
                   })}
-                </motion.div>
+                </m.div>
 
                 <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.div
+                  <m.div
                     key={`${activeProduct.name}-details`}
                     className="lg:pt-7"
                     initial={reducedMotion ? false : { opacity: 0, y: 18 }}
@@ -371,7 +371,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                   >
                     <h3 className="text-[20px] font-semibold text-[#011f40]">{activeProduct.name}</h3>
                     <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
-                    <motion.a
+                    <m.a
                       href={activeProduct.href}
                       className="group mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                       whileHover={reducedMotion ? undefined : { y: -2 }}
@@ -390,14 +390,14 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                           strokeWidth={2}
                         />
                       </span>
-                    </motion.a>
-                  </motion.div>
+                    </m.a>
+                  </m.div>
                 </AnimatePresence>
 
                 <div className="grid grid-cols-2 gap-x-14 gap-y-10 lg:pt-7">
                   <AnimatePresence mode="popLayout" initial={false}>
                     {specs.map((spec, index) => (
-                      <motion.div
+                      <m.div
                         key={`${activeProduct.name}-${unit}-${spec.label}`}
                         initial={reducedMotion ? false : { opacity: 0, y: 14 }}
                         animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -406,7 +406,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                       >
                         <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
                         <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
-                      </motion.div>
+                      </m.div>
                     ))}
                   </AnimatePresence>
                 </div>
@@ -414,7 +414,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
 
               <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-152px] lg:left-[470px] lg:h-[500px]">
                 <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.div
+                  <m.div
                     key={`${activeProduct.name}-visual`}
                     className="absolute inset-0"
                     initial={reducedMotion ? false : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }}
@@ -424,7 +424,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                     style={{ transformPerspective: 1200 }}
                   >
                     {activeProduct.bgText ? (
-                      <motion.div
+                      <m.div
                         className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%]"
                         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
                         animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -438,7 +438,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                           sizes="100vw"
                           className="object-contain object-center opacity-32"
                         />
-                      </motion.div>
+                      </m.div>
                     ) : null}
                     <Image
                       src={`${imagePath}${activeProduct.image}`}
@@ -451,7 +451,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                       )}
                     />
                     <FloatingTags product={activeProduct} reducedMotion={Boolean(reducedMotion)} />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
               </div>
             </div>
@@ -478,7 +478,7 @@ function UnitToggle({
     >
       <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>Metric</span>
       <span className="relative h-6 w-11 rounded-full bg-[#011f40] p-0.5">
-        <motion.span
+        <m.span
           className={cn(
             "block size-5 rounded-full bg-white",
           )}
@@ -622,7 +622,7 @@ function FloatingTags({
   return (
     <div className="absolute inset-0 z-20 hidden md:block">
       {product.tags.map((tag, index) => (
-        <motion.span
+        <m.span
           key={`${product.name}-${tag}`}
           className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[16px] font-normal text-[#011f40] shadow-[0_10px_30px_rgba(1,31,64,.12)]"
           style={getDesktopTagPosition(product.name, tag, index)}
@@ -631,7 +631,7 @@ function FloatingTags({
           transition={{ duration: 0.4, delay: reducedMotion ? 0 : 0.16 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           {tag}
-        </motion.span>
+        </m.span>
       ))}
     </div>
   );
@@ -660,3 +660,4 @@ function selectorImageClass(name: string) {
       return "scale-[1.2] translate-y-[8%]";
   }
 }
+

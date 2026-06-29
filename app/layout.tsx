@@ -3,6 +3,7 @@ import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { AnnouncementBanner } from "./components/AnnouncementBanner";
+import { MotionProvider } from "./components/animation/MotionProvider";
 import { SiteFooter } from "./components/home/SiteFooter";
 import { SiteHeader } from "./components/home/SiteHeader";
 
@@ -25,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("h-full scroll-smooth", "font-sans", plusJakartaSans.variable)}>
       <body className="min-h-full bg-[#fafafa] text-[#011f40]">
-        <AnnouncementBanner />
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <MotionProvider>
+          <AnnouncementBanner />
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   );

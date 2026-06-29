@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
 type FloatingValueTextProps = {
@@ -56,7 +56,7 @@ export function FloatingValueText({
   const drift = driftPaths[seed % driftPaths.length];
 
   return (
-    <motion.div
+    <m.div
       animate={
         reduceMotion
           ? undefined
@@ -84,6 +84,7 @@ export function FloatingValueText({
       className="lg:will-change-transform"
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
+

@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
+import { FadeLeft, FadeRight } from "../animation";
 import { imagePath } from "./assets";
 import {
   TechnologyAccordionContent,
@@ -41,64 +42,69 @@ export function TechnologyAccordion() {
 
   return (
     <div className="mt-7 grid items-stretch gap-5 md:mt-9 lg:grid-cols-[0.36fr_0.64fr]">
-      <TechnologyAccordionRoot
-        value={activeValue}
-        onValueChange={(nextValue) => {
-          if (Array.isArray(nextValue) && nextValue[0]) {
-            setActiveValue([nextValue[0]]);
-          }
-        }}
-        className="h-full"
-      >
-        {technologyItems.map((item, index) => {
-          const value = `technology-${index}`;
-          const isOpen = activeIndex === index;
+      <FadeRight className="h-full">
+        <TechnologyAccordionRoot
+          value={activeValue}
+          onValueChange={(nextValue) => {
+            if (Array.isArray(nextValue) && nextValue[0]) {
+              setActiveValue([nextValue[0]]);
+            }
+          }}
+          className="h-full"
+        >
+          {technologyItems.map((item, index) => {
+            const value = `technology-${index}`;
+            const isOpen = activeIndex === index;
 
-          return (
-            <TechnologyAccordionItem
-              key={item.title}
-              value={value}
-              className={cn(
-                "shrink-0",
-                isOpen
-                  ? "py-4 lg:h-[240px] lg:py-6"
-                  : "h-[44px] py-3 lg:h-[76px] lg:py-5",
-              )}
-            >
-              <TechnologyAccordionTrigger className="cursor-pointer">
-                <span className="text-xs font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
-                  {item.title}
-                </span>
-              </TechnologyAccordionTrigger>
+            return (
+              <TechnologyAccordionItem
+                key={item.title}
+                value={value}
+                className={cn(
+                  "shrink-0",
+                  isOpen
+                    ? "py-4 lg:h-[240px] lg:py-6"
+                    : "h-[44px] py-3 lg:h-[76px] lg:py-5",
+                )}
+              >
+                <TechnologyAccordionTrigger className="cursor-pointer">
+                  <span className="text-xs font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
+                    {item.title}
+                  </span>
+                </TechnologyAccordionTrigger>
 
-              <TechnologyAccordionContent>
-                <p className="mt-3 max-w-[470px] text-[10px] leading-4 text-[#3a3a3a] md:mt-6 md:text-base md:leading-6">
-                  {item.copy}
-                </p>
-                <div className="relative mt-4 aspect-[1.55] overflow-hidden rounded-md bg-[#d9e3eb] lg:hidden">
+                <TechnologyAccordionContent>
+                  <p className="mt-3 max-w-[470px] text-[10px] leading-4 text-[#3a3a3a] md:mt-6 md:text-base md:leading-6">
+                    {item.copy}
+                  </p>
+                  <div className="relative mt-4 aspect-[1.55] overflow-hidden rounded-md bg-[#d9e3eb] lg:hidden">
+                    <Image
+                      src={`${imagePath}${item.image}`}
+                      alt={`${item.title} interface`}
+                      fill
+                      sizes="100vw"
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                  </div>
                   <Image
-                    src={`${imagePath}${item.image}`}
-                    alt={`${item.title} interface`}
-                    fill
-                    sizes="100vw"
-                    className="object-cover"
-                    priority={index === 0}
+                    src={`${imagePath}Union.svg`}
+                    alt=""
+                    width={52}
+                    height={52}
+                    className="mt-4 hidden size-[52px] lg:block"
                   />
-                </div>
-                <Image
-                  src={`${imagePath}Union.svg`}
-                  alt=""
-                  width={52}
-                  height={52}
-                  className="mt-4 hidden size-[52px] lg:block"
-                />
-              </TechnologyAccordionContent>
-            </TechnologyAccordionItem>
-          );
-        })}
-      </TechnologyAccordionRoot>
+                </TechnologyAccordionContent>
+              </TechnologyAccordionItem>
+            );
+          })}
+        </TechnologyAccordionRoot>
+      </FadeRight>
 
-      <div className="relative hidden min-h-[432px] overflow-hidden rounded-xl bg-[#d9e3eb] lg:block lg:h-full">
+      <FadeLeft
+        className="relative hidden min-h-[432px] overflow-hidden rounded-xl bg-[#d9e3eb] lg:block lg:h-full"
+        delay={0.08}
+      >
         <Image
           key={activeItem.image}
           src={`${imagePath}${activeItem.image}`}
@@ -108,7 +114,7 @@ export function TechnologyAccordion() {
           className="object-cover transition-opacity duration-300"
           priority={activeIndex === 0}
         />
-      </div>
+      </FadeLeft>
     </div>
   );
 }

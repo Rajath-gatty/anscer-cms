@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 
 type AboutSectionRevealProps = {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ export function AboutSectionReveal({
   const reduceMotion = useReducedMotion();
 
   return (
-    <motion.div
+    <m.div
       initial={reduceMotion ? false : { opacity: 0, y: 28 }}
       whileInView={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.18, margin: "0px 0px -12% 0px" }}
@@ -25,6 +25,7 @@ export function AboutSectionReveal({
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
+

@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { imagePath } from "../home/assets";
@@ -104,7 +104,7 @@ export function ProductHeroSlider() {
             {active.title}{" "}
             <span className="relative inline-grid overflow-hidden align-bottom text-[#005ead]">
               <AnimatePresence mode="popLayout" initial={false}>
-                <motion.span
+                <m.span
                   key={active.accent}
                   initial={{ y: "85%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
@@ -112,7 +112,7 @@ export function ProductHeroSlider() {
                   transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {active.accent}
-                </motion.span>
+                </m.span>
               </AnimatePresence>
             </span>
           </h1>
@@ -163,7 +163,7 @@ export function ProductHeroSlider() {
 
         <div className="relative min-h-[430px] md:min-h-[560px] xl:min-h-[620px] w-full">
           <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
+            <m.div
               key={active.image}
               className="absolute inset-0"
               initial={{ x: 46, opacity: 0, scale: 0.97 }}
@@ -190,10 +190,11 @@ export function ProductHeroSlider() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
       </div>
     </section>
   );
 }
+

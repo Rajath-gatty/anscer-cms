@@ -18,7 +18,7 @@ export function TrustSection() {
         <source src={`${videoPath}clients-video_webm.webm`} type="video/webm" />
       </video>
       <div className="absolute inset-0 " />
-      <FadeUp className="site-container reveal relative z-10">
+      <FadeUp className="site-container relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-[34px] font-semibold leading-tight tracking-tight md:text-[58px]">
             Engineered in India.

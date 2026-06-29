@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import {
-  motion,
+  m,
   type MotionValue,
   useMotionValueEvent,
   useReducedMotion,
@@ -236,13 +236,13 @@ function AnimatedSeriesPanel({
   });
 
   return (
-    <motion.article
+    <m.article
       className="absolute inset-0 overflow-hidden bg-[#fafafa]"
       style={{ y, zIndex: index + 1 }}
       aria-hidden={activeIndex !== index}
     >
       <PanelContent series={series} />
-    </motion.article>
+    </m.article>
   );
 }
 
@@ -393,3 +393,4 @@ function SeriesRailItem({
     </g>
   );
 }
+

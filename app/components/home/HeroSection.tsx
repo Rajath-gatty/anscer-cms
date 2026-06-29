@@ -17,7 +17,7 @@ export function HeroSection() {
         <source src={`${videoPath}home-hero-section_webm.webm`} type="video/webm" />
       </video>
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,20,40,.74)_0%,rgba(1,20,40,.44)_48%,rgba(1,20,40,.16)_100%)]" />
-      <FadeUp className="site-container reveal relative z-10">
+      <FadeUp className="site-container relative z-10">
         <h1 className="max-w-3xl text-[38px] font-semibold leading-[1.06] tracking-tight md:text-[56px]">
           Automate Smarter,
           <span className="block">Lead the future with ANSCER</span>

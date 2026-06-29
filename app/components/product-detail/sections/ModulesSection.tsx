@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { imagePath } from "../../home/assets";
@@ -214,7 +214,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
               ) : null}
               <div className="absolute z-20" style={overlayStyle}>
                 <AnimatePresence initial={false} mode="popLayout">
-                  <motion.div
+                  <m.div
                     key={`${active.title}-${activeModuleImage}`}
                     className="absolute inset-0 will-change-transform"
                     initial={{
@@ -243,13 +243,13 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                         isLayeredModule && "object-top",
                       )}
                     />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
               </div>
             </div>
             <div className="pt-10 lg:pl-10 lg:pt-48 xl:pl-16">
               <AnimatePresence initial={false} mode="popLayout">
-                <motion.div
+                <m.div
                   key={`${active.title}-copy`}
                   initial={{
                     opacity: shouldReduceMotion ? 1 : 0,
@@ -271,7 +271,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                   <p className="mt-3 text-[18px] leading-[26px] text-[#3a3a3a]">
                     {active.copy}
                   </p>
-                </motion.div>
+                </m.div>
               </AnimatePresence>
             </div>
           </div>
@@ -280,3 +280,4 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
     </section>
   );
 }
+

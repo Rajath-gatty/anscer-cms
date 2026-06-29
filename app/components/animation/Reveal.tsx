@@ -1,8 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
+import type { CSSProperties, ReactNode } from "react";
 
 export type RevealVariant =
   | "fade"
@@ -17,73 +16,84 @@ type RevealProps = {
   variant?: RevealVariant;
   delay?: number;
   duration?: number;
-  exitDuration?: number;
-  margin?: string;
-  once?: boolean;
+  viewportAmount?: number;
   className?: string;
 };
 
-const variantOffsets: Record<RevealVariant, { x: number; y: number; scale: number }> = {
-  fade: { x: 0, y: 0, scale: 1 },
-  "fade-up": { x: 0, y: 22, scale: 1 },
-  "fade-down": { x: 0, y: -22, scale: 1 },
-  "fade-left": { x: 28, y: 0, scale: 1 },
-  "fade-right": { x: -28, y: 0, scale: 1 },
-  "scale-up": { x: 0, y: 14, scale: 0.99 },
+type RevealOffset = { x: number; y: number; scale: number };
+type RevealStyle = CSSProperties & {
+  "--motion-reveal-x": string;
+  "--motion-reveal-y": string;
+  "--motion-reveal-scale": number;
 };
+
+const variantOffsets: Record<RevealVariant, RevealOffset> = {
+  fade: { x: 0, y: 0, scale: 1 },
+  "fade-up": { x: 0, y: 80, scale: 1 },
+  "fade-down": { x: 0, y: -80, scale: 1 },
+  "fade-left": { x: 80, y: 0, scale: 1 },
+  "fade-right": { x: -80, y: 0, scale: 1 },
+  "scale-up": { x: 0, y: 14, scale: 0.7 },
+};
+
+const revealVariants = {
+  hidden: ({ x, y, scale }: RevealOffset) => ({
+    opacity: 1,
+    x,
+    y,
+    scale,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    scale: 1,
+  },
+};
+
+const defaultViewportMargin = "-20% 0px -20% 0px";
 
 export function Reveal({
   children,
   variant = "fade-up",
   delay = 0,
-  duration = 0.82,
-  exitDuration = 0.62,
-  margin = "-20% 0px -20% 0px",
-  once = false,
+  duration = 1.2,
+  viewportAmount = 0.2,
   className,
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const viewportOptions = {
-    amount: "some",
-    margin,
-    once,
-  } as Parameters<typeof useInView>[1];
-  const isInView = useInView(ref, viewportOptions);
   const shouldReduceMotion = useReducedMotion();
+  const viewportMargin =
+    viewportAmount === 0.2
+      ? defaultViewportMargin
+      : `${viewportAmount * -100}% 0px ${viewportAmount * -100}% 0px`;
   const offset = variantOffsets[variant];
-
-  const initialHidden = shouldReduceMotion
-    ? { opacity: 1, x: 0, y: 0, scale: 1 }
-    : {
-        opacity: 0,
-        x: offset.x,
-        y: offset.y,
-        scale: offset.scale,
-      };
-
-  const exitHidden = shouldReduceMotion
-    ? { opacity: 1, x: 0, y: 0, scale: 1 }
-    : { opacity: 0, x: 0, y: 0, scale: 1 };
-  const visible = { opacity: 1, x: 0, y: 0, scale: 1 };
+  const revealClassName = className
+    ? `motion-reveal ${className}`
+    : "motion-reveal";
+  const revealStyle: RevealStyle = {
+    "--motion-reveal-x": `${offset.x}px`,
+    "--motion-reveal-y": `${offset.y}px`,
+    "--motion-reveal-scale": offset.scale,
+    backfaceVisibility: "hidden",
+  };
 
   return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={initialHidden}
-      animate={isInView ? visible : exitHidden}
+    <m.div
+      className={revealClassName}
+      custom={offset}
+      initial={shouldReduceMotion ? "visible" : "hidden"}
+      variants={revealVariants}
+      whileInView="visible"
+      viewport={{ once: true, amount: "some", margin: viewportMargin }}
       transition={{
-        duration: shouldReduceMotion ? 0 : isInView ? duration : exitDuration,
-        delay: shouldReduceMotion || !isInView ? 0 : delay,
+        duration: shouldReduceMotion ? 0 : duration,
+        delay: shouldReduceMotion ? 0 : delay,
         ease: [0.16, 1, 0.3, 1],
       }}
-      style={{
-        backfaceVisibility: "hidden",
-        willChange: shouldReduceMotion ? undefined : "opacity, transform",
-      }}
+      style={revealStyle}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
