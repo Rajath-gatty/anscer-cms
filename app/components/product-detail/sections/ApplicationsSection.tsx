@@ -34,7 +34,7 @@ export function ApplicationsSection({ data }: { data: ProductDetailData }) {
             </p>
           </div>
           <div className="mt-8 grid gap-5 lg:grid-cols-[0.55fr_0.45fr]">
-            <article className="relative aspect-[1.43] overflow-hidden rounded-[12px] bg-[#011f40] text-white">
+            <article className="relative aspect-[1.43] overflow-hidden rounded-[12px] bg-[#011f40] text-white hidden md:block">
               <Image
                 key={active?.image}
                 src={`${imagePath}${active?.image ?? data.overviewImage ?? data.heroImage}`}
