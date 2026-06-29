@@ -1,7 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
   Code,
   Expand,
@@ -9,7 +8,6 @@ import {
   Gauge,
   Layers,
   LayoutGrid,
-  MousePointerClick,
   Network,
   PlugZap,
   ShieldCheck,
@@ -24,6 +22,7 @@ import { ScrollReveal } from "../components/home/ScrollReveal";
 import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
 import { AnalyticsSection } from "./AnalyticsSection";
 import { InteractiveWorkflow } from "./InteractiveWorkflow";
+import { SoftwareSectionReveal } from "./SoftwareSectionReveal";
 import { SoftwareTabs } from "./SoftwareTabs";
 import { TabbedCapabilities } from "./TabbedCapabilities";
 
@@ -175,71 +174,97 @@ const processBenefitCards = [
 export default function SoftwareSolutionsPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
-      <SoftwareHero />
+      <SoftwareSectionReveal>
+        <SoftwareHero />
+      </SoftwareSectionReveal>
       <SoftwareTabs />
-      <FleetManagementSection />
-      <TabbedCapabilities
-        eyebrow="Key Capabilities"
-        title="Core Fleet Management Capabilities"
-        items={fleetCapabilities}
-        pale={true}
-        variant="accordion"
-      />
-      <BenefitsSection
-        eyebrow="Benefits"
-        title={
-          <>
-            Benefits of Intelligent <br /> Fleet Management
-          </>
-        }
-        fleetMap
-        cards={fleetBenefits.map((benefit) => benefit.title)}
-      />
-      <ProductModule
-        id="business-application"
-        index="02"
-        title="Business Application"
-        intro="Transform operational workflows into structured, automated processes that seamlessly integrate with robotic operations."
-        image="Frame-1321317433.jpg"
-        body="The ANSCER Business Application Layer bridges operational requirements and robotic execution, translating business processes into executable robotic workflows. Built on a library of configurable, industry-specific applications, it enables operators to interact through familiar business actions while automatically managing workflow execution and robot coordination."
-        chipsTitle="Supported Industries"
-        chips={[
-          "Electrical & Electronics",
-          "Automotive",
-          "Textile",
-          "Warehousing & 3PL",
-          "Pharmaceuticals",
-        ]}
-      />
-      <TabbedCapabilities
-        eyebrow="Key Capabilities"
-        title="Core Business Application Capabilities"
-        items={businessCapabilities}
-        pale
-        variant="cards"
-      />
-      <BusinessBenefitsSection />
-      <ProductModule
-        id="process-flow-manager"
-        index="03"
-        title="Process Flow Manager"
-        intro="Build, configure, and modify robot workflows using a visual drag-and-drop interface without writing code."
-        image="1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg"
-        body="The Process Flow Manager enables users to create, configure, and modify operational workflows for different business use cases within a facility. Designed for industries such as electrical and electronics, textiles, industrial automation, warehousing, and 3PL, the platform helps standardize and automate repetitive material handling operations across facilities."
-        chipsTitle="Key Features"
-        chips={[
-          "Drag & Drop Configuration",
-          "No-Code Logic Design",
-          "Visual Workflow Builder",
-          "Multi-Robot Coordination",
-        ]}
-      />
-      <InteractiveWorkflow />
-      <ProcessBenefitsSection />
-      <AnalyticsPlatformSection />
+      <SoftwareSectionReveal>
+        <FleetManagementSection />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <TabbedCapabilities
+          eyebrow="Key Capabilities"
+          title="Core Fleet Management Capabilities"
+          items={fleetCapabilities}
+          pale={true}
+          variant="accordion"
+        />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <BenefitsSection
+          eyebrow="Benefits"
+          title={
+            <>
+              Benefits of Intelligent <br /> Fleet Management
+            </>
+          }
+          fleetMap
+          cards={fleetBenefits.map((benefit) => benefit.title)}
+        />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <ProductModule
+          id="business-application"
+          index="02"
+          title="Business Application"
+          intro="Transform operational workflows into structured, automated processes that seamlessly integrate with robotic operations."
+          image="Frame-1321317433.jpg"
+          body="The ANSCER Business Application Layer bridges operational requirements and robotic execution, translating business processes into executable robotic workflows. Built on a library of configurable, industry-specific applications, it enables operators to interact through familiar business actions while automatically managing workflow execution and robot coordination."
+          chipsTitle="Supported Industries"
+          chips={[
+            "Electrical & Electronics",
+            "Automotive",
+            "Textile",
+            "Warehousing & 3PL",
+            "Pharmaceuticals",
+          ]}
+        />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <TabbedCapabilities
+          eyebrow="Key Capabilities"
+          title="Core Business Application Capabilities"
+          items={businessCapabilities}
+          pale
+          variant="cards"
+        />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <BusinessBenefitsSection />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <ProductModule
+          id="process-flow-manager"
+          index="03"
+          title="Process Flow Manager"
+          intro="Build, configure, and modify robot workflows using a visual drag-and-drop interface without writing code."
+          image="1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg"
+          body="The Process Flow Manager enables users to create, configure, and modify operational workflows for different business use cases within a facility. Designed for industries such as electrical and electronics, textiles, industrial automation, warehousing, and 3PL, the platform helps standardize and automate repetitive material handling operations across facilities."
+          chipsTitle="Key Features"
+          chips={[
+            "Drag & Drop Configuration",
+            "No-Code Logic Design",
+            "Visual Workflow Builder",
+            "Multi-Robot Coordination",
+          ]}
+        />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <InteractiveWorkflow />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <ProcessBenefitsSection />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <AnalyticsPlatformSection />
+      </SoftwareSectionReveal>
       <AnalyticsSection />
-      <AnalyticsBenefitsSection />
-      <SoftwareCta />
+      <SoftwareSectionReveal>
+        <AnalyticsBenefitsSection />
+      </SoftwareSectionReveal>
+      <SoftwareSectionReveal>
+        <SoftwareCta />
+      </SoftwareSectionReveal>
     </main>
   );
 }
