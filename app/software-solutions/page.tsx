@@ -1,8 +1,31 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Code,
+  Expand,
+  ExternalLink,
+  Gauge,
+  Layers,
+  LayoutGrid,
+  MousePointerClick,
+  Network,
+  PlugZap,
+  ShieldCheck,
+  TrendingUp,
+  Unplug,
+  UserCircle2,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 import { imagePath } from "../components/home/assets";
+import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
+import { AnalyticsSection } from "./AnalyticsSection";
+import { InteractiveWorkflow } from "./InteractiveWorkflow";
+import { SoftwareTabs } from "./SoftwareTabs";
+import { TabbedCapabilities } from "./TabbedCapabilities";
 
 export const metadata: Metadata = {
   title: "Software Solutions | ANSCER Robotics",
@@ -10,12 +33,50 @@ export const metadata: Metadata = {
     "ANSCER software transforms autonomous mobile robots into synchronized, facility-wide operations.",
 };
 
-const tabs = [
-  ["Fleet Management Software", "fleet-management"],
-  ["Business Application", "business-application"],
-  ["Process Flow Manager", "process-flow-manager"],
-  ["Analytics", "analytics-platform"],
-] as const;
+const fleetBenefits: {
+  title: string;
+  copy: string;
+  icon: LucideIcon;
+  isActive?: boolean;
+  position: string;
+}[] = [
+  {
+    title: "Centralized Fleet Control",
+    copy: "Manage multiple robots and workflows from a single unified platform.",
+    icon: Network,
+    position: "left-[0%] top-[89px]",
+  },
+  {
+    title: "Scalable Automation",
+    copy: "Easily expand robot fleets and operational workflows as facility requirements grow.",
+    icon: Expand,
+    position: "left-[33.08%] top-[179px]",
+  },
+  {
+    title: "Reduced Downtime",
+    copy: "Automated charging management and intelligent task scheduling help maintain continuous robot availability.",
+    icon: PlugZap,
+    position: "left-[64.62%] top-[89px]",
+  },
+  {
+    title: "Enhanced Safety",
+    copy: "Controlled robot traffic flow reduces congestion and improves operational safety within shared environments.",
+    icon: ShieldCheck,
+    position: "left-[0%] top-[370px]",
+  },
+  {
+    title: "User-Friendly Operation",
+    copy: "The intuitive web-based interface simplifies fleet management for operators and supervisors without requiring advanced technical expertise.",
+    icon: LayoutGrid,
+    position: "left-[32.31%] top-[456px]",
+  },
+  {
+    title: "Improved Operational Efficiency",
+    copy: "Optimize robot utilization and availability through automated opportunistic charging and intelligent task scheduling.",
+    icon: Gauge,
+    position: "left-[64.62%] top-[376px]",
+  },
+];
 
 const fleetCapabilities = [
   {
@@ -78,69 +139,28 @@ const businessCapabilities = [
   },
 ];
 
-const workflowSteps = [
-  {
-    title: "Move",
-    copy: "Define robot movement between source, destination, staging, and storage points.",
-    image: "img-1.png",
-  },
-  {
-    title: "Pick",
-    copy: "Configure pickup logic for carts, pallets, bins, or process-specific material carriers.",
-    image: "img-2.png",
-  },
-  {
-    title: "Wait",
-    copy: "Add conditional waiting, operator checkpoints, and synchronization points.",
-    image: "img-3.png",
-  },
-  {
-    title: "Drop",
-    copy: "Complete workflows with drop-off logic, confirmations, and downstream task triggers.",
-    image: "img-4.png",
-  },
-];
-
-const analyticsCapabilities = [
-  ["Utilization Reports", "Track robot usage, mission execution, idle time, charging, and route activity across operations.", "0a650615d6addc613e5e73d23c9a69411bf9f542.png.jpg"],
-  ["KPI Dashboards", "Access centralized dashboards that display critical operational metrics and performance indicators in real time.", "Group-1321315891.jpg"],
-  ["Request Overview Analytics", "Analyze all mission and transport requests generated across stations, production areas, and storage locations.", "Group-1321315892.jpg"],
-  ["Heatmaps", "Visualize operational incidents and traffic patterns across facility maps using intelligent heatmap analytics.", "Group-1321315893.jpg"],
-  ["Predictive Alerts", "Receive proactive notifications related to robot performance, traffic congestion, operational anomalies, and system issues.", "Group-1321315894.jpg"],
-  ["Historical Data Filtering", "Filter analytics and operational reports by date range, robots, locations, missions, or event types.", "Group-1321315895.jpg"],
-] as const;
-
 export default function SoftwareSolutionsPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
       <SoftwareHero />
       <SoftwareTabs />
-      <ProductModule
-        id="fleet-management"
-        index="01"
-        title="Fleet Management System"
-        intro="Centralized intelligence for monitoring, controlling, and optimizing every robot operation from a single platform."
-        image="Frame-427322849-2.jpg"
-        body="The ANSCER Fleet Management System (FMS) is the intelligent orchestration platform that coordinates, monitors, and manages the operations of multiple autonomous mobile robots (AMRs) within a facility. Acting as the central control layer for robotic operations, the ANSCER FMS enables seamless automation of material movement workflows across manufacturing plants, warehouses, and intralogistics environments."
-        chips={["Centralized Visibility and Control", "Synchronized Fleet Operations"]}
-      />
-      <CapabilitiesSection
+      <FleetManagementSection />
+      <TabbedCapabilities
         eyebrow="Key Capabilities"
         title="Core Fleet Management Capabilities"
         items={fleetCapabilities}
+        variant="accordion"
       />
       <BenefitsSection
         eyebrow="Benefits"
-        title="Benefits of Intelligent Fleet Management"
+        title={
+          <>
+            Benefits of Intelligent <br /> Fleet Management
+          </>
+        }
         copy="From tugging and lifting to robotic arm integration and conveyor automation, our AMRs are designed to streamline operations, enhance safety, and maximize efficiency."
-        cards={[
-          "Centralized Fleet Control",
-          "Scalable Automation",
-          "Reduced Downtime",
-          "Enhanced Safety",
-          "User-Friendly Operation",
-          "Improved Operational Efficiency",
-        ]}
+        fleetMap
+        cards={fleetBenefits.map((benefit) => benefit.title)}
       />
       <ProductModule
         id="business-application"
@@ -149,6 +169,7 @@ export default function SoftwareSolutionsPage() {
         intro="Transform operational workflows into structured, automated processes that seamlessly integrate with robotic operations."
         image="Frame-1321317433.jpg"
         body="The ANSCER Business Application Layer bridges operational requirements and robotic execution, translating business processes into executable robotic workflows. Built on a library of configurable, industry-specific applications, it enables operators to interact through familiar business actions while automatically managing workflow execution and robot coordination."
+        chipsTitle="Supported Industries"
         chips={[
           "Electrical & Electronics",
           "Automotive",
@@ -157,24 +178,14 @@ export default function SoftwareSolutionsPage() {
           "Pharmaceuticals",
         ]}
       />
-      <CapabilitiesSection
+      <TabbedCapabilities
         eyebrow="Key Capabilities"
         title="Core Business Application Capabilities"
         items={businessCapabilities}
         pale
+        variant="cards"
       />
-      <BenefitsSection
-        eyebrow="Benefits"
-        title="Turning Industry Workflows into Autonomous Operations"
-        image="1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg"
-        cards={[
-          "Operational Abstraction",
-          "Scalability",
-          "Flexibility",
-          "Reduced Engineering Effort",
-          "User-Centric Design",
-        ]}
-      />
+      <BusinessBenefitsSection />
       <ProductModule
         id="process-flow-manager"
         index="03"
@@ -182,6 +193,7 @@ export default function SoftwareSolutionsPage() {
         intro="Build, configure, and modify robot workflows using a visual drag-and-drop interface without writing code."
         image="1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg"
         body="The Process Flow Manager enables users to create, configure, and modify operational workflows for different business use cases within a facility. Designed for industries such as electrical and electronics, textiles, industrial automation, warehousing, and 3PL, the platform helps standardize and automate repetitive material handling operations across facilities."
+        chipsTitle="Key Features"
         chips={[
           "Drag & Drop Configuration",
           "No-Code Logic Design",
@@ -189,47 +201,97 @@ export default function SoftwareSolutionsPage() {
           "Multi-Robot Coordination",
         ]}
       />
-      <WorkflowSection />
-      <BenefitsSection
-        eyebrow="Benefits"
-        title="Designed For Flexible And Scalable Automation"
-        cards={[
-          "Flexible Workflow Configuration",
-          "Industry-Specific Adaptability",
-          "Simplified Automation",
-          "Scalable Operations",
-          "Reduced Operational Dependency",
-        ]}
-        pale
-      />
-      <ProductModule
-        id="analytics-platform"
-        index="04"
-        title="Analytics Platform"
-        intro="Turn Operational Data Into Actionable Intelligence"
-        image="Frame-1321317433.jpg"
-        body="ANSCER analytics provides comprehensive operational insights that support data-driven decision-making, KPI monitoring, bottleneck identification, and proactive improvement across automated workflows."
-        chips={["KPI Monitoring", "Bottleneck Insights", "Performance Reports"]}
-      />
+      <InteractiveWorkflow />
+      <ProcessBenefitsSection />
+      <AnalyticsPlatformSection />
       <AnalyticsSection />
-      <BenefitsSection
-        eyebrow="Benefits"
-        title="Turning Operational Data Into Actionable Insights"
-        image="783ae8688601ff1806be870305aedfcf9b385868.jpg"
-        cards={[
-          "Improved Operational Visibility",
-          "Data-Driven Optimization",
-          "Increased Fleet Efficiency",
-          "Faster Issue Identification",
-          "Enhanced Decision Making",
-          "Scalable Performance Monitoring",
-          "Continuous Improvement",
-        ]}
-      />
+      <AnalyticsBenefitsSection />
       <SoftwareCta />
     </main>
   );
 }
+
+function FleetManagementSection() {
+  return (
+    <section
+      id="fleet-management"
+      className="scroll-mt-32 bg-[#fafafa] py-14 md:py-18"
+    >
+      <div className="site-container">
+        <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
+          <span className="text-[28px]">01 </span>
+          <span className="text-[16px]">/ 04</span>
+        </p>
+        <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
+          Fleet Management System
+        </h2>
+        <p className="mt-4 max-w-[648px] text-[18px] leading-6 text-[#333333]">
+          Centralized intelligence for monitoring, controlling, and optimizing
+          every robot operation from a single platform.
+        </p>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[0.52fr_0.48fr] lg:items-start">
+          <div className="relative min-h-80 overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)] lg:min-h-107.5">
+            <Image
+              src={`${imagePath}Frame-427322849-2.jpg`}
+              alt="ANSCER fleet management system in operation"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 720px"
+              className="object-cover"
+            />
+          </div>
+          <div className="pt-1 lg:pt-2">
+            <p className="max-w-170 text-base leading-6 text-[#333333] md:text-[16px] md:leading-6">
+              The ANSCER Fleet Management System (FMS) is the intelligent
+              orchestration platform that coordinates, monitors, and manages the
+              operations of multiple autonomous mobile robots (AMRs) within a
+              facility. Acting as the central control layer for robotic
+              operations, the ANSCER FMS enables seamless automation of material
+              movement workflows across manufacturing plants, warehouses, and
+              intralogistics environments.
+            </p>
+            <div className="mt-11 grid gap-x-8 gap-y-10 sm:grid-cols-2 sm:gap-y-12">
+              {fleetHighlights.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <article key={item.title} className="w-full">
+                    <span className="flex size-11 items-center justify-center rounded-[10px] bg-[#f3f6f9] text-[#011f40]">
+                      <Icon
+                        aria-hidden="true"
+                        className="size-4.5"
+                        strokeWidth={1.8}
+                      />
+                    </span>
+                    <h3 className="mt-4 text-[16px] font-semibold leading-snug text-[#011f40]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                      {item.copy}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const fleetHighlights = [
+  {
+    title: "Centralized Visibility and Control:",
+    copy: "Monitor and manage robot fleets through a unified platform that optimizes traffic flow, task execution, and robot availability.",
+    icon: Network,
+  },
+  {
+    title: "Synchronized Fleet Operations:",
+    copy: "Coordinate individual robot actions into facility-wide operations that enhance efficiency, safety, and productivity.",
+    icon: TrendingUp,
+  },
+] as const;
 
 function SoftwareHero() {
   return (
@@ -245,40 +307,26 @@ function SoftwareHero() {
       <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.58)_42%,rgba(0,0,0,0)_86%)]" />
       <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
         <div className="max-w-[807px]">
-          <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-white/85">
+          <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-brand-blue">
             Software solutions
           </p>
-          <h1 className="mt-4 max-w-[760px] text-[40px] font-extrabold leading-[1.12] text-white md:text-[60px] md:leading-[1.15]">
+          <h1 className="mt-4 max-w-[807px] text-[40px] font-bold leading-[1.12] text-white md:text-[60px] md:leading-[1.15]">
             Connect Robots, Workflows, and Operations in One Platform
           </h1>
-          <p className="mt-5 max-w-[680px] text-sm font-medium leading-[1.5] text-white/90 md:text-lg md:leading-[1.3]">
-            ANSCER&apos;s software suite transforms autonomous mobile robots into
-            synchronized, facility-wide operations - from real-time fleet control
-            to industry-specific workflow automation.
+          <p className="mt-5 max-w-[680px] text-[18px] font-medium leading-[1.3] text-[#fafafa]">
+            ANSCER&apos;s software suite transforms autonomous mobile robots
+            into synchronized, facility-wide operations - from real-time fleet
+            control to industry-specific workflow automation.
           </p>
           <Link
             href="mailto:sales@anscer.com"
-            className="mt-8 inline-flex h-11 items-center gap-4 rounded-[3px] bg-[#005ead] px-5 text-[12px] font-bold uppercase tracking-wide text-white"
+            className="mt-8 inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-brand-blue px-5 text-[14px] font-medium uppercase tracking-wide text-white"
           >
             Request demo <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </div>
       </div>
     </section>
-  );
-}
-
-function SoftwareTabs() {
-  return (
-    <nav className="sticky top-[60px] z-30 hidden border-b border-[#d6e0e8] bg-[#fafafa]/95 backdrop-blur lg:block">
-      <div className="site-container flex h-[58px] items-center justify-center gap-16 text-[13px] font-semibold text-[#3a3a3a]">
-        {tabs.map(([label, id]) => (
-          <a key={id} href={`#${id}`} className="transition hover:text-[#005ead]">
-            {label}
-          </a>
-        ))}
-      </div>
-    </nav>
   );
 }
 
@@ -290,6 +338,7 @@ function ProductModule({
   image,
   body,
   chips,
+  chipsTitle,
 }: {
   id: string;
   index: string;
@@ -298,72 +347,50 @@ function ProductModule({
   image: string;
   body: string;
   chips: string[];
+  chipsTitle?: string;
 }) {
   return (
     <section id={id} className="scroll-mt-32 bg-[#fafafa] py-14">
       <div className="site-container">
-        <p className="text-[18px] font-bold text-[#005ead]">
-          {index} <span className="text-[#011f40]/35">/ 04</span>
+        <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
+          <span className="text-[28px]">{index} </span>
+          <span className="text-[16px]">/ 04</span>
         </p>
-        <h2 className="mt-4 max-w-[720px] text-[32px] font-extrabold leading-tight md:text-4xl">
+        <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
           {title}
         </h2>
-        <p className="mt-4 max-w-[720px] text-base leading-6 text-[#3a3a3a]">
+        <p className="mt-4 max-w-[648px] text-[16px] leading-7 text-[#333333]">
           {intro}
         </p>
         <div className="mt-9 grid gap-8 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
           <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef]">
-            <Image src={`${imagePath}${image}`} alt="" fill sizes="680px" className="object-cover" />
+            <Image
+              src={`${imagePath}${image}`}
+              alt=""
+              fill
+              sizes="680px"
+              className="object-cover"
+            />
           </div>
           <div>
-            <p className="text-base leading-7 text-[#3a3a3a]">{body}</p>
-            <div className="mt-6 flex flex-wrap gap-2">
+            <p className="text-[16px] leading-7 text-[#333333]">{body}</p>
+            {chipsTitle && (
+              <p className="mb-4 mt-8 text-base font-medium text-[#333333]">
+                {chipsTitle}
+              </p>
+            )}
+            <div
+              className={`flex flex-wrap gap-2 ${chipsTitle ? "mt-0" : "mt-6"}`}
+            >
               {chips.map((chip) => (
-                <span key={chip} className="rounded-[4px] bg-[#e6ebf0] px-4 py-2 text-sm font-medium text-[#011f40]">
+                <span
+                  key={chip}
+                  className="rounded-[8px] bg-[#e6ebf0] px-5 py-[7px] text-sm font-normal text-[#333333]"
+                >
                   {chip}
                 </span>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CapabilitiesSection({
-  eyebrow,
-  title,
-  items,
-  pale = false,
-}: {
-  eyebrow: string;
-  title: string;
-  items: { title: string; copy: string; image: string }[];
-  pale?: boolean;
-}) {
-  return (
-    <section className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-14`}>
-      <div className="site-container">
-        <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">{eyebrow}</p>
-        <h2 className="mt-3 text-[30px] font-extrabold leading-tight md:text-4xl">{title}</h2>
-        <div className="mt-8 grid gap-6 lg:grid-cols-[0.46fr_0.54fr]">
-          <div className="space-y-3">
-            {items.map((item, index) => (
-              <details key={item.title} open={index === 0} className="group rounded-lg bg-white p-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[18px] font-bold text-[#005ead]">
-                  {item.title}
-                  <ChevronDown className="size-5 transition group-open:rotate-180" />
-                </summary>
-                <p className="mt-4 text-sm leading-6 text-[#3a3a3a] md:text-base">{item.copy}</p>
-                <div className="relative mt-4 min-h-[210px] overflow-hidden rounded-lg bg-[#dce7ef] lg:hidden">
-                  <Image src={`${imagePath}${item.image}`} alt="" fill sizes="100vw" className="object-cover" />
-                </div>
-              </details>
-            ))}
-          </div>
-          <div className="relative hidden min-h-[440px] overflow-hidden rounded-xl bg-white lg:block">
-            <Image src={`${imagePath}${items[0]?.image}`} alt="" fill sizes="720px" className="object-cover" />
           </div>
         </div>
       </div>
@@ -378,27 +405,73 @@ function BenefitsSection({
   cards,
   image,
   pale = false,
+  fleetMap = false,
 }: {
   eyebrow: string;
-  title: string;
+  title: React.ReactNode;
   copy?: string;
   cards: string[];
   image?: string;
   pale?: boolean;
+  fleetMap?: boolean;
 }) {
+  if (fleetMap) {
+    return (
+      <section className="bg-[#fafafa] py-14 md:py-20">
+        <div className="site-container">
+          <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+            {eyebrow}
+          </p>
+          <h2 className="mt-3 max-w-[760px] text-[28px] font-bold leading-tight sm:text-[30px] md:text-4xl">
+            {title}
+          </h2>
+          {copy ? (
+            <p className="mt-4 max-w-[690px] text-base leading-6 text-[#333333]">
+              {copy}
+            </p>
+          ) : null}
+          <FleetBenefitsMap />
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:hidden">
+            {fleetBenefits.map((benefit) => (
+              <FleetBenefitCard key={benefit.title} benefit={benefit} mobile />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-14`}>
       <div className="site-container">
-        <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">{eyebrow}</p>
-        <h2 className="mt-3 max-w-[720px] text-[30px] font-extrabold leading-tight md:text-4xl">{title}</h2>
-        {copy ? <p className="mt-4 max-w-[680px] text-base leading-6 text-[#3a3a3a]">{copy}</p> : null}
-        <div className={`mt-8 grid gap-5 ${image ? "lg:grid-cols-[0.58fr_0.42fr]" : ""}`}>
+        <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+          {eyebrow}
+        </p>
+        <h2 className="mt-3 max-w-[720px] text-[30px] font-bold leading-tight md:text-4xl">
+          {title}
+        </h2>
+        {copy ? (
+          <p className="mt-4 max-w-[680px] text-base leading-6 text-[#333333]">
+            {copy}
+          </p>
+        ) : null}
+        <div
+          className={`mt-8 grid gap-5 ${image ? "lg:grid-cols-[0.58fr_0.42fr]" : ""}`}
+        >
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {cards.map((card) => (
-              <article key={card} className="rounded-xl bg-white p-5 shadow-[0_12px_30px_rgba(1,31,64,.06)]">
-                <CheckCircle2 className="size-8 text-[#005ead]" strokeWidth={1.8} />
-                <h3 className="mt-5 text-lg font-bold text-[#005ead]">{card}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#3a3a3a]">
+              <article
+                key={card}
+                className="rounded-xl bg-white p-5 shadow-[0_12px_30px_rgba(1,31,64,.06)]"
+              >
+                <CheckCircle2
+                  className="size-8 text-[#005ead]"
+                  strokeWidth={1.8}
+                />
+                <h3 className="mt-5 text-lg font-bold text-[#005ead]">
+                  {card}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[#333333]">
                   {benefitCopy(card)}
                 </p>
               </article>
@@ -406,7 +479,13 @@ function BenefitsSection({
           </div>
           {image ? (
             <div className="relative min-h-[340px] overflow-hidden rounded-xl bg-[#dce7ef]">
-              <Image src={`${imagePath}${image}`} alt="" fill sizes="560px" className="object-cover" />
+              <Image
+                src={`${imagePath}${image}`}
+                alt=""
+                fill
+                sizes="560px"
+                className="object-cover"
+              />
             </div>
           ) : null}
         </div>
@@ -415,60 +494,266 @@ function BenefitsSection({
   );
 }
 
-function WorkflowSection() {
+function FleetBenefitsMap() {
+  const paths = [
+    {
+      id: "fleet-route-purple",
+      d: "M0 314.5H471.125V105H913.625V300H1479.62",
+      color: "#2600ff",
+    },
+    {
+      id: "fleet-route-green",
+      d: "M2 612H445.625V410.5H897.125V637.5H1505.12",
+      color: "#3cff00",
+    },
+    {
+      id: "fleet-route-red",
+      d: "M907.125 699.818V345H1379.12V0",
+      color: "#ff0000",
+    },
+    {
+      id: "fleet-route-blue",
+      d: "M1401.62 22V318H906.125V119.5H462.125V712",
+      color: "#00b3ff",
+    },
+  ];
+
+  const TOTAL_DUR = 22;
+  const robotsAnim = [
+    { id: "r1", pathId: "fleet-route-purple", start: 0, dur: 7.8 },
+    { id: "r2", pathId: "fleet-route-green", start: 1, dur: 7.8 },
+    { id: "r3", pathId: "fleet-route-red", start: 8.2, dur: 6.2 },
+    { id: "r4", pathId: "fleet-route-blue", start: 14, dur: 7.6 },
+  ];
+
   return (
-    <section className="bg-[#fafafa] py-14">
-      <div className="site-container">
-        <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">Workflow Configuration</p>
-        <div className="mt-3 grid gap-6 lg:grid-cols-[0.48fr_0.52fr] lg:items-end">
-          <h2 className="text-[30px] font-extrabold leading-tight md:text-4xl">Build Robot WorkflowsWithout Writing Code</h2>
-          <p className="text-base leading-6 text-[#3a3a3a]">
-            The Process Flow Manager enables users to create robotic workflows through a drag-and-drop, block-based interface, allowing teams to automate processes without complex programming.
-          </p>
-        </div>
-        <div className="mt-9 grid gap-8 lg:grid-cols-[0.42fr_0.58fr]">
-          <div className="space-y-4">
-            {workflowSteps.map((step, index) => (
-              <article key={step.title} className={`rounded-xl p-5 ${index === 0 ? "bg-[#005ead] text-white" : "bg-[#e6ebf0] text-[#011f40]"}`}>
-                <p className="text-xs font-bold uppercase tracking-wide opacity-70">Step {index + 1}</p>
-                <h3 className="mt-2 text-xl font-extrabold">{step.title}</h3>
-                <p className="mt-2 text-sm leading-6 opacity-85">{step.copy}</p>
-              </article>
-            ))}
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {workflowSteps.map((step) => (
-              <div key={step.image} className="relative min-h-[210px] overflow-hidden rounded-xl bg-white">
-                <Image src={`${imagePath}${step.image}`} alt="" fill sizes="360px" className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
+    <div className="relative mt-9 hidden min-h-[714px] overflow-hidden bg-[#efefef] lg:block">
+      <div className="absolute left-1/2 top-0 h-2 w-60 -translate-x-1/2 bg-[#bfbfbf]" />
+      <Image
+        src={`${imagePath}benefirs-svg-element-2.svg`}
+        alt=""
+        width={173}
+        height={38}
+        className="absolute bottom-5 left-0 w-[168px]"
+      />
+      <Image
+        src={`${imagePath}benefits-svg-element.svg`}
+        alt=""
+        width={76}
+        height={173}
+        className="absolute bottom-[76px] right-8 w-[58px] xl:w-[76px]"
+      />
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-[-70px] top-0 z-20 h-full w-[calc(100%+140px)]"
+        fill="none"
+        preserveAspectRatio="none"
+        viewBox="0 0 1506 714"
+      >
+        <defs>
+          {paths.map((path) => (
+            <marker
+              key={`${path.id}-arrow`}
+              id={`${path.id}-arrow`}
+              markerHeight="14"
+              markerWidth="14"
+              orient="auto"
+              refX="10"
+              refY="4"
+              viewBox="0 0 12 8"
+            >
+              <path
+                d="M0 0L12 4L0 8"
+                fill="none"
+                stroke={path.color}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </marker>
+          ))}
+        </defs>
+        {paths.map((path) => (
+          <path
+            key={path.id}
+            id={path.id}
+            d={path.d}
+            stroke={path.color}
+            strokeWidth="1.7"
+            vectorEffect="non-scaling-stroke"
+            markerEnd={`url(#${path.id}-arrow)`}
+          />
+        ))}
+        <g className="motion-reduce:hidden">
+          {robotsAnim.map((robot) => {
+            const t1 = robot.start / TOTAL_DUR;
+            const t2 = (robot.start + robot.dur) / TOTAL_DUR;
+
+            let keyTimes = "",
+              keyPoints = "",
+              opKeyTimes = "",
+              opValues = "";
+
+            if (robot.start === 0) {
+              keyTimes = `0; ${t2.toFixed(4)}; 1`;
+              keyPoints = `0; 1; 1`;
+              opKeyTimes = `0; ${Math.max(0, t2 - 0.02).toFixed(4)}; ${t2.toFixed(4)}; 1`;
+              opValues = `1; 1; 0; 0`;
+            } else if (robot.start + robot.dur === TOTAL_DUR) {
+              keyTimes = `0; ${t1.toFixed(4)}; 1`;
+              keyPoints = `0; 0; 1`;
+              opKeyTimes = `0; ${Math.max(0, t1 - 0.01).toFixed(4)}; ${t1.toFixed(4)}; 0.98; 1`;
+              opValues = `0; 0; 1; 1; 0`;
+            } else {
+              keyTimes = `0; ${t1.toFixed(4)}; ${t2.toFixed(4)}; 1`;
+              keyPoints = `0; 0; 1; 1`;
+              opKeyTimes = `0; ${Math.max(0, t1 - 0.01).toFixed(4)}; ${t1.toFixed(4)}; ${Math.max(0, t2 - 0.02).toFixed(4)}; ${t2.toFixed(4)}; 1`;
+              opValues = `0; 0; 1; 1; 0; 0`;
+            }
+
+            return (
+              <g key={robot.id} opacity="0">
+                <animateMotion
+                  dur={`${TOTAL_DUR}s`}
+                  keyPoints={keyPoints}
+                  keyTimes={keyTimes}
+                  repeatCount="indefinite"
+                  rotate="auto"
+                >
+                  <mpath href={`#${robot.pathId}`} />
+                </animateMotion>
+                <animate
+                  attributeName="opacity"
+                  dur={`${TOTAL_DUR}s`}
+                  keyTimes={opKeyTimes}
+                  repeatCount="indefinite"
+                  values={opValues}
+                />
+                <image
+                  href={`${imagePath}robot.png`}
+                  width="52"
+                  height="52"
+                  x="-26"
+                  y="-26"
+                  transform="rotate(90)"
+                />
+              </g>
+            );
+          })}
+        </g>
+      </svg>
+      <div className="relative z-10 h-[714px]">
+        {fleetBenefits.map((benefit) => (
+          <FleetBenefitCard key={benefit.title} benefit={benefit} />
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
 
-function AnalyticsSection() {
+function FleetBenefitCard({
+  benefit,
+  mobile = false,
+}: {
+  benefit: (typeof fleetBenefits)[number];
+  mobile?: boolean;
+}) {
+  const Icon = benefit.icon;
+  const activeStyles = benefit.isActive
+    ? mobile
+      ? "shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
+      : "shadow-[10px_10px_0px_10px_rgba(0,94,173,0.2)]"
+    : mobile
+      ? "shadow-[6px_6px_0px_6px_rgba(0,0,0,0.2)]"
+      : "shadow-[10px_10px_0px_10px_rgba(0,0,0,0.2)]";
+  const positionStyles = mobile
+    ? ""
+    : `absolute ${benefit.position} w-[min(300px,23.08vw)]`;
+
   return (
-    <section className="bg-[#e6ebf0] py-14">
+    <article
+      className={`group bg-white p-6 transition duration-300 hover:shadow-[10px_10px_0px_10px_rgba(0,94,173,0.2)] ${activeStyles} ${positionStyles} ${
+        mobile
+          ? "min-h-[204px] hover:shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
+          : "min-h-[186px]"
+      }`}
+    >
+      <span
+        className={`flex size-10 items-center justify-center rounded-[8px] transition ${
+          benefit.isActive
+            ? "bg-[#005ead] text-white"
+            : "bg-[#011f40]/5 text-[#011f40] group-hover:bg-[#005ead] group-hover:text-white"
+        }`}
+      >
+        <Icon aria-hidden="true" className="size-5" strokeWidth={1.7} />
+      </span>
+      <h3 className="mt-3 text-[16px] font-semibold leading-snug tracking-[0.04em] text-black">
+        {benefit.title}
+      </h3>
+      <p className="mt-2 text-[14px] leading-[1.35] tracking-[0.04em] text-[#515151]">
+        {benefit.copy}
+      </p>
+    </article>
+  );
+}
+
+function AnalyticsPlatformSection() {
+  return (
+    <section
+      id="analytics-platform"
+      className="scroll-mt-32 bg-[#fafafa] py-14"
+    >
       <div className="site-container">
-        <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#005ead]">Key Capabilities</p>
-        <h2 className="mt-3 max-w-[720px] text-[30px] font-extrabold leading-tight md:text-4xl">
-          Turning Industry Workflows into Autonomous Operations
-        </h2>
-        <div className="mt-10 space-y-12">
-          {analyticsCapabilities.map(([title, copy, image], index) => (
-            <article key={title} className={`grid gap-8 lg:grid-cols-2 lg:items-center ${index % 2 ? "" : "lg:[&>*:first-child]:order-2"}`}>
-              <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-white p-4">
-                <Image src={`${imagePath}${image}`} alt="" fill sizes="650px" className="object-contain p-4" />
-              </div>
-              <div className="max-w-[520px]">
-                <h3 className="text-2xl font-extrabold text-[#011f40]">{title}</h3>
-                <p className="mt-4 text-base leading-7 text-[#3a3a3a]">{copy}</p>
-              </div>
-            </article>
-          ))}
+        <div className="grid gap-10 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
+          <div>
+            <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
+              <span className="text-[28px]">04 </span>
+              <span className="text-[16px]">/ 04</span>
+            </p>
+            <h2 className="mt-4 text-[32px] font-bold leading-tight text-[#011f40] md:text-4xl">
+              Analytics Platform
+            </h2>
+            <p className="mt-4 text-[16px] leading-7 text-[#333333]">
+              Turn Operational Data Into Actionable Intelligence
+            </p>
+
+            {/* Inline Image for Mobile (< lg) */}
+            <div className="relative mt-8 min-h-[260px] sm:min-h-[360px] w-full overflow-hidden rounded-2xl bg-[#dce7ef] shadow-md lg:hidden">
+              <Image
+                src={`${imagePath}Frame-1321317433.jpg`}
+                alt="ANSCER analytics platform in use"
+                fill
+                sizes="(max-width: 1024px) 100vw, 640px"
+                className="object-cover"
+              />
+            </div>
+
+            <p className="mt-8 text-base leading-6 text-[#333333]">
+              The ANSCER Analytics Platform provides comprehensive operational
+              insights into robot fleets, missions, and facility workflows.
+              Designed to support data-driven decision-making, the Analytics
+              layer transforms real-time operational data into actionable
+              intelligence that helps optimize robot performance, improve
+              workflow efficiency, and enhance overall facility productivity.
+            </p>
+            <p className="mt-5 text-base leading-6 text-[#333333]">
+              By continuously collecting and analyzing data from robot
+              operations, mission requests, traffic flow, and system events, the
+              platform enables users to monitor key performance indicators,
+              identify operational bottlenecks, and proactively improve
+              automation performance across facilities.
+            </p>
+          </div>
+
+          {/* Right Column Image for Desktop (>= lg) */}
+          <div className="relative hidden lg:block min-h-[420px] overflow-hidden rounded-xl bg-[#dce7ef]">
+            <Image
+              src={`${imagePath}Frame-1321317433.jpg`}
+              alt="ANSCER analytics platform in use"
+              fill
+              sizes="(max-width: 1024px) 100vw, 640px"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -477,17 +762,26 @@ function AnalyticsSection() {
 
 function SoftwareCta() {
   return (
-    <section className="relative overflow-hidden bg-[#005ead] py-20 text-white">
-      <Image src={`${imagePath}Frame-1321317289.jpg`} alt="" fill sizes="100vw" className="object-cover opacity-45" />
-      <div className="absolute inset-0 bg-[#005ead]/76" />
+    <section className="relative overflow-hidden bg-[#005ead] py-14 text-white">
+      <Image
+        src={`${imagePath}Frame-1321317289.jpg`}
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover opacity-45"
+      />
+      <div className="absolute inset-0" />
       <div className="site-container relative z-10">
-        <h2 className="max-w-[760px] text-[40px] font-extrabold leading-[1.08] md:text-[60px]">
+        <h2 className="max-w-[760px] text-[40px] font-semibold leading-[1.08] md:text-[60px]">
           Experience automation that understands your operations.
         </h2>
-        <p className="mt-5 max-w-[560px] text-base leading-7 text-white/88">
+        <p className="mt-5 max-w-[560px] text-[18px] font-medium leading-8 text-white">
           Book your demo now and experience ANSCER in action.
         </p>
-        <Link href="mailto:sales@anscer.com" className="mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-white px-5 text-xs font-bold uppercase tracking-wide text-[#005ead]">
+        <Link
+          href="mailto:sales@anscer.com"
+          className="mt-8 inline-flex h-11 items-center gap-3 rounded-sm border border-white bg-transparent px-6 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-white/10"
+        >
           Book a demo <ArrowRight aria-hidden="true" className="size-4" />
         </Link>
       </div>
@@ -497,30 +791,258 @@ function SoftwareCta() {
 
 function benefitCopy(title: string) {
   const copy: Record<string, string> = {
-    "Centralized Fleet Control": "Manage multiple robots and workflows from a single unified platform.",
-    "Scalable Automation": "Easily expand robot fleets and operational workflows as facility requirements grow.",
-    "Reduced Downtime": "Automated charging management and intelligent task scheduling help maintain robot availability.",
-    "Enhanced Safety": "Controlled robot traffic flow reduces congestion and improves operational safety.",
-    "User-Friendly Operation": "Browser-based controls make robot operations easier for non-technical teams.",
-    "Improved Operational Efficiency": "Optimize task flow, routing, availability, and throughput across your facility.",
-    "Operational Abstraction": "Separate business logic from robot control logic.",
-    "Scalability": "Support multi-industry deployments and growing automation footprints.",
-    "Flexibility": "Use prebuilt, low-code, or integrated implementation approaches.",
-    "Reduced Engineering Effort": "Minimize the need for custom coding and long engineering cycles.",
+    "Centralized Fleet Control":
+      "Manage multiple robots and workflows from a single unified platform.",
+    "Scalable Automation":
+      "Easily expand robot fleets and operational workflows as facility requirements grow.",
+    "Reduced Downtime":
+      "Automated charging management and intelligent task scheduling help maintain robot availability.",
+    "Enhanced Safety":
+      "Controlled robot traffic flow reduces congestion and improves operational safety.",
+    "User-Friendly Operation":
+      "Browser-based controls make robot operations easier for non-technical teams.",
+    "Improved Operational Efficiency":
+      "Optimize task flow, routing, availability, and throughput across your facility.",
+    "Operational Abstraction":
+      "Separate business logic from robot control logic.",
+    Scalability:
+      "Support multi-industry deployments and growing automation footprints.",
+    Flexibility:
+      "Use prebuilt, low-code, or integrated implementation approaches.",
+    "Reduced Engineering Effort":
+      "Minimize the need for custom coding and long engineering cycles.",
     "User-Centric Design": "Simplify interaction for non-technical operators.",
-    "Flexible Workflow Configuration": "Create and adjust operational flows as requirements change.",
-    "Industry-Specific Adaptability": "Configure workflows for the way each facility actually works.",
-    "Simplified Automation": "Turn repeatable operations into clear robot instructions.",
-    "Scalable Operations": "Extend workflows across robots, lines, sites, and use cases.",
-    "Reduced Operational Dependency": "Lower dependence on manual coordination and custom engineering.",
-    "Improved Operational Visibility": "Gain real-time and historical insight into robot operations.",
-    "Data-Driven Optimization": "Use analytics to identify bottlenecks and improve traffic flow.",
-    "Increased Fleet Efficiency": "Monitor utilization rates and mission trends to maximize productivity.",
-    "Faster Issue Identification": "Heatmaps and predictive alerts help detect recurring system events.",
-    "Enhanced Decision Making": "KPI dashboards support informed operational planning.",
-    "Scalable Performance Monitoring": "Analyze performance across single or multi-site deployments.",
-    "Continuous Improvement": "Use historical data to refine workflows and improve reliability.",
+    "Flexible Workflow Configuration":
+      "Create and adjust operational flows as requirements change.",
+    "Industry-Specific Adaptability":
+      "Configure workflows for the way each facility actually works.",
+    "Simplified Automation":
+      "Turn repeatable operations into clear robot instructions.",
+    "Scalable Operations":
+      "Extend workflows across robots, lines, sites, and use cases.",
+    "Reduced Operational Dependency":
+      "Lower dependence on manual coordination and custom engineering.",
+    "Improved Operational Visibility":
+      "Gain real-time and historical insight into robot operations.",
+    "Data-Driven Optimization":
+      "Use analytics to identify bottlenecks and improve traffic flow.",
+    "Increased Fleet Efficiency":
+      "Monitor utilization rates and mission trends to maximize productivity.",
+    "Faster Issue Identification":
+      "Heatmaps and predictive alerts help detect recurring system events.",
+    "Enhanced Decision Making":
+      "KPI dashboards support informed operational planning.",
+    "Scalable Performance Monitoring":
+      "Analyze performance across single or multi-site deployments.",
+    "Continuous Improvement":
+      "Use historical data to refine workflows and improve reliability.",
   };
 
-  return copy[title] ?? "Designed to improve automation visibility, reliability, and operational performance.";
+  return (
+    copy[title] ??
+    "Designed to improve automation visibility, reliability, and operational performance."
+  );
+}
+
+function BusinessBenefitsSection() {
+  return (
+    <section className="bg-[#fafafa] py-14">
+      <div className="site-container">
+        <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+          BENEFITS
+        </p>
+        <h2 className="mt-3 max-w-[648px] text-[30px] font-bold leading-tight md:text-4xl text-[#011f40]">
+          Turning Industry Workflows Into
+          <br />
+          Autonomous Operations
+        </h2>
+        <div className="mt-10 grid gap-8 lg:grid-cols-[0.56fr_0.44fr]">
+          {/* Left Side: Grid */}
+          <div className="order-2 flex flex-col overflow-hidden rounded-xl border border-[#d6e0e8] bg-white lg:order-1">
+            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
+              {/* Card 1 */}
+              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+                  <Layers className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Operational Abstraction
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Separates business logic from robot control logic
+                </p>
+              </div>
+              {/* Card 2 */}
+              <div className="flex-1 p-6 sm:p-8">
+                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+                  <ExternalLink className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Scalability
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Supports multi-industry deployments
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
+              {/* Card 3 */}
+              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+                  <Network className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Flexibility
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Multiple implementation approaches (prebuilt, low-code,
+                  integrated)
+                </p>
+              </div>
+              {/* Card 4 */}
+              <div className="flex-1 p-6 sm:p-8">
+                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+                  <Code className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Reduced Engineering Effort
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Minimizes need for custom coding
+                </p>
+              </div>
+            </div>
+
+            {/* Card 5 (Full width) */}
+            <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-5 p-6 sm:p-8">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+                <UserCircle2 className="size-5" strokeWidth={1.7} />
+              </div>
+              <div>
+                <h3 className="text-[16px] font-semibold text-[#011f40]">
+                  User-Centric Design
+                </h3>
+                <p className="mt-1 text-[14px] leading-6 text-[#333333]">
+                  Simplifies interaction for non-technical operators
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: Image */}
+          <div className="relative order-1 min-h-[300px] sm:min-h-[440px] overflow-hidden rounded-xl bg-[#dce7ef] lg:order-2">
+            <Image
+              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 560px"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProcessBenefitsSection() {
+  return (
+    <section className="bg-[#e6ebf0] py-14">
+      <div className="site-container">
+        <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+          BENEFITS
+        </p>
+        <h2 className="mt-3 max-w-[648px] text-[30px] font-bold leading-tight text-[#011f40] md:text-4xl">
+          Turning Industry Workflows Into
+          <br />
+          Autonomous Operations
+        </h2>
+        <div className="mt-10 grid gap-3 lg:grid-cols-[0.49fr_0.51fr] lg:items-stretch">
+          {/* Left Side: Image */}
+          <div className="relative min-h-[300px] sm:min-h-[440px] overflow-hidden rounded-xl bg-[#dce7ef]">
+            <Image
+              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 560px"
+              className="object-cover"
+            />
+          </div>
+
+          {/* Right Side: Grid */}
+          <div className="flex flex-col overflow-hidden rounded-xl border border-[#d6e0e8] bg-white">
+            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
+              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+                  <Layers className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Flexible Workflow Configuration
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Create and modify process flows quickly to adapt to changing
+                  operational requirements.
+                </p>
+              </div>
+              <div className="flex-1 p-6 sm:p-8">
+                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+                  <Network className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Industry-Specific Adaptability
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Support diverse material handling workflows across
+                  manufacturing, warehousing, and logistics environments.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
+              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+                  <MousePointerClick className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Simplified Automation
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Transform complex operational activities into easy-to-manage
+                  robotic workflows.
+                </p>
+              </div>
+              <div className="flex-1 p-6 sm:p-8">
+                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+                  <ArrowUpRight className="size-5" strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                  Scalable Operations
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                  Standardize and replicate workflows across multiple plants,
+                  production lines, or facilities.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-5 p-6 sm:p-8">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+                <Unplug className="size-5" strokeWidth={1.7} />
+              </div>
+              <div>
+                <h3 className="text-[16px] font-semibold text-[#011f40]">
+                  Reduced Operational Dependency
+                </h3>
+                <p className="mt-1 text-[14px] leading-6 text-[#333333]">
+                  Minimize manual coordination and improve process consistency
+                  through automated task execution.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
