@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { imagePath } from "../home/assets";
+import { ScrollReveal } from "../home/ScrollReveal";
 import type { SeriesPageData } from "./series-data";
 
 export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
@@ -41,14 +42,16 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   return (
     <section id="applications" className="overflow-hidden bg-white py-16 md:py-24">
       <div className="site-container">
-        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Applications</p>
+        <ScrollReveal>
+          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Applications</p>
+        </ScrollReveal>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-[700px]">
+          <ScrollReveal delay={80} className="max-w-[700px]">
             <h2 className="text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
               {data.applicationsHeading}
             </h2>
             <p className="mt-4 max-w-[610px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{data.applicationsIntro}</p>
-          </div>
+          </ScrollReveal>
 
           <div className="hidden items-center gap-4 md:flex">
             <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">{counter}</span>
@@ -204,9 +207,21 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         <p className="mt-2 text-[14px] leading-[22px] text-[#3a3a3a] line-clamp-3">{product.description}</p>
                         <a
                           href={product.href}
-                          className="mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                          className="group mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                         >
-                          Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+                          Explore
+                          <span className="relative flex size-4 overflow-hidden">
+                            <ArrowRight
+                              aria-hidden="true"
+                              className="size-4 transition group-hover:translate-x-5"
+                              strokeWidth={2}
+                            />
+                            <ArrowRight
+                              aria-hidden="true"
+                              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                              strokeWidth={2}
+                            />
+                          </span>
                         </a>
                       </div>
 
@@ -229,10 +244,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                           <span
                             key={`${product.name}-mobile-${tag}`}
                             className="absolute z-20 rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-normal text-[#011f40] shadow-[0_6px_20px_rgba(1,31,64,.12)]"
-                            style={{
-                              left: tagIndex === 0 ? "44%" : tagIndex === 1 ? "62%" : "6%",
-                              top: tagIndex === 0 ? "12%" : tagIndex === 1 ? "48%" : "48%",
-                            }}
+                            style={getMobileTagPosition(product.name, tag, tagIndex)}
                           >
                             {tag}
                           </span>
@@ -361,11 +373,23 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                     <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
                     <motion.a
                       href={activeProduct.href}
-                      className="mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                      className="group mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                       whileHover={reducedMotion ? undefined : { y: -2 }}
                       whileTap={reducedMotion ? undefined : { scale: 0.97 }}
                     >
-                      Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+                      Explore
+                      <span className="relative flex size-4 overflow-hidden">
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="size-4 transition group-hover:translate-x-5"
+                          strokeWidth={2}
+                        />
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                          strokeWidth={2}
+                        />
+                      </span>
                     </motion.a>
                   </motion.div>
                 </AnimatePresence>
@@ -471,6 +495,123 @@ function pad(value: number) {
   return String(value).padStart(2, "0");
 }
 
+type FloatingTagPosition = {
+  left: string;
+  top: string;
+};
+
+const defaultDesktopTagPositions: FloatingTagPosition[] = [
+  { left: "38%", top: "28%" },
+  { left: "85%", top: "58%" },
+  { left: "6%", top: "50%" },
+];
+
+const defaultMobileTagPositions: FloatingTagPosition[] = [
+  { left: "44%", top: "12%" },
+  { left: "62%", top: "48%" },
+  { left: "6%", top: "48%" },
+];
+
+const desktopTagPositionsByProduct: Record<string, Record<string, FloatingTagPosition>> = {
+  "AR 250": {
+    Tugging: { left: "6%", top: "50%" },
+    Lifting: { left: "38%", top: "28%" },
+    Tunneling: { left: "85%", top: "58%" },
+  },
+  "AR 500": {
+    Cobot: { left: "73%", top: "31%" },
+    Tugging: { left: "8%", top: "48%" },
+  },
+  "AR 650": {
+    Tugging: { left: "6%", top: "48%" },
+    Lifting: { left: "56%", top: "38%" },
+    Tunneling: { left: "82%", top: "59%" },
+  },
+  "AR 1250": {
+    Tugging: { left: "5%", top: "48%" },
+    Lifting: { left: "56%", top: "38%" },
+    Tunneling: { left: "84%", top: "59%" },
+  },
+  "PSR 2000": {
+    "Open Pallet": { left: "38%", top: "28%" },
+    Stacking: { left: "85%", top: "58%" },
+  },
+  "PSR 2000R": {
+    "Open/Closed Pallet": { left: "38%", top: "28%" },
+    Lifting: { left: "85%", top: "58%" },
+  },
+  "PSR 1000R": {
+    "Open/Closed Pallet": { left: "38%", top: "28%" },
+    Lifting: { left: "85%", top: "58%" },
+  },
+  "PSR G2G": {
+    "Open Pallet": { left: "38%", top: "28%" },
+    Stacking: { left: "85%", top: "58%" },
+  },
+  "LBR 500": {
+    Trolley: { left: "38%", top: "28%" },
+    Lifting: { left: "85%", top: "58%" },
+  },
+  "AGV 100": {
+    Lifting: { left: "38%", top: "28%" },
+    Sorting: { left: "85%", top: "58%" },
+  },
+};
+
+const mobileTagPositionsByProduct: Record<string, Record<string, FloatingTagPosition>> = {
+  "AR 250": {
+    Tugging: { left: "1%", top: "53%" },
+    Lifting: { left: "33%", top: "30%" },
+    Tunneling: { left: "78%", top: "68%" },
+  },
+   "AR 500": {
+    Cobot: { left: "73%", top: "31%" },
+    Tugging: { left: "1%", top: "53%" },
+  },
+  "AR 650": {
+    Tugging: { left: "1%", top: "69%" },
+    Lifting: { left: "51%", top: "49%" },
+    Tunneling: { left: "77%", top: "79%" },
+  },
+  "AR 1250": {
+    Tugging: { left: "1%", top: "69%" },
+    Lifting: { left: "51%", top: "49%" },
+    Tunneling: { left: "77%", top: "79%" },
+  },
+  "PSR 2000": {
+    "Open Pallet": { left: "44%", top: "12%" },
+    Stacking: { left: "62%", top: "48%" },
+  },
+  "PSR 2000R": {
+    "Open/Closed Pallet": { left: "44%", top: "12%" },
+    Lifting: { left: "62%", top: "48%" },
+  },
+  "PSR 1000R": {
+    "Open/Closed Pallet": { left: "44%", top: "12%" },
+    Lifting: { left: "62%", top: "48%" },
+  },
+  "PSR G2G": {
+    "Open Pallet": { left: "44%", top: "12%" },
+    Stacking: { left: "62%", top: "48%" },
+  },
+  "LBR 500": {
+    Trolley: { left: "44%", top: "12%" },
+    Lifting: { left: "62%", top: "48%" },
+  },
+  "AGV 100": {
+    Lifting: { left: "44%", top: "12%" },
+    Sorting: { left: "62%", top: "48%" },
+  },
+};
+
+function getMobileTagPosition(productName: string, tag: string, index: number): FloatingTagPosition {
+  return mobileTagPositionsByProduct[productName]?.[tag] ?? defaultMobileTagPositions[index] ?? defaultMobileTagPositions[0];
+}
+
+function getDesktopTagPosition(productName: string, tag: string, index: number): FloatingTagPosition {
+  return desktopTagPositionsByProduct[productName]?.[tag] ?? defaultDesktopTagPositions[index] ?? defaultDesktopTagPositions[0];
+}
+
 function FloatingTags({
   product,
   reducedMotion,
@@ -479,15 +620,12 @@ function FloatingTags({
   reducedMotion: boolean;
 }) {
   return (
-    <div className="absolute inset-0 hidden md:block">
+    <div className="absolute inset-0 z-20 hidden md:block">
       {product.tags.map((tag, index) => (
         <motion.span
           key={`${product.name}-${tag}`}
           className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[16px] font-normal text-[#011f40] shadow-[0_10px_30px_rgba(1,31,64,.12)]"
-          style={{
-            left: index === 0 ? "43%" : index === 1 ? "72%" : "28%",
-            top: index === 0 ? "30%" : index === 1 ? "52%" : "58%",
-          }}
+          style={getDesktopTagPosition(product.name, tag, index)}
           initial={reducedMotion ? false : { opacity: 0, y: 16, scale: 0.96 }}
           animate={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.4, delay: reducedMotion ? 0 : 0.16 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
