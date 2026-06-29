@@ -7,6 +7,7 @@ export type ProductDetailData = {
   overview: string;
   heroImage: string;
   modelUrl?: string;
+  modelViewerConfig?: ProductModelViewerConfig;
   backgroundText?: string;
   overviewImage?: string;
   advantageImage?: string;
@@ -58,6 +59,21 @@ export type ProductDetailData = {
     question: string;
     answer: string;
   }[];
+};
+
+export type ProductModelViewerConfig = {
+  cameraOrbit?: string;
+  minCameraOrbit?: string;
+  maxCameraOrbit?: string;
+  fieldOfView?: string;
+  shadowIntensity?: string;
+  toneMapping?: string;
+  arModes?: string;
+  interactionPrompt?: "auto" | "none";
+  interactionPromptStyle?: "basic" | "wiggle";
+  autoplay?: boolean;
+  disableZoom?: boolean;
+  disablePan?: boolean;
 };
 
 const arUseCases = [
@@ -153,6 +169,13 @@ const topModules = [
   },
 ];
 
+const defaultSideViewModelConfig: ProductModelViewerConfig = {
+  cameraOrbit: "-35deg 76deg 20m",
+  minCameraOrbit: "auto 76deg auto",
+  maxCameraOrbit: "auto 76deg auto",
+  fieldOfView: "20deg",
+};
+
 export const productDetails: Record<string, ProductDetailData> = {
   "ar-250": {
     slug: "ar-250",
@@ -164,6 +187,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       "The AR-250 is a lightweight AMR that carries up to 250kg, perfect for warehouses and factories. It navigates safely with smart routing and obstacle detection, boosting productivity and easing material handling.",
     heroImage: "7607bdee067bdab981550481a16873d8ccccb66e.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/ar-250.glb",
+    modelViewerConfig: defaultSideViewModelConfig,
     backgroundText: "AR-250.svg",
     overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
     advantageImage: "Frame-1321316064_1.jpg",
