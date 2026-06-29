@@ -44,7 +44,7 @@ export function ProductAccordionRows({
           >
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 text-left cursor-pointer"
+              className="flex w-full cursor-pointer items-center justify-between gap-4 text-left"
               aria-expanded={isOpen}
               onClick={() => onActiveChange(index)}
             >

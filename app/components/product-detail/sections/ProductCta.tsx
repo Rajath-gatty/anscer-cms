@@ -37,7 +37,7 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
             <button
               type="button"
               onClick={() => setIsDialogOpen(true)}
-              className="inline-flex items-center gap-3 rounded-[3px] bg-[#0048ad] py-3.25 pl-5 pr-2 text-[14px] font-semibold uppercase tracking-wide text-white transition hover:bg-[#003f96]"
+              className="inline-flex cursor-pointer items-center gap-3 rounded-[3px] bg-[#0048ad] py-3.25 pl-5 pr-2 text-[14px] font-semibold uppercase tracking-wide text-white transition hover:bg-[#003f96]"
             >
               Download Product Profile
               <ArrowRight aria-hidden="true" className="size-4" />

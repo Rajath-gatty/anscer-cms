@@ -41,7 +41,7 @@ function TechnologyAccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="technology-accordion-trigger"
         className={cn(
-          "group/technology-accordion-trigger flex w-full items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30 aria-disabled:pointer-events-none aria-disabled:opacity-50 cusor-pointer",
+          "group/technology-accordion-trigger flex w-full cursor-pointer items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30 aria-disabled:pointer-events-none aria-disabled:opacity-50",
           className,
         )}
         {...props}
