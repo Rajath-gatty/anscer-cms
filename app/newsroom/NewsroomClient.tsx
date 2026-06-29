@@ -124,6 +124,7 @@ export function NavyButton({
         letterSpacing: "0.08em",
         textDecoration: "none",
         transition: "background-image 0.2s",
+        width: "fit-content",
       }}
     >
       {children}

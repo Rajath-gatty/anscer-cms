@@ -13,12 +13,7 @@ import {
   Network,
   PlugZap,
   ShieldCheck,
-  Layers,
-  ExternalLink,
-  Code,
-  UserCircle2,
   TrendingUp,
-  Unplug,
   UserCircle2,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -554,27 +549,12 @@ function BenefitsSection({
 }
 
 function FleetBenefitsMap() {
-  const paths = [
-    {
-      id: "fleet-route-purple",
-      d: "M0 314.5H471.125V105H913.625V300H1479.62",
-      color: "#2600ff",
-    },
-    {
-      id: "fleet-route-green",
-      d: "M2 612H445.625V410.5H897.125V637.5H1505.12",
-      color: "#3cff00",
-    },
-    {
-      id: "fleet-route-red",
-      d: "M907.125 699.818V345H1379.12V0",
-      color: "#ff0000",
-    },
-    {
-      id: "fleet-route-blue",
-      d: "M1401.62 22V318H906.125V119.5H462.125V712",
-      color: "#00b3ff",
-    },
+  // Robot paths (invisible — used only for robot animateMotion, no track lines)
+  const robotPaths = [
+    { id: "fleet-route-purple", d: "M0 314.5H471.125V105H913.625V300H1479.62" },
+    { id: "fleet-route-green", d: "M2 612H445.625V410.5H897.125V637.5H1505.12" },
+    { id: "fleet-route-red", d: "M907.125 699.818V345H1379.12V0" },
+    { id: "fleet-route-blue", d: "M1401.62 22V318H906.125V119.5H462.125V712" },
   ];
 
   const TOTAL_DUR = 22;
@@ -587,7 +567,6 @@ function FleetBenefitsMap() {
 
   return (
     <div className="relative mt-[60px] hidden min-h-[714px] overflow-hidden lg:block">
-      <div className="absolute left-1/2 top-0 h-2 w-60 -translate-x-1/2 bg-[#bfbfbf]" />
       <Image
         src={`${imagePath}benefits-svg-element.svg`}
         alt=""
@@ -602,39 +581,12 @@ function FleetBenefitsMap() {
         preserveAspectRatio="none"
         viewBox="0 0 1506 714"
       >
+        {/* Hidden path defs — robots follow these paths but the strokes are invisible */}
         <defs>
-          {paths.map((path) => (
-            <marker
-              key={`${path.id}-arrow`}
-              id={`${path.id}-arrow`}
-              markerHeight="14"
-              markerWidth="14"
-              orient="auto"
-              refX="10"
-              refY="4"
-              viewBox="0 0 12 8"
-            >
-              <path
-                d="M0 0L12 4L0 8"
-                fill="none"
-                stroke={path.color}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </marker>
+          {robotPaths.map((path) => (
+            <path key={path.id} id={path.id} d={path.d} />
           ))}
         </defs>
-        {paths.map((path) => (
-          <path
-            key={path.id}
-            id={path.id}
-            d={path.d}
-            stroke={path.color}
-            strokeWidth="1.7"
-            vectorEffect="non-scaling-stroke"
-            markerEnd={`url(#${path.id}-arrow)`}
-          />
-        ))}
         <g className="motion-reduce:hidden">
           {robotsAnim.map((robot) => {
             const t1 = robot.start / TOTAL_DUR;
@@ -727,9 +679,6 @@ function FleetBenefitCard({
         mobile
           ? "min-h-[204px] hover:shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
           : "min-h-[186px]"
-        mobile
-          ? "min-h-[204px] hover:shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
-          : "min-h-[186px]"
       }`}
     >
       <span
@@ -744,7 +693,6 @@ function FleetBenefitCard({
       <h3 className="text-[16px] font-semibold leading-snug text-black">
         {benefit.title}
       </h3>
-      <p className="text-[14px] leading-[1.5] text-[#333333]">{benefit.copy}</p>
       <p className="text-[14px] leading-[1.5] text-[#333333]">{benefit.copy}</p>
     </article>
   );
