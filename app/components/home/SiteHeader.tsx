@@ -56,13 +56,13 @@ export function SiteHeader() {
           <Image
             src={`${imagePath}ANSCER-logo-1.svg`}
             alt="ANSCER Robotics"
-            width={124}
-            height={33}
+            width={120}
+            height={32}
             priority
           />
         </Link>
-        <div className="hidden items-center gap-9 lg:flex">
-          <nav className="flex items-center gap-[52px] text-sm font-medium text-[#2f2f2f]">
+        <div className="hidden items-center gap-[40px] lg:flex">
+          <nav className="flex items-center gap-[40px] text-sm font-medium text-[#2f2f2f]">
             {navItems.map((item) => {
               if (item === "Robots") {
                 return <RobotsDropdown key={item} active={isRobotsActive} />;
@@ -73,8 +73,8 @@ export function SiteHeader() {
               return (
                 <Link
                   key={item}
-                  className={`transition hover:text-[#005ead] ${
-                    navActive(item) ? "font-bold text-[#005ead]" : ""
+                  className={`relative flex h-[60px] items-center cursor-pointer transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
+                    navActive(item) ? "font-bold text-[#005ead]" : "text-[#2f2f2f]"
                   }`}
                   href={navHref(item)}
                 >
@@ -84,7 +84,7 @@ export function SiteHeader() {
             })}
           </nav>
           <a
-            className="inline-flex py-2 px-3 items-center justify-center gap-6 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white"
+            className="inline-flex h-[46px] items-center justify-center gap-6 rounded-[3px] bg-[#005ead] pl-5 pr-[5px] py-[13px] text-sm font-medium uppercase tracking-wide text-white transition-all"
             href={CONTACT_HREF}
           >
             Contact us{" "}
@@ -124,7 +124,7 @@ export function SiteHeader() {
                   <div key={item} className="border-b border-[#cfd7df] py-1">
                     <button
                       type="button"
-                      className={`flex min-h-12 w-full items-center justify-between text-left ${
+                      className={`cursor-pointer flex min-h-12 w-full items-center justify-between text-left ${
                         isRobotsActive
                           ? "font-bold text-[#005ead]"
                           : "text-[#011f40]"
@@ -149,7 +149,7 @@ export function SiteHeader() {
                           <Link
                             href="/products"
                             onClick={closeMenu}
-                            className="flex items-center gap-3 text-xl font-bold text-[#011f40]"
+                            className="cursor-pointer flex items-center gap-3 text-xl font-bold text-[#011f40]"
                           >
                             Robot Overview
                             <ArrowRight
@@ -173,7 +173,7 @@ export function SiteHeader() {
                             ].map(([series, href]) => (
                               <Link
                                 key={series}
-                                className="transition hover:text-[#005ead]"
+                                className="cursor-pointer transition hover:text-[#005ead]"
                                 href={href}
                                 onClick={closeMenu}
                               >
@@ -192,7 +192,7 @@ export function SiteHeader() {
                   <div key={item} className="border-b border-[#cfd7df] py-1">
                     <button
                       type="button"
-                      className={`flex min-h-12 w-full items-center justify-between text-left ${
+                      className={`cursor-pointer flex min-h-12 w-full items-center justify-between text-left ${
                         navActive(item)
                           ? "font-bold text-[#005ead]"
                           : "text-[#011f40]"
@@ -218,10 +218,10 @@ export function SiteHeader() {
                             Company
                           </p>
                           <div className="flex flex-col gap-4 text-sm font-medium text-[#011f40]">
-                            <Link href="/about-us" onClick={closeMenu} className="transition hover:text-[#005ead]">
+                            <Link href="/about-us" onClick={closeMenu} className="cursor-pointer transition hover:text-[#005ead]">
                               About us
                             </Link>
-                            <Link href="/newsroom" onClick={closeMenu} className="transition hover:text-[#005ead]">
+                            <Link href="/newsroom" onClick={closeMenu} className="cursor-pointer transition hover:text-[#005ead]">
                               Newsroom
                             </Link>
                           </div>
@@ -234,7 +234,7 @@ export function SiteHeader() {
               return (
                 <Link
                   key={item}
-                  className={`flex min-h-12 items-center border-b border-[#cfd7df] transition hover:text-[#005ead] ${
+                  className={`cursor-pointer flex min-h-12 items-center border-b border-[#cfd7df] transition hover:text-[#005ead] ${
                     navActive(item) ? "font-bold text-[#005ead]" : ""
                   }`}
                   href={navHref(item)}
@@ -263,10 +263,10 @@ function RobotsDropdown({ active }: { active: boolean }) {
   return (
     <div className="group relative flex h-[60px] items-center">
       <Link
-        className={`flex h-full items-center border-b-[3px] px-0 pt-[3px] transition group-hover:border-[#005ead] group-hover:text-[#005ead] ${
+        className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 group-hover:text-[#005ead] hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 group-hover:after:scale-x-100 hover:after:scale-x-100 ${
           active
-            ? "border-[#005ead] font-bold text-[#005ead]"
-            : "border-transparent text-[#2f2f2f]"
+            ? "font-bold text-[#005ead]"
+            : "text-[#2f2f2f]"
         }`}
         href="/products"
       >
@@ -276,7 +276,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
         <div className="p-5">
           <Link
             href="/products"
-            className="group/link flex items-center gap-3 text-xl font-bold text-[#011f40]"
+            className="cursor-pointer group/link flex items-center gap-3 text-xl font-bold text-[#011f40]"
           >
             Robot Overview
             <ArrowRight
@@ -294,14 +294,14 @@ function RobotsDropdown({ active }: { active: boolean }) {
           <p className="text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
             Robot Series
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-x-14 gap-y-7 text-base font-medium text-[#011f40]">
-            <Link className="transition hover:text-[#005ead]" href="/ar-series">
+          <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-base font-medium text-[#011f40]">
+            <Link className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]" href="/ar-series">
               AR Series
             </Link>
-            <Link className="transition hover:text-[#005ead]" href="/psr-series">
+            <Link className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]" href="/psr-series">
               PSR Series
             </Link>
-            <Link className="transition hover:text-[#005ead]" href="/agv-series">
+            <Link className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]" href="/agv-series">
               AGV Series
             </Link>
           </div>
@@ -316,10 +316,10 @@ function CompanyDropdown({ active }: { active: boolean }) {
     <div className="group relative flex h-[60px] items-center">
       <button
         type="button"
-        className={`flex h-full items-center border-b-[3px] px-0 pt-[3px] transition group-hover:border-[#005ead] group-hover:text-[#005ead] ${
+        className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 group-hover:text-[#005ead] hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 group-hover:after:scale-x-100 hover:after:scale-x-100 ${
           active
-            ? "border-[#005ead] font-bold text-[#005ead]"
-            : "border-transparent text-[#2f2f2f]"
+            ? "font-bold text-[#005ead]"
+            : "text-[#2f2f2f]"
         }`}
       >
         Company
@@ -329,11 +329,11 @@ function CompanyDropdown({ active }: { active: boolean }) {
           <p className="mb-4 text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
             Company
           </p>
-          <div className="flex flex-col gap-4 text-base font-medium text-[#011f40]">
-            <Link href="/about-us" className="transition hover:text-[#005ead]">
+          <div className="flex flex-col text-base font-medium text-[#011f40]">
+            <Link href="/about-us" className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]">
               About us
             </Link>
-            <Link href="/newsroom" className="transition hover:text-[#005ead]">
+            <Link href="/newsroom" className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]">
               Newsroom
             </Link>
           </div>

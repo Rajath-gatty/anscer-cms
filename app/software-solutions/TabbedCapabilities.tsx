@@ -148,36 +148,32 @@ function AccordionList({
   mobileOnly?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       {items.map((item, index) => {
         const isActive = activeIndex === index;
         return (
           <article
             key={item.title}
-            className={`overflow-hidden rounded-[12px] border transition-all duration-300 ${
-              isActive
-                ? "border-[#d9e4ec] bg-white shadow-[0_12px_30px_rgba(1,31,64,.06)]"
-                : "border-[#e5edf3] bg-white"
-            }`}
+            className="overflow-hidden rounded-[12px] bg-white transition-all duration-300"
           >
             <button
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-expanded={isActive}
-              className={`flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left text-[18px] font-semibold md:text-[20px] transition-colors md:px-7 md:py-6 ${
-                isActive ? "text-[#005ead]" : "text-[#011f40]"
+              className={`flex w-full cursor-pointer items-center justify-between gap-4 px-5 pt-[18px] text-left text-[18px] font-semibold text-[#005ead] transition-colors md:text-[20px] ${
+                isActive ? "pb-0" : "pb-[18px]"
               }`}
             >
               <span className="leading-snug">
                 {item.title}
               </span>
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#f3f6f9] text-[#011f40] transition-colors duration-300 group-aria-expanded:bg-[#e8f1f8] group-aria-expanded:text-[#005ead]">
+              <span className="flex shrink-0 items-center justify-center text-[#005ead] transition-transform duration-300">
                 <ChevronDown
                   aria-hidden="true"
-                  className={`size-4 transition-transform duration-300 ${
+                  className={`size-5 transition-transform duration-300 ${
                     isActive ? "rotate-180" : "rotate-0"
                   }`}
-                  strokeWidth={2.1}
+                  strokeWidth={2}
                 />
               </span>
             </button>
@@ -188,8 +184,8 @@ function AccordionList({
               }`}
             >
               <div className="overflow-hidden">
-                <div className="px-6 pb-5 pt-0 md:px-7 md:pb-7">
-                  <p className="max-w-140 text-[15px] leading-6 text-[#333333] md:text-[16px]">
+                <div className="px-5 pb-[18px] pt-[12px]">
+                  <p className="max-w-140 text-[15px] leading-[1.5] text-[#333333] md:text-[16px]">
                     {item.copy}
                   </p>
                   <div
