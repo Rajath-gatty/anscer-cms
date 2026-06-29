@@ -14,7 +14,7 @@ const ProductHeroModel = dynamic(
 
 export function ProductHero({ data }: { data: ProductDetailData }) {
   return (
-    <section className="relative overflow-hidden bg-[#fafafa] pt-10 md:pt-12">
+    <section className="relative overflow-hidden bg-[#fafafa] pt-10 md:pt-12 ">
       <div className="site-container flex min-h-[430px] flex-col items-center justify-center text-center md:min-h-[680px]">
         <h1 className="relative z-10 text-[38px] font-bold leading-none tracking-tight md:text-[40px]">
           {data.title}
@@ -26,7 +26,7 @@ export function ProductHero({ data }: { data: ProductDetailData }) {
               alt=""
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 900px"
+              sizes="(max-width: 1024px) 100vw, 600px"
               className="z-0 object-contain opacity-100"
             />
           ) : null}
@@ -45,7 +45,7 @@ export function ProductHero({ data }: { data: ProductDetailData }) {
               alt={data.title}
               fill
               priority
-              sizes="(max-width: 1024px) 90vw, 760px"
+              sizes="(max-width: 1024px) 80vw, 560px"
               className="z-10 object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
             />
           )}
