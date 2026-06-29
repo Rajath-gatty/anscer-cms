@@ -101,6 +101,23 @@ html {
   padding-inline: 20px;
 }
 
+.contact-form-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.contact-form-panel {
+  width: 828px;
+  flex: 0 0 auto;
+}
+
+.contact-info-column {
+  width: 420px;
+  flex: 0 0 auto;
+}
+
 ::selection {
   background: var(--brand-blue);
   color: white;
@@ -204,6 +221,18 @@ html {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .contact-form-layout {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contact-form-panel,
+  .contact-info-column {
+    width: 100%;
   }
 }
 
