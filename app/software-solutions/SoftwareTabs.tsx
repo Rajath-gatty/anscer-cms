@@ -56,10 +56,10 @@ export function SoftwareTabs() {
               key={id}
               href={`#${id}`}
               onClick={(e) => handleClick(e, id)}
-              className={`flex-1 min-w-[200px] lg:min-w-0 text-center py-4 px-3 text-[16px] transition-all duration-200 border-b whitespace-nowrap cursor-pointer ${
+              className={`flex-1 min-w-[200px] lg:min-w-0 text-center font-normal text-[#3a3a3a] py-4 px-3 text-[16px] transition-all duration-200 border-b whitespace-nowrap cursor-pointer ${
                 isActive
-                  ? "border-[#005ead] text-[#005ead] font-medium"
-                  : "border-transparent text-[#3a3a3a] hover:text-[#005ead] hover:border-[#005ead]/30 font-normal"
+                  ? "border-[#005ead] font-semibold"
+                  : "border-transparent hover:border-[#005ead] hover:font-semibold"
               }`}
             >
               {label}

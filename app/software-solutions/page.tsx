@@ -21,11 +21,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { imagePath } from "../components/home/assets";
+import { ScrollReveal } from "../components/home/ScrollReveal";
 import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
 import { AnalyticsSection } from "./AnalyticsSection";
 import { InteractiveWorkflow } from "./InteractiveWorkflow";
 import { SoftwareTabs } from "./SoftwareTabs";
-import { TabbedCapabilities } from "./TabbedCapabilities";
 
 export const metadata: Metadata = {
   title: "Software Solutions | ANSCER Robotics",
@@ -53,8 +53,8 @@ const fleetBenefits: {
     position: "left-[33.08%] top-[179px]",
   },
   {
-    title: "Reduced Downtime",
-    copy: "Automated charging management and intelligent task scheduling help maintain continuous robot availability.",
+    title: "Flexible Integration",
+    copy: "Supports integration with MES, WMS, ERP, and other industrial software systems.",
     icon: PlugZap,
     position: "left-[64.62%] top-[89px]",
   },
@@ -149,6 +149,7 @@ export default function SoftwareSolutionsPage() {
         eyebrow="Key Capabilities"
         title="Core Fleet Management Capabilities"
         items={fleetCapabilities}
+        pale={true}
         variant="accordion"
       />
       <BenefitsSection
@@ -158,7 +159,6 @@ export default function SoftwareSolutionsPage() {
             Benefits of Intelligent <br /> Fleet Management
           </>
         }
-        copy="From tugging and lifting to robotic arm integration and conveyor automation, our AMRs are designed to streamline operations, enhance safety, and maximize efficiency."
         fleetMap
         cards={fleetBenefits.map((benefit) => benefit.title)}
       />
@@ -218,17 +218,19 @@ function FleetManagementSection() {
       className="scroll-mt-32 bg-[#fafafa] py-14 md:py-18"
     >
       <div className="site-container">
-        <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
-          <span className="text-[28px]">01 </span>
-          <span className="text-[16px]">/ 04</span>
-        </p>
-        <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
-          Fleet Management System
-        </h2>
-        <p className="mt-4 max-w-[648px] text-[18px] leading-6 text-[#333333]">
-          Centralized intelligence for monitoring, controlling, and optimizing
-          every robot operation from a single platform.
-        </p>
+        <ScrollReveal>
+          <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
+            <span className="text-[28px]">01 </span>
+            <span className="text-[16px]">/ 04</span>
+          </p>
+          <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
+            Fleet Management System
+          </h2>
+          <p className="mt-4 max-w-[648px] text-[18px] leading-6 text-[#333333]">
+            Centralized intelligence for monitoring, controlling, and optimizing
+            every robot operation from a single platform.
+          </p>
+        </ScrollReveal>
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.52fr_0.48fr] lg:items-start">
           <div className="relative min-h-80 overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)] lg:min-h-107.5">
             <Image
@@ -256,7 +258,7 @@ function FleetManagementSection() {
 
                 return (
                   <article key={item.title} className="w-full">
-                    <span className="flex size-11 items-center justify-center rounded-[10px] bg-[#f3f6f9] text-[#011f40]">
+                    <span className="flex size-11 items-center justify-center rounded-[10px] bg-[#011f40]/5 text-[#011f40]">
                       <Icon
                         aria-hidden="true"
                         className="size-4.5"
@@ -320,9 +322,21 @@ function SoftwareHero() {
           </p>
           <Link
             href="mailto:sales@anscer.com"
-            className="mt-8 inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-brand-blue px-5 text-[14px] font-medium uppercase tracking-wide text-white"
+            className="group mt-8 inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-brand-blue px-5 text-[14px] font-medium uppercase tracking-wide text-white"
           >
-            Request demo <ArrowRight aria-hidden="true" className="size-4" />
+            Request demo{" "}
+            <span className="relative flex size-4 overflow-hidden">
+              <ArrowRight
+                aria-hidden="true"
+                className="size-4 transition group-hover:translate-x-5"
+                strokeWidth={2}
+              />
+              <ArrowRight
+                aria-hidden="true"
+                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                strokeWidth={2}
+              />
+            </span>
           </Link>
         </div>
       </div>
@@ -354,7 +368,7 @@ function ProductModule({
       <div className="site-container">
         <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
           <span className="text-[28px]">{index} </span>
-          <span className="text-[16px]">/ 04</span>
+          <span className="text-[16px] text-[#005ead]/80">/ 04</span>
         </p>
         <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
           {title}
@@ -671,7 +685,7 @@ function FleetBenefitCard({
 
   return (
     <article
-      className={`group bg-white p-6 transition duration-300 hover:shadow-[10px_10px_0px_10px_rgba(0,94,173,0.2)] ${activeStyles} ${positionStyles} ${
+      className={`group flex flex-col items-start gap-3 bg-white p-6 transition duration-300 hover:shadow-[10px_10px_0px_10px_rgba(0,94,173,0.2)] ${activeStyles} ${positionStyles} ${
         mobile
           ? "min-h-[204px] hover:shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
           : "min-h-[186px]"
@@ -686,12 +700,10 @@ function FleetBenefitCard({
       >
         <Icon aria-hidden="true" className="size-5" strokeWidth={1.7} />
       </span>
-      <h3 className="mt-3 text-[16px] font-semibold leading-snug tracking-[0.04em] text-black">
+      <h3 className="text-[16px] font-semibold leading-snug text-black">
         {benefit.title}
       </h3>
-      <p className="mt-2 text-[14px] leading-[1.35] tracking-[0.04em] text-[#515151]">
-        {benefit.copy}
-      </p>
+      <p className="text-[14px] leading-[1.5] text-[#333333]">{benefit.copy}</p>
     </article>
   );
 }
@@ -780,9 +792,21 @@ function SoftwareCta() {
         </p>
         <Link
           href="mailto:sales@anscer.com"
-          className="mt-8 inline-flex h-11 items-center gap-3 rounded-sm border border-white bg-transparent px-6 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-white/10"
+          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm border border-white bg-transparent px-6 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-white/10"
         >
-          Book a demo <ArrowRight aria-hidden="true" className="size-4" />
+          Book a demo{" "}
+          <span className="relative flex size-4 overflow-hidden">
+            <ArrowRight
+              aria-hidden="true"
+              className="size-4 transition group-hover:translate-x-5"
+              strokeWidth={2}
+            />
+            <ArrowRight
+              aria-hidden="true"
+              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+              strokeWidth={2}
+            />
+          </span>
         </Link>
       </div>
     </section>
