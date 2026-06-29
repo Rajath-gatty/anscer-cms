@@ -44,7 +44,7 @@ export function ProductAccordionRows({
           >
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 text-left"
+              className="flex w-full items-center justify-between gap-4 text-left cursor-pointer"
               aria-expanded={isOpen}
               onClick={() => onActiveChange(index)}
             >
@@ -89,7 +89,12 @@ export function ProductAccordionRows({
                     </h3>
                   </article>
                 )}
-                <p className={cn("mt-4 text-[12px] leading-[18px] text-[#3a3a3a] md:text-base md:leading-[22px]", type !== "applications" && "mb-3")}>
+                <p
+                  className={cn(
+                    "mt-4 text-[12px] leading-[18px] text-[#3a3a3a] md:text-base md:leading-[22px]",
+                    type !== "applications" && "mb-3",
+                  )}
+                >
                   {item.copy}
                 </p>
                 {type !== "applications" && imageUrl && isOpen && (
@@ -100,7 +105,8 @@ export function ProductAccordionRows({
                     width={700}
                     height={400}
                     className="object-cover transition-opacity w-full h-full duration-300 block md:hidden rounded-md"
-                 />)}
+                  />
+                )}
               </div>
             </div>
           </article>
