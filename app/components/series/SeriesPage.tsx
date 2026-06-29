@@ -18,6 +18,28 @@ export function SeriesPage({ data }: { data: SeriesPageData }) {
   );
 }
 
+const defaultHeroTagPosition = { left: "1%", top: "58%" };
+
+const heroTagPositionsBySeries: Record<string, Record<string, { left: string; top: string }>> = {
+  "ar-series": {
+    Tugging: { left: "1%", top: "58%" },
+    Tunneling: { left: "44%", top: "25%" },
+    Lifting: { left: "82%", top: "55%" },
+  },
+  "psr-series": {
+    Stacking: { left: "1%", top: "68%" },
+    "Open/Closed Pallet": { left: "64%", top: "18%" },
+  },
+  "agv-series": {
+    Lifting: { left: "44%", top: "20%" },
+    Sorting: { left: "84%", top: "50%" },
+  },
+};
+
+function getHeroTagPosition(slug: string, tag: string) {
+  return heroTagPositionsBySeries[slug]?.[tag] ?? defaultHeroTagPosition;
+}
+
 function SeriesHero({ data }: { data: SeriesPageData }) {
   return (
     <section className="relative min-h-[calc(100vh-108px)] overflow-hidden bg-[#fbfbfb]">
@@ -72,15 +94,12 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               className="object-contain object-right drop-shadow-[0_30px_45px_rgba(1,31,64,.18)]"
             />
           </div>
-          <div className="pointer-events-none absolute inset-0 hidden md:block">
-            {data.tags.map((tag, index) => (
+          <div className="pointer-events-none absolute inset-0 block">
+            {data.tags.map((tag) => (
               <span
                 key={tag}
                 className="absolute rounded-xl bg-white/90 px-4 py-2 text-[13px] font-semibold text-[#456070] shadow-[0_10px_30px_rgba(1,31,64,.14)] backdrop-blur"
-                style={{
-                  left: index === 0 ? "1%" : index === 1 ? "44%" : "82%",
-                  top: index === 0 ? "58%" : index === 1 ? "25%" : "55%",
-                }}
+                style={getHeroTagPosition(data.slug, tag)}
               >
                 {tag}
               </span>
