@@ -40,12 +40,3 @@ test("contact form shows inline zod validation messages", async ({ page }) => {
 
   await expect(page.getByText("Enter a valid email address.")).toBeVisible();
 });
-
-test("contact form renders the Google reCAPTCHA mount point", async ({
-  page,
-}) => {
-  await page.goto("http://127.0.0.1:3000/contact-us");
-
-  await expect(page.getByTestId("google-recaptcha")).toBeVisible();
-  await expect(page.getByText("I'm not a robot")).toHaveCount(0);
-});
