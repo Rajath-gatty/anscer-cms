@@ -47,7 +47,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
   "ar-series": {
     slug: "ar-series",
     eyebrow: "AR Series",
-    title: "Robots Ready for",
+    title: "Ready for",
     titleAccent: "Everything",
     description:
       "Explore ANSCER's cutting-edge lineup: powerful, smart automation solutions engineered to transform your operations.",
@@ -197,7 +197,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
   "psr-series": {
     slug: "psr-series",
     eyebrow: "PSR Series",
-    title: "Robots Ready for Every",
+    title: "Ready for Every",
     titleAccent: "Pallet Movement",
     description:
       "Discover ANSCER's PSR Series: autonomous robots designed to automate pallet and trolley handling, boosting warehouse efficiency.",
@@ -367,7 +367,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
   "agv-series": {
     slug: "agv-series",
     eyebrow: "AGV Series",
-    title: "Robots Ready for",
+    title: "Ready for",
     titleAccent: "Continuous Material Flow",
     description:
       "Discover ANSCER's AGV Series: smart vehicles for fast material transport and inventory handling in warehouses and factories.",
