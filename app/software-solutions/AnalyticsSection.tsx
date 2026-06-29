@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import {
+  AnimatePresence,
   motion,
   useMotionValueEvent,
   useReducedMotion,
@@ -52,6 +53,8 @@ const capabilities = [
     image: "Group-1321315895.jpg",
   },
 ];
+
+type AnalyticsCapability = (typeof capabilities)[number];
 
 const SLIDE_HEIGHT = 800;
 const BG = "linear-gradient(150deg, #c9d6e3 0%, #e6ebf0 100%)";
@@ -114,10 +117,11 @@ export function AnalyticsSection() {
                 // even index → text left, tablet right; odd → tablet left, text right
                 const textLeft = index % 2 === 0;
 
-                // Text slides in from bottom + opposite X direction to where it sits
-                const textOffX = textLeft ? 70 : -70;
+                // Text and image enter from opposite sides of the viewport.
+                const textOffX = textLeft ? -180 : 180;
+                const imageOffX = textLeft ? 180 : -180;
                 // Tablet settles offset to its side when active
-                const tabletX = textLeft ? "9%" : "-9%";
+                const tabletX = textLeft ? 64 : -64;
 
                 return (
                   <motion.div
@@ -129,7 +133,7 @@ export function AnalyticsSection() {
                       scale: reduceMotion || isActive ? 1 : 0.985,
                     }}
                     transition={{
-                      duration: reduceMotion ? 0 : 0.42,
+                      duration: reduceMotion ? 0 : isActive ? 0.58 : 0.28,
                       ease: [0.22, 1, 0.36, 1],
                     }}
                     style={{
@@ -147,7 +151,7 @@ export function AnalyticsSection() {
                         initial={false}
                         animate={{
                           x: reduceMotion || isActive ? 0 : textOffX,
-                          y: reduceMotion || isActive ? 0 : 46,
+                          y: 0,
                           opacity: isActive ? 1 : 0,
                           filter: reduceMotion || isActive ? "blur(0px)" : "blur(5px)",
                         }}
@@ -195,7 +199,7 @@ export function AnalyticsSection() {
                         className="flex-1"
                         initial={false}
                         animate={{
-                          x: reduceMotion || !isActive ? "0%" : tabletX,
+                          x: reduceMotion ? 0 : isActive ? tabletX : imageOffX,
                           scale: reduceMotion || isActive ? 1 : 0.96,
                         }}
                         transition={{
@@ -207,45 +211,29 @@ export function AnalyticsSection() {
                         }}
                       >
                         <div
-                          className="relative mx-auto w-full overflow-hidden rounded-[28px] bg-[#1c1c2e] p-[10px] shadow-[0_40px_100px_-20px_rgba(1,31,64,0.45)]"
+                          className="relative mx-auto w-full overflow-hidden rounded-[18px]"
                           style={{ maxWidth: 560, aspectRatio: "4/3" }}
                         >
-                          {/* Status bar */}
-                          <div className="mb-1 flex items-center justify-between px-3 pb-1 text-[10px] font-medium text-white/50">
-                            <span>10:42 AM</span>
-                            <div className="flex gap-3">
-                              <span>WiFi</span>
-                              <span>100%</span>
-                            </div>
-                          </div>
-                          {/* Screen */}
-                          <div className="relative overflow-hidden rounded-[18px] bg-white" style={{ height: "calc(100% - 26px)" }}>
-                            {capabilities.map((c, ci) => (
-                              <motion.div
-                                key={c.title}
-                                className="absolute inset-0"
-                                initial={false}
-                                animate={{
-                                  opacity: activeIndex === ci ? 1 : 0,
-                                  scale:
-                                    reduceMotion || activeIndex === ci ? 1 : 1.025,
-                                }}
-                                transition={{
-                                  duration: reduceMotion ? 0 : 0.42,
-                                  ease: [0.22, 1, 0.36, 1],
-                                }}
-                              >
-                                <Image
-                                  src={`${imagePath}${c.image}`}
-                                  alt={c.title}
-                                  fill
-                                  priority={ci === 0}
-                                  sizes="560px"
-                                  className="object-contain p-2"
-                                />
-                              </motion.div>
-                            ))}
-                          </div>
+                          <motion.div
+                            className="absolute inset-0"
+                            initial={false}
+                            animate={{
+                              opacity: isActive ? 1 : 0,
+                            }}
+                            transition={{
+                              duration: reduceMotion ? 0 : isActive ? 0.54 : 0.24,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                          >
+                            <Image
+                              src={`${imagePath}${cap.image}`}
+                              alt={cap.title}
+                              fill
+                              priority={index === 0}
+                              sizes="560px"
+                              className="rounded-[18px] object-contain"
+                            />
+                          </motion.div>
                         </div>
                       </motion.div>
                     </div>
@@ -284,27 +272,16 @@ export function AnalyticsSection() {
               <article key={cap.title} className="flex flex-col items-center max-w-[560px] mx-auto">
                 {/* Tablet Frame */}
                 <div
-                  className="relative w-full overflow-hidden rounded-[24px] sm:rounded-[28px] bg-[#1c1c2e] p-[8px] sm:p-[10px] shadow-[0_20px_50px_-10px_rgba(1,31,64,0.35)]"
+                  className="relative w-full overflow-hidden rounded-[16px] sm:rounded-[18px]"
                   style={{ aspectRatio: "4/3" }}
                 >
-                  {/* Status bar */}
-                  <div className="mb-1 flex items-center justify-between px-3 pb-1 text-[10px] font-medium text-white/50">
-                    <span>10:42 AM</span>
-                    <div className="flex gap-3">
-                      <span>WiFi</span>
-                      <span>100%</span>
-                    </div>
-                  </div>
-                  {/* Screen */}
-                  <div className="relative overflow-hidden rounded-[16px] sm:rounded-[18px] bg-white" style={{ height: "calc(100% - 24px)" }}>
-                    <Image
-                      src={`${imagePath}${cap.image}`}
-                      alt={cap.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 560px"
-                      className="object-contain p-2"
-                    />
-                  </div>
+                  <Image
+                    src={`${imagePath}${cap.image}`}
+                    alt={cap.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                    className="rounded-[16px] object-contain sm:rounded-[18px]"
+                  />
                 </div>
 
                 <h3 className="mt-6 text-[22px] sm:text-[24px] font-bold text-[#011f40] text-center">
