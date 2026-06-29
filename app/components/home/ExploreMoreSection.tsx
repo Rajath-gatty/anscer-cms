@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BarChart3, Globe2, Monitor, Radar, Wrench } from "lucide-react";
+import { FadeLeft, FadeRight, FadeUp } from "../animation";
 import { imagePath } from "./assets";
 
 const supportItems = [
@@ -14,20 +15,22 @@ export function ExploreMoreSection() {
   return (
     <section className="bg-[#efefef] py-20">
       <div className="site-container">
-        <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
-          Your Gateway to All Things ANSCER
-        </p>
-        <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[36px]">
-          Explore <span className="text-[#005ead]">More</span>
-        </h2>
-        <p className="mt-6 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-          All the Answers You Need About ANSCER Robotics&mdash;Right at Your Fingertips. From how our autonomous robots
-          transform industries to what makes our tech stand out&mdash;your journey into the future of smart automation
-          starts here.
-        </p>
+        <FadeRight>
+          <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
+            Your Gateway to All Things ANSCER
+          </p>
+          <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[36px]">
+            Explore <span className="text-[#005ead]">More</span>
+          </h2>
+          <p className="mt-6 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+            All the Answers You Need About ANSCER Robotics&mdash;Right at Your Fingertips. From how our autonomous robots
+            transform industries to what makes our tech stand out&mdash;your journey into the future of smart automation
+            starts here.
+          </p>
+        </FadeRight>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_.5fr_1.05fr]">
-          <div className="grid gap-6">
+          <FadeRight className="grid gap-6" delay={0.08}>
             <article className="rounded-xl bg-white p-7">
               <Image src={`${imagePath}diamond-plus.svg`} alt="" width={44} height={44} className="size-11" />
               <h3 className="mt-9 text-[20px] font-semibold text-[#005ead]">Globally Safety-Compliant Robots</h3>
@@ -48,9 +51,9 @@ export function ExploreMoreSection() {
                 </p>
               </div>
             </article>
-          </div>
+          </FadeRight>
 
-          <article className="rounded-xl bg-white p-7">
+          <FadeUp className="rounded-xl bg-white p-7" delay={0.14}>
             <Image src={`${imagePath}lightbulb.svg`} alt="" width={44} height={44} className="size-11" />
             <h3 className="mt-10 text-[20px] font-semibold leading-tight text-[#005ead]">
               Lower Total Cost of Ownership (TCO)
@@ -59,9 +62,9 @@ export function ExploreMoreSection() {
               Optimized hardware, scalable software, predictive maintenance, and operational efficiency reduce long-term
               automation costs.
             </p>
-          </article>
+          </FadeUp>
 
-          <article className="relative min-h-[470px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white">
+          <FadeLeft className="relative min-h-[470px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white" delay={0.2}>
             <Image src={`${imagePath}explore-more-img-2.png`} alt="" fill sizes="(max-width: 1024px) 100vw, 520px" className="object-cover opacity-55" />
             <div className="absolute inset-0 bg-black/45" />
             <div className="relative">
@@ -85,7 +88,7 @@ export function ExploreMoreSection() {
                 ))}
               </div>
             </div>
-          </article>
+          </FadeLeft>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { FadeRight, FadeUp } from "../animation";
 import { imagePath } from "./assets";
 import { productCards } from "./home-data";
 import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
@@ -8,7 +9,7 @@ export function ProductsSection() {
   return (
     <section id="robots" className="bg-[#fafafa] pb-10 md:pb-20">
       <div className="site-container">
-        <div className="max-w-3xl">
+        <FadeRight className="max-w-3xl">
           <Kicker>Robots Designed to Deliver</Kicker>
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
             Our products <span className="text-[#005ead]">Line-Up</span>
@@ -18,8 +19,8 @@ export function ProductsSection() {
             meet different operational needs. Explore our innovative solutions
             designed for seamless automation and efficiency.
           </p>
-        </div>
-        <div className="mt-7 grid gap-3 md:gap-4 lg:grid-cols-2">
+        </FadeRight>
+        <FadeUp className="mt-7 grid gap-3 md:gap-4 lg:grid-cols-2" delay={0.08}>
           {productCards.map((product) => (
             <article
               key={product.title}
@@ -76,7 +77,7 @@ export function ProductsSection() {
               )}
             </article>
           ))}
-        </div>
+        </FadeUp>
       </div>
     </section>
   );

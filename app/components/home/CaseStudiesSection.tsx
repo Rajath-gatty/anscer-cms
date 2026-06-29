@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { FadeRight, FadeUp } from "../animation";
 import { imagePath } from "./assets";
 import { ArrowButton, Kicker } from "./SectionPrimitives";
 
@@ -60,16 +61,18 @@ export function CaseStudiesSection() {
   return (
     <section className="bg-[#eef5fb] py-8 md:bg-white md:py-20">
       <div className="site-container">
-        <Kicker>Transforming Workplaces With Intelligence</Kicker>
-        <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
-          Our <span className="text-[#005ead]">Case Studies</span>
-        </h2>
-        <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-          From factory floors to fulfillment centers, discover how industry leaders have partnered with ANSCER to elevate
-          efficiency, safety, and productivity through automation.
-        </p>
+        <FadeRight>
+          <Kicker>Transforming Workplaces With Intelligence</Kicker>
+          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
+            Our <span className="text-[#005ead]">Case Studies</span>
+          </h2>
+          <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+            From factory floors to fulfillment centers, discover how industry leaders have partnered with ANSCER to elevate
+            efficiency, safety, and productivity through automation.
+          </p>
+        </FadeRight>
 
-        <div className="relative mt-7 md:mt-9">
+        <FadeUp className="relative mt-7 md:mt-9" delay={0.08}>
           <div className="relative h-[150px] overflow-hidden rounded-lg bg-[#011f40] md:min-h-[520px] md:rounded-xl">
             {caseStudies.map((caseStudy, index) => (
               <Image
@@ -154,7 +157,7 @@ export function CaseStudiesSection() {
               <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
             </button>
           </div>
-        </div>
+        </FadeUp>
       </div>
     </section>
   );
