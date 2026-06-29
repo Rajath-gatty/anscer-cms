@@ -17,12 +17,12 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { FadeUp } from "../components/animation";
 import { imagePath } from "../components/home/assets";
 import { ScrollReveal } from "../components/home/ScrollReveal";
 import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
 import { AnalyticsSection } from "./AnalyticsSection";
 import { InteractiveWorkflow } from "./InteractiveWorkflow";
-import { SoftwareSectionReveal } from "./SoftwareSectionReveal";
 import { SoftwareTabs } from "./SoftwareTabs";
 import { TabbedCapabilities } from "./TabbedCapabilities";
 
@@ -174,14 +174,14 @@ const processBenefitCards = [
 export default function SoftwareSolutionsPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
-      <SoftwareSectionReveal>
+      <FadeUp>
         <SoftwareHero />
-      </SoftwareSectionReveal>
+      </FadeUp>
       <SoftwareTabs />
-      <SoftwareSectionReveal>
+      <FadeUp>
         <FleetManagementSection />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <TabbedCapabilities
           eyebrow="Key Capabilities"
           title="Core Fleet Management Capabilities"
@@ -189,8 +189,8 @@ export default function SoftwareSolutionsPage() {
           pale={true}
           variant="accordion"
         />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <BenefitsSection
           eyebrow="Benefits"
           title={
@@ -201,8 +201,8 @@ export default function SoftwareSolutionsPage() {
           fleetMap
           cards={fleetBenefits.map((benefit) => benefit.title)}
         />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <ProductModule
           id="business-application"
           index="02"
@@ -219,8 +219,8 @@ export default function SoftwareSolutionsPage() {
             "Pharmaceuticals",
           ]}
         />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <TabbedCapabilities
           eyebrow="Key Capabilities"
           title="Core Business Application Capabilities"
@@ -228,11 +228,11 @@ export default function SoftwareSolutionsPage() {
           pale
           variant="cards"
         />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <BusinessBenefitsSection />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <ProductModule
           id="process-flow-manager"
           index="03"
@@ -248,23 +248,23 @@ export default function SoftwareSolutionsPage() {
             "Multi-Robot Coordination",
           ]}
         />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <InteractiveWorkflow />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <ProcessBenefitsSection />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <AnalyticsPlatformSection />
-      </SoftwareSectionReveal>
+      </FadeUp>
       <AnalyticsSection />
-      <SoftwareSectionReveal>
+      <FadeUp>
         <AnalyticsBenefitsSection />
-      </SoftwareSectionReveal>
-      <SoftwareSectionReveal>
+      </FadeUp>
+      <FadeUp>
         <SoftwareCta />
-      </SoftwareSectionReveal>
+      </FadeUp>
     </main>
   );
 }
