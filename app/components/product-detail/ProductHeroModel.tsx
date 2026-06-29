@@ -74,7 +74,7 @@ export function ProductHeroModel({
   }, []);
 
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 ">
       {isReady ? (
         createElement<ModelViewerElementProps>("model-viewer", {
           src: modelUrl,
@@ -94,8 +94,9 @@ export function ProductHeroModel({
           "interaction-prompt": viewerConfig.interactionPrompt,
           "interaction-prompt-style": viewerConfig.interactionPromptStyle,
           style: {
-            width: "100%",
+            width: "50%",
             height: "100%",
+            margin: "0 auto",
             display: "block",
             backgroundColor: "transparent",
             "--poster-color": "transparent",

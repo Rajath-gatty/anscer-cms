@@ -49,6 +49,8 @@ export function ApplicationsSection({ data }: { data: ProductDetailData }) {
               </h3>
             </article>
             <ProductAccordionRows
+              type="applications"
+              imageUrl={`${imagePath}${active?.image ?? data.overviewImage ?? data.heroImage}`}
               items={items}
               activeIndex={activeIndex}
               onActiveChange={setActiveIndex}

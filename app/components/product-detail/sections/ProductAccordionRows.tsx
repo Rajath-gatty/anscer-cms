@@ -2,10 +2,12 @@
 
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 export type ProductAccordionItem = {
   title: string;
   copy: string;
+  imageUrl?: string;
 };
 
 export function ProductAccordionRows({
@@ -14,12 +16,16 @@ export function ProductAccordionRows({
   onActiveChange,
   surface = "white",
   titleClassName,
+  imageUrl,
+  type = "advantages",
 }: {
   items: ProductAccordionItem[];
   activeIndex: number;
   onActiveChange: (index: number) => void;
   surface?: "white" | "muted";
   titleClassName?: string;
+  imageUrl?: string;
+  type?: "advantages" | "applications";
 }) {
   return (
     <div className="flex flex-col gap-3">
@@ -67,10 +73,35 @@ export function ProductAccordionRows({
                   : "grid-rows-[0fr] opacity-0",
               )}
             >
-              <div className="min-h-0 overflow-hidden">
-                <p className="mt-4 text-[12px] leading-[18px] text-[#3a3a3a] md:text-base md:leading-[22px]">
+              <div className="min-h-0 overflow-hidden rounded-md">
+                {type === "applications" && item.imageUrl && isOpen && (
+                  <article className="relative aspect-[1.43] overflow-hidden rounded-[12px] block md:hidden bg-[#011f40] text-white">
+                    <Image
+                      key={imageUrl}
+                      src={`${imageUrl}`}
+                      alt={item?.title ?? "Application"}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 720px"
+                      className="object-cover opacity-85 transition-opacity duration-300"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(360deg,rgba(0,0,0,.86),rgba(255,255,255,0)_60%)]" />
+                    <h3 className="absolute bottom-6 left-6 text-base font-semibold md:text-2xl">
+                      {item?.copy}
+                    </h3>
+                  </article>
+                )}
+                <p className="mt-4 text-[12px] leading-[18px] mb-3 text-[#3a3a3a] md:text-base md:leading-[22px]">
                   {item.copy}
                 </p>
+                {type !== "applications" && imageUrl && isOpen && (
+                  <Image
+                    key={item?.title}
+                    src={imageUrl}
+                    alt={`${item.title} advantage`}
+                    width={700}
+                    height={400}
+                    className="object-cover transition-opacity w-full h-full duration-300 block md:hidden rounded-md"
+                 />)}
               </div>
             </div>
           </article>

@@ -4,18 +4,20 @@ import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { imagePath } from "../../home/assets";
+import { imagePath, videoPath } from "../../home/assets";
 import { ScrollReveal } from "../../home/ScrollReveal";
+import { ProductProfileRequestDialog } from "./ProductProfileRequestDialog";
 import type { ProductDetailData } from "../product-detail-data";
 
 export function ProductOverview({ data }: { data: ProductDetailData }) {
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const isImperial = unit === "imperial";
 
   return (
     <section
       id="overview"
-      className="scroll-mt-28 overflow-hidden bg-[#fafafa] py-12 md:py-[56px]"
+      className="scroll-mt-28 overflow-hidden bg-[#fafafa] py-12 md:py-14"
     >
       <div className="site-container grid gap-9 lg:grid-cols-[0.56fr_0.44fr]">
         <div>
@@ -26,18 +28,31 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] md:text-4xl">
               {data.subtitle}
             </h2>
-            <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
+            <p className="mt-4 max-w-155 text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6.5">
               {data.overview}
             </p>
           </ScrollReveal>
           <div className="relative mt-8 aspect-[1.72] overflow-hidden rounded-[12px] bg-[#e6ebf0]">
-            <Image
-              src={`${imagePath}${data.overviewImage ?? data.useCases[0]?.image ?? data.heroImage}`}
-              alt={`${data.title} overview`}
-              fill
-              sizes="(max-width: 1024px) 100vw, 720px"
-              className="object-cover"
-            />
+            {
+              data.overviewVideo ? (
+                <video
+                  src={`${videoPath}${data.overviewVideo}`}
+                  className="object-cover w-full h-full relative z-5"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <Image
+                  src={`${imagePath}${data.overviewImage ?? data.useCases[0]?.image ?? data.heroImage}`}
+                  alt={`${data.title} overview`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 720px"
+                  className="object-cover"
+                />
+              )
+            }
           </div>
         </div>
 
@@ -50,7 +65,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
               {data.applications.map((application) => (
                 <span
                   key={application}
-                  className="rounded-[4px] bg-[#e6ebf0] px-4 py-1.5 text-base font-medium text-[#011f40]"
+                  className="rounded-lg bg-[#e6ebf0] px-4 py-1.5 text-base font-medium text-[#011f40]"
                 >
                   {application}
                 </span>
@@ -79,7 +94,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
                 <span
                   className={cn(
                     "absolute left-0.5 top-0.5 size-4 rounded-full bg-white transition-transform duration-300 ease-out",
-                    isImperial && "translate-x-[18px]",
+                    isImperial && "translate-x-4.5",
                   )}
                 />
               </span>
@@ -99,7 +114,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
                 key={spec.label}
                 direction="right"
                 delay={index * 45}
-                className="grid grid-cols-[0.75fr_1fr] border-b border-[#dfe6ee] py-[14px]"
+                className="grid grid-cols-[0.75fr_1fr] border-b border-[#dfe6ee] py-3.5"
               >
                 <dt className="text-[12px] font-semibold uppercase leading-5 text-[#3a3a3a]/65 md:text-[14px]">
                   {spec.label}
@@ -113,15 +128,22 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
               </ScrollReveal>
             ))}
           </dl>
-          <a
-            className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[10px] pl-4 pr-2 text-[14px] font-semibold uppercase tracking-wide text-white"
-            href="#contact"
+          <button
+            type="button"
+            className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-2.5 pl-4 pr-2 text-[14px] font-semibold uppercase tracking-wide text-white"
+            onClick={() => setIsDialogOpen(true)}
           >
-            {data.overviewCtaLabel ?? "Product Details"}
+            {data.overviewCtaLabel ?? "DOWNLOAD PRODUCT PROFILE"}
             <ArrowRight aria-hidden="true" className="size-4" />
-          </a>
+          </button>
         </div>
       </div>
+
+      <ProductProfileRequestDialog
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        productTitle={data.title}
+      />
     </section>
   );
 }
