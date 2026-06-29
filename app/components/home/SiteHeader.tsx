@@ -14,6 +14,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [robotsOpen, setRobotsOpen] = useState(true);
+  const [companyOpen, setCompanyOpen] = useState(false);
   const navHref = (item: string) => {
     if (item === "Home") return "/";
     if (item === "Software") return "/software-solutions";
@@ -23,7 +24,7 @@ export function SiteHeader() {
   const navActive = (item: string) => {
     if (item === "Home") return pathname === "/";
     if (item === "Software") return pathname.startsWith("/software-solutions");
-    if (item === "Company") return pathname.startsWith("/about-us");
+    if (item === "Company") return pathname.startsWith("/about-us") || pathname.startsWith("/newsroom");
     return false;
   };
   const isRobotsActive = [
@@ -62,10 +63,14 @@ export function SiteHeader() {
         </Link>
         <div className="hidden items-center gap-9 lg:flex">
           <nav className="flex items-center gap-[52px] text-sm font-medium text-[#2f2f2f]">
-            {navItems.map((item) =>
-              item === "Robots" ? (
-                <RobotsDropdown key={item} active={isRobotsActive} />
-              ) : (
+            {navItems.map((item) => {
+              if (item === "Robots") {
+                return <RobotsDropdown key={item} active={isRobotsActive} />;
+              }
+              if (item === "Company") {
+                return <CompanyDropdown key={item} active={navActive(item)} />;
+              }
+              return (
                 <Link
                   key={item}
                   className={`transition hover:text-[#005ead] ${
@@ -75,8 +80,8 @@ export function SiteHeader() {
                 >
                   {item}
                 </Link>
-              ),
-            )}
+              );
+            })}
           </nav>
           <a
             className="inline-flex py-2 px-3 items-center justify-center gap-6 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white"
@@ -113,73 +118,120 @@ export function SiteHeader() {
       >
         <div className="site-container max-h-[calc(100vh-60px)] overflow-y-auto py-5">
           <nav className="flex flex-col text-base font-semibold text-[#011f40]">
-            {navItems.map((item) =>
-              item === "Robots" ? (
-                <div key={item} className="border-b border-[#cfd7df] py-1">
-                  <button
-                    type="button"
-                    className={`flex min-h-12 w-full items-center justify-between text-left ${
-                      isRobotsActive
-                        ? "font-bold text-[#005ead]"
-                        : "text-[#011f40]"
-                    }`}
-                    aria-expanded={robotsOpen}
-                    onClick={() => setRobotsOpen((open) => !open)}
-                  >
-                    Robots
-                    <ChevronDown
-                      aria-hidden="true"
-                      className={`size-5 transition-transform ${robotsOpen ? "rotate-180" : ""}`}
-                      strokeWidth={2}
-                    />
-                  </button>
-                  <div
-                    className={`grid transition-[grid-template-rows] duration-300 ${
-                      robotsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="pb-4 pt-2">
-                        <Link
-                          href="/products"
-                          onClick={closeMenu}
-                          className="flex items-center gap-3 text-xl font-bold text-[#011f40]"
-                        >
-                          Robot Overview
-                          <ArrowRight
-                            aria-hidden="true"
-                            className="size-5"
-                            strokeWidth={2}
-                          />
-                        </Link>
-                        <p className="mt-2 max-w-[310px] text-xs leading-5 text-[#657382]">
-                          Explore ANSCER&apos;s robotic platforms for flexible
-                          industrial automation
-                        </p>
-                        <p className="mt-5 text-[10px] font-medium uppercase tracking-wide text-[#8b96a3]">
-                          Robot Series
-                        </p>
-                        <div className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 text-sm font-medium">
-                          {[
-                            ["AR Series", "/ar-series"],
-                            ["PSR Series", "/psr-series"],
-                            ["AGV Series", "/agv-series"],
-                          ].map(([series, href]) => (
-                            <Link
-                              key={series}
-                              className="transition hover:text-[#005ead]"
-                              href={href}
-                              onClick={closeMenu}
-                            >
-                              {series}
-                            </Link>
-                          ))}
+            {navItems.map((item) => {
+              if (item === "Robots") {
+                return (
+                  <div key={item} className="border-b border-[#cfd7df] py-1">
+                    <button
+                      type="button"
+                      className={`flex min-h-12 w-full items-center justify-between text-left ${
+                        isRobotsActive
+                          ? "font-bold text-[#005ead]"
+                          : "text-[#011f40]"
+                      }`}
+                      aria-expanded={robotsOpen}
+                      onClick={() => setRobotsOpen((open) => !open)}
+                    >
+                      Robots
+                      <ChevronDown
+                        aria-hidden="true"
+                        className={`size-5 transition-transform ${robotsOpen ? "rotate-180" : ""}`}
+                        strokeWidth={2}
+                      />
+                    </button>
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-300 ${
+                        robotsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="pb-4 pt-2">
+                          <Link
+                            href="/products"
+                            onClick={closeMenu}
+                            className="flex items-center gap-3 text-xl font-bold text-[#011f40]"
+                          >
+                            Robot Overview
+                            <ArrowRight
+                              aria-hidden="true"
+                              className="size-5"
+                              strokeWidth={2}
+                            />
+                          </Link>
+                          <p className="mt-2 max-w-[310px] text-xs leading-5 text-[#657382]">
+                            Explore ANSCER&apos;s robotic platforms for flexible
+                            industrial automation
+                          </p>
+                          <p className="mt-5 text-[10px] font-medium uppercase tracking-wide text-[#8b96a3]">
+                            Robot Series
+                          </p>
+                          <div className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 text-sm font-medium">
+                            {[
+                              ["AR Series", "/ar-series"],
+                              ["PSR Series", "/psr-series"],
+                              ["AGV Series", "/agv-series"],
+                            ].map(([series, href]) => (
+                              <Link
+                                key={series}
+                                className="transition hover:text-[#005ead]"
+                                href={href}
+                                onClick={closeMenu}
+                              >
+                                {series}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ) : (
+                );
+              }
+              if (item === "Company") {
+                return (
+                  <div key={item} className="border-b border-[#cfd7df] py-1">
+                    <button
+                      type="button"
+                      className={`flex min-h-12 w-full items-center justify-between text-left ${
+                        navActive(item)
+                          ? "font-bold text-[#005ead]"
+                          : "text-[#011f40]"
+                      }`}
+                      aria-expanded={companyOpen}
+                      onClick={() => setCompanyOpen((open) => !open)}
+                    >
+                      Company
+                      <ChevronDown
+                        aria-hidden="true"
+                        className={`size-5 transition-transform ${companyOpen ? "rotate-180" : ""}`}
+                        strokeWidth={2}
+                      />
+                    </button>
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-300 ${
+                        companyOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="pb-4 pt-2 pl-2">
+                          <p className="mt-2 mb-4 text-[10px] font-medium uppercase tracking-wide text-[#8b96a3]">
+                            Company
+                          </p>
+                          <div className="flex flex-col gap-4 text-sm font-medium text-[#011f40]">
+                            <Link href="/about-us" onClick={closeMenu} className="transition hover:text-[#005ead]">
+                              About us
+                            </Link>
+                            <Link href="/newsroom" onClick={closeMenu} className="transition hover:text-[#005ead]">
+                              Newsroom
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              return (
                 <Link
                   key={item}
                   className={`flex min-h-12 items-center border-b border-[#cfd7df] transition hover:text-[#005ead] ${
@@ -190,8 +242,8 @@ export function SiteHeader() {
                 >
                   {item}
                 </Link>
-              ),
-            )}
+              );
+            })}
           </nav>
           <a
             className="mt-5 inline-flex px-2 h-8 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white"
@@ -251,6 +303,38 @@ function RobotsDropdown({ active }: { active: boolean }) {
             </Link>
             <Link className="transition hover:text-[#005ead]" href="/agv-series">
               AGV Series
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CompanyDropdown({ active }: { active: boolean }) {
+  return (
+    <div className="group relative flex h-[60px] items-center">
+      <button
+        type="button"
+        className={`flex h-full items-center border-b-[3px] px-0 pt-[3px] transition group-hover:border-[#005ead] group-hover:text-[#005ead] ${
+          active
+            ? "border-[#005ead] font-bold text-[#005ead]"
+            : "border-transparent text-[#2f2f2f]"
+        }`}
+      >
+        Company
+      </button>
+      <div className="invisible absolute left-1/2 top-[60px] z-50 w-[220px] -translate-x-1/2 rounded-xl bg-white opacity-0 shadow-[0_18px_45px_rgba(1,31,64,.22)] transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div className="p-6">
+          <p className="mb-4 text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
+            Company
+          </p>
+          <div className="flex flex-col gap-4 text-base font-medium text-[#011f40]">
+            <Link href="/about-us" className="transition hover:text-[#005ead]">
+              About us
+            </Link>
+            <Link href="/newsroom" className="transition hover:text-[#005ead]">
+              Newsroom
             </Link>
           </div>
         </div>
