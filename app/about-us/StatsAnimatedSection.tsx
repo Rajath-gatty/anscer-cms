@@ -29,17 +29,23 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       <StatsMotionRail isInView={isInView} reduceMotion={Boolean(reduceMotion)} />
 
       <div className="site-container relative mt-9 md:mt-8">
-        <div className="grid gap-9 md:hidden">
+        <div className="relative grid gap-8 md:hidden">
+          <span className="absolute left-[19px] top-4 h-[calc(100%-32px)] w-px bg-[#e1e6eb]" />
           {stats.map((stat) => (
-            <article key={stat.label} className="relative text-center">
+            <article
+              key={stat.label}
+              className="relative grid grid-cols-[40px_1fr] gap-4"
+            >
               <Image
                 src={`${imagePath}robot.png`}
                 alt=""
-                width={58}
-                height={58}
-                className="mx-auto mb-7 h-[58px] w-auto object-contain"
+                width={32}
+                height={32}
+                className="relative z-10 mt-1 h-8 w-auto object-contain"
               />
-              <StatCardContent stat={stat} />
+              <div className="text-center">
+                <StatCardContent stat={stat} />
+              </div>
             </article>
           ))}
         </div>
@@ -73,13 +79,13 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
 function StatCardContent({ stat }: { stat: Stat }) {
   return (
     <>
-      <h3 className="text-[32px] font-extrabold leading-none text-[#011f40] md:text-[40px]">
+      <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[40px]">
         <span className="text-[#005ead]">{stat.value}</span>
       </h3>
-      <p className="mt-4 text-[14px] font-extrabold text-[#011f40]">
+      <p className="mt-2 text-[10px] font-extrabold text-[#011f40] md:mt-4 md:text-[14px]">
         {stat.label}
       </p>
-      <p className="mx-auto mt-3 max-w-[340px] text-[13px] leading-[1.6] text-[#3a3a3a]">
+      <p className="mx-auto mt-2 max-w-[260px] text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-[340px] md:text-[13px] md:leading-[1.6]">
         {stat.copy}
       </p>
     </>

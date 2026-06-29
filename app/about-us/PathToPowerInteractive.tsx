@@ -111,7 +111,28 @@ export function PathToPowerInteractive() {
         })}
       </div>
 
-      <div className="flex h-[360px] min-w-0 gap-4 overflow-hidden md:h-[470px]">
+      <div className="grid gap-4 md:hidden">
+        {slides.map((slide) => (
+          <article
+            key={`${years[activeYearIndex]}-mobile-${slide.image}`}
+            className="relative min-h-[235px] overflow-hidden rounded-md bg-[#011f40] text-white"
+          >
+            <Image
+              src={`${imagePath}${slide.image}`}
+              alt={slide.alt}
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.78))]" />
+            <h3 className="absolute bottom-4 left-4 right-4 text-[11px] font-medium leading-tight">
+              {slide.title}
+            </h3>
+          </article>
+        ))}
+      </div>
+
+      <div className="hidden h-[360px] min-w-0 gap-4 overflow-hidden md:flex md:h-[470px]">
         {slides.map((slide, index) => {
           const isActive = index === activeSlideIndex;
 
