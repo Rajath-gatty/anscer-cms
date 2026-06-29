@@ -14,7 +14,6 @@ import {
   PlugZap,
   ShieldCheck,
   TrendingUp,
-  Unplug,
   UserCircle2,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -139,6 +138,39 @@ const businessCapabilities = [
     image: "Rectangle-18009.jpg",
   },
 ];
+
+const processBenefitCards = [
+  {
+    title: "Flexible Workflow Configuration",
+    copy: "Create and modify process flows quickly to adapt to changing operational requirements.",
+    icon: "Frame-1321316939.svg",
+    wide: false,
+  },
+  {
+    title: "Industry-Specific Adaptability",
+    copy: "Support diverse material handling workflows across manufacturing, warehousing, and logistics environments.",
+    icon: "Frame-1321316939-4.svg",
+    wide: false,
+  },
+  {
+    title: "Simplified Automation",
+    copy: "Transform complex operational activities into easy-to-manage robotic workflows.",
+    icon: "Frame-1321316939-3.svg",
+    wide: false,
+  },
+  {
+    title: "Scalable Operations",
+    copy: "Standardize and replicate workflows across multiple plants, production lines, or facilities.",
+    icon: "Frame-1321316938.svg",
+    wide: false,
+  },
+  {
+    title: "Reduced Operational Dependency",
+    copy: "Minimize manual coordination and improve process consistency through automated task execution.",
+    icon: "Frame-1321316951.svg",
+    wide: true,
+  },
+] as const;
 
 export default function SoftwareSolutionsPage() {
   return (
@@ -365,7 +397,7 @@ function ProductModule({
   chipsTitle?: string;
 }) {
   return (
-    <section id={id} className="scroll-mt-32 bg-[#fafafa] py-14">
+    <section id={id} className="scroll-mt-32 bg-white py-14">
       <div className="site-container">
         <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
           <span className="text-[28px]">{index} </span>
@@ -374,10 +406,10 @@ function ProductModule({
         <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
           {title}
         </h2>
-        <p className="mt-4 max-w-[648px] text-[16px] leading-7 text-[#333333]">
+        <p className="mt-4 max-w-[648px] text-[18px] leading-[120%] text-[#333333]">
           {intro}
         </p>
-        <div className="mt-9 grid gap-8 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
+        <div className="mt-9 grid gap-10 lg:grid-cols-2 lg:items-start">
           <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef]">
             <Image
               src={`${imagePath}${image}`}
@@ -388,19 +420,19 @@ function ProductModule({
             />
           </div>
           <div>
-            <p className="text-[16px] leading-7 text-[#333333]">{body}</p>
+            <p className="text-[16px] leading-6 text-[#333333]">{body}</p>
             {chipsTitle && (
               <p className="mb-4 mt-8 text-base font-medium text-[#333333]">
                 {chipsTitle}
               </p>
             )}
             <div
-              className={`flex flex-wrap gap-2 ${chipsTitle ? "mt-0" : "mt-6"}`}
+              className={`flex flex-wrap gap-3 pr-10 ${chipsTitle ? "mt-0" : "mt-6"}`}
             >
               {chips.map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-[8px] bg-[#e6ebf0] px-5 py-[7px] text-sm font-normal text-[#333333]"
+                  className="rounded-[8px] bg-[#e6ebf0] px-5 py-[7px] text-base font-normal text-[#011f40]"
                 >
                   {chip}
                 </span>
@@ -432,12 +464,12 @@ function BenefitsSection({
 }) {
   if (fleetMap) {
     return (
-      <section className="bg-[#fafafa] py-14 md:py-20">
+      <section className="bg-[#fafafa] pt-14 pb-4">
         <div className="site-container">
           <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             {eyebrow}
           </p>
-          <h2 className="mt-3 max-w-[760px] text-[28px] font-bold leading-tight sm:text-[30px] md:text-4xl">
+          <h2 className="mt-6 max-w-[760px] text-[28px] font-bold leading-[1.2] sm:text-[30px] md:text-4xl">
             {title}
           </h2>
           {copy ? (
@@ -446,11 +478,18 @@ function BenefitsSection({
             </p>
           ) : null}
           <FleetBenefitsMap />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:hidden">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:hidden">
             {fleetBenefits.map((benefit) => (
               <FleetBenefitCard key={benefit.title} benefit={benefit} mobile />
             ))}
           </div>
+          <Image
+            src={`${imagePath}benefirs-svg-element-2.svg`}
+            alt=""
+            width={173}
+            height={38}
+            className="mt-4 w-[168px]"
+          />
         </div>
       </section>
     );
@@ -510,27 +549,12 @@ function BenefitsSection({
 }
 
 function FleetBenefitsMap() {
-  const paths = [
-    {
-      id: "fleet-route-purple",
-      d: "M0 314.5H471.125V105H913.625V300H1479.62",
-      color: "#2600ff",
-    },
-    {
-      id: "fleet-route-green",
-      d: "M2 612H445.625V410.5H897.125V637.5H1505.12",
-      color: "#3cff00",
-    },
-    {
-      id: "fleet-route-red",
-      d: "M907.125 699.818V345H1379.12V0",
-      color: "#ff0000",
-    },
-    {
-      id: "fleet-route-blue",
-      d: "M1401.62 22V318H906.125V119.5H462.125V712",
-      color: "#00b3ff",
-    },
+  // Robot paths (invisible — used only for robot animateMotion, no track lines)
+  const robotPaths = [
+    { id: "fleet-route-purple", d: "M0 314.5H471.125V105H913.625V300H1479.62" },
+    { id: "fleet-route-green", d: "M2 612H445.625V410.5H897.125V637.5H1505.12" },
+    { id: "fleet-route-red", d: "M907.125 699.818V345H1379.12V0" },
+    { id: "fleet-route-blue", d: "M1401.62 22V318H906.125V119.5H462.125V712" },
   ];
 
   const TOTAL_DUR = 22;
@@ -542,15 +566,7 @@ function FleetBenefitsMap() {
   ];
 
   return (
-    <div className="relative mt-9 hidden min-h-[714px] overflow-hidden bg-[#efefef] lg:block">
-      <div className="absolute left-1/2 top-0 h-2 w-60 -translate-x-1/2 bg-[#bfbfbf]" />
-      <Image
-        src={`${imagePath}benefirs-svg-element-2.svg`}
-        alt=""
-        width={173}
-        height={38}
-        className="absolute bottom-5 left-0 w-[168px]"
-      />
+    <div className="relative mt-[60px] hidden min-h-[714px] overflow-hidden lg:block">
       <Image
         src={`${imagePath}benefits-svg-element.svg`}
         alt=""
@@ -565,64 +581,37 @@ function FleetBenefitsMap() {
         preserveAspectRatio="none"
         viewBox="0 0 1506 714"
       >
+        {/* Hidden path defs — robots follow these paths but the strokes are invisible */}
         <defs>
-          {paths.map((path) => (
-            <marker
-              key={`${path.id}-arrow`}
-              id={`${path.id}-arrow`}
-              markerHeight="14"
-              markerWidth="14"
-              orient="auto"
-              refX="10"
-              refY="4"
-              viewBox="0 0 12 8"
-            >
-              <path
-                d="M0 0L12 4L0 8"
-                fill="none"
-                stroke={path.color}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </marker>
+          {robotPaths.map((path) => (
+            <path key={path.id} id={path.id} d={path.d} />
           ))}
         </defs>
-        {paths.map((path) => (
-          <path
-            key={path.id}
-            id={path.id}
-            d={path.d}
-            stroke={path.color}
-            strokeWidth="1.7"
-            vectorEffect="non-scaling-stroke"
-            markerEnd={`url(#${path.id}-arrow)`}
-          />
-        ))}
         <g className="motion-reduce:hidden">
           {robotsAnim.map((robot) => {
             const t1 = robot.start / TOTAL_DUR;
             const t2 = (robot.start + robot.dur) / TOTAL_DUR;
 
-            let keyTimes = "",
-              keyPoints = "",
-              opKeyTimes = "",
-              opValues = "";
+            let keyTimes = "";
+            let keyPoints = "";
+            let opKeyTimes = "";
+            let opValues = "";
 
             if (robot.start === 0) {
               keyTimes = `0; ${t2.toFixed(4)}; 1`;
-              keyPoints = `0; 1; 1`;
+              keyPoints = "0; 1; 1";
               opKeyTimes = `0; ${Math.max(0, t2 - 0.02).toFixed(4)}; ${t2.toFixed(4)}; 1`;
-              opValues = `1; 1; 0; 0`;
+              opValues = "1; 1; 0; 0";
             } else if (robot.start + robot.dur === TOTAL_DUR) {
               keyTimes = `0; ${t1.toFixed(4)}; 1`;
-              keyPoints = `0; 0; 1`;
+              keyPoints = "0; 0; 1";
               opKeyTimes = `0; ${Math.max(0, t1 - 0.01).toFixed(4)}; ${t1.toFixed(4)}; 0.98; 1`;
-              opValues = `0; 0; 1; 1; 0`;
+              opValues = "0; 0; 1; 1; 0";
             } else {
               keyTimes = `0; ${t1.toFixed(4)}; ${t2.toFixed(4)}; 1`;
-              keyPoints = `0; 0; 1; 1`;
+              keyPoints = "0; 0; 1; 1";
               opKeyTimes = `0; ${Math.max(0, t1 - 0.01).toFixed(4)}; ${t1.toFixed(4)}; ${Math.max(0, t2 - 0.02).toFixed(4)}; ${t2.toFixed(4)}; 1`;
-              opValues = `0; 0; 1; 1; 0; 0`;
+              opValues = "0; 0; 1; 1; 0; 0";
             }
 
             return (
@@ -716,7 +705,7 @@ function AnalyticsPlatformSection() {
       className="scroll-mt-32 bg-[#fafafa] py-14"
     >
       <div className="site-container">
-        <div className="grid gap-10 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
+        <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
           <div>
             <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
               <span className="text-[28px]">04 </span>
@@ -725,14 +714,14 @@ function AnalyticsPlatformSection() {
             <h2 className="mt-4 text-[32px] font-bold leading-tight text-[#011f40] md:text-4xl">
               Analytics Platform
             </h2>
-            <p className="mt-4 text-[16px] leading-7 text-[#333333]">
+            <p className="mt-2.5 text-[20px] leading-normal text-[#333333]">
               Turn Operational Data Into Actionable Intelligence
             </p>
 
             {/* Inline Image for Mobile (< lg) */}
-            <div className="relative mt-8 min-h-[260px] sm:min-h-[360px] w-full overflow-hidden rounded-2xl bg-[#dce7ef] shadow-md lg:hidden">
+            <div className="relative mt-6 min-h-[260px] w-full overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[360px] lg:hidden">
               <Image
-                src={`${imagePath}Frame-1321317433.jpg`}
+                src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
                 alt="ANSCER analytics platform in use"
                 fill
                 sizes="(max-width: 1024px) 100vw, 640px"
@@ -740,7 +729,7 @@ function AnalyticsPlatformSection() {
               />
             </div>
 
-            <p className="mt-8 text-base leading-6 text-[#333333]">
+            <p className="mt-6 text-[14px] leading-[150%] text-[#333333] lg:mt-8 lg:text-[16px]">
               The ANSCER Analytics Platform provides comprehensive operational
               insights into robot fleets, missions, and facility workflows.
               Designed to support data-driven decision-making, the Analytics
@@ -748,7 +737,7 @@ function AnalyticsPlatformSection() {
               intelligence that helps optimize robot performance, improve
               workflow efficiency, and enhance overall facility productivity.
             </p>
-            <p className="mt-5 text-base leading-6 text-[#333333]">
+            <p className="mt-5 text-[14px] leading-[150%] text-[#333333] lg:text-[16px]">
               By continuously collecting and analyzing data from robot
               operations, mission requests, traffic flow, and system events, the
               platform enables users to monitor key performance indicators,
@@ -758,9 +747,9 @@ function AnalyticsPlatformSection() {
           </div>
 
           {/* Right Column Image for Desktop (>= lg) */}
-          <div className="relative hidden lg:block min-h-[420px] overflow-hidden rounded-xl bg-[#dce7ef]">
+          <div className="relative hidden min-h-[420px] overflow-hidden rounded-[12px] bg-[#dce7ef] lg:block">
             <Image
-              src={`${imagePath}Frame-1321317433.jpg`}
+              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt="ANSCER analytics platform in use"
               fill
               sizes="(max-width: 1024px) 100vw, 640px"
@@ -775,25 +764,27 @@ function AnalyticsPlatformSection() {
 
 function SoftwareCta() {
   return (
-    <section className="relative overflow-hidden bg-[#005ead] py-14 text-white">
+    <section className="relative flex h-[580px] items-center overflow-hidden bg-[#005ead] text-white max-[991px]:mt-5">
       <Image
         src={`${imagePath}Frame-1321317289.jpg`}
         alt=""
         fill
         sizes="100vw"
-        className="object-cover opacity-45"
+        className="object-cover"
       />
-      <div className="absolute inset-0" />
-      <div className="site-container relative z-10">
-        <h2 className="max-w-[760px] text-[40px] font-semibold leading-[1.08] md:text-[60px]">
+      <div className="absolute inset-0 z-10 bg-[#005ead] mix-blend-color" />
+      <div className="absolute inset-0 z-10 bg-black/80" />
+      <div className="site-container relative z-20">
+        <div className="flex max-w-[970px] flex-col items-start gap-6 max-[991px]:gap-2">
+        <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] text-white md:text-[60px] md:leading-[110%]">
           Experience automation that understands your operations.
         </h2>
-        <p className="mt-5 max-w-[560px] text-[18px] font-medium leading-8 text-white">
+        <p className="max-w-[850px] text-[14px] font-medium leading-5 text-white md:text-[18px] md:leading-8">
           Book your demo now and experience ANSCER in action.
         </p>
         <Link
           href="mailto:sales@anscer.com"
-          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm border border-white bg-transparent px-6 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-white/10"
+          className="group inline-flex h-[46px] items-center gap-3 rounded-[3px] bg-[#005ead] py-[13px] pl-5 pr-1 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#005ead]/90"
         >
           Book a demo{" "}
           <span className="relative flex size-4 overflow-hidden">
@@ -809,6 +800,7 @@ function SoftwareCta() {
             />
           </span>
         </Link>
+        </div>
       </div>
     </section>
   );
@@ -871,7 +863,7 @@ function benefitCopy(title: string) {
 
 function BusinessBenefitsSection() {
   return (
-    <section className="bg-[#fafafa] py-14">
+    <section className="bg-white py-14">
       <div className="site-container">
         <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           BENEFITS
@@ -881,74 +873,74 @@ function BusinessBenefitsSection() {
           <br />
           Autonomous Operations
         </h2>
-        <div className="mt-10 grid gap-8 lg:grid-cols-[0.56fr_0.44fr]">
+        <div className="mt-10 grid gap-4 lg:grid-cols-2">
           {/* Left Side: Grid */}
-          <div className="order-2 flex flex-col overflow-hidden rounded-xl border border-[#d6e0e8] bg-white lg:order-1">
-            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
+          <div className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
+            <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 1 */}
-              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+              <div className="flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
                 <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
                   <Layers className="size-5" strokeWidth={1.7} />
                 </div>
                 <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
                   Operational Abstraction
                 </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
                   Separates business logic from robot control logic
                 </p>
               </div>
               {/* Card 2 */}
-              <div className="flex-1 p-6 sm:p-8">
+              <div className="flex-1 p-6">
                 <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
                   <ExternalLink className="size-5" strokeWidth={1.7} />
                 </div>
                 <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
                   Scalability
                 </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
                   Supports multi-industry deployments
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
+            <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 3 */}
-              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+              <div className="flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
                 <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
                   <Network className="size-5" strokeWidth={1.7} />
                 </div>
                 <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
                   Flexibility
                 </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
                   Multiple implementation approaches (prebuilt, low-code,
                   integrated)
                 </p>
               </div>
               {/* Card 4 */}
-              <div className="flex-1 p-6 sm:p-8">
+              <div className="flex-1 p-6">
                 <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
                   <Code className="size-5" strokeWidth={1.7} />
                 </div>
                 <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
                   Reduced Engineering Effort
                 </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
                   Minimizes need for custom coding
                 </p>
               </div>
             </div>
 
             {/* Card 5 (Full width) */}
-            <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-5 p-6 sm:p-8">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6 p-6">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
                 <UserCircle2 className="size-5" strokeWidth={1.7} />
               </div>
               <div>
                 <h3 className="text-[16px] font-semibold text-[#011f40]">
                   User-Centric Design
                 </h3>
-                <p className="mt-1 text-[14px] leading-6 text-[#333333]">
+                <p className="mt-1 text-[14px] leading-[130%] text-[#333333]">
                   Simplifies interaction for non-technical operators
                 </p>
               </div>
@@ -978,93 +970,49 @@ function ProcessBenefitsSection() {
         <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           BENEFITS
         </p>
-        <h2 className="mt-3 max-w-[648px] text-[30px] font-bold leading-tight text-[#011f40] md:text-4xl">
+        <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
           Turning Industry Workflows Into
           <br />
           Autonomous Operations
         </h2>
-        <div className="mt-10 grid gap-3 lg:grid-cols-[0.49fr_0.51fr] lg:items-stretch">
-          {/* Left Side: Image */}
-          <div className="relative min-h-[300px] sm:min-h-[440px] overflow-hidden rounded-xl bg-[#dce7ef]">
+        <div className="mt-10 grid gap-4 lg:grid-cols-2 lg:items-stretch">
+          <div className="grid overflow-hidden border border-[#005ead]/20 lg:grid-cols-2 lg:auto-rows-[180px]">
+            {processBenefitCards.map((card, index) => (
+              <article
+                key={card.title}
+                className={`flex gap-2 bg-white/50 p-6 ${
+                  card.wide ? "flex-col lg:col-span-2 lg:flex-row lg:items-center lg:gap-6" : "flex-col"
+                } ${
+                  index === 0 || index === 2 ? "border-r-0 lg:border-r border-[#005ead]/20" : ""
+                } ${index < 4 ? "border-b border-[#005ead]/20" : ""}`}
+              >
+                <Image
+                  src={`${imagePath}${card.icon}`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="size-10 shrink-0"
+                />
+                <div className={card.wide ? "flex flex-col gap-2" : ""}>
+                  <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                    {card.copy}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="relative min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px]">
             <Image
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt=""
               fill
-              sizes="(max-width: 1024px) 100vw, 560px"
+              sizes="(max-width: 1024px) 100vw, 670px"
               className="object-cover"
             />
-          </div>
-
-          {/* Right Side: Grid */}
-          <div className="flex flex-col overflow-hidden rounded-xl border border-[#d6e0e8] bg-white">
-            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
-              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
-                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
-                  <Layers className="size-5" strokeWidth={1.7} />
-                </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
-                  Flexible Workflow Configuration
-                </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
-                  Create and modify process flows quickly to adapt to changing
-                  operational requirements.
-                </p>
-              </div>
-              <div className="flex-1 p-6 sm:p-8">
-                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
-                  <Network className="size-5" strokeWidth={1.7} />
-                </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
-                  Industry-Specific Adaptability
-                </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
-                  Support diverse material handling workflows across
-                  manufacturing, warehousing, and logistics environments.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col lg:flex-row border-b border-[#d6e0e8]">
-              <div className="flex-1 border-b border-[#d6e0e8] p-6 sm:p-8 lg:border-b-0 lg:border-r">
-                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
-                  <MousePointerClick className="size-5" strokeWidth={1.7} />
-                </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
-                  Simplified Automation
-                </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
-                  Transform complex operational activities into easy-to-manage
-                  robotic workflows.
-                </p>
-              </div>
-              <div className="flex-1 p-6 sm:p-8">
-                <div className="flex size-10 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
-                  <ArrowUpRight className="size-5" strokeWidth={1.7} />
-                </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
-                  Scalable Operations
-                </h3>
-                <p className="mt-2 text-[14px] leading-6 text-[#333333]">
-                  Standardize and replicate workflows across multiple plants,
-                  production lines, or facilities.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-5 p-6 sm:p-8">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded bg-[#f4f7fa] text-[#011f40]">
-                <Unplug className="size-5" strokeWidth={1.7} />
-              </div>
-              <div>
-                <h3 className="text-[16px] font-semibold text-[#011f40]">
-                  Reduced Operational Dependency
-                </h3>
-                <p className="mt-1 text-[14px] leading-6 text-[#333333]">
-                  Minimize manual coordination and improve process consistency
-                  through automated task execution.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

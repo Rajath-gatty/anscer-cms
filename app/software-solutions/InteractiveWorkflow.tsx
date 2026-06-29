@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { imagePath } from "../components/home/assets";
 
-/* ─── Exact SVG icons from anscer.com ─── */
 function MoveIcon({ active }: { active: boolean }) {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
@@ -51,123 +50,103 @@ function DropIcon({ active }: { active: boolean }) {
 }
 
 const steps = [
-  { title: "Move", copy: "Navigate the robot between locations.",                                 Icon: MoveIcon, image: "img-1.png" },
-  { title: "Pick", copy: "Execute material pickup operations.",                                    Icon: PickIcon, image: "img-2.png" },
-  { title: "Wait", copy: "Pause operations based on process conditions or timing requirements.",   Icon: WaitIcon, image: "img-3.png" },
-  { title: "Drop", copy: "Perform material delivery or unloading actions.",                       Icon: DropIcon, image: "img-4.png" },
+  { title: "Move", copy: "Navigate the robot between locations.", Icon: MoveIcon, image: "img-1.png" },
+  { title: "Pick", copy: "Execute material pickup operations.", Icon: PickIcon, image: "img-2.png" },
+  { title: "Wait", copy: "Pause operations based on process conditions or timing requirements.", Icon: WaitIcon, image: "img-3.png" },
+  { title: "Drop", copy: "Perform material delivery or unloading actions.", Icon: DropIcon, image: "img-4.png" },
 ];
 
-/* 
-  The Webflow layout has:
-  - A dedicated 48px-wide "timeline-navigation-track" column on the far left
-  - Each step card aligned beside its corresponding dot, height ~100px
-  - Active dot = blue filled 11.33px circle + 23px blue ring around it
-  - Inactive dot = dark 11.33px circle at 0.2 opacity
-  - Connecting lines between dots turn blue (#005EAD) for completed/active, grey (#011F40 at 0.2) for inactive
-  - Active card: light blue bg (rgba(0,94,173,0.10)), 12px radius, full width
-  - Inactive card: transparent bg, description hidden
-*/
+function TimelineTrack({ active }: { active: number }) {
+  const lineClass = (complete: boolean) =>
+    complete ? "bg-[#005ead] opacity-100" : "bg-[#011f40] opacity-20";
+
+  return (
+    <div className="flex h-full min-h-[400px] w-12 shrink-0 flex-col items-center">
+      <div className={`h-[30px] w-[2px] shrink-0 transition-all duration-300 ${lineClass(active > 0)}`} />
+      {steps.map((step, index) => {
+        const isActive = active === index;
+        const isLast = index === steps.length - 1;
+
+        return (
+          <div key={step.title} className="contents">
+            <div
+              className={`flex h-6 w-12 shrink-0 items-center justify-center transition-opacity duration-300 ${
+                isActive ? "opacity-100" : "opacity-20"
+              }`}
+              aria-hidden="true"
+            >
+              <div className="relative flex size-6 items-center justify-center">
+                <div
+                  className={`absolute size-[23px] rounded-full border border-[#005ead] transition-opacity duration-300 ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+                <div
+                  className={`size-[11.33px] rounded-full transition-all duration-300 ${
+                    isActive ? "bg-[#005ead] opacity-100" : "bg-[#011f40] opacity-20"
+                  }`}
+                />
+              </div>
+            </div>
+            {!isLast ? (
+              <div
+                className={`w-[2px] min-h-[30px] flex-1 transition-all duration-300 lg:h-20 lg:flex-none ${lineClass(
+                  index < active,
+                )}`}
+                style={{ flexGrow: isActive ? 5 : 1 }}
+              />
+            ) : (
+              <div className={`h-[30px] w-[2px] shrink-0 transition-all duration-300 ${lineClass(active === 3)}`} />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function InteractiveWorkflow() {
   const [active, setActive] = useState(0);
 
-  // Heights that mirror the Webflow design:
-  // line-top: 30px, step-node: 24px, connecting-line: 80px, line-bottom: 30px
-  // Each card is 28px padding top+bottom + ~44px content = ~100px total
-  const LINE_TOP = 30;
-  const DOT_HEIGHT = 24;
-  const LINE_H = 80; // connecting line between dots, matches card height
-
   return (
-    <section className="bg-[#fafafa] py-16 md:py-20">
+    <section className="bg-[#fafafa] py-14">
       <div className="site-container">
-
-        {/* ── Top two-column header (matches Webflow exactly) ── */}
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
+        <div className="grid gap-0 lg:grid-cols-2 lg:gap-10">
           <div>
             <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
               WORKFLOW CONFIGURATION
             </p>
-            <h2 className="mt-3 text-[32px] font-bold leading-tight text-[#011f40] md:text-[36px]">
+            <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
               Build Robot Workflows Without Writing Code
             </h2>
           </div>
-          <p className="text-base leading-7 text-[#333333]">
+          <p className="mt-5 text-[16px] leading-[130%] text-[#333333] lg:mt-0 lg:text-[20px]">
             The Process Flow Manager enables users to create robotic workflows through a drag-and-drop,
             block-based interface, allowing teams to automate processes without complex programming.
           </p>
         </div>
 
-        {/* ── Main interactive area ── */}
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-start">
+        <div className="mt-8 grid gap-4 lg:grid-cols-2 lg:items-start">
+          <div className="flex w-full">
+            <TimelineTrack active={active} />
+            <div className="flex-auto">
+              {steps.map((step, index) => {
+                const isActive = active === index;
 
-          {/* ── Left: stepper track + cards ── */}
-          <div className="flex flex-col w-full">
-            {steps.map((step, i) => {
-              const isActive = active === i;
-              const isPast = i < active;
-              const padTop = isActive ? 28 : 12;
-              const padBottom = isActive ? 28 : 12;
-
-              return (
-                <div
-                  key={step.title}
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => setActive(i)}
-                  onKeyDown={(e) => e.key === "Enter" && setActive(i)}
-                  className="flex cursor-pointer group focus:outline-none"
-                >
-                  {/* Timeline Track Column — dot vertically centered to icon */}
-                  <div className="relative flex flex-col items-center w-12 flex-shrink-0">
-                    {/* Top line segment — same height as card padding-top + half icon (20px) */}
-                    <div
-                      className={`w-[2px] transition-colors duration-300 ${
-                        i === 0
-                          ? "bg-transparent"
-                          : (i <= active ? "bg-[#005ead]" : "bg-[#011f40]/20")
-                      }`}
-                      style={{ height: `${padTop + 20}px` }}
-                    />
-
-                    {/* Dot — aligns with the vertical center of the 40px icon */}
-                    <div className="flex items-center justify-center w-full flex-shrink-0" style={{ height: '0px' }}>
-                      <div className="relative flex items-center justify-center size-6">
-                        {isActive && (
-                          <div className="absolute inset-0 rounded-full border border-[#005ead] animate-in fade-in zoom-in-95 duration-200" />
-                        )}
-                        <div
-                          className={`rounded-full transition-all duration-300 ${
-                            isActive || isPast
-                              ? "size-3 bg-[#005ead]"
-                              : "size-3 bg-[#011f40]/20 group-hover:bg-[#011f40]/40"
-                          }`}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Bottom line segment — fills remaining space */}
-                    <div
-                      className={`w-[2px] flex-1 transition-colors duration-300 ${
-                        i === steps.length - 1
-                          ? "bg-transparent"
-                          : (i < active ? "bg-[#005ead]" : "bg-[#011f40]/20")
-                      }`}
-                    />
-                  </div>
-
-                  {/* Card Content Column */}
-                  <div
-                    className={`flex-1 rounded-xl transition-all duration-300 ${
-                      isActive
-                        ? "bg-[rgba(0,94,173,0.10)]"
-                        : "bg-transparent hover:bg-black/[0.03]"
+                return (
+                  <button
+                    key={step.title}
+                    type="button"
+                    onClick={() => setActive(index)}
+                    className={`flex w-full cursor-pointer flex-col gap-3 rounded-[12px] px-5 py-7 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${
+                      isActive ? "bg-[#005ead1a]" : "bg-transparent"
                     }`}
-                    style={{ padding: `${padTop}px 20px ${padBottom}px` }}
+                    aria-current={isActive ? "step" : undefined}
                   >
-                    <div className="flex items-center gap-3.5">
+                    <div className="flex items-center gap-3">
                       <step.Icon active={isActive} />
                       <h3
-                        className={`text-[16px] font-medium transition-colors duration-200 ${
+                        className={`text-[16px] font-medium transition-colors duration-300 ${
                           isActive ? "text-[#005ead]" : "text-[#011f40]"
                         }`}
                       >
@@ -176,48 +155,46 @@ export function InteractiveWorkflow() {
                     </div>
 
                     <div
-                      className={`grid transition-all duration-300 ease-in-out ${
-                        isActive ? "mt-2.5 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      className={`grid transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                        isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <p className="pl-[54px] text-sm leading-6 text-[#333333]">{step.copy}</p>
-                        
-                        {/* Inline Image for Mobile (< lg) */}
-                        <div className="mt-4 overflow-hidden rounded-xl bg-[#0f1724] shadow-md lg:hidden">
-                          <div className="relative aspect-[16/10] w-full">
+                        <p className="text-[14px] leading-[150%] text-[#333333]">{step.copy}</p>
+                        <div className="mt-5 overflow-hidden rounded-[12px] lg:hidden">
+                          <div className="relative aspect-[668/424] w-full">
                             <Image
                               src={`${imagePath}${step.image}`}
-                              alt={`${step.title} workflow – Process Flow Manager`}
+                              alt={`${step.title} workflow - Process Flow Manager`}
                               fill
                               sizes="(max-width: 1024px) 100vw, 600px"
-                              className="object-cover object-top"
+                              className="object-cover"
                             />
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* ── Right: app screenshot image (Desktop only) ── */}
-          <div className="hidden lg:block overflow-hidden rounded-2xl bg-[#0f1724] shadow-2xl">
-            <div className="relative aspect-[16/10] w-full">
-              <Image
-                key={active}
-                src={`${imagePath}${steps[active].image}`}
-                alt={`${steps[active].title} workflow – Process Flow Manager`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 750px"
-                className="object-cover object-top"
-                priority
-              />
+                  </button>
+                );
+              })}
             </div>
           </div>
 
+          <div className="relative hidden aspect-[668/424] w-full overflow-hidden lg:block">
+            {steps.map((step, index) => (
+              <Image
+                key={step.title}
+                src={`${imagePath}${step.image}`}
+                alt={`${step.title} workflow - Process Flow Manager`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 668px"
+                className={`object-cover transition-opacity duration-500 ${
+                  active === index ? "opacity-100" : "opacity-0"
+                }`}
+                priority={index === 0}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

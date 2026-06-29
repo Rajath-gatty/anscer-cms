@@ -4,7 +4,7 @@ import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { imagePath } from "./assets";
 import { navItems } from "./home-data";
 
@@ -24,7 +24,10 @@ export function SiteHeader() {
   const navActive = (item: string) => {
     if (item === "Home") return pathname === "/";
     if (item === "Software") return pathname.startsWith("/software-solutions");
-    if (item === "Company") return pathname.startsWith("/about-us") || pathname.startsWith("/newsroom");
+    if (item === "Company")
+      return (
+        pathname.startsWith("/about-us") || pathname.startsWith("/newsroom")
+      );
     return false;
   };
   const isRobotsActive = [
@@ -74,7 +77,9 @@ export function SiteHeader() {
                 <Link
                   key={item}
                   className={`relative flex h-[60px] items-center cursor-pointer transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
-                    navActive(item) ? "font-bold text-[#005ead]" : "text-[#2f2f2f]"
+                    navActive(item)
+                      ? "font-bold text-[#005ead]"
+                      : "text-[#2f2f2f]"
                   }`}
                   href={navHref(item)}
                 >
@@ -218,10 +223,18 @@ export function SiteHeader() {
                             Company
                           </p>
                           <div className="flex flex-col gap-4 text-sm font-medium text-[#011f40]">
-                            <Link href="/about-us" onClick={closeMenu} className="cursor-pointer transition hover:text-[#005ead]">
+                            <Link
+                              href="/about-us"
+                              onClick={closeMenu}
+                              className="cursor-pointer transition hover:text-[#005ead]"
+                            >
                               About us
                             </Link>
-                            <Link href="/newsroom" onClick={closeMenu} className="cursor-pointer transition hover:text-[#005ead]">
+                            <Link
+                              href="/newsroom"
+                              onClick={closeMenu}
+                              className="cursor-pointer transition hover:text-[#005ead]"
+                            >
                               Newsroom
                             </Link>
                           </div>
@@ -264,9 +277,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
     <div className="group relative flex h-[60px] items-center">
       <Link
         className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 group-hover:text-[#005ead] hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 group-hover:after:scale-x-100 hover:after:scale-x-100 ${
-          active
-            ? "font-bold text-[#005ead]"
-            : "text-[#2f2f2f]"
+          active ? "font-bold text-[#005ead]" : "text-[#2f2f2f]"
         }`}
         href="/products"
       >
@@ -295,13 +306,22 @@ function RobotsDropdown({ active }: { active: boolean }) {
             Robot Series
           </p>
           <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-base font-medium text-[#011f40]">
-            <Link className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]" href="/ar-series">
+            <Link
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+              href="/ar-series"
+            >
               AR Series
             </Link>
-            <Link className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]" href="/psr-series">
+            <Link
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+              href="/psr-series"
+            >
               PSR Series
             </Link>
-            <Link className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]" href="/agv-series">
+            <Link
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+              href="/agv-series"
+            >
               AGV Series
             </Link>
           </div>
@@ -312,28 +332,66 @@ function RobotsDropdown({ active }: { active: boolean }) {
 }
 
 function CompanyDropdown({ active }: { active: boolean }) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close when clicking outside the dropdown
+  useEffect(() => {
+    if (!open) return;
+    function handleOutside(e: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [open]);
+
   return (
-    <div className="group relative flex h-[60px] items-center">
+    <div ref={containerRef} className="relative flex h-[60px] items-center">
       <button
         type="button"
-        className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 group-hover:text-[#005ead] hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 group-hover:after:scale-x-100 hover:after:scale-x-100 ${
-          active
+        onClick={() => setOpen((o) => !o)}
+        className={`relative cursor-pointer flex h-[60px] items-center gap-1 px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
+          open || active
             ? "font-bold text-[#005ead]"
             : "text-[#2f2f2f]"
         }`}
       >
         Company
+        <ChevronDown
+          aria-hidden="true"
+          className={`size-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          strokeWidth={2}
+        />
       </button>
-      <div className="invisible absolute left-1/2 top-[60px] z-50 w-[220px] -translate-x-1/2 rounded-xl bg-white opacity-0 shadow-[0_18px_45px_rgba(1,31,64,.22)] transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+      <div
+        className={`absolute left-1/2 top-[60px] z-50 w-[220px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${
+          open
+            ? "visible opacity-100 translate-y-0"
+            : "invisible opacity-0 -translate-y-2"
+        }`}
+      >
         <div className="p-6">
           <p className="mb-4 text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
             Company
           </p>
           <div className="flex flex-col text-base font-medium text-[#011f40]">
-            <Link href="/about-us" className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]">
+            <Link
+              href="/about-us"
+              onClick={() => setOpen(false)}
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+            >
               About us
             </Link>
-            <Link href="/newsroom" className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]">
+            <Link
+              href="/newsroom"
+              onClick={() => setOpen(false)}
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+            >
               Newsroom
             </Link>
           </div>
