@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 import { imagePath } from "../components/home/assets";
 
 export function TabbedCapabilities({
@@ -168,12 +168,12 @@ function AccordionList({
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-expanded={isActive}
-              className={`flex w-full cursor-pointer items-center justify-between gap-4 px-5 pt-[18px] text-left text-[16px] font-semibold text-[#005ead] transition-colors lg:text-[20px] ${
+              className={`flex w-full cursor-pointer items-center justify-between gap-4 px-5 pt-[18px] text-left text-[16px] font-semibold transition-colors lg:text-[20px] ${
                 isActive ? "pb-0" : "pb-[18px]"
               }`}
             >
-              <span className="leading-snug">{item.title}</span>
-              <span className="flex shrink-0 items-center justify-center text-[#005ead] transition-transform duration-300">
+              <span className="leading-snug text-[#005ead] ">{item.title}</span>
+              <span className="flex shrink-0 items-center justify-center transition-transform duration-300">
                 <ChevronDown
                   aria-hidden="true"
                   className={`size-5 transition-transform duration-300 ${
