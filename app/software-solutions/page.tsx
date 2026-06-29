@@ -1,29 +1,36 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
+  Code,
+  Expand,
+  ExternalLink,
   Gauge,
+  Layers,
   LayoutGrid,
+  MousePointerClick,
   Network,
+  PlugZap,
   ShieldCheck,
   Layers,
   ExternalLink,
   Code,
   UserCircle2,
   TrendingUp,
-  Expand,
-  PlugZap,
+  Unplug,
+  UserCircle2,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { imagePath } from "../components/home/assets";
-import { TabbedCapabilities } from "./TabbedCapabilities";
-import { InteractiveWorkflow } from "./InteractiveWorkflow";
-import { AnalyticsSection } from "./AnalyticsSection";
-import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
-import { SoftwareTabs } from "./SoftwareTabs";
 import { ScrollReveal } from "../components/home/ScrollReveal";
+import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
+import { AnalyticsSection } from "./AnalyticsSection";
+import { InteractiveWorkflow } from "./InteractiveWorkflow";
+import { SoftwareTabs } from "./SoftwareTabs";
+import { TabbedCapabilities } from "./TabbedCapabilities";
 
 export const metadata: Metadata = {
   title: "Software Solutions | ANSCER Robotics",
@@ -328,7 +335,7 @@ const fleetHighlights = [
 
 function SoftwareHero() {
   return (
-    <section className="relative min-h-[calc(100svh-108px)] overflow-hidden bg-[#011f40] text-white">
+    <section className="relative min-h-[calc(100svh-60px)] overflow-hidden bg-[#011f40] text-white md:min-h-[calc(100svh-110px)]">
       <Image
         src={`${imagePath}Desktop---27.jpg`}
         alt=""
@@ -338,7 +345,7 @@ function SoftwareHero() {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.58)_42%,rgba(0,0,0,0)_86%)]" />
-      <div className="site-container relative z-10 flex min-h-[calc(100svh-108px)] items-center py-16">
+      <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
         <div className="max-w-[807px]">
           <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-brand-blue">
             Software solutions
@@ -720,6 +727,9 @@ function FleetBenefitCard({
         mobile
           ? "min-h-[204px] hover:shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
           : "min-h-[186px]"
+        mobile
+          ? "min-h-[204px] hover:shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
+          : "min-h-[186px]"
       }`}
     >
       <span
@@ -734,6 +744,7 @@ function FleetBenefitCard({
       <h3 className="text-[16px] font-semibold leading-snug text-black">
         {benefit.title}
       </h3>
+      <p className="text-[14px] leading-[1.5] text-[#333333]">{benefit.copy}</p>
       <p className="text-[14px] leading-[1.5] text-[#333333]">{benefit.copy}</p>
     </article>
   );

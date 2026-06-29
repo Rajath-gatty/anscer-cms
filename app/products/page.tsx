@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
+import { ArrowLeft, ArrowRight, GitFork, Route, Workflow } from "lucide-react";
 import { imagePath } from "../components/home/assets";
+import { ScrollReveal } from "../components/home/ScrollReveal";
 import { ProductFaqAccordion } from "../components/products/ProductFaqAccordion";
 import { ProductHeroSlider } from "../components/products/ProductHeroSlider";
 import { ProductSeriesStaticMobile, ProductSeriesStickyStack } from "../components/products/ProductSeriesStickyStack";
+
 
 export const metadata: Metadata = {
   title: "Products | ANSCER Robotics",
@@ -14,16 +16,20 @@ export const metadata: Metadata = {
 
 const featureCards = [
   {
-    title: "Setup & Deployment",
-    copy: "Lorem ipsum dolor sit amet consectetur. Lorem tincidunt et enim amet urna viverra facilisis in.",
+    title: "Interoperable Architecture",
+    copy: "VDA 5050-compliant architecture for scalable multi-vendor fleet integration.",
+    Icon: GitFork,
+    iconClassName: "rotate-180",
   },
   {
-    title: "Smart Support & Reliability",
-    copy: "Continuous software updates and always stay up-to-date with the latest features and fixes.",
+    title: "Business Application Layer",
+    copy: "Execute industry-specific workflows with predefined modules and low-code customization.",
+    Icon: Route,
   },
   {
-    title: "Flexible Ecosystem",
-    copy: "True 24/7 accessory compatibility. Easily integrate with conveyors, belts, lifts and more.",
+    title: "Built-In Fleet & Mission Management",
+    copy: "Configure missions, routes, and fleets through an intuitive interface.",
+    Icon: Workflow,
   },
 ];
 
@@ -119,39 +125,53 @@ function FeaturesSection() {
   return (
     <section className="bg-[#fafafa] py-14 md:py-20">
       <div className="site-container">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">How Our Robots Deliver Excellence</p>
-        <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">Key Features of All Our Robots</h2>
-        <p className="mt-4 max-w-[600px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
-          Never worry about maintenance. ANSCER Robotics ensures seamless software updates, reliable hardware, and ongoing support to keep your robots operating at peak performance.
-        </p>
+        <ScrollReveal className="max-w-[600px]">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">How Our Robots Deliver Excellence</p>
+          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">Key Features of All Our <span className="text-[#005ead]">Robots</span></h2>
+          <p className="mt-4 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+            Never worry about maintenance. ANSCER Robotics ensures seamless software updates, reliable hardware, and ongoing support to keep your robots operating at peak performance.
+          </p>
+        </ScrollReveal>
 
         <div className="mt-9 grid gap-5 lg:grid-cols-[0.48fr_0.52fr]">
           <div className="grid gap-5 sm:grid-cols-2">
-            {featureCards.map((feature) => (
-              <article key={feature.title} className="rounded-lg bg-[#eaf2f8] p-6">
-                <div className="grid size-9 place-items-center rounded-md text-[#005ead]">
-                  <Plus aria-hidden="true" className="size-6" strokeWidth={2} />
-                </div>
-                <h3 className="mt-5 text-xl font-bold text-[#005ead] md:text-2xl">{feature.title}</h3>
-                <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{feature.copy}</p>
-              </article>
+            {featureCards.map((feature, index) => (
+              <ScrollReveal
+                key={feature.title}
+                delay={90 + index * 70}
+                className={index === 2 ? "sm:col-span-2" : undefined}
+              >
+                <article className="h-full rounded-lg bg-[#eaf2f8] p-6">
+                  <div className="grid size-9 place-items-center rounded-md text-[#005ead]">
+                    <feature.Icon
+                      aria-hidden="true"
+                      className={`size-6 ${feature.iconClassName ?? ""}`}
+                      strokeWidth={2}
+                    />
+                  </div>
+                  <h3 className="mt-5 text-xl font-bold text-[#005ead] md:text-2xl">{feature.title}</h3>
+                  <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{feature.copy}</p>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
-          <article className="relative min-h-[310px] overflow-hidden rounded-lg bg-[#011f40] p-7 text-white">
-            <Image src={`${imagePath}Frame-1321316466.jpg`} alt="" fill sizes="680px" className="object-cover opacity-55" />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.72),rgba(1,31,64,.18))]" />
-            <div className="relative z-10 max-w-[340px]">
-              <h3 className="text-xl font-bold md:text-2xl">Let&apos;s Build Together</h3>
-              <p className="mt-3 text-sm leading-5 text-white/84 md:text-base md:leading-6">Join us in shaping the future of robotics.</p>
-            </div>
-            <Image
-              src={`${imagePath}agv-100-new.png`}
-              alt="AGV robot"
-              width={420}
-              height={250}
-              className="absolute bottom-0 right-6 w-[54%] max-w-[430px] object-contain"
-            />
-          </article>
+          <ScrollReveal delay={160} className="h-full">
+            <article className="relative h-full min-h-[310px] overflow-hidden rounded-lg bg-[#011f40] p-7 text-white">
+              <Image src={`${imagePath}de9a09864e6cf7999d592447391655110840a585.png`} alt="" fill sizes="680px" className="object-cover opacity-55" />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.72),rgba(1,31,64,.18))]" />
+              <div className="relative z-10 max-w-[340px]">
+                <h3 className="text-xl font-bold md:text-2xl">Let&apos;s Build Together</h3>
+                <p className="mt-3 text-sm leading-5 text-white/84 md:text-base md:leading-6">Join us in shaping the future of robotics.</p>
+              </div>
+              <Image
+                src={`${imagePath}agv-100-new.png`}
+                alt="AGV robot"
+                width={420}
+                height={250}
+                className="absolute bottom-0 right-6 w-[54%] max-w-[430px] object-contain"
+              />
+            </article>
+          </ScrollReveal>
         </div>
       </div>
     </section>
@@ -176,9 +196,12 @@ function FaqSection() {
 
 function ProductsCta() {
   return (
-    <section className="relative overflow-hidden bg-[#005fad] py-20 text-white">
-      <Image src={`${imagePath}96cdc152cb608044ef4fbddf84c5978fac86d350.png`} alt="" fill sizes="100vw" className="object-cover opacity-35" />
-      <div className="absolute inset-0 bg-[#0020ad73]" />
+    <section className="relative overflow-hidden bg-[#005ead] py-20 text-white">
+      <Image src={`${imagePath}96cdc152cb608044ef4fbddf84c5978fac86d350.png`} alt="" fill sizes="100vw" className="object-cover" />
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(0, 38, 112, 0.82)" }}
+      />
       <div className="site-container relative z-10">
         <h2 className="max-w-[760px] text-[48px] font-bold leading-tight tracking-tight md:text-[60px]">Dive Into The Future Factory</h2>
         <p className="mt-4 max-w-[560px] text-sm leading-5 text-white/85 md:text-[18px] md:leading-[26px]">
@@ -186,9 +209,21 @@ function ProductsCta() {
         </p>
         <a
           href="#contact"
-          className="mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#0174ad]"
+          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
         >
-          Talk to our experts <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+          Talk to our experts
+          <span className="relative flex size-4 overflow-hidden">
+            <ArrowRight
+              aria-hidden="true"
+              className="size-4 transition group-hover:translate-x-5"
+              strokeWidth={2}
+            />
+            <ArrowRight
+              aria-hidden="true"
+              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+              strokeWidth={2}
+            />
+          </span>
         </a>
       </div>
     </section>

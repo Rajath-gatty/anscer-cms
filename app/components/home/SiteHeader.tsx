@@ -149,7 +149,7 @@ export function SiteHeader() {
                           <Link
                             href="/products"
                             onClick={closeMenu}
-                            className="cursor-pointer flex items-center gap-3 text-xl font-bold text-[#011f40]"
+                            className="cursor-pointer flex items-center gap-3 text-[16px] font-bold text-[#011f40] hover:underline"
                           >
                             Robot Overview
                             <ArrowRight
@@ -158,7 +158,7 @@ export function SiteHeader() {
                               strokeWidth={2}
                             />
                           </Link>
-                          <p className="mt-2 max-w-[310px] text-xs leading-5 text-[#657382]">
+                          <p className="mt-2 max-w-[310px] text-[10px] leading-5 text-[#657382]">
                             Explore ANSCER&apos;s robotic platforms for flexible
                             industrial automation
                           </p>
@@ -276,7 +276,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
         <div className="p-5">
           <Link
             href="/products"
-            className="cursor-pointer group/link flex items-center gap-3 text-xl font-bold text-[#011f40]"
+            className="cursor-pointer group/link flex items-center gap-3 text-xl font-bold text-[#011f40] hover:underline underline-offset-4"
           >
             Robot Overview
             <ArrowRight
