@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 import { imagePath } from "./assets";
 import {
   TechnologyAccordionContent,
@@ -60,11 +60,15 @@ export function TechnologyAccordion() {
               value={value}
               className={cn(
                 "shrink-0",
-                isOpen ? "py-4 lg:h-[240px] lg:py-6" : "h-[44px] py-3 lg:h-[76px] lg:py-5",
+                isOpen
+                  ? "py-4 lg:h-[240px] lg:py-6"
+                  : "h-[44px] py-3 lg:h-[76px] lg:py-5",
               )}
             >
-              <TechnologyAccordionTrigger>
-                <span className="text-xs font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">{item.title}</span>
+              <TechnologyAccordionTrigger className="cursor-pointer">
+                <span className="text-xs font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
+                  {item.title}
+                </span>
               </TechnologyAccordionTrigger>
 
               <TechnologyAccordionContent>
