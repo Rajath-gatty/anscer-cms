@@ -17,7 +17,7 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FadeUp } from "../components/animation";
+import { FadeLeft, FadeRight, FadeUp } from "../components/animation";
 import { imagePath } from "../components/home/assets";
 import { ScrollReveal } from "../components/home/ScrollReveal";
 import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
@@ -290,7 +290,7 @@ function FleetManagementSection() {
           </p>
         </ScrollReveal>
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.52fr_0.48fr] lg:items-start">
-          <div className="relative min-h-80 overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)] lg:min-h-107.5">
+          <FadeRight className="relative min-h-80 overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)] lg:min-h-107.5">
             <Image
               src={`${imagePath}Frame-427322849-2.jpg`}
               alt="ANSCER fleet management system in operation"
@@ -299,8 +299,8 @@ function FleetManagementSection() {
               sizes="(max-width: 1024px) 100vw, 720px"
               className="object-cover"
             />
-          </div>
-          <div className="pt-1 lg:pt-2">
+          </FadeRight>
+          <FadeLeft className="pt-1 lg:pt-2" delay={0.08}>
             <p className="max-w-170 text-base leading-6 text-[#333333] md:text-[16px] md:leading-6">
               The ANSCER Fleet Management System (FMS) is the intelligent
               orchestration platform that coordinates, monitors, and manages the
@@ -333,7 +333,7 @@ function FleetManagementSection() {
                 );
               })}
             </div>
-          </div>
+          </FadeLeft>
         </div>
       </div>
     </section>
@@ -366,7 +366,7 @@ function SoftwareHero() {
       />
       <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.58)_42%,rgba(0,0,0,0)_86%)]" />
       <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
-        <div className="max-w-[807px]">
+        <FadeRight className="max-w-[807px]">
           <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-brand-blue">
             Software solutions
           </p>
@@ -396,7 +396,7 @@ function SoftwareHero() {
               />
             </span>
           </Link>
-        </div>
+        </FadeRight>
       </div>
     </section>
   );
@@ -435,7 +435,7 @@ function ProductModule({
           {intro}
         </p>
         <div className="mt-9 grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef]">
+          <FadeRight className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef]">
             <Image
               src={`${imagePath}${image}`}
               alt=""
@@ -443,8 +443,8 @@ function ProductModule({
               sizes="680px"
               className="object-cover"
             />
-          </div>
-          <div>
+          </FadeRight>
+          <FadeLeft delay={0.08}>
             <p className="text-[16px] leading-6 text-[#333333]">{body}</p>
             {chipsTitle && (
               <p className="mb-4 mt-8 text-base font-medium text-[#333333]">
@@ -463,7 +463,7 @@ function ProductModule({
                 </span>
               ))}
             </div>
-          </div>
+          </FadeLeft>
         </div>
       </div>
     </section>
@@ -537,7 +537,7 @@ function BenefitsSection({
         <div
           className={`mt-8 grid gap-5 ${image ? "lg:grid-cols-[0.58fr_0.42fr]" : ""}`}
         >
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <FadeRight className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {cards.map((card) => (
               <article
                 key={card}
@@ -555,9 +555,12 @@ function BenefitsSection({
                 </p>
               </article>
             ))}
-          </div>
+          </FadeRight>
           {image ? (
-            <div className="relative min-h-[340px] overflow-hidden rounded-xl bg-[#dce7ef]">
+            <FadeLeft
+              className="relative min-h-[340px] overflow-hidden rounded-xl bg-[#dce7ef]"
+              delay={0.08}
+            >
               <Image
                 src={`${imagePath}${image}`}
                 alt=""
@@ -565,7 +568,7 @@ function BenefitsSection({
                 sizes="560px"
                 className="object-cover"
               />
-            </div>
+            </FadeLeft>
           ) : null}
         </div>
       </div>
@@ -731,7 +734,7 @@ function AnalyticsPlatformSection() {
     >
       <div className="site-container">
         <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
-          <div>
+          <FadeRight>
             <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
               <span className="text-[28px]">04 </span>
               <span className="text-[16px]">/ 04</span>
@@ -769,10 +772,13 @@ function AnalyticsPlatformSection() {
               identify operational bottlenecks, and proactively improve
               automation performance across facilities.
             </p>
-          </div>
+          </FadeRight>
 
           {/* Right Column Image for Desktop (>= lg) */}
-          <div className="relative hidden min-h-[420px] overflow-hidden rounded-[12px] bg-[#dce7ef] lg:block">
+          <FadeLeft
+            className="relative hidden min-h-[420px] overflow-hidden rounded-[12px] bg-[#dce7ef] lg:block"
+            delay={0.08}
+          >
             <Image
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt="ANSCER analytics platform in use"
@@ -780,7 +786,7 @@ function AnalyticsPlatformSection() {
               sizes="(max-width: 1024px) 100vw, 640px"
               className="object-cover"
             />
-          </div>
+          </FadeLeft>
         </div>
       </div>
     </section>
@@ -800,7 +806,7 @@ function SoftwareCta() {
       <div className="absolute inset-0 z-10 bg-[#005ead] mix-blend-color" />
       <div className="absolute inset-0 z-10 bg-black/80" />
       <div className="site-container relative z-20">
-        <div className="flex max-w-[970px] flex-col items-start gap-6 max-[991px]:gap-2">
+        <FadeRight className="flex max-w-[970px] flex-col items-start gap-6 max-[991px]:gap-2">
         <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] text-white md:text-[60px] md:leading-[110%]">
           Experience automation that understands your operations.
         </h2>
@@ -825,7 +831,7 @@ function SoftwareCta() {
             />
           </span>
         </Link>
-        </div>
+        </FadeRight>
       </div>
     </section>
   );
@@ -900,7 +906,7 @@ function BusinessBenefitsSection() {
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           {/* Left Side: Grid */}
-          <div className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
+          <FadeRight className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 1 */}
               <div className="flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
@@ -970,10 +976,13 @@ function BusinessBenefitsSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </FadeRight>
 
           {/* Right Side: Image */}
-          <div className="relative order-1 min-h-[300px] sm:min-h-[440px] overflow-hidden rounded-xl bg-[#dce7ef] lg:order-2">
+          <FadeLeft
+            className="relative order-1 min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef] sm:min-h-[440px] lg:order-2"
+            delay={0.08}
+          >
             <Image
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt=""
@@ -981,7 +990,7 @@ function BusinessBenefitsSection() {
               sizes="(max-width: 1024px) 100vw, 560px"
               className="object-cover"
             />
-          </div>
+          </FadeLeft>
         </div>
       </div>
     </section>
@@ -1001,7 +1010,7 @@ function ProcessBenefitsSection() {
           Autonomous Operations
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2 lg:items-stretch">
-          <div className="grid overflow-hidden border border-[#005ead]/20 lg:grid-cols-2 lg:auto-rows-[180px]">
+          <FadeRight className="grid overflow-hidden border border-[#005ead]/20 lg:grid-cols-2 lg:auto-rows-[180px]">
             {processBenefitCards.map((card, index) => (
               <article
                 key={card.title}
@@ -1028,9 +1037,12 @@ function ProcessBenefitsSection() {
                 </div>
               </article>
             ))}
-          </div>
+          </FadeRight>
 
-          <div className="relative min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px]">
+          <FadeLeft
+            className="relative min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px]"
+            delay={0.08}
+          >
             <Image
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt=""
@@ -1038,7 +1050,7 @@ function ProcessBenefitsSection() {
               sizes="(max-width: 1024px) 100vw, 670px"
               className="object-cover"
             />
-          </div>
+          </FadeLeft>
         </div>
       </div>
     </section>
