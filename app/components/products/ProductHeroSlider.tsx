@@ -11,25 +11,25 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Lift",
     image: "PSR-1000R_1.png",
-    imageClass: "scale-[1.05] translate-x-[3%]",
+    imageClass: "scale-[1.05] -translate-x-[3%] md:translate-x-[3%]",
   },
   {
     title: "Robots Ready to",
     accent: "Pull",
     image: "hero-image-2.png",
-    imageClass: "scale-[1.24] translate-x-[10%]",
+    imageClass: "scale-[1.24] translate-x-[4%] md:translate-x-[10%]",
   },
   {
     title: "Robots Ready to",
     accent: "Grasp",
     image: "Group-1321315879.png",
-    imageClass: "scale-[1.42] translate-x-[15%]",
+    imageClass: "scale-[1.42] translate-x-[9%] md:translate-x-[15%]",
   },
   {
     title: "Robots Ready to",
     accent: "Move",
     image: "hero-image-4.png",
-    imageClass: "scale-[1.22] translate-x-[9%]",
+    imageClass: "scale-[1.22] translate-x-[3%] md:translate-x-[9%]",
   },
 ];
 
@@ -81,10 +81,21 @@ export function ProductHeroSlider() {
           </p>
           <a
             href="#robot-series"
-            className="mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="group mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
-            <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+            <span className="relative flex size-4 overflow-hidden">
+              <ArrowRight
+                aria-hidden="true"
+                className="size-4 transition group-hover:translate-x-5"
+                strokeWidth={2}
+              />
+              <ArrowRight
+                aria-hidden="true"
+                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                strokeWidth={2}
+              />
+            </span>
           </a>
           <div className="mt-8 flex items-center gap-3">
             <span className="grid h-8 min-w-[62px] place-items-center rounded-full border border-[#b9c9d9] px-4 text-xs font-medium">
