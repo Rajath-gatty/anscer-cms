@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Compass, HeartHandshake, Lightbulb, Medal, Smile } from "lucide-react";
 import { imagePath } from "../components/home/assets";
+import { AboutSectionReveal } from "./AboutSectionReveal";
 import { FloatingValueText } from "./FloatingValueText";
 import { PathToPowerInteractive } from "./PathToPowerInteractive";
 import { StatsAnimatedSection } from "./StatsAnimatedSection";
@@ -138,14 +139,30 @@ const investorLogos = [
 export default function AboutUsPage() {
   return (
     <main className="bg-white text-[#011f40]">
-      <AboutHero />
-      <StandForSection />
-      <WhatDrivesUsSection />
-      <PathToPowerSection />
-      <TestimonialsSection />
-      <StatsSection />
-      <TeamSection />
-      <InvestorsSection />
+      <AboutSectionReveal>
+        <AboutHero />
+      </AboutSectionReveal>
+      <AboutSectionReveal>
+        <StandForSection />
+      </AboutSectionReveal>
+      <AboutSectionReveal>
+        <WhatDrivesUsSection />
+      </AboutSectionReveal>
+      <AboutSectionReveal>
+        <PathToPowerSection />
+      </AboutSectionReveal>
+      <AboutSectionReveal>
+        <TestimonialsSection />
+      </AboutSectionReveal>
+      <AboutSectionReveal>
+        <StatsSection />
+      </AboutSectionReveal>
+      <AboutSectionReveal>
+        <TeamSection />
+      </AboutSectionReveal>
+      <AboutSectionReveal>
+        <InvestorsSection />
+      </AboutSectionReveal>
     </main>
   );
 }
