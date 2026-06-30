@@ -1,6 +1,6 @@
+import { Compass, HeartHandshake, Lightbulb, Medal, Smile } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Compass, HeartHandshake, Lightbulb, Medal, Smile } from "lucide-react";
 import { imagePath } from "../components/home/assets";
 import { AboutSectionReveal } from "./AboutSectionReveal";
 import { FloatingValueText } from "./FloatingValueText";
@@ -20,7 +20,8 @@ const values = [
     Icon: Medal,
     textPosition:
       "lg:left-1/2 lg:top-[16px] lg:w-[300px] lg:-translate-x-1/2 lg:text-center",
-    iconPosition: "lg:left-1/2 lg:top-0 lg:-translate-x-1/2 lg:-translate-y-1/2",
+    iconPosition:
+      "lg:left-1/2 lg:top-0 lg:-translate-x-1/2 lg:-translate-y-1/2",
   },
   {
     title: "Wonder & Discovery",
@@ -28,7 +29,8 @@ const values = [
     Icon: Compass,
     textPosition:
       "lg:left-[12px] lg:top-[250px] lg:w-[300px] lg:-translate-y-1/2 lg:text-right",
-    iconPosition: "lg:left-0 lg:top-[36%] lg:-translate-x-1/2 lg:-translate-y-1/2",
+    iconPosition:
+      "lg:left-0 lg:top-[36%] lg:-translate-x-1/2 lg:-translate-y-1/2",
   },
   {
     title: "Innovation & Authenticity",
@@ -36,22 +38,24 @@ const values = [
     Icon: Lightbulb,
     textPosition:
       "lg:right-[-28px] lg:top-[250px] lg:w-[330px] lg:-translate-y-1/2",
-    iconPosition: "lg:right-0 lg:top-[36%] lg:translate-x-1/2 lg:-translate-y-1/2",
+    iconPosition:
+      "lg:right-0 lg:top-[36%] lg:translate-x-1/2 lg:-translate-y-1/2",
   },
   {
     title: "Compassion & Empathy",
     copy: "We build with care for people, partners, and the world we automate.",
     Icon: HeartHandshake,
-    textPosition:
-      "lg:bottom-[28px] lg:left-[92px] lg:w-[310px] lg:text-right",
-    iconPosition: "lg:bottom-[9%] lg:left-[21%] lg:-translate-x-1/2 lg:translate-y-1/2",
+    textPosition: "lg:bottom-[28px] lg:left-[92px] lg:w-[310px] lg:text-right",
+    iconPosition:
+      "lg:bottom-[9%] lg:left-[21%] lg:-translate-x-1/2 lg:translate-y-1/2",
   },
   {
     title: "Positivity & Delight",
     copy: "We lead with optimism and craft experiences that spark confidence and joy.",
     Icon: Smile,
     textPosition: "lg:bottom-[18px] lg:right-[84px] lg:w-[310px]",
-    iconPosition: "lg:bottom-[9%] lg:right-[21%] lg:translate-x-1/2 lg:translate-y-1/2",
+    iconPosition:
+      "lg:bottom-[9%] lg:right-[21%] lg:translate-x-1/2 lg:translate-y-1/2",
   },
 ] as const;
 
@@ -81,17 +85,17 @@ const testimonials = [
 
 const stats = [
   {
-    value: "85+",
+    value: "85",
     label: "Projects Delivered",
     copy: "Successfully deployed automation solutions across 4+ continents, helping customers in diverse industries achieve operational excellence.",
   },
   {
-    value: "800,000+",
+    value: "800,000",
     label: "Autonomous Trips Completed",
     copy: "Proven reliability across real-world manufacturing and warehouse environments.",
   },
   {
-    value: "100+",
+    value: "100",
     label: "Robots Deployed Worldwide",
     copy: "Delivering reliable automation across multiple industries and geographies",
   },
@@ -282,9 +286,8 @@ function WhatDrivesUsSection() {
           What Drives <span className="text-[#005ead]">Us</span>
         </SectionHeading>
         <p className="mt-3 max-w-[640px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[15px] md:leading-[1.55]">
-          We launched ANSCER to redefine mobile robotics—delivering next-gen
-          AMR solutions that prioritize safety, simplicity, and global
-          scalability.
+          We launched ANSCER to redefine mobile robotics—delivering next-gen AMR
+          solutions that prioritize safety, simplicity, and global scalability.
         </p>
 
         <div className="mt-6 grid gap-4 md:mt-11 md:gap-6 lg:grid-cols-[1fr_.25fr_.25fr_1.25fr] lg:auto-rows-[240px]">

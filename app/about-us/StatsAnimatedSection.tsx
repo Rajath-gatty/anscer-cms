@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { m, useInView, useReducedMotion } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { imagePath } from "../components/home/assets";
 import { StatsMotionRail, statsRobotRoutes } from "./StatsMotionRail";
 
@@ -20,6 +20,49 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.45 });
   const reduceMotion = useReducedMotion();
+  const [displayStats, setDisplayStats] = useState<Stat[]>(() =>
+    stats.map((stat) => ({ ...stat, value: "0" })),
+  );
+  const shouldAnimate = isInView && !reduceMotion;
+
+  useEffect(() => {
+    if (!shouldAnimate) {
+      return;
+    }
+
+    const duration = 1200;
+    const intervalMs = 50;
+    const steps = duration / intervalMs;
+
+    const timers = stats.map((stat, index) => {
+      const targetValue = Number.parseInt(stat.value.replace(/[^\d]/g, ""), 10);
+      let step = 0;
+
+      return window.setInterval(() => {
+        step += 1;
+        const progress = Math.min(step / steps, 1);
+        const currentValue = Math.round(targetValue * progress);
+
+        setDisplayStats((current) =>
+          current.map((item, itemIndex) => {
+            if (itemIndex !== index) return item;
+            return {
+              ...item,
+              value: `${new Intl.NumberFormat("en-US").format(currentValue)}`,
+            };
+          }),
+        );
+
+        if (progress >= 1) {
+          window.clearInterval(timers[index]);
+        }
+      }, intervalMs);
+    });
+
+    return () => {
+      timers.forEach((timer) => window.clearInterval(timer));
+    };
+  }, [shouldAnimate, stats]);
 
   return (
     <section
@@ -31,7 +74,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       <div className="site-container relative mt-9 md:mt-8">
         <div className="relative grid gap-8 md:hidden">
           <span className="absolute left-[19px] top-4 h-[calc(100%-32px)] w-px bg-[#e1e6eb]" />
-          {stats.map((stat) => (
+          {(shouldAnimate ? displayStats : stats).map((stat) => (
             <article
               key={stat.label}
               className="relative grid grid-cols-[40px_1fr] gap-4"
@@ -51,7 +94,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
         </div>
 
         <div className="hidden gap-9 md:grid md:grid-cols-3">
-          {stats.map((stat, index) => (
+          {(shouldAnimate ? displayStats : stats).map((stat, index) => (
             <m.article
               key={stat.label}
               className="relative text-center"

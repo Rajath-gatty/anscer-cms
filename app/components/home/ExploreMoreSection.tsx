@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { BarChart3, Globe2, Monitor, Radar, Wrench } from "lucide-react";
+import Image from "next/image";
 import { FadeLeft, FadeRight, FadeUp } from "../animation";
 import { imagePath } from "./assets";
 
@@ -8,7 +8,11 @@ const supportItems = [
   { icon: Radar, label: "Remote diagnostics" },
   { icon: Monitor, label: "Training" },
   { icon: BarChart3, label: "Scalable" },
-  { icon: Globe2, label: "After-sales infrastructure across India and global partner regions." },
+  {
+    icon: Globe2,
+    label:
+      "After-sales infrastructure across India and global partner regions.",
+  },
 ];
 
 export function ExploreMoreSection() {
@@ -23,58 +27,98 @@ export function ExploreMoreSection() {
             Explore <span className="text-[#005ead]">More</span>
           </h2>
           <p className="mt-6 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-            All the Answers You Need About ANSCER Robotics&mdash;Right at Your Fingertips. From how our autonomous robots
-            transform industries to what makes our tech stand out&mdash;your journey into the future of smart automation
-            starts here.
+            All the Answers You Need About ANSCER Robotics&mdash;Right at Your
+            Fingertips. From how our autonomous robots transform industries to
+            what makes our tech stand out&mdash;your journey into the future of
+            smart automation starts here.
           </p>
         </FadeRight>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_.5fr_1.05fr]">
           <FadeRight className="grid gap-6" delay={0.08}>
             <article className="rounded-xl bg-white p-7">
-              <Image src={`${imagePath}diamond-plus.svg`} alt="" width={44} height={44} className="size-11" />
-              <h3 className="mt-9 text-[20px] font-semibold text-[#005ead] md:text-[24px]">Globally Safety-Compliant Robots</h3>
+              <Image
+                src={`${imagePath}diamond-plus.svg`}
+                alt=""
+                width={44}
+                height={44}
+                className="size-11"
+              />
+              <h3 className="mt-9 text-[20px] font-semibold text-[#005ead] md:text-[24px]">
+                Globally Safety-Compliant Robots
+              </h3>
               <p className="mt-6 max-w-[560px] text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-6">
-                Designed to meet international safety standards for industrial deployment across manufacturing and
-                warehousing environments.
+                Designed to meet international safety standards for industrial
+                deployment across manufacturing and warehousing environments.
               </p>
             </article>
 
-            <article className="relative min-h-[222px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white">
-              <Image src={`${imagePath}explore-more-img-1.png`} alt="" fill sizes="(max-width: 1024px) 100vw, 520px" className="object-cover opacity-65" />
+            <article className="group relative min-h-[222px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white">
+              <Image
+                src={`${imagePath}explore-more-img-1.png`}
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 520px"
+                className="object-cover opacity-65 transition-transform duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_52%,rgba(0,0,0,.68))]" />
               <div className="relative">
-                <h3 className="text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[35px]">Multi-Brand Interoperability</h3>
+                <h3 className="text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[35px]">
+                  Multi-Brand Interoperability
+                </h3>
                 <p className="mt-4 max-w-[560px] text-sm leading-5 text-white md:text-base md:leading-6">
-                  Ability to integrate and operate with diverse automation ecosystems, third-party robots, ERP, WMS,
-                  conveyors, doors, and factory systems.
+                  Ability to integrate and operate with diverse automation
+                  ecosystems, third-party robots, ERP, WMS, conveyors, doors,
+                  and factory systems.
                 </p>
               </div>
             </article>
           </FadeRight>
 
           <FadeUp className="rounded-xl bg-white p-7" delay={0.14}>
-            <Image src={`${imagePath}lightbulb.svg`} alt="" width={44} height={44} className="size-11" />
+            <Image
+              src={`${imagePath}lightbulb.svg`}
+              alt=""
+              width={44}
+              height={44}
+              className="size-11"
+            />
             <h3 className="mt-10 text-[20px] font-semibold leading-tight text-[#005ead] md:text-[24px]">
               Lower Total Cost of Ownership (TCO)
             </h3>
             <p className="mt-10 text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-6">
-              Optimized hardware, scalable software, predictive maintenance, and operational efficiency reduce long-term
-              automation costs.
+              Optimized hardware, scalable software, predictive maintenance, and
+              operational efficiency reduce long-term automation costs.
             </p>
           </FadeUp>
 
-          <FadeLeft className="relative min-h-[470px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white" delay={0.2}>
-            <Image src={`${imagePath}explore-more-img-2.png`} alt="" fill sizes="(max-width: 1024px) 100vw, 520px" className="object-cover opacity-55" />
+          <FadeLeft
+            className="group relative min-h-[470px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white"
+            delay={0.2}
+          >
+            <Image
+              src={`${imagePath}explore-more-img-2.png`}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 520px"
+              className="object-cover opacity-55 transition-transform duration-500 group-hover:scale-105"
+            />
             <div className="absolute inset-0 bg-black/45" />
             <div className="relative">
-              <h3 className="text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[35px]">Strong Support & Service Model</h3>
+              <h3 className="text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[35px]">
+                Strong Support & Service Model
+              </h3>
               <div className="mt-7 flex flex-col gap-6">
                 {supportItems.map(({ icon: Icon, label }) => (
                   <div key={label} className="flex items-start gap-4">
-                    <Icon aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-white" strokeWidth={1.8} />
+                    <Icon
+                      aria-hidden="true"
+                      className="mt-0.5 size-6 shrink-0 text-white"
+                      strokeWidth={1.8}
+                    />
                     <p className="text-sm font-normal leading-5 text-white md:text-base md:leading-6">
-                      {label === "After-sales infrastructure across India and global partner regions." ? (
+                      {label ===
+                      "After-sales infrastructure across India and global partner regions." ? (
                         <>
                           After-sales infrastructure across India
                           <br />

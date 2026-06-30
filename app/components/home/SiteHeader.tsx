@@ -89,7 +89,7 @@ export function SiteHeader() {
             })}
           </nav>
           <a
-            className="inline-flex h-[46px] items-center justify-center gap-6 rounded-[3px] bg-[#005ead] pl-5 pr-[5px] py-[13px] text-sm font-medium uppercase tracking-wide text-white transition-all"
+            className="inline-flex h-[46px] items-center justify-center gap-6 rounded-[3px] bg-[#005ead] pl-5 pr-[5px] py-[13px] text-sm font-bold uppercase tracking-wide text-white transition-all"
             href={CONTACT_HREF}
           >
             Contact us{" "}
@@ -356,9 +356,7 @@ function CompanyDropdown({ active }: { active: boolean }) {
         type="button"
         onClick={() => setOpen((o) => !o)}
         className={`relative cursor-pointer flex h-[60px] items-center gap-1 px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
-          open || active
-            ? "font-bold text-[#005ead]"
-            : "text-[#2f2f2f]"
+          open || active ? "font-bold text-[#005ead]" : "text-[#2f2f2f]"
         }`}
       >
         Company

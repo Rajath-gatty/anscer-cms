@@ -11,14 +11,14 @@ function ProductSeriesCard() {
           {seriesCards.map((series) => (
             <article
               key={series.title}
-              className="relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]"
+              className="group relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]"
             >
               <Image
                 src={`${imagePath}${series.backgroundImage}`}
                 alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover object-right-bottom"
+                className="object-cover object-right-bottom transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent" />
               <div className="relative z-10 flex  flex-col items-start justify-between h-full">
@@ -43,7 +43,7 @@ function ProductSeriesCard() {
                 <div className="flex-none">
                   <a
                     href={series.href}
-                    className="group inline-flex mt-auto h-8 items-center gap-2 rounded-sm bg-[#005ead] px-3 text-[10px] font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                    className="group inline-flex mt-auto h-8 items-center gap-2 rounded-sm bg-[#005ead] px-3 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                   >
                     Explore
                     <span className="relative flex size-3 overflow-hidden">
