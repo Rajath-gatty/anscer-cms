@@ -155,8 +155,8 @@ export function SolutionsCardDeckSection() {
 
         {reducedMotion ? (
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {solutions.map((solution) => (
-              <StaticDeckCard key={solution.title} solution={solution} />
+            {solutions.map((solution, index) => (
+              <StaticDeckCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
             ))}
           </div>
         ) : (
@@ -265,9 +265,11 @@ function DeckCard({
             className="object-cover"
           />
         </div>
-        <div className="mt-4 2xl:mt-7">
-          <ArrowButton>Talk to us</ArrowButton>
-        </div>
+        {index === 2 ? (
+          <div className="mt-4 2xl:mt-7">
+            <ArrowButton>Talk to us</ArrowButton>
+          </div>
+        ) : null}
       </div>
 
       <div className="relative min-h-[430px] overflow-hidden bg-[#fafafa]">
@@ -293,7 +295,7 @@ function DeckCard({
   );
 }
 
-function StaticDeckCard({ solution }: { solution: (typeof solutions)[number] }) {
+function StaticDeckCard({ solution, showButton = false }: { solution: (typeof solutions)[number]; showButton?: boolean }) {
   return (
     <article className="rounded-xl bg-[#fafafa] p-6 shadow-[0_18px_48px_rgba(1,31,64,.1)]">
       <div className="relative aspect-square overflow-hidden rounded-lg bg-[#fafafa]">
@@ -302,10 +304,15 @@ function StaticDeckCard({ solution }: { solution: (typeof solutions)[number] }) 
         </video>
       </div>
       <div className="mt-6 flex items-center gap-3">
-        <Image src={`${imagePath}${solution.icon}`} alt="" width={30} height={30} />
+        <Image src={`${imagePath}${solution.icon}`} alt="" width={30} height={30} className="h-[30px] w-auto shrink-0" />
         <h4 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
       </div>
       <p className="mt-4 text-sm leading-6 text-[#3f4b57]">{solution.copy}</p>
+      {showButton && (
+        <div className="mt-4 flex">
+          <ArrowButton>Talk to us</ArrowButton>
+        </div>
+      )}
     </article>
   );
 }
