@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useState } from "react";
 import { Kicker } from "./SectionPrimitives";
 import { SolutionsStickyStack } from "./SolutionsStickyStack";
@@ -27,38 +29,69 @@ export function SolutionsSection() {
   const [displayStats, setDisplayStats] = useState(
     stats.map((stat) => ({ ...stat, value: "0" })),
   );
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [sectionRef, setSectionRef] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setDisplayStats((current) =>
-        current.map((stat, index) => {
-          const targetValue = Number.parseInt(
-            stats[index].value.replace(/[^\d]/g, ""),
-            10,
-          );
-          const currentValue = Number.parseInt(
-            stat.value.replace(/[^\d]/g, ""),
-            10,
-          );
+    if (hasAnimated || !sectionRef) return;
 
-          if (currentValue >= targetValue) {
-            return stat;
-          }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.2 },
+    );
 
-          const nextValue = currentValue + 1;
-          return {
-            ...stat,
-            value: `${new Intl.NumberFormat("en-US").format(nextValue)}`,
-          };
-        }),
-      );
-    }, 30000);
+    observer.observe(sectionRef);
 
-    return () => window.clearInterval(interval);
-  }, [stats]);
+    return () => observer.disconnect();
+  }, [hasAnimated, sectionRef]);
+
+  useEffect(() => {
+    if (!hasAnimated) return;
+    const duration = 1200;
+    const intervalMs = 50;
+    const steps = duration / intervalMs;
+
+    const timers = stats.map((stat, index) => {
+      const targetValue = Number.parseInt(stat.value.replace(/[^\d]/g, ""), 10);
+      let step = 0;
+
+      return window.setInterval(() => {
+        step += 1;
+        const progress = Math.min(step / steps, 1);
+        const currentValue = Math.round(targetValue * progress);
+
+        setDisplayStats((current) =>
+          current.map((item, itemIndex) => {
+            if (itemIndex !== index) return item;
+
+            return {
+              ...item,
+              value: `${new Intl.NumberFormat("en-US").format(currentValue)}`,
+            };
+          }),
+        );
+
+        if (progress >= 1) {
+          window.clearInterval(timers[index]);
+        }
+      }, intervalMs);
+    });
+
+    return () => {
+      timers.forEach((timer) => window.clearInterval(timer));
+    };
+  }, [hasAnimated, stats]);
 
   return (
-    <section id="solutions" className="bg-[#fafafa] py-14 md:py-20 lg:pb-0">
+    <section
+      id="solutions"
+      ref={setSectionRef}
+      className="bg-[#fafafa] py-14 md:py-20 lg:pb-0"
+    >
       <div className="site-container">
         <div className="md:flex grid items-center justify-between gap-6 md:gap-8">
           <div className="pb-8 pt-1 text-left">
