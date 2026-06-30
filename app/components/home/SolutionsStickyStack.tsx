@@ -52,7 +52,9 @@ export function SolutionsStickyStack() {
 
       const rect = wrapper.getBoundingClientRect();
       const sticky = stickyRef.current;
-      const stickyTop = sticky ? Number.parseFloat(window.getComputedStyle(sticky).top) || 0 : 0;
+      const stickyTop = sticky
+        ? Number.parseFloat(window.getComputedStyle(sticky).top) || 0
+        : 0;
       const stickyHeight = sticky?.offsetHeight ?? window.innerHeight;
       const scrollable = Math.max(wrapper.offsetHeight - stickyHeight, 1);
       const wrapperTop = window.scrollY + rect.top;
@@ -66,7 +68,10 @@ export function SolutionsStickyStack() {
       const metrics = getWrapperMetrics();
       if (!metrics) return;
 
-      const nextProgress = Math.min(Math.max((window.scrollY - metrics.startY) / metrics.scrollable, 0), 1);
+      const nextProgress = Math.min(
+        Math.max((window.scrollY - metrics.startY) / metrics.scrollable, 0),
+        1,
+      );
       setProgress(nextProgress);
     };
 
@@ -129,7 +134,10 @@ export function SolutionsStickyStack() {
         ref={wrapperRef}
         className="relative mt-10 hidden h-[220vh] lg:block"
       >
-        <div ref={stickyRef} className="sticky top-[112px] h-[calc(100vh-112px)] min-h-[620px] overflow-hidden">
+        <div
+          ref={stickyRef}
+          className="sticky top-[112px] h-[calc(100vh-112px)] min-h-[620px] overflow-hidden"
+        >
           <div className="absolute left-0 top-0 z-20">
             <Kicker>Robots Designed to Deliver</Kicker>
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
@@ -182,12 +190,10 @@ function SolutionSlide({
         "grid min-h-[520px] items-start gap-10 bg-[#fafafa] pt-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-[0.42fr_0.58fr]",
         "absolute inset-0",
       )}
-      style={
-        {
-          transform: `translateY(${translateY}%)`,
-          zIndex: index + 1,
-        }
-      }
+      style={{
+        transform: `translateY(${translateY}%)`,
+        zIndex: index + 1,
+      }}
       aria-hidden={activeIndex !== index}
     >
       <div className="relative z-10 max-w-xl">
@@ -235,12 +241,16 @@ function SolutionSlide({
   );
 }
 
-function StaticSolutionCard({ solution }: { solution: (typeof solutions)[number] }) {
+function StaticSolutionCard({
+  solution,
+}: {
+  solution: (typeof solutions)[number];
+}) {
   const titleWords = solution.title.split(/\s+/);
 
   return (
     <article className="relative bg-[#fafafa]">
-      <div className="relative -mx-2 flex min-h-[220px] items-center justify-center overflow-hidden">
+      {/* <div className="relative -mx-2 flex min-h-[220px] items-center justify-center overflow-hidden">
         <p className="pointer-events-none absolute left-1/2 top-5 w-full -translate-x-1/2 text-center text-[42px] font-bold uppercase leading-[0.96] text-[#011f40]/10 sm:text-[54px]">
           {titleWords.map((word) => (
             <span key={word} className="block">
@@ -258,7 +268,7 @@ function StaticSolutionCard({ solution }: { solution: (typeof solutions)[number]
         >
           <source src={solution.video} type="video/mp4" />
         </video>
-      </div>
+      </div> */}
 
       <div className="mt-1 flex items-center gap-3">
         <Image
