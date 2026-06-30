@@ -49,7 +49,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
   return (
     <section
       id="attachments"
-      className="relative scroll-mt-28 overflow-hidden bg-[#e6ebf0] py-16 md:py-[84px]"
+      className="relative scroll-mt-28 overflow-hidden bg-[#e6ebf0] py-16 md:py-[84px] md:h-[720px]"
     >
       {data.backgroundText ? (
         <Image
@@ -190,15 +190,15 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
         </div>
 
         <div className="hidden md:block">
-          <div className="mt-10 grid gap-8 lg:grid-cols-[0.25fr_0.5fr_0.25fr] lg:items-center">
-            <div className="flex flex-col gap-2 text-[14px] font-medium text-[#3a3a3a]">
+          <div className="mt-10 grid gap-8 lg:grid-cols-[0.25fr_0.5fr_0.25fr] lg:items-start">
+            <div className="flex flex-col gap-2 text-[14px] font-medium text-[#3a3a3a] mt-12">
               {modules.map((module, index) => (
                 <button
                   key={module.title}
                   type="button"
                   className={cn(
-                    "px-2 py-1 text-left transition-colors hover:text-[#005ead]",
-                    activeIndex === index && "font-bold text-[#005ead]",
+                    "w-fit px-2 py-1 text-left font-medium transition-colors hover:text-[#005ead]",
+                    activeIndex === index && "text-[#005ead] font-bold",
                   )}
                   onClick={() => setActiveIndex(index)}
                 >
