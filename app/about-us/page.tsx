@@ -472,11 +472,11 @@ function InvestorsSection() {
           Our <span className="text-[#005ead]">Investors</span>
         </SectionHeading>
 
-        <div className="grid min-h-[210px] grid-cols-2 place-items-center gap-x-8 gap-y-7 sm:grid-cols-3 lg:min-h-[260px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-10">
-          {[...investorLogos, ...investorLogos].map((logo, index) => (
+        <div className="grid min-h-[210px] md:translate-y-4 grid-cols-3 place-items-center gap-x-8 gap-y-7 sm:grid-cols-3 lg:min-h-[260px] lg:grid-cols-3 lg:grid-rows-1 lg:gap-10">
+          {[...investorLogos].map((logo, index) => (
             <div
               key={`${logo.image}-${index}`}
-              className={`flex min-h-[42px] items-center justify-center md:min-h-[52px] ${index < investorLogos.length ? logo.className : "lg:hidden"}`}
+              className={`flex min-h-[42px] items-center justify-center md:min-h-[52px]`}
             >
               <Image
                 src={`${imagePath}${logo.image}`}

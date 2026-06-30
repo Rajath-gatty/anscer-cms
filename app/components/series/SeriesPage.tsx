@@ -57,7 +57,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
         sizes="100vw"
         className="object-cover object-bottom"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,.98)_0%,rgba(250,250,250,.9)_38%,rgba(250,250,250,.62)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,.88)_0%,rgba(250,250,250,.0)_80%,rgba(250,250,250,.22)_100%)]" />
       <div className="site-container relative z-10 grid min-h-[calc(100vh-108px)] items-center gap-8 py-14 md:py-16 lg:grid-cols-[0.46fr_0.54fr]">
         <div className="max-w-[590px]">
           <ScrollReveal>
@@ -101,7 +101,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               fill
               priority
               sizes="(max-width: 1024px) 92vw, 760px"
-              className="object-contain object-right drop-shadow-[0_30px_45px_rgba(1,31,64,.18)]"
+              className="object-contain object-right translate-y-[60px] md:translate-y-[150px] drop-shadow-[0_30px_45px_rgba(1,31,64,.18)]"
             />
           </div>
           {/* <div className="pointer-events-none absolute inset-0 block">
