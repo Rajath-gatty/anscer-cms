@@ -13,7 +13,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Lift",
     image: "lift.png",
-    imageClass: "scale-[1.1] -translate-x-[3%] md:translate-x-[3%]",
+    imageClass: "scale-[1.2] -translate-x-[3%] md:translate-x-[3%]",
     tags: ["Ready to Lift", "Lifting"],
   },
   {
@@ -21,7 +21,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Pull",
     image: "pull.png",
-    imageClass: "scale-[1.1] translate-x-[4%] md:translate-x-[10%]",
+    imageClass: "scale-[1.2] translate-x-[4%] md:translate-x-[10%]",
     tags: ["Ready to Pull", "Pulling"],
   },
   {
@@ -29,7 +29,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Grasp",
     image: "grab.png",
-    imageClass: "scale-[1.1] translate-x-[9%] md:translate-x-[15%]",
+    imageClass: "scale-[1.2] translate-x-[9%] md:translate-x-[15%]",
     tags: ["Ready to Grasp", "Grasping"],
   },
   {
@@ -37,7 +37,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Move",
     image: "move.png",
-    imageClass: "scale-[1.1] translate-x-[3%] md:translate-x-[9%]",
+    imageClass: "scale-[1.2] translate-x-[3%] md:translate-x-[9%]",
     tags: ["Ready to Move", "Moving"],
   },
 ];
@@ -210,9 +210,9 @@ export function ProductHeroSlider() {
             <m.div
               key={active.image}
               className="absolute inset-0 w-full"
-              initial={{ x: 46, opacity: 0, scale: 0.97 }}
+              initial={{ x: 80, opacity: 0, scale: 1 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
-              exit={{ x: -34, opacity: 0, scale: 0.985 }}
+              exit={{ x: -80, opacity: 0, scale: 1 }}
               transition={{ duration: 0.56, ease: [0.22, 1, 0.36, 1] }}
             >
               <Image
