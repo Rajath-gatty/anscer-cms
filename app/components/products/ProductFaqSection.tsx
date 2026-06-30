@@ -32,7 +32,7 @@ export function ProductFaqSection() {
             FAQs
           </h2>
           <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-6">
-            We&apos;ve heard it all â€” here&apos;s what people are really asking
+            We&apos;ve heard it all - here&apos;s what people are really asking
             behind the scenes.
           </p>
         </div>

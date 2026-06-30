@@ -11,7 +11,7 @@ function ProductSeriesCard() {
           {seriesCards.map((series) => (
             <article
               key={series.title}
-              className="relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[385px]"
+              className="relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]"
             >
               <Image
                 src={`${imagePath}${series.backgroundImage}`}
@@ -20,8 +20,7 @@ function ProductSeriesCard() {
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover object-right-bottom"
               />
-              <div className="absolute inset-0 bg-black/45" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_58%,rgba(0,0,0,.42))]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent" />
               <div className="relative z-10 flex  flex-col items-start justify-between h-full">
                 <div className="grow h-0 flex flex-col items-start">
                   <h3 className="text-[22px] font-semibold leading-[1.15]">
