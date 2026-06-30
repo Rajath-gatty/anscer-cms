@@ -1,8 +1,29 @@
+import { useMemo } from "react";
 import { Kicker } from "./SectionPrimitives";
 import { SolutionsStickyStack } from "./SolutionsStickyStack";
-import StatsSlider from "./StatsSlider";
 
 export function SolutionsSection() {
+  const stats = useMemo(
+    () =>
+      [
+        {
+          value: "85+",
+          label: "Projects Delivered",
+          copy: "Successfully deployed automation solutions across 4+ continents, helping customers in diverse industries achieve operational excellence.",
+        },
+        {
+          value: "800,000+",
+          label: "Autonomous Trips Completed",
+          copy: "Proven reliability across real-world manufacturing and warehouse environments.",
+        },
+        {
+          value: "100+",
+          label: "Robots Deployed Worldwide",
+          copy: "Delivering reliable automation across multiple industries and geographies",
+        },
+      ] as const,
+    [],
+  );
   return (
     <section id="solutions" className="bg-[#fafafa] py-14 md:py-20 lg:pb-0">
       <div className="site-container">
@@ -19,7 +40,23 @@ export function SolutionsSection() {
             </p>
           </div>
           <div className="xl:border-l xl:pl-4">
-            <StatsSlider />
+            <div className="divide-x">
+              {stats.length > 0 &&
+                stats.map((stat, index) => (
+                  <div key={index} className="mb-4">
+                    <p className="text-[20px] font-extrabold text-[#011f40] md:text-[28px]">
+                      {stat.value}
+                    </p>
+                    <p className="mt-2 text-[10px] font-extrabold text-[#011f40] md:mt-4 md:text-[14px]">
+                      {stat.label}
+                    </p>
+                    {/* <p className="mx-auto mt-2 max-w-65 text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-85 md:text-[13px] md:leading-[1.6]">
+                    {stat.copy}
+                  </p> */}
+                  </div>
+                ))}
+            </div>
+            {/* <StatsSlider /> */}
           </div>
         </div>
 
