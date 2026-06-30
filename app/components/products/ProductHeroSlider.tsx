@@ -88,7 +88,9 @@ function getProductHeroTagPosition(
 
 export function ProductHeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const active = heroSlides[activeIndex];
+  const progressWidth = `${progress}%`;
 
   const goToSlide = (direction: 1 | -1) => {
     setActiveIndex(
@@ -101,12 +103,26 @@ export function ProductHeroSlider() {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) return;
 
+    const duration = 5200;
+    const intervalMs = 50;
+    const totalSteps = duration / intervalMs;
+    let step = 0;
+
     const interval = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % heroSlides.length);
-    }, 5200);
+      step += 1;
+      const nextProgress = Math.min((step / totalSteps) * 100, 100);
+
+      setProgress(nextProgress);
+
+      if (nextProgress >= 100) {
+        window.clearInterval(interval);
+        setActiveIndex((current) => (current + 1) % heroSlides.length);
+        setProgress(0);
+      }
+    }, intervalMs);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [activeIndex]);
 
   return (
     <section
@@ -114,11 +130,11 @@ export function ProductHeroSlider() {
       style={{
         backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
         backgroundSize: "cover",
-        backgroundPosition: "bottom right",
+        backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="site-container grid min-h-[90svh]  items-center gap-8 py-12  md:grid-cols-2 md:py-16">
+      <div className="site-container grid min-h-[80svh]  items-center gap-8 lg:gap-2 pt-12  md:grid-cols-2 md:pt-16">
         <div>
           <ScrollReveal>
             <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
@@ -161,8 +177,14 @@ export function ProductHeroSlider() {
             </span>
           </a>
           <div className="mt-8 flex items-center gap-3">
-            <span className="grid h-8 min-w-[62px] place-items-center rounded-full border border-[#b9c9d9] px-4 text-xs font-medium">
-              {String(activeIndex + 1).padStart(2, "0")}/04
+            <span className="relative grid h-8 min-w-[62px] place-items-center overflow-hidden rounded-full border border-[#b9c9d9] bg-white px-4 text-xs font-medium shadow-sm">
+              <span className="relative z-20 text-[#011f40]">
+                {String(activeIndex + 1).padStart(2, "0")}/04
+              </span>
+              <div
+                className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20 transition-[width] duration-100"
+                style={{ width: progressWidth }}
+              ></div>
             </span>
             <button
               type="button"
@@ -183,11 +205,11 @@ export function ProductHeroSlider() {
           </div>
         </div>
 
-        <div className="relative min-h-[430px] md:min-h-[500px] xl:min-h-[520px] w-full">
+        <div className="relative min-h-[430px] md:min-h-[500px] xl:min-h-full w-full">
           <AnimatePresence mode="popLayout" initial={false}>
             <m.div
               key={active.image}
-              className="absolute inset-0"
+              className="absolute inset-0 w-full"
               initial={{ x: 46, opacity: 0, scale: 0.97 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
               exit={{ x: -34, opacity: 0, scale: 0.985 }}
@@ -198,10 +220,10 @@ export function ProductHeroSlider() {
                 alt={`${active.title} ${active.accent}`}
                 fill
                 priority={activeIndex === 0}
-                sizes="(max-width: 520px) 50vw, 520px"
-                className={`object-contain object-bottom-right drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] p-6 ${active.imageClass}`}
+                sizes="(max-width: 600px) 50vw, 600px"
+                className={`object-contain w-full object-bottom-right drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] ${active.imageClass}`}
               />
-              <div className="pointer-events-none absolute inset-0 z-20">
+              {/* <div className="pointer-events-none absolute inset-0 z-20">
                 {active.tags.map((tag, index) => (
                   <span
                     key={`${active.id}-${tag}`}
@@ -211,7 +233,7 @@ export function ProductHeroSlider() {
                     {tag}
                   </span>
                 ))}
-              </div>
+              </div> */}
             </m.div>
           </AnimatePresence>
         </div>
