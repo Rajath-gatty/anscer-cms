@@ -11,8 +11,12 @@ import type { SeriesPageData } from "./series-data";
 
 export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
+  const reducedMotion = useReducedMotion();
   const total = data.applications.length;
+  const maxIndex = Math.max(0, total - visibleCount);
+  const progressWidth = `${progress}%`;
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -30,7 +34,6 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, [data.slug]);
 
-  const maxIndex = Math.max(0, total - visibleCount);
   const start = activeIndex + 1;
   const end = Math.min(activeIndex + visibleCount, total);
   const counter =
@@ -39,10 +42,44 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
       : `${pad(start)}/${pad(total)}`;
 
   const move = (direction: 1 | -1) => {
-    setActiveIndex((current) =>
-      Math.min(maxIndex, Math.max(0, current + direction)),
-    );
+    setActiveIndex((current) => {
+      if (maxIndex === 0) return 0;
+
+      const next = current + direction;
+      if (next < 0) return maxIndex;
+      if (next > maxIndex) return 0;
+
+      return next;
+    });
+    setProgress(0);
   };
+
+  useEffect(() => {
+    if (reducedMotion || maxIndex === 0) {
+      setProgress(0);
+      return;
+    }
+
+    const duration = 3000;
+    const intervalMs = 50;
+    const totalSteps = duration / intervalMs;
+    let step = 0;
+
+    const interval = window.setInterval(() => {
+      step += 1;
+      const nextProgress = Math.min((step / totalSteps) * 100, 100);
+
+      setProgress(nextProgress);
+
+      if (nextProgress >= 100) {
+        window.clearInterval(interval);
+        setActiveIndex((current) => (current + 1) % (maxIndex + 1));
+        setProgress(0);
+      }
+    }, intervalMs);
+
+    return () => window.clearInterval(interval);
+  }, [activeIndex, maxIndex, reducedMotion]);
 
   return (
     <section
@@ -66,13 +103,16 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           </ScrollReveal>
 
           <div className="hidden items-center gap-4 md:flex">
-            <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
-              {counter}
+            <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+              <span className="relative z-20 text-[#011f40]">{counter}</span>
+              <div
+                className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20 transition-[width] duration-100"
+                style={{ width: progressWidth }}
+              />
             </span>
             <button
               type="button"
               onClick={() => move(-1)}
-              disabled={activeIndex === 0}
               className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Previous application"
             >
@@ -81,7 +121,6 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
             <button
               type="button"
               onClick={() => move(1)}
-              disabled={activeIndex >= maxIndex}
               className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Next application"
             >
@@ -127,13 +166,16 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
       </div>
 
       <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
-        <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
-          {counter}
+        <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+          <span className="relative z-20 text-[#011f40]">{counter}</span>
+          <div
+            className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20 transition-[width] duration-100"
+            style={{ width: progressWidth }}
+          />
         </span>
         <button
           type="button"
           onClick={() => move(-1)}
-          disabled={activeIndex === 0}
           className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
           aria-label="Previous application"
         >
@@ -142,7 +184,6 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
         <button
           type="button"
           onClick={() => move(1)}
-          disabled={activeIndex >= maxIndex}
           className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
           aria-label="Next application"
         >
