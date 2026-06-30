@@ -9,13 +9,14 @@ import { imagePath } from "../../home/assets";
 import type { ProductDetailData } from "../product-detail-data";
 
 export function ModulesSection({ data }: { data: ProductDetailData }) {
-  const modules = data.modules ?? [];
+  const modules = data.modules?.filter((module) => !module.hidden) ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const active = modules[activeIndex] ?? modules[0];
   const activeModuleImage = active?.image ?? data.heroImage;
   const baseImage = data.modulesBaseImage;
-  const isLayeredModule = Boolean(baseImage && active?.image);
+  const shouldShowBaseImage = Boolean(baseImage && !active?.hideBaseImage);
+  const isLayeredModule = Boolean(shouldShowBaseImage && active?.image);
   const overlay = active?.overlay;
   const total = modules.length;
   const overlayStyle = {
@@ -62,7 +63,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
       <div className="site-container relative z-10">
         <div className="max-w-[760px]">
           <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
-            Attachments
+            Top Modules
           </p>
           <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
             {data.title} <span className="text-[#005ead]">Compatible</span> With
@@ -91,11 +92,14 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                   transform: `translate(${modOverlay?.translateX ?? "-50%"}, ${modOverlay?.translateY ?? "0"})`,
                   width: modOverlay?.width ?? "100%",
                 };
-                const isLayered = Boolean(baseImage && module.image);
+                const shouldShowModuleBaseImage = Boolean(
+                  baseImage && !module.hideBaseImage,
+                );
+                const isLayered = Boolean(shouldShowModuleBaseImage && module.image);
                 return (
                   <div key={module.title} className="w-full shrink-0">
                     <div className="relative mx-auto h-[200px] w-[300px]">
-                      {baseImage ? (
+                      {shouldShowModuleBaseImage ? (
                         <Image
                           src={`${imagePath}${baseImage}`}
                           alt=""
@@ -169,7 +173,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
               onClick={() => move(-1)}
               disabled={activeIndex === 0}
               className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
-              aria-label="Previous attachment"
+              aria-label="Previous top module"
             >
               <ArrowLeft className="size-5" strokeWidth={1.8} />
             </button>
@@ -178,7 +182,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
               onClick={() => move(1)}
               disabled={activeIndex >= total - 1}
               className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
-              aria-label="Next attachment"
+              aria-label="Next top module"
             >
               <ArrowRight className="size-5" strokeWidth={1.8} />
             </button>
@@ -203,7 +207,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
               ))}
             </div>
             <div className="relative mx-auto h-[200px] w-[300px]">
-              {baseImage ? (
+              {shouldShowBaseImage ? (
                 <Image
                   src={`${imagePath}${baseImage}`}
                   alt=""
@@ -280,4 +284,3 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
     </section>
   );
 }
-

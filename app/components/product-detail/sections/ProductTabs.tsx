@@ -18,7 +18,7 @@ export function ProductTabs({ hasModules }: { hasModules: boolean }) {
       { label: "Advantages", href: "#advantages", id: "advantages" },
       { label: "Features", href: "#features", id: "features" },
       ...(hasModules
-        ? [{ label: "Attachments", href: "#attachments", id: "attachments" }]
+        ? [{ label: "Top Modules", href: "#attachments", id: "attachments" }]
         : []),
       { label: "Applications", href: "#applications", id: "applications" },
       // { label: "Case Studies", href: "#case-studies", id: "case-studies" },

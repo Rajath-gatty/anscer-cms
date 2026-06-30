@@ -15,6 +15,7 @@ export function ApplicationsSection({ data }: { data: ProductDetailData }) {
   return (
     <section
       id="applications"
+      hidden={data.slug === "ar-250"}
       className="scroll-mt-28 bg-[#fafafa] py-12 md:py-[56px]"
     >
       <ScrollReveal>
