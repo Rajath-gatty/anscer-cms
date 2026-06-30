@@ -372,7 +372,7 @@ function FeatureImageCard() {
 
 function PathToPowerSection() {
   return (
-    <section className="bg-white py-7 md:py-20">
+    <section hidden className="bg-white py-7 md:py-20">
       <div className="site-container">
         <SectionHeading>
           Path to <span className="text-[#005ead]">Power</span>
@@ -397,9 +397,9 @@ function TestimonialsSection() {
         </p>
 
         <div className="-mx-5 mt-5 flex gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:mt-10 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
-          {[...testimonials, ...testimonials].map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <article
-              key={`${testimonial.name}-${index}`}
+              key={testimonial.name}
               className="flex min-h-[190px] w-[255px] shrink-0 flex-col rounded-md bg-white p-4 shadow-[0_12px_30px_rgba(1,31,64,.04)] md:min-h-[260px] md:w-auto md:p-6"
             >
               <Image
@@ -449,7 +449,7 @@ function StatsSection() {
 
 function TeamSection() {
   return (
-    <section id="team-section" className="bg-white py-7 md:py-20">
+    <section id="team-section" className="bg-[#fafafa] py-7 md:py-20">
       <TeamSlider
         slides={teamSlides}
         eyebrow="The Team Behind the Tech"
