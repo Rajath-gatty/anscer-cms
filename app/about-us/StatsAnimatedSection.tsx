@@ -24,6 +24,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
     stats.map((stat) => ({ ...stat, value: "0" })),
   );
   const shouldAnimate = isInView && !reduceMotion;
+  const visibleStats = reduceMotion ? stats : displayStats;
 
   useEffect(() => {
     if (!shouldAnimate) {
@@ -34,40 +35,46 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       setDisplayStats(stats.map((stat) => ({ ...stat, value: "0" })));
     });
 
-    const duration = 1200;
-    const intervalMs = 50;
-    const steps = duration / intervalMs;
+    const duration = 650;
+    const intervalMs = 35;
+    const steps = Math.max(1, Math.round(duration / intervalMs));
+    const delayBetweenStats = [3100, 4100, 5200]; // Delay between each stat animation in milliseconds
 
     const timers = stats.map((stat, index) => {
       const targetValue = Number.parseInt(stat.value.replace(/[^\d]/g, ""), 10);
       let step = 0;
+      const startDelay = delayBetweenStats[index] || 0; // Use the corresponding delay or default to 0
 
-      const timerId = window.setInterval(() => {
-        step += 1;
-        const progress = Math.min(step / steps, 1);
-        const currentValue = Math.round(targetValue * progress);
+      const timerId = window.setTimeout(() => {
+        const intervalId = window.setInterval(() => {
+          step += 1;
+          const progress = Math.min(step / steps, 1);
+          const currentValue = Math.round(targetValue * progress);
 
-        setDisplayStats((current) =>
-          current.map((item, itemIndex) => {
-            if (itemIndex !== index) return item;
-            return {
-              ...item,
-              value: `${new Intl.NumberFormat("en-US").format(currentValue)}`,
-            };
-          }),
-        );
+          setDisplayStats((current) =>
+            current.map((item, itemIndex) => {
+              if (itemIndex !== index) return item;
+              return {
+                ...item,
+                value: `${new Intl.NumberFormat("en-US").format(currentValue)}`,
+              };
+            }),
+          );
 
-        if (progress >= 1) {
-          window.clearInterval(timerId);
-        }
-      }, intervalMs);
+          if (progress >= 1) {
+            window.clearInterval(intervalId);
+          }
+        }, intervalMs);
+
+        return intervalId;
+      }, startDelay);
 
       return timerId;
     });
 
     return () => {
       window.cancelAnimationFrame(resetFrame);
-      timers.forEach((timer) => window.clearInterval(timer));
+      timers.forEach((timer) => window.clearTimeout(timer));
     };
   }, [shouldAnimate, stats]);
 
@@ -84,7 +91,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       <div className="site-container relative mt-9 md:mt-8">
         <div className="relative grid gap-8 md:hidden">
           <span className="absolute left-[19px] top-4 h-[calc(100%-32px)] w-px bg-[#e1e6eb]" />
-          {(shouldAnimate ? displayStats : stats).map((stat) => (
+          {visibleStats.map((stat) => (
             <article
               key={stat.label}
               className="relative grid grid-cols-[40px_1fr] gap-4"
@@ -104,7 +111,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
         </div>
 
         <div className="hidden gap-9 md:grid md:grid-cols-3">
-          {(shouldAnimate ? displayStats : stats).map((stat, index) => (
+          {visibleStats.map((stat, index) => (
             <m.article
               key={stat.label}
               className="relative text-center"
