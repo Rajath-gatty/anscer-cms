@@ -5,7 +5,10 @@ import { clientLogos } from "./home-data";
 
 export function TrustSection() {
   return (
-    <section className="relative min-h-[700px] overflow-hidden bg-white pt-20 md:min-h-[790px] md:pt-24">
+    <section
+      id="client-section"
+      className="relative min-h-[780px] overflow-hidden bg-white pt-10 md:min-h-[790px] md:pt-24"
+    >
       <video
         className="absolute inset-0 h-full w-full object-cover object-center"
         autoPlay
@@ -17,7 +20,7 @@ export function TrustSection() {
         <source src={`${videoPath}clients-video-new.mp4`} type="video/mp4" />
         <source src={`${videoPath}clients-video_webm.webm`} type="video/webm" />
       </video>
-      <div className="absolute inset-0 " />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-white/85 via-45% to-transparent md:hidden" />
       <FadeUp className="site-container relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[60px]">
@@ -34,7 +37,7 @@ export function TrustSection() {
         </div>
       </FadeUp>
       <div className="absolute inset-x-0 bottom-2 z-10 overflow-hidden py-3 md:bottom-3">
-        <div className="logo-marquee flex w-max items-center gap-20 grayscale">
+        <div className="logo-marquee flex w-max items-center gap-20 grayscale contrast-[1.4] brightness-75">
           {[...clientLogos, ...clientLogos, ...clientLogos].map(
             (logo, index) => (
               <Image

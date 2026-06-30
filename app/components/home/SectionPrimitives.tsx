@@ -1,17 +1,17 @@
 import { ArrowRight } from "lucide-react";
 
-export function ArrowButton({ children, dark = false }: { children: string; dark?: boolean }) {
+export function ArrowButton({ children, dark = false, target = "#contact" }: { children: string; dark?: boolean; target?: string }) {
   return (
     <a
-      href="#contact"
-      className={`group inline-flex h-10 items-center gap-3 rounded-sm px-4 text-[14px] font-medium uppercase tracking-wide transition ${
+      href={target}
+      className={`group/btn inline-flex h-10 items-center gap-3 rounded-sm px-4 text-[14px] font-medium uppercase tracking-wide transition ${
         dark ? "bg-white text-[#005ead] hover:bg-[#edf6ff]" : "bg-[#005ead] text-white hover:bg-[#014f91]"
       }`}
     >
       {children}
       <span className="relative flex size-4 overflow-hidden">
-        <ArrowRight aria-hidden="true" className="size-4 transition group-hover:translate-x-5" strokeWidth={2} />
-        <ArrowRight aria-hidden="true" className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0" strokeWidth={2} />
+        <ArrowRight aria-hidden="true" className="size-4 transition group-hover/btn:translate-x-5" strokeWidth={2} />
+        <ArrowRight aria-hidden="true" className="absolute size-4 -translate-x-5 transition group-hover/btn:translate-x-0" strokeWidth={2} />
       </span>
     </a>
   );

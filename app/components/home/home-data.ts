@@ -1,3 +1,5 @@
+import { seriesCards } from "../products/product-series-data";
+
 export const navItems = ["Home", "Robots", "Software", "Company"];
 
 export const clientLogos = [
@@ -8,27 +10,7 @@ export const clientLogos = [
   "updated-logo-1.png",
 ];
 
-export const productCards = [
-  {
-    title: "PSR Series",
-    copy: "From factory floors to fulfilment centers, discover how industry leaders have partnered with ANSCER to elevate efficiency, safety, and productivity through automation.",
-    tags: ["Stacking", "G2G"],
-    image: "PSR-2000-Final-p-800.png",
-    featured: true,
-  },
-  {
-    title: "AR Series",
-    copy: "From factory floors to fulfilment centers, discover how industry leaders have partnered with ANSCER.",
-    tags: ["Tugging", "Lifting", "Tunneling"],
-    image: "bcbedcb1052074b00bb60d9f0fe5e0bb_60ea9badfafa109779007ff36fd0cf87881840a1-p-1080.png",
-  },
-  {
-    title: "AGV Series",
-    copy: "From factory floors to fulfilment centers, discover how ANSCER automates point-to-point material movement.",
-    tags: ["Lifting", "Sorting"],
-    image: "agv-100-new-p-500.png",
-  },
-];
+export const productCards = seriesCards;
 
 export const techItems = [
   "Real-Time Monitoring & Control",
@@ -41,13 +23,13 @@ export const newsItems = [
   {
     title: "Join Us at Automate 2026",
     copy: "Experience our cutting-edge automation solutions in person.",
-    image: "/anscer/images/events/automate-2026.png",
+    image: "/anscer/images/news-1.jpg",
     href: "https://events.anscer.com/automate",
   },
   {
     title: "Join Us at IWS 2026",
     copy: "Experience the future of logistics and warehousing solutions.",
-    image: "/anscer/images/events/iws-2026.png",
+    image: "/anscer/images/news-2.jpeg",
     href: "https://events.anscer.com/iws",
   },
   {

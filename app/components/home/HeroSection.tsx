@@ -32,7 +32,7 @@ export function HeroSection() {
           Join the robotics revolution, where innovation meets execution.
         </p>
         <div className="mt-8">
-          <ArrowButton>Explore ANSCER</ArrowButton>
+          <ArrowButton target="#client-section">Explore ANSCER</ArrowButton>
         </div>
       </FadeUp>
     </section>
