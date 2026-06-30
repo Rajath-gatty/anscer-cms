@@ -113,6 +113,9 @@ export function ProductHeroSlider() {
       // className="bg-[#fafafa]"
       style={{
         backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="site-container grid  items-center gap-8 py-12  md:grid-cols-2 md:py-16">
