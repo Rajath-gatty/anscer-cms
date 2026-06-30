@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Kicker } from "./SectionPrimitives";
 import { SolutionsStickyStack } from "./SolutionsStickyStack";
 
@@ -7,23 +7,56 @@ export function SolutionsSection() {
     () =>
       [
         {
-          value: "85+",
+          value: "85",
           label: "Projects Delivered",
           copy: "Successfully deployed automation solutions across 4+ continents, helping customers in diverse industries achieve operational excellence.",
         },
         {
-          value: "800,000+",
+          value: "800,000",
           label: "Autonomous Trips Completed",
           copy: "Proven reliability across real-world manufacturing and warehouse environments.",
         },
         {
-          value: "100+",
+          value: "100",
           label: "Robots Deployed Worldwide",
           copy: "Delivering reliable automation across multiple industries and geographies",
         },
       ] as const,
     [],
   );
+  const [displayStats, setDisplayStats] = useState(
+    stats.map((stat) => ({ ...stat, value: "0" })),
+  );
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setDisplayStats((current) =>
+        current.map((stat, index) => {
+          const targetValue = Number.parseInt(
+            stats[index].value.replace(/[^\d]/g, ""),
+            10,
+          );
+          const currentValue = Number.parseInt(
+            stat.value.replace(/[^\d]/g, ""),
+            10,
+          );
+
+          if (currentValue >= targetValue) {
+            return stat;
+          }
+
+          const nextValue = currentValue + 1;
+          return {
+            ...stat,
+            value: `${new Intl.NumberFormat("en-US").format(nextValue)}`,
+          };
+        }),
+      );
+    }, 30000);
+
+    return () => window.clearInterval(interval);
+  }, [stats]);
+
   return (
     <section id="solutions" className="bg-[#fafafa] py-14 md:py-20 lg:pb-0">
       <div className="site-container">
@@ -41,8 +74,8 @@ export function SolutionsSection() {
           </div>
           <div className="">
             <div className="divide-x flex flex-wrap justify-center md:justify-none sm:flex-nowrap md:items-center">
-              {stats.length > 0 &&
-                stats.map((stat, index) => (
+              {displayStats.length > 0 &&
+                displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
                     <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[36px]">
                       <span className="text-[#005ead]">{stat.value}</span>
