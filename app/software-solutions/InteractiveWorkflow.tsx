@@ -109,18 +109,18 @@ export function InteractiveWorkflow() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-[#fafafa] py-14">
+    <section className="bg-[#fafafa] px-6 py-10 md:py-14">
       <div className="site-container">
         <div className="grid gap-0 lg:grid-cols-2 lg:gap-10">
           <div>
-            <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+            <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
               WORKFLOW CONFIGURATION
             </p>
             <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
               Build Robot Workflows Without Writing Code
             </h2>
           </div>
-          <p className="mt-5 text-[16px] leading-[130%] text-[#333333] lg:mt-0 lg:text-[20px]">
+          <p className="mt-5 text-base leading-[130%] text-[#333333] lg:mt-0 lg:text-xl">
             The Process Flow Manager enables users to create robotic workflows through a drag-and-drop,
             block-based interface, allowing teams to automate processes without complex programming.
           </p>
@@ -129,7 +129,7 @@ export function InteractiveWorkflow() {
         <div className="mt-8 grid gap-4 lg:grid-cols-2 lg:items-start">
           <div className="flex w-full">
             <TimelineTrack active={active} />
-            <div className="flex-auto">
+            <div className="flex flex-col gap-0">
               {steps.map((step, index) => {
                 const isActive = active === index;
 
@@ -138,20 +138,23 @@ export function InteractiveWorkflow() {
                     key={step.title}
                     type="button"
                     onClick={() => setActive(index)}
-                    className={`flex w-full cursor-pointer flex-col gap-3 rounded-[12px] px-5 py-7 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${
+                    className={`flex w-full cursor-pointer flex-col gap-3 rounded-[12px] px-3 py-5 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${
                       isActive ? "bg-[#005ead1a]" : "bg-transparent"
                     }`}
                     aria-current={isActive ? "step" : undefined}
                   >
                     <div className="flex items-center gap-3">
                       <step.Icon active={isActive} />
+                      <div className="flex flex-col gap-1">
                       <h3
-                        className={`text-[16px] font-medium transition-colors duration-300 ${
-                          isActive ? "text-[#005ead]" : "text-[#011f40]"
+                        className={`text-sm md:text-base font-semibold transition-colors duration-300 ${
+                          isActive ? "text-[#005ead]" : "font-medium text-[#000000]"
                         }`}
                       >
                         {step.title}
                       </h3>
+                      <p className="text-[12px] md:text-sm leading-[150%] text-[#011F40]">{step.copy}</p>
+                      </div>
                     </div>
 
                     <div
@@ -160,7 +163,7 @@ export function InteractiveWorkflow() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <p className="text-[14px] leading-[150%] text-[#333333]">{step.copy}</p>
+                        
                         <div className="mt-5 overflow-hidden rounded-[12px] lg:hidden">
                           <div className="relative aspect-[668/424] w-full">
                             <Image

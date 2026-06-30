@@ -53,8 +53,8 @@ export function SiteHeader() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-[#e5e5e5]/95 backdrop-blur-xl">
-      <div className="site-container flex h-[60px] items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-[#e5e5e5]/95 backdrop-blur-xl mobile-navbar-bg">
+      <div className="site-container flex h-[60px] items-center justify-between mobile-navbar-container">
         <Link href="/" aria-label="ANSCER Robotics home" onClick={closeMenu}>
           <Image
             src={`${imagePath}Anscer-logo-final-dark.png`}
@@ -117,7 +117,7 @@ export function SiteHeader() {
         id="mobile-navigation"
         className={`absolute inset-x-0 top-full overflow-hidden border-t border-black/5 bg-[#e5e5e5]/98 shadow-[0_18px_38px_rgba(1,31,64,.16)] transition-[max-height,opacity] duration-300 lg:hidden ${
           menuOpen
-            ? "max-h-[calc(100vh-60px)] opacity-100"
+            ? "max-h-[calc(100vh-56px)] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >

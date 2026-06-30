@@ -30,7 +30,7 @@ export function ProductHero({ data }: { data: ProductDetailData }) {
               className="z-0 object-contain opacity-100"
             />
           ) : null}
-          {data.modelUrl ? (
+          {/* {data.modelUrl ? (
             <div className="absolute inset-0 z-10">
               <ProductHeroModel
                 modelUrl={data.modelUrl}
@@ -48,7 +48,15 @@ export function ProductHero({ data }: { data: ProductDetailData }) {
               height={400}
               className="z-10 absolute top-1/2 left-1/2 h-[90%] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
             />
-          )}
+          )} */}
+            <Image
+              src={`${imagePath}${data.heroImage}`}
+              alt={data.title}
+              priority
+              width={600}
+              height={400}
+              className="z-10 absolute top-1/2 left-1/2 h-[90%] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
+            />
         </div>
       </div>
     </section>
