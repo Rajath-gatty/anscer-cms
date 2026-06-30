@@ -13,7 +13,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Lift",
     image: "lift.png",
-    imageClass: "scale-[1] -translate-x-[3%] md:translate-x-[3%]",
+    imageClass: "scale-[1.2] -translate-x-[3%] md:translate-x-[3%]",
     tags: ["Ready to Lift", "Lifting"],
   },
   {
@@ -21,7 +21,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Pull",
     image: "pull.png",
-    imageClass: "scale-[1] translate-x-[4%] md:translate-x-[10%]",
+    imageClass: "scale-[1.2] translate-x-[4%] md:translate-x-[10%]",
     tags: ["Ready to Pull", "Pulling"],
   },
   {
@@ -29,7 +29,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Grasp",
     image: "grab.png",
-    imageClass: "scale-[1] translate-x-[9%] md:translate-x-[15%]",
+    imageClass: "scale-[1.2] translate-x-[9%] md:translate-x-[15%]",
     tags: ["Ready to Grasp", "Grasping"],
   },
   {
@@ -37,7 +37,7 @@ const heroSlides = [
     title: "Robots Ready to",
     accent: "Move",
     image: "move.png",
-    imageClass: "scale-[1] translate-x-[3%] md:translate-x-[9%]",
+    imageClass: "scale-[1.2] translate-x-[3%] md:translate-x-[9%]",
     tags: ["Ready to Move", "Moving"],
   },
 ];
@@ -134,7 +134,7 @@ export function ProductHeroSlider() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="site-container grid min-h-[80svh]  items-center gap-8 lg:gap-2 pt-12  md:grid-cols-2 md:pt-16">
+      <div className="site-container grid min-h-[88svh]  items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16">
         <div>
           <ScrollReveal>
             <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
