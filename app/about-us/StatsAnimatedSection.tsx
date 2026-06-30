@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { m, useInView, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { imagePath } from "../components/home/assets";
 import { StatsMotionRail, statsRobotRoutes } from "./StatsMotionRail";
@@ -30,6 +30,10 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       return;
     }
 
+    const resetFrame = window.requestAnimationFrame(() => {
+      setDisplayStats(stats.map((stat) => ({ ...stat, value: "0" })));
+    });
+
     const duration = 1200;
     const intervalMs = 50;
     const steps = duration / intervalMs;
@@ -38,7 +42,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       const targetValue = Number.parseInt(stat.value.replace(/[^\d]/g, ""), 10);
       let step = 0;
 
-      return window.setInterval(() => {
+      const timerId = window.setInterval(() => {
         step += 1;
         const progress = Math.min(step / steps, 1);
         const currentValue = Math.round(targetValue * progress);
@@ -54,12 +58,15 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
         );
 
         if (progress >= 1) {
-          window.clearInterval(timers[index]);
+          window.clearInterval(timerId);
         }
       }, intervalMs);
+
+      return timerId;
     });
 
     return () => {
+      window.cancelAnimationFrame(resetFrame);
       timers.forEach((timer) => window.clearInterval(timer));
     };
   }, [shouldAnimate, stats]);
@@ -69,7 +76,10 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       ref={sectionRef}
       className="relative overflow-hidden bg-white py-12 md:pb-20 md:pt-10"
     >
-      <StatsMotionRail isInView={isInView} reduceMotion={Boolean(reduceMotion)} />
+      <StatsMotionRail
+        isInView={isInView}
+        reduceMotion={Boolean(reduceMotion)}
+      />
 
       <div className="site-container relative mt-9 md:mt-8">
         <div className="relative grid gap-8 md:hidden">
@@ -106,7 +116,9 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
               }
               transition={{
                 duration: reduceMotion ? 0 : 0.45,
-                delay: reduceMotion ? 0 : statsRobotRoutes[index]?.duration ?? 0,
+                delay: reduceMotion
+                  ? 0
+                  : (statsRobotRoutes[index]?.duration ?? 0),
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
@@ -134,4 +146,3 @@ function StatCardContent({ stat }: { stat: Stat }) {
     </>
   );
 }
-
