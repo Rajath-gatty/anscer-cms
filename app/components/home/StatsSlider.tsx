@@ -26,7 +26,7 @@ function StatsSlider() {
   );
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const [displayValue, setDisplayValue] = useState(stats[0].value);
+  const [displayValue, setDisplayValue] = useState("0");
 
   useEffect(() => {
     const timer = window.setInterval(() => {
