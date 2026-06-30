@@ -114,11 +114,11 @@ export function ProductHeroSlider() {
       style={{
         backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "bottom right",
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="site-container grid  items-center gap-8 py-12  md:grid-cols-2 md:py-16">
+      <div className="site-container grid min-h-[90svh]  items-center gap-8 py-12  md:grid-cols-2 md:py-16">
         <div>
           <ScrollReveal>
             <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
