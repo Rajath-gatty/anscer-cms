@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 import { imagePath } from "../components/home/assets";
 
 export function TabbedCapabilities({
@@ -22,7 +22,9 @@ export function TabbedCapabilities({
   const activeItem = items[activeIndex];
 
   return (
-    <section className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-14 md:py-20`}>
+    <section
+      className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-14 md:py-20`}
+    >
       <style>{`
         @keyframes fade-image {
           from { opacity: 0; transform: scale(0.98); }
@@ -46,7 +48,7 @@ export function TabbedCapabilities({
         <h2 className="mt-3 text-[30px] font-bold leading-tight md:text-4xl">
           {title}
         </h2>
-        
+
         {variant === "accordion" ? (
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
             <AccordionList
@@ -81,8 +83,8 @@ export function TabbedCapabilities({
               />
             </div>
 
-            <div className="mt-10 hidden gap-10 lg:grid lg:grid-cols-[0.38fr_0.62fr] lg:items-center">
-              <div className="flex flex-col gap-4">
+            <div className="mt-10 hidden gap-4 lg:grid lg:grid-cols-2 lg:items-center">
+              <div className="flex max-w-100 flex-col gap-3">
                 {items.map((item, index) => {
                   const isActive = activeIndex === index;
                   return (
@@ -90,10 +92,10 @@ export function TabbedCapabilities({
                       type="button"
                       key={item.title}
                       onClick={() => setActiveIndex(index)}
-                      className={`cursor-pointer rounded-xl px-6 py-5 text-left text-[18px] transition-all duration-300 md:text-[20px] ${
+                      className={`cursor-pointer rounded-xl p-5 text-left text-[20px] transition-colors duration-300 ${
                         isActive
-                          ? "bg-white font-semibold text-[#005ead] shadow-[0_4px_20px_rgba(1,31,64,.05)]"
-                          : "bg-white/50 font-semibold text-[#3a3a3a]/70 hover:bg-white/80"
+                          ? "bg-white font-medium text-[#005ead]"
+                          : "bg-white font-normal text-[#011f40] hover:bg-white/90"
                       }`}
                     >
                       {item.title}
@@ -103,29 +105,35 @@ export function TabbedCapabilities({
               </div>
 
               <div className="relative mt-8 lg:mt-0">
+                {/* Dark outer frame matching Webflow's device-screen effect */}
                 <div
                   key={activeIndex}
-                  className="relative min-h-75 w-full overflow-hidden rounded-[18px] bg-[#dce7ef] md:min-h-110 animate-image"
+                  className="relative min-h-75 w-full overflow-visible rounded-[21px] bg-[#252525] p-3 lg:min-h-126 animate-image"
                 >
-                  <Image
-                    src={`${imagePath}${activeItem.image}`}
-                    alt={activeItem.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 720px"
-                    className="object-cover"
-                  />
-                </div>
-                <div
-                  key={`card-${activeIndex}`}
-                  className="absolute -bottom-6 -right-2 z-10 w-[92%] max-w-90 rounded-xl bg-white p-6 shadow-[0_12px_30px_rgba(1,31,64,.12)] sm:-right-6 md:p-8 lg:-right-8 animate-card"
-                  style={{ animationDelay: "0.1s", opacity: 0 }}
-                >
-                  <h3 className="text-xl font-bold text-[#005ead]">
-                    {activeItem.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-[1.6] text-[#333333] md:text-base">
-                    {activeItem.copy}
-                  </p>
+                  {/* Inner white image container */}
+                  <div className="absolute inset-3 overflow-hidden rounded-2xl">
+                    <Image
+                      src={`${imagePath}${activeItem.image}`}
+                      alt={activeItem.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 720px"
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Floating info card — top-98 = 392px from frame top, matching Webflow's
+                       transform:translate(0,-100px) from natural flow position (480px inner height) */}
+                  <div
+                    key={`card-${activeIndex}`}
+                    className="absolute top-98 right-0 z-10 w-90 max-w-[calc(100%-3rem)] rounded-xl bg-white p-5 shadow-[0_12px_30px_rgba(1,31,64,.12)] animate-card"
+                    style={{ animationDelay: "0.1s", opacity: 0 }}
+                  >
+                    <h3 className="text-[18px] font-semibold text-[#005ead]">
+                      {activeItem.title}
+                    </h3>
+                    <p className="mt-3 text-[15px] leading-normal text-[#333333] md:text-[16px]">
+                      {activeItem.copy}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -160,14 +168,12 @@ function AccordionList({
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-expanded={isActive}
-              className={`flex w-full cursor-pointer items-center justify-between gap-4 px-5 pt-[18px] text-left text-[18px] font-semibold text-[#005ead] transition-colors md:text-[20px] ${
+              className={`flex w-full cursor-pointer items-center justify-between gap-4 px-5 pt-[18px] text-left text-[16px] font-semibold transition-colors lg:text-[20px] ${
                 isActive ? "pb-0" : "pb-[18px]"
               }`}
             >
-              <span className="leading-snug">
-                {item.title}
-              </span>
-              <span className="flex shrink-0 items-center justify-center text-[#005ead] transition-transform duration-300">
+              <span className="leading-snug text-[#005ead] ">{item.title}</span>
+              <span className="flex shrink-0 items-center justify-center transition-transform duration-300">
                 <ChevronDown
                   aria-hidden="true"
                   className={`size-5 transition-transform duration-300 ${
@@ -180,7 +186,9 @@ function AccordionList({
 
             <div
               className={`grid transition-all duration-500 ease-in-out ${
-                isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                isActive
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
               }`}
             >
               <div className="overflow-hidden">

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { imagePath } from "./assets";
@@ -227,7 +227,7 @@ function DeckCard({
   const shadowOpacity = Math.max(0.1, 0.18 - absDistance * 0.04);
 
   return (
-    <motion.article
+    <m.article
       className="absolute inset-x-10 bottom-12 top-5 grid origin-center overflow-hidden rounded-xl bg-[#fafafa] will-change-transform [backface-visibility:hidden] [transform-style:preserve-3d] lg:grid-cols-[0.42fr_0.58fr]"
       animate={{
         boxShadow: `0 28px 80px rgba(1, 31, 64, ${shadowOpacity})`,
@@ -289,7 +289,7 @@ function DeckCard({
           <source src={solution.video} type="video/mp4" />
         </video>
       </div>
-    </motion.article>
+    </m.article>
   );
 }
 
@@ -363,7 +363,7 @@ function ProgressRail({
   return (
     <div className="absolute right-0 top-[174px] z-40 flex w-[56px] justify-center">
       <div className="relative h-[310px] w-[42px] flex-col items-center justify-start">
-        <motion.div
+        <m.div
           className="absolute left-1/2 top-0 z-20 -translate-x-1/2"
           animate={{ y: robotY }}
           transition={{ type: "spring", stiffness: 170, damping: 24, mass: 0.75 }}
@@ -372,7 +372,7 @@ function ProgressRail({
             className="block"
             style={{ transform: "translateX(-1px)" }}
           />
-        </motion.div>
+        </m.div>
         <svg
           width="42"
           height="310"
@@ -386,7 +386,7 @@ function ProgressRail({
             strokeWidth="2"
             strokeLinecap="round"
           />
-          <motion.path
+          <m.path
             d={`M21 28V${filledY}`}
             stroke="#005EAD"
             strokeWidth="2"
@@ -517,3 +517,4 @@ function ProgressRobot({
     </svg>
   );
 }
+

@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { imagePath } from "../home/assets";
+import { ScrollReveal } from "../home/ScrollReveal";
 import type { SeriesPageData } from "./series-data";
 
 export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
@@ -41,14 +42,16 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   return (
     <section id="applications" className="overflow-hidden bg-white py-16 md:py-24">
       <div className="site-container">
-        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Applications</p>
+        <ScrollReveal>
+          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Applications</p>
+        </ScrollReveal>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-[700px]">
+          <ScrollReveal delay={80} className="max-w-[700px]">
             <h2 className="text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
               {data.applicationsHeading}
             </h2>
             <p className="mt-4 max-w-[610px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{data.applicationsIntro}</p>
-          </div>
+          </ScrollReveal>
 
           <div className="hidden items-center gap-4 md:flex">
             <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">{counter}</span>
@@ -56,7 +59,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => move(-1)}
               disabled={activeIndex === 0}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Previous application"
             >
               <ArrowLeft className="size-5" strokeWidth={1.8} />
@@ -65,7 +68,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => move(1)}
               disabled={activeIndex >= maxIndex}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Next application"
             >
               <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -111,7 +114,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           type="button"
           onClick={() => move(-1)}
           disabled={activeIndex === 0}
-          className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
           aria-label="Previous application"
         >
           <ArrowLeft className="size-5" strokeWidth={1.8} />
@@ -120,7 +123,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           type="button"
           onClick={() => move(1)}
           disabled={activeIndex >= maxIndex}
-          className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
           aria-label="Next application"
         >
           <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -168,7 +171,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
       <div className="site-container relative z-10">
         {/* Header — always visible */}
         <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-          <motion.div
+          <m.div
             initial={reducedMotion ? false : { opacity: 0, y: 18 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -178,7 +181,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
             <h2 className="mt-5 text-[28px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
               Explore <span className="text-[#005ead]">{data.eyebrow}</span> Robots
             </h2>
-          </motion.div>
+          </m.div>
           <UnitToggle unit={unit} onChange={setUnit} />
         </div>
 
@@ -204,9 +207,21 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         <p className="mt-2 text-[14px] leading-[22px] text-[#3a3a3a] line-clamp-3">{product.description}</p>
                         <a
                           href={product.href}
-                          className="mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                          className="group mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                         >
-                          Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
+                          Explore
+                          <span className="relative flex size-4 overflow-hidden">
+                            <ArrowRight
+                              aria-hidden="true"
+                              className="size-4 transition group-hover:translate-x-5"
+                              strokeWidth={2}
+                            />
+                            <ArrowRight
+                              aria-hidden="true"
+                              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                              strokeWidth={2}
+                            />
+                          </span>
                         </a>
                       </div>
 
@@ -229,10 +244,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                           <span
                             key={`${product.name}-mobile-${tag}`}
                             className="absolute z-20 rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-normal text-[#011f40] shadow-[0_6px_20px_rgba(1,31,64,.12)]"
-                            style={{
-                              left: tagIndex === 0 ? "44%" : tagIndex === 1 ? "62%" : "6%",
-                              top: tagIndex === 0 ? "12%" : tagIndex === 1 ? "48%" : "48%",
-                            }}
+                            style={getMobileTagPosition(product.name, tag, tagIndex)}
                           >
                             {tag}
                           </span>
@@ -274,7 +286,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => mobileMove(-1)}
               disabled={activeIndex === 0}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Previous robot"
             >
               <ArrowLeft className="size-5" strokeWidth={1.8} />
@@ -283,7 +295,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
               type="button"
               onClick={() => mobileMove(1)}
               disabled={activeIndex >= total - 1}
-              className="grid size-11 place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:opacity-35"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
               aria-label="Next robot"
             >
               <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -296,7 +308,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
           <div className="min-h-[700px] md:min-h-[calc(100vh-160px)]">
             <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]">
               <div className="relative z-20 grid gap-8 lg:grid-cols-[400px_390px_1fr]">
-                <motion.div
+                <m.div
                   className="flex flex-col gap-3"
                   initial={reducedMotion ? false : { opacity: 0, x: -20 }}
                   whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
@@ -307,12 +319,12 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                     const isActive = activeIndex === index;
 
                     return (
-                      <motion.button
+                      <m.button
                         key={product.name}
                         type="button"
                         onClick={() => setActiveIndex(index)}
                         className={cn(
-                          "relative grid overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
+                          "relative grid cursor-pointer overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
                           isActive ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]" : "bg-white/55 hover:bg-white/86",
                         )}
                         whileHover={reducedMotion ? undefined : { x: 4 }}
@@ -320,7 +332,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                       >
                         {isActive ? (
-                          <motion.span
+                          <m.span
                             layoutId={`series-active-tab-${data.slug}`}
                             className="absolute inset-0 rounded-lg bg-white"
                             transition={transition}
@@ -331,7 +343,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         </span>
                         <AnimatePresence initial={false}>
                           {isActive ? (
-                            <motion.span
+                            <m.span
                               key={`${product.name}-description`}
                               className="relative z-10 mt-3 text-[14px] font-normal leading-[22px] text-[#011f40]"
                               initial={reducedMotion ? false : { opacity: 0, y: -8 }}
@@ -340,16 +352,16 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                               transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
                             >
                               {product.tabDescription}
-                            </motion.span>
+                            </m.span>
                           ) : null}
                         </AnimatePresence>
-                      </motion.button>
+                      </m.button>
                     );
                   })}
-                </motion.div>
+                </m.div>
 
                 <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.div
+                  <m.div
                     key={`${activeProduct.name}-details`}
                     className="lg:pt-7"
                     initial={reducedMotion ? false : { opacity: 0, y: 18 }}
@@ -359,21 +371,33 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                   >
                     <h3 className="text-[20px] font-semibold text-[#011f40]">{activeProduct.name}</h3>
                     <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
-                    <motion.a
+                    <m.a
                       href={activeProduct.href}
-                      className="mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                      className="group mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                       whileHover={reducedMotion ? undefined : { y: -2 }}
                       whileTap={reducedMotion ? undefined : { scale: 0.97 }}
                     >
-                      Explore <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
-                    </motion.a>
-                  </motion.div>
+                      Explore
+                      <span className="relative flex size-4 overflow-hidden">
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="size-4 transition group-hover:translate-x-5"
+                          strokeWidth={2}
+                        />
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                          strokeWidth={2}
+                        />
+                      </span>
+                    </m.a>
+                  </m.div>
                 </AnimatePresence>
 
                 <div className="grid grid-cols-2 gap-x-14 gap-y-10 lg:pt-7">
                   <AnimatePresence mode="popLayout" initial={false}>
                     {specs.map((spec, index) => (
-                      <motion.div
+                      <m.div
                         key={`${activeProduct.name}-${unit}-${spec.label}`}
                         initial={reducedMotion ? false : { opacity: 0, y: 14 }}
                         animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -382,7 +406,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                       >
                         <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
                         <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
-                      </motion.div>
+                      </m.div>
                     ))}
                   </AnimatePresence>
                 </div>
@@ -390,7 +414,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
 
               <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-152px] lg:left-[470px] lg:h-[500px]">
                 <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.div
+                  <m.div
                     key={`${activeProduct.name}-visual`}
                     className="absolute inset-0"
                     initial={reducedMotion ? false : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }}
@@ -400,7 +424,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                     style={{ transformPerspective: 1200 }}
                   >
                     {activeProduct.bgText ? (
-                      <motion.div
+                      <m.div
                         className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%]"
                         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
                         animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -414,7 +438,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                           sizes="100vw"
                           className="object-contain object-center opacity-32"
                         />
-                      </motion.div>
+                      </m.div>
                     ) : null}
                     <Image
                       src={`${imagePath}${activeProduct.image}`}
@@ -427,7 +451,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                       )}
                     />
                     <FloatingTags product={activeProduct} reducedMotion={Boolean(reducedMotion)} />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
               </div>
             </div>
@@ -449,12 +473,12 @@ function UnitToggle({
     <button
       type="button"
       onClick={() => onChange(unit === "metric" ? "imperial" : "metric")}
-      className="inline-flex items-center gap-2 self-start text-[12px] font-extrabold uppercase tracking-wide text-[#011f40]"
+      className="inline-flex cursor-pointer items-center gap-2 self-start text-[12px] font-extrabold uppercase tracking-wide text-[#011f40]"
       aria-label="Toggle metric and imperial units"
     >
       <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>Metric</span>
       <span className="relative h-6 w-11 rounded-full bg-[#011f40] p-0.5">
-        <motion.span
+        <m.span
           className={cn(
             "block size-5 rounded-full bg-white",
           )}
@@ -471,6 +495,123 @@ function pad(value: number) {
   return String(value).padStart(2, "0");
 }
 
+type FloatingTagPosition = {
+  left: string;
+  top: string;
+};
+
+const defaultDesktopTagPositions: FloatingTagPosition[] = [
+  { left: "38%", top: "28%" },
+  { left: "85%", top: "58%" },
+  { left: "6%", top: "50%" },
+];
+
+const defaultMobileTagPositions: FloatingTagPosition[] = [
+  { left: "44%", top: "12%" },
+  { left: "62%", top: "48%" },
+  { left: "6%", top: "48%" },
+];
+
+const desktopTagPositionsByProduct: Record<string, Record<string, FloatingTagPosition>> = {
+  "AR 250": {
+    Tugging: { left: "6%", top: "50%" },
+    Lifting: { left: "38%", top: "28%" },
+    Tunneling: { left: "85%", top: "58%" },
+  },
+  "AR 500": {
+    Cobot: { left: "73%", top: "31%" },
+    Tugging: { left: "8%", top: "48%" },
+  },
+  "AR 650": {
+    Tugging: { left: "6%", top: "48%" },
+    Lifting: { left: "56%", top: "38%" },
+    Tunneling: { left: "82%", top: "59%" },
+  },
+  "AR 1250": {
+    Tugging: { left: "5%", top: "48%" },
+    Lifting: { left: "56%", top: "38%" },
+    Tunneling: { left: "84%", top: "59%" },
+  },
+  "PSR 2000": {
+    "Open Pallet": { left: "18%", top: "28%" },
+    Stacking: { left: "75%", top: "78%" },
+  },
+  "PSR 2000R": {
+    "Open/Closed Pallet": { left: "18%", top: "48%" },
+    Lifting: { left: "70%", top: "74%" },
+  },
+  "PSR 1000R": {
+    "Open/Closed Pallet": { left: "15%", top: "35%" },
+    Lifting: { left: "75%", top: "67%" },
+  },
+  "PSR G2G": {
+    "Open Pallet": { left: "17%", top: "38%" },
+    Stacking: { left: "72%", top: "78%" },
+  },
+  "LBR 500": {
+    Trolley: { left: "40%", top: "30%" },
+    Lifting: { left: "80%", top: "78%" },
+  },
+  "AGV 100": {
+    Lifting: { left: "38%", top: "28%" },
+    Sorting: { left: "85%", top: "58%" },
+  },
+};
+
+const mobileTagPositionsByProduct: Record<string, Record<string, FloatingTagPosition>> = {
+  "AR 250": {
+    Tugging: { left: "1%", top: "53%" },
+    Lifting: { left: "33%", top: "30%" },
+    Tunneling: { left: "78%", top: "68%" },
+  },
+   "AR 500": {
+    Cobot: { left: "73%", top: "31%" },
+    Tugging: { left: "1%", top: "53%" },
+  },
+  "AR 650": {
+    Tugging: { left: "1%", top: "69%" },
+    Lifting: { left: "51%", top: "49%" },
+    Tunneling: { left: "77%", top: "79%" },
+  },
+  "AR 1250": {
+    Tugging: { left: "1%", top: "69%" },
+    Lifting: { left: "51%", top: "49%" },
+    Tunneling: { left: "77%", top: "79%" },
+  },
+   "PSR 2000": {
+    "Open Pallet": { left: "1%", top: "28%" },
+    Stacking: { left: "70%", top: "76%" },
+  },
+  "PSR 2000R": {
+    "Open/Closed Pallet": { left: "1%", top: "38%" },
+    Lifting: { left: "68%", top: "74%" },
+  },
+  "PSR 1000R": {
+    "Open/Closed Pallet": { left: "1%", top: "35%" },
+    Lifting: { left: "70%", top: "60%" },
+  },
+  "PSR G2G": {
+    "Open Pallet": { left: "1%", top: "38%" },
+    Stacking: { left: "60%", top: "75%" },
+  },
+  "LBR 500": {
+    Trolley: { left: "20%", top: "30%" },
+    Lifting: { left: "65%", top: "75%" },
+  },
+  "AGV 100": {
+    Lifting: { left: "38%", top: "28%" },
+    Sorting: { left: "80%", top: "58%" },
+  },
+};
+
+function getMobileTagPosition(productName: string, tag: string, index: number): FloatingTagPosition {
+  return mobileTagPositionsByProduct[productName]?.[tag] ?? defaultMobileTagPositions[index] ?? defaultMobileTagPositions[0];
+}
+
+function getDesktopTagPosition(productName: string, tag: string, index: number): FloatingTagPosition {
+  return desktopTagPositionsByProduct[productName]?.[tag] ?? defaultDesktopTagPositions[index] ?? defaultDesktopTagPositions[0];
+}
+
 function FloatingTags({
   product,
   reducedMotion,
@@ -479,21 +620,18 @@ function FloatingTags({
   reducedMotion: boolean;
 }) {
   return (
-    <div className="absolute inset-0 hidden md:block">
+    <div className="absolute inset-0 z-20 hidden md:block">
       {product.tags.map((tag, index) => (
-        <motion.span
+        <m.span
           key={`${product.name}-${tag}`}
           className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[16px] font-normal text-[#011f40] shadow-[0_10px_30px_rgba(1,31,64,.12)]"
-          style={{
-            left: index === 0 ? "43%" : index === 1 ? "72%" : "28%",
-            top: index === 0 ? "30%" : index === 1 ? "52%" : "58%",
-          }}
+          style={getDesktopTagPosition(product.name, tag, index)}
           initial={reducedMotion ? false : { opacity: 0, y: 16, scale: 0.96 }}
           animate={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.4, delay: reducedMotion ? 0 : 0.16 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           {tag}
-        </motion.span>
+        </m.span>
       ))}
     </div>
   );
@@ -522,3 +660,4 @@ function selectorImageClass(name: string) {
       return "scale-[1.2] translate-y-[8%]";
   }
 }
+

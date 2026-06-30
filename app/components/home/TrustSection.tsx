@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FadeUp } from "../animation";
 import { imagePath, videoPath } from "./assets";
 import { clientLogos } from "./home-data";
 
@@ -17,7 +18,7 @@ export function TrustSection() {
         <source src={`${videoPath}clients-video_webm.webm`} type="video/webm" />
       </video>
       <div className="absolute inset-0 " />
-      <div className="site-container reveal relative z-10">
+      <FadeUp className="site-container relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-[34px] font-semibold leading-tight tracking-tight md:text-[58px]">
             Engineered in India.
@@ -30,7 +31,7 @@ export function TrustSection() {
             powers global performance with reliability, intelligence, and impact.
           </p>
         </div>
-      </div>
+      </FadeUp>
       <div className="absolute inset-x-0 bottom-2 z-10 overflow-hidden py-3 md:bottom-3">
         <div className="logo-marquee flex w-max items-center gap-20 opacity-75 grayscale">
           {[...clientLogos, ...clientLogos, ...clientLogos].map(

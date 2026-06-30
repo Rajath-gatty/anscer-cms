@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { FadeLeft, FadeRight } from "../animation";
 import { imagePath } from "./assets";
 import { ArrowButton, Kicker } from "./SectionPrimitives";
 
@@ -60,17 +61,22 @@ export function CaseStudiesSection() {
   return (
     <section className="bg-[#eef5fb] py-8 md:bg-white md:py-20">
       <div className="site-container">
-        <Kicker>Transforming Workplaces With Intelligence</Kicker>
-        <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
-          Our <span className="text-[#005ead]">Case Studies</span>
-        </h2>
-        <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
-          From factory floors to fulfillment centers, discover how industry leaders have partnered with ANSCER to elevate
-          efficiency, safety, and productivity through automation.
-        </p>
+        <FadeRight>
+          <Kicker>Transforming Workplaces With Intelligence</Kicker>
+          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
+            Our <span className="text-[#005ead]">Case Studies</span>
+          </h2>
+          <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+            From factory floors to fulfillment centers, discover how industry leaders have partnered with ANSCER to elevate
+            efficiency, safety, and productivity through automation.
+          </p>
+        </FadeRight>
 
         <div className="relative mt-7 md:mt-9">
-          <div className="relative h-[150px] overflow-hidden rounded-lg bg-[#011f40] md:min-h-[520px] md:rounded-xl">
+          <FadeRight
+            className="relative h-[150px] overflow-hidden rounded-lg bg-[#011f40] md:min-h-[520px] md:rounded-xl"
+            delay={0.08}
+          >
             {caseStudies.map((caseStudy, index) => (
               <Image
                 key={caseStudy.image}
@@ -89,9 +95,12 @@ export function CaseStudiesSection() {
             <h3 className="absolute left-5 top-5 text-base font-semibold text-white md:left-7 md:top-7 md:text-2xl">
               {activeCase.category}
             </h3>
-          </div>
+          </FadeRight>
 
-          <div className="relative z-10 mx-2 -mt-6 rounded bg-white p-4 shadow-xl md:absolute md:bottom-7 md:right-7 md:mx-0 md:mt-0 md:w-[330px] md:rounded-lg md:p-6">
+          <FadeLeft
+            className="relative z-10 mx-2 -mt-6 rounded bg-white p-4 shadow-xl md:absolute md:bottom-7 md:right-7 md:mx-0 md:mt-0 md:w-[330px] md:rounded-lg md:p-6"
+            delay={0.14}
+          >
             <Image
               src={`${imagePath}${activeCase.logo}`}
               alt=""
@@ -116,9 +125,12 @@ export function CaseStudiesSection() {
                 <ArrowButton>Read their story</ArrowButton>
               </div>
             </div>
-          </div>
+          </FadeLeft>
 
-          <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#011f40] md:absolute md:bottom-7 md:left-7 md:mt-0 md:text-white">
+          <FadeRight
+            className="mt-4 flex items-center justify-center gap-3 text-xs text-[#011f40] md:absolute md:bottom-7 md:left-7 md:mt-0 md:text-white"
+            delay={0.16}
+          >
             <div className="flex h-8 items-center gap-2 rounded-full border border-[#011f40]/25 px-3 md:hidden">
               {caseStudies.map((caseStudy, index) => (
                 <button
@@ -141,7 +153,7 @@ export function CaseStudiesSection() {
               type="button"
               aria-label="Previous case study"
               onClick={goToPrevious}
-              className="grid size-8 place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
             >
               <ArrowLeft aria-hidden="true" className="size-4" strokeWidth={2} />
             </button>
@@ -149,11 +161,11 @@ export function CaseStudiesSection() {
               type="button"
               aria-label="Next case study"
               onClick={goToNext}
-              className="grid size-8 place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#c9d4df] text-[#8491a0] transition hover:bg-[#eef3f7] md:border-white/60 md:text-white md:hover:bg-white/15"
             >
               <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
             </button>
-          </div>
+          </FadeRight>
         </div>
       </div>
     </section>

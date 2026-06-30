@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Plus } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { useMemo, useState } from "react";
 import { imagePath } from "../components/home/assets";
 
@@ -76,7 +76,7 @@ export function PathToPowerInteractive() {
           data-path-rail="true"
           style={{ top: railTop, height: railHeight }}
         />
-        <motion.span
+        <m.span
           className="absolute left-[92px] h-9 w-[9px] -translate-y-1/2 rounded-full bg-[#005ead] shadow-[0_0_0_3px_rgba(0,94,173,0.08)]"
           data-path-thumb="true"
           style={{ top: railTop }}
@@ -137,7 +137,7 @@ export function PathToPowerInteractive() {
           const isActive = index === activeSlideIndex;
 
           return (
-            <motion.button
+            <m.button
               key={`${years[activeYearIndex]}-${slide.image}`}
               type="button"
               layout
@@ -189,10 +189,11 @@ export function PathToPowerInteractive() {
               >
                 <Plus className="size-5" strokeWidth={1.8} />
               </span>
-            </motion.button>
+            </m.button>
           );
         })}
       </div>
     </div>
   );
 }
+

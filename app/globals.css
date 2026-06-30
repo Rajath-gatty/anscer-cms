@@ -127,6 +127,16 @@ html {
   animation: reveal-up 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.motion-reveal {
+  opacity: 1;
+  transform: translate3d(
+      var(--motion-reveal-x, 0),
+      var(--motion-reveal-y, 0),
+      0
+    )
+    scale(var(--motion-reveal-scale, 1));
+}
+
 .section-reveal {
   opacity: 0;
   transform: translate3d(0, 28px, 0);
@@ -221,6 +231,11 @@ html {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 

@@ -1,8 +1,11 @@
+import { cn } from "@/lib/utils";
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 import { ChevronDownIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 
-function TechnologyAccordionRoot({ className, ...props }: AccordionPrimitive.Root.Props) {
+function TechnologyAccordionRoot({
+  className,
+  ...props
+}: AccordionPrimitive.Root.Props) {
   return (
     <AccordionPrimitive.Root
       data-slot="technology-accordion"
@@ -12,11 +15,17 @@ function TechnologyAccordionRoot({ className, ...props }: AccordionPrimitive.Roo
   );
 }
 
-function TechnologyAccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
+function TechnologyAccordionItem({
+  className,
+  ...props
+}: AccordionPrimitive.Item.Props) {
   return (
     <AccordionPrimitive.Item
       data-slot="technology-accordion-item"
-      className={cn("overflow-hidden rounded-xl bg-white px-5 shadow-sm transition-all duration-300", className)}
+      className={cn(
+        "overflow-hidden rounded-xl bg-white px-5 shadow-sm transition-all duration-300 ",
+        className,
+      )}
       {...props}
     />
   );
@@ -32,7 +41,7 @@ function TechnologyAccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="technology-accordion-trigger"
         className={cn(
-          "group/technology-accordion-trigger flex w-full items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30 aria-disabled:pointer-events-none aria-disabled:opacity-50",
+          "group/technology-accordion-trigger flex w-full cursor-pointer items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30 aria-disabled:pointer-events-none aria-disabled:opacity-50",
           className,
         )}
         {...props}
@@ -40,7 +49,7 @@ function TechnologyAccordionTrigger({
         {children}
         <ChevronDownIcon
           aria-hidden="true"
-          className="size-5 shrink-0 text-[#011f40] group-aria-expanded/technology-accordion-trigger:hidden"
+          className="size-5 shrink-0 text-[#011f40] group-aria-expanded/technology-accordion-trigger:rotate-180 transition-transform duration-300"
           strokeWidth={2}
         />
       </AccordionPrimitive.Trigger>
@@ -65,8 +74,8 @@ function TechnologyAccordionContent({
 }
 
 export {
-  TechnologyAccordionRoot,
-  TechnologyAccordionItem,
-  TechnologyAccordionTrigger,
   TechnologyAccordionContent,
+  TechnologyAccordionItem,
+  TechnologyAccordionRoot,
+  TechnologyAccordionTrigger,
 };

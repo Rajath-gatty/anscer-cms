@@ -1,37 +1,78 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { imagePath } from "../home/assets";
 
 const heroSlides = [
   {
+    id: "lift",
     title: "Robots Ready to",
     accent: "Lift",
     image: "PSR-1000R_1.png",
     imageClass: "scale-[1.05] -translate-x-[3%] md:translate-x-[3%]",
+    tags: ["Ready to Lift", "Lifting"],
   },
   {
+    id: "pull",
     title: "Robots Ready to",
     accent: "Pull",
     image: "hero-image-2.png",
     imageClass: "scale-[1.24] translate-x-[4%] md:translate-x-[10%]",
+    tags: ["Ready to Pull", "Pulling"],
   },
   {
+    id: "grasp",
     title: "Robots Ready to",
     accent: "Grasp",
     image: "Group-1321315879.png",
     imageClass: "scale-[1.42] translate-x-[9%] md:translate-x-[15%]",
+    tags: ["Ready to Grasp", "Grasping"],
   },
   {
+    id: "move",
     title: "Robots Ready to",
     accent: "Move",
     image: "hero-image-4.png",
     imageClass: "scale-[1.22] translate-x-[3%] md:translate-x-[9%]",
+    tags: ["Ready to Move", "Moving"],
   },
 ];
+
+type ProductHeroTagPosition = {
+  left: string;
+  top: string;
+};
+
+const defaultProductHeroTagPositions: ProductHeroTagPosition[] = [
+  { left: "12%", top: "24%" },
+  { left: "62%", top: "58%" },
+];
+
+const productHeroTagPositionsBySlide: Record<string, Record<string, ProductHeroTagPosition>> = {
+  lift: {
+    "Ready to Lift": { left: "54%", top: "64%" },
+    "Lifting": { left: "42%", top: "35%" },
+  },
+  pull: {
+    "Ready to Pull": { left: "52%", top: "65%" },
+    "Pulling": { left: "30%", top: "35%" },
+  },
+  grasp: {
+    "Ready to Grasp": { left: "52%", top: "48%" },
+    "Grasping": { left: "49%", top: "5%" },
+  },
+  move: {
+    "Ready to Move": { left: "5%", top: "54%" },
+    "Moving": { left: "68%", top: "68%" },
+  },
+};
+
+function getProductHeroTagPosition(slideId: string, tag: string, index: number): ProductHeroTagPosition {
+  return productHeroTagPositionsBySlide[slideId]?.[tag] ?? defaultProductHeroTagPositions[index] ?? defaultProductHeroTagPositions[0];
+}
 
 export function ProductHeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -63,7 +104,7 @@ export function ProductHeroSlider() {
             {active.title}{" "}
             <span className="relative inline-grid overflow-hidden align-bottom text-[#005ead]">
               <AnimatePresence mode="popLayout" initial={false}>
-                <motion.span
+                <m.span
                   key={active.accent}
                   initial={{ y: "85%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
@@ -71,7 +112,7 @@ export function ProductHeroSlider() {
                   transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {active.accent}
-                </motion.span>
+                </m.span>
               </AnimatePresence>
             </span>
           </h1>
@@ -103,7 +144,7 @@ export function ProductHeroSlider() {
             </span>
             <button
               type="button"
-              className="grid size-8 place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
               aria-label="Previous hero slide"
               onClick={() => goToSlide(-1)}
             >
@@ -111,7 +152,7 @@ export function ProductHeroSlider() {
             </button>
             <button
               type="button"
-              className="grid size-8 place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
+              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
               aria-label="Next hero slide"
               onClick={() => goToSlide(1)}
             >
@@ -122,7 +163,7 @@ export function ProductHeroSlider() {
 
         <div className="relative min-h-[430px] md:min-h-[560px] xl:min-h-[620px] w-full">
           <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
+            <m.div
               key={active.image}
               className="absolute inset-0"
               initial={{ x: 46, opacity: 0, scale: 0.97 }}
@@ -138,10 +179,22 @@ export function ProductHeroSlider() {
                 sizes="(max-width: 768px) 100vw, 780px"
                 className={`object-contain object-right drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] p-6 ${active.imageClass}`}
               />
-            </motion.div>
+              <div className="pointer-events-none absolute inset-0 z-20">
+                {active.tags.map((tag, index) => (
+                  <span
+                    key={`${active.id}-${tag}`}
+                    className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-semibold text-[#011f40] shadow-[0_8px_24px_rgba(1,31,64,.14)] md:px-4 md:py-2 md:text-sm"
+                    style={getProductHeroTagPosition(active.id, tag, index)}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </m.div>
           </AnimatePresence>
         </div>
       </div>
     </section>
   );
 }
+

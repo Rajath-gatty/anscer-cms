@@ -40,7 +40,7 @@ export function ProductFaqAccordion({ items }: { items: ProductFaq[] }) {
               isOpen ? "rounded-xl bg-[#f1f1f1]" : "bg-transparent",
             )}
           >
-            <AccordionTrigger className="items-center gap-4 rounded-xl px-3 py-3 text-left hover:no-underline focus-visible:ring-[#005ead]/25 md:gap-4 md:px-6 md:py-3 **:data-[slot=accordion-trigger-icon]:hidden">
+            <AccordionTrigger className="cursor-pointer items-center gap-4 rounded-xl px-3 py-3 text-left hover:no-underline focus-visible:ring-[#005ead]/25 md:gap-4 md:px-6 md:py-3 **:data-[slot=accordion-trigger-icon]:hidden">
               <span className="text-sm font-semibold leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6">
                 {item.question}
               </span>
