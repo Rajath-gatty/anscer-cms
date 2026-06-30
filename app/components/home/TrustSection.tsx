@@ -14,7 +14,7 @@ export function TrustSection() {
         playsInline
         poster={`${videoPath}clients-video_poster.0000000.jpg`}
       >
-        <source src={`${videoPath}clients-video_mp4.mp4`} type="video/mp4" />
+        <source src={`${videoPath}clients-video-new.mp4`} type="video/mp4" />
         <source src={`${videoPath}clients-video_webm.webm`} type="video/webm" />
       </video>
       <div className="absolute inset-0 " />
@@ -28,7 +28,8 @@ export function TrustSection() {
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#4d4d4d] md:text-base">
             Born in India, for the world, we deliver precision-engineered
             automation trusted by industry leaders. Our homegrown innovation
-            powers global performance with reliability, intelligence, and impact.
+            powers global performance with reliability, intelligence, and
+            impact.
           </p>
         </div>
       </FadeUp>
