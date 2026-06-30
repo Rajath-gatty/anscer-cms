@@ -20,7 +20,14 @@ export function NewsSection() {
               <Wrapper key={item.title} delay={0.08 + index * 0.04}>
                 <article className="group">
                   <div className="relative aspect-[1.32] overflow-hidden rounded-lg bg-[#dfe7ee]">
-                    <Image src={item.image} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                    <Image 
+                      src={item.image} 
+                      alt="" 
+                      fill 
+                      sizes="(max-width: 768px) 100vw, 33vw" 
+                      className="object-cover"
+                      style={{ objectPosition: index < 2 ? "50% 18%" : "center" }}
+                    />
                   </div>
                   <h3 className="mt-4 h-[44px] line-clamp-2 text-base font-semibold leading-[22px] text-[#4a4a4a]">{item.title}</h3>
                   <p className="mt-4 h-[44px] line-clamp-2 text-sm font-normal leading-[22px] text-[#5b5f66]">{item.copy}</p>

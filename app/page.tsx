@@ -18,7 +18,7 @@ export default function Home() {
       <SolutionsFadeSection /> */}
       <ProductsSection />
       <TechnologySection />
-      <CaseStudiesSection />
+      {/* <CaseStudiesSection /> */}
       <ExploreMoreSection />
       <NewsSection />
       <CtaSection />

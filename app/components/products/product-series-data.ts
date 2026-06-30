@@ -5,8 +5,10 @@ export const seriesCards = [
     copy: "Our PSR series automates pallet stacking, pallet transport, and trolley movement for warehouse automation for improved inventory visibility, operational efficiency, productivity, and intralogistics performance.",
     tags: ["Stacking", "G2G"],
     backgroundImage: "products/psr-bg.png",
+    image: "psr-2000-r.png",
     href: "/psr-series",
     marker: "PSR",
+    featured: true,
   },
   {
     index: "02",
@@ -14,8 +16,11 @@ export const seriesCards = [
     copy: "Our AR Series automates diverse applications through one platform and multiple top modules.",
     tags: ["Tugging", "Lifting", "Tunneling"],
     backgroundImage: "products/ar-bg.png",
+    image:
+      "bcbedcb1052074b00bb60d9f0fe5e0bb_60ea9badfafa109779007ff36fd0cf87881840a1-p-1080.png",
     href: "/ar-series",
     marker: "AR",
+    featured: false,
   },
   {
     index: "03",
@@ -23,7 +28,9 @@ export const seriesCards = [
     copy: "Our AGV Series streamlines point-to-point material transport through compact, QR-guided automation.",
     tags: ["Lifting", "Sorting"],
     backgroundImage: "products/agv-bg.png",
+    image: "agv-100-new-p-500.png",
     href: "/agv-series",
     marker: "AGV",
+    featured: false,
   },
 ];

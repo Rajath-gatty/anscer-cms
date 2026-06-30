@@ -19,7 +19,7 @@ const solutions = [
   {
     title: "TROLLEY MOVEMENT",
     copy: "A compact, free-lift AMR with universal trolley compatibility, designed for trolley movement in low-clearance environments and the demands of dynamic shop floors.",
-    icon: "pallet-stacking-svg.svg",
+    icon: "trolley-movement.svg",
     image: "our-solutions-image-2-p-800.png",
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Trolley%20movement%20With%20bg.mp4",
@@ -136,16 +136,16 @@ export function SolutionsStickyStack() {
       >
         <div
           ref={stickyRef}
-          className="sticky top-[112px] h-[calc(100vh-112px)] min-h-[620px] overflow-hidden"
+          className="sticky top-[72px] 2xl:top-[100px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-108px)] min-h-[560px] 2xl:min-h-[620px] overflow-hidden"
         >
           <div className="absolute left-0 top-0 z-20">
             <Kicker>Robots Designed to Deliver</Kicker>
-            <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
+            <h2 className="mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
               Our <span className="text-[#005ead]">Solutions</span>
             </h2>
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 top-[92px]">
+          <div className="absolute inset-x-0 bottom-0 top-[68px] 2xl:top-[92px]">
             {solutions.map((solution, index) => (
               <SolutionSlide
                 key={solution.title}
@@ -178,7 +178,7 @@ function SolutionSlide({
   staticMode?: boolean;
 }) {
   if (staticMode) {
-    return <StaticSolutionCard solution={solution} />;
+    return <StaticSolutionCard solution={solution} showButton={index === 2} />;
   }
 
   const relative = index - progress;
@@ -187,7 +187,7 @@ function SolutionSlide({
   return (
     <article
       className={cn(
-        "grid min-h-[520px] items-start gap-10 bg-[#fafafa] pt-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-[0.42fr_0.58fr]",
+        "grid min-h-[480px] 2xl:min-h-[520px] items-start gap-6 2xl:gap-10 bg-[#fafafa] pt-1 2xl:pt-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-[0.42fr_0.58fr]",
         "absolute inset-0",
       )}
       style={{
@@ -203,15 +203,16 @@ function SolutionSlide({
             alt=""
             width={42}
             height={42}
+            className="h-[42px] w-auto"
           />
           <h3 className="text-xs font-bold uppercase text-[#005ead]">
             {solution.title}
           </h3>
         </div>
-        <p className="mt-7 text-base leading-6 text-[#4b4b4b]">
+        <p className="mt-4 2xl:mt-7 text-sm leading-5 2xl:text-base 2xl:leading-6 text-[#4b4b4b]">
           {solution.copy}
         </p>
-        <div className="relative mt-8 aspect-[1.42] max-w-[390px] overflow-hidden rounded-lg bg-[#dfe7ee]">
+        <div className="relative mt-4 2xl:mt-8 aspect-[1.58] 2xl:aspect-[1.42] max-w-[330px] xl:max-w-[360px] 2xl:max-w-[390px] overflow-hidden rounded-lg bg-[#dfe7ee]">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
@@ -221,7 +222,7 @@ function SolutionSlide({
           />
         </div>
         {index === 2 ? (
-          <div className="mt-7">
+          <div className="mt-4 2xl:mt-7">
             <ArrowButton>Talk to us</ArrowButton>
           </div>
         ) : null}
@@ -245,8 +246,10 @@ function SolutionSlide({
 
 function StaticSolutionCard({
   solution,
+  showButton = false,
 }: {
   solution: (typeof solutions)[number];
+  showButton?: boolean;
 }) {
   const titleWords = solution.title.split(/\s+/);
 
@@ -278,7 +281,7 @@ function StaticSolutionCard({
           alt=""
           width={28}
           height={28}
-          className="size-7 shrink-0"
+          className="h-7 w-auto shrink-0"
         />
         <h3 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">
           {solution.title}
@@ -296,9 +299,11 @@ function StaticSolutionCard({
         />
       </div>
 
-      <div className="mt-4 flex">
-        <ArrowButton>Talk to us</ArrowButton>
-      </div>
+      {showButton && (
+        <div className="mt-4 flex">
+          <ArrowButton>Talk to us</ArrowButton>
+        </div>
+      )}
     </article>
   );
 }
@@ -318,7 +323,7 @@ function ProgressRail({
       : 124 + (clampedProgress - 1) * (236 - 124);
 
   return (
-    <div className="absolute right-2 top-[158px] z-30 flex w-[56px] justify-center">
+    <div className="absolute right-2 top-[134px] 2xl:top-[158px] z-30 flex w-[56px] justify-center">
       <div className="relative h-[310px] w-[42px] flex-col items-center justify-start">
         <ProgressRobot
           className="absolute left-1/2 top-0 z-20 -translate-x-1/2 transition-transform duration-300 ease-out"

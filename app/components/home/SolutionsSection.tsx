@@ -40,7 +40,7 @@ export function SolutionsSection() {
             </p>
           </div>
           <div className="">
-            <div className="divide-x flex items-center">
+            <div className="divide-x flex flex-wrap justify-center md:justify-none sm:flex-nowrap md:items-center">
               {stats.length > 0 &&
                 stats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">

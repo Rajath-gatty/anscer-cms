@@ -21,7 +21,7 @@ const solutions = [
     title: "TROLLEY MOVEMENT",
     label: ["TROLLEY", "MOVEMENT"],
     copy: "A compact, free-lift AMR with universal trolley compatibility, designed for trolley movement in low-clearance environments and the demands of dynamic shop floors.",
-    icon: "pallet-stacking-svg.svg",
+    icon: "trolley-movement.svg",
     image: "our-solutions-image-2-p-800.png",
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Trolley%20movement%20With%20bg.mp4",
@@ -168,21 +168,21 @@ export function SolutionsCardDeckSection() {
                   Our <span className="text-[#005ead]">Solutions</span>
                 </h3>
               </div>
-              {solutions.map((solution) => (
-                <MobileSolutionCard key={solution.title} solution={solution} />
+              {solutions.map((solution, index) => (
+                <MobileSolutionCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
               ))}
             </div>
 
             <div ref={wrapperRef} className="relative mt-4 hidden h-[210vh] lg:block">
-              <div ref={stickyRef} className="sticky top-[112px] h-[calc(100vh-112px)] min-h-[640px] overflow-visible">
+              <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[100px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-108px)] min-h-[560px] 2xl:min-h-[640px] overflow-visible">
                 <div className="absolute left-0 top-0 z-30">
                   <Kicker>Robots Designed to Deliver</Kicker>
-                  <h3 className="mt-5 text-[36px] font-bold tracking-tight">
+                  <h3 className="mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
                     Our <span className="text-[#005ead]">Solutions</span>
                   </h3>
                 </div>
 
-                <div className="absolute -left-10 bottom-0 right-16 top-[92px] px-10 pb-12 pt-5 [perspective:1600px]">
+                <div className="absolute -left-10 bottom-0 right-16 top-[68px] 2xl:top-[92px] px-10 pb-6 2xl:pb-12 pt-2 2xl:pt-5 [perspective:1600px]">
                   {solutions.map((solution, index) => (
                     <DeckCard
                       key={solution.title}
@@ -250,13 +250,13 @@ function DeckCard({
       }}
       aria-hidden={activeIndex !== index}
     >
-      <div className="relative z-10 flex flex-col justify-center p-10 xl:p-12">
+      <div className="relative z-10 flex flex-col justify-center p-6 xl:p-10 2xl:p-12">
         <div className="flex items-center gap-4">
-          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} />
+          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[42px] w-auto" />
           <h4 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
         </div>
-        <p className="mt-7 max-w-[430px] text-sm leading-6 text-[#3f4b57]">{solution.copy}</p>
-        <div className="relative mt-8 aspect-[1.42] max-w-[420px] overflow-hidden rounded-lg bg-[#dfe7ee]">
+        <p className="mt-4 2xl:mt-7 max-w-[430px] text-sm leading-5 2xl:leading-6 text-[#3f4b57]">{solution.copy}</p>
+        <div className="relative mt-4 2xl:mt-8 aspect-[1.58] 2xl:aspect-[1.42] max-w-[340px] xl:max-w-[380px] 2xl:max-w-[420px] overflow-hidden rounded-lg bg-[#dfe7ee]">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
@@ -265,7 +265,7 @@ function DeckCard({
             className="object-cover"
           />
         </div>
-        <div className="mt-7">
+        <div className="mt-4 2xl:mt-7">
           <ArrowButton>Talk to us</ArrowButton>
         </div>
       </div>
@@ -310,7 +310,7 @@ function StaticDeckCard({ solution }: { solution: (typeof solutions)[number] }) 
   );
 }
 
-function MobileSolutionCard({ solution }: { solution: (typeof solutions)[number] }) {
+function MobileSolutionCard({ solution, showButton = false }: { solution: (typeof solutions)[number]; showButton?: boolean }) {
   return (
     <article className="relative bg-[#fafafa]">
       <div className="relative -mx-2 flex min-h-[220px] items-center justify-center overflow-hidden">
@@ -326,7 +326,7 @@ function MobileSolutionCard({ solution }: { solution: (typeof solutions)[number]
         </video>
       </div>
       <div className="mt-1 flex items-center gap-3">
-        <Image src={`${imagePath}${solution.icon}`} alt="" width={28} height={28} className="size-7 shrink-0" />
+        <Image src={`${imagePath}${solution.icon}`} alt="" width={28} height={28} className="h-7 w-auto shrink-0" />
         <h4 className="text-[10px] font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
       </div>
       <p className="mt-4 text-xs leading-5 text-[#011f40]">{solution.copy}</p>
@@ -339,9 +339,11 @@ function MobileSolutionCard({ solution }: { solution: (typeof solutions)[number]
           className="object-cover"
         />
       </div>
-      <div className="mt-4 flex">
-        <ArrowButton>Talk to us</ArrowButton>
-      </div>
+      {showButton && (
+        <div className="mt-4 flex">
+          <ArrowButton>Talk to us</ArrowButton>
+        </div>
+      )}
     </article>
   );
 }
@@ -361,7 +363,7 @@ function ProgressRail({
       : 124 + (clampedProgress - 1) * (236 - 124);
 
   return (
-    <div className="absolute right-0 top-[174px] z-40 flex w-[56px] justify-center">
+    <div className="absolute right-0 top-[150px] 2xl:top-[174px] z-40 flex w-[56px] justify-center">
       <div className="relative h-[310px] w-[42px] flex-col items-center justify-start">
         <m.div
           className="absolute left-1/2 top-0 z-20 -translate-x-1/2"

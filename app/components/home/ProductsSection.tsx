@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { FadeLeft, FadeRight } from "../animation";
 import { imagePath } from "./assets";
-import { productCards } from "./home-data";
+import { seriesCards as productCards } from "../products/product-series-data";
 import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
 
 export function ProductsSection() {
@@ -73,33 +73,22 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
           className={`${product.featured ? "pb-6" : ""} object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110`}
         />
       </div>
-      {product.featured ? (
-        <div className="mt-3 md:mt-4">
-          <div className="md:hidden">
-            <ProductExploreButton />
-          </div>
-          <div className="hidden md:block">
-            <ArrowButton>Explore</ArrowButton>
-          </div>
+      <div className="mt-3 opacity-100 transition-opacity duration-300 md:mt-4 lg:opacity-0 lg:group-hover:opacity-100">
+        <div className="md:hidden">
+          <ProductExploreButton href={product.href} />
         </div>
-      ) : (
-        <div className="mt-3 opacity-100 transition-opacity duration-300 md:mt-4 lg:opacity-0 lg:group-hover:opacity-100">
-          <div className="md:hidden">
-            <ProductExploreButton />
-          </div>
-          <div className="hidden md:block">
-            <ArrowButton>Explore</ArrowButton>
-          </div>
+        <div className="hidden md:block">
+          <ArrowButton target={product.href}>Explore</ArrowButton>
         </div>
-      )}
+      </div>
     </article>
   );
 }
 
-function ProductExploreButton() {
+function ProductExploreButton({ href = "#contact" }: { href?: string }) {
   return (
     <a
-      href="#contact"
+      href={href}
       className="inline-flex h-8 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
     >
       Explore{" "}
