@@ -33,7 +33,7 @@ export function ExploreMoreSection() {
           <FadeRight className="grid gap-6" delay={0.08}>
             <article className="rounded-xl bg-white p-7">
               <Image src={`${imagePath}diamond-plus.svg`} alt="" width={44} height={44} className="size-11" />
-              <h3 className="mt-9 text-[20px] font-semibold text-[#005ead]">Globally Safety-Compliant Robots</h3>
+              <h3 className="mt-9 text-[20px] font-semibold text-[#005ead] md:text-[24px]">Globally Safety-Compliant Robots</h3>
               <p className="mt-6 max-w-[560px] text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-6">
                 Designed to meet international safety standards for industrial deployment across manufacturing and
                 warehousing environments.
@@ -55,7 +55,7 @@ export function ExploreMoreSection() {
 
           <FadeUp className="rounded-xl bg-white p-7" delay={0.14}>
             <Image src={`${imagePath}lightbulb.svg`} alt="" width={44} height={44} className="size-11" />
-            <h3 className="mt-10 text-[20px] font-semibold leading-tight text-[#005ead]">
+            <h3 className="mt-10 text-[20px] font-semibold leading-tight text-[#005ead] md:text-[24px]">
               Lower Total Cost of Ownership (TCO)
             </h3>
             <p className="mt-10 text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-6">
@@ -73,7 +73,7 @@ export function ExploreMoreSection() {
                 {supportItems.map(({ icon: Icon, label }) => (
                   <div key={label} className="flex items-start gap-4">
                     <Icon aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-white" strokeWidth={1.8} />
-                    <p className="text-sm font-medium leading-5 text-white md:text-base md:leading-6">
+                    <p className="text-sm font-normal leading-5 text-white md:text-base md:leading-6">
                       {label === "After-sales infrastructure across India and global partner regions." ? (
                         <>
                           After-sales infrastructure across India

@@ -262,7 +262,7 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
       </div>
       <div className="site-container relative z-10 grid min-h-[720px] items-center py-16 lg:min-h-[calc(100vh-60px)]">
         <div className="max-w-[455px]">
-          <p className="text-xs font-semibold text-[#005ead]">{series.index}</p>
+          <p className="text-xs md:text-lg font-medium text-[#005ead]">{series.index}</p>
           <h2 className="mt-5 text-[36px] font-bold tracking-tight">
             {series.title}
           </h2>
@@ -273,7 +273,7 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
             {series.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-white px-3 py-1.5 text-base font-semibold text-[#011f40]"
+                className="rounded-md bg-[#E6EBF0] px-3 py-1.5 text-base text-[#011f40]"
               >
                 {tag}
               </span>
@@ -281,7 +281,7 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
           </div>
           <a
             href={series.href}
-            className="group mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="group mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
             <span className="relative flex size-4 overflow-hidden">

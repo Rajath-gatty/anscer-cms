@@ -4,8 +4,6 @@ import { ExploreMoreSection } from "./components/home/ExploreMoreSection";
 import { HeroSection } from "./components/home/HeroSection";
 import { NewsSection } from "./components/home/NewsSection";
 import { ProductsSection } from "./components/home/ProductsSection";
-import { SolutionsCardDeckSection } from "./components/home/SolutionsCardDeckSection";
-import { SolutionsFadeSection } from "./components/home/SolutionsFadeSection";
 import { SolutionsSection } from "./components/home/SolutionsSection";
 import { TechnologySection } from "./components/home/TechnologySection";
 import { TrustSection } from "./components/home/TrustSection";
@@ -16,8 +14,8 @@ export default function Home() {
       <HeroSection />
       <TrustSection />
       <SolutionsSection />
-      <SolutionsCardDeckSection />
-      <SolutionsFadeSection />
+      {/* <SolutionsCardDeckSection />
+      <SolutionsFadeSection /> */}
       <ProductsSection />
       <TechnologySection />
       <CaseStudiesSection />

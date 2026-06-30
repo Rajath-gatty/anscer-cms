@@ -68,13 +68,13 @@ export function TechnologyAccordion() {
                 )}
               >
                 <TechnologyAccordionTrigger className="cursor-pointer">
-                  <span className="text-xs font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
+                  <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
                     {item.title}
                   </span>
                 </TechnologyAccordionTrigger>
 
                 <TechnologyAccordionContent>
-                  <p className="mt-3 max-w-[470px] text-[10px] leading-4 text-[#3a3a3a] md:mt-6 md:text-base md:leading-6">
+                  <p className="mt-3 max-w-[470px] text-sm leading-4 text-[#3a3a3a] md:mt-6 md:text-base md:leading-6">
                     {item.copy}
                   </p>
                   <div className="relative mt-4 aspect-[1.55] overflow-hidden rounded-md bg-[#d9e3eb] lg:hidden">

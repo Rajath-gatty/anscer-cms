@@ -152,6 +152,10 @@ html {
   transform: translate3d(32px, 0, 0);
 }
 
+.section-reveal-from-left {
+  transform: translate3d(-32px, 0, 0);
+}
+
 .section-reveal-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);

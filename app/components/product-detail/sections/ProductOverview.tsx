@@ -21,7 +21,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
     >
       <div className="site-container grid gap-9 lg:grid-cols-[0.56fr_0.44fr]">
         <div>
-          <ScrollReveal>
+          <ScrollReveal direction="right">
             <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
               Overview
             </p>
@@ -32,6 +32,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
               {data.overview}
             </p>
           </ScrollReveal>
+          <ScrollReveal direction="up" delay={300}>
           <div className="relative mt-8 aspect-[1.72] overflow-hidden rounded-[12px] bg-[#e6ebf0]">
             {
               data.overviewVideo ? (
@@ -54,6 +55,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
               )
             }
           </div>
+          </ScrollReveal>
         </div>
 
         <div className="pt-1">
@@ -143,6 +145,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         productTitle={data.title}
+        productProfileUrl={data.productProfileUrl}
       />
     </section>
   );

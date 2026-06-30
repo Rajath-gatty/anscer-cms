@@ -65,7 +65,7 @@ export function SiteHeader() {
           />
         </Link>
         <div className="hidden items-center gap-[40px] lg:flex">
-          <nav className="flex items-center gap-[40px] text-sm font-medium text-[#2f2f2f]">
+          <nav className="flex items-center gap-[40px] text-sm font-normal text-[#2f2f2f]">
             {navItems.map((item) => {
               if (item === "Robots") {
                 return <RobotsDropdown key={item} active={isRobotsActive} />;
@@ -121,8 +121,8 @@ export function SiteHeader() {
             : "max-h-0 opacity-0"
         }`}
       >
-        <div className="site-container max-h-[calc(100vh-56px)] overflow-y-auto py-5">
-          <nav className="flex flex-col text-base font-semibold text-[#011f40]">
+        <div className="site-container max-h-[calc(100vh-60px)] overflow-y-auto py-5">
+          <nav className="flex flex-col text-base font-normal text-[#011f40]">
             {navItems.map((item) => {
               if (item === "Robots") {
                 return (
@@ -259,7 +259,7 @@ export function SiteHeader() {
             })}
           </nav>
           <a
-            className="mt-5 inline-flex px-2 h-8 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white"
+            className="mt-5 inline-flex px-2 h-8 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-medium uppercase tracking-wide text-white"
             href={CONTACT_HREF}
             onClick={closeMenu}
           >
@@ -287,7 +287,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
         <div className="p-5">
           <Link
             href="/products"
-            className="cursor-pointer group/link flex items-center gap-3 text-xl font-bold text-[#011f40] hover:underline underline-offset-4"
+            className="cursor-pointer group/link flex items-center gap-3 text-lg font-bold text-[#011f40] hover:underline underline-offset-4"
           >
             Robot Overview
             <ArrowRight
@@ -296,7 +296,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
               strokeWidth={2}
             />
           </Link>
-          <p className="mt-2 text-xs leading-5 text-[#7b8794]">
+          <p className="mt-2 text-[10px] leading-5 text-[#7b8794]">
             Explore ANSCER&apos;s robotic platforms for flexible industrial
             automation
           </p>
@@ -305,7 +305,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
           <p className="text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
             Robot Series
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-base font-medium text-[#011f40]">
+          <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-sm font-medium text-[#011f40]">
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
               href="/ar-series"
@@ -379,7 +379,7 @@ function CompanyDropdown({ active }: { active: boolean }) {
           <p className="mb-4 text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
             Company
           </p>
-          <div className="flex flex-col text-base font-medium text-[#011f40]">
+          <div className="flex flex-col text-sm font-medium text-[#011f40]">
             <Link
               href="/about-us"
               onClick={() => setOpen(false)}
