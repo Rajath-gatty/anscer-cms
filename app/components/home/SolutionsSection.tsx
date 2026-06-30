@@ -18,7 +18,7 @@ export function SolutionsSection() {
               enhance safety, and maximize efficiency.
             </p>
           </div>
-          <div>
+          <div className="2xl:border-l">
             <StatsSlider />
           </div>
         </div>

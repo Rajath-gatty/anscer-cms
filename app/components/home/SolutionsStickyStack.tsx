@@ -208,7 +208,9 @@ function SolutionSlide({
             {solution.title}
           </h3>
         </div>
-        <p className="mt-7 text-base leading-6 text-[#4b4b4b]">{solution.copy}</p>
+        <p className="mt-7 text-base leading-6 text-[#4b4b4b]">
+          {solution.copy}
+        </p>
         <div className="relative mt-8 aspect-[1.42] max-w-[390px] overflow-hidden rounded-lg bg-[#dfe7ee]">
           <Image
             src={`${imagePath}${solution.image}`}

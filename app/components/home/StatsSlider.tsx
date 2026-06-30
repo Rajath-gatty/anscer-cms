@@ -68,7 +68,7 @@ function StatsSlider() {
 
   return (
     <div className="mx-auto w-full max-w-180 text-center">
-      <div className="relative min-h-36 md:min-h-36">
+      <div className="relative min-h-36 md:min-h-36 ">
         {stats.map((stat, index) => {
           const isActive = index === activeSlide;
 
