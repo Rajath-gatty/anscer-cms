@@ -19,6 +19,8 @@ export type ProductDetailData = {
   overviewCtaLabel?: string;
   ctaTitle?: string;
   applications: string[];
+  footerBanner: string;
+  productProfileUrl: string;
   specs: {
     label: string;
     value: string;
@@ -209,6 +211,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     overviewCtaLabel: "Product Details",
     ctaTitle: "Know More About The AR250",
     applications: ["Tugging", "Lifting", "Tunneling"],
+    footerBanner: "footer-banner.png",
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AR/AR-PP-AR250-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "up to 250 kg", imperial: "up to 551 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -279,6 +283,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Tugging", "Lifting", "Tunneling"],
+    footerBanner: "footer-banner.png",
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AR/AR-PP-AR500-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "500 kg", imperial: "1102.31 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -334,6 +340,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Tugging", "Lifting", "Tunneling"],
+    footerBanner: "footer-banner.png",
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AR/AR-PP-AR650-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "650 Kg", imperial: "1433.0 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -390,6 +398,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Tugging", "Lifting", "Tunneling"],
+    footerBanner: "footer-banner.png",
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AR/AR-PP-AR1250-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "1250 kg", imperial: "2755.78 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -437,7 +447,7 @@ export const productDetails: Record<string, ProductDetailData> = {
     subtitle: "Heavy-Duty Pallet Stacking",
     overview:
       "The PSR 2000 is a heavy-duty pallet stacking AMR designed for automated pickup, lifting, and placement, enabling precise pallet handling and efficient intralogistics operations.",
-    heroImage: "PSR-2000_1.png",
+    heroImage: "psr-2000-product-hero.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/PSR%202000.glb",
     backgroundText: "psr-2000.svg",
     overviewVideo: "PSR-2000-overview.mp4",
@@ -446,6 +456,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Open Pallet Stacking"],
+    footerBanner: "psr-g2g-product-banner.jpg",
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/PSR/PSR-PP-PSR2000-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "2000 kg", imperial: "4409.25 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -494,13 +506,15 @@ export const productDetails: Record<string, ProductDetailData> = {
     subtitle: "Extended Fork Reach for Dense Storage",
     overview:
       "The PSR 2000R is a heavy-duty pallet stacking AMR with extended fork reach, designed to optimize high-density storage through precise pallet handling and automated retrieval operations.",
-    heroImage: "PSR-2000R.png",
+    heroImage: "psr-2000r-product-hero.png",
     backgroundText: "Group-1321315869.svg",
     overviewImage: "PSR-2000R-overview.jpg",
     advantageImage: "psr-advantages-image.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
+    footerBanner: "psr-g2g-product-banner.jpg",
     applications: ["Open/Closed Pallet Stacking"],
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/PSR/PSR-PP-PSR2000R-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "2000 kg", imperial: "4409.25 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -555,7 +569,9 @@ export const productDetails: Record<string, ProductDetailData> = {
     advantageImage: "advantages-psr1000r.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
+    footerBanner: "psr-1000r-product-banner.jpg",
     applications: ["Open/Closed Pallet Stacking"],
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/PSR/PSR-PP-PSR1000R-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "1000 kg", imperial: "2204.62 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -609,7 +625,9 @@ export const productDetails: Record<string, ProductDetailData> = {
     advantageImage: "psr-advantages-image.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
+    footerBanner: "psr-g2g-product-banner.jpg",
     applications: ["Open Pallet Lifting"],
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/PSR/PSR-PP-PSRG2G-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "2000 kg", imperial: "4409.25 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -657,7 +675,7 @@ export const productDetails: Record<string, ProductDetailData> = {
     subtitle: "Compact Free-Lift AMR",
     overview:
       "The LBR 500 is a compact free-lift AMR designed to automate trolley movement in low-clearance environments, delivering flexible, reliable, and efficient material transport across dynamic shop floors.",
-    heroImage: "LBR-500.png",
+    heroImage: "lbr-500_1.png",
     modelUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/LBR%20500.glb",
     backgroundText: "LBR-501.svg",
     overviewVideo: "LBR-overview.mp4",
@@ -665,7 +683,9 @@ export const productDetails: Record<string, ProductDetailData> = {
     advantageImage: "updated-image.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
+    footerBanner: "lbr-500-product-banner.jpg",
     applications: ["Trolley Lifting"],
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/PSR/PSR-PP-LBR500-A-26-EN-P.pdf",
     specs: [
       { label: "Dimensions", value: "1260 * 655 * 1270 mm", imperial: "49.61 x 25.83 x 49.61 in" },
       { label: "Payload Capacity", value: "500 kg", imperial: "1102.31 lbs" },
@@ -721,7 +741,9 @@ export const productDetails: Record<string, ProductDetailData> = {
     advantageImage: "9fb92fd488b484f5f7cafac3fb0bc76fe3040c5b.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
+    footerBanner: "agv-100-product-banner.jpg",
     applications: ["Lifting", "Sorting"],
+    productProfileUrl: "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AGV/AGV-PP-AGV100-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "100 kg", imperial: "220.46 lbs" },
       { label: "Navigation", value: "QR Navigation" },

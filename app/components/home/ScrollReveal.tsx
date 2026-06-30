@@ -12,7 +12,7 @@ export function ScrollReveal({
 }: {
   children: ReactNode;
   delay?: number;
-  direction?: "up" | "right";
+  direction?: "up" | "right" | "left";
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,6 +51,7 @@ export function ScrollReveal({
       className={cn(
         "section-reveal",
         direction === "right" && "section-reveal-from-right",
+        direction === "left" && "section-reveal-from-left",
         visible && "section-reveal-visible",
         className,
       )}

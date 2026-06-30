@@ -60,7 +60,7 @@ export default function ProductsPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
       <ProductHeroSlider />
-      <SmartNavigationSection />
+      {/* <SmartNavigationSection /> */}
       <FeaturesSection />
       <div id="robot-series">
         <ProductSeriesStaticMobile />
@@ -149,7 +149,7 @@ function FeaturesSection() {
                       strokeWidth={2}
                     />
                   </div>
-                  <h3 className="mt-5 text-xl font-bold text-[#005ead] md:text-2xl">{feature.title}</h3>
+                  <h3 className="mt-5 text-xl font-semibold text-[#005ead] md:text-xl">{feature.title}</h3>
                   <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{feature.copy}</p>
                 </article>
               </ScrollReveal>
@@ -157,19 +157,18 @@ function FeaturesSection() {
           </div>
           <ScrollReveal delay={160} className="h-full">
             <article className="relative h-full min-h-[310px] overflow-hidden rounded-lg bg-[#011f40] p-7 text-white">
-              <Image src={`${imagePath}de9a09864e6cf7999d592447391655110840a585.png`} alt="" fill sizes="680px" className="object-cover opacity-55" />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.72),rgba(1,31,64,.18))]" />
+              <Image src={`${imagePath}de9a09864e6cf7999d592447391655110840a585.png`} alt="" fill sizes="680px" className="object-cover" />
               <div className="relative z-10 max-w-[340px]">
                 <h3 className="text-xl font-bold md:text-2xl">Let&apos;s Build Together</h3>
                 <p className="mt-3 text-sm leading-5 text-white/84 md:text-base md:leading-6">Join us in shaping the future of robotics.</p>
               </div>
-              <Image
+              {/* <Image
                 src={`${imagePath}agv-100-new.png`}
                 alt="AGV robot"
                 width={420}
                 height={250}
                 className="absolute bottom-0 right-6 w-[54%] max-w-[430px] object-contain"
-              />
+              /> */}
             </article>
           </ScrollReveal>
         </div>
@@ -196,20 +195,19 @@ function FaqSection() {
 
 function ProductsCta() {
   return (
-    <section className="relative overflow-hidden bg-[#005ead] py-20 text-white">
-      <Image src={`${imagePath}96cdc152cb608044ef4fbddf84c5978fac86d350.png`} alt="" fill sizes="100vw" className="object-cover" />
-      <div
-        className="absolute inset-0"
-        style={{ background: "rgba(0, 38, 112, 0.82)" }}
-      />
+    <section className="relative overflow-hidden flex items-center py-20 text-white h-[500px]">
+      <Image src={`${imagePath}96cdc152cb608044ef4fbddf84c5978fac86d350.png`} alt="" fill sizes="100vw" className="object-cover bg-[#005ead]  h-full absolute inset-0" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_48%,rgba(0,0,0,.28)_100%)] mix-blend-color" />
+        <div className="absolute inset-0 w-full h-full bg-black/70" />
+        <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
       <div className="site-container relative z-10">
-        <h2 className="max-w-[760px] text-[48px] font-bold leading-tight tracking-tight md:text-[60px]">Dive Into The Future Factory</h2>
-        <p className="mt-4 max-w-[560px] text-sm leading-5 text-white/85 md:text-[18px] md:leading-[26px]">
+        <h2 className="max-w-[760px] text-[48px] font-semibold leading-tight tracking-tight md:text-[60px]">Dive Into The Future Factory</h2>
+        <p className="mt-4 max-w-[560px] font-medium text-sm leading-5 text-white/85 md:text-[18px] md:leading-[26px]">
           Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation solutions engineered to transform your operations.
         </p>
         <a
           href="#contact"
-          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
+          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
         >
           Talk to our experts
           <span className="relative flex size-4 overflow-hidden">

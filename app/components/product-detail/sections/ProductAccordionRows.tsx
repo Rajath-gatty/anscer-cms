@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { ScrollReveal } from "../../home/ScrollReveal";
 
 export type ProductAccordionItem = {
   title: string;
@@ -32,6 +33,7 @@ export function ProductAccordionRows({
       {items.map((item, index) => {
         const isOpen = activeIndex === index;
         return (
+          <ScrollReveal key={item.title} direction="left" delay={(index) * 100 + 100}>
           <article
             key={item.title}
             className={cn(
@@ -110,6 +112,7 @@ export function ProductAccordionRows({
               </div>
             </div>
           </article>
+          </ScrollReveal>
         );
       })}
     </div>

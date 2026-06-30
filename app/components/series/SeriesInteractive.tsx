@@ -133,7 +133,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   );
 }
 
-export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
+export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, series: string; }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
   const reducedMotion = useReducedMotion();
@@ -394,7 +394,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                   </m.div>
                 </AnimatePresence>
 
-                <div className="grid grid-cols-2 gap-x-14 gap-y-10 lg:pt-7">
+                <div className="grid grid-cols-2 w-full gap-x-14 gap-y-8 lg:pt-2 h-28">
                   <AnimatePresence mode="popLayout" initial={false}>
                     {specs.map((spec, index) => (
                       <m.div
@@ -440,7 +440,16 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         />
                       </m.div>
                     ) : null}
-                    <Image
+                    {series === "psr-series" ? <Image
+                      src={`${imagePath}${activeProduct.image}`}
+                      alt={activeProduct.name}
+                      width={650}
+                      height={400}
+                      className={cn(
+                        "relative mt-20 z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[80%]",
+                        selectorImageClass(activeProduct.name),
+                      )}
+                    />: <Image
                       src={`${imagePath}${activeProduct.image}`}
                       alt={activeProduct.name}
                       fill
@@ -449,7 +458,7 @@ export function SeriesRobotSelector({ data }: { data: SeriesPageData }) {
                         "relative z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
                         selectorImageClass(activeProduct.name),
                       )}
-                    />
+                    />}
                     <FloatingTags product={activeProduct} reducedMotion={Boolean(reducedMotion)} />
                   </m.div>
                 </AnimatePresence>
