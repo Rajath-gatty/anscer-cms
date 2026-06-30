@@ -103,7 +103,7 @@ export function ProductHeroSlider() {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) return;
 
-    const duration = 5200;
+    const duration = 3000;
     const intervalMs = 50;
     const totalSteps = duration / intervalMs;
     let step = 0;
