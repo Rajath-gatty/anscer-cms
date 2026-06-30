@@ -5,7 +5,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { imagePath } from "../components/home/assets";
 
 /* ─── Slide data ────────────────────────────────────────────────────── */
-const capabilities = [
+interface Capability {
+  title: string;
+  copy: string;
+  chipsIntro?: string;
+  chips: string[];
+  chipsOutro?: string;
+  image: string;
+}
+
+const capabilities: Capability[] = [
   {
     title: "Utilization Reports",
     copy: "Monitor robot activity, operational efficiency, and fleet performance through detailed utilization reports. The platform provides visibility into robot active time, idle time, mission execution, and utilization rates to help maximize fleet productivity.",
@@ -33,6 +42,7 @@ const capabilities = [
     title: "Request Overview Analytics",
     copy: "Analyze all mission and transport requests generated across stations, production areas, and storage locations.",
     chipsIntro: "The Request Overview module provides detailed insights into:",
+    chipsOutro: "This data enables operators to identify operational patterns and optimize material flow processes.",
     chips: [
       "Total request volume",
       "Completed and failed requests",
@@ -287,13 +297,13 @@ export function AnalyticsSection() {
                 <h3 className="text-[22px] font-bold leading-snug text-[#011f40] xl:text-[26px]">
                   {cap.title}
                 </h3>
-                <p className="mt-3 text-[15px] leading-[1.6] text-[#333333]">
+                <p className="mt-3 text-base leading-[1.6] text-brand-charcoal">
                   {cap.copy}
                 </p>
                 {cap.chips.length > 0 && (
                   <div className="mt-4">
                     {cap.chipsIntro && (
-                      <p className="mb-3 text-[14px] leading-snug text-[#333333]">
+                      <p className="mb-3 text-base leading-snug text-brand-charcoal">
                         {cap.chipsIntro}
                       </p>
                     )}
@@ -304,12 +314,17 @@ export function AnalyticsSection() {
                       {cap.chips.map((chip) => (
                         <span
                           key={chip}
-                          className="rounded-full bg-white px-3 py-1.5 text-[13px] leading-none text-[#011f40] shadow-sm"
+                          className="rounded-full bg-white px-3 py-1.5 text-sm leading-none text-[#011f40] shadow-sm"
                         >
                           {chip}
                         </span>
                       ))}
                     </div>
+                    {cap.chipsOutro && (
+                      <p className="mt-3 text-base leading-snug text-brand-charcoal">
+                        {cap.chipsOutro}
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
@@ -363,12 +378,12 @@ export function AnalyticsSection() {
       {/* ════════════════════════════════════════════════════════════
           MOBILE / TABLET fallback (< lg)
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-14 lg:hidden" style={{ background: BG }}>
+      <section className="px-6 py-10 lg:hidden" style={{ background: BG }}>
         <div className="site-container">
-          <p className="mb-2 text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+          <p className="mb-2 text-[12px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             Key Capabilities
           </p>
-          <h2 className="mb-12 max-w-[680px] text-[26px] font-bold leading-tight text-[#011f40]">
+          <h2 className="mb-12 max-w-[680px] text-[28px] font-bold leading-tight text-[#011f40]">
             Turning Industry Workflows Into Autonomous Operations
           </h2>
 
@@ -392,10 +407,10 @@ export function AnalyticsSection() {
                   />
                 </div>
 
-                <h3 className="mt-6 text-center text-[22px] font-bold text-[#011f40] sm:text-[24px]">
+                <h3 className="mt-6 text-center text-base font-bold text-[#011f40] md:text-[24px]">
                   {c.title}
                 </h3>
-                <p className="mt-3 text-center text-[14px] leading-[1.7] text-[#333333] sm:text-[15px]">
+                <p className="mt-3 text-center text-base leading-[1.7] text-[#333333] md:text-[15px]">
                   {c.copy}
                 </p>
 
@@ -416,6 +431,11 @@ export function AnalyticsSection() {
                         </span>
                       ))}
                     </div>
+                    {c.chipsOutro && (
+                      <p className="mt-3 text-center text-sm leading-[1.7] text-brand-charcoal">
+                        {c.chipsOutro}
+                      </p>
+                    )}
                   </div>
                 )}
               </article>

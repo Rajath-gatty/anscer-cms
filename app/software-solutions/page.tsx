@@ -209,7 +209,7 @@ export default function SoftwareSolutionsPage() {
           title="Business Application"
           intro="Transform operational workflows into structured, automated processes that seamlessly integrate with robotic operations."
           image="Frame-1321317433.jpg"
-          body="The ANSCER Business Application Layer bridges operational requirements and robotic execution, translating business processes into executable robotic workflows. Built on a library of configurable, industry-specific applications, it enables operators to interact through familiar business actions while automatically managing workflow execution and robot coordination."
+          body="The ANSCER Business Application Layer bridges operational requirements and robotic execution, translating business processes into executable robotic workflows. Built on a library of configurable, industry-specific applications, it enables operators to interact through familiar business actions while automatically managing workflow execution and robot coordination. Organizations can automate material movement without complex software development or extensive engineering effort."
           chipsTitle="Supported Industries"
           chips={[
             "Electrical & Electronics",
@@ -253,7 +253,7 @@ export default function SoftwareSolutionsPage() {
         <InteractiveWorkflow />
       </FadeUp>
       <FadeUp>
-        <ProcessBenefitsSection />
+        <ProcessBenefitsSection imagePosition="left" />
       </FadeUp>
       <FadeUp>
         <AnalyticsPlatformSection />
@@ -273,18 +273,18 @@ function FleetManagementSection() {
   return (
     <section
       id="fleet-management"
-      className="scroll-mt-32 bg-[#fafafa] py-14 md:py-18"
+      className="scroll-mt-32 bg-[#fafafa] px-6 py-10 md:px-14 md:py-15"
     >
       <div className="site-container">
         <ScrollReveal>
           <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
-            <span className="text-[28px]">01 </span>
-            <span className="text-[16px]">/ 04</span>
+            <span className="text-xl md:text-[28px]">01 </span>
+            <span className="text-[12px] md:text-[16px] text-[#005ead]/50">/ 04</span>
           </p>
-          <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
+          <h2 className="mt-4 max-w-[648px] text-[28px] font-bold leading-tight md:text-4xl">
             Fleet Management System
           </h2>
-          <p className="mt-4 max-w-[648px] text-[18px] leading-6 text-[#333333]">
+          <p className="mt-4 max-w-[648px] text-xl leading-6 text-[#363636]">
             Centralized intelligence for monitoring, controlling, and optimizing
             every robot operation from a single platform.
           </p>
@@ -301,7 +301,7 @@ function FleetManagementSection() {
             />
           </FadeRight>
           <FadeLeft className="pt-1 lg:pt-2" delay={0.08}>
-            <p className="max-w-170 text-base leading-6 text-[#333333] md:text-[16px] md:leading-6">
+            <p className="max-w-170 text-sm md:text-base leading-6 text-brand-charcoal md:leading-6">
               The ANSCER Fleet Management System (FMS) is the intelligent
               orchestration platform that coordinates, monitors, and manages the
               operations of multiple autonomous mobile robots (AMRs) within a
@@ -315,18 +315,18 @@ function FleetManagementSection() {
                 const Icon = item.icon;
 
                 return (
-                  <article key={item.title} className="w-full">
-                    <span className="flex size-11 items-center justify-center rounded-[10px] bg-[#011f40]/5 text-[#011f40]">
+                  <article key={item.title} className="flex flex-col gap-3 w-full">
+                    <span className="flex size-11 items-center justify-center rounded-md bg-[#011f40]/5 text-[#011f40]">
                       <Icon
                         aria-hidden="true"
-                        className="size-4.5"
+                        className="size-5"
                         strokeWidth={1.8}
                       />
                     </span>
-                    <h3 className="mt-4 text-[16px] font-semibold leading-snug text-[#011f40]">
+                    <h3 className="text-sm md:text-base font-semibold leading-snug text-[#011f40]">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-[14px] leading-6 text-[#333333]">
+                    <p className="text-sm md:text-base leading-6 text-brand-charcoal">
                       {item.copy}
                     </p>
                   </article>
@@ -367,13 +367,13 @@ function SoftwareHero() {
       <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.58)_42%,rgba(0,0,0,0)_86%)]" />
       <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
         <FadeRight className="max-w-[807px]">
-          <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-brand-blue">
+          <p className="text-sm md:text-base font-medium uppercase tracking-[0.14em] text-brand-blue">
             Software solutions
           </p>
           <h1 className="mt-4 max-w-[807px] text-[40px] font-bold leading-[1.12] text-white md:text-[60px] md:leading-[1.15]">
             Connect Robots, Workflows, and Operations in One Platform
           </h1>
-          <p className="mt-5 max-w-[680px] text-[18px] font-medium leading-[1.3] text-[#fafafa]">
+          <p className="mt-5 max-w-[680px] text-sm md:text-lg font-medium leading-[1.3] text-[#fafafa]">
             ANSCER&apos;s software suite transforms autonomous mobile robots
             into synchronized, facility-wide operations - from real-time fleet
             control to industry-specific workflow automation.
@@ -422,16 +422,16 @@ function ProductModule({
   chipsTitle?: string;
 }) {
   return (
-    <section id={id} className="scroll-mt-32 bg-white py-14">
+    <section id={id} className="scroll-mt-32 bg-white px-6 py-10 md:py-14">
       <div className="site-container">
         <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
-          <span className="text-[28px]">{index} </span>
-          <span className="text-[16px] text-[#005ead]/80">/ 04</span>
+          <span className="text-xl md:text-[28px]">{index} </span>
+          <span className="text-[12px] md:text-[16px] text-[#005ead]/50">/ 04</span>
         </p>
-        <h2 className="mt-4 max-w-[648px] text-[32px] font-bold leading-tight md:text-4xl">
+        <h2 className="mt-4 max-w-[648px] text-[28px] md:text-4xl font-bold leading-tight">
           {title}
         </h2>
-        <p className="mt-4 max-w-[648px] text-[18px] leading-[120%] text-[#333333]">
+        <p className="mt-4 max-w-[648px] text-base md:text-xl leading-[120%] text-[#333333]">
           {intro}
         </p>
         <div className="mt-9 grid gap-10 lg:grid-cols-2 lg:items-start">
@@ -445,9 +445,9 @@ function ProductModule({
             />
           </FadeRight>
           <FadeLeft delay={0.08}>
-            <p className="text-[16px] leading-6 text-[#333333]">{body}</p>
+            <p className="text-base leading-6 text-brand-charcoal">{body}</p>
             {chipsTitle && (
-              <p className="mb-4 mt-8 text-base font-medium text-[#333333]">
+              <p className="mb-4 mt-8 text-base font-medium text-brand-charcoal">
                 {chipsTitle}
               </p>
             )}
@@ -489,53 +489,55 @@ function BenefitsSection({
 }) {
   if (fleetMap) {
     return (
-      <section className="bg-[#fafafa] pt-14 pb-4">
+      <section className="bg-[#fafafa] px-6 py-10 md:pt-[60px] md:pb-[40px]">
         <div className="site-container">
-          <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
-            {eyebrow}
-          </p>
-          <h2 className="mt-6 max-w-[760px] text-[28px] font-bold leading-[1.2] sm:text-[30px] md:text-4xl">
-            {title}
-          </h2>
-          {copy ? (
-            <p className="mt-4 max-w-[690px] text-base leading-6 text-[#333333]">
-              {copy}
+          <div className="flex flex-col gap-6">
+            <p className="text-[12px] md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+              {eyebrow}
             </p>
-          ) : null}
-          <FleetBenefitsMap />
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:hidden">
-            {fleetBenefits.map((benefit) => (
-              <FleetBenefitCard key={benefit.title} benefit={benefit} mobile />
-            ))}
+            <h2 className="max-w-[760px] text-[28px] font-bold leading-[1.2] text-[28px] md:text-4xl">
+              {title}
+            </h2>
+            {copy ? (
+              <p className="max-w-[690px] text-sm md:text-base leading-6 text-[#333333]">
+                {copy}
+              </p>
+            ) : null}
+            <FleetBenefitsMap />
+            <div className="grid gap-4 sm:grid-cols-2 lg:hidden">
+              {fleetBenefits.map((benefit) => (
+                <FleetBenefitCard key={benefit.title} benefit={benefit} mobile />
+              ))}
+            </div>
+            <Image
+              src={`${imagePath}benefirs-svg-element-2.svg`}
+              alt=""
+              width={173}
+              height={38}
+              className="w-[168px]"
+            />
           </div>
-          <Image
-            src={`${imagePath}benefirs-svg-element-2.svg`}
-            alt=""
-            width={173}
-            height={38}
-            className="mt-4 w-[168px]"
-          />
         </div>
       </section>
     );
   }
 
   return (
-    <section className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-14`}>
+    <section className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} md:pt-[60px] md:pb-[40px]`}>
       <div className="site-container">
         <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           {eyebrow}
         </p>
-        <h2 className="mt-3 max-w-[720px] text-[30px] font-bold leading-tight md:text-4xl">
+        <h2 className="mt-10 max-w-[720px] text-[30px] font-bold leading-tight md:text-4xl">
           {title}
         </h2>
         {copy ? (
-          <p className="mt-4 max-w-[680px] text-base leading-6 text-[#333333]">
+          <p className="mt-10 max-w-[680px] text-base leading-6 text-[#333333]">
             {copy}
           </p>
         ) : null}
         <div
-          className={`mt-8 grid gap-5 ${image ? "lg:grid-cols-[0.58fr_0.42fr]" : ""}`}
+          className={`mt-10 grid gap-5 ${image ? "lg:grid-cols-[0.58fr_0.42fr]" : ""}`}
         >
           <FadeRight className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {cards.map((card) => (
@@ -594,7 +596,7 @@ function FleetBenefitsMap() {
   ];
 
   return (
-    <div className="relative mt-[60px] hidden min-h-[714px] overflow-hidden lg:block">
+    <div className="relative mt-6 hidden min-h-[714px] overflow-hidden lg:block">
       <Image
         src={`${imagePath}benefits-svg-element.svg`}
         alt=""
@@ -730,19 +732,19 @@ function AnalyticsPlatformSection() {
   return (
     <section
       id="analytics-platform"
-      className="scroll-mt-32 bg-[#fafafa] py-14"
+      className="scroll-mt-32 bg-[#fafafa] px-6 py-10 md:py-14"
     >
       <div className="site-container">
         <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
           <FadeRight>
             <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
-              <span className="text-[28px]">04 </span>
-              <span className="text-[16px]">/ 04</span>
+              <span className="text-xl md:text-[28px]">04 </span>
+              <span className="text-sm md:text-[16px] text-[#005ead]/50">/ 04</span>
             </p>
-            <h2 className="mt-4 text-[32px] font-bold leading-tight text-[#011f40] md:text-4xl">
+            <h2 className="mt-4 text-[28px] font-bold leading-tight text-[#011f40] md:text-4xl">
               Analytics Platform
             </h2>
-            <p className="mt-2.5 text-[20px] leading-normal text-[#333333]">
+            <p className="mt-2.5 text-base md:text-[20px] leading-normal text-brand-charcoal">
               Turn Operational Data Into Actionable Intelligence
             </p>
 
@@ -757,7 +759,7 @@ function AnalyticsPlatformSection() {
               />
             </div>
 
-            <p className="mt-6 text-[14px] leading-[150%] text-[#333333] lg:mt-8 lg:text-[16px]">
+            <p className="mt-6 text-[14px] leading-[150%] text-brand-charcoal lg:mt-8 lg:text-[16px]">
               The ANSCER Analytics Platform provides comprehensive operational
               insights into robot fleets, missions, and facility workflows.
               Designed to support data-driven decision-making, the Analytics
@@ -765,7 +767,7 @@ function AnalyticsPlatformSection() {
               intelligence that helps optimize robot performance, improve
               workflow efficiency, and enhance overall facility productivity.
             </p>
-            <p className="mt-5 text-[14px] leading-[150%] text-[#333333] lg:text-[16px]">
+            <p className="mt-5 text-[14px] leading-[150%] text-brand-charcoal lg:text-[16px]">
               By continuously collecting and analyzing data from robot
               operations, mission requests, traffic flow, and system events, the
               platform enables users to monitor key performance indicators,
@@ -795,7 +797,7 @@ function AnalyticsPlatformSection() {
 
 function SoftwareCta() {
   return (
-    <section className="relative flex h-[580px] items-center overflow-hidden bg-[#005ead] text-white max-[991px]:mt-5">
+    <section className="relative flex h-[580px] px-6 items-center overflow-hidden bg-[#005ead] text-white max-[991px]:mt-5">
       <Image
         src={`${imagePath}Frame-1321317289.jpg`}
         alt=""
@@ -815,7 +817,7 @@ function SoftwareCta() {
         </p>
         <Link
           href="mailto:sales@anscer.com"
-          className="group inline-flex h-[46px] items-center gap-3 rounded-[3px] bg-[#005ead] py-[13px] pl-5 pr-1 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#005ead]/90"
+          className="group inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#005ead]/90"
         >
           Book a demo{" "}
           <span className="relative flex size-4 overflow-hidden">
@@ -894,14 +896,13 @@ function benefitCopy(title: string) {
 
 function BusinessBenefitsSection() {
   return (
-    <section className="bg-white py-14">
+    <section className="bg-white py-10 px-6 md:py-14">
       <div className="site-container">
-        <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+        <p className="text-[12px] md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           BENEFITS
         </p>
         <h2 className="mt-3 max-w-[648px] text-[30px] font-bold leading-tight md:text-4xl text-[#011f40]">
           Turning Industry Workflows Into
-          <br />
           Autonomous Operations
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
@@ -909,26 +910,26 @@ function BusinessBenefitsSection() {
           <FadeRight className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 1 */}
-              <div className="flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
-                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+              <div className="flex flex-col gap-2.5 flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
                   <Layers className="size-5" strokeWidth={1.7} />
                 </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                <h3 className="text-base font-semibold text-[#000000]">
                   Operational Abstraction
                 </h3>
-                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Separates business logic from robot control logic
                 </p>
               </div>
               {/* Card 2 */}
-              <div className="flex-1 p-6">
-                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+              <div className="flex flex-col gap-2.5 flex-1 p-6">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
                   <ExternalLink className="size-5" strokeWidth={1.7} />
                 </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                <h3 className="text-base font-semibold text-[#000000]">
                   Scalability
                 </h3>
-                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Supports multi-industry deployments
                 </p>
               </div>
@@ -936,27 +937,27 @@ function BusinessBenefitsSection() {
 
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 3 */}
-              <div className="flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
-                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+              <div className="flex flex-col gap-2.5 flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
                   <Network className="size-5" strokeWidth={1.7} />
                 </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                <h3 className="text-base font-semibold text-[#000000]">
                   Flexibility
                 </h3>
-                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Multiple implementation approaches (prebuilt, low-code,
                   integrated)
                 </p>
               </div>
               {/* Card 4 */}
-              <div className="flex-1 p-6">
-                <div className="flex size-10 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+              <div className="flex flex-col gap-2.5 flex-1 p-6">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
                   <Code className="size-5" strokeWidth={1.7} />
                 </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-[#011f40]">
+                <h3 className="text-base font-semibold text-[#000000]">
                   Reduced Engineering Effort
                 </h3>
-                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Minimizes need for custom coding
                 </p>
               </div>
@@ -964,14 +965,14 @@ function BusinessBenefitsSection() {
 
             {/* Card 5 (Full width) */}
             <div className="flex flex-col lg:flex-row lg:items-center gap-6 p-6">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded bg-brand-navy/5 text-[#011f40]">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
                 <UserCircle2 className="size-5" strokeWidth={1.7} />
               </div>
-              <div>
-                <h3 className="text-[16px] font-semibold text-[#011f40]">
+              <div className="flex flex-col gap-2.5">
+                <h3 className="text-base font-semibold text-[#000000]">
                   User-Centric Design
                 </h3>
-                <p className="mt-1 text-[14px] leading-[130%] text-[#333333]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Simplifies interaction for non-technical operators
                 </p>
               </div>
@@ -997,11 +998,17 @@ function BusinessBenefitsSection() {
   );
 }
 
-function ProcessBenefitsSection() {
+function ProcessBenefitsSection({
+  imagePosition = "left",
+}: {
+  imagePosition?: "left" | "right";
+}) {
+  const isImageLeft = imagePosition === "left";
+
   return (
-    <section className="bg-[#e6ebf0] py-14">
+    <section className="bg-[#e6ebf0] px-6 py-10 md:py-14">
       <div className="site-container">
-        <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+        <p className="text-sm md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           BENEFITS
         </p>
         <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
@@ -1009,38 +1016,108 @@ function ProcessBenefitsSection() {
           <br />
           Autonomous Operations
         </h2>
-        <div className="mt-10 grid gap-4 lg:grid-cols-2 lg:items-stretch">
-          <FadeRight className="grid overflow-hidden border border-[#005ead]/20 lg:grid-cols-2 lg:auto-rows-[180px]">
-            {processBenefitCards.map((card, index) => (
-              <article
-                key={card.title}
-                className={`flex gap-2 bg-white/50 p-6 ${
-                  card.wide ? "flex-col lg:col-span-2 lg:flex-row lg:items-center lg:gap-6" : "flex-col"
-                } ${
-                  index === 0 || index === 2 ? "border-r-0 lg:border-r border-[#005ead]/20" : ""
-                } ${index < 4 ? "border-b border-[#005ead]/20" : ""}`}
-              >
+        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+          {/* Cards */}
+          <FadeRight
+            className={`order-2 flex flex-col overflow-hidden border border-[#005ead]/20 ${
+              isImageLeft ? "lg:order-2" : "lg:order-1"
+            }`}
+          >
+            <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
+              {/* Card 0 */}
+              <div className="flex flex-col gap-2 flex-1 border-b border-[#005ead]/20 bg-white/50 p-6 lg:border-b-0 lg:border-r">
                 <Image
-                  src={`${imagePath}${card.icon}`}
+                  src={`${imagePath}${processBenefitCards[0].icon}`}
                   alt=""
                   width={40}
                   height={40}
                   className="size-10 shrink-0"
                 />
-                <div className={card.wide ? "flex flex-col gap-2" : ""}>
-                  <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
-                    {card.copy}
-                  </p>
-                </div>
-              </article>
-            ))}
+                <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+                  {processBenefitCards[0].title}
+                </h3>
+                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                  {processBenefitCards[0].copy}
+                </p>
+              </div>
+              {/* Card 1 */}
+              <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6">
+                <Image
+                  src={`${imagePath}${processBenefitCards[1].icon}`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="size-10 shrink-0"
+                />
+                <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+                  {processBenefitCards[1].title}
+                </h3>
+                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                  {processBenefitCards[1].copy}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
+              {/* Card 2 */}
+              <div className="flex flex-col gap-2 flex-1 border-b border-[#005ead]/20 bg-white/50 p-6 lg:border-b-0 lg:border-r">
+                <Image
+                  src={`${imagePath}${processBenefitCards[2].icon}`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="size-10 shrink-0"
+                />
+                <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+                  {processBenefitCards[2].title}
+                </h3>
+                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                  {processBenefitCards[2].copy}
+                </p>
+              </div>
+              {/* Card 3 */}
+              <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6">
+                <Image
+                  src={`${imagePath}${processBenefitCards[3].icon}`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="size-10 shrink-0"
+                />
+                <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+                  {processBenefitCards[3].title}
+                </h3>
+                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                  {processBenefitCards[3].copy}
+                </p>
+              </div>
+            </div>
+
+            {/* Card 4 (Wide) */}
+            <div className="flex flex-col gap-2 bg-white/50 p-6 lg:flex-row lg:items-center lg:gap-6">
+              <Image
+                src={`${imagePath}${processBenefitCards[4].icon}`}
+                alt=""
+                width={40}
+                height={40}
+                className="size-10 shrink-0"
+              />
+              <div className="flex flex-col gap-2">
+                <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+                  {processBenefitCards[4].title}
+                </h3>
+                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                  {processBenefitCards[4].copy}
+                </p>
+              </div>
+            </div>
           </FadeRight>
 
+          {/* Image */}
           <FadeLeft
-            className="relative min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px]"
+            className={`relative order-1 min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px] ${
+              isImageLeft ? "lg:order-1" : "lg:order-2"
+            }`}
             delay={0.08}
           >
             <Image

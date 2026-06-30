@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   BarChart2,
-  ChevronLeft,
-  ChevronRight,
+  CircleArrowLeft,
+  CircleArrowRight,
   Code,
   ExternalLink,
   Eye,
@@ -70,6 +70,35 @@ const containerPadding = "max(20px, calc(50vw - 650px))";
 
 export function AnalyticsBenefitsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollLimits = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 5);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 15);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    checkScrollLimits();
+
+    const handleScroll = () => {
+      checkScrollLimits();
+    };
+
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      el.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -86,12 +115,12 @@ export function AnalyticsBenefitsSection() {
   return (
     <section>
       {/* White header + Mobile Vertical Cards */}
-      <div className="bg-white py-14">
+      <div className="bg-white px-6 py-10 md:py-14">
         <div className="site-container">
-          <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+          <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
             BENEFITS
           </p>
-          <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
+          <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-4xl">
             Turning Operational Data Into Actionable Insights
           </h2>
 
@@ -107,10 +136,10 @@ export function AnalyticsBenefitsSection() {
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40]">
                     <Icon className="size-5" strokeWidth={1.7} />
                   </div>
-                  <h3 className="text-[16px] font-semibold text-[#011f40]">
+                  <h3 className="text-base font-semibold text-[#000000]">
                     {card.title}
                   </h3>
-                  <p className="text-[14px] leading-[150%] text-[#333333]">
+                  <p className="text-[14px] leading-[150%] text-[#000000]">
                     {card.copy}
                   </p>
                 </div>
@@ -134,25 +163,27 @@ export function AnalyticsBenefitsSection() {
 
         {/*
           Navigation arrows — in normal document flow, above the cards.
-          Left-padded to match the first card's left edge.
+          Right-padded to match the right edge of the content.
         */}
         <div
-          className="relative z-10 mb-5 flex gap-2"
-          style={{ paddingLeft: containerPadding }}
+          className="relative z-10 mb-5 flex justify-end gap-2"
+          style={{ paddingRight: containerPadding }}
         >
           <button
             onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
             aria-label="Scroll benefits left"
-            className="flex size-11 cursor-pointer items-center justify-center rounded-full text-white transition hover:text-white/80"
+            className="cursor-pointer text-white transition hover:text-white/80 disabled:opacity-35 disabled:cursor-not-allowed"
           >
-            <ChevronLeft className="size-5" />
+            <CircleArrowLeft className="size-11" strokeWidth={1} />
           </button>
           <button
             onClick={() => scroll("right")}
+            disabled={!canScrollRight}
             aria-label="Scroll benefits right"
-            className="flex size-11 cursor-pointer items-center justify-center rounded-full text-white transition hover:text-white/80"
+            className="cursor-pointer text-white transition hover:text-white/80 disabled:opacity-35 disabled:cursor-not-allowed"
           >
-            <ChevronRight className="size-5" />
+            <CircleArrowRight className="size-11" strokeWidth={1} />
           </button>
         </div>
 
@@ -178,10 +209,10 @@ export function AnalyticsBenefitsSection() {
                 <div className="flex size-10 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40]">
                   <Icon className="size-5" strokeWidth={1.7} />
                 </div>
-                <h3 className="text-[16px] font-semibold text-[#011f40]">
+                <h3 className="text-base font-semibold text-[#000000]">
                   {card.title}
                 </h3>
-                <p className="text-[14px] leading-[150%] text-[#333333]">
+                <p className="text-sm leading-[150%] text-[#000000]">
                   {card.copy}
                 </p>
               </article>

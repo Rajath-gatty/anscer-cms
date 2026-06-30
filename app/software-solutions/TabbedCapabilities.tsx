@@ -23,7 +23,7 @@ export function TabbedCapabilities({
 
   return (
     <section
-      className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-14 md:py-20`}
+      className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} px-6 md:px-14 py-10 md:py-20`}
     >
       <style>{`
         @keyframes fade-image {
@@ -42,10 +42,10 @@ export function TabbedCapabilities({
         }
       `}</style>
       <div className="site-container">
-        <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+        <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
           {eyebrow}
         </p>
-        <h2 className="mt-3 text-[30px] font-bold leading-tight md:text-4xl">
+        <h2 className="mt-3 text-[28px] md:text-4xl font-bold capitalize leading-tight">
           {title}
         </h2>
 
@@ -55,19 +55,20 @@ export function TabbedCapabilities({
               items={items}
               activeIndex={activeIndex}
               setActiveIndex={setActiveIndex}
+              aspectRatio="aspect-[4/3]"
             />
 
             <div className="relative mt-8 hidden lg:mt-0 lg:block">
               <div
                 key={activeIndex}
-                className="relative min-h-75 w-full overflow-hidden rounded-[18px] bg-[#dce7ef] md:min-h-110 animate-image"
+                className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[#dce7ef] animate-image"
               >
                 <Image
                   src={`${imagePath}${activeItem.image}`}
                   alt={activeItem.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 720px"
-                  className="object-cover"
+                  className="object-cover object-[50%_20%]"
                 />
               </div>
             </div>
@@ -80,6 +81,7 @@ export function TabbedCapabilities({
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
                 mobileOnly
+                aspectRatio="aspect-[721/464]"
               />
             </div>
 
@@ -92,9 +94,9 @@ export function TabbedCapabilities({
                       type="button"
                       key={item.title}
                       onClick={() => setActiveIndex(index)}
-                      className={`cursor-pointer rounded-xl p-5 text-left text-[20px] transition-colors duration-300 ${
+                      className={`cursor-pointer rounded-xl p-5 text-left text-xl font-semibold transition-colors duration-300 ${
                         isActive
-                          ? "bg-white font-medium text-[#005ead]"
+                          ? "bg-white font-semibold text-[#005ead]"
                           : "bg-white font-normal text-[#011f40] hover:bg-white/90"
                       }`}
                     >
@@ -104,14 +106,14 @@ export function TabbedCapabilities({
                 })}
               </div>
 
-              <div className="relative mt-8 lg:mt-0">
+              <div className="relative mt-8 lg:mt-0 mb-12">
                 {/* Dark outer frame matching Webflow's device-screen effect */}
                 <div
                   key={activeIndex}
-                  className="relative min-h-75 w-full overflow-visible rounded-[21px] bg-[#252525] p-3 lg:min-h-126 animate-image"
+                  className="relative w-full overflow-visible rounded-[21px] bg-[#252525] p-3 animate-image"
                 >
                   {/* Inner white image container */}
-                  <div className="absolute inset-3 overflow-hidden rounded-2xl">
+                  <div className="relative aspect-[721/464] w-full overflow-hidden rounded-2xl bg-white">
                     <Image
                       src={`${imagePath}${activeItem.image}`}
                       alt={activeItem.title}
@@ -120,17 +122,16 @@ export function TabbedCapabilities({
                       className="object-cover"
                     />
                   </div>
-                  {/* Floating info card — top-98 = 392px from frame top, matching Webflow's
-                       transform:translate(0,-100px) from natural flow position (480px inner height) */}
+                  {/* Floating info card matching Webflow's overlap effect */}
                   <div
                     key={`card-${activeIndex}`}
-                    className="absolute top-98 right-0 z-10 w-90 max-w-[calc(100%-3rem)] rounded-xl bg-white p-5 shadow-[0_12px_30px_rgba(1,31,64,.12)] animate-card"
+                    className="absolute -bottom-10 -right-6 z-10 w-90 max-w-[calc(100%-3rem)] rounded-xl bg-white p-5 shadow-[0_12px_30px_rgba(1,31,64,.12)] animate-card"
                     style={{ animationDelay: "0.1s", opacity: 0 }}
                   >
-                    <h3 className="text-[18px] font-semibold text-[#005ead]">
+                    <h3 className="text-lg font-semibold text-[#005ead]">
                       {activeItem.title}
                     </h3>
-                    <p className="mt-3 text-[15px] leading-normal text-[#333333] md:text-[16px]">
+                    <p className="mt-3 leading-normal text-brand-charcoal text-base">
                       {activeItem.copy}
                     </p>
                   </div>
@@ -149,11 +150,13 @@ function AccordionList({
   activeIndex,
   setActiveIndex,
   mobileOnly = false,
+  aspectRatio = "aspect-[4/3]",
 }: {
   items: { title: string; copy: string; image: string }[];
   activeIndex: number;
   setActiveIndex: (idx: number) => void;
   mobileOnly?: boolean;
+  aspectRatio?: string;
 }) {
   return (
     <div className="flex flex-col gap-3">
@@ -172,11 +175,11 @@ function AccordionList({
                 isActive ? "pb-0" : "pb-[18px]"
               }`}
             >
-              <span className="leading-snug text-[#005ead] ">{item.title}</span>
+              <span className="text-base md:text-xl leading-snug text-[#005ead]">{item.title}</span>
               <span className="flex shrink-0 items-center justify-center transition-transform duration-300">
                 <ChevronDown
                   aria-hidden="true"
-                  className={`size-5 transition-transform duration-300 ${
+                  className={`text-brand-navy size-5 transition-transform duration-300 ${
                     isActive ? "rotate-180" : "rotate-0"
                   }`}
                   strokeWidth={2}
@@ -193,11 +196,11 @@ function AccordionList({
             >
               <div className="overflow-hidden">
                 <div className="px-5 pb-[18px] pt-[12px]">
-                  <p className="max-w-140 text-[15px] leading-[1.5] text-[#333333] md:text-[16px]">
+                  <p className="max-w-140 text-[15px] leading-[1.5] text-[#333333] text-[12px] md:text-[16px]">
                     {item.copy}
                   </p>
                   <div
-                    className={`relative mt-5 min-h-[220px] w-full overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[300px] ${
+                    className={`relative mt-5 ${aspectRatio} w-full overflow-hidden rounded-[12px] bg-[#dce7ef] ${
                       mobileOnly ? "" : "lg:hidden"
                     }`}
                   >
@@ -206,7 +209,7 @@ function AccordionList({
                       alt={item.title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 720px"
-                      className="object-cover"
+                      className="object-cover object-[50%_20%]"
                     />
                   </div>
                 </div>
