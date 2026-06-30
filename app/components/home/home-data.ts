@@ -42,18 +42,18 @@ export const newsItems = [
     title: "Join Us at Automate 2026",
     copy: "Experience our cutting-edge automation solutions in person.",
     image: "/anscer/images/events/automate-2026.png",
-    href: "https://www.anscer.com/automate",
+    href: "https://events.anscer.com/automate",
   },
   {
     title: "Join Us at IWS 2026",
     copy: "Experience the future of logistics and warehousing solutions.",
     image: "/anscer/images/events/iws-2026.png",
-    href: "https://www.anscer.com/iws",
+    href: "https://events.anscer.com/iws",
   },
   {
     title: "ANSCER Robotics Raises $5.4 Million in Series A Led by IAN Alpha Fund Read More At:...",
     copy: "The Bengaluru-headquartered company said the fresh capital will be used to strengthen its product platform,...",
     image: "/anscer/images/events/series-a-funding.png",
-    href: "https://manufacturing.economictimes.indiatimes.com/news/industry/anscer-robotics-secures-2m-from-ian-alpha-fund/121278297",
+    href: "https://manufacturing.economictimes.indiatimes.com/news/hi-tech/anscer-robotics-raises-5-4-million-in-series-a-led-by-ian-alpha-fund/131229847",
   },
 ];

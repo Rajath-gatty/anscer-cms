@@ -24,7 +24,7 @@ export function NewsSection() {
                   </div>
                   <h3 className="mt-4 h-[44px] line-clamp-2 text-base font-semibold leading-[22px] text-[#4a4a4a]">{item.title}</h3>
                   <p className="mt-4 h-[44px] line-clamp-2 text-sm font-normal leading-[22px] text-[#5b5f66]">{item.copy}</p>
-                  <a className="mt-7 inline-flex items-center gap-4 text-sm font-medium uppercase tracking-wide text-[#09284a] transition-colors hover:text-[#005ead]" href={item.href}>
+                  <a className="mt-7 inline-flex items-center gap-4 text-sm font-medium uppercase tracking-wide text-[#09284a] transition-colors hover:text-[#005ead]" href={item.href} target="_blank" rel="noreferrer">
                     Explore <ArrowRight aria-hidden="true" className="size-6" strokeWidth={1.8} />
                   </a>
                 </article>
