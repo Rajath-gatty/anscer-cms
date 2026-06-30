@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { ProductFaqSection } from "../components/products/ProductFaqSection";
 import { ProductFeaturesSection } from "../components/products/ProductFeaturesSection";
 import { ProductHeroSlider } from "../components/products/ProductHeroSlider";
-import {
-  ProductSeriesStaticMobile,
-  ProductSeriesStickyStack,
-} from "../components/products/ProductSeriesStickyStack";
 import { ProductsCta } from "../components/products/ProductsCta";
+import ProductSeriesCard from "../components/products/ProductSeriesCard";
 
 export const metadata: Metadata = {
   title: "Products | ANSCER Robotics",
@@ -21,8 +18,9 @@ export default function ProductsPage() {
       {/* <SmartNavigationSection /> */}
       <ProductFeaturesSection />
       <div id="robot-series">
-        <ProductSeriesStaticMobile />
-        <ProductSeriesStickyStack />
+        {/* <ProductSeriesStaticMobile /> */}
+        {/* <ProductSeriesStickyStack /> */}
+        <ProductSeriesCard />
       </div>
       <ProductFaqSection />
       <ProductsCta />

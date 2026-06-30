@@ -12,32 +12,32 @@ const heroSlides = [
     id: "lift",
     title: "Robots Ready to",
     accent: "Lift",
-    image: "PSR-1000R_1.png",
-    imageClass: "scale-[1.05] -translate-x-[3%] md:translate-x-[3%]",
+    image: "lift.png",
+    imageClass: "scale-[1] -translate-x-[3%] md:translate-x-[3%]",
     tags: ["Ready to Lift", "Lifting"],
   },
   {
     id: "pull",
     title: "Robots Ready to",
     accent: "Pull",
-    image: "hero-image-2.png",
-    imageClass: "scale-[1.24] translate-x-[4%] md:translate-x-[10%]",
+    image: "pull.png",
+    imageClass: "scale-[1] translate-x-[4%] md:translate-x-[10%]",
     tags: ["Ready to Pull", "Pulling"],
   },
   {
     id: "grasp",
     title: "Robots Ready to",
     accent: "Grasp",
-    image: "Group-1321315879.png",
-    imageClass: "scale-[1.42] translate-x-[9%] md:translate-x-[15%]",
+    image: "grab.png",
+    imageClass: "scale-[1] translate-x-[9%] md:translate-x-[15%]",
     tags: ["Ready to Grasp", "Grasping"],
   },
   {
     id: "move",
     title: "Robots Ready to",
     accent: "Move",
-    image: "hero-image-4.png",
-    imageClass: "scale-[1.22] translate-x-[3%] md:translate-x-[9%]",
+    image: "move.png",
+    imageClass: "scale-[1] translate-x-[3%] md:translate-x-[9%]",
     tags: ["Ready to Move", "Moving"],
   },
 ];
@@ -52,27 +52,38 @@ const defaultProductHeroTagPositions: ProductHeroTagPosition[] = [
   { left: "62%", top: "58%" },
 ];
 
-const productHeroTagPositionsBySlide: Record<string, Record<string, ProductHeroTagPosition>> = {
+const productHeroTagPositionsBySlide: Record<
+  string,
+  Record<string, ProductHeroTagPosition>
+> = {
   lift: {
     "Ready to Lift": { left: "54%", top: "64%" },
-    "Lifting": { left: "42%", top: "35%" },
+    Lifting: { left: "42%", top: "35%" },
   },
   pull: {
     "Ready to Pull": { left: "52%", top: "65%" },
-    "Pulling": { left: "30%", top: "35%" },
+    Pulling: { left: "30%", top: "35%" },
   },
   grasp: {
     "Ready to Grasp": { left: "52%", top: "48%" },
-    "Grasping": { left: "49%", top: "5%" },
+    Grasping: { left: "49%", top: "5%" },
   },
   move: {
     "Ready to Move": { left: "5%", top: "54%" },
-    "Moving": { left: "68%", top: "68%" },
+    Moving: { left: "68%", top: "68%" },
   },
 };
 
-function getProductHeroTagPosition(slideId: string, tag: string, index: number): ProductHeroTagPosition {
-  return productHeroTagPositionsBySlide[slideId]?.[tag] ?? defaultProductHeroTagPositions[index] ?? defaultProductHeroTagPositions[0];
+function getProductHeroTagPosition(
+  slideId: string,
+  tag: string,
+  index: number,
+): ProductHeroTagPosition {
+  return (
+    productHeroTagPositionsBySlide[slideId]?.[tag] ??
+    defaultProductHeroTagPositions[index] ??
+    defaultProductHeroTagPositions[0]
+  );
 }
 
 export function ProductHeroSlider() {
@@ -98,8 +109,13 @@ export function ProductHeroSlider() {
   }, []);
 
   return (
-    <section className="bg-[#fafafa]">
-      <div className="site-container grid min-h-[calc(100svh-60px)] items-center gap-8 py-12 md:min-h-[calc(100svh-110px)] md:grid-cols-2 md:py-16">
+    <section
+      // className="bg-[#fafafa]"
+      style={{
+        backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
+      }}
+    >
+      <div className="site-container grid  items-center gap-8 py-12  md:grid-cols-2 md:py-16">
         <div>
           <ScrollReveal>
             <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
@@ -164,7 +180,7 @@ export function ProductHeroSlider() {
           </div>
         </div>
 
-        <div className="relative min-h-[430px] md:min-h-[560px] xl:min-h-[620px] w-full">
+        <div className="relative min-h-[430px] md:min-h-[500px] xl:min-h-[520px] w-full">
           <AnimatePresence mode="popLayout" initial={false}>
             <m.div
               key={active.image}
@@ -175,12 +191,12 @@ export function ProductHeroSlider() {
               transition={{ duration: 0.56, ease: [0.22, 1, 0.36, 1] }}
             >
               <Image
-                src={`${imagePath}${active.image}`}
+                src={`${imagePath}products/${active.image}`}
                 alt={`${active.title} ${active.accent}`}
                 fill
                 priority={activeIndex === 0}
-                sizes="(max-width: 768px) 100vw, 780px"
-                className={`object-contain object-right drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] p-6 ${active.imageClass}`}
+                sizes="(max-width: 520px) 50vw, 520px"
+                className={`object-contain object-bottom-right drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] p-6 ${active.imageClass}`}
               />
               <div className="pointer-events-none absolute inset-0 z-20">
                 {active.tags.map((tag, index) => (
