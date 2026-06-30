@@ -208,7 +208,7 @@ function SolutionSlide({
             {solution.title}
           </h3>
         </div>
-        <p className="mt-7 text-sm leading-6 text-[#4b4b4b]">{solution.copy}</p>
+        <p className="mt-7 text-base leading-6 text-[#4b4b4b]">{solution.copy}</p>
         <div className="relative mt-8 aspect-[1.42] max-w-[390px] overflow-hidden rounded-lg bg-[#dfe7ee]">
           <Image
             src={`${imagePath}${solution.image}`}
@@ -278,11 +278,11 @@ function StaticSolutionCard({
           height={28}
           className="size-7 shrink-0"
         />
-        <h3 className="text-[10px] font-bold uppercase tracking-wide text-[#005ead]">
+        <h3 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">
           {solution.title}
         </h3>
       </div>
-      <p className="mt-4 text-xs leading-5 text-[#011f40]">{solution.copy}</p>
+      <p className="mt-4 text-sm leading-5 text-[#011f40]">{solution.copy}</p>
 
       <div className="relative mt-5 aspect-[1.45] overflow-hidden rounded-md bg-[#dfe7ee]">
         <Image

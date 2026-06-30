@@ -196,20 +196,18 @@ function FaqSection() {
 
 function ProductsCta() {
   return (
-    <section className="relative overflow-hidden bg-[#005ead] py-20 text-white">
-      <Image src={`${imagePath}96cdc152cb608044ef4fbddf84c5978fac86d350.png`} alt="" fill sizes="100vw" className="object-cover" />
-      <div
-        className="absolute inset-0"
-        style={{ background: "rgba(0, 38, 112, 0.82)" }}
-      />
-      <div className="site-container relative z-10">
-        <h2 className="max-w-[760px] text-[48px] font-bold leading-tight tracking-tight md:text-[60px]">Dive Into The Future Factory</h2>
-        <p className="mt-4 max-w-[560px] text-sm leading-5 text-white/85 md:text-[18px] md:leading-[26px]">
+    <section className="relative flex min-h-[556px] items-center overflow-hidden bg-[#005ead] py-20 text-white">
+      <Image src="/anscer/images/dive-into-future/bg.png" alt="" fill sizes="100vw" className="object-cover" />
+      <div className="absolute inset-0 z-10 bg-black/55" />
+      <div className="absolute inset-0 z-20 bg-[#005ead] mix-blend-color" />
+      <div className="site-container relative z-30 flex flex-col items-start gap-6">
+        <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] tracking-normal md:leading-[70px] lg:text-[60px] lg:leading-[1.1]">Dive Into The Future Factory</h2>
+        <p className="max-w-[850px] text-[14px] font-medium leading-[20px] text-white md:leading-[32px] lg:text-[18px] lg:leading-[32px]">
           Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation solutions engineered to transform your operations.
         </p>
         <a
           href="#contact"
-          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
+          className="group inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
         >
           Talk to our experts
           <span className="relative flex size-4 overflow-hidden">

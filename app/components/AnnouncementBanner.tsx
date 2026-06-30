@@ -29,7 +29,7 @@ export function AnnouncementBanner() {
             key={`${announcement}-${index}`}
             className={`flex items-center gap-4 ${index < announcements.length - 1 ? "border-r border-white/90 pr-6" : ""}`}
           >
-            <p className="mb-0 text-xs font-bold leading-none text-white">{announcement.title}</p>
+            <p className="mb-0 text-xs font-normal leading-none text-white">{announcement.title}</p>
             <a
               href={announcement.href}
               target="_blank"

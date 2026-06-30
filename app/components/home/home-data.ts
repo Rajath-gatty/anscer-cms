@@ -39,18 +39,21 @@ export const techItems = [
 
 export const newsItems = [
   {
-    title: "Bengaluru-Based ANSCER Robotics Raises $2 Million",
-    copy: "Led by InfoEdge-backed IAN Fund to accelerate global expansion.",
-    image: "Frame-1321317429-1-p-500.jpg",
+    title: "Join Us at Automate 2026",
+    copy: "Experience our cutting-edge automation solutions in person.",
+    image: "/anscer/images/events/automate-2026.png",
+    href: "https://www.anscer.com/automate",
   },
   {
-    title: "Bengaluru-Based ANSCER Robotics Raises $2 Million",
-    copy: "IAN Fund-backed AI-driven Global Dynamics announces fresh funding.",
-    image: "Frame-1321317430-1-p-500.jpg",
+    title: "Join Us at IWS 2026",
+    copy: "Experience the future of logistics and warehousing solutions.",
+    image: "/anscer/images/events/iws-2026.png",
+    href: "https://www.anscer.com/iws",
   },
   {
-    title: "ANSCER Robotics raises $4 million in Series A",
-    copy: "The Bengaluru-headquartered company said the fresh capital will be used for expansion.",
-    image: "Frame-1321317431-1-p-500.jpg",
+    title: "ANSCER Robotics Raises $5.4 Million in Series A Led by IAN Alpha Fund Read More At:...",
+    copy: "The Bengaluru-headquartered company said the fresh capital will be used to strengthen its product platform,...",
+    image: "/anscer/images/events/series-a-funding.png",
+    href: "https://manufacturing.economictimes.indiatimes.com/news/industry/anscer-robotics-secures-2m-from-ian-alpha-fund/121278297",
   },
 ];
