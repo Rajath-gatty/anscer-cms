@@ -272,19 +272,14 @@ export const seriesPages: Record<string, SeriesPageData> = {
         image: "Frame-427322841.jpg",
       },
       {
-        title: "Small Load & Cart Transport",
-        copy: "Moves lightweight individual loads or small carts for frequent internal transport.",
-        image: "updated-image.jpg",
-      },
-      {
         title: "Low-Clearance Trolley Handling",
         copy: "Tows trolleys through spaces with limited overhead or structural clearance access.",
         image: "Frame-427322848.jpg",
       },
       {
-        title: "Dock/Inbound to Storage",
-        copy: "Moves received goods from the dock directly into designated storage locations.",
-        image: "Frame-427322851.jpg",
+        title: "Raw Material/Inbound Handling",
+        copy: "Moves raw materials from receiving to storage or production areas.",
+        image: "Frame-427322849_1.jpg",
       },
       {
         title: "Storage/Rack to Outbound",
@@ -292,15 +287,20 @@ export const seriesPages: Record<string, SeriesPageData> = {
         image: "Frame-427322852.jpg",
       },
       {
+        title: "Small Load & Cart Transport",
+        copy: "Moves lightweight individual loads or small carts for frequent internal transport.",
+        image: "updated-image.jpg",
+      },
+      {
+        title: "Dock/Inbound to Storage",
+        copy: "Moves received goods from the dock directly into designated storage locations.",
+        image: "Frame-427322851.jpg",
+      },
+      {
         title: "Staging/Buffer Holding",
         copy: "Temporarily holds palletized or finished goods before the next movement stage.",
         image: "Frame-427322855.jpg",
-      },
-      {
-        title: "Raw Material/Inbound Handling",
-        copy: "Moves raw materials from receiving to storage or production areas.",
-        image: "Frame-427322849_1.jpg",
-      },
+      }
     ],
     products: [
       {
