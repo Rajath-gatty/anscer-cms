@@ -1,10 +1,13 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
 import { ProductFaqAccordion } from "../products/ProductFaqAccordion";
-import { SeriesApplicationsCarousel, SeriesRobotSelector } from "./SeriesInteractive";
 import type { SeriesPageData } from "./series-data";
+import {
+  SeriesApplicationsCarousel,
+  SeriesRobotSelector,
+} from "./SeriesInteractive";
 
 export function SeriesPage({ data }: { data: SeriesPageData }) {
   return (
@@ -20,7 +23,10 @@ export function SeriesPage({ data }: { data: SeriesPageData }) {
 
 const defaultHeroTagPosition = { left: "1%", top: "58%" };
 
-const heroTagPositionsBySeries: Record<string, Record<string, { left: string; top: string }>> = {
+const heroTagPositionsBySeries: Record<
+  string,
+  Record<string, { left: string; top: string }>
+> = {
   "ar-series": {
     Tugging: { left: "1%", top: "58%" },
     Tunneling: { left: "44%", top: "25%" },
@@ -49,19 +55,23 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center opacity-55"
+        className="object-cover object-bottom"
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,.98)_0%,rgba(250,250,250,.9)_38%,rgba(250,250,250,.62)_100%)]" />
       <div className="site-container relative z-10 grid min-h-[calc(100vh-108px)] items-center gap-8 py-14 md:py-16 lg:grid-cols-[0.46fr_0.54fr]">
         <div className="max-w-[590px]">
           <ScrollReveal>
-            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">{data.eyebrow} Robots</p>
+            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+              {data.eyebrow} Robots
+            </p>
             <h1 className="mt-5 text-[48px] font-extrabold leading-[1.04] tracking-[-0.02em] text-[#011f40] md:text-[60px]">
               {data.title}
               <br />
               <span className="text-[#005ead]">{data.titleAccent}</span>
             </h1>
-            <p className="mt-5 max-w-[520px] text-sm font-medium leading-5 text-[#4b5563] md:text-[18px] md:leading-[26px]">{data.description}</p>
+            <p className="mt-5 max-w-[520px] text-sm font-medium leading-5 text-[#4b5563] md:text-[18px] md:leading-[26px]">
+              {data.description}
+            </p>
           </ScrollReveal>
           <a
             href="#modals"
@@ -116,11 +126,16 @@ function SeriesFeatures({ data }: { data: SeriesPageData }) {
     <section className="bg-[#fafafa] py-16 md:py-24">
       <div className="site-container">
         <ScrollReveal className="max-w-[720px]">
-          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">How Our Robots Deliver Excellence</p>
+          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+            How Our Robots Deliver Excellence
+          </p>
           <h2 className="mt-4 text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
-            Key Features of <span className="text-[#005ead]">{data.eyebrow}</span> Robots
+            Key Features of{" "}
+            <span className="text-[#005ead]">{data.eyebrow}</span> Robots
           </h2>
-          <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{data.featureIntro}</p>
+          <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+            {data.featureIntro}
+          </p>
         </ScrollReveal>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[0.47fr_0.53fr]">
@@ -148,8 +163,12 @@ function SeriesFeatures({ data }: { data: SeriesPageData }) {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,.48),rgba(1,31,64,.08)_48%,rgba(1,31,64,.18))]" />
               <div className="relative z-10 p-6 md:p-7">
-                <h3 className="text-xl font-extrabold leading-tight md:text-2xl">Let&apos;s Build Together</h3>
-                <p className="mt-2 text-sm font-medium text-white/86 md:text-base">Join us in shaping the future of robotics</p>
+                <h3 className="text-xl font-extrabold leading-tight md:text-2xl">
+                  Let&apos;s Build Together
+                </h3>
+                <p className="mt-2 text-sm font-medium text-white/86 md:text-base">
+                  Join us in shaping the future of robotics
+                </p>
               </div>
             </article>
           </ScrollReveal>
@@ -169,10 +188,20 @@ function FeatureCard({
   return (
     <article className={`h-full rounded-lg bg-[#e8f0f7] p-6 ${className}`}>
       {feature.icon ? (
-        <Image src={`${imagePath}${feature.icon}`} alt="" width={42} height={42} className="h-10 w-10 object-contain" />
+        <Image
+          src={`${imagePath}${feature.icon}`}
+          alt=""
+          width={42}
+          height={42}
+          className="h-10 w-10 object-contain"
+        />
       ) : null}
-      <h3 className="mt-5 max-w-[270px] text-xl font-extrabold leading-[1.08] text-[#005ead] md:text-2xl">{feature.title}</h3>
-      <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{feature.copy}</p>
+      <h3 className="mt-5 max-w-[270px] text-xl font-extrabold leading-[1.08] text-[#005ead] md:text-2xl">
+        {feature.title}
+      </h3>
+      <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+        {feature.copy}
+      </p>
     </article>
   );
 }
@@ -182,9 +211,12 @@ function SeriesFaqs({ data }: { data: SeriesPageData }) {
     <section className="bg-[#fafafa] py-14">
       <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">
         <div>
-          <h2 className="mt-5 text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">FAQs</h2>
+          <h2 className="mt-5 text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">
+            FAQs
+          </h2>
           <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
-            We&apos;ve heard it all - here&apos;s what people are really asking behind the scenes.
+            We&apos;ve heard it all - here&apos;s what people are really asking
+            behind the scenes.
           </p>
         </div>
         <ProductFaqAccordion items={data.faqs} />

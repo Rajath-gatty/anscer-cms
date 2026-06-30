@@ -51,8 +51,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
     titleAccent: "Everything",
     description:
       "Explore ANSCER's cutting-edge lineup: powerful, smart automation solutions engineered to transform your operations.",
-    heroImage: "914d5f91ebf180d91cdbcbf3b9c23835_ar-series-hero-img-p-1600.png",
-    heroRobot: "ar-series-robot-hero-img.png",
+    heroImage: "series/ar/hero-bg.png",
+    heroRobot: "series/ar/ar-250-base.png",
     tags: ["Tugging", "Tunneling", "Lifting"],
     featureIntro:
       "Never worry about maintenance. ANSCER Robotics ensures seamless software updates, reliable hardware, and ongoing support to keep your robots operating at peak performance.",
@@ -112,61 +112,97 @@ export const seriesPages: Record<string, SeriesPageData> = {
     products: [
       {
         name: "AR 250",
-        description: "Compact AMR supporting diverse top modules for flexible material movement.",
-        image: "ar-250-latest.png",
+        description:
+          "Compact AMR supporting diverse top modules for flexible material movement.",
+        image: "series/ar/AR250.png",
         bgText: "AR-250.svg",
         href: "/ar-series/ar-250",
         tags: ["Tugging", "Lifting", "Tunneling"],
         tabDescription: "Carries loads up to 250kg.",
         specs: [
-          { label: "Dimensions", value: "900 * 580 * 275 mm", imperial: "35.43 x 22.83 x 10.83 in" },
+          {
+            label: "Dimensions",
+            value: "900 * 580 * 275 mm",
+            imperial: "35.43 x 22.83 x 10.83 in",
+          },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
-          { label: "Pay-load capacity", value: "Up to 250 kg", imperial: "Up to 551 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 250 kg",
+            imperial: "Up to 551 lbs",
+          },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
       {
         name: "AR 500",
-        description: "Compact AMR supporting diverse top modules for flexible material movement.",
-        image: "ar-500-latest.png",
+        description:
+          "Compact AMR supporting diverse top modules for flexible material movement.",
+        image: "series/ar/AR500.png",
         bgText: "AR-500.png",
         href: "/ar-series/ar-500",
         tags: ["Cobot", "Tugging"],
         tabDescription: "Carries loads up to 500kg.",
         specs: [
-          { label: "Dimensions", value: "900 * 580 * 295 mm", imperial: "35.43 x 22.83 x 11.61 in" },
+          {
+            label: "Dimensions",
+            value: "900 * 580 * 295 mm",
+            imperial: "35.43 x 22.83 x 11.61 in",
+          },
           { label: "Max speed", value: "1.5 m/s", imperial: "3.35 mph" },
-          { label: "Pay-load capacity", value: "Up to 500 kg", imperial: "Up to 1,102.31 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 500 kg",
+            imperial: "Up to 1,102.31 lbs",
+          },
           { label: "Ground clearance", value: "50 mm", imperial: "1.97 in" },
         ],
       },
       {
         name: "AR 650",
-        description: "Versatile AMR enabling safe, adaptable automation across dynamic intralogistics operations.",
-        image: "8bd91d97b16b7e651fea93831080b0147cd48299.png",
+        description:
+          "Versatile AMR enabling safe, adaptable automation across dynamic intralogistics operations.",
+        image: "series/ar/AR650.png",
         bgText: "AR-650.svg",
         href: "/ar-series/ar-650",
         tags: ["Tugging", "Lifting", "Tunneling"],
         tabDescription: "Carries loads up to 650kg.",
         specs: [
-          { label: "Dimensions", value: "1400 * 950 * 300 mm", imperial: "55.12 x 37.40 x 11.81 in" },
+          {
+            label: "Dimensions",
+            value: "1400 * 950 * 300 mm",
+            imperial: "55.12 x 37.40 x 11.81 in",
+          },
           { label: "Max speed", value: "1.5 m/s", imperial: "3.35 mph" },
-          { label: "Pay-load capacity", value: "Up to 650 kg", imperial: "Up to 1433.01 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 650 kg",
+            imperial: "Up to 1433.01 lbs",
+          },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
       {
         name: "AR 1250",
-        description: "Heavy-duty AMR delivering flexible automation for demanding material handling applications.",
-        image: "f1b8ed9565fccfe339d89768a81a1b6389b1b778.png",
+        description:
+          "Heavy-duty AMR delivering flexible automation for demanding material handling applications.",
+        image: "series/ar/AR1250.png",
         bgText: "AR-1250.svg",
         href: "/ar-series/ar-1250",
         tags: ["Tugging", "Lifting", "Tunneling"],
         tabDescription: "Carries loads up to 1250kg.",
         specs: [
-          { label: "Dimensions", value: "1400 * 950 * 300 mm", imperial: "55.12 x 37.40 x 11.81 in" },
+          {
+            label: "Dimensions",
+            value: "1400 * 950 * 300 mm",
+            imperial: "55.12 x 37.40 x 11.81 in",
+          },
           { label: "Max speed", value: "1.7 m/s", imperial: "3.80 mph" },
-          { label: "Pay-load capacity", value: "Up to 1250 kg", imperial: "Up to 2755.78 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 1250 kg",
+            imperial: "Up to 2755.78 lbs",
+          },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
@@ -178,12 +214,14 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "No. The AR series uses SLAM-based navigation and requires no changes to your existing floor, racks, or infrastructure, no magnetic strips, QR codes on the floor, or fixed rails. The robots map your facility during commissioning and adapt in real time to layout changes, traffic, and obstacles. You can be up and running without touching your existing setup.",
       },
       {
-        question: "Can the same robot handle different applications if my requirements change?",
+        question:
+          "Can the same robot handle different applications if my requirements change?",
         answer:
           "Yes, that's the core advantage of the AR series. The base robot stays the same; you replace the top module from ANSCER certified engineer to change the application. If you start with a Shelf Lifter for trolley transport and later need a Belt Conveyor for carton transfer or a Cobot Integration Module for machine tending, you change the module, not the robot. Your hardware investment is protected as your operations evolve.",
       },
       {
-        question: "How do AR series robots work safely alongside people on the floor?",
+        question:
+          "How do AR series robots work safely alongside people on the floor?",
         answer:
           "The AR series is built for collaborative environments. The robots use LiDAR-based 360 degree obstacle detection, slow down in high-traffic zones, and stop immediately if something enters their safety perimeter. They are designed to comply with international AMR safety standards, making them suitable for shared factory and warehouse floors without segregating robot and human zones.",
       },
@@ -267,76 +305,121 @@ export const seriesPages: Record<string, SeriesPageData> = {
     products: [
       {
         name: "PSR 2000",
-        description: "Autonomous pallet stacking robot for precise high-reach pallet handling operations.",
+        description:
+          "Autonomous pallet stacking robot for precise high-reach pallet handling operations.",
         image: "psr-2000_2.png",
         bgText: "psr-2000.svg",
         href: "/psr-series/psr-2000",
         tags: ["Open Pallet", "Stacking"],
         tabDescription: "Carries loads up to 2000 kg.",
         specs: [
-          { label: "Dimensions", value: "2050 x 1000 x 1500 mm", imperial: "80.71 x 41.34 x 59.06 in" },
+          {
+            label: "Dimensions",
+            value: "2050 x 1000 x 1500 mm",
+            imperial: "80.71 x 41.34 x 59.06 in",
+          },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
-          { label: "Pay-load capacity", value: "Up to 2000 kg", imperial: "Up to 4,409 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 2000 kg",
+            imperial: "Up to 4,409 lbs",
+          },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
       {
         name: "PSR 2000R",
-        description: "Extended-reach heavy-duty pallet stacking robot capable of handling open and closed pallets.",
+        description:
+          "Extended-reach heavy-duty pallet stacking robot capable of handling open and closed pallets.",
         image: "psr-2000r_1.png",
         bgText: "Group-1321315869.svg",
         href: "/psr-series/psr-2000r",
         tags: ["Open/Closed Pallet", "Lifting"],
         tabDescription: "Carries loads up to 2000 kg.",
         specs: [
-          { label: "Dimensions", value: "2700 * 1700 * 2100 mm", imperial: "106.3 x 66.9 x 82.7 in" },
+          {
+            label: "Dimensions",
+            value: "2700 * 1700 * 2100 mm",
+            imperial: "106.3 x 66.9 x 82.7 in",
+          },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
-          { label: "Pay-load capacity", value: "Up to 2000 kg", imperial: "Up to 4,409 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 2000 kg",
+            imperial: "Up to 4,409 lbs",
+          },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
       {
         name: "PSR 1000R",
-        description: "Extended-reach pallet stacking robot capable of handling open and closed pallets.",
+        description:
+          "Extended-reach pallet stacking robot capable of handling open and closed pallets.",
         image: "PSR-1000R.png",
         bgText: "1000r-bg-text.png",
         href: "/psr-series/psr-1000r",
         tags: ["Open/Closed Pallet", "Lifting"],
         tabDescription: "Carries loads up to 1000 kg.",
         specs: [
-          { label: "Dimensions", value: "2750 * 1350 * 1500 mm", imperial: "108.27 x 53.15 x 59.06 in" },
+          {
+            label: "Dimensions",
+            value: "2750 * 1350 * 1500 mm",
+            imperial: "108.27 x 53.15 x 59.06 in",
+          },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
-          { label: "Pay-load capacity", value: "Up to 1000 kg", imperial: "Up to 2,204 lb" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 1000 kg",
+            imperial: "Up to 2,204 lb",
+          },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
       {
         name: "PSR G2G",
-        description: "Autonomous pallet handling robot enabling efficient ground-to-ground material movement.",
+        description:
+          "Autonomous pallet handling robot enabling efficient ground-to-ground material movement.",
         image: "psr-g2g.png",
         bgText: "psr-g2g.svg",
         href: "/psr-series/psr-g2g",
         tags: ["Open Pallet", "Stacking"],
         tabDescription: "Carries loads up to 2000 kg.",
         specs: [
-          { label: "Dimensions", value: "2050 x 1000 x 1500 mm", imperial: "80.71 x 39.37 x 59.06 in" },
+          {
+            label: "Dimensions",
+            value: "2050 x 1000 x 1500 mm",
+            imperial: "80.71 x 39.37 x 59.06 in",
+          },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
-          { label: "Pay-load capacity", value: "Up to 2000 kg", imperial: "Up to 4,409 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 2000 kg",
+            imperial: "Up to 4,409 lbs",
+          },
           { label: "Ground clearance", value: "40 mm", imperial: "1.57 in" },
         ],
       },
       {
         name: "LBR 500",
-        description: "Compact trolley transport AMR for low-clearance environments and seamless integration.",
+        description:
+          "Compact trolley transport AMR for low-clearance environments and seamless integration.",
         image: "lbr-500_1.png",
         bgText: "LBR-501.svg",
         href: "/psr-series/lbr-500",
         tags: ["Trolley", "Lifting"],
         tabDescription: "Carries loads up to 500 kg.",
         specs: [
-          { label: "Dimensions", value: "1260 x 655 x 1270 mm", imperial: "49.61 x 25.79 x 50 in" },
+          {
+            label: "Dimensions",
+            value: "1260 x 655 x 1270 mm",
+            imperial: "49.61 x 25.79 x 50 in",
+          },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
-          { label: "Pay-load capacity", value: "Up to 500 kg", imperial: "Up to 1,102 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 500 kg",
+            imperial: "Up to 1,102 lbs",
+          },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
@@ -348,12 +431,14 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Our pallet stacking robot is designed to handle a wide range of pallet types commonly used in warehouses and manufacturing facilities, including standard wooden, plastic, and Euro pallets. Compatibility depends on pallet dimensions, weight, and condition.",
       },
       {
-        question: "Can the robot work in an existing warehouse without infrastructure changes?",
+        question:
+          "Can the robot work in an existing warehouse without infrastructure changes?",
         answer:
           "Yes. The robot is designed for rapid deployment in existing facilities and can navigate dynamic warehouse environments without requiring major infrastructure modifications. This helps reduce deployment time and operational disruption.",
       },
       {
-        question: "How does the robot ensure safe operation around people and equipment?",
+        question:
+          "How does the robot ensure safe operation around people and equipment?",
         answer:
           "The robot uses advanced safety sensors, obstacle detection, and intelligent navigation to monitor its surroundings in real time. It can detect obstacles, avoid collisions, and operate safely in environments where people and machines work together.",
       },
@@ -417,16 +502,25 @@ export const seriesPages: Record<string, SeriesPageData> = {
     products: [
       {
         name: "AGV 100",
-        description: "QR-guided vehicle delivering reliable point-to-point transport for efficient material flow.",
+        description:
+          "QR-guided vehicle delivering reliable point-to-point transport for efficient material flow.",
         image: "agv-100-new.png",
         bgText: "agv-background-text.png",
         href: "/agv-series/agv-100",
         tags: ["Lifting", "Sorting"],
         tabDescription: "Carries loads up to 100kg.",
         specs: [
-          { label: "Dimensions", value: "680 * 600 * 235 mm", imperial: "26.8 x 23.6 x 9.3 inches" },
+          {
+            label: "Dimensions",
+            value: "680 * 600 * 235 mm",
+            imperial: "26.8 x 23.6 x 9.3 inches",
+          },
           { label: "Max speed", value: "2 m/s", imperial: "4.47 mph" },
-          { label: "Pay-load capacity", value: "Up to 100 kg", imperial: "Up to 220 lbs" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 100 kg",
+            imperial: "Up to 220 lbs",
+          },
           { label: "Ground clearance", value: "40 mm", imperial: "1.57 in" },
         ],
       },

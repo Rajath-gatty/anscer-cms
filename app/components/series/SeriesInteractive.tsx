@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
+import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AnimatePresence, m, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import { cn } from "@/lib/utils";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
 import type { SeriesPageData } from "./series-data";
@@ -33,28 +33,42 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   const maxIndex = Math.max(0, total - visibleCount);
   const start = activeIndex + 1;
   const end = Math.min(activeIndex + visibleCount, total);
-  const counter = visibleCount > 1 && start !== end ? `${pad(start)}-${pad(end)}/${pad(total)}` : `${pad(start)}/${pad(total)}`;
+  const counter =
+    visibleCount > 1 && start !== end
+      ? `${pad(start)}-${pad(end)}/${pad(total)}`
+      : `${pad(start)}/${pad(total)}`;
 
   const move = (direction: 1 | -1) => {
-    setActiveIndex((current) => Math.min(maxIndex, Math.max(0, current + direction)));
+    setActiveIndex((current) =>
+      Math.min(maxIndex, Math.max(0, current + direction)),
+    );
   };
 
   return (
-    <section id="applications" className="overflow-hidden bg-white py-16 md:py-24">
+    <section
+      id="applications"
+      className="overflow-hidden bg-white py-16 md:py-24"
+    >
       <div className="site-container">
         <ScrollReveal>
-          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Applications</p>
+          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+            Applications
+          </p>
         </ScrollReveal>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <ScrollReveal delay={80} className="max-w-[700px]">
             <h2 className="text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
               {data.applicationsHeading}
             </h2>
-            <p className="mt-4 max-w-[610px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{data.applicationsIntro}</p>
+            <p className="mt-4 max-w-[610px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+              {data.applicationsIntro}
+            </p>
           </ScrollReveal>
 
           <div className="hidden items-center gap-4 md:flex">
-            <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">{counter}</span>
+            <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
+              {counter}
+            </span>
             <button
               type="button"
               onClick={() => move(-1)}
@@ -100,8 +114,12 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               ) : null}
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,0)_30%,rgba(1,31,64,.82)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                <h3 className="text-xl font-extrabold leading-tight md:text-2xl">{application.title}</h3>
-                <p className="mt-2 text-sm leading-5 text-white/88 md:text-base md:leading-6">{application.copy}</p>
+                <h3 className="text-xl font-extrabold leading-tight md:text-2xl">
+                  {application.title}
+                </h3>
+                <p className="mt-2 text-sm leading-5 text-white/88 md:text-base md:leading-6">
+                  {application.copy}
+                </p>
               </div>
             </article>
           ))}
@@ -109,7 +127,9 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
       </div>
 
       <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
-        <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">{counter}</span>
+        <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
+          {counter}
+        </span>
         <button
           type="button"
           onClick={() => move(-1)}
@@ -133,7 +153,13 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   );
 }
 
-export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, series: string; }) {
+export function SeriesRobotSelector({
+  data,
+  series,
+}: {
+  data: SeriesPageData;
+  series: string;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
   const reducedMotion = useReducedMotion();
@@ -143,7 +169,8 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
     () =>
       activeProduct.specs.map((spec) => ({
         label: spec.label,
-        value: unit === "imperial" && spec.imperial ? spec.imperial : spec.value,
+        value:
+          unit === "imperial" && spec.imperial ? spec.imperial : spec.value,
       })),
     [activeProduct, unit],
   );
@@ -154,20 +181,25 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
 
   const total = data.products.length;
   const mobileMove = (direction: 1 | -1) => {
-    setActiveIndex((current) => Math.min(total - 1, Math.max(0, current + direction)));
+    setActiveIndex((current) =>
+      Math.min(total - 1, Math.max(0, current + direction)),
+    );
   };
 
   return (
-    <section id="modals" className="relative overflow-hidden bg-[#e8f1f8] py-14 md:min-h-screen md:py-20">
+    <section
+      id="modals"
+      className="relative overflow-hidden bg-[#e8f1f8] py-14 md:min-h-screen md:py-20"
+    >
       <Image
-        src={`${imagePath}ar-series-application-bg.png`}
+        src={`${imagePath}series/ar/robots-bg.png`}
         alt=""
         fill
         sizes="100vw"
         className="object-contain object-bottom opacity-36"
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_72%,rgba(232,241,248,.08)_0%,rgba(232,241,248,.6)_48%,rgba(232,241,248,.92)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(232,241,248,.86)_0%,rgba(232,241,248,.34)_46%,rgba(214,230,242,.9)_100%)]" />
+      {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_72%,rgba(232,241,248,.08)_0%,rgba(232,241,248,.6)_48%,rgba(232,241,248,.92)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(232,241,248,.86)_0%,rgba(232,241,248,.34)_46%,rgba(214,230,242,.9)_100%)]" /> */}
       <div className="site-container relative z-10">
         {/* Header — always visible */}
         <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
@@ -177,9 +209,12 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
             viewport={{ once: true, margin: "-80px" }}
             transition={transition}
           >
-            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">Modals</p>
+            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+              Modals
+            </p>
             <h2 className="mt-5 text-[28px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
-              Explore <span className="text-[#005ead]">{data.eyebrow}</span> Robots
+              Explore <span className="text-[#005ead]">{data.eyebrow}</span>{" "}
+              Robots
             </h2>
           </m.div>
           <UnitToggle unit={unit} onChange={setUnit} />
@@ -195,16 +230,22 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
               {data.products.map((product) => {
                 const productSpecs = product.specs.map((spec) => ({
                   label: spec.label,
-                  value: unit === "imperial" && spec.imperial ? spec.imperial : spec.value,
+                  value:
+                    unit === "imperial" && spec.imperial
+                      ? spec.imperial
+                      : spec.value,
                 }));
                 return (
                   <div key={product.name} className="flex w-full shrink-0">
                     <div className="h-full w-full rounded-2xl bg-white shadow-[0_18px_48px_rgba(1,31,64,.12)] overflow-hidden [transform:translateZ(0)]">
-
                       {/* Text content — name, description, explore button */}
-                      <div className="p-5 pb-0">
-                        <h3 className="text-xl font-bold text-[#011f40]">{product.name}</h3>
-                        <p className="mt-2 text-[14px] leading-[22px] text-[#3a3a3a] line-clamp-3">{product.description}</p>
+                      <div className="p-5 md:pt-0 pb-0">
+                        <h3 className="text-xl font-bold text-[#011f40]">
+                          {product.name}
+                        </h3>
+                        <p className="mt-2 text-[14px] leading-[22px] text-[#3a3a3a] line-clamp-3">
+                          {product.description}
+                        </p>
                         <a
                           href={product.href}
                           className="group mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
@@ -244,7 +285,11 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                           <span
                             key={`${product.name}-mobile-${tag}`}
                             className="absolute z-20 rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-normal text-[#011f40] shadow-[0_6px_20px_rgba(1,31,64,.12)]"
-                            style={getMobileTagPosition(product.name, tag, tagIndex)}
+                            style={getMobileTagPosition(
+                              product.name,
+                              tag,
+                              tagIndex,
+                            )}
                           >
                             {tag}
                           </span>
@@ -264,8 +309,12 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                         <div className="grid grid-cols-2 gap-x-8 gap-y-4 border-t border-[#d6e6f2] pt-5">
                           {productSpecs.map((spec) => (
                             <div key={spec.label}>
-                              <h4 className="text-[10px] font-medium uppercase leading-4 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
-                              <p className="mt-1 text-[12px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
+                              <h4 className="text-[10px] font-medium uppercase leading-4 tracking-[0.08em] text-[#3a3a3a99]">
+                                {spec.label}
+                              </h4>
+                              <p className="mt-1 text-[12px] font-semibold leading-5 text-[#011f40]">
+                                {spec.value}
+                              </p>
                             </div>
                           ))}
                         </div>
@@ -313,7 +362,10 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                   initial={reducedMotion ? false : { opacity: 0, x: -20 }}
                   whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ ...transition, delay: reducedMotion ? 0 : 0.08 }}
+                  transition={{
+                    ...transition,
+                    delay: reducedMotion ? 0 : 0.08,
+                  }}
                 >
                   {data.products.map((product, index) => {
                     const isActive = activeIndex === index;
@@ -325,11 +377,16 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                         onClick={() => setActiveIndex(index)}
                         className={cn(
                           "relative grid cursor-pointer overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
-                          isActive ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]" : "bg-white/55 hover:bg-white/86",
+                          isActive
+                            ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]"
+                            : "bg-white/55 hover:bg-white/86",
                         )}
                         whileHover={reducedMotion ? undefined : { x: 4 }}
                         whileTap={reducedMotion ? undefined : { scale: 0.985 }}
-                        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{
+                          duration: 0.22,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
                       >
                         {isActive ? (
                           <m.span
@@ -338,7 +395,14 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                             transition={transition}
                           />
                         ) : null}
-                        <span className={cn("relative z-10 text-[16px] font-normal", isActive ? "font-semibold text-[#005ead]" : "text-[#011f40]")}>
+                        <span
+                          className={cn(
+                            "relative z-10 text-[16px] font-normal",
+                            isActive
+                              ? "font-semibold text-[#005ead]"
+                              : "text-[#011f40]",
+                          )}
+                        >
                           {product.name}
                         </span>
                         <AnimatePresence initial={false}>
@@ -346,10 +410,21 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                             <m.span
                               key={`${product.name}-description`}
                               className="relative z-10 mt-3 text-[14px] font-normal leading-[22px] text-[#011f40]"
-                              initial={reducedMotion ? false : { opacity: 0, y: -8 }}
-                              animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                              exit={reducedMotion ? undefined : { opacity: 0, y: -6 }}
-                              transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+                              initial={
+                                reducedMotion ? false : { opacity: 0, y: -8 }
+                              }
+                              animate={
+                                reducedMotion ? undefined : { opacity: 1, y: 0 }
+                              }
+                              exit={
+                                reducedMotion
+                                  ? undefined
+                                  : { opacity: 0, y: -6 }
+                              }
+                              transition={{
+                                duration: 0.26,
+                                ease: [0.22, 1, 0.36, 1],
+                              }}
                             >
                               {product.tabDescription}
                             </m.span>
@@ -363,14 +438,18 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                 <AnimatePresence mode="popLayout" initial={false}>
                   <m.div
                     key={`${activeProduct.name}-details`}
-                    className="lg:pt-7"
+                    className="lg:pt-0"
                     initial={reducedMotion ? false : { opacity: 0, y: 18 }}
                     animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                     exit={reducedMotion ? undefined : { opacity: 0, y: -12 }}
                     transition={transition}
                   >
-                    <h3 className="text-[20px] font-semibold text-[#011f40]">{activeProduct.name}</h3>
-                    <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">{activeProduct.description}</p>
+                    <h3 className="text-[20px] font-semibold text-[#011f40]">
+                      {activeProduct.name}
+                    </h3>
+                    <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">
+                      {activeProduct.description}
+                    </p>
                     <m.a
                       href={activeProduct.href}
                       className="group mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
@@ -400,12 +479,23 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                       <m.div
                         key={`${activeProduct.name}-${unit}-${spec.label}`}
                         initial={reducedMotion ? false : { opacity: 0, y: 14 }}
-                        animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                        exit={reducedMotion ? undefined : { opacity: 0, y: -10 }}
-                        transition={{ ...transition, delay: reducedMotion ? 0 : index * 0.035 }}
+                        animate={
+                          reducedMotion ? undefined : { opacity: 1, y: 0 }
+                        }
+                        exit={
+                          reducedMotion ? undefined : { opacity: 0, y: -10 }
+                        }
+                        transition={{
+                          ...transition,
+                          delay: reducedMotion ? 0 : index * 0.035,
+                        }}
                       >
-                        <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">{spec.label}</h4>
-                        <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">{spec.value}</p>
+                        <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">
+                          {spec.label}
+                        </h4>
+                        <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">
+                          {spec.value}
+                        </p>
                       </m.div>
                     ))}
                   </AnimatePresence>
@@ -417,9 +507,21 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                   <m.div
                     key={`${activeProduct.name}-visual`}
                     className="absolute inset-0"
-                    initial={reducedMotion ? false : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }}
-                    animate={reducedMotion ? undefined : { opacity: 1, x: 0, rotateY: 0, scale: 1 }}
-                    exit={reducedMotion ? undefined : { opacity: 0, x: -45, rotateY: 8, scale: 0.98 }}
+                    initial={
+                      reducedMotion
+                        ? false
+                        : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }
+                    }
+                    animate={
+                      reducedMotion
+                        ? undefined
+                        : { opacity: 1, x: 0, rotateY: 0, scale: 1 }
+                    }
+                    exit={
+                      reducedMotion
+                        ? undefined
+                        : { opacity: 0, x: -45, rotateY: 8, scale: 0.98 }
+                    }
                     transition={transition}
                     style={{ transformPerspective: 1200 }}
                   >
@@ -427,7 +529,9 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                       <m.div
                         className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%]"
                         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-                        animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                        animate={
+                          reducedMotion ? undefined : { opacity: 1, y: 0 }
+                        }
                         exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
                         transition={transition}
                       >
@@ -440,26 +544,33 @@ export function SeriesRobotSelector({ data, series }: { data: SeriesPageData, se
                         />
                       </m.div>
                     ) : null}
-                    {series === "psr-series" ? <Image
-                      src={`${imagePath}${activeProduct.image}`}
-                      alt={activeProduct.name}
-                      width={650}
-                      height={400}
-                      className={cn(
-                        "relative mt-20 z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[80%]",
-                        selectorImageClass(activeProduct.name),
-                      )}
-                    />: <Image
-                      src={`${imagePath}${activeProduct.image}`}
-                      alt={activeProduct.name}
-                      fill
-                      sizes="(max-width: 1024px) 110vw, 1180px"
-                      className={cn(
-                        "relative z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
-                        selectorImageClass(activeProduct.name),
-                      )}
-                    />}
-                    <FloatingTags product={activeProduct} reducedMotion={Boolean(reducedMotion)} />
+                    {series === "psr-series" ? (
+                      <Image
+                        src={`${imagePath}${activeProduct.image}`}
+                        alt={activeProduct.name}
+                        width={650}
+                        height={400}
+                        className={cn(
+                          "relative mt-20 z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[80%]",
+                          selectorImageClass(activeProduct.name),
+                        )}
+                      />
+                    ) : (
+                      <Image
+                        src={`${imagePath}${activeProduct.image}`}
+                        alt={activeProduct.name}
+                        fill
+                        sizes="(max-width: 1024px) 110vw, 1180px"
+                        className={cn(
+                          "relative z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
+                          selectorImageClass(activeProduct.name),
+                        )}
+                      />
+                    )}
+                    <FloatingTags
+                      product={activeProduct}
+                      reducedMotion={Boolean(reducedMotion)}
+                    />
                   </m.div>
                 </AnimatePresence>
               </div>
@@ -485,17 +596,19 @@ function UnitToggle({
       className="inline-flex cursor-pointer items-center gap-2 self-start text-[12px] font-extrabold uppercase tracking-wide text-[#011f40]"
       aria-label="Toggle metric and imperial units"
     >
-      <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>Metric</span>
+      <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>
+        Metric
+      </span>
       <span className="relative h-6 w-11 rounded-full bg-[#011f40] p-0.5">
         <m.span
-          className={cn(
-            "block size-5 rounded-full bg-white",
-          )}
+          className={cn("block size-5 rounded-full bg-white")}
           animate={{ x: unit === "imperial" ? 20 : 0 }}
           transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
         />
       </span>
-      <span className={unit === "imperial" ? "opacity-100" : "opacity-45"}>Imperial</span>
+      <span className={unit === "imperial" ? "opacity-100" : "opacity-45"}>
+        Imperial
+      </span>
     </button>
   );
 }
@@ -521,7 +634,10 @@ const defaultMobileTagPositions: FloatingTagPosition[] = [
   { left: "6%", top: "48%" },
 ];
 
-const desktopTagPositionsByProduct: Record<string, Record<string, FloatingTagPosition>> = {
+const desktopTagPositionsByProduct: Record<
+  string,
+  Record<string, FloatingTagPosition>
+> = {
   "AR 250": {
     Tugging: { left: "6%", top: "50%" },
     Lifting: { left: "38%", top: "28%" },
@@ -567,13 +683,16 @@ const desktopTagPositionsByProduct: Record<string, Record<string, FloatingTagPos
   },
 };
 
-const mobileTagPositionsByProduct: Record<string, Record<string, FloatingTagPosition>> = {
+const mobileTagPositionsByProduct: Record<
+  string,
+  Record<string, FloatingTagPosition>
+> = {
   "AR 250": {
     Tugging: { left: "1%", top: "53%" },
     Lifting: { left: "33%", top: "30%" },
     Tunneling: { left: "78%", top: "68%" },
   },
-   "AR 500": {
+  "AR 500": {
     Cobot: { left: "73%", top: "31%" },
     Tugging: { left: "1%", top: "53%" },
   },
@@ -587,7 +706,7 @@ const mobileTagPositionsByProduct: Record<string, Record<string, FloatingTagPosi
     Lifting: { left: "51%", top: "49%" },
     Tunneling: { left: "77%", top: "79%" },
   },
-   "PSR 2000": {
+  "PSR 2000": {
     "Open Pallet": { left: "1%", top: "28%" },
     Stacking: { left: "70%", top: "76%" },
   },
@@ -613,12 +732,28 @@ const mobileTagPositionsByProduct: Record<string, Record<string, FloatingTagPosi
   },
 };
 
-function getMobileTagPosition(productName: string, tag: string, index: number): FloatingTagPosition {
-  return mobileTagPositionsByProduct[productName]?.[tag] ?? defaultMobileTagPositions[index] ?? defaultMobileTagPositions[0];
+function getMobileTagPosition(
+  productName: string,
+  tag: string,
+  index: number,
+): FloatingTagPosition {
+  return (
+    mobileTagPositionsByProduct[productName]?.[tag] ??
+    defaultMobileTagPositions[index] ??
+    defaultMobileTagPositions[0]
+  );
 }
 
-function getDesktopTagPosition(productName: string, tag: string, index: number): FloatingTagPosition {
-  return desktopTagPositionsByProduct[productName]?.[tag] ?? defaultDesktopTagPositions[index] ?? defaultDesktopTagPositions[0];
+function getDesktopTagPosition(
+  productName: string,
+  tag: string,
+  index: number,
+): FloatingTagPosition {
+  return (
+    desktopTagPositionsByProduct[productName]?.[tag] ??
+    defaultDesktopTagPositions[index] ??
+    defaultDesktopTagPositions[0]
+  );
 }
 
 function FloatingTags({
@@ -637,7 +772,11 @@ function FloatingTags({
           style={getDesktopTagPosition(product.name, tag, index)}
           initial={reducedMotion ? false : { opacity: 0, y: 16, scale: 0.96 }}
           animate={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.4, delay: reducedMotion ? 0 : 0.16 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: 0.4,
+            delay: reducedMotion ? 0 : 0.16 + index * 0.08,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
           {tag}
         </m.span>
@@ -669,4 +808,3 @@ function selectorImageClass(name: string) {
       return "scale-[1.2] translate-y-[8%]";
   }
 }
-
