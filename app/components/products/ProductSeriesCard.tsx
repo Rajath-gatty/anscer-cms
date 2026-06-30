@@ -23,10 +23,10 @@ function ProductSeriesCard() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent" />
               <div className="relative z-10 flex  flex-col items-start justify-between h-full">
                 <div className="grow h-0 flex flex-col items-start">
-                  <h3 className="text-[22px] font-semibold leading-[1.15]">
+                  <h3 className="text-[28px] font-semibold leading-[1.15]">
                     {series.title}
                   </h3>
-                  <p className="mt-2 line-clamp-3 max-w-[300px] text-[11px] font-normal leading-[15px] text-white/86">
+                  <p className="mt-2 line-clamp-4 max-w-[300px] text-[14px] font-normal leading-[20px] text-white/86">
                     {series.copy}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
