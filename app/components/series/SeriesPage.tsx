@@ -104,7 +104,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               className="object-contain object-right drop-shadow-[0_30px_45px_rgba(1,31,64,.18)]"
             />
           </div>
-          <div className="pointer-events-none absolute inset-0 block">
+          {/* <div className="pointer-events-none absolute inset-0 block">
             {data.tags.map((tag) => (
               <span
                 key={tag}
@@ -114,7 +114,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
                 {tag}
               </span>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
