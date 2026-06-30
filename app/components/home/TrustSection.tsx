@@ -20,12 +20,12 @@ export function TrustSection() {
       <div className="absolute inset-0 " />
       <FadeUp className="site-container relative z-10">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-[34px] font-semibold leading-tight tracking-tight md:text-[58px]">
+          <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[60px]">
             Engineered in India.
             <br />
             Trusted <span className="text-[#005ead]">Everywhere.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#4d4d4d]">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#4d4d4d] md:text-base">
             Born in India, for the world, we deliver precision-engineered
             automation trusted by industry leaders. Our homegrown innovation
             powers global performance with reliability, intelligence, and impact.
@@ -33,7 +33,7 @@ export function TrustSection() {
         </div>
       </FadeUp>
       <div className="absolute inset-x-0 bottom-2 z-10 overflow-hidden py-3 md:bottom-3">
-        <div className="logo-marquee flex w-max items-center gap-20 opacity-75 grayscale">
+        <div className="logo-marquee flex w-max items-center gap-20 grayscale">
           {[...clientLogos, ...clientLogos, ...clientLogos].map(
             (logo, index) => (
               <Image

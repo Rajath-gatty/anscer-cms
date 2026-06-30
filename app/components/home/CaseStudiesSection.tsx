@@ -109,14 +109,14 @@ export function CaseStudiesSection() {
               className="h-7 w-auto object-contain md:h-10"
             />
             <h4 className="mt-3 text-sm font-semibold text-[#011f40] md:mt-4 md:text-lg">{activeCase.title}</h4>
-            <p className="mt-2 text-[10px] leading-4 text-[#536171] md:mt-3 md:text-sm md:leading-6">
+            <p className="mt-2 text-sm leading-4 text-[#536171] md:mt-3 md:text-base md:leading-6">
               {activeCase.copy}
             </p>
             <div className="mt-3 md:mt-5">
               <div className="md:hidden">
                 <a
                   href="#contact"
-                  className="inline-flex h-9 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] px-4 text-[11px] font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                  className="inline-flex h-9 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] px-4 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                 >
                   Read their story <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
                 </a>

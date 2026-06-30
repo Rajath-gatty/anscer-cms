@@ -74,7 +74,7 @@ export default function ProductsPage() {
 
 function SmartNavigationSection() {
   return (
-    <section className="bg-[#eaf2f8] py-14 md:py-20">
+    <section className="hidden bg-[#eaf2f8] py-14 md:py-20">
       <div className="site-container">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>

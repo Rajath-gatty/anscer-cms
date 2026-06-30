@@ -10,7 +10,7 @@ export function ProductsSection() {
   const secondaryProducts = productCards.filter((product) => !product.featured);
 
   return (
-    <section id="robots" className="bg-[#fafafa] pb-10 md:pb-20">
+    <section id="robots" className="bg-[#fafafa] pb-10 md:py-20">
       <div className="site-container">
         <FadeRight className="max-w-3xl">
           <Kicker>Robots Designed to Deliver</Kicker>
@@ -49,10 +49,8 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
           : "min-h-[235px] md:min-h-[270px]"
       }`}
     >
-      <h3 className="text-xl font-semibold md:text-[30px]">
-        {product.title}
-      </h3>
-      <p className="mt-2 max-w-xl text-[10px] leading-4 text-[#27384b] md:mt-3 md:text-sm md:leading-6">
+      <h3 className="text-xl font-semibold md:text-[24px]">{product.title}</h3>
+      <p className="mt-2 max-w-xl text-sm leading-4 text-[#27384b] md:mt-3 md:text-base md:leading-6">
         {product.copy}
       </p>
       <Tags tags={product.tags} />
@@ -102,7 +100,7 @@ function ProductExploreButton() {
   return (
     <a
       href="#contact"
-      className="inline-flex h-8 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[10px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+      className="inline-flex h-8 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
     >
       Explore{" "}
       <ArrowRight aria-hidden="true" className="size-3.5" strokeWidth={2} />

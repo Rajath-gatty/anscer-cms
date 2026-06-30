@@ -96,7 +96,7 @@ export function SiteFooter() {
               <h3 className="text-sm font-semibold md:text-base">
                 India Office
               </h3>
-              <p className="mt-1 text-xs leading-6 md:text-base md:leading-[1.25]">
+              <p className="mt-1 text-xs leading-6 md:text-sm md:leading-[1.25]">
                 28B, 4th Main, Industrial Area, Bommasandra, Bengaluru,
                 <br />
                 Karnataka 560099
@@ -110,7 +110,7 @@ export function SiteFooter() {
 
             <div>
               <h3 className="text-sm font-semibold md:text-base">USA Office</h3>
-              <p className="mt-1 text-xs leading-6 md:text-base md:leading-[1.25]">
+              <p className="mt-1 text-xs leading-6 md:text-sm md:leading-[1.25]">
                 400 Chisholm Pl, PlanoTX 75075,
                 <br />
                 United States
@@ -176,7 +176,7 @@ export function SiteFooter() {
                     <FooterLink
                       href={link.href}
                       external={link.external}
-                      className="text-sm text-white/60 transition hover:text-white md:text-[15px]"
+                      className="text-sm text-white/60 transition hover:text-white"
                     >
                       {link.label}
                     </FooterLink>
@@ -192,7 +192,7 @@ export function SiteFooter() {
               <h2 className="text-base font-semibold md:text-xl">
                 Get the latest in news about ANSCER
               </h2>
-              <p className="mt-4 text-xs md:text-base">
+              <p className="mt-4 text-xs md:text-sm">
                 Sign up for our newsletter!
               </p>
 
@@ -204,7 +204,7 @@ export function SiteFooter() {
                   id="footer-email"
                   type="email"
                   placeholder="Enter your email address"
-                  className="w-full border-0 border-b border-[#fafafa99] bg-transparent pb-[14px] pr-12 text-sm text-[#fafafa] outline-none placeholder:text-[#fafafa4d] md:text-base"
+                  className="w-full border-0 border-b border-[#fafafa99] bg-transparent pb-[14px] pr-12 text-sm text-[#fafafa] outline-none placeholder:text-[#fafafa4d]"
                 />
                 <button
                   type="submit"
@@ -218,7 +218,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[34px] py-5 text-xs md:flex-row md:items-center md:justify-between md:gap-6 md:text-base">
+        <div className="flex flex-col gap-[34px] py-5 text-sm md:flex-row md:items-center md:justify-between md:gap-6">
           <p className="order-2 w-full text-center md:order-1 md:w-auto md:text-left">
             &copy; ANSCER Robotics 2026 | All rights reserved
           </p>
