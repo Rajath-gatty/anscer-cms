@@ -27,7 +27,7 @@ export function SolutionsSection() {
   return (
     <section id="solutions" className="bg-[#fafafa] py-14 md:py-20 lg:pb-0">
       <div className="site-container">
-        <div className="flex  items-center justify-between gap-6 md:gap-8">
+        <div className="md:flex grid items-center justify-between gap-6 md:gap-8">
           <div className="pb-8 pt-1 text-left">
             <Kicker>Solutions That Solve, Everywhere.</Kicker>
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
