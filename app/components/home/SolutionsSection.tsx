@@ -40,10 +40,10 @@ export function SolutionsSection() {
             </p>
           </div>
           <div className="xl:border-l xl:pl-4">
-            <div className="divide-x">
+            <div className="divide-x flex items-center">
               {stats.length > 0 &&
                 stats.map((stat, index) => (
-                  <div key={index} className="mb-4">
+                  <div key={index} className="mb-4 px-3">
                     <p className="text-[20px] font-extrabold text-[#011f40] md:text-[28px]">
                       {stat.value}
                     </p>
