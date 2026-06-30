@@ -5,6 +5,7 @@ import { AnimatePresence, m } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { imagePath } from "../home/assets";
+import { ScrollReveal } from "../home/ScrollReveal";
 
 const heroSlides = [
   {
@@ -100,26 +101,28 @@ export function ProductHeroSlider() {
     <section className="bg-[#fafafa]">
       <div className="site-container grid min-h-[calc(100svh-60px)] items-center gap-8 py-12 md:min-h-[calc(100svh-110px)] md:grid-cols-2 md:py-16">
         <div>
-          <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
-            {active.title}{" "}
-            <span className="relative inline-grid overflow-hidden align-bottom text-[#005ead]">
-              <AnimatePresence mode="popLayout" initial={false}>
-                <m.span
-                  key={active.accent}
-                  initial={{ y: "85%", opacity: 0 }}
-                  animate={{ y: "0%", opacity: 1 }}
-                  exit={{ y: "-85%", opacity: 0 }}
-                  transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  {active.accent}
-                </m.span>
-              </AnimatePresence>
-            </span>
-          </h1>
-          <p className="mt-5 max-w-[470px] text-sm leading-5 text-[#3f4b57] md:text-[18px] md:leading-[26px]">
-            Explore ANSCER&apos;s cutting-edge lineup: powerful, smart
-            automation solutions engineered to transform your operations.
-          </p>
+          <ScrollReveal>
+            <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
+              {active.title}{" "}
+              <span className="relative inline-grid overflow-hidden align-bottom text-[#005ead]">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <m.span
+                    key={active.accent}
+                    initial={{ y: "85%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    exit={{ y: "-85%", opacity: 0 }}
+                    transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    {active.accent}
+                  </m.span>
+                </AnimatePresence>
+              </span>
+            </h1>
+            <p className="mt-5 max-w-[470px] text-sm leading-5 text-[#3f4b57] md:text-[18px] md:leading-[26px]">
+              Explore ANSCER&apos;s cutting-edge lineup: powerful, smart
+              automation solutions engineered to transform your operations.
+            </p>
+          </ScrollReveal>
           <a
             href="#robot-series"
             className="group mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
@@ -197,4 +200,3 @@ export function ProductHeroSlider() {
     </section>
   );
 }
-
