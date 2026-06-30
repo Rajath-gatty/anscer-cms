@@ -1,12 +1,14 @@
+import { ArrowLeft, ArrowRight, GitFork, Route, Workflow } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, GitFork, Route, Workflow } from "lucide-react";
 import { imagePath } from "../components/home/assets";
 import { ScrollReveal } from "../components/home/ScrollReveal";
 import { ProductFaqAccordion } from "../components/products/ProductFaqAccordion";
 import { ProductHeroSlider } from "../components/products/ProductHeroSlider";
-import { ProductSeriesStaticMobile, ProductSeriesStickyStack } from "../components/products/ProductSeriesStickyStack";
-
+import {
+  ProductSeriesStaticMobile,
+  ProductSeriesStickyStack,
+} from "../components/products/ProductSeriesStickyStack";
 
 export const metadata: Metadata = {
   title: "Products | ANSCER Robotics",
@@ -60,7 +62,7 @@ export default function ProductsPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
       <ProductHeroSlider />
-      <SmartNavigationSection />
+      {/* <SmartNavigationSection /> */}
       <FeaturesSection />
       <div id="robot-series">
         <ProductSeriesStaticMobile />
@@ -78,44 +80,77 @@ function SmartNavigationSection() {
       <div className="site-container">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">Real Solutions For Real Challenges</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">
+              Real Solutions For Real Challenges
+            </p>
             <h2 className="mt-4 text-[28px] font-bold leading-tight tracking-tight md:text-[36px]">
-              Smarter Navigation, <span className="text-[#005ead]">Anywhere</span>
+              Smarter Navigation,{" "}
+              <span className="text-[#005ead]">Anywhere</span>
             </h2>
             <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit Ut et massa mi. Aliquam in hendrerit urna.
-              Pellentesque sit amet sapien.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit Ut et
+              massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.
             </p>
           </div>
           <div className="flex items-center gap-3">
             <span className="grid h-8 min-w-[62px] place-items-center rounded-full border border-[#b9c9d9] px-4 text-xs font-medium">
               01/03
             </span>
-            <button className="grid size-8 place-items-center rounded-full border border-[#b9c9d9]" aria-label="Previous navigation slide">
+            <button
+              className="grid size-8 place-items-center rounded-full border border-[#b9c9d9]"
+              aria-label="Previous navigation slide"
+            >
               <ArrowLeft aria-hidden="true" className="size-4" />
             </button>
-            <button className="grid size-8 place-items-center rounded-full border border-[#b9c9d9]" aria-label="Next navigation slide">
+            <button
+              className="grid size-8 place-items-center rounded-full border border-[#b9c9d9]"
+              aria-label="Next navigation slide"
+            >
               <ArrowRight aria-hidden="true" className="size-4" />
             </button>
           </div>
         </div>
 
         <div className="mt-9 grid gap-6 lg:grid-cols-[0.68fr_0.32fr]">
-          <NavigationCard large image="case-study-manufacturing.jpg" title="Lorem ipsum dolor sit amet" />
-          <NavigationCard image="Frame-1321316466.jpg" title="Flexible robot movement" />
+          <NavigationCard
+            large
+            image="case-study-manufacturing.jpg"
+            title="Lorem ipsum dolor sit amet"
+          />
+          <NavigationCard
+            image="Frame-1321316466.jpg"
+            title="Flexible robot movement"
+          />
         </div>
       </div>
     </section>
   );
 }
 
-function NavigationCard({ image, title, large = false }: { image: string; title: string; large?: boolean }) {
+function NavigationCard({
+  image,
+  title,
+  large = false,
+}: {
+  image: string;
+  title: string;
+  large?: boolean;
+}) {
   return (
-    <article className={`relative overflow-hidden rounded-lg bg-[#011f40] ${large ? "min-h-[470px]" : "min-h-[470px]"}`}>
-      <Image src={`${imagePath}${image}`} alt={title} fill sizes="(max-width: 1024px) 100vw, 900px" className="object-cover opacity-88" />
+    <article
+      className={`relative overflow-hidden rounded-lg bg-[#011f40] ${large ? "min-h-[470px]" : "min-h-[470px]"}`}
+    >
+      <Image
+        src={`${imagePath}${image}`}
+        alt={title}
+        fill
+        sizes="(max-width: 1024px) 100vw, 900px"
+        className="object-cover opacity-88"
+      />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,.04),rgba(1,31,64,.72))]" />
       <p className="absolute bottom-6 left-6 right-6 text-sm leading-5 text-white/90 md:text-base md:leading-6">
-        {title}. Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna.
+        {title}. Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et
+        massa mi. Aliquam in hendrerit urna.
       </p>
     </article>
   );
@@ -126,10 +161,17 @@ function FeaturesSection() {
     <section className="bg-[#fafafa] py-14 md:py-20">
       <div className="site-container">
         <ScrollReveal className="max-w-[600px]">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">How Our Robots Deliver Excellence</p>
-          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">Key Features of All Our <span className="text-[#005ead]">Robots</span></h2>
+          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">
+            How Our Robots Deliver Excellence
+          </p>
+          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
+            Key Features of All Our{" "}
+            <span className="text-[#005ead]">Robots</span>
+          </h2>
           <p className="mt-4 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
-            Never worry about maintenance. ANSCER Robotics ensures seamless software updates, reliable hardware, and ongoing support to keep your robots operating at peak performance.
+            Never worry about maintenance. ANSCER Robotics ensures seamless
+            software updates, reliable hardware, and ongoing support to keep
+            your robots operating at peak performance.
           </p>
         </ScrollReveal>
 
@@ -149,27 +191,40 @@ function FeaturesSection() {
                       strokeWidth={2}
                     />
                   </div>
-                  <h3 className="mt-5 text-xl font-bold text-[#005ead] md:text-2xl">{feature.title}</h3>
-                  <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">{feature.copy}</p>
+                  <h3 className="mt-5 text-xl font-semibold text-[#005ead] md:text-xl">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+                    {feature.copy}
+                  </p>
                 </article>
               </ScrollReveal>
             ))}
           </div>
           <ScrollReveal delay={160} className="h-full">
             <article className="relative h-full min-h-[310px] overflow-hidden rounded-lg bg-[#011f40] p-7 text-white">
-              <Image src={`${imagePath}de9a09864e6cf7999d592447391655110840a585.png`} alt="" fill sizes="680px" className="object-cover opacity-55" />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,31,64,.72),rgba(1,31,64,.18))]" />
-              <div className="relative z-10 max-w-[340px]">
-                <h3 className="text-xl font-bold md:text-2xl">Let&apos;s Build Together</h3>
-                <p className="mt-3 text-sm leading-5 text-white/84 md:text-base md:leading-6">Join us in shaping the future of robotics.</p>
-              </div>
               <Image
+                src={`${imagePath}de9a09864e6cf7999d592447391655110840a585.png`}
+                alt=""
+                fill
+                sizes="680px"
+                className="object-cover"
+              />
+              <div className="relative z-10 max-w-[340px]">
+                <h3 className="text-xl font-bold md:text-2xl">
+                  Let&apos;s Build Together
+                </h3>
+                <p className="mt-3 text-sm leading-5 text-white/84 md:text-base md:leading-6">
+                  Join us in shaping the future of robotics.
+                </p>
+              </div>
+              {/* <Image
                 src={`${imagePath}agv-100-new.png`}
                 alt="AGV robot"
                 width={420}
                 height={250}
                 className="absolute bottom-0 right-6 w-[54%] max-w-[430px] object-contain"
-              />
+              /> */}
             </article>
           </ScrollReveal>
         </div>
@@ -183,9 +238,12 @@ function FaqSection() {
     <section className="bg-[#fafafa] py-14">
       <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">
         <div>
-          <h2 className="mt-5 text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">FAQs</h2>
+          <h2 className="mt-5 text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">
+            FAQs
+          </h2>
           <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-6">
-            We&apos;ve heard it all — here&apos;s what people are really asking behind the scenes.
+            We&apos;ve heard it all — here&apos;s what people are really asking
+            behind the scenes.
           </p>
         </div>
         <ProductFaqAccordion items={faqs} />
@@ -196,18 +254,28 @@ function FaqSection() {
 
 function ProductsCta() {
   return (
-    <section className="relative flex min-h-[556px] items-center overflow-hidden bg-[#005ead] py-20 text-white">
-      <Image src="/anscer/images/dive-into-future/bg.png" alt="" fill sizes="100vw" className="object-cover" />
-      <div className="absolute inset-0 z-10 bg-black/55" />
-      <div className="absolute inset-0 z-20 bg-[#005ead] mix-blend-color" />
-      <div className="site-container relative z-30 flex flex-col items-start gap-6">
-        <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] tracking-normal md:leading-[70px] lg:text-[60px] lg:leading-[1.1]">Dive Into The Future Factory</h2>
-        <p className="max-w-[850px] text-[14px] font-medium leading-[20px] text-white md:leading-[32px] lg:text-[18px] lg:leading-[32px]">
-          Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation solutions engineered to transform your operations.
+    <section className="relative overflow-hidden flex items-center py-20 text-white h-[500px]">
+      <Image
+        src={`${imagePath}96cdc152cb608044ef4fbddf84c5978fac86d350.png`}
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover bg-[#005ead]  h-full absolute inset-0"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_48%,rgba(0,0,0,.28)_100%)] mix-blend-color" />
+      <div className="absolute inset-0 w-full h-full bg-black/70" />
+      <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
+      <div className="site-container relative z-10">
+        <h2 className="max-w-[760px] text-[48px] font-semibold leading-tight tracking-tight md:text-[60px]">
+          Dive Into The Future Factory
+        </h2>
+        <p className="mt-4 max-w-[560px] font-medium text-sm leading-5 text-white/85 md:text-[18px] md:leading-[26px]">
+          Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation
+          solutions engineered to transform your operations.
         </p>
         <a
           href="#contact"
-          className="group inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
+          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
         >
           Talk to our experts
           <span className="relative flex size-4 overflow-hidden">

@@ -12,18 +12,17 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#005ead] py-20 text-white">
+      <section className="relative overflow-hidden flex items-center bg-[#005ead] py-20 text-white h-[500px]">
         <Image
-          src={`${imagePath}footer-banner.png`}
+          src={`${imagePath}${data.footerBanner}`}
           alt=""
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover h-full absolute inset-0"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_48%,rgba(0,0,0,.28)_100%)]" />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-[#005ead] mix-blend-color" />
-        <div className="absolute inset-0 bg-[#005ead]/60 mix-blend-color" />
+        <div className="absolute inset-0 w-full h-full bg-black/70" />
+        <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
         <div className="site-container relative z-10">
           <h2 className=" text-[48px] font-semibold leading-[1.1] md:text-[60px]">
             {data.ctaTitle ??
@@ -50,6 +49,7 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         productTitle={data.title}
+        productProfileUrl={data.productProfileUrl}
       />
     </>
   );

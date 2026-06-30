@@ -113,7 +113,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
       {
         name: "AR 250",
         description: "Compact AMR supporting diverse top modules for flexible material movement.",
-        image: "ar250-new.png",
+        image: "ar-250-latest.png",
         bgText: "AR-250.svg",
         href: "/ar-series/ar-250",
         tags: ["Tugging", "Lifting", "Tunneling"],
@@ -128,7 +128,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
       {
         name: "AR 500",
         description: "Compact AMR supporting diverse top modules for flexible material movement.",
-        image: "ar-500-new.png",
+        image: "ar-500-latest.png",
         bgText: "AR-500.png",
         href: "/ar-series/ar-500",
         tags: ["Cobot", "Tugging"],

@@ -43,10 +43,10 @@ export function ProductHero({ data }: { data: ProductDetailData }) {
             <Image
               src={`${imagePath}${data.heroImage}`}
               alt={data.title}
-              fill
               priority
-              sizes="(max-width: 1024px) 80vw, 560px"
-              className="z-10 object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
+              width={600}
+              height={400}
+              className="z-10 absolute top-1/2 left-1/2 h-[90%] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
             />
           )}
         </div>

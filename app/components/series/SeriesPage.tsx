@@ -12,7 +12,7 @@ export function SeriesPage({ data }: { data: SeriesPageData }) {
       <SeriesHero data={data} />
       <SeriesFeatures data={data} />
       <SeriesApplicationsCarousel data={data} />
-      <SeriesRobotSelector data={data} />
+      <SeriesRobotSelector data={data} series={data.slug} />
       <SeriesFaqs data={data} />
     </main>
   );

@@ -48,7 +48,7 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
       className="scroll-mt-28 bg-[#fafafa] py-12 md:py-14"
     >
       <div className="site-container">
-        <ScrollReveal className="max-w-190">
+        <ScrollReveal className="max-w-190" direction="left">
           <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
             Features
           </p>
@@ -58,13 +58,14 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
           </p>
         </ScrollReveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {data.features.features.slice(0, 2).map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              title={feature.title}
-              copy={feature.copy}
-              Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
+          {data.features.features.slice(0, 2).map((feature, index) => (
+            <ScrollReveal key={feature.title} delay={index * 100 + 100}>
+              <FeatureCard
+                title={feature.title}
+                copy={feature.copy}
+                Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
             />
+            </ScrollReveal>
           ))}
           <article className="relative order-last row-span-2 min-h-80 overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:order-0 lg:min-h-95">
             <Image
