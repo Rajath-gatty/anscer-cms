@@ -20,8 +20,8 @@ type TeamSliderProps = {
   copy: string;
 };
 
-const autoplayDelay = 10000;
-const desktopInitialIndex = 1;
+const autoplayDelay = 5000;
+const desktopInitialIndex = 0;
 
 function getDesignedVisibleCount(total: number) {
   if (window.innerWidth >= 1024) return Math.min(3, total);
@@ -46,18 +46,20 @@ export function TeamSlider({
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(1);
 
-  const maxIndex = Math.max(slides.length - 1, 0);
+  const visibleSlideCount = Math.max(visibleCount, 1);
+  const maxScrollIndex = Math.max(slides.length - visibleSlideCount, 0);
+  const displayIndex = Math.min(activeIndex, maxScrollIndex);
 
   const counter = useMemo(() => {
     const total = String(slides.length).padStart(2, "0");
-    const start = String(activeIndex + 1).padStart(2, "0");
-    const endIndex = Math.min(activeIndex + Math.max(visibleCount, 1), slides.length);
+    const start = String(displayIndex + 1).padStart(2, "0");
+    const endIndex = Math.min(displayIndex + visibleSlideCount, slides.length);
     const end = String(endIndex).padStart(2, "0");
 
-    return visibleCount > 1 && activeIndex + 1 !== endIndex
+    return visibleSlideCount > 1 && displayIndex + 1 !== endIndex
       ? `${start}–${end}/${total}`
       : `${start}/${total}`;
-  }, [activeIndex, slides.length, visibleCount]);
+  }, [displayIndex, slides.length, visibleSlideCount]);
 
   const updateFromScroll = useCallback(() => {
     const slider = sliderRef.current;
@@ -81,8 +83,11 @@ export function TeamSlider({
       }
     });
 
-    setVisibleCount(getDesignedVisibleCount(slides.length));
-    setActiveIndex(closestIndex);
+    const designedVisibleCount = getDesignedVisibleCount(slides.length);
+    const lastScrollableIndex = Math.max(slides.length - designedVisibleCount, 0);
+
+    setVisibleCount(designedVisibleCount);
+    setActiveIndex(Math.min(closestIndex, lastScrollableIndex));
   }, [slides.length]);
 
   const goTo = useCallback(
@@ -90,18 +95,35 @@ export function TeamSlider({
       const slider = sliderRef.current;
       if (!slider) return;
 
-      const slide = slider.querySelectorAll<HTMLElement>("[data-team-slide]")[
-        Math.max(0, Math.min(index, maxIndex))
-      ];
+      const boundedIndex = Math.max(0, Math.min(index, maxScrollIndex));
+      const slideNodes = slider.querySelectorAll<HTMLElement>("[data-team-slide]");
+      const slide = slideNodes[boundedIndex];
       if (!slide) return;
 
-      const inset = Number.parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
+      const computedStyle = window.getComputedStyle(slider);
+      const inset = Number.parseFloat(computedStyle.paddingLeft) || 0;
+      const rightInset = Number.parseFloat(computedStyle.paddingRight) || 0;
+      const isLastGroup = boundedIndex === maxScrollIndex && maxScrollIndex > 0;
+      let targetLeft =
+        slide.offsetLeft - inset - (isLastGroup ? 0 : getDesktopPeekSize());
+
+      if (isLastGroup) {
+        const lastSlide = slideNodes[slideNodes.length - 1];
+
+        if (lastSlide) {
+          targetLeft = Math.max(
+            targetLeft,
+            lastSlide.offsetLeft + lastSlide.offsetWidth + rightInset - slider.clientWidth
+          );
+        }
+      }
+
       slider.scrollTo({
-        left: slide.offsetLeft - inset - getDesktopPeekSize(),
+        left: Math.max(0, targetLeft),
         behavior,
       });
     },
-    [maxIndex]
+    [maxScrollIndex]
   );
 
   const stopAutoplay = useCallback(() => {
@@ -113,21 +135,24 @@ export function TeamSlider({
 
   const startAutoplay = useCallback(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (maxScrollIndex <= 0) return;
 
     stopAutoplay();
     autoplayRef.current = window.setInterval(() => {
       setActiveIndex((current) => {
-        if (current >= maxIndex) {
+        const clampedCurrent = Math.min(current, maxScrollIndex);
+
+        if (clampedCurrent >= maxScrollIndex) {
           stopAutoplay();
-          return current;
+          return clampedCurrent;
         }
 
-        const next = current + 1;
+        const next = clampedCurrent + 1;
         goTo(next);
         return next;
       });
     }, autoplayDelay);
-  }, [goTo, maxIndex, stopAutoplay]);
+  }, [goTo, maxScrollIndex, stopAutoplay]);
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -172,12 +197,18 @@ export function TeamSlider({
 
   const handlePrevious = () => {
     stopAutoplay();
-    goTo(activeIndex <= 0 ? 0 : activeIndex - 1);
+    const previousIndex = displayIndex <= 0 ? 0 : displayIndex - 1;
+    setActiveIndex(previousIndex);
+    goTo(previousIndex);
   };
 
   const handleNext = () => {
     stopAutoplay();
-    goTo(activeIndex >= maxIndex ? maxIndex : activeIndex + 1);
+    const nextIndex =
+      displayIndex >= maxScrollIndex ? maxScrollIndex : displayIndex + 1;
+
+    setActiveIndex(nextIndex);
+    goTo(nextIndex);
   };
 
   return (
@@ -206,7 +237,7 @@ export function TeamSlider({
             <button
               type="button"
               onClick={handlePrevious}
-              disabled={activeIndex === 0}
+              disabled={displayIndex === 0}
               aria-label="Previous team member"
               className="grid size-10 place-items-center rounded-full border border-[#011f40] text-[#011f40] transition-colors duration-200 hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35 md:size-11"
             >
@@ -215,7 +246,7 @@ export function TeamSlider({
             <button
               type="button"
               onClick={handleNext}
-              disabled={activeIndex === maxIndex}
+              disabled={displayIndex === maxScrollIndex}
               aria-label="Next team member"
               className="grid size-10 place-items-center rounded-full border border-[#011f40] text-[#011f40] transition-colors duration-200 hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35 md:size-11"
             >
