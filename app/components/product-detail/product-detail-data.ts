@@ -55,6 +55,8 @@ export type ProductDetailData = {
     title: string;
     copy: string;
     image?: string;
+    hidden?: boolean;
+    hideBaseImage?: boolean;
     overlay?: {
       width?: string;
       height?: string;
@@ -144,8 +146,8 @@ const topModules = [
   {
     title: "Combined Lifter & Tunneling",
     copy: "Combined lifting and under-load movement in one module.",
-    image: "ar-250-belt-conveyer.png",
-    overlay: { width: "300px", height: "200px", sizes: "300px", top: "-5px" },
+    image: "combinedlifter.png",
+    overlay: { width: "250px", height: "200px", sizes: "300px", top: "30px" },
   },
   {
     title: "Pallet Lifter",
@@ -154,28 +156,31 @@ const topModules = [
     overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
   },
   {
-    title: "Auto Tugger",
-    copy: "Autonomous tugging for carts, racks, and trolley trains.",
-    image: "ar-250-belt-conveyer.png",
-    overlay: { width: "300px", height: "200px", sizes: "300px", top: "-5px" },
-  },
-  {
     title: "Roller Conveyor",
     copy: "Automated handoff between mobile robots and conveyor lines.",
-    image: "ar-250-pallet-lifter.png",
-    overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
+    image: "roller.png",
+    overlay: { width: "327px", height: "200px", sizes: "400px", top: "46px" },
   },
   {
     title: "Manual Tugger",
     copy: "Assisted tugging workflows for mixed manual and autonomous use.",
     image: "ar-250-belt-conveyer.png",
+    hidden: true,
     overlay: { width: "300px", height: "200px", sizes: "300px", top: "-5px" },
   },
   {
     title: "Custom Unit Load",
     copy: "Tailored modules for application-specific load handling.",
     image: "ar-250-pallet-lifter.png",
+    hidden: true,
     overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
+  },
+  {
+    title: "Auto Tugger",
+    copy: "Autonomous tugging for carts, racks, and trolley trains.",
+    image: "autotugger.png",
+    hideBaseImage: true,
+    overlay: { width: "400px", height: "300px", sizes: "400px", top: "-15px" },
   },
 ];
 

@@ -230,7 +230,7 @@ export function TeamSlider({
           <div className="flex items-center gap-3 md:pb-1">
             <span
               data-team-counter
-              className="min-w-[84px] rounded-full border border-[#011f40] px-5 py-2 text-center text-[12px] font-bold tabular-nums text-[#011f40] md:min-w-[122px] md:py-3 md:text-[16px]"
+              className="min-w-[84px] rounded-full border border-[#011f40] px-5 py-2 text-center text-[12px] font-normal tabular-nums text-[#011f40] md:min-w-[122px] md:py-3 md:text-[16px]"
             >
               {counter}
             </span>
