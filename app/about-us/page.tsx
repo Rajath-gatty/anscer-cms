@@ -472,16 +472,16 @@ function TeamSection() {
 function InvestorsSection() {
   return (
     <section className="bg-white pb-10 pt-4 md:pb-28 md:pt-8">
-      <div className="site-container grid gap-10 lg:grid-cols-[260px_1fr] lg:items-center">
+      <div className="site-container grid gap-10 lg:grid-cols-[260px_1fr] lg:items-center pt-10">
         <SectionHeading>
           Our <span className="text-[#005ead]">Investors</span>
         </SectionHeading>
 
-        <div className="grid min-h-[210px] md:translate-y-4 grid-cols-3 place-items-center gap-x-8 gap-y-7 sm:grid-cols-3 lg:min-h-[260px] lg:grid-cols-3 lg:grid-rows-1 lg:gap-10">
+        <div className="grid min-h-[210px] md:translate-y-4 place-items-center gap-x-8 gap-y-7 grid-cols-2 lg:min-h-[260px] lg:grid-cols-3 lg:grid-rows-1 lg:gap-10">
           {[...investorLogos].map((logo, index) => (
             <div
               key={`${logo.image}-${index}`}
-              className={`flex min-h-[42px] items-center justify-center md:min-h-[52px]`}
+              className={`flex min-h-[42px] items-center justify-center md:min-h-[52px] ${index===2 && 'col-span-3 md:col-span-1'}`}
             >
               <Image
                 src={`${imagePath}${logo.image}`}
