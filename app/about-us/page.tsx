@@ -85,17 +85,17 @@ const testimonials = [
 
 const stats = [
   {
-    value: "85",
+    value: "85+",
     label: "Projects Delivered",
     copy: "Successfully deployed automation solutions across 4+ continents, helping customers in diverse industries achieve operational excellence.",
   },
   {
-    value: "800,000",
+    value: "800,000+",
     label: "Autonomous Trips Completed",
     copy: "Proven reliability across real-world manufacturing and warehouse environments.",
   },
   {
-    value: "100",
+    value: "100+",
     label: "Robots Deployed Worldwide",
     copy: "Delivering reliable automation across multiple industries and geographies",
   },
