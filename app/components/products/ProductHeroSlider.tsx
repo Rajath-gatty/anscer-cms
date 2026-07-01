@@ -158,10 +158,18 @@ export function ProductHeroSlider() {
         </div>
 
         <div className="relative min-h-[300px] w-full md:min-h-[330px] lg:min-h-[420px] lg:-translate-y-8">
+          <div className="absolute inset-0 flex w-full items-center justify-center lg:justify-end">
+            <Image
+              src="/anscer/images/products/Union.png"
+              alt=""
+              fill
+              className="object-contain lg:object-right"
+            />
+          </div>
           <AnimatePresence mode="popLayout" initial={false}>
             <m.div
               key={active.image}
-              className="absolute inset-0 flex w-full items-center justify-center lg:justify-end"
+              className="absolute inset-0 z-10 flex w-full items-center justify-center lg:justify-end"
               initial={{ x: 80, opacity: 0, scale: 1 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
               exit={{ x: -80, opacity: 0, scale: 1 }}
