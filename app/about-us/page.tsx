@@ -107,30 +107,35 @@ const teamSlides = [
     name: "Ribin Mathew",
     role: "Global CEO, Co-founder",
     alt: "Ribin Mathew portrait",
+    linkedIn: "https://www.linkedin.com/in/ribin-mathew-a4133ab5"
   },
   {
     image: "about-team-mark.jpg",
     name: "Mark Messina",
     role: "MD & CEO ANSCER AMERICAS",
     alt: "Mark Messina portrait",
+    linkedIn: "https://www.linkedin.com/in/worldteam/"
   },
   {
     image: "about-team-ebin.jpg",
     name: "Ebin Sunny",
     role: "COO, Co-founder",
     alt: "Ebin Sunny portrait",
+    linkedIn: "https://www.linkedin.com/in/ebin-sunny/"
   },
   {
     image: "about-team-raghu.jpg",
     name: "Raghu Venkatesh",
     role: "CBO, Co-founder",
     alt: "Raghu Venkatesh portrait",
+    linkedIn: "https://www.linkedin.com/in/raghuvenkatesh/"
   },
   {
     image: "about-team-raj.jpg",
     name: "Raj Mohan",
     role: "CTO & Co-founder",
     alt: "Raj Mohan portrait",
+    linkedIn: "https://www.linkedin.com/in/rajmohan747/"
   },
 ] as const;
 
@@ -146,9 +151,9 @@ export default function AboutUsPage() {
       <AboutSectionReveal>
         <AboutHero />
       </AboutSectionReveal>
-      <AboutSectionReveal>
+      {/* <AboutSectionReveal>
         <StandForSection />
-      </AboutSectionReveal>
+      </AboutSectionReveal> */}
       <AboutSectionReveal>
         <WhatDrivesUsSection />
       </AboutSectionReveal>
@@ -185,10 +190,10 @@ function AboutHero() {
       <div className="absolute inset-0 bg-[linear-gradient(59deg,rgba(0,0,0,.82),rgba(0,0,0,.18)_66%,rgba(0,0,0,0))]" />
       <div className="site-container relative z-10 flex h-full items-end pb-8 md:items-center md:pb-0">
         <div className="max-w-[680px] md:pt-10">
-          <h1 className="max-w-[270px] text-[28px] font-extrabold leading-[1.08] text-white md:max-w-none md:text-[60px]">
+          <h1 className="max-w-[270px] text-[28px] font-bold leading-[1.08] text-white md:max-w-none md:text-[60px]">
             Powering What&rsquo;s Next, Today
           </h1>
-          <p className="mt-3 text-[9px] font-semibold leading-4 text-white/92 md:mt-6 md:text-base md:leading-6">
+          <p className="mt-3 text-[9px] font-semibold leading-4 text-white/92 md:mt-6 md:text-lg md:leading-6">
             Built to transform industries. Driven by vision
           </p>
         </div>
@@ -285,7 +290,7 @@ function WhatDrivesUsSection() {
         <SectionHeading>
           What Drives <span className="text-[#005ead]">Us</span>
         </SectionHeading>
-        <p className="mt-3 max-w-[640px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[15px] md:leading-[1.55]">
+        <p className="mt-3 max-w-[640px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[16px] md:leading-[1.55]">
           We launched ANSCER to redefine mobile robotics—delivering next-gen AMR
           solutions that prioritize safety, simplicity, and global scalability.
         </p>
@@ -339,10 +344,10 @@ function InfoCard({
         height={34}
         className="size-7 md:size-[34px]"
       />
-      <h3 className="mt-4 text-[15px] font-extrabold leading-tight text-[#005ead] md:mt-5 md:text-[20px]">
+      <h3 className="mt-4 text-[15px] font-semibold leading-tight text-[#005ead] md:mt-5 md:text-[24px]">
         {title}
       </h3>
-      <p className="mt-2 max-w-[460px] text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:text-[14px] md:leading-[1.55]">
+      <p className="mt-2 max-w-[460px] text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:text-[16px] md:leading-[1.55]">
         {copy}
       </p>
     </article>
@@ -361,10 +366,10 @@ function FeatureImageCard() {
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.68),rgba(0,0,0,0))]" />
       <div className="absolute left-4 right-4 top-4 max-w-[640px] md:left-6 md:right-auto md:top-6">
-        <h3 className="text-[13px] font-extrabold leading-tight md:text-[22px]">
+        <h3 className="text-[13px] font-bold leading-tight md:text-[24px]">
           Redefining logistics through robotics
         </h3>
-        <p className="mt-2 text-[10px] leading-[1.35] text-white/86 md:mt-3 md:text-[14px] md:leading-[1.55]">
+        <p className="mt-2 text-[10px] leading-[1.35] text-white/86 md:mt-3 md:text-[16px] md:leading-[1.55]">
           With an intuitive setup, configuring AMR workflows is quick—start
           autonomous payload movement within hours, if not minutes.
         </p>
@@ -405,14 +410,14 @@ function TestimonialsSection() {
               key={testimonial.name}
               className="flex min-h-[190px] w-[255px] shrink-0 flex-col rounded-md bg-white p-4 shadow-[0_12px_30px_rgba(1,31,64,.04)] md:min-h-[260px] md:w-auto md:p-6"
             >
-              <Image
+              {/* <Image
                 src={`${imagePath}Frame-1321316653.svg`}
                 alt=""
                 width={90}
                 height={18}
                 className="h-4 w-auto md:h-5"
-              />
-              <p className="mt-3 flex-1 text-[10px] font-medium leading-[1.45] text-[#011f40] md:mt-4 md:text-[14px] md:leading-[1.55]">
+              /> */}
+              <p className="mt-3 flex-1 text-[10px] font-normal leading-[1.45] text-[#011f40] md:mt-4 md:text-[18px] md:leading-[1.55]">
                 {testimonial.quote}
               </p>
               <div className="mt-4 flex items-center gap-3 md:mt-5">
@@ -424,10 +429,10 @@ function TestimonialsSection() {
                   className="size-8 rounded-full object-cover md:size-11"
                 />
                 <div>
-                  <h3 className="text-[10px] font-extrabold text-[#011f40] md:text-[13px]">
+                  <h3 className="text-[10px] font-medium text-[#011f40] md:text-[18px]">
                     {testimonial.name}
                   </h3>
-                  <p className="text-[9px] text-[#3a3a3a]/72 md:text-[12px]">
+                  <p className="text-[9px] text-[#3a3a3a]/72 md:text-[16px]">
                     {testimonial.role}
                   </p>
                 </div>
@@ -435,12 +440,12 @@ function TestimonialsSection() {
             </article>
           ))}
         </div>
-        <a
+        {/* <a
           href="#"
           className="mt-4 inline-flex h-9 items-center rounded-[3px] bg-[#005ead] px-4 text-[10px] font-extrabold uppercase tracking-wide text-white md:hidden"
         >
           Read all 56+ reviews
-        </a>
+        </a> */}
       </div>
     </section>
   );
@@ -495,7 +500,7 @@ function InvestorsSection() {
 
 function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#005ead] md:text-[12px]">
+    <p className="text-[9px] font-medium uppercase tracking-[0.12em] text-[#005ead] md:text-[16px]">
       {children}
     </p>
   );
@@ -503,7 +508,7 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mt-2 text-[20px] font-extrabold leading-tight text-[#011f40] md:mt-3 md:text-[36px]">
+    <h2 className="mt-2 text-[20px] font-bold leading-tight text-[#011f40] md:mt-3 md:text-[36px]">
       {children}
     </h2>
   );

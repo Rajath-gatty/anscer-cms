@@ -144,10 +144,10 @@ function StatCardContent({ stat }: { stat: Stat }) {
       <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[40px]">
         <span className="text-[#005ead]">{stat.value}</span>
       </h3>
-      <p className="mt-2 text-[10px] font-extrabold text-[#011f40] md:mt-4 md:text-[14px]">
+      <p className="mt-2 text-[10px] font-bold text-[#011f40] md:mt-4 md:text-[18px]">
         {stat.label}
       </p>
-      <p className="mx-auto mt-2 max-w-[260px] text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-[340px] md:text-[13px] md:leading-[1.6]">
+      <p className="mx-auto mt-2 max-w-[260px] text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-[340px] md:text-[16px] md:leading-[1.6]">
         {stat.copy}
       </p>
     </>

@@ -1,15 +1,23 @@
 "use client";
 
+import { imagePath } from "../components/home/assets";
+import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { imagePath } from "../components/home/assets";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import { useReducedMotion } from "motion/react";
+
+import "swiper/css";
 
 type TeamSlide = {
   image: string;
   name: string;
   role: string;
   alt: string;
+  linkedIn: string;
 };
 
 type TeamSliderProps = {
@@ -20,18 +28,7 @@ type TeamSliderProps = {
   copy: string;
 };
 
-const autoplayDelay = 5000;
-const desktopInitialIndex = 0;
-
-function getDesignedVisibleCount(total: number) {
-  if (window.innerWidth >= 1024) return Math.min(3, total);
-  if (window.innerWidth >= 768) return Math.min(2, total);
-  return 1;
-}
-
-function getDesktopPeekSize() {
-  return window.innerWidth >= 1024 ? 92 : 0;
-}
+const AUTOPLAY_DELAY = 3000;
 
 export function TeamSlider({
   slides,
@@ -40,265 +37,192 @@ export function TeamSlider({
   highlightedTitle,
   copy,
 }: TeamSliderProps) {
-  const sliderRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const autoplayRef = useRef<number | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(1);
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [realIndex, setRealIndex] = useState(0);
+  const [progressKey, setProgressKey] = useState(0);
+  const reducedMotion = useReducedMotion();
 
-  const visibleSlideCount = Math.max(visibleCount, 1);
-  const maxScrollIndex = Math.max(slides.length - visibleSlideCount, 0);
-  const displayIndex = Math.min(activeIndex, maxScrollIndex);
+  const total = slides.length;
+  const isLoopable = total > 1;
+  const hasProgress = !reducedMotion && isLoopable;
 
   const counter = useMemo(() => {
-    const total = String(slides.length).padStart(2, "0");
-    const start = String(displayIndex + 1).padStart(2, "0");
-    const endIndex = Math.min(displayIndex + visibleSlideCount, slides.length);
-    const end = String(endIndex).padStart(2, "0");
+    const current = String(realIndex + 1).padStart(2, "0");
+    const totalLabel = String(total).padStart(2, "0");
+    return `${current}/${totalLabel}`;
+  }, [realIndex, total]);
 
-    return visibleSlideCount > 1 && displayIndex + 1 !== endIndex
-      ? `${start}–${end}/${total}`
-      : `${start}/${total}`;
-  }, [displayIndex, slides.length, visibleSlideCount]);
+  const animationStyle = hasProgress
+    ? { animation: `teamLoader ${AUTOPLAY_DELAY}ms linear forwards` }
+    : { width: "0%" };
 
-  const updateFromScroll = useCallback(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const slideNodes = Array.from(
-      slider.querySelectorAll<HTMLElement>("[data-team-slide]")
-    );
-    if (slideNodes.length === 0) return;
-
-    const inset = Number.parseFloat(window.getComputedStyle(slider).paddingLeft) || 0;
-    const left = slider.scrollLeft + inset + getDesktopPeekSize();
-    let closestIndex = 0;
-    let closestDistance = Number.POSITIVE_INFINITY;
-
-    slideNodes.forEach((node, index) => {
-      const distance = Math.abs(node.offsetLeft - left);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
-      }
-    });
-
-    const designedVisibleCount = getDesignedVisibleCount(slides.length);
-    const lastScrollableIndex = Math.max(slides.length - designedVisibleCount, 0);
-
-    setVisibleCount(designedVisibleCount);
-    setActiveIndex(Math.min(closestIndex, lastScrollableIndex));
-  }, [slides.length]);
-
-  const goTo = useCallback(
-    (index: number, behavior: ScrollBehavior = "smooth") => {
-      const slider = sliderRef.current;
-      if (!slider) return;
-
-      const boundedIndex = Math.max(0, Math.min(index, maxScrollIndex));
-      const slideNodes = slider.querySelectorAll<HTMLElement>("[data-team-slide]");
-      const slide = slideNodes[boundedIndex];
-      if (!slide) return;
-
-      const computedStyle = window.getComputedStyle(slider);
-      const inset = Number.parseFloat(computedStyle.paddingLeft) || 0;
-      const rightInset = Number.parseFloat(computedStyle.paddingRight) || 0;
-      const isLastGroup = boundedIndex === maxScrollIndex && maxScrollIndex > 0;
-      let targetLeft =
-        slide.offsetLeft - inset - (isLastGroup ? 0 : getDesktopPeekSize());
-
-      if (isLastGroup) {
-        const lastSlide = slideNodes[slideNodes.length - 1];
-
-        if (lastSlide) {
-          targetLeft = Math.max(
-            targetLeft,
-            lastSlide.offsetLeft + lastSlide.offsetWidth + rightInset - slider.clientWidth
-          );
-        }
-      }
-
-      slider.scrollTo({
-        left: Math.max(0, targetLeft),
-        behavior,
-      });
-    },
-    [maxScrollIndex]
-  );
-
-  const stopAutoplay = useCallback(() => {
-    if (autoplayRef.current) {
-      window.clearInterval(autoplayRef.current);
-      autoplayRef.current = null;
-    }
-  }, []);
-
-  const startAutoplay = useCallback(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (maxScrollIndex <= 0) return;
-
-    stopAutoplay();
-    autoplayRef.current = window.setInterval(() => {
-      setActiveIndex((current) => {
-        const clampedCurrent = Math.min(current, maxScrollIndex);
-
-        if (clampedCurrent >= maxScrollIndex) {
-          stopAutoplay();
-          return clampedCurrent;
-        }
-
-        const next = clampedCurrent + 1;
-        goTo(next);
-        return next;
-      });
-    }, autoplayDelay);
-  }, [goTo, maxScrollIndex, stopAutoplay]);
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    if (window.innerWidth >= 1024 && slides.length > desktopInitialIndex) {
-      goTo(desktopInitialIndex, "auto");
-      window.requestAnimationFrame(updateFromScroll);
-    }
-
-    updateFromScroll();
-    slider.addEventListener("scroll", updateFromScroll, { passive: true });
-    window.addEventListener("resize", updateFromScroll);
-
-    return () => {
-      slider.removeEventListener("scroll", updateFromScroll);
-      window.removeEventListener("resize", updateFromScroll);
-    };
-  }, [goTo, slides.length, updateFromScroll]);
-
+  // Safe Intersection Observer using the react-tracked swiper instance state
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    if (!section || !swiperInstance || reducedMotion || !isLoopable) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          startAutoplay();
+          // Double-check autoplay module exists before running
+          if (swiperInstance.autoplay && typeof swiperInstance.autoplay.start === "function") {
+            swiperInstance.autoplay.start();
+          }
           observer.disconnect();
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.2 }
     );
 
     observer.observe(section);
 
     return () => {
       observer.disconnect();
-      stopAutoplay();
+      if (swiperInstance.autoplay && typeof swiperInstance.autoplay.stop === "function") {
+        swiperInstance.autoplay.stop();
+      }
     };
-  }, [startAutoplay, stopAutoplay]);
+  }, [swiperInstance, reducedMotion, isLoopable]);
 
-  const handlePrevious = () => {
-    stopAutoplay();
-    const previousIndex = displayIndex <= 0 ? 0 : displayIndex - 1;
-    setActiveIndex(previousIndex);
-    goTo(previousIndex);
-  };
+  const handleSlideChange = useCallback((swiper: SwiperType) => {
+    setRealIndex(swiper.realIndex);
+    setProgressKey((current) => current + 1);
+  }, []);
 
-  const handleNext = () => {
-    stopAutoplay();
-    const nextIndex =
-      displayIndex >= maxScrollIndex ? maxScrollIndex : displayIndex + 1;
-
-    setActiveIndex(nextIndex);
-    goTo(nextIndex);
-  };
+  const renderControls = (isMobile = false) => (
+    <div className={`flex items-center gap-3 ${isMobile ? "site-container mt-4 justify-center md:hidden" : "md:pb-1 hidden md:flex"}`}>
+      <span className={`relative grid place-items-center overflow-hidden rounded-full border border-[#011f40] text-center tabular-nums shadow-sm ${
+        isMobile ? "h-8 min-w-24 px-4 text-[14px] font-medium" : "min-w-21 px-5 py-2 text-[12px] font-medium md:min-w-30.5 md:py-3 md:text-[16px]"
+      }`}>
+        <span className="relative z-20 text-[#011f40]">{counter}</span>
+        <div
+          key={progressKey}
+          className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20"
+          style={animationStyle}
+        />
+      </span>
+      <button
+        ref={isMobile ? undefined : prevRef}
+        type="button"
+        aria-label="Previous team member"
+        className="grid size-10 place-items-center rounded-full border border-[#011f40] text-[#011f40] transition-colors duration-200 hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35 md:size-11"
+      >
+        <ArrowLeft className="size-5" />
+      </button>
+      <button
+        ref={isMobile ? undefined : nextRef}
+        type="button"
+        aria-label="Next team member"
+        className="grid size-10 place-items-center rounded-full border border-[#011f40] text-[#011f40] transition-colors duration-200 hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35 md:size-11"
+      >
+        <ArrowRight className="size-5" />
+      </button>
+    </div>
+  );
 
   return (
     <div ref={sectionRef}>
       <div className="site-container">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-[650px]">
-            <p className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#005ead] md:text-[12px]">
+          <div className="max-w-162.5">
+            <p className="text-[9px] font-medium uppercase tracking-[0.12em] text-[#005ead] md:text-[16px]">
               {eyebrow}
             </p>
-            <h2 className="mt-2 text-[20px] font-extrabold leading-tight text-[#011f40] md:mt-3 md:text-[36px]">
+            <h2 className="mt-2 text-[20px] font-bold leading-tight text-[#011f40] md:mt-3 md:text-[36px]">
               {title} <span className="text-[#005ead]">{highlightedTitle}</span>
             </h2>
-            <p className="mt-3 max-w-[640px] text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[15px] md:leading-[1.55]">
+            <p className="mt-3 max-w-160 text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[16px] md:leading-[1.55]">
               {copy}
             </p>
           </div>
-
-          <div className="flex items-center gap-3 md:pb-1">
-            <span
-              data-team-counter
-              className="min-w-[84px] rounded-full border border-[#011f40] px-5 py-2 text-center text-[12px] font-normal tabular-nums text-[#011f40] md:min-w-[122px] md:py-3 md:text-[16px]"
-            >
-              {counter}
-            </span>
-            <button
-              type="button"
-              onClick={handlePrevious}
-              disabled={displayIndex === 0}
-              aria-label="Previous team member"
-              className="grid size-10 place-items-center rounded-full border border-[#011f40] text-[#011f40] transition-colors duration-200 hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35 md:size-11"
-            >
-              <ArrowLeft className="size-5" />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={displayIndex === maxScrollIndex}
-              aria-label="Next team member"
-              className="grid size-10 place-items-center rounded-full border border-[#011f40] text-[#011f40] transition-colors duration-200 hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35 md:size-11"
-            >
-              <ArrowRight className="size-5" />
-            </button>
-          </div>
+          {renderControls(false)}
         </div>
       </div>
 
-      <div
-        ref={sliderRef}
-        className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 pl-[max(20px,calc((100vw-1300px)/2))] pr-5 [scrollbar-width:none] md:mt-10 md:gap-5 lg:gap-6 lg:[scroll-snap-type:none] [&::-webkit-scrollbar]:hidden"
-        aria-label="Team members"
-      >
-        {slides.map((slide) => (
-          <article
-            key={slide.image}
-            data-team-slide
-            className="relative h-[285px] w-[225px] shrink-0 snap-start overflow-hidden rounded-md bg-white text-white md:h-[400px] md:w-[420px] xl:w-[480px]"
-          >
-            <Image
-              src={`${imagePath}${slide.image}`}
-              alt={slide.alt}
-              fill
-              sizes="(min-width: 1280px) 480px, (min-width: 768px) 420px, 225px"
-              className="object-contain object-top"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_34%,rgba(0,0,0,.84))]" />
-            <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 md:p-7">
-              <div>
-                <h3 className="text-[13px] font-extrabold leading-tight text-white md:text-[20px]">
-                  {slide.name}
-                </h3>
-                <p className="mt-2 text-[9px] font-medium text-white/92 md:text-[16px]">
-                  {slide.role}
-                </p>
-              </div>
-              <div className="flex items-center gap-3" aria-hidden="true">
-                <span className="grid size-6 place-items-center rounded-full bg-white md:size-8">
-                  <Image
-                    src={`${imagePath}linkedin.png`}
-                    alt=""
-                    width={16}
-                    height={16}
-                    className="size-3.5 object-contain md:size-4"
-                  />
-                </span>
-              </div>
-            </div>
-          </article>
-        ))}
+      <div className="mt-6 overflow-hidden pb-4 pl-[max(20px,calc((100vw-1300px)/2))] pr-5 md:mt-10" aria-label="Team members">
+        <Swiper
+          modules={[Autoplay, Navigation]}
+          onSwiper={(swiper) => {
+            swiper.autoplay?.stop?.();
+            setSwiperInstance(swiper); // Safely register instance into React state
+          }}
+          onSlideChange={handleSlideChange}
+          loop={isLoopable}
+          speed={500}
+          spaceBetween={18}
+          slidesPerView="auto"
+          autoplay={
+            reducedMotion || !isLoopable
+              ? false
+              : { delay: AUTOPLAY_DELAY, disableOnInteraction: false }
+          }
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          onBeforeInit={(swiper) => {
+            if (typeof swiper.params.navigation !== "boolean" && swiper.params.navigation) {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
+          }}
+          className="overflow-visible!"
+        >
+          {slides.map((slide) => (
+            <SwiperSlide key={slide.image} className="w-56.25! md:w-105! xl:w-120!">
+              <article className="relative h-71.25 overflow-hidden rounded-md bg-white text-white md:h-100">
+                <Image
+                  src={`${imagePath}${slide.image}`}
+                  alt={slide.alt}
+                  fill
+                  sizes="(min-width: 1280px) 480px, (min-width: 768px) 420px, 225px"
+                  className="object-contain object-top"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_34%,rgba(0,0,0,.84))]" />
+                <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 md:p-7">
+                  <div>
+                    <h3 className="text-[13px] font-semibold leading-tight text-white md:text-[18px]">
+                      {slide.name}
+                    </h3>
+                    <p className="mt-2 text-[9px] font-normal text-white/92 md:text-[14px]">
+                      {slide.role}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3" aria-hidden="true">
+                    <Link
+                      href={slide.linkedIn}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="grid size-6 place-items-center rounded-full bg-white md:size-8"
+                    >
+                      <Image
+                        src={`${imagePath}linkedin.png`}
+                        alt=""
+                        width={16}
+                        height={16}
+                        className="size-3.5 object-contain md:size-4"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
+
+      {renderControls(true)}
+
+      <style>{`
+        @keyframes teamLoader {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
     </div>
   );
 }
