@@ -318,7 +318,7 @@ function LoadMoreButton({ onClick }: { onClick: () => void }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? "#005ead" : "#011f40",
+        background: hovered ? "#011f40" : "#005ead",
         color: "#fff",
         border: "none",
         borderRadius: 3,
@@ -427,7 +427,7 @@ export function NewsletterSection() {
                   height: 46,
                   border: "1px solid #011f40",
                   borderRadius: 4,
-                  padding: "0 14px",
+                  padding: "16px 14px",
                   fontSize: 14,
                   color: "#011f40",
                   outline: "none",
@@ -466,7 +466,7 @@ function SubscribeButton() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? "#005ead" : "#011f40",
+        background: hovered ? "#011f40" : "#005EAD",
         color: "#fff",
         border: "none",
         borderRadius: 3,

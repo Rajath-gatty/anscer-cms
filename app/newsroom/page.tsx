@@ -53,9 +53,10 @@ export default function NewsroomPage() {
             inset: 0,
             zIndex: 2,
             display: "flex",
+            justifyContent: "center",
+            height: "100%",
             flexDirection: "column",
             alignItems: "flex-start",
-            justifyContent: "flex-end",
             paddingBottom: 48,
           }}
         >
@@ -75,7 +76,7 @@ export default function NewsroomPage() {
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.18em",
-                color: "rgba(255,255,255,0.8)",
+                color: "#005ead",
                 margin: 0,
               }}
             >
