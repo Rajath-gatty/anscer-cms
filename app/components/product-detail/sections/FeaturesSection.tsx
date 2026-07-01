@@ -22,6 +22,7 @@ import Image from "next/image";
 import { imagePath } from "../../home/assets";
 import { ScrollReveal } from "../../home/ScrollReveal";
 import type { ProductDetailData } from "../product-detail-data";
+import { FadeRight } from "../../animation";
 
 const featureIcons = {
   Layers,
@@ -59,7 +60,7 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
         </ScrollReveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {data.features.features.slice(0, 2).map((feature, index) => (
-            <ScrollReveal key={feature.title} delay={index * 100 + 100}>
+            <ScrollReveal key={feature.title} delay={index * 200}>
               <FeatureCard
                 title={feature.title}
                 copy={feature.copy}
@@ -89,13 +90,15 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
               </a>
             </div>
           </article>
-          {data.features.features.slice(2, 4).map((feature) => (
+          {data.features.features.slice(2, 4).map((feature, index) => (
+            <ScrollReveal key={feature.title} delay={index * 200}>
             <FeatureCard
               key={feature.title}
               title={feature.title}
               copy={feature.copy}
               Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
             />
+            </ScrollReveal>
           ))}
         </div>
       </div>

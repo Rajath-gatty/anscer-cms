@@ -4,35 +4,46 @@ import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef} from "react";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
 import type { SeriesPageData } from "./series-data";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
+// Import Swiper styles
+import "swiper/css";
 export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
+  const [progressKey, setProgressKey] = useState(0); // Used to instantly reset CSS animation
+  const swiperRef = useRef<SwiperType | null>(null);
+  
   const reducedMotion = useReducedMotion();
   const total = data.applications.length;
-  const maxIndex = Math.max(0, total - visibleCount);
-  const progressWidth = `${progress}%`;
+
+  const AUTOPLAY_DURATION = 3000;
 
   useEffect(() => {
     const updateVisibleCount = () => {
-      if (window.innerWidth < 640) {
-        setVisibleCount(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleCount(2);
-      } else {
-        setVisibleCount(data.slug === "agv-series" ? 3 : 3);
-      }
+      if (window.innerWidth < 640) setVisibleCount(1);
+      else if (window.innerWidth < 1024) setVisibleCount(2);
+      else setVisibleCount(3);
     };
 
     updateVisibleCount();
     window.addEventListener("resize", updateVisibleCount);
     return () => window.removeEventListener("resize", updateVisibleCount);
-  }, [data.slug]);
+  }, []);
+
+  // Fired instantly when slide actively begins transitioning
+  const handleSlideChangeTransitionStart = (swiper: SwiperType) => {
+    setActiveIndex(swiper.realIndex);
+    // Incrementing the key forces React to drop the old progress DOM element 
+    // and recreate a brand new one, instantly resetting the CSS width back to 0%
+    setProgressKey((prev) => prev + 1);
+  };
 
   const start = activeIndex + 1;
   const end = Math.min(activeIndex + visibleCount, total);
@@ -41,51 +52,23 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
       ? `${pad(start)}-${pad(end)}/${pad(total)}`
       : `${pad(start)}/${pad(total)}`;
 
-  const move = (direction: 1 | -1) => {
-    setActiveIndex((current) => {
-      if (maxIndex === 0) return 0;
-
-      const next = current + direction;
-      if (next < 0) return maxIndex;
-      if (next > maxIndex) return 0;
-
-      return next;
-    });
-    setProgress(0);
-  };
-
-  useEffect(() => {
-    if (reducedMotion || maxIndex === 0) {
-      setProgress(0);
-      return;
-    }
-
-    const duration = 3000;
-    const intervalMs = 50;
-    const totalSteps = duration / intervalMs;
-    let step = 0;
-
-    const interval = window.setInterval(() => {
-      step += 1;
-      const nextProgress = Math.min((step / totalSteps) * 100, 100);
-
-      setProgress(nextProgress);
-
-      if (nextProgress >= 100) {
-        window.clearInterval(interval);
-        setActiveIndex((current) => (current + 1) % (maxIndex + 1));
-        setProgress(0);
-      }
-    }, intervalMs);
-
-    return () => window.clearInterval(interval);
-  }, [activeIndex, maxIndex, reducedMotion]);
+  // Custom CSS Injection for declarative, performant, zero-JS animation
+  const animationStyle = reducedMotion
+    ? { width: "0%" }
+    : {
+        animation: `swiperLoader ${AUTOPLAY_DURATION}ms linear forwards`,
+      };
 
   return (
-    <section
-      id="applications"
-      className="overflow-hidden bg-white py-16 md:py-24"
-    >
+    <section id="applications" className="overflow-hidden bg-white py-16 md:py-24">
+      {/* Global CSS keyframe declaration injection safely contained */}
+      <style>{`
+        @keyframes swiperLoader {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
+
       <div className="site-container">
         <ScrollReveal>
           <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
@@ -102,26 +85,28 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
             </p>
           </ScrollReveal>
 
+          {/* Desktop Controls */}
           <div className="hidden items-center gap-4 md:flex">
             <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
               <span className="relative z-20 text-[#011f40]">{counter}</span>
               <div
-                className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20 transition-[width] duration-100"
-                style={{ width: progressWidth }}
+                key={progressKey} // Native React diffing key component reset
+                className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20"
+                style={animationStyle}
               />
             </span>
             <button
               type="button"
-              onClick={() => move(-1)}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead]"
               aria-label="Previous application"
             >
               <ArrowLeft className="size-5" strokeWidth={1.8} />
             </button>
             <button
               type="button"
-              onClick={() => move(1)}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead] disabled:cursor-not-allowed disabled:opacity-35"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead]"
               aria-label="Next application"
             >
               <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -130,61 +115,75 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
         </div>
       </div>
 
-      <div className="mt-10 overflow-hidden">
-        <div
-          className="flex gap-5 pl-[max(20px,calc((100vw-1340px)/2+20px))] pr-5 transition-transform duration-500 ease-out"
-          style={{
-            transform: `translateX(calc(${activeIndex} * (min(390px, 82vw) + 20px) * -1))`,
-          }}
+      {/* Swiper Slider Wrapper */}
+      <div className="mt-10 overflow-hidden pl-[max(20px,calc((100vw-1340px)/2+20px))] pr-5">
+        <Swiper
+          modules={[Autoplay, Navigation]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChangeTransitionStart={handleSlideChangeTransitionStart}
+          loop={true}
+          speed={500}
+          spaceBetween={20}
+          slidesPerView="auto"
+          autoplay={
+            reducedMotion
+              ? false
+              : {
+                  delay: AUTOPLAY_DURATION,
+                  disableOnInteraction: false,
+                }
+          }
+          className="!overflow-visible"
         >
           {data.applications.map((application) => (
-            <article
-              key={application.title}
-              className="relative h-[460px] w-[min(390px,82vw)] shrink-0 overflow-hidden rounded-lg bg-[#dfe7ee]"
-            >
-              {application.image ? (
-                <Image
-                  src={`${imagePath}${application.image}`}
-                  alt={application.title}
-                  fill
-                  sizes="(max-width: 640px) 82vw, 390px"
-                  className="object-cover"
-                />
-              ) : null}
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,0)_30%,rgba(1,31,64,.82)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                <h3 className="text-xl font-extrabold leading-tight md:text-2xl">
-                  {application.title}
-                </h3>
-                <p className="mt-2 text-sm leading-5 text-white/88 md:text-base md:leading-6">
-                  {application.copy}
-                </p>
-              </div>
-            </article>
+            <SwiperSlide key={application.title} className="!w-[min(390px,82vw)]">
+              <article className="relative h-[460px] w-full overflow-hidden rounded-lg bg-[#dfe7ee]">
+                {application.image ? (
+                  <Image
+                    src={`${imagePath}${application.image}`}
+                    alt={application.title}
+                    fill
+                    sizes="(max-width: 640px) 82vw, 390px"
+                    className="object-cover"
+                  />
+                ) : null}
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,0)_30%,rgba(1,31,64,.82)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <h3 className="text-xl font-extrabold leading-tight md:text-2xl">
+                    {application.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-5 text-white/88 md:text-base md:leading-6">
+                    {application.copy}
+                  </p>
+                </div>
+              </article>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
 
+      {/* Mobile Controls */}
       <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
         <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
           <span className="relative z-20 text-[#011f40]">{counter}</span>
           <div
-            className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20 transition-[width] duration-100"
-            style={{ width: progressWidth }}
+            key={progressKey}
+            className="absolute inset-y-0 left-0 z-10 h-full bg-[#005ead]/20"
+            style={animationStyle}
           />
         </span>
         <button
           type="button"
-          onClick={() => move(-1)}
-          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40]"
           aria-label="Previous application"
         >
           <ArrowLeft className="size-5" strokeWidth={1.8} />
         </button>
         <button
           type="button"
-          onClick={() => move(1)}
-          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] disabled:cursor-not-allowed disabled:opacity-35"
+          onClick={() => swiperRef.current?.slideNext()}
+          className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40]"
           aria-label="Next application"
         >
           <ArrowRight className="size-5" strokeWidth={1.8} />
@@ -193,7 +192,6 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
     </section>
   );
 }
-
 export function SeriesRobotSelector({
   data,
   series,

@@ -240,7 +240,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
     description:
       "Discover ANSCER's PSR Series: autonomous robots designed to automate pallet and trolley handling, boosting warehouse efficiency.",
     heroImage: "914d5f91ebf180d91cdbcbf3b9c23835_ar-series-hero-img-p-1600.png",
-    heroRobot: "psr-main-product.png",
+    heroRobot: "psr-banner-image.png",
     tags: ["Stacking", "Open/Closed Pallet"],
     featureIntro:
       "Our PSR Series automates critical warehouse transportation and storage workflows through pallet stackers and trolley handling robots.",
@@ -331,7 +331,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR 2000R",
         description:
           "Extended-reach heavy-duty pallet stacking robot capable of handling open and closed pallets.",
-        image: "psr-2000r_1.png",
+        image: "psr-2000r-side-latest.png",
         bgText: "Group-1321315869.svg",
         href: "/psr-series/psr-2000r",
         tags: ["Open/Closed Pallet", "Lifting"],
@@ -355,7 +355,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR 1000R",
         description:
           "Extended-reach pallet stacking robot capable of handling open and closed pallets.",
-        image: "PSR-1000R.png",
+        image: "psr-1000r-side-latest.png",
         bgText: "1000r-bg-text.png",
         href: "/psr-series/psr-1000r",
         tags: ["Open/Closed Pallet", "Lifting"],

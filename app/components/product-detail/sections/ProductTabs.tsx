@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useEffect, useMemo, useState } from "react";
 
-export function ProductTabs({ hasModules }: { hasModules: boolean }) {
+export function ProductTabs({ hasModules, showApplication }: { hasModules: boolean, showApplication: boolean }) {
   const tabs = useMemo(
     () => [
       { label: "Overview", href: "#overview", id: "overview" },
@@ -20,10 +20,12 @@ export function ProductTabs({ hasModules }: { hasModules: boolean }) {
       ...(hasModules
         ? [{ label: "Top Modules", href: "#attachments", id: "attachments" }]
         : []),
-      { label: "Applications", href: "#applications", id: "applications" },
+      ...(showApplication
+        ? [{ label: "Applications", href: "#applications", id: "applications" }]
+        : []),
       // { label: "Case Studies", href: "#case-studies", id: "case-studies" },
     ],
-    [hasModules],
+    [hasModules, showApplication],
   );
   const [activeTab, setActiveTab] = useState("overview");
 
