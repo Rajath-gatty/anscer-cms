@@ -91,7 +91,7 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
       <div className="site-container relative mt-9 md:mt-8">
         <div className="relative grid gap-8 md:hidden">
           <span className="absolute left-[19px] top-4 h-[calc(100%-32px)] w-px bg-[#e1e6eb]" />
-          {visibleStats.map((stat) => (
+          {visibleStats.map((stat, index) => (
             <article
               key={stat.label}
               className="relative grid grid-cols-[40px_1fr] gap-4"
@@ -104,7 +104,10 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
                 className="relative z-10 mt-1 h-8 w-auto object-contain"
               />
               <div className="text-center">
-                <StatCardContent stat={stat} />
+                <StatCardContent
+                  stat={stat}
+                  suffix={stats[index]?.value.endsWith("+") ? "+" : ""}
+                />
               </div>
             </article>
           ))}
@@ -129,7 +132,10 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <StatCardContent stat={stat} />
+              <StatCardContent
+                stat={stat}
+                suffix={stats[index]?.value.endsWith("+") ? "+" : ""}
+              />
             </m.article>
           ))}
         </div>
@@ -138,11 +144,20 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
   );
 }
 
-function StatCardContent({ stat }: { stat: Stat }) {
+function StatCardContent({
+  stat,
+  suffix,
+}: {
+  stat: Stat;
+  suffix?: string;
+}) {
   return (
     <>
       <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[40px]">
-        <span className="text-[#005ead]">+{stat.value}</span>
+        <span className="text-[#005ead]">
+          {stat.value}
+          {suffix}
+        </span>
       </h3>
       <p className="mt-2 text-[10px] font-bold text-[#011f40] md:mt-4 md:text-[18px]">
         {stat.label}
