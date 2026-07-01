@@ -13,7 +13,8 @@ const solutions = [
     label: ["PALLET", "STACKING"],
     copy: "A pallet stacking AMR for precise pallet pickup, lifting, and placement, enabling repeatable stacking operations and efficient intralogistics flow.",
     icon: "pallet-stacking-svg.svg",
-    image: "our-solutions-image-1-p-800.png",
+    image: "our-solutions-image-1.png",
+    imageHeight: 1024,
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Pallet%20Stacking%20With%20bg.mp4",
   },
@@ -22,7 +23,8 @@ const solutions = [
     label: ["TROLLEY", "MOVEMENT"],
     copy: "A compact, free-lift AMR with universal trolley compatibility, designed for trolley movement in low-clearance environments and the demands of dynamic shop floors.",
     icon: "trolley-movement.svg",
-    image: "our-solutions-image-2-p-800.png",
+    image: "our-solutions-image-2.png",
+    imageHeight: 1024,
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Trolley%20movement%20With%20bg.mp4",
   },
@@ -31,7 +33,8 @@ const solutions = [
     label: ["TUGGING"],
     copy: "An AMR with a Tugger top module for automated trolley and cart transport, ensuring safe and flexible automation across production and intralogistics operations.",
     icon: "tugging-svg.svg",
-    image: "our-solutions-image-3-p-800.png",
+    image: "our-solutions-image-3.png",
+    imageHeight: 1020,
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Tugging%20with%20BG.mp4",
   },
@@ -161,20 +164,22 @@ export function SolutionsCardDeckSection() {
           </div>
         ) : (
           <>
-            <div className="mt-10 flex flex-col gap-16 lg:hidden">
-              <div>
+            <div className="pt-14 lg:hidden">
+              <div className="mb-10">
                 <Kicker>Robots Designed to Deliver</Kicker>
                 <h3 className="mt-5 text-[28px] font-bold tracking-tight">
                   Our <span className="text-[#005ead]">Solutions</span>
                 </h3>
               </div>
-              {solutions.map((solution, index) => (
-                <MobileSolutionCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
-              ))}
+              <div className="flex flex-col gap-6 md:gap-7">
+                {solutions.map((solution, index) => (
+                  <MobileSolutionCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
+                ))}
+              </div>
             </div>
 
-            <div ref={wrapperRef} className="relative mt-4 hidden h-[250vh] lg:block">
-              <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[88px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[560px] overflow-visible">
+            <div ref={wrapperRef} className="relative hidden h-[240vh] lg:block">
+              <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[88px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-96px)] min-h-[500px] overflow-visible 2xl:min-h-[600px]">
                 <div className="absolute left-0 top-0 z-30">
                   <Kicker>Robots Designed to Deliver</Kicker>
                   <h3 className="mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
@@ -182,7 +187,7 @@ export function SolutionsCardDeckSection() {
                   </h3>
                 </div>
 
-                <div className="absolute -left-10 bottom-0 right-16 top-[104px] 2xl:top-[116px] px-10 pb-6 2xl:pb-12 pt-2 2xl:pt-5 [perspective:1600px]">
+                <div className="absolute bottom-6 left-0 right-20 top-[120px] px-3 pt-1 [perspective:1600px] xl:right-24 2xl:bottom-10 2xl:top-[148px] 2xl:px-5">
                   {solutions.map((solution, index) => (
                     <DeckCard
                       key={solution.title}
@@ -228,7 +233,7 @@ function DeckCard({
 
   return (
     <m.article
-      className="absolute inset-x-10 bottom-12 top-5 grid origin-center overflow-hidden rounded-xl bg-[#fafafa] will-change-transform [backface-visibility:hidden] [transform-style:preserve-3d] lg:grid-cols-[0.42fr_0.58fr]"
+      className="absolute inset-0 grid origin-center overflow-hidden rounded-xl bg-white will-change-transform [backface-visibility:hidden] [transform-style:preserve-3d] lg:grid-cols-[0.9fr_1.1fr]"
       animate={{
         boxShadow: `0 28px 80px rgba(1, 31, 64, ${shadowOpacity})`,
         rotateX,
@@ -250,30 +255,33 @@ function DeckCard({
       }}
       aria-hidden={activeIndex !== index}
     >
-      <div className="relative z-10 flex flex-col justify-center p-4 lg:p-6 2xl:p-10">
-        <div className="flex items-center gap-3 2xl:gap-4">
-          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[32px] 2xl:h-[38px] w-auto" />
-          <h4 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
+      <div className="relative z-10 flex min-h-0 min-w-0 flex-col justify-start p-5 xl:p-6 2xl:p-10">
+        <div className="flex items-start gap-2">
+          <span className="flex h-[34px] w-[50px] shrink-0 items-start 2xl:h-[42px]">
+            <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[30px] w-auto 2xl:h-[42px]" />
+          </span>
+          <h4 className="pt-[7px] text-xs font-bold uppercase tracking-wide text-[#005ead] 2xl:pt-[13px]">{solution.title}</h4>
         </div>
-        <p className="mt-2.5 2xl:mt-4 max-w-[430px] text-xs sm:text-sm leading-4.5 2xl:leading-6 text-[#3f4b57]">{solution.copy}</p>
-        <div className="relative mt-2.5 2xl:mt-5 aspect-[2] 2xl:aspect-[1.65] max-w-[220px] xl:max-w-[260px] 2xl:max-w-[360px] overflow-hidden rounded-lg bg-[#dfe7ee]">
+        <p className="mt-3 max-w-[520px] text-[13px] leading-5 text-[#3a3a3a] xl:text-sm xl:leading-[22px] 2xl:mt-5 2xl:text-base 2xl:leading-6">{solution.copy}</p>
+        <div className="mt-3 aspect-[1.72] w-[240px] max-w-full overflow-hidden rounded-lg bg-[#dfe7ee] xl:w-[280px] 2xl:mt-4 2xl:w-[360px] 2xl:aspect-[1.62]">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
-            fill
+            width={1600}
+            height={solution.imageHeight}
             sizes="360px"
-            className="object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
         {index === 2 ? (
-          <div className="mt-2.5 2xl:mt-5">
+          <div className="mt-4 shrink-0 2xl:mt-5">
             <ArrowButton>Talk to us</ArrowButton>
           </div>
         ) : null}
       </div>
 
-      <div className="relative min-h-[340px] 2xl:min-h-[430px] overflow-hidden bg-[#fafafa]">
-        <p className="pointer-events-none absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[82px] font-bold uppercase leading-[0.95] text-[#011f40]/8 xl:text-[104px]">
+      <div className="relative flex min-h-0 items-center justify-center overflow-hidden bg-white">
+        <p className="pointer-events-none absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[58px] font-bold uppercase leading-[0.95] text-[#011f40]/7 xl:text-[72px] 2xl:text-[104px]">
           {solution.label.map((word) => (
             <span key={word} className="block">
               {word}
@@ -281,7 +289,7 @@ function DeckCard({
           ))}
         </p>
         <video
-          className="absolute inset-0 z-10 h-full w-full object-contain"
+          className="relative z-10 size-[min(30vw,360px)] max-h-[88%] max-w-[90%] object-contain 2xl:size-[min(34vw,420px)] 2xl:max-h-[92%]"
           autoPlay
           loop
           muted
@@ -303,9 +311,11 @@ function StaticDeckCard({ solution, showButton = false }: { solution: (typeof so
           <source src={solution.video} type="video/mp4" />
         </video>
       </div>
-      <div className="mt-6 flex items-center gap-3">
-        <Image src={`${imagePath}${solution.icon}`} alt="" width={30} height={30} className="h-[30px] w-auto shrink-0" />
-        <h4 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
+      <div className="mt-6 flex items-start gap-3">
+        <span className="flex h-[34px] w-[42px] shrink-0 items-start">
+          <Image src={`${imagePath}${solution.icon}`} alt="" width={30} height={30} className="h-[30px] w-auto shrink-0" />
+        </span>
+        <h4 className="pt-[7px] text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
       </div>
       <p className="mt-4 text-sm leading-6 text-[#3f4b57]">{solution.copy}</p>
       {showButton && (
@@ -319,38 +329,32 @@ function StaticDeckCard({ solution, showButton = false }: { solution: (typeof so
 
 function MobileSolutionCard({ solution, showButton = false }: { solution: (typeof solutions)[number]; showButton?: boolean }) {
   return (
-    <article className="relative bg-[#fafafa]">
-      <div className="relative -mx-2 flex min-h-[220px] items-center justify-center overflow-hidden">
-        <p className="pointer-events-none absolute left-1/2 top-5 w-full -translate-x-1/2 text-center text-[42px] font-bold uppercase leading-[0.96] text-[#011f40]/10 sm:text-[54px]">
-          {solution.label.map((word) => (
-            <span key={word} className="block">
-              {word}
-            </span>
-          ))}
-        </p>
-        <video className="relative z-10 h-[205px] w-full object-contain" autoPlay loop muted playsInline preload="metadata">
-          <source src={solution.video} type="video/mp4" />
-        </video>
-      </div>
-      <div className="mt-1 flex items-center gap-3">
-        <Image src={`${imagePath}${solution.icon}`} alt="" width={28} height={28} className="h-7 w-auto shrink-0" />
-        <h4 className="text-[10px] font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
-      </div>
-      <p className="mt-4 text-xs leading-5 text-[#011f40]">{solution.copy}</p>
-      <div className="relative mt-5 aspect-[1.45] overflow-hidden rounded-md bg-[#dfe7ee]">
+    <article className="relative overflow-hidden rounded-xl bg-white p-4 shadow-[0_18px_48px_rgba(1,31,64,.08)] md:grid md:grid-cols-[0.95fr_1.05fr] md:items-center md:gap-6 md:p-5">
+      <div className="overflow-hidden rounded-lg bg-[#dfe7ee] md:order-2">
         <Image
           src={`${imagePath}${solution.image}`}
           alt={`${solution.title} application`}
-          fill
+          width={1600}
+          height={solution.imageHeight}
           sizes="(max-width: 1024px) 100vw, 390px"
-          className="object-cover"
+          className="h-[220px] w-full object-cover sm:h-[280px] md:h-[320px]"
         />
       </div>
-      {showButton && (
-        <div className="mt-4 flex">
-          <ArrowButton>Talk to us</ArrowButton>
+
+      <div className="mt-6 md:order-1 md:mt-0">
+        <div className="flex items-start gap-2">
+          <span className="flex h-[38px] w-[50px] shrink-0 items-start">
+            <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[34px] w-auto shrink-0" />
+          </span>
+          <h4 className="pt-[9px] text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
         </div>
-      )}
+        <p className="mt-4 text-sm leading-6 text-[#011f40]">{solution.copy}</p>
+        {showButton && (
+          <div className="mt-5 flex">
+            <ArrowButton>Talk to us</ArrowButton>
+          </div>
+        )}
+      </div>
     </article>
   );
 }
@@ -370,7 +374,7 @@ function ProgressRail({
       : 124 + (clampedProgress - 1) * (236 - 124);
 
   return (
-    <div className="absolute right-0 top-[186px] 2xl:top-[210px] z-40 flex w-[56px] justify-center">
+    <div className="absolute right-1 top-[188px] z-40 flex w-[48px] justify-center xl:right-3 2xl:top-[220px]">
       <div className="relative h-[310px] w-[42px] flex-col items-center justify-start">
         <m.div
           className="absolute left-1/2 top-0 z-20 -translate-x-1/2"

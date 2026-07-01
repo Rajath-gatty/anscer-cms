@@ -7,20 +7,8 @@ export function TrustSection() {
   return (
     <section
       id="client-section"
-      className="relative min-h-[780px] overflow-hidden bg-white pt-10 md:min-h-[790px] md:pt-24"
+      className="relative flex flex-col justify-between overflow-hidden bg-white pb-[clamp(16px,4vw,24px)] pt-[clamp(24px,7vw,40px)] md:block md:min-h-[720px] md:pb-0 md:pt-16 lg:min-h-[840px] lg:pt-28"
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={`${videoPath}clients-video_poster.0000000.jpg`}
-      >
-        <source src={`${videoPath}clients-video-new.mp4`} type="video/mp4" />
-        <source src={`${videoPath}clients-video_webm.webm`} type="video/webm" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-white/85 via-45% to-transparent md:hidden" />
       <FadeUp className="site-container relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[60px]">
@@ -36,7 +24,20 @@ export function TrustSection() {
           </p>
         </div>
       </FadeUp>
-      <div className="absolute inset-x-0 bottom-2 z-10 overflow-hidden py-3 md:bottom-3">
+      <div className="relative mt-[clamp(8px,2vw,16px)] aspect-[1.64] w-full overflow-hidden md:absolute md:inset-0 md:mt-0 md:h-full md:aspect-auto">
+        <video
+          className="h-[165%] w-full -translate-y-[36%] object-cover object-center md:h-full md:translate-y-0"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={`${videoPath}clients-video_poster.0000000.jpg`}
+        >
+          <source src={`${videoPath}clients-video-new.mp4`} type="video/mp4" />
+          <source src={`${videoPath}clients-video_webm.webm`} type="video/webm" />
+        </video>
+      </div>
+      <div className="relative z-10 mt-[clamp(14px,4vw,24px)] overflow-hidden py-3 md:absolute md:inset-x-0 md:bottom-3 md:mt-0">
         <div className="logo-marquee flex w-max items-center gap-20 grayscale contrast-[1.4] brightness-75">
           {[...clientLogos, ...clientLogos, ...clientLogos].map(
             (logo, index) => (

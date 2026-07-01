@@ -23,17 +23,17 @@ function ProductSeriesCard() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent" />
               <div className="relative z-10 flex  flex-col items-start justify-between h-full">
                 <div className="grow h-0 flex flex-col items-start">
-                  <h3 className="text-[28px] font-semibold leading-[1.15]">
+                  <h3 className="text-xl font-bold md:text-[32px]">
                     {series.title}
                   </h3>
-                  <p className="mt-2 line-clamp-4 max-w-[300px] text-[14px] font-normal leading-[20px] text-white/86">
+                  <p className="mt-2 line-clamp-4 max-w-[300px] text-base font-normal leading-[20px] text-white/86">
                     {series.copy}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {series.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-sm bg-white px-3 py-1 text-[11px] font-medium leading-none text-[#011f40]"
+                        className="rounded-sm bg-white px-5 py-1.5 text-base font-normal leading-none text-[#011f40]"
                       >
                         {tag}
                       </span>
@@ -43,7 +43,7 @@ function ProductSeriesCard() {
                 <div className="flex-none">
                     <a
                       href={series.href}
-                      className="inline-flex mt-auto h-8 items-center gap-2 rounded-sm bg-[#005ead] px-3 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                      className="inline-flex mt-auto h-8 items-center gap-2 rounded-sm bg-[#005ead] px-3 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
                     >
                       Explore
                       <span className="relative flex size-3 overflow-hidden">

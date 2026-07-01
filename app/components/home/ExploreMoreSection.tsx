@@ -17,7 +17,7 @@ const supportItems = [
 
 export function ExploreMoreSection() {
   return (
-    <section className="overflow-hidden bg-[#efefef] py-14 md:py-20">
+    <section className="overflow-hidden bg-[#efefef] py-14">
       <div className="site-container">
         <FadeRight>
           <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
@@ -34,9 +34,9 @@ export function ExploreMoreSection() {
           </p>
         </FadeRight>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_.5fr_1.05fr]">
+        <div className="mt-12 grid gap-6 md:grid-cols-[1.05fr_.5fr_1.05fr]">
           <FadeRight className="grid gap-6" delay={0.08}>
-            <article className="rounded-xl bg-white p-7">
+            <article className="rounded-xl bg-white p-5">
               <Image
                 src={`${imagePath}diamond-plus.svg`}
                 alt=""
@@ -44,16 +44,16 @@ export function ExploreMoreSection() {
                 height={44}
                 className="size-11"
               />
-              <h3 className="mt-9 text-[20px] font-semibold text-[#005ead] md:text-[24px]">
+              <h3 className="mt-5 text-[20px] font-semibold text-[#005ead]">
                 Globally Safety-Compliant Robots
               </h3>
-              <p className="mt-6 max-w-[560px] text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-6">
+              <p className="mt-5 max-w-[560px] text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-[22px]">
                 Designed to meet international safety standards for industrial
                 deployment across manufacturing and warehousing environments.
               </p>
             </article>
 
-            <article className="group relative min-h-[222px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white">
+            <article className="group relative min-h-[222px] overflow-hidden rounded-xl bg-[#011f40] p-5 text-white">
               <Image
                 src={`${imagePath}explore-more-img-1.png`}
                 alt=""
@@ -63,7 +63,7 @@ export function ExploreMoreSection() {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_52%,rgba(0,0,0,.68))]" />
               <div className="relative">
-                <h3 className="text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[35px]">
+                <h3 className="text-[20px] font-semibold leading-[30px]">
                   Multi-Brand Interoperability
                 </h3>
                 <p className="mt-4 max-w-[560px] text-sm leading-5 text-white md:text-base md:leading-6">
@@ -75,7 +75,7 @@ export function ExploreMoreSection() {
             </article>
           </FadeRight>
 
-          <FadeUp className="rounded-xl bg-white p-7" delay={0.14}>
+          <FadeUp className="rounded-xl bg-white p-5" delay={0.14}>
             <Image
               src={`${imagePath}lightbulb.svg`}
               alt=""
@@ -83,7 +83,7 @@ export function ExploreMoreSection() {
               height={44}
               className="size-11"
             />
-            <h3 className="mt-10 text-[20px] font-semibold leading-tight text-[#005ead] md:text-[24px]">
+            <h3 className="mt-10 text-[20px] font-semibold leading-tight text-[#005ead]">
               Lower Total Cost of Ownership (TCO)
             </h3>
             <p className="mt-10 text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-6">
@@ -93,7 +93,7 @@ export function ExploreMoreSection() {
           </FadeUp>
 
           <FadeLeft
-            className="group relative min-h-[470px] overflow-hidden rounded-xl bg-[#011f40] p-7 text-white"
+            className="group relative min-h-[470px] overflow-hidden rounded-xl bg-[#011f40] p-5 text-white md:min-h-[532px] lg:min-h-[470px]"
             delay={0.2}
           >
             <Image
@@ -105,7 +105,7 @@ export function ExploreMoreSection() {
             />
             <div className="absolute inset-0 bg-black/45" />
             <div className="relative">
-              <h3 className="text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[35px]">
+              <h3 className="text-[20px] font-semibold leading-[30px]">
                 Strong Support & Service Model
               </h3>
               <div className="mt-7 flex flex-col gap-6">
