@@ -11,6 +11,7 @@ import {
   useTransform,
 } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { imagePath } from "../home/assets";
 import { seriesCards } from "./product-series-data";
@@ -123,8 +124,9 @@ function SeriesPanel({
     : Math.max(Math.min(relative * 100, 100), 0);
 
   return (
-    <article
-      className={`${staticMode ? "relative" : "absolute inset-0"} overflow-hidden bg-[#fafafa]`}
+    <Link
+      href={series.href}
+      className={`${staticMode ? "relative block" : "absolute inset-0 block"} overflow-hidden bg-[#fafafa] no-underline`}
       style={
         staticMode
           ? undefined
@@ -134,6 +136,7 @@ function SeriesPanel({
             }
       }
       aria-hidden={!staticMode && activeIndex !== index}
+      tabIndex={!staticMode && activeIndex !== index ? -1 : undefined}
     >
       <div className="absolute inset-0">
         <Image
@@ -166,10 +169,7 @@ function SeriesPanel({
               </span>
             ))}
           </div>
-          <a
-            href={series.href}
-            className="group mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
-          >
+          <span className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition group-hover:bg-[#014f91]">
             Explore{" "}
             <span className="relative flex size-4 overflow-hidden">
               <ArrowRight
@@ -183,10 +183,10 @@ function SeriesPanel({
                 strokeWidth={2}
               />
             </span>
-          </a>
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -231,45 +231,47 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,1),rgba(250,250,250,.8)_40%,rgba(250,250,250,0)_80%,rgba(250,250,250,0))]" />
         <div className="absolute bottom-0 right-0 h-full w-[240px] bg-[linear-gradient(90deg,rgba(250,250,250,0),rgba(250,250,250,.8)_75%,rgba(250,250,250,1)_100%)]" />
       </div>
-      <div className="site-container relative z-10 grid min-h-[720px] items-center py-16 lg:min-h-[calc(100vh-60px)]">
-        <div className="max-w-[455px]">
-          <p className="text-xs md:text-lg font-medium text-[#005ead]">{series.index}</p>
-          <h2 className="mt-5 text-[36px] font-bold tracking-tight">
-            {series.title}
-          </h2>
-          <p className="mt-4 max-w-[430px] text-base leading-6 text-[#4b5563]">
-            {series.copy}
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {series.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md bg-[#E6EBF0] px-3 py-1.5 text-base text-[#011f40]"
-              >
-                {tag}
+      <Link
+        href={series.href}
+        className="site-container relative z-10 block no-underline"
+      >
+        <div className="grid min-h-[720px] items-center py-16 lg:min-h-[calc(100vh-60px)]">
+          <div className="max-w-[455px]">
+            <p className="text-xs md:text-lg font-medium text-[#005ead]">{series.index}</p>
+            <h2 className="mt-5 text-[36px] font-bold tracking-tight">
+              {series.title}
+            </h2>
+            <p className="mt-4 max-w-[430px] text-base leading-6 text-[#4b5563]">
+              {series.copy}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {series.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-md bg-[#E6EBF0] px-3 py-1.5 text-base text-[#011f40]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <span className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-medium uppercase tracking-wide text-white transition group-hover:bg-[#014f91]">
+              Explore{" "}
+              <span className="relative flex size-4 overflow-hidden">
+                <ArrowRight
+                  aria-hidden="true"
+                  className="size-4 transition group-hover:translate-x-5"
+                  strokeWidth={2}
+                />
+                <ArrowRight
+                  aria-hidden="true"
+                  className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
+                  strokeWidth={2}
+                />
               </span>
-            ))}
-          </div>
-          <a
-            href={series.href}
-            className="group mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
-          >
-            Explore{" "}
-            <span className="relative flex size-4 overflow-hidden">
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition group-hover:translate-x-5"
-                strokeWidth={2}
-              />
-              <ArrowRight
-                aria-hidden="true"
-                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                strokeWidth={2}
-              />
             </span>
-          </a>
+          </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

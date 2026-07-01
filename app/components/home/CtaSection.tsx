@@ -4,7 +4,7 @@ import { ArrowButton } from "./SectionPrimitives";
 
 export function CtaSection() {
   return (
-    <section id="contact" className="relative flex min-h-[556px] items-center overflow-hidden bg-[#005ead] py-20 text-white">
+    <section id="contact" className="relative flex min-h-[580px] items-center overflow-hidden bg-[#005ead] py-14 md:py-20 text-white">
       <Image src="/anscer/images/dive-into-future/bg.png" alt="" fill sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 z-10 bg-black/55" />
       <div className="absolute inset-0 z-20 bg-[#005ead] mix-blend-color" />

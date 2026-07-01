@@ -10,7 +10,7 @@ export function ProductsSection() {
   const secondaryProducts = productCards.filter((product) => !product.featured);
 
   return (
-    <section id="robots" className="bg-[#fafafa] pb-10 md:py-20">
+    <section id="robots" className="overflow-hidden bg-[#fafafa] pb-10 md:py-20">
       <div className="site-container">
         <FadeRight className="max-w-3xl">
           <Kicker>Robots Designed to Deliver</Kicker>
@@ -89,7 +89,7 @@ function ProductExploreButton({ href = "#contact" }: { href?: string }) {
   return (
     <a
       href={href}
-      className="inline-flex h-8 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+      className="relative z-10 inline-flex h-8 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
     >
       Explore{" "}
       <ArrowRight aria-hidden="true" className="size-3.5" strokeWidth={2} />

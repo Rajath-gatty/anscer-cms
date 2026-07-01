@@ -9,10 +9,10 @@ function ProductSeriesCard() {
       <div className="site-container">
         <div className="grid gap-5 md:grid-cols-3">
           {seriesCards.map((series) => (
-            <article
-              key={series.title}
-              className="group relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]"
-            >
+              <article
+                key={series.title}
+                className="group relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]"
+              >
               <Image
                 src={`${imagePath}${series.backgroundImage}`}
                 alt=""
@@ -41,27 +41,27 @@ function ProductSeriesCard() {
                   </div>
                 </div>
                 <div className="flex-none">
-                  <a
-                    href={series.href}
-                    className="group inline-flex mt-auto h-8 items-center gap-2 rounded-sm bg-[#005ead] px-3 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
-                  >
-                    Explore
-                    <span className="relative flex size-3 overflow-hidden">
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="size-3 transition group-hover:translate-x-4"
-                        strokeWidth={2}
-                      />
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="absolute size-3 -translate-x-4 transition group-hover:translate-x-0"
-                        strokeWidth={2}
-                      />
-                    </span>
-                  </a>
+                    <a
+                      href={series.href}
+                      className="inline-flex mt-auto h-8 items-center gap-2 rounded-sm bg-[#005ead] px-3 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                    >
+                      Explore
+                      <span className="relative flex size-3 overflow-hidden">
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="size-3 transition group-hover:translate-x-4"
+                          strokeWidth={2}
+                        />
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="absolute size-3 -translate-x-4 transition group-hover:translate-x-0"
+                          strokeWidth={2}
+                        />
+                      </span>
+                    </a>
                 </div>
               </div>
-            </article>
+              </article>
           ))}
         </div>
       </div>

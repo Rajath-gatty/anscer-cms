@@ -65,10 +65,8 @@ export function TechnologyAccordion() {
                 key={item.title}
                 value={value}
                 className={cn(
-                  "shrink-0",
-                  isOpen
-                    ? "py-4 lg:h-[240px] lg:py-6"
-                    : "h-[44px] py-3 lg:h-[76px] lg:py-5",
+                  "shrink-0 transition-all duration-300",
+                  isOpen ? "py-4 lg:py-6" : "py-3 lg:py-5",
                 )}
               >
                 <TechnologyAccordionTrigger className="cursor-pointer">
@@ -106,7 +104,7 @@ export function TechnologyAccordion() {
       </FadeRight>
 
       <FadeLeft
-        className="relative hidden min-h-[432px] overflow-hidden rounded-xl bg-[#d9e3eb] lg:block lg:h-full"
+        className="relative hidden overflow-hidden rounded-xl bg-[#d9e3eb] lg:block lg:h-full"
         delay={0.08}
       >
         <Image

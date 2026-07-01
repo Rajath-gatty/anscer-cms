@@ -100,7 +100,7 @@ function SolutionsFadeStack() {
 
       const metrics = getStackMetrics();
       if (metrics) {
-        const targetProgress = next / (solutions.length - 1);
+        const targetProgress = (next * 0.82) / (solutions.length - 1);
         window.scrollTo({
           top: metrics.startY + metrics.scrollable * targetProgress,
           behavior: "smooth",
@@ -180,8 +180,8 @@ function SolutionsFadeStack() {
         ))}
       </div>
 
-      <div ref={wrapperRef} className="relative mt-10 hidden h-[220vh] lg:block">
-        <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[100px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-108px)] min-h-[560px] 2xl:min-h-[620px] overflow-hidden">
+      <div ref={wrapperRef} className="relative mt-10 hidden h-[260vh] lg:block">
+        <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[88px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[540px] overflow-hidden">
           <div className="absolute left-0 top-0 z-20">
             <Kicker>Robots Designed to Deliver</Kicker>
             <h2 className="mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
@@ -189,7 +189,7 @@ function SolutionsFadeStack() {
             </h2>
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 top-[68px] 2xl:top-[92px]">
+          <div className="absolute inset-x-0 bottom-0 top-[104px] 2xl:top-[116px]">
             {solutions.map((solution, index) => (
               <FadeSolutionSlide
                 key={solution.title}
@@ -223,7 +223,7 @@ function FadeSolutionSlide({
 
   return (
     <article
-      className="absolute inset-0 grid min-h-[480px] 2xl:min-h-[520px] items-start gap-6 2xl:gap-10 bg-[#fafafa] pt-1 2xl:pt-4 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-opacity lg:grid-cols-[0.42fr_0.58fr]"
+      className="absolute inset-0 grid min-h-[380px] 2xl:min-h-[520px] items-start gap-5 2xl:gap-10 bg-[#fafafa] pt-1 2xl:pt-4 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-opacity lg:grid-cols-[0.42fr_0.58fr]"
       style={{
         opacity,
         zIndex: activeIndex === index ? 2 : 1,
@@ -232,28 +232,28 @@ function FadeSolutionSlide({
       aria-hidden={activeIndex !== index}
     >
       <div className="relative z-10 max-w-xl">
-        <div className="flex items-center gap-4">
-          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[42px] w-auto" />
+        <div className="flex items-center gap-3 2xl:gap-4">
+          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[32px] 2xl:h-[38px] w-auto" />
           <h3 className="text-xs font-bold uppercase text-[#005ead]">{solution.title}</h3>
         </div>
-        <p className="mt-4 2xl:mt-7 text-sm leading-5 2xl:text-base 2xl:leading-6 text-[#4b4b4b]">{solution.copy}</p>
-        <div className="relative mt-4 2xl:mt-8 aspect-[1.58] 2xl:aspect-[1.42] max-w-[330px] xl:max-w-[360px] 2xl:max-w-[390px] overflow-hidden rounded-lg bg-[#dfe7ee]">
+        <p className="mt-2.5 2xl:mt-4 text-xs sm:text-sm leading-4.5 2xl:text-base 2xl:leading-6 text-[#4b4b4b]">{solution.copy}</p>
+        <div className="relative mt-2.5 2xl:mt-5 aspect-[2] 2xl:aspect-[1.65] max-w-[220px] xl:max-w-[260px] 2xl:max-w-[340px] overflow-hidden rounded-lg bg-[#dfe7ee]">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
             fill
-            sizes="390px"
+            sizes="340px"
             className="object-cover"
           />
         </div>
         {index === 2 ? (
-          <div className="mt-4 2xl:mt-7">
+          <div className="mt-2.5 2xl:mt-5">
             <ArrowButton>Talk to us</ArrowButton>
           </div>
         ) : null}
       </div>
 
-      <div className="relative min-h-[430px] overflow-hidden">
+      <div className="relative min-h-[340px] 2xl:min-h-[430px] overflow-hidden">
         <video className="absolute inset-0 h-full w-full object-contain" autoPlay loop muted playsInline preload="metadata">
           <source src={solution.video} type="video/mp4" />
         </video>
@@ -314,7 +314,7 @@ function ProgressRail({ activeIndex, progress }: { activeIndex: number; progress
       : 124 + (clampedProgress - 1) * (236 - 124);
 
   return (
-    <div className="absolute right-2 top-[134px] 2xl:top-[158px] z-30 flex w-[56px] justify-center">
+    <div className="absolute right-2 top-[170px] 2xl:top-[194px] z-30 flex w-[56px] justify-center">
       <div className="relative h-[310px] w-[42px] flex-col items-center justify-start">
         <ProgressRobot
           className="absolute left-1/2 top-0 z-20 -translate-x-1/2 transition-transform duration-300 ease-out"

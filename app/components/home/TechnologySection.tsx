@@ -4,7 +4,7 @@ import { TechnologyAccordion } from "./TechnologyAccordion";
 
 export function TechnologySection() {
   return (
-    <section id="software" className="bg-[#e7eef4] py-16 md:py-20">
+    <section id="software" className="overflow-hidden bg-[#e7eef4] py-14 md:py-20">
       <div className="site-container">
         <FadeRight className="max-w-[610px]">
           <Kicker>Engineering the Future of Automation</Kicker>

@@ -88,12 +88,24 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Ensure interactive buttons/anchors are on top of decorative overlays so clicks register */
+a[class*="group/btn"],
+a[class*="inline-flex"][class*="h-10"],
+a[class*="inline-flex"][class*="h-8"],
+button[data-slot="button"] {
+  position: relative;
+  z-index: 30;
+}
+
+
 body {
   font-family: "Plus Jakarta Sans", "Aptos", "Segoe UI", sans-serif;
+  overflow-x: clip;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 .site-container {

@@ -59,7 +59,7 @@ export function CaseStudiesSection() {
   };
 
   return (
-    <section className="bg-[#eef5fb] py-8 md:bg-white md:py-20">
+    <section className="overflow-hidden bg-[#eef5fb] py-8 md:bg-white md:py-20">
       <div className="site-container">
         <FadeRight>
           <Kicker>Transforming Workplaces With Intelligence</Kicker>

@@ -83,7 +83,7 @@ export function SolutionsCardDeckSection() {
 
       const metrics = getDeckMetrics();
       if (metrics) {
-        const targetProgress = next / (solutions.length - 1);
+        const targetProgress = (next * 0.82) / (solutions.length - 1);
         window.scrollTo({
           top: metrics.startY + metrics.scrollable * targetProgress,
           behavior: "smooth",
@@ -140,7 +140,7 @@ export function SolutionsCardDeckSection() {
   const scaledProgress = activeIndex;
 
   return (
-    <section className="bg-[#fafafa] py-14 md:py-20 lg:pt-16">
+    <section className="bg-[#fafafa] py-14 md:py-20 lg:pb-0">
       <div className="site-container">
         <div className="mx-auto max-w-3xl pb-6 text-center lg:pb-10">
           <Kicker>Solutions That Solve, Everywhere.</Kicker>
@@ -173,8 +173,8 @@ export function SolutionsCardDeckSection() {
               ))}
             </div>
 
-            <div ref={wrapperRef} className="relative mt-4 hidden h-[210vh] lg:block">
-              <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[100px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-108px)] min-h-[560px] 2xl:min-h-[640px] overflow-visible">
+            <div ref={wrapperRef} className="relative mt-4 hidden h-[250vh] lg:block">
+              <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[88px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[560px] overflow-visible">
                 <div className="absolute left-0 top-0 z-30">
                   <Kicker>Robots Designed to Deliver</Kicker>
                   <h3 className="mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
@@ -182,7 +182,7 @@ export function SolutionsCardDeckSection() {
                   </h3>
                 </div>
 
-                <div className="absolute -left-10 bottom-0 right-16 top-[68px] 2xl:top-[92px] px-10 pb-6 2xl:pb-12 pt-2 2xl:pt-5 [perspective:1600px]">
+                <div className="absolute -left-10 bottom-0 right-16 top-[104px] 2xl:top-[116px] px-10 pb-6 2xl:pb-12 pt-2 2xl:pt-5 [perspective:1600px]">
                   {solutions.map((solution, index) => (
                     <DeckCard
                       key={solution.title}
@@ -250,29 +250,29 @@ function DeckCard({
       }}
       aria-hidden={activeIndex !== index}
     >
-      <div className="relative z-10 flex flex-col justify-center p-6 xl:p-10 2xl:p-12">
-        <div className="flex items-center gap-4">
-          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[42px] w-auto" />
+      <div className="relative z-10 flex flex-col justify-center p-4 lg:p-6 2xl:p-10">
+        <div className="flex items-center gap-3 2xl:gap-4">
+          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[32px] 2xl:h-[38px] w-auto" />
           <h4 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h4>
         </div>
-        <p className="mt-4 2xl:mt-7 max-w-[430px] text-sm leading-5 2xl:leading-6 text-[#3f4b57]">{solution.copy}</p>
-        <div className="relative mt-4 2xl:mt-8 aspect-[1.58] 2xl:aspect-[1.42] max-w-[340px] xl:max-w-[380px] 2xl:max-w-[420px] overflow-hidden rounded-lg bg-[#dfe7ee]">
+        <p className="mt-2.5 2xl:mt-4 max-w-[430px] text-xs sm:text-sm leading-4.5 2xl:leading-6 text-[#3f4b57]">{solution.copy}</p>
+        <div className="relative mt-2.5 2xl:mt-5 aspect-[2] 2xl:aspect-[1.65] max-w-[220px] xl:max-w-[260px] 2xl:max-w-[360px] overflow-hidden rounded-lg bg-[#dfe7ee]">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
             fill
-            sizes="420px"
+            sizes="360px"
             className="object-cover"
           />
         </div>
         {index === 2 ? (
-          <div className="mt-4 2xl:mt-7">
+          <div className="mt-2.5 2xl:mt-5">
             <ArrowButton>Talk to us</ArrowButton>
           </div>
         ) : null}
       </div>
 
-      <div className="relative min-h-[430px] overflow-hidden bg-[#fafafa]">
+      <div className="relative min-h-[340px] 2xl:min-h-[430px] overflow-hidden bg-[#fafafa]">
         <p className="pointer-events-none absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[82px] font-bold uppercase leading-[0.95] text-[#011f40]/8 xl:text-[104px]">
           {solution.label.map((word) => (
             <span key={word} className="block">
@@ -370,7 +370,7 @@ function ProgressRail({
       : 124 + (clampedProgress - 1) * (236 - 124);
 
   return (
-    <div className="absolute right-0 top-[150px] 2xl:top-[174px] z-40 flex w-[56px] justify-center">
+    <div className="absolute right-0 top-[186px] 2xl:top-[210px] z-40 flex w-[56px] justify-center">
       <div className="relative h-[310px] w-[42px] flex-col items-center justify-start">
         <m.div
           className="absolute left-1/2 top-0 z-20 -translate-x-1/2"

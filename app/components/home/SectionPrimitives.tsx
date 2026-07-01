@@ -4,7 +4,7 @@ export function ArrowButton({ children, dark = false, target = "#contact" }: { c
   return (
     <a
       href={target}
-      className={`group/btn inline-flex h-10 items-center gap-3 rounded-sm px-4 text-[14px] font-medium uppercase tracking-wide transition ${
+      className={`relative z-10 group/btn inline-flex h-10 items-center gap-3 rounded-sm px-4 text-[14px] font-medium uppercase tracking-wide transition ${
         dark ? "bg-white text-[#005ead] hover:bg-[#edf6ff]" : "bg-[#005ead] text-white hover:bg-[#014f91]"
       }`}
     >

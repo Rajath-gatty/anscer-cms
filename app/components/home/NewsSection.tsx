@@ -6,7 +6,7 @@ import { Kicker } from "./SectionPrimitives";
 
 export function NewsSection() {
   return (
-    <section className="bg-white py-20">
+    <section className="overflow-hidden bg-white py-14 md:py-20">
       <div className="site-container">
         <FadeRight>
           <Kicker>We are always up to something</Kicker>

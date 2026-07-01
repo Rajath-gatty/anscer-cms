@@ -17,7 +17,7 @@ const supportItems = [
 
 export function ExploreMoreSection() {
   return (
-    <section className="bg-[#efefef] py-20">
+    <section className="overflow-hidden bg-[#efefef] py-14 md:py-20">
       <div className="site-container">
         <FadeRight>
           <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
