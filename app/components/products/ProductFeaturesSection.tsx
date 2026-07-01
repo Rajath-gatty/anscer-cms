@@ -53,7 +53,7 @@ export function ProductFeaturesSection() {
                   <div className="grid size-9 place-items-center rounded-md text-[#005ead]">
                     <feature.Icon
                       aria-hidden="true"
-                      className={`size-6 ${feature.iconClassName ?? ""}`}
+                      className={`size-8 ${feature.iconClassName ?? ""}`}
                       strokeWidth={2}
                     />
                   </div>

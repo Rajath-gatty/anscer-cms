@@ -594,7 +594,18 @@ export function SeriesRobotSelector({
                           selectorImageClass(activeProduct.name),
                         )}
                       />
-                    ) : (
+                    ) : series === "agv-series" ? (
+                      <Image
+                        src={`${imagePath}${activeProduct.image}`}
+                        alt={activeProduct.name}
+                        width={800}
+                        height={400}
+                        className={cn(
+                          "relative mt-20 z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[90%]",
+                          selectorImageClass(activeProduct.name),
+                        )}
+                      />
+                    )  : (
                       <Image
                         src={`${imagePath}${activeProduct.image}`}
                         alt={activeProduct.name}
@@ -717,8 +728,8 @@ const desktopTagPositionsByProduct: Record<
     Lifting: { left: "80%", top: "78%" },
   },
   "AGV 100": {
-    Lifting: { left: "38%", top: "28%" },
-    Sorting: { left: "85%", top: "58%" },
+    Lifting: { left: "38%", top: "38%" },
+    Sorting: { left: "80%", top: "58%" },
   },
 };
 

@@ -13,7 +13,7 @@ const CONTACT_HREF = "mailto:sales@anscer.com";
 export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [robotsOpen, setRobotsOpen] = useState(true);
+  const [robotsOpen, setRobotsOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
   const navHref = (item: string) => {
     if (item === "Home") return "/";
