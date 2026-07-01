@@ -27,7 +27,7 @@ export function ProductFeaturesSection() {
     <section className="bg-[#fafafa] py-14 md:py-20">
       <div className="site-container">
         <ScrollReveal className="max-w-[600px]">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#005ead] md:text-base">
+          <p className="text-[12px] md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             How Our Robots Deliver Excellence
           </p>
           <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">

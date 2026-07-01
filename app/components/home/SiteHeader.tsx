@@ -89,7 +89,7 @@ export function SiteHeader() {
             })}
           </nav>
           <a
-            className="inline-flex h-[46px] items-center justify-center gap-6 rounded-[3px] bg-[#005ead] pl-5 pr-[5px] py-[13px] text-sm font-bold uppercase tracking-wide text-white transition-all"
+            className="inline-flex h-[46px] items-center justify-center gap-3 rounded-[3px] bg-[#005ead] px-6 py-[13px] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
             href={CONTACT_HREF}
           >
             Contact us{" "}
@@ -259,7 +259,7 @@ export function SiteHeader() {
             })}
           </nav>
           <a
-            className="mt-5 inline-flex px-2 h-8 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-medium uppercase tracking-wide text-white"
+            className="mt-5 inline-flex h-12 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
             href={CONTACT_HREF}
             onClick={closeMenu}
           >
@@ -273,20 +273,56 @@ export function SiteHeader() {
 }
 
 function RobotsDropdown({ active }: { active: boolean }) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  // Close when pathname changes (after navigation)
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // Close when clicking outside the dropdown
+  useEffect(() => {
+    if (!open) return;
+    function handleOutside(e: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [open]);
+
   return (
-    <div className="group relative flex h-[60px] items-center">
-      <Link
-        className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 group-hover:text-[#005ead] hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 group-hover:after:scale-x-100 hover:after:scale-x-100 ${
-          active ? "font-bold text-[#005ead]" : "text-[#2f2f2f]"
+    <div ref={containerRef} className="relative flex h-[60px] items-center">
+      <button
+        type="button"
+        onMouseEnter={() => setOpen(true)}
+        onClick={() => setOpen((o) => !o)}
+        className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
+          open || active
+            ? "font-bold text-[#005ead] after:scale-x-100"
+            : "text-[#2f2f2f]"
         }`}
-        href="/products"
       >
         Robots
-      </Link>
-      <div className="invisible absolute left-1/2 top-[60px] z-50 w-[400px] -translate-x-1/2 rounded-xl bg-white opacity-0 shadow-[0_18px_45px_rgba(1,31,64,.22)] transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+      </button>
+      <div
+        onMouseLeave={() => setOpen(false)}
+        className={`absolute left-1/2 top-[60px] z-50 w-[400px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${
+          open
+            ? "visible opacity-100 translate-y-0"
+            : "invisible opacity-0 -translate-y-2"
+        }`}
+      >
         <div className="p-5">
           <Link
             href="/products"
+            onClick={() => setOpen(false)}
             className="cursor-pointer group/link flex items-center gap-3 text-lg font-bold text-[#011f40] hover:underline underline-offset-4"
           >
             Robot Overview
@@ -309,18 +345,21 @@ function RobotsDropdown({ active }: { active: boolean }) {
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
               href="/ar-series"
+              onClick={() => setOpen(false)}
             >
               AR Series
             </Link>
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
               href="/psr-series"
+              onClick={() => setOpen(false)}
             >
               PSR Series
             </Link>
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
               href="/agv-series"
+              onClick={() => setOpen(false)}
             >
               AGV Series
             </Link>

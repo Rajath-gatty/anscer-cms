@@ -10,7 +10,10 @@ export function ProductsSection() {
   const secondaryProducts = productCards.filter((product) => !product.featured);
 
   return (
-    <section id="robots" className="overflow-hidden bg-[#fafafa] pb-10 md:py-20">
+    <section
+      id="robots"
+      className="scroll-mt-20 overflow-hidden bg-[#fafafa] pb-10 pt-10 md:scroll-mt-24 md:pb-14 md:pt-14 lg:pb-16 lg:pt-16 xl:pb-20 xl:pt-20"
+    >
       <div className="site-container">
         <FadeRight className="max-w-3xl">
           <Kicker>Robots Designed to Deliver</Kicker>
@@ -23,13 +26,13 @@ export function ProductsSection() {
             designed for seamless automation and efficiency.
           </p>
         </FadeRight>
-        <div className="mt-7 grid gap-3 md:gap-4 lg:grid-cols-2">
+        <div className="mt-7 grid gap-3 md:gap-4 lg:grid-cols-2 lg:items-stretch">
           {featuredProduct ? (
-            <FadeRight delay={0.08}>
+            <FadeRight className="lg:h-full" delay={0.08}>
               <ProductCard product={featuredProduct} />
             </FadeRight>
           ) : null}
-          <FadeLeft className="grid gap-3 md:gap-4" delay={0.14}>
+          <FadeLeft className="grid gap-3 md:gap-4 lg:h-full lg:grid-rows-2" delay={0.14}>
             {secondaryProducts.map((product) => (
               <ProductCard key={product.title} product={product} />
             ))}
@@ -41,48 +44,64 @@ export function ProductsSection() {
 }
 
 function ProductCard({ product }: { product: (typeof productCards)[number] }) {
+  const media = getHomeProductMedia(product);
+  const isFeatured = product.featured;
+
   return (
     <article
-      className={`group relative overflow-hidden rounded-lg bg-[#e6edf3] p-4 md:p-5 ${
-        product.featured
-          ? "min-h-[425px] md:min-h-[560px]"
-          : "min-h-[235px] md:min-h-[270px]"
+      className={`group relative flex overflow-hidden rounded-lg bg-[#e6edf3] p-4 md:p-5 ${
+        isFeatured
+          ? "min-h-[430px] flex-col md:min-h-[560px] lg:h-full lg:min-h-[620px]"
+          : "min-h-[340px] flex-col md:min-h-[350px] lg:min-h-0 lg:flex-row lg:items-center lg:gap-5"
       }`}
     >
-      <h3 className="text-xl font-semibold md:text-[24px]">{product.title}</h3>
-      <p className="mt-2 max-w-xl text-sm leading-4 text-[#27384b] md:mt-3 md:text-base md:leading-6">
-        {product.copy}
-      </p>
-      <Tags tags={product.tags} />
-      <div
-        className={
-          product.featured
-            ? "absolute inset-x-4 bottom-0 h-[245px] md:inset-x-6 md:h-[390px]"
-            : "absolute bottom-2 right-3 h-[104px] w-[196px] md:bottom-4 md:right-6 md:h-[150px] md:w-[330px]"
-        }
-      >
+      <div className={`relative z-10 ${isFeatured ? "" : "lg:w-[52%] lg:shrink-0"}`}>
+        <h3 className="text-xl font-semibold md:text-[24px]">{product.title}</h3>
+        <p className="mt-2 max-w-xl text-sm leading-4 text-[#27384b] md:mt-3 md:text-base md:leading-6">
+          {product.copy}
+        </p>
+        <Tags tags={product.tags} />
+        <div className="mt-3 opacity-100 transition-opacity duration-300 md:mt-4 lg:opacity-0 lg:group-hover:opacity-100">
+          <div className="md:hidden">
+            <ProductExploreButton href={product.href} />
+          </div>
+          <div className="hidden md:block">
+            <ArrowButton target={product.href}>Explore</ArrowButton>
+          </div>
+        </div>
+      </div>
+      <div className={media.wrapperClass}>
         <Image
-          src={`${imagePath}${product.image}`}
+          src={`${imagePath}${media.image}`}
           alt=""
           fill
-          sizes={
-            product.featured
-              ? "(max-width: 768px) 280px, 520px"
-              : "(max-width: 768px) 196px, 330px"
-          }
-          className={`${product.featured ? "pb-6" : ""} object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110`}
+          sizes={media.sizes}
+          className="object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
         />
-      </div>
-      <div className="mt-3 opacity-100 transition-opacity duration-300 md:mt-4 lg:opacity-0 lg:group-hover:opacity-100">
-        <div className="md:hidden">
-          <ProductExploreButton href={product.href} />
-        </div>
-        <div className="hidden md:block">
-          <ArrowButton target={product.href}>Explore</ArrowButton>
-        </div>
       </div>
     </article>
   );
+}
+
+function getHomeProductMedia(product: (typeof productCards)[number]) {
+  if (product.featured) {
+    return {
+      image: "psr-image-final.png",
+      wrapperClass:
+        "relative mt-auto h-[235px] w-full overflow-visible sm:h-[275px] md:h-[350px] lg:h-[410px]",
+      sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 33vw",
+    };
+  }
+
+  return {
+    image:
+      product.marker === "AGV"
+        ? "eca609825c9ed12d6eab777cf34ae51efee25114.png"
+        : "60ea9badfafa109779007ff36fd0cf87881840a1.png",
+    wrapperClass:
+      "relative mt-5 h-[170px] w-full sm:h-[190px] md:h-[210px] lg:mt-0 lg:h-[190px] lg:flex-1",
+    sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 22vw",
+  };
 }
 
 function ProductExploreButton({ href = "#contact" }: { href?: string }) {
