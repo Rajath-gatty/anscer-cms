@@ -9,17 +9,17 @@ export function SolutionsSection() {
     () =>
       [
         {
-          value: "85",
+          value: "85+",
           label: "Projects Delivered",
           copy: "Successfully deployed automation solutions across 4+ continents, helping customers in diverse industries achieve operational excellence.",
         },
         {
-          value: "800,000",
+          value: "800,000+",
           label: "Autonomous Trips Completed",
           copy: "Proven reliability across real-world manufacturing and warehouse environments.",
         },
         {
-          value: "100",
+          value: "100+",
           label: "Robots Deployed Worldwide",
           copy: "Delivering reliable automation across multiple industries and geographies",
         },
@@ -111,7 +111,10 @@ export function SolutionsSection() {
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
                     <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[36px]">
-                      <span className="text-[#005ead]">{stat.value}</span>
+                      <span className="text-[#005ead]">
+                        {stat.value}
+                        {stats[index]?.value.endsWith("+") ? "+" : ""}
+                      </span>
                     </h3>
                     <p className="mt-2 text-[10px] font-extrabold text-[#011f40] md:mt-4 md:text-[12px]">
                       {stat.label}
