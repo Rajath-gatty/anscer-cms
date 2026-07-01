@@ -9,82 +9,42 @@ import { ScrollReveal } from "../home/ScrollReveal";
 
 const heroSlides = [
   {
-    id: "lift",
     title: "Robots Ready to",
     accent: "Lift",
-    image: "lift.png",
-    imageClass: "scale-[1.2] -translate-x-[3%] md:translate-x-[3%]",
-    tags: ["Ready to Lift", "Lifting"],
+    image: "PSR-1000R_1.png",
+    imageWidth: 772,
+    imageHeight: 515,
+    imageClass:
+      "max-w-[358px] md:max-w-[400px] lg:max-w-[526px] xl:max-w-[540px]",
   },
   {
-    id: "pull",
     title: "Robots Ready to",
     accent: "Pull",
-    image: "pull.png",
-    imageClass: "scale-[1.2] translate-x-[4%] md:translate-x-[10%]",
-    tags: ["Ready to Pull", "Pulling"],
+    image: "hero-image-2.png",
+    imageWidth: 766,
+    imageHeight: 411,
+    imageClass:
+      "max-w-[360px] md:max-w-[500px] lg:max-w-[540px] xl:max-w-[560px]",
   },
   {
-    id: "grasp",
     title: "Robots Ready to",
     accent: "Grasp",
-    image: "grab.png",
-    imageClass: "scale-[1.2] translate-x-[9%] md:translate-x-[15%]",
-    tags: ["Ready to Grasp", "Grasping"],
+    image: "Group-1321315879.png",
+    imageWidth: 749,
+    imageHeight: 670,
+    imageClass:
+      "max-w-[320px] md:max-w-[420px] lg:max-w-[440px] xl:max-w-[470px]",
   },
   {
-    id: "move",
     title: "Robots Ready to",
     accent: "Move",
-    image: "move.png",
-    imageClass: "scale-[1.2] translate-x-[3%] md:translate-x-[9%]",
-    tags: ["Ready to Move", "Moving"],
+    image: "hero-image-4.png",
+    imageWidth: 749,
+    imageHeight: 560,
+    imageClass:
+      "max-w-[358px] md:max-w-[460px] lg:max-w-[500px] xl:max-w-[530px]",
   },
 ];
-
-type ProductHeroTagPosition = {
-  left: string;
-  top: string;
-};
-
-const defaultProductHeroTagPositions: ProductHeroTagPosition[] = [
-  { left: "12%", top: "24%" },
-  { left: "62%", top: "58%" },
-];
-
-const productHeroTagPositionsBySlide: Record<
-  string,
-  Record<string, ProductHeroTagPosition>
-> = {
-  lift: {
-    "Ready to Lift": { left: "54%", top: "64%" },
-    Lifting: { left: "42%", top: "35%" },
-  },
-  pull: {
-    "Ready to Pull": { left: "52%", top: "65%" },
-    Pulling: { left: "30%", top: "35%" },
-  },
-  grasp: {
-    "Ready to Grasp": { left: "52%", top: "48%" },
-    Grasping: { left: "49%", top: "5%" },
-  },
-  move: {
-    "Ready to Move": { left: "5%", top: "54%" },
-    Moving: { left: "68%", top: "68%" },
-  },
-};
-
-function getProductHeroTagPosition(
-  slideId: string,
-  tag: string,
-  index: number,
-): ProductHeroTagPosition {
-  return (
-    productHeroTagPositionsBySlide[slideId]?.[tag] ??
-    defaultProductHeroTagPositions[index] ??
-    defaultProductHeroTagPositions[0]
-  );
-}
 
 export function ProductHeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -125,16 +85,8 @@ export function ProductHeroSlider() {
   }, [activeIndex]);
 
   return (
-    <section
-      // className="bg-[#fafafa]"
-      style={{
-        backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="site-container grid min-h-[88svh]  items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16">
+    <section className="bg-white">
+      <div className="site-container grid min-h-[calc(110svh-60px)] content-start gap-10 py-20 md:gap-12 md:py-16 lg:min-h-[calc(100svh-60px)] lg:content-center lg:grid-cols-[1fr_0.7fr] lg:items-center lg:gap-4 lg:py-0">
         <div>
           <ScrollReveal>
             <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
@@ -153,14 +105,14 @@ export function ProductHeroSlider() {
                 </AnimatePresence>
               </span>
             </h1>
-            <p className="mt-5 max-w-[470px] text-sm leading-5 text-[#3f4b57] md:text-[18px] md:leading-[26px]">
+            <p className="mt-5 max-w-[600px] text-sm font-medium leading-5 text-[#3f4b57] md:text-[18px] md:leading-[26px] lg:max-w-[470px]">
               Explore ANSCER&apos;s cutting-edge lineup: powerful, smart
               automation solutions engineered to transform your operations.
             </p>
           </ScrollReveal>
           <a
             href="#robot-series"
-            className="group mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="group mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
           >
             Explore{" "}
             <span className="relative flex size-4 overflow-hidden">
@@ -176,7 +128,7 @@ export function ProductHeroSlider() {
               />
             </span>
           </a>
-          <div className="mt-8 flex items-center gap-3">
+          <div className="mt-16 flex items-center gap-3 md:mt-20 lg:mt-[120px]">
             <span className="relative grid h-8 min-w-[62px] place-items-center overflow-hidden rounded-full border border-[#b9c9d9] bg-white px-4 text-xs font-medium shadow-sm">
               <span className="relative z-20 text-[#011f40]">
                 {String(activeIndex + 1).padStart(2, "0")}/04
@@ -205,35 +157,25 @@ export function ProductHeroSlider() {
           </div>
         </div>
 
-        <div className="relative min-h-[430px] md:min-h-[500px] xl:min-h-full w-full">
+        <div className="relative min-h-[300px] w-full md:min-h-[330px] lg:min-h-[420px] lg:-translate-y-8">
           <AnimatePresence mode="popLayout" initial={false}>
             <m.div
               key={active.image}
-              className="absolute inset-0 w-full"
+              className="absolute inset-0 flex w-full items-center justify-center lg:justify-end"
               initial={{ x: 80, opacity: 0, scale: 1 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
               exit={{ x: -80, opacity: 0, scale: 1 }}
               transition={{ duration: 0.56, ease: [0.22, 1, 0.36, 1] }}
             >
               <Image
-                src={`${imagePath}products/${active.image}`}
+                src={`${imagePath}${active.image}`}
                 alt={`${active.title} ${active.accent}`}
-                fill
+                width={active.imageWidth}
+                height={active.imageHeight}
                 priority={activeIndex === 0}
-                sizes="(max-width: 600px) 50vw, 600px"
-                className={`object-contain w-full object-bottom-right drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] ${active.imageClass}`}
+                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 500px, 540px"
+                className={`h-auto w-full object-contain drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] ${active.imageClass}`}
               />
-              {/* <div className="pointer-events-none absolute inset-0 z-20">
-                {active.tags.map((tag, index) => (
-                  <span
-                    key={`${active.id}-${tag}`}
-                    className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-semibold text-[#011f40] shadow-[0_8px_24px_rgba(1,31,64,.14)] md:px-4 md:py-2 md:text-sm"
-                    style={getProductHeroTagPosition(active.id, tag, index)}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div> */}
             </m.div>
           </AnimatePresence>
         </div>

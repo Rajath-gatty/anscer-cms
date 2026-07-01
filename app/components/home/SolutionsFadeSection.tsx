@@ -11,7 +11,8 @@ const solutions = [
     title: "PALLET Stacking",
     copy: "A pallet stacking AMR for precise pallet pickup, lifting, and placement, enabling repeatable stacking operations and efficient intralogistics flow.",
     icon: "pallet-stacking-svg.svg",
-    image: "our-solutions-image-1-p-800.png",
+    image: "our-solutions-image-1.png",
+    imageHeight: 1024,
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Pallet%20Stacking%20With%20bg.mp4",
   },
@@ -19,7 +20,8 @@ const solutions = [
     title: "TROLLEY MOVEMENT",
     copy: "A compact, free-lift AMR with universal trolley compatibility, designed for trolley movement in low-clearance environments and the demands of dynamic shop floors.",
     icon: "trolley-movement.svg",
-    image: "our-solutions-image-2-p-800.png",
+    image: "our-solutions-image-2.png",
+    imageHeight: 1024,
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Trolley%20movement%20With%20bg.mp4",
   },
@@ -27,7 +29,8 @@ const solutions = [
     title: "Tugging",
     copy: "An AMR with a Tugger top module for automated trolley and cart transport, ensuring safe and flexible automation across production and intralogistics operations.",
     icon: "tugging-svg.svg",
-    image: "our-solutions-image-3-p-800.png",
+    image: "our-solutions-image-3.png",
+    imageHeight: 1020,
     video:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Tugging%20with%20BG.mp4",
   },
@@ -156,10 +159,12 @@ function SolutionsFadeStack() {
 
   if (reducedMotion) {
     return (
-      <div className="mt-12 flex flex-col gap-16">
-        {solutions.map((solution, index) => (
-          <StaticSolutionCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
-        ))}
+      <div className="pt-14">
+        <div className="flex flex-col gap-[34px] md:gap-5">
+          {solutions.map((solution, index) => (
+            <StaticSolutionCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
+          ))}
+        </div>
       </div>
     );
   }
@@ -168,19 +173,21 @@ function SolutionsFadeStack() {
 
   return (
     <>
-      <div className="mt-12 flex flex-col gap-16 lg:hidden">
-        <div>
+      <div className="pt-14 lg:hidden">
+        <div className="mb-10">
           <Kicker>Robots Designed to Deliver</Kicker>
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
             Our <span className="text-[#005ead]">Solutions</span>
           </h2>
         </div>
-        {solutions.map((solution, index) => (
-          <StaticSolutionCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
-        ))}
+        <div className="flex flex-col gap-[34px] md:gap-5">
+          {solutions.map((solution, index) => (
+            <StaticSolutionCard key={solution.title} solution={solution} showButton={index === solutions.length - 1} />
+          ))}
+        </div>
       </div>
 
-      <div ref={wrapperRef} className="relative mt-10 hidden h-[260vh] lg:block">
+      <div ref={wrapperRef} className="relative hidden h-[260vh] lg:block">
         <div ref={stickyRef} className="sticky top-[72px] 2xl:top-[88px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[540px] overflow-hidden">
           <div className="absolute left-0 top-0 z-20">
             <Kicker>Robots Designed to Deliver</Kicker>
@@ -223,7 +230,7 @@ function FadeSolutionSlide({
 
   return (
     <article
-      className="absolute inset-0 grid min-h-[380px] 2xl:min-h-[520px] items-start gap-5 2xl:gap-10 bg-[#fafafa] pt-1 2xl:pt-4 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-opacity lg:grid-cols-[0.42fr_0.58fr]"
+      className="absolute inset-0 grid min-h-[524px] items-start gap-6 bg-[#fafafa] transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-opacity lg:grid-cols-2"
       style={{
         opacity,
         zIndex: activeIndex === index ? 2 : 1,
@@ -231,30 +238,31 @@ function FadeSolutionSlide({
       }}
       aria-hidden={activeIndex !== index}
     >
-      <div className="relative z-10 max-w-xl">
-        <div className="flex items-center gap-3 2xl:gap-4">
-          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[32px] 2xl:h-[38px] w-auto" />
+      <div className="relative z-10 max-w-none">
+        <div className="flex items-center gap-2">
+          <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[42px] w-auto" />
           <h3 className="text-xs font-bold uppercase text-[#005ead]">{solution.title}</h3>
         </div>
-        <p className="mt-2.5 2xl:mt-4 text-xs sm:text-sm leading-4.5 2xl:text-base 2xl:leading-6 text-[#4b4b4b]">{solution.copy}</p>
-        <div className="relative mt-2.5 2xl:mt-5 aspect-[2] 2xl:aspect-[1.65] max-w-[220px] xl:max-w-[260px] 2xl:max-w-[340px] overflow-hidden rounded-lg bg-[#dfe7ee]">
+        <p className="mt-[18px] max-w-[640px] text-base leading-[22px] text-[#3a3a3a]">{solution.copy}</p>
+        <div className="mt-2.5 w-[350px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee]">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
-            fill
-            sizes="340px"
-            className="object-cover"
+            width={1600}
+            height={solution.imageHeight}
+            sizes="350px"
+            className="h-auto w-full"
           />
         </div>
         {index === 2 ? (
-          <div className="mt-2.5 2xl:mt-5">
+          <div className="mt-5">
             <ArrowButton>Talk to us</ArrowButton>
           </div>
         ) : null}
       </div>
 
-      <div className="relative min-h-[340px] 2xl:min-h-[430px] overflow-hidden">
-        <video className="absolute inset-0 h-full w-full object-contain" autoPlay loop muted playsInline preload="metadata">
+      <div className="relative flex min-h-[485px] items-start justify-start overflow-hidden">
+        <video className="size-[485px] max-h-full max-w-full object-contain" autoPlay loop muted playsInline preload="metadata">
           <source src={solution.video} type="video/mp4" />
         </video>
       </div>
@@ -267,34 +275,22 @@ function StaticSolutionCard({ solution, showButton = false }: { solution: (typeo
 
   return (
     <article className="relative bg-[#fafafa]">
-      <div className="relative -mx-2 flex min-h-[220px] items-center justify-center overflow-hidden">
-        <p className="pointer-events-none absolute left-1/2 top-5 w-full -translate-x-1/2 text-center text-[42px] font-bold uppercase leading-[0.96] text-[#011f40]/10 sm:text-[54px]">
-          {titleWords.map((word) => (
-            <span key={word} className="block">
-              {word}
-            </span>
-          ))}
-        </p>
-        <video className="relative z-10 h-[205px] w-full object-contain" autoPlay loop muted playsInline preload="metadata">
-          <source src={solution.video} type="video/mp4" />
-        </video>
-      </div>
-
-      <div className="mt-1 flex items-center gap-3">
-        <Image src={`${imagePath}${solution.icon}`} alt="" width={28} height={28} className="h-7 w-auto shrink-0" />
-        <h3 className="text-[10px] font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h3>
-      </div>
-      <p className="mt-4 text-xs leading-5 text-[#011f40]">{solution.copy}</p>
-
-      <div className="relative mt-5 aspect-[1.45] overflow-hidden rounded-md bg-[#dfe7ee]">
+      <div className="overflow-hidden rounded-xl bg-[#dfe7ee]">
         <Image
           src={`${imagePath}${solution.image}`}
           alt={`${solution.title} application`}
-          fill
+          width={1600}
+          height={solution.imageHeight}
           sizes="(max-width: 1024px) 100vw, 390px"
-          className="object-cover"
+          className="h-[250px] w-full object-cover md:h-auto"
         />
       </div>
+
+      <div className="mt-8 flex items-center gap-2">
+        <Image src={`${imagePath}${solution.icon}`} alt="" width={42} height={42} className="h-[42px] w-auto shrink-0" />
+        <h3 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">{solution.title}</h3>
+      </div>
+      <p className="mt-6 text-sm leading-5 text-[#011f40]">{solution.copy}</p>
 
       {showButton && (
         <div className="mt-4 flex">
