@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en" className={cn("h-full scroll-smooth", "font-sans", plusJakartaSans.variable)}>
       <body className="min-h-full bg-[#fafafa] text-[#011f40]">
         <MotionProvider>
-          <AnnouncementBanner />
+          {/* <AnnouncementBanner /> */}
           <SiteHeader />
           {children}
           <SiteFooter />
