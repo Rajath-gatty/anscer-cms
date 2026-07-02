@@ -102,7 +102,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               fill
               priority
               sizes="(max-width: 1024px) 92vw, 760px"
-              className={cn("object-contain object-right translate-y-[40px] md:translate-y-[100px] md:translate-x-[100px] drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]", data.slug === "psr-series" && "md:translate-x-[180px] ")}
+              className={cn("object-contain object-right translate-y-[40px] md:translate-y-[100px] md:translate-x-[100px] drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]", data.slug === "psr-series" ? "md:translate-x-[180px] ": data.slug === "agv-series" && "md:translate-x-[180px]")}
             />
           </div>
           {/* <div className="pointer-events-none absolute inset-0 block">

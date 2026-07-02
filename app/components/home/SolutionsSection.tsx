@@ -114,7 +114,7 @@ export function SolutionsSection() {
                       <span className="text-[#005ead]">
                         {stat.value}
                       </span>
-                      <span className="text-[#005ead] mb-2">
+                      <span className="text-[#005ead] md:mb-2 mb-1">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
                       </span>
                     </h3>

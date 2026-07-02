@@ -124,7 +124,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           loop={true}
           speed={500}
           spaceBetween={20}
-          slidesPerView="auto"
+          slidesPerView={"auto"}
           autoplay={
             reducedMotion
               ? false
@@ -136,7 +136,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           className="!overflow-visible"
         >
           {data.applications.map((application) => (
-            <SwiperSlide key={application.title} className="!w-[min(390px,82vw)]">
+            <SwiperSlide key={application.title} className={cn(data.slug === 'agv-series' ? "!w-[390px] md:!w-[clamp(290px,26.4vw,416px)] lg:!w-[416px]" : "!w-[min(390px,82vw)]")}>
               <article className="relative h-[460px] w-full overflow-hidden rounded-lg bg-[#dfe7ee]">
                 {application.image ? (
                   <Image
