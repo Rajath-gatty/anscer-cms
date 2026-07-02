@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { imagePath } from "./assets";
 import { navItems } from "./home-data";
+import { ArrowButton } from "./SectionPrimitives";
 
 const CONTACT_HREF = "/contact-us";
 
@@ -88,15 +89,12 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          {pathname !== '/contact-us' && (
-            <Link
-              className="inline-flex h-[46px] items-center justify-center gap-3 rounded-[3px] bg-[#005ead] px-6 py-[13px] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
-              href={CONTACT_HREF}
+            <ArrowButton
+
+
             >
-              Contact us{" "}
-              <ArrowRight aria-hidden="true" className="size-5" strokeWidth={2} />
-            </Link>
-          )}
+              Contact us
+            </ArrowButton>
         </div>
         <button
           type="button"

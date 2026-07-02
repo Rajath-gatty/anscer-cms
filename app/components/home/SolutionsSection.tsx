@@ -110,9 +110,11 @@ export function SolutionsSection() {
               {displayStats.length > 0 &&
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
-                    <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[36px]">
+                    <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[36px] flex items-center gap-1">
                       <span className="text-[#005ead]">
                         {stat.value}
+                      </span>
+                      <span className="text-[#005ead] mb-2">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
                       </span>
                     </h3>

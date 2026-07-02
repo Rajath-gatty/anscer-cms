@@ -154,10 +154,14 @@ function StatCardContent({
   return (
     <>
       <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[40px]">
-        <span className="text-[#005ead]">
+        <div className="inline-flex gap-1 items-center">
+          <span className="text-[#005ead]">
           {stat.value}
+        </span>
+        <span className="text-[#005ead] mb-2">
           {suffix}
         </span>
+        </div>
       </h3>
       <p className="mt-2 text-[10px] font-bold text-[#011f40] md:mt-4 md:text-[18px]">
         {stat.label}
