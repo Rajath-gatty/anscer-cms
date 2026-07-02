@@ -201,7 +201,7 @@ export const productDetails: Record<string, ProductDetailData> = {
     subtitle: "Smart, Lightweight, and Efficient",
     overview:
       "The AR-250 is a lightweight AMR that carries up to 250kg, perfect for warehouses and factories. It navigates safely with smart routing and obstacle detection, boosting productivity and easing material handling.",
-    heroImage: "7607bdee067bdab981550481a16873d8ccccb66e.png",
+    heroImage: "ar-250-product-hero-latest.png",
     modelUrl:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/ar-250.glb",
     modelViewerConfig: defaultSideViewModelConfig,

@@ -210,10 +210,10 @@ export function ProductHeroSlider() {
             <m.div
               key={active.image}
               className="absolute inset-0 w-full"
-              initial={{ x: 80, opacity: 0, scale: 1 }}
+              initial={{ x: 0, opacity: 0, scale: 1 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
-              exit={{ x: -80, opacity: 0, scale: 1 }}
-              transition={{ duration: 0.56, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ x: 0, opacity: 0, scale: 1 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
               <Image
                 src={`${imagePath}products/${active.image}`}

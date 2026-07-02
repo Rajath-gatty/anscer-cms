@@ -301,8 +301,8 @@ function RobotsDropdown({ active }: { active: boolean }) {
 
   return (
     <div ref={containerRef} className="relative flex h-[60px] items-center">
-      <button
-        type="button"
+      <Link
+        href="/products"
         onMouseEnter={() => setOpen(true)}
         onClick={() => setOpen((o) => !o)}
         className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
@@ -312,7 +312,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
         }`}
       >
         Robots
-      </button>
+      </Link>
       <div
         onMouseLeave={() => setOpen(false)}
         className={`absolute left-1/2 top-[60px] z-50 w-[400px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${
