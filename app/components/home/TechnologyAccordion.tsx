@@ -104,7 +104,7 @@ export function TechnologyAccordion() {
       </FadeRight>
 
       <FadeLeft
-        className="relative hidden overflow-hidden rounded-xl bg-[#d9e3eb] lg:block lg:h-full"
+        className="relative hidden overflow-hidden rounded-xl bg-[#d9e3eb] lg:block h-[500px]"
         delay={0.08}
       >
         <Image

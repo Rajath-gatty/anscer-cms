@@ -23,6 +23,7 @@ import { imagePath } from "../../home/assets";
 import { ScrollReveal } from "../../home/ScrollReveal";
 import type { ProductDetailData } from "../product-detail-data";
 import { FadeRight } from "../../animation";
+import Link from "next/link";
 
 const featureIcons = {
   Layers,
@@ -81,13 +82,13 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
               <h3 className="text-xl font-bold leading-6 md:text-3xl md:leading-[1.1]">
                 Ready To Automate Your Workflow?
               </h3>
-              <a
-                href="#contact"
+              <Link
+                href="/contact-us"
                 className="mt-6 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-2.5 pl-4 pr-2 text-[11px] font-semibold uppercase tracking-wide text-white"
               >
                 Talk to an Expert{" "}
                 <ArrowRight aria-hidden="true" className="size-4" />
-              </a>
+              </Link>
             </div>
           </article>
           {data.features.features.slice(2, 4).map((feature, index) => (

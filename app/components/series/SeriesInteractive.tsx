@@ -86,7 +86,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           </ScrollReveal>
 
           {/* Desktop Controls */}
-          <div className="hidden items-center gap-4 md:flex">
+          <div className={cn("hidden items-center gap-4", data.slug === "agv-series" ? "md:hidden": "md:flex")}>
             <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
               <span className="relative z-20 text-[#011f40]">{counter}</span>
               <div
@@ -728,8 +728,8 @@ const desktopTagPositionsByProduct: Record<
     Lifting: { left: "80%", top: "78%" },
   },
   "AGV 100": {
-    Lifting: { left: "38%", top: "38%" },
-    Sorting: { left: "80%", top: "58%" },
+    Lifting: { left: "40%", top: "48%" },
+    Sorting: { left: "70%", top: "58%" },
   },
 };
 
@@ -777,8 +777,8 @@ const mobileTagPositionsByProduct: Record<
     Lifting: { left: "65%", top: "75%" },
   },
   "AGV 100": {
-    Lifting: { left: "38%", top: "28%" },
-    Sorting: { left: "80%", top: "58%" },
+    Lifting: { left: "38%", top: "48%" },
+    Sorting: { left: "74%", top: "58%" },
   },
 };
 

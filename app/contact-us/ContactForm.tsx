@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
-import { useCallback, useEffect, useRef } from "react";
+import { useState } from "react";
 import type { FieldErrors } from "react-hook-form";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -35,18 +35,17 @@ const contactFormSchema = z.object({
     .min(1, "Email address is required.")
     .email("Enter a valid email address."),
   phone: z.string().trim().optional(),
-  inquiry_type: z.string().trim().min(1, "Inquiry type is required."),
+  region: z.string().trim().min(1, "Region is required."),
   message: z.string().trim().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 type ContactFormFieldName = keyof ContactFormValues;
 
-const inquiryTypeItems = [
-  { value: "product-inquiry", label: "Product Inquiry" },
-  { value: "technical-support", label: "Technical Support" },
-  { value: "service-maintenance", label: "Service & Maintenance" },
-  { value: "deployment", label: "Deployment Discussion" },
+const regionItems = [
+  { value: "NAM", label: "NAM" },
+  { value: "APAC", label: "APAC" },
+  { value: "EU", label: "EU" },
 ];
 
 const inputClass =
@@ -61,6 +60,18 @@ const textareaClass =
 const labelClass =
   "text-[14px] font-medium uppercase tracking-[0.08em] text-[#011f40]";
 
+const zohoHiddenFields = {
+  xnQsjsdp: "75f788ee9231443042f34541a6ff1b22fa14f081a9bfaea53905f00212778bbd",
+  xmIwtLD:
+    "e62703cdfe64d795e0c7991b92db8d5e348e9fc219eb21caddbaeaca6563601dc10c99868b1fc0f7b68d9a6beb6ea3a9",
+  actionType: "TGVhZHM=",
+  returnURL: "",
+  zc_gad: "",
+} as const;
+
+const zohoEndpoint = "https://crm.zoho.com/crm/WebToLeadForm";
+const zohoLeadSource = "ContactForm_website";
+
 function getFieldError(
   errors: FieldErrors<ContactFormValues>,
   name: ContactFormFieldName
@@ -70,29 +81,25 @@ function getFieldError(
   return message ? [{ message }] : undefined;
 }
 
-function buildMailtoHref(values: ContactFormValues) {
-  const body = [
-    `First Name: ${values.first_name}`,
-    `Last Name: ${values.last_name}`,
-    `Company: ${values.company}`,
-    `Email: ${values.email}`,
+function buildZohoDescription(values: ContactFormValues) {
+  return [
+    `Region: ${values.region}`,
     `Phone: ${values.phone || "-"}`,
-    `Inquiry Type: ${values.inquiry_type}`,
     `Message: ${values.message || "-"}`,
   ].join("\n");
-
-  return `mailto:sales@anscer.com?subject=${encodeURIComponent(
-    "ANSCER website contact inquiry"
-  )}&body=${encodeURIComponent(body)}`;
 }
 
 export function ContactForm() {
-  const formRef = useRef<HTMLFormElement>(null);
+  const [submitState, setSubmitState] = useState<"idle" | "success" | "error">(
+    "idle"
+  );
+  const [submitMessage, setSubmitMessage] = useState("");
   const {
     register,
     control,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -101,43 +108,86 @@ export function ContactForm() {
       company: "",
       email: "",
       phone: "",
-      inquiry_type: "",
+      region: "",
       message: "",
     },
   });
 
-  const onSubmit = useCallback((values: ContactFormValues) => {
-    window.location.assign(buildMailtoHref(values));
-  }, []);
+  async function onSubmit(values: ContactFormValues) {
+    setSubmitState("idle");
+    setSubmitMessage("");
 
-  useEffect(() => {
-    const form = formRef.current;
-    const submitHandler = handleSubmit(onSubmit);
+    try {
+      const zohoFormData = new FormData();
 
-    if (!form) {
-      return undefined;
+      zohoFormData.append("First Name", values.first_name);
+      zohoFormData.append("Last Name", values.last_name);
+      zohoFormData.append("Email", values.email);
+      zohoFormData.append("Phone", values.phone ?? "");
+      zohoFormData.append("Company", values.company);
+      zohoFormData.append("Description", values.message || "");
+      zohoFormData.append("LEADCF9", values.region);
+      zohoFormData.append("Lead Source", zohoLeadSource);
+
+      for (const [key, value] of Object.entries(zohoHiddenFields)) {
+        zohoFormData.append(key, value);
+      }
+
+      const response = await fetch(zohoEndpoint, {
+        method: "POST",
+        body: zohoFormData,
+        cache: "no-cache",
+      });
+
+      if (!response.ok) {
+        throw new Error("Zoho submission failed.");
+      }
+
+      const contentType = response.headers.get("Content-Type") || "";
+      const data = contentType.includes("application/json")
+        ? await response.json()
+        : await response.text();
+
+      if (typeof data === "object" && data !== null) {
+        if (data.invalidCaptcha === "true") {
+          throw new Error(data.actionvalue || "Captcha verification failed.");
+        }
+      }
+
+      reset();
+      setSubmitState("success");
+      setSubmitMessage(
+        "Thank you for reaching out. Your request has been sent to our team successfully."
+      );
+    } catch (error) {
+      console.error("Zoho Submission Error:", error);
+      setSubmitState("error");
+      setSubmitMessage(
+        error instanceof Error
+          ? error.message
+          : "An error occurred while submitting. Please try again."
+      );
     }
-
-    function handleNativeSubmit(event: SubmitEvent) {
-      event.preventDefault();
-      void submitHandler();
-    }
-
-    form.dataset.hydrated = "true";
-    form.addEventListener("submit", handleNativeSubmit);
-
-    return () => {
-      form.removeEventListener("submit", handleNativeSubmit);
-    };
-  }, [handleSubmit, onSubmit]);
+  }
 
   return (
-    <form
-      ref={formRef}
-      noValidate
-      onSubmit={handleSubmit(onSubmit)}
-      className="contact-form-panel flex flex-col gap-6"
-    >
+    <div className="contact-form-panel flex flex-col gap-6">
+      {submitState === "success" ? (
+        <div className="rounded-[16px] border border-emerald-200 bg-emerald-50 px-5 py-6 text-emerald-950">
+          <p className="text-[18px] font-bold leading-tight">
+            Thank you for reaching out.
+          </p>
+          <p className="mt-2 text-[14px] leading-6 text-emerald-900/80">
+            Your request has been received. Our team will get back to
+            you shortly.
+          </p>
+        </div>
+      ) : (
+        <form
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-6"
+        >
       <FieldGroup className="grid gap-6 md:grid-cols-2 md:gap-x-7">
         <Field
           className="gap-0"
@@ -238,31 +288,31 @@ export function ContactForm() {
 
       <Field
         className="gap-0"
-        data-invalid={errors.inquiry_type ? true : undefined}
+        data-invalid={errors.region ? true : undefined}
       >
-        <FieldLabel htmlFor="inquiry_type" className={labelClass}>
-          INQUIRY TYPE*
+        <FieldLabel htmlFor="region" className={labelClass}>
+          REGION*
         </FieldLabel>
         <Controller
           control={control}
-          name="inquiry_type"
+          name="region"
           render={({ field }) => (
             <Select
-              items={inquiryTypeItems}
+              items={regionItems}
               name={field.name}
               value={field.value || null}
               onValueChange={(value) => field.onChange(value ?? "")}
             >
               <SelectTrigger
-                id="inquiry_type"
-                aria-invalid={!!errors.inquiry_type}
+                id="region"
+                aria-invalid={!!errors.region}
                 className={selectClass}
               >
-                <SelectValue />
+                <SelectValue placeholder="Select a region" />
               </SelectTrigger>
               <SelectContent align="start">
                 <SelectGroup>
-                  {inquiryTypeItems.map((item) => (
+                  {regionItems.map((item) => (
                     <SelectItem key={item.value} value={item.value}>
                       {item.label}
                     </SelectItem>
@@ -274,7 +324,7 @@ export function ContactForm() {
         />
         <FieldError
           className="mt-1 text-[12px]"
-          errors={getFieldError(errors, "inquiry_type")}
+          errors={getFieldError(errors, "region")}
         />
       </Field>
 
@@ -297,8 +347,8 @@ export function ContactForm() {
         />
       </Field>
 
-      <div className="pt-1 md:pt-0">
-        <div className="flex h-[76px] w-[304px] max-w-full items-center justify-between rounded-[3px] border border-[#d5d5d5] bg-[#f9f9f9] px-4 shadow-[0_1px_3px_rgba(0,0,0,.12)]">
+      {/* <div className="pt-1 md:pt-0">
+        <div className="flex h-19 w-76 max-w-full items-center justify-between rounded-[3px] border border-[#d5d5d5] bg-[#f9f9f9] px-4 shadow-[0_1px_3px_rgba(0,0,0,.12)]">
           <div className="flex items-center gap-3">
             <span className="block size-7 rounded-sm border-2 border-[#6b7785] bg-white" />
             <span className="text-sm font-semibold text-[#111]">
@@ -312,16 +362,32 @@ export function ContactForm() {
             Privacy - Terms
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="pt-1 md:pt-0">
         <Button
           type="submit"
-          className="inline-flex h-11 items-center gap-4 rounded-[3px] bg-[#005ead] px-6 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#004f91]"
+          disabled={isSubmitting}
+          className="inline-flex h-11 items-center gap-4 rounded-[3px] bg-[#005ead] px-6 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#004f91] disabled:cursor-not-allowed disabled:opacity-70"
         >
           Submit <ArrowRight aria-hidden="true" data-icon="inline-end" />
         </Button>
       </div>
-    </form>
+
+      {submitMessage ? (
+        <p
+          className={
+            submitState === "error"
+              ? "text-sm text-red-600"
+              : "text-sm text-emerald-700"
+          }
+          role="status"
+        >
+          {submitMessage}
+        </p>
+      ) : null}
+        </form>
+      )}
+    </div>
   );
 }

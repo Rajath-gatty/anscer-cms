@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { imagePath } from "./assets";
 import { navItems } from "./home-data";
 
-const CONTACT_HREF = "mailto:sales@anscer.com";
+const CONTACT_HREF = "/contact-us";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -88,13 +88,15 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          <a
-            className="inline-flex h-[46px] items-center justify-center gap-3 rounded-[3px] bg-[#005ead] px-6 py-[13px] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
-            href={CONTACT_HREF}
-          >
-            Contact us{" "}
-            <ArrowRight aria-hidden="true" className="size-5" strokeWidth={2} />
-          </a>
+          {pathname !== '/contact-us' && (
+            <Link
+              className="inline-flex h-[46px] items-center justify-center gap-3 rounded-[3px] bg-[#005ead] px-6 py-[13px] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
+              href={CONTACT_HREF}
+            >
+              Contact us{" "}
+              <ArrowRight aria-hidden="true" className="size-5" strokeWidth={2} />
+            </Link>
+          )}
         </div>
         <button
           type="button"
@@ -258,14 +260,16 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          <a
-            className="mt-5 inline-flex h-12 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
-            href={CONTACT_HREF}
-            onClick={closeMenu}
-          >
-            Contact us{" "}
+          {pathname !== '/contact-us' && (
+            <Link
+              className="mt-5 inline-flex h-12 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
+              href={CONTACT_HREF}
+              onClick={closeMenu}
+            >
+              Contact us{" "}
             <ArrowRight aria-hidden="true" className="size-5" strokeWidth={2} />
-          </a>
+          </Link>
+          )}
         </div>
       </div>
     </header>

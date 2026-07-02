@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { imagePath } from "./assets";
 
-const CONTACT_HREF = "mailto:sales@anscer.com";
+const CONTACT_HREF = "/contact-us";
 
 const footerColumns = [
   {

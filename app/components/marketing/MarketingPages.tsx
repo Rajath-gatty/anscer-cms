@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { imagePath } from "../home/assets";
+import Link from "next/link";
 
 export function MarketingHero({
   eyebrow,
@@ -84,9 +85,9 @@ export function BlueCta({ title, copy }: { title: string; copy: string }) {
       <div className="site-container relative z-10">
         <h2 className="max-w-[780px] text-[40px] font-semibold leading-[1.1] md:text-[60px]">{title}</h2>
         <p className="mt-5 max-w-[570px] text-sm leading-6 text-white/86 md:text-lg">{copy}</p>
-        <a href="#contact" className="mt-8 inline-flex items-center gap-3 rounded-[3px] bg-white py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-[#005ead]">
+        <Link href="/contact-us" className="mt-8 inline-flex items-center gap-3 rounded-[3px] bg-white py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-[#005ead]">
           Contact Us <ArrowRight aria-hidden="true" className="size-4" />
-        </a>
+        </Link>
       </div>
     </section>
   );

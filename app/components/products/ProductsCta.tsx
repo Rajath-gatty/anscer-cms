@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../home/assets";
+import Link from "next/link";
 
 export function ProductsCta() {
   return (
@@ -23,8 +24,8 @@ export function ProductsCta() {
           Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation
           solutions engineered to transform your operations.
         </p>
-        <a
-          href="#contact"
+        <Link
+          href="/contact-us"
           className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
         >
           Talk to our experts
@@ -40,7 +41,7 @@ export function ProductsCta() {
               strokeWidth={2}
             />
           </span>
-        </a>
+        </Link>
       </div>
     </section>
   );
