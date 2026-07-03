@@ -34,7 +34,10 @@ export function TrustSection() {
           poster={`${videoPath}clients-video_poster.0000000.jpg`}
         >
           <source src={`${videoPath}clients-video-new.mp4`} type="video/mp4" />
-          <source src={`${videoPath}clients-video_webm.webm`} type="video/webm" />
+          <source
+            src={`${videoPath}clients-video_webm.webm`}
+            type="video/webm"
+          />
         </video>
       </div>
       <div className="relative z-10 mt-[clamp(14px,4vw,24px)] overflow-hidden py-3 md:absolute md:inset-x-0 md:bottom-3 md:mt-0">
@@ -53,6 +56,8 @@ export function TrustSection() {
           )}
         </div>
       </div>
+
+      <div className="absolute top-0 left-0 w-full bg-linear-to-b from-[#005EAD]/70 via-[#005EAD]/40 to-white/0 h-22 opacity-60"></div>
     </section>
   );
 }

@@ -135,10 +135,7 @@ export function SolutionsStickyStack() {
         </div>
       </div>
 
-      <div
-        ref={wrapperRef}
-        className="relative hidden h-[260vh] lg:block"
-      >
+      <div ref={wrapperRef} className="relative hidden h-[260vh] lg:block">
         <div
           ref={stickyRef}
           className="sticky top-[72px] 2xl:top-[88px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[540px] overflow-hidden"
@@ -154,7 +151,7 @@ export function SolutionsStickyStack() {
             {solutions.map((solution, index) => (
               <SolutionSlide
                 key={solution.title}
-                solution={solution}    
+                solution={solution}
                 index={index}
                 activeIndex={activeIndex}
                 progress={scaledProgress}
@@ -192,7 +189,7 @@ function SolutionSlide({
   return (
     <article
       className={cn(
-        "grid min-h-[524px] items-start gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-2",
+        "grid min-h-[524px] pt-10 items-start gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-2",
         "absolute inset-0",
       )}
       style={{
