@@ -185,14 +185,16 @@ function SolutionSlide({
 
   const relative = index - progress;
   const translateY = Math.max(Math.min(relative * 100, 100), 0);
+  const opacity = Math.max(0.08, 1 - Math.abs(relative) * 0.8);
 
   return (
     <article
       className={cn(
-        "grid min-h-[524px] pt-10 items-start gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-2",
+        "grid min-h-[524px] pt-10 items-start gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity] lg:grid-cols-2",
         "absolute inset-0",
       )}
       style={{
+        opacity,
         transform: `translateY(${translateY}%)`,
         zIndex: index + 1,
       }}
