@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import Image from "next/image";
-import { useEffect, useMemo, useState, useRef} from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { Swiper as SwiperType } from "swiper";
+import { Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
 import type { SeriesPageData } from "./series-data";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -19,7 +19,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   const [visibleCount, setVisibleCount] = useState(3);
   const [progressKey, setProgressKey] = useState(0); // Used to instantly reset CSS animation
   const swiperRef = useRef<SwiperType | null>(null);
-  
+
   const reducedMotion = useReducedMotion();
   const total = data.applications.length;
 
@@ -40,7 +40,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   // Fired instantly when slide actively begins transitioning
   const handleSlideChangeTransitionStart = (swiper: SwiperType) => {
     setActiveIndex(swiper.realIndex);
-    // Incrementing the key forces React to drop the old progress DOM element 
+    // Incrementing the key forces React to drop the old progress DOM element
     // and recreate a brand new one, instantly resetting the CSS width back to 0%
     setProgressKey((prev) => prev + 1);
   };
@@ -60,7 +60,10 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
       };
 
   return (
-    <section id="applications" className="overflow-hidden bg-white py-16 md:py-24">
+    <section
+      id="applications"
+      className="overflow-hidden bg-white py-16 md:py-24"
+    >
       {/* Global CSS keyframe declaration injection safely contained */}
       <style>{`
         @keyframes swiperLoader {
@@ -86,7 +89,12 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           </ScrollReveal>
 
           {/* Desktop Controls */}
-          <div className={cn("hidden items-center gap-4", data.slug === "agv-series" ? "md:hidden": "md:flex")}>
+          <div
+            className={cn(
+              "hidden items-center gap-4",
+              data.slug === "agv-series" ? "md:hidden" : "md:flex",
+            )}
+          >
             <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
               <span className="relative z-20 text-[#011f40]">{counter}</span>
               <div
@@ -136,7 +144,14 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
           className="!overflow-visible"
         >
           {data.applications.map((application) => (
-            <SwiperSlide key={application.title} className={cn(data.slug === 'agv-series' ? "!w-[390px] md:!w-[clamp(290px,26.4vw,416px)] lg:!w-[416px]" : "!w-[min(390px,82vw)]")}>
+            <SwiperSlide
+              key={application.title}
+              className={cn(
+                data.slug === "agv-series"
+                  ? "!w-[390px] md:!w-[clamp(290px,26.4vw,416px)] lg:!w-[416px]"
+                  : "!w-[min(390px,82vw)]",
+              )}
+            >
               <article className="relative h-[460px] w-full overflow-hidden rounded-lg bg-[#dfe7ee]">
                 {application.image ? (
                   <Image
@@ -228,14 +243,15 @@ export function SeriesRobotSelector({
   return (
     <section
       id="modals"
-      className="relative overflow-hidden bg-[#e8f1f8] py-14 md:min-h-screen md:py-20"
+      className="relative overflow-hidden bg-[#e8f1f8] py-14 md:min-h-screen md:py-16 md:pb-10"
     >
       <Image
         src={`${imagePath}series/ar/robots-bg.png`}
         alt=""
         fill
         sizes="100vw"
-        className="object-contain object-bottom opacity-36"
+        className="object-cover object-bottom opacity-36"
+        style={{ objectPosition: "center bottom" }}
       />
       {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_72%,rgba(232,241,248,.08)_0%,rgba(232,241,248,.6)_48%,rgba(232,241,248,.92)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(232,241,248,.86)_0%,rgba(232,241,248,.34)_46%,rgba(214,230,242,.9)_100%)]" /> */}
@@ -541,7 +557,7 @@ export function SeriesRobotSelector({
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-152px] lg:left-[470px] lg:h-[500px]">
+              <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-180px] lg:left-[470px] lg:h-[500px]">
                 <AnimatePresence mode="popLayout" initial={false}>
                   <m.div
                     key={`${activeProduct.name}-visual`}
@@ -605,7 +621,7 @@ export function SeriesRobotSelector({
                           selectorImageClass(activeProduct.name),
                         )}
                       />
-                    )  : (
+                    ) : (
                       <Image
                         src={`${imagePath}${activeProduct.image}`}
                         alt={activeProduct.name}
