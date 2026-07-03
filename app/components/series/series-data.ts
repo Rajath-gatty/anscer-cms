@@ -52,7 +52,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
     description:
       "Explore ANSCER's cutting-edge lineup: powerful, smart automation solutions engineered to transform your operations.",
     heroImage: "series/ar/hero-bg.png",
-    heroRobot: "series/ar/ar-250-base.png",
+    heroRobot: "series/ar-series-hero-foreground.png",
     tags: ["Tugging", "Tunneling", "Lifting"],
     featureIntro:
       "Never worry about maintenance. ANSCER Robotics ensures seamless software updates, reliable hardware, and ongoing support to keep your robots operating at peak performance.",
@@ -239,8 +239,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
     titleAccent: "Pallet Movement",
     description:
       "Discover ANSCER's PSR Series: autonomous robots designed to automate pallet and trolley handling, boosting warehouse efficiency.",
-    heroImage: "914d5f91ebf180d91cdbcbf3b9c23835_ar-series-hero-img-p-1600.png",
-    heroRobot: "psr-banner-image.png",
+    heroImage: "series/ar/hero-bg.png",
+    heroRobot: "series/psr-series-hero-foreground.png",
     tags: ["Stacking", "Open/Closed Pallet"],
     featureIntro:
       "Our PSR Series automates critical warehouse transportation and storage workflows through pallet stackers and trolley handling robots.",
@@ -456,8 +456,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
     titleAccent: "Continuous Material Flow",
     description:
       "Discover ANSCER's AGV Series: smart vehicles for fast material transport and inventory handling in warehouses and factories.",
-    heroImage: "914d5f91ebf180d91cdbcbf3b9c23835_ar-series-hero-img-p-1600.png",
-    heroRobot: "agv-updated-and-compressed.png",
+    heroImage: "series/ar/hero-bg.png",
+    heroRobot: "series/agv-series-hero-foreground.png",
     tags: ["Lifting", "Sorting"],
     featureIntro:
       "Enhance operational efficiency with intelligent AGV solutions that streamline transport workflows, improve productivity, and support scalable warehouse automation.",

@@ -76,7 +76,7 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
           alt=""
           fill
           sizes={media.sizes}
-          className="object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+          className={media.imageClass}
         />
       </div>
     </article>
@@ -89,6 +89,7 @@ function getHomeProductMedia(product: (typeof productCards)[number]) {
       image: "psr-image-final.png",
       wrapperClass:
         "relative mt-auto h-[235px] w-full overflow-visible sm:h-[275px] md:h-[350px] lg:h-[410px]",
+      imageClass: "object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110",
       sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 33vw",
     };
   }
@@ -99,7 +100,8 @@ function getHomeProductMedia(product: (typeof productCards)[number]) {
         ? "eca609825c9ed12d6eab777cf34ae51efee25114.png"
         : "60ea9badfafa109779007ff36fd0cf87881840a1.png",
     wrapperClass:
-      "relative mt-5 h-[170px] w-full sm:h-[190px] md:h-[210px] lg:mt-0 lg:h-[190px] lg:flex-1",
+      "relative mt-5 h-full w-full flex items-center  lg:flex-1",
+    imageClass: "object-contain object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] scale-136 group-hover:scale-146",
     sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 22vw",
   };
 }
