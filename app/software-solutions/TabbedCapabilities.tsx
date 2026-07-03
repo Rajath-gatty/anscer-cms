@@ -113,7 +113,7 @@ export function TabbedCapabilities({
                   className="relative w-full overflow-visible rounded-[21px] bg-[#252525] p-3 animate-image"
                 >
                   {/* Inner white image container */}
-                  <div className="relative aspect-[721/464] w-full overflow-hidden rounded-[21px] bg-white">
+                  <div className="relative aspect-[721/464] w-full overflow-hidden rounded-[21px] bg-[#252525]">
                     <Image
                       src={`${imagePath}${activeItem.image}`}
                       alt={activeItem.title}
