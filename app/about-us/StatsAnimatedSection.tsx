@@ -1,9 +1,7 @@
 "use client";
 
 import { m, useInView, useReducedMotion } from "motion/react";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { imagePath } from "../components/home/assets";
 import { StatsMotionRail, statsRobotRoutes } from "./StatsMotionRail";
 
 type Stat = {
@@ -90,25 +88,15 @@ export function StatsAnimatedSection({ stats }: StatsAnimatedSectionProps) {
 
       <div className="site-container relative mt-9 md:mt-8">
         <div className="relative grid gap-8 md:hidden">
-          <span className="absolute left-[19px] top-4 h-[calc(100%-32px)] w-px bg-[#e1e6eb]" />
           {visibleStats.map((stat, index) => (
             <article
               key={stat.label}
-              className="relative grid grid-cols-[40px_1fr] gap-4"
+              className="relative text-center"
             >
-              <Image
-                src={`${imagePath}robot.png`}
-                alt=""
-                width={32}
-                height={32}
-                className="relative z-10 mt-1 h-8 w-auto object-contain"
+              <StatCardContent
+                stat={stat}
+                suffix={stats[index]?.value.endsWith("+") ? "+" : ""}
               />
-              <div className="text-center">
-                <StatCardContent
-                  stat={stat}
-                  suffix={stats[index]?.value.endsWith("+") ? "+" : ""}
-                />
-              </div>
             </article>
           ))}
         </div>
