@@ -107,35 +107,35 @@ const teamSlides = [
     name: "Ribin Mathew",
     role: "Global CEO, Co-founder",
     alt: "Ribin Mathew portrait",
-    linkedIn: "https://www.linkedin.com/in/ribin-mathew-a4133ab5"
+    linkedIn: "https://www.linkedin.com/in/ribin-mathew-a4133ab5",
   },
   {
     image: "about-team-mark.jpg",
     name: "Mark Messina",
     role: "MD & CEO ANSCER AMERICAS",
     alt: "Mark Messina portrait",
-    linkedIn: "https://www.linkedin.com/in/worldteam/"
+    linkedIn: "https://www.linkedin.com/in/worldteam/",
   },
   {
     image: "about-team-ebin.jpg",
     name: "Ebin Sunny",
     role: "COO, Co-founder",
     alt: "Ebin Sunny portrait",
-    linkedIn: "https://www.linkedin.com/in/ebin-sunny/"
+    linkedIn: "https://www.linkedin.com/in/ebin-sunny/",
   },
   {
     image: "about-team-raghu.jpg",
     name: "Raghu Venkatesh",
     role: "CBO, Co-founder",
     alt: "Raghu Venkatesh portrait",
-    linkedIn: "https://www.linkedin.com/in/raghuvenkatesh/"
+    linkedIn: "https://www.linkedin.com/in/raghuvenkatesh/",
   },
   {
     image: "about-team-raj.jpg",
     name: "Raj Mohan",
     role: "CTO & Co-founder",
     alt: "Raj Mohan portrait",
-    linkedIn: "https://www.linkedin.com/in/rajmohan747/"
+    linkedIn: "https://www.linkedin.com/in/rajmohan747/",
   },
 ] as const;
 
@@ -481,7 +481,7 @@ function InvestorsSection() {
           {[...investorLogos].map((logo, index) => (
             <div
               key={`${logo.image}-${index}`}
-              className={`flex min-h-[42px] items-center justify-center md:min-h-[52px] ${index===2 && 'col-span-3 md:col-span-1'}`}
+              className={`flex min-h-[42px] items-center justify-center md:min-h-[52px] ${index === 2 && "col-span-3 md:col-span-1"}`}
             >
               <Image
                 src={`${imagePath}${logo.image}`}

@@ -8,8 +8,8 @@ export const statsRobotRoutes = [
     duration: 2.05,
     start: { x: -70, y: 43, rotate: -90 },
     mid: { x: 206, y: 43, rotate: -90 },
-    turn: { x: 246, y: 58, rotate: -38 },
-    end: { x: 257, y: 118, rotate: 0 },
+    turn: { x: 237, y: 58, rotate: -38 },
+    end: { x: 242, y: 118, rotate: 0 },
   },
   {
     duration: 3.35,
@@ -40,7 +40,7 @@ export function StatsMotionRail({
 }: StatsMotionRailProps) {
   return (
     <div
-      className="pointer-events-none relative left-1/2 hidden aspect-[1442/183] w-screen -translate-x-1/2 md:block"
+      className="pointer-events-none relative mx-auto hidden aspect-[1442/183] w-full max-w-[1340px] md:block"
       aria-hidden="true"
     >
       <svg
@@ -51,7 +51,7 @@ export function StatsMotionRail({
       >
         <path
           opacity="0.2"
-          d="M0 43.1156H206.249M1440 43.1156H718.001H206.249M206.249 43.1156C219.24 42.4436 266.207 43.0689 262 93.0003M662.25 43.1153C675.241 42.4432 722.209 43.0685 718.001 92.9999M1144.42 43.1156C1157.41 42.4436 1204.37 43.0689 1200.17 93.0003"
+          d="M0 43.1156H206.249M1440 43.1156H718.001H206.249M206.249 43.1156C219.24 42.4436 251.207 43.0689 247 93.0003M662.25 43.1153C675.241 42.4432 722.209 43.0685 718.001 92.9999M1144.42 43.1156C1157.41 42.4436 1204.37 43.0689 1200.17 93.0003"
           stroke="#011F40"
           strokeWidth="2"
           vectorEffect="non-scaling-stroke"
