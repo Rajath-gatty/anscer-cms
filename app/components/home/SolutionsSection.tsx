@@ -93,7 +93,7 @@ export function SolutionsSection() {
       className="bg-[#fafafa] py-14 md:py-20 lg:pb-0"
     >
       <div className="site-container">
-        <div className="md:flex grid items-center justify-between gap-6 md:gap-8">
+        <div className="md:flex grid items-center justify-between gap-6 md:gap-8 md:pb-16">
           <div className="pb-8 pt-1 text-left">
             <Kicker>Solutions That Solve, Everywhere.</Kicker>
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
@@ -111,9 +111,7 @@ export function SolutionsSection() {
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
                     <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[36px] flex items-center gap-1">
-                      <span className="text-[#005ead]">
-                        {stat.value}
-                      </span>
+                      <span className="text-[#005ead]">{stat.value}</span>
                       <span className="text-[#005ead] md:mb-2 mb-1">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
                       </span>
