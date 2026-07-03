@@ -12,7 +12,7 @@ function ProductSeriesCard() {
           {seriesCards.map((series) => (
               <article
                 key={series.title}
-                className={cn("group relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]", "min-h-[450px]")}
+                className={cn("group relative min-h-[450px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]")}
               >
               <Image
                 src={`${imagePath}${series.backgroundImage}`}

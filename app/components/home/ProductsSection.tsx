@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { FadeLeft, FadeRight } from "../animation";
-import { imagePath } from "./assets";
 import { seriesCards as productCards } from "../products/product-series-data";
+import { imagePath } from "./assets";
 import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
 
 export function ProductsSection() {
@@ -12,7 +12,7 @@ export function ProductsSection() {
   return (
     <section
       id="robots"
-      className="scroll-mt-20 overflow-hidden bg-[#fafafa] pb-10 pt-10 md:scroll-mt-24 md:pb-14 md:pt-14 lg:pb-16 lg:pt-16 xl:pb-20 xl:pt-20"
+      className="scroll-mt-10 overflow-hidden bg-[#fafafa] pb-10 pt-10 md:scroll-mt-16 md:pb-14 md:pt-14 lg:pb-16 lg:pt-16 xl:pb-20 xl:pt-8"
     >
       <div className="site-container">
         <FadeRight className="max-w-3xl">
@@ -32,7 +32,10 @@ export function ProductsSection() {
               <ProductCard product={featuredProduct} />
             </FadeRight>
           ) : null}
-          <FadeLeft className="grid gap-3 md:gap-4 lg:h-full lg:grid-rows-2" delay={0.14}>
+          <FadeLeft
+            className="grid gap-3 md:gap-4 lg:h-full lg:grid-rows-2"
+            delay={0.14}
+          >
             {secondaryProducts.map((product) => (
               <ProductCard key={product.title} product={product} />
             ))}
@@ -55,8 +58,12 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
           : "min-h-[340px] flex-col md:min-h-[350px] lg:min-h-0 lg:flex-row lg:items-center lg:gap-5"
       }`}
     >
-      <div className={`relative z-10 ${isFeatured ? "" : "lg:w-[52%] lg:shrink-0"}`}>
-        <h3 className="text-xl font-semibold md:text-[24px]">{product.title}</h3>
+      <div
+        className={`relative z-10 ${isFeatured ? "" : "lg:w-[52%] lg:shrink-0"}`}
+      >
+        <h3 className="text-xl font-semibold md:text-[24px]">
+          {product.title}
+        </h3>
         <p className="mt-2 max-w-xl text-sm leading-4 text-[#27384b] md:mt-3 md:text-base md:leading-6">
           {product.copy}
         </p>
@@ -89,7 +96,8 @@ function getHomeProductMedia(product: (typeof productCards)[number]) {
       image: "psr-image-final.png",
       wrapperClass:
         "relative mt-auto h-[235px] w-full overflow-visible sm:h-[275px] md:h-[350px] lg:h-[410px]",
-      imageClass: "object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110",
+      imageClass:
+        "object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110",
       sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 33vw",
     };
   }
@@ -99,9 +107,9 @@ function getHomeProductMedia(product: (typeof productCards)[number]) {
       product.marker === "AGV"
         ? "eca609825c9ed12d6eab777cf34ae51efee25114.png"
         : "60ea9badfafa109779007ff36fd0cf87881840a1.png",
-    wrapperClass:
-      "relative mt-5 h-full w-full flex items-center  lg:flex-1",
-    imageClass: "object-contain object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] scale-136 group-hover:scale-146",
+    wrapperClass: "relative mt-5 h-full w-full flex items-center  lg:flex-1",
+    imageClass:
+      "object-contain object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] scale-136 group-hover:scale-146",
     sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 22vw",
   };
 }

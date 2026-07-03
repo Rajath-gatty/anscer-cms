@@ -9,7 +9,8 @@ import { ProductAccordionRows } from "./ProductAccordionRows";
 
 export function AdvantagesSection({ data }: { data: ProductDetailData }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeAdvantage = data.advantages.advantages[activeIndex] ?? data.advantages.advantages[0];
+  const activeAdvantage =
+    data.advantages.advantages[activeIndex] ?? data.advantages.advantages[0];
 
   return (
     <section
@@ -26,8 +27,7 @@ export function AdvantagesSection({ data }: { data: ProductDetailData }) {
               Why <span className="text-[#005ead]">Choose</span> {data.title}
             </h2>
             <p className="mt-4 max-w-170 text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6.5">
-              {data.advantageIntro ??
-                `${data.advantages.content}`}
+              {data.advantageIntro ?? `${data.advantages.content}`}
             </p>
           </div>
           <div className="mt-8 grid gap-6 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
@@ -43,6 +43,7 @@ export function AdvantagesSection({ data }: { data: ProductDetailData }) {
                 key={activeAdvantage?.title}
                 src={`${imagePath}${data.advantageImage ?? data.overviewImage ?? data.heroImage}`}
                 alt={`${data.title} advantage`}
+                loading="eager"
                 fill
                 sizes="(max-width: 1024px) 100vw, 700px"
                 className="object-cover transition-opacity duration-300 "

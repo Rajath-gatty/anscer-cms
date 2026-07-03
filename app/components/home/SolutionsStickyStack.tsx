@@ -135,10 +135,7 @@ export function SolutionsStickyStack() {
         </div>
       </div>
 
-      <div
-        ref={wrapperRef}
-        className="relative hidden h-[260vh] lg:block"
-      >
+      <div ref={wrapperRef} className="relative hidden h-[260vh] lg:block">
         <div
           ref={stickyRef}
           className="sticky top-[72px] 2xl:top-[88px] h-[calc(100vh-76px)] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[540px] overflow-hidden"
@@ -154,7 +151,7 @@ export function SolutionsStickyStack() {
             {solutions.map((solution, index) => (
               <SolutionSlide
                 key={solution.title}
-                solution={solution}    
+                solution={solution}
                 index={index}
                 activeIndex={activeIndex}
                 progress={scaledProgress}
@@ -188,14 +185,16 @@ function SolutionSlide({
 
   const relative = index - progress;
   const translateY = Math.max(Math.min(relative * 100, 100), 0);
+  const opacity = Math.max(0.08, 1 - Math.abs(relative) * 0.8);
 
   return (
     <article
       className={cn(
-        "grid min-h-[524px] items-start gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform lg:grid-cols-2",
+        "grid min-h-[524px] pt-10 items-start gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity] lg:grid-cols-2",
         "absolute inset-0",
       )}
       style={{
+        opacity,
         transform: `translateY(${translateY}%)`,
         zIndex: index + 1,
       }}
@@ -371,88 +370,14 @@ function ProgressRobot({
   style?: CSSProperties;
 }) {
   return (
-    <svg
-      width="42"
-      height="60"
-      viewBox="0 0 42 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <Image
+      src={`${imagePath}home/robot.png`}
+      alt=""
+      width={40}
+      height={60}
       aria-hidden="true"
       className={className}
       style={style}
-    >
-      <mask
-        id="solutions-progress-robot-mask"
-        style={{ maskType: "alpha" }}
-        maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width="42"
-        height="60"
-      >
-        <path
-          d="M3.84673 0H37.8125L41.25 4.26184V55.4875L37.2396 60H3.76488L0 55.4875V4.26184L3.84673 0Z"
-          fill="#D9D9D9"
-        />
-      </mask>
-      <g mask="url(#solutions-progress-robot-mask)">
-        <rect
-          x="8.125"
-          y="0.0234375"
-          width="25.2138"
-          height="59.9914"
-          fill="#005EAD"
-        />
-        <rect
-          x="2.46875"
-          y="4.15625"
-          width="8.25968"
-          height="51.7317"
-          fill="#484B4A"
-        />
-        <path
-          d="M5.95605 0.0234375L0.304688 6.19583V13.8843L5.95605 19.2986V40.4147L0.304688 45.9374V53.9507L5.95605 60.0148L7.80361 60.0234L9.86853 57.6411V5.45744V2.40577L7.80361 0.0234375H5.95605Z"
-          fill="#005EAD"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M7.80361 60.0234L9.86853 57.6411V5.45744H10.738V57.7325L8.67305 60.0234H7.80361Z"
-          fill="#E6E0D9"
-        />
-        <path
-          d="M7.80361 0.0234375L9.86853 2.40577V5.45744H10.738V2.40577L8.67305 0.0234375H7.80361Z"
-          fill="#FE362A"
-        />
-        <path
-          d="M7.80361 60.0234L9.86853 57.6411V54.5894H10.738V57.7325L8.67305 60.0234H7.80361Z"
-          fill="#FE362A"
-        />
-        <rect
-          width="8.25968"
-          height="51.7317"
-          transform="matrix(-1 0 0 1 38.7812 4.15625)"
-          fill="#484B4A"
-        />
-        <path
-          d="M35.294 0.0234375L40.9453 6.19583V13.8843L35.294 19.2986V40.4147L40.9453 45.9374V53.9507L35.294 60.0148L33.4464 60.0234L31.3815 57.6411V5.45744V2.40577L33.4464 0.0234375H35.294Z"
-          fill="#005EAD"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M33.4464 60.0234L31.3815 57.6411V5.45744H30.512V57.7325L32.577 60.0234H33.4464Z"
-          fill="#E6E0D9"
-        />
-        <path
-          d="M33.4464 0.0234375L31.3815 2.40577V5.45744H30.512V2.40577L32.577 0.0234375H33.4464Z"
-          fill="#FE362A"
-        />
-        <path
-          d="M33.4464 60.0234L31.3815 57.6411V54.5894H30.512V57.7325L32.577 60.0234H33.4464Z"
-          fill="#FE362A"
-        />
-      </g>
-    </svg>
+    />
   );
 }

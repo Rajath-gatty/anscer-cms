@@ -11,7 +11,7 @@ const heroSlides = [
   {
     id: "lift",
     title: "Robots Ready to",
-    accent: "Lift",
+    accent: "Tug",
     image: "lift.png",
     imageClass: "scale-[1.2] -translate-x-[3%] md:translate-x-[3%]",
     tags: ["Ready to Lift", "Lifting"],
@@ -19,7 +19,7 @@ const heroSlides = [
   {
     id: "pull",
     title: "Robots Ready to",
-    accent: "Pull",
+    accent: "Lift",
     image: "pull.png",
     imageClass: "scale-[1.2] translate-x-[4%] md:translate-x-[10%]",
     tags: ["Ready to Pull", "Pulling"],

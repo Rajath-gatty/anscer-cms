@@ -20,7 +20,6 @@ const capabilities: Capability[] = [
     copy: "Monitor robot activity, operational efficiency, and fleet performance through detailed utilization reports. The platform provides visibility into robot active time, idle time, mission execution, and utilization rates to help maximize fleet productivity.",
     chipsIntro: "",
     chips: [] as string[],
-    // index 0 → even → tablet right, content left, text right-aligned
     image: "0a650615d6addc613e5e73d23c9a69411bf9f542.png.jpg",
   },
   {
@@ -35,7 +34,6 @@ const capabilities: Capability[] = [
       "Fleet performance trends",
       "Operational efficiency metrics",
     ],
-    // index 1 → odd → tablet left, content right, text left-aligned
     image: "Group-1321315891.jpg",
   },
   {
@@ -87,31 +85,12 @@ const PIN_TOP = 160;
 const PIN_SCROLL_SCREENS = 14;
 const TIMELINE_DURATION = 24;
 
-// For each slide the tablet & content animate from the centre of the viewport
-// outward to their "rest" columns. We express shifts in px (applied as CSS
-// transform on top of absolute centering) to match the Webflow GSAP values.
 const TABLET_SHIFT = 250; // px rightward for even, leftward for odd
 const CONTENT_SHIFT = 300; // px leftward for even, rightward for odd
-
-type AnimState = {
-  /** fractional progress 0-1 within the intro animation */
-  introP: number;
-  /** fractional progress 0-1 within the current slide */
-  slideP: number;
-  /** fractional progress 0-1 within the exit of the current slide */
-  exitP: number;
-  slideIndex: number;
-  imageIndex: number;
-};
 
 const clamp = (v: number, lo = 0, hi = 1) => Math.min(Math.max(v, lo), hi);
 const ease = (t: number) => 0.5 - Math.cos(clamp(t) * Math.PI) / 2;
 
-/**
- * Returns per-element opacity & x-offset based on scroll progress.
- * All offsets are in px and will be used as translateX values on top of the
- * absolute centering transform, exactly mirroring the Webflow GSAP timeline.
- */
 function getState(progress: number) {
   const time = clamp(progress) * TIMELINE_DURATION;
 
@@ -135,7 +114,7 @@ function getState(progress: number) {
 
   for (let i = 0; i < capabilities.length; i++) {
     const isLast = i === capabilities.length - 1;
-    const segLen = isLast ? 2.5 : 4; // s (Webflow: 1.5 slide-out + 1 hold [+ 1.5 return])
+    const segLen = isLast ? 2.5 : 4; 
     const local = time - cursor;
     if (local < 0) break;
 
@@ -190,7 +169,6 @@ function getState(progress: number) {
     cursor += segLen;
   }
 
-  // Past end – freeze on last slide
   const last = capabilities.length - 1;
   const isLastEven = last % 2 === 0;
   return {
@@ -236,11 +214,6 @@ export function AnalyticsSection() {
 
   const s = getState(progress);
   const cap = capabilities[s.slideIndex];
-  const isEven = s.slideIndex % 2 === 0;
-  // Even: tablet → right, content → left → text right-aligned
-  // Odd:  tablet → left, content → right → text left-aligned
-  const textAlign = isEven ? ("right" as const) : ("left" as const);
-  const chipJustify = isEven ? "flex-end" : "flex-start";
 
   return (
     <>
@@ -248,7 +221,7 @@ export function AnalyticsSection() {
           DESKTOP (lg+) – sticky scroll animation
       ═══════════════════════════════════════════════════════════════ */}
       <section className="hidden lg:block" style={{ background: BG }}>
-        {/* Section header (outside scroll zone so it stays visible) */}
+        {/* Section header */}
         <div className="site-container py-14">
           <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             Key Capabilities
@@ -258,39 +231,24 @@ export function AnalyticsSection() {
           </h2>
         </div>
 
-        {/* Scroll room — the sticky stage pins inside this tall div */}
+        {/* Scroll room */}
         <div
           ref={scrollZoneRef}
           className="relative"
           style={{ height: `calc(${PIN_SCROLL_SCREENS * 100}vh + 70vh)` }}
         >
-          {/*
-           * Sticky stage.
-           * height: 70vh matches Webflow's .tablet-scroll-container.
-           * overflow: visible so the intro "slide up from below" isn't clipped.
-           */}
+          {/* Sticky stage */}
           <div
             className="sticky w-full"
             style={{ top: PIN_TOP, height: "70vh", overflow: "visible" }}
           >
-            {/*
-             * Full-width centred row.
-             * We split it into two halves using absolute positioning relative
-             * to site-container width so content and tablet never share space.
-             * This mirrors the Webflow layout where:
-             *   .div-block-360 (content column) and .div-block-364 (tablet column)
-             *   sit side-by-side, each absolutely centred at their half, then
-             *   GSAP moves the shared ".tablet" element by ±250 px and each
-             *   ".analytics-key-content" by ±300 px from the shared centre point.
-             */}
             <div className="site-container relative h-full">
-              {/* ── Content panel ────────────────────────────────── */}
+              {/* ── Content panel (Always Left Aligned) ────────────────────────────────── */}
               <div
-                className="pointer-events-none absolute top-1/2 left-1/2 w-[380px]"
+                className="pointer-events-none absolute top-1/2 left-1/2 w-[380px] text-left"
                 style={{
                   opacity: s.contentOp,
                   transform: `translate(calc(-50% + ${s.contentX}px), -50%)`,
-                  textAlign,
                   willChange: "transform, opacity",
                 }}
               >
@@ -307,10 +265,7 @@ export function AnalyticsSection() {
                         {cap.chipsIntro}
                       </p>
                     )}
-                    <div
-                      className="flex flex-wrap gap-2"
-                      style={{ justifyContent: chipJustify }}
-                    >
+                    <div className="flex flex-wrap gap-2 justify-start">
                       {cap.chips.map((chip) => (
                         <span
                           key={chip}
@@ -333,9 +288,6 @@ export function AnalyticsSection() {
               <div
                 className="absolute top-1/2 left-1/2"
                 style={{
-                  // Webflow: .div-block-359.tablet → width:600px, overflow:hidden
-                  // .div-block-364 → position:absolute; top:50%; left:50%;
-                  //   transform:translate(-50%,-50%)
                   width: 600,
                   overflow: "hidden",
                   opacity: s.tabletOp,
@@ -344,9 +296,7 @@ export function AnalyticsSection() {
                   willChange: "transform, opacity",
                 }}
               >
-                {/* aspect-ratio matches Tabletframe.png: 1396×1108 px */}
                 <div className="relative" style={{ aspectRatio: "1396/1108" }}>
-                  {/* Analytics screenshots – opacity-switched */}
                   {capabilities.map((c, idx) => (
                     <Image
                       key={c.title}
@@ -359,7 +309,6 @@ export function AnalyticsSection() {
                       style={{ opacity: s.imageIndex === idx ? 1 : 0 }}
                     />
                   ))}
-                  {/* Tablet bezel on top */}
                   <Image
                     src={`${imagePath}Tabletframe.png`}
                     alt=""
@@ -393,7 +342,6 @@ export function AnalyticsSection() {
                 key={c.title}
                 className="mx-auto flex max-w-[560px] flex-col items-center"
               >
-                {/* Screenshot without tablet chrome */}
                 <div
                   className="relative w-4/5 overflow-hidden rounded-[26px] max-[479px]:rounded-[12px]"
                   style={{ aspectRatio: "1239/956" }}
