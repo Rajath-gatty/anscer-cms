@@ -336,7 +336,7 @@ export function SeriesRobotSelector({
                           </div>
                         ) : null}
                         {/* Floating tags */}
-                        {product.tags.map((tag, tagIndex) => (
+                        {/* {product.tags.map((tag, tagIndex) => (
                           <span
                             key={`${product.name}-mobile-${tag}`}
                             className="absolute z-20 rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-normal text-[#011f40] shadow-[0_6px_20px_rgba(1,31,64,.12)]"
@@ -348,7 +348,7 @@ export function SeriesRobotSelector({
                           >
                             {tag}
                           </span>
-                        ))}
+                        ))} */}
                         {/* Robot image — no desktop scale/translate transforms */}
                         <Image
                           src={`${imagePath}${product.image}`}
@@ -423,71 +423,80 @@ export function SeriesRobotSelector({
                   }}
                 >
                   {data.products.map((product, index) => {
-                    const isActive = activeIndex === index;
+                      const isActive = activeIndex === index;
+                      
+                      // Define a consistent layout transition for both container and text components
+                      const layoutTransition = {
+                        duration: 0.35, // Increased slightly for a smoother, noticeable slide
+                        ease: [0.22, 1, 0.36, 1],
+                      };
 
-                    return (
-                      <m.button
-                        key={product.name}
-                        type="button"
-                        onClick={() => setActiveIndex(index)}
-                        className={cn(
-                          "relative grid cursor-pointer overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
-                          isActive
-                            ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]"
-                            : "bg-white/55 hover:bg-white/86",
-                        )}
-                        whileHover={reducedMotion ? undefined : { x: 4 }}
-                        whileTap={reducedMotion ? undefined : { scale: 0.985 }}
-                        transition={{
-                          duration: 0.22,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                      >
-                        {isActive ? (
-                          <m.span
-                            layoutId={`series-active-tab-${data.slug}`}
-                            className="absolute inset-0 rounded-lg bg-white"
-                            transition={transition}
-                          />
-                        ) : null}
-                        <span
+                      return (
+                        <m.button
+                          key={product.name}
+                          layout // Animates the height change of the button
+                          type="button"
+                          onClick={() => setActiveIndex(index)}
                           className={cn(
-                            "relative z-10 text-[16px] font-normal",
+                            "relative grid cursor-pointer overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
                             isActive
-                              ? "font-semibold text-[#005ead]"
-                              : "text-[#011f40]",
+                              ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]"
+                              : "bg-white/55 hover:bg-white/86",
                           )}
+                          whileHover={reducedMotion ? undefined : { x: 4 }}
+                          whileTap={reducedMotion ? undefined : { scale: 0.985 }}
+                          transition={layoutTransition as any}
                         >
-                          {product.name}
-                        </span>
-                        <AnimatePresence initial={false}>
                           {isActive ? (
                             <m.span
-                              key={`${product.name}-description`}
-                              className="relative z-10 mt-3 text-[14px] font-normal leading-[22px] text-[#011f40]"
-                              initial={
-                                reducedMotion ? false : { opacity: 0, y: -8 }
-                              }
-                              animate={
-                                reducedMotion ? undefined : { opacity: 1, y: 0 }
-                              }
-                              exit={
-                                reducedMotion
-                                  ? undefined
-                                  : { opacity: 0, y: -6 }
-                              }
-                              transition={{
-                                duration: 0.26,
-                                ease: [0.22, 1, 0.36, 1],
-                              }}
-                            >
-                              {product.tabDescription}
-                            </m.span>
+                              layoutId={`series-active-tab-${data.slug}`}
+                              className="absolute inset-0 rounded-lg bg-white"
+                              transition={transition}
+                            />
                           ) : null}
-                        </AnimatePresence>
-                      </m.button>
-                    );
-                  })}
+                          
+                          <m.span
+                            layout="position"
+                            transition={layoutTransition as any}
+                            className={cn(
+                              "relative z-10 text-[16px] font-normal",
+                              isActive ? "font-semibold text-[#005ead]" : "text-[#011f40]",
+                            )}
+                          >
+                            {product.name}
+                          </m.span>
+
+                          {/* Wrapping the AnimatePresence in a layout-bound container isolates height shifts */}
+                          <m.div layout="position" transition={layoutTransition as any} className="relative z-10">
+                            <AnimatePresence initial={false} mode="popLayout">
+                              {isActive ? (
+                                <m.span
+                                  key={`${product.name}-description`}
+                                  layout
+                                  className="mt-3 block text-[14px] font-normal leading-[22px] text-[#011f40]"
+                                  initial={
+                                    reducedMotion ? false : { opacity: 0, y: -10 }
+                                  }
+                                  animate={
+                                    reducedMotion ? undefined : { opacity: 1, y: 0 }
+                                  }
+                                  exit={
+                                    reducedMotion ? undefined : { opacity: 0, y: -10 }
+                                  }
+                                  transition={{
+                                    opacity: { duration: 0.2 },
+                                    // Make sure the structural layout matches the global timing
+                                    default: layoutTransition as any,
+                                  }}
+                                >
+                                  {product.tabDescription}
+                                </m.span>
+                              ) : null}
+                            </AnimatePresence>
+                          </m.div>
+                        </m.button>
+                      );
+                    })}
                 </m.div>
 
                 <AnimatePresence mode="popLayout" initial={false}>
@@ -855,7 +864,7 @@ function FloatingTags({
 function selectorImageClass(name: string) {
   switch (name) {
     case "AR 250":
-      return "scale-[0.9] translate-y-[8%]";
+      return "scale-[0.84] translate-y-[8%]";
     case "AR 500":
       return "scale-[0.84] translate-y-[6%]";
     case "AR 650":
