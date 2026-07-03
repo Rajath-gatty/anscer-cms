@@ -44,7 +44,7 @@ export function TechnologyAccordion() {
   const activeIndex = Number(activeValue[0]?.replace("technology-", "") ?? 0);
 
   return (
-    <div className="mt-7 grid items-stretch gap-5 md:mt-9  lg:grid-cols-[0.36fr_0.64fr]">
+    <div className="mt-7 grid items-stretch gap-5 md:mt-9   lg:grid-cols-[0.36fr_0.64fr]">
       <FadeRight className="h-full">
         <TechnologyAccordionRoot
           value={activeValue}
@@ -103,7 +103,7 @@ export function TechnologyAccordion() {
       </FadeRight>
 
       <FadeLeft
-        className="relative hidden h-full overflow-hidden rounded-xl bg-[#d9e3eb] lg:block"
+        className="relative hidden min-h-75 h-full overflow-hidden rounded-xl bg-[#d9e3eb] lg:block"
         delay={0.08}
       >
         {technologyItems.map((item, index) => {
@@ -119,7 +119,7 @@ export function TechnologyAccordion() {
               loading="eager"
               aria-hidden={!isActive}
               className={cn(
-                "object-cover transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                "object-cover h-full transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
                 isActive ? "opacity-100" : "opacity-0",
               )}
             />
