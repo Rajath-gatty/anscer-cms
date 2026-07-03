@@ -382,7 +382,7 @@ export function SeriesRobotSelector({
           </div>
 
           {/* Mobile navigation */}
-          <div className="mt-6 flex items-center justify-center gap-4">
+          <div className={cn("mt-6 flex items-center justify-center gap-4", data.slug === "agv-series" ? "md:hidden": "md:flex")}>
             <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
               {pad(activeIndex + 1)}/{pad(total)}
             </span>

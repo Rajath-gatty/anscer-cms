@@ -116,7 +116,7 @@ export function SolutionsSection() {
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
                       </span>
                     </h3>
-                    <p className="mt-2 text-[10px] font-extrabold text-[#011f40] md:mt-4 md:text-[12px]">
+                    <p className="mt-2 text-[12px] font-medium text-[#011f40] md:mt-4 md:text-[20px]">
                       {stat.label}
                     </p>
                     {/* <p className="mx-auto mt-2 max-w-65 text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-85 md:text-[13px] md:leading-[1.6]">

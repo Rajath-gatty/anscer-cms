@@ -113,13 +113,13 @@ export function TabbedCapabilities({
                   className="relative w-full overflow-visible rounded-[21px] bg-[#252525] p-3 animate-image"
                 >
                   {/* Inner white image container */}
-                  <div className="relative aspect-[721/464] w-full overflow-hidden rounded-2xl bg-white">
+                  <div className="relative aspect-[721/464] w-full overflow-hidden rounded-[21px] bg-white">
                     <Image
                       src={`${imagePath}${activeItem.image}`}
                       alt={activeItem.title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 720px"
-                      className="object-cover"
+                      className="object-cover rounded-[21px]"
                     />
                   </div>
                   {/* Floating info card matching Webflow's overlap effect */}
