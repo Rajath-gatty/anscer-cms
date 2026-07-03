@@ -38,7 +38,7 @@ const variantOffsets: Record<RevealVariant, RevealOffset> = {
 
 const revealVariants = {
   hidden: ({ x, y, scale }: RevealOffset) => ({
-    opacity: 1,
+    opacity: 0,
     x,
     y,
     scale,
