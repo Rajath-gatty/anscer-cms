@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../home/assets";
 import { seriesCards } from "./product-series-data";
+import { cn } from "@/lib/utils";
 
 function ProductSeriesCard() {
   return (
@@ -11,7 +12,7 @@ function ProductSeriesCard() {
           {seriesCards.map((series) => (
               <article
                 key={series.title}
-                className="group relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]"
+                className={cn("group relative min-h-[250px] overflow-hidden rounded-md bg-[#011f40] p-5 text-white md:min-h-[485px]", "min-h-[450px]")}
               >
               <Image
                 src={`${imagePath}${series.backgroundImage}`}

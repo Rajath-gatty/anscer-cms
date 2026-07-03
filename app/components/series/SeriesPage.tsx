@@ -56,7 +56,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-bottom -translate-y-[30px]"
+        className="object-cover object-bottom"
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,.88)_0%,rgba(250,250,250,.0)_80%,rgba(250,250,250,.22)_100%)]" />
       <div className="site-container relative z-10 grid min-h-[calc(100vh-108px)] items-center gap-8 py-14 md:py-16 lg:grid-cols-[0.46fr_0.54fr]">
@@ -95,14 +95,14 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
         </div>
 
         <div className="relative ml-auto flex min-h-[360px] w-full items-center justify-end lg:min-h-[520px]">
-          <div className="relative h-[340px] w-full max-w-[760px] md:h-[440px] lg:h-[560px]">
+          <div className="relative flex justify-end h-[340px] w-full max-w-[760px] md:h-[440px] lg:h-[560px]">
             <Image
               src={`${imagePath}${data.heroRobot}`}
               alt={`${data.eyebrow} robot`}
-              fill
+              width={760}
+              height={560}
               priority
-              sizes="(max-width: 1024px) 92vw, 760px"
-              className={cn("object-contain object-right translate-y-[40px] md:translate-y-[100px] md:translate-x-[100px] drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]", data.slug === "psr-series" ? "md:translate-x-[180px] ": data.slug === "agv-series" && "md:translate-x-[180px]")}
+              className={cn("object-contain self-end object-right -translate-y-[40px] md:translate-y-[-60px] origin-right scale-100 md:scale-140   drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]", data.slug === "psr-series" && "md:-translate-y-[100px] md:scale-130 scale-100")}
             />
           </div>
           {/* <div className="pointer-events-none absolute inset-0 block">
