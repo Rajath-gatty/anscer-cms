@@ -65,13 +65,11 @@ function TechnologyAccordionContent({
   return (
     <AccordionPrimitive.Panel
       data-slot="technology-accordion-content"
-      className="grid overflow-hidden transition-[grid-template-rows,opacity,height] duration-300 data-closed:grid-rows-[0fr] data-closed:opacity-0 data-open:grid-rows-[1fr] data-open:opacity-100 
-    data-closed:max-h-0 data-open:max-h-[var(--accordion-panel-height)]
-  "
+      className="overflow-hidden transition-[height,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] data-closed:h-0 data-closed:opacity-0 data-open:h-(--accordion-panel-height) data-open:opacity-100 data-ending-style:h-0 data-starting-style:h-0 motion-reduce:transition-none"
       {...props}
       keepMounted
     >
-      <div className={cn("overflow-hidden", className)}>{children}</div>
+      <div className={cn("overflow-hidden pb-1", className)}>{children}</div>
     </AccordionPrimitive.Panel>
   );
 }

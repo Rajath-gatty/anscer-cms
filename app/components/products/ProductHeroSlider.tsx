@@ -137,7 +137,7 @@ export function ProductHeroSlider() {
       <div className="site-container grid min-h-[88svh]  items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16">
         <div>
           <ScrollReveal>
-            <h1 className="text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px] xl:whitespace-nowrap">
+            <h1 className="text-[48px] font-bold leading-[2] tracking-tight md:text-[60px] xl:whitespace-nowrap">
               {active.title}{" "}
               <span className="relative inline-grid overflow-hidden align-bottom text-[#005ead]">
                 <AnimatePresence mode="popLayout" initial={false}>

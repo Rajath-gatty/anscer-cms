@@ -185,7 +185,7 @@ function SolutionSlide({
 
   const relative = index - progress;
   const translateY = Math.max(Math.min(relative * 100, 100), 0);
-  const opacity = Math.max(0.08, 1 - Math.abs(relative) * 0.8);
+  const opacity = relative < 0 ? Math.max(0, 1 + relative) : 1;
 
   return (
     <article

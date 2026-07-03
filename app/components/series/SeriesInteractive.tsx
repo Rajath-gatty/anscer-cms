@@ -561,7 +561,7 @@ export function SeriesRobotSelector({
                 <AnimatePresence mode="popLayout" initial={false}>
                   <m.div
                     key={`${activeProduct.name}-visual`}
-                    className="absolute inset-0"
+                    className="absolute top-[14%] left-0 w-full h-full "
                     initial={
                       reducedMotion
                         ? false
@@ -582,7 +582,7 @@ export function SeriesRobotSelector({
                   >
                     {activeProduct.bgText ? (
                       <m.div
-                        className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%]"
+                        className="absolute inset-x-[-11%] top-[14%] z-0 h-[55%] flex items-center justify-center"
                         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
                         animate={
                           reducedMotion ? undefined : { opacity: 1, y: 0 }
@@ -593,9 +593,9 @@ export function SeriesRobotSelector({
                         <Image
                           src={`${imagePath}${activeProduct.bgText}`}
                           alt=""
-                          fill
-                          sizes="100vw"
-                          className="object-contain object-center opacity-32"
+                          width={650}
+                          height={400}
+                          className="object-contain w-[80%] object-center opacity-32"
                         />
                       </m.div>
                     ) : null}
@@ -603,10 +603,11 @@ export function SeriesRobotSelector({
                       <Image
                         src={`${imagePath}${activeProduct.image}`}
                         alt={activeProduct.name}
-                        width={650}
+                        loading="eager"
+                        width={750}
                         height={400}
                         className={cn(
-                          "relative mt-20 z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[80%]",
+                          "object-contain object-center md:h-[80%]",
                           selectorImageClass(activeProduct.name),
                         )}
                       />
@@ -617,7 +618,7 @@ export function SeriesRobotSelector({
                         width={800}
                         height={400}
                         className={cn(
-                          "relative mt-20 z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[90%]",
+                          "relative z-10 object-contain object-center drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[90%]",
                           selectorImageClass(activeProduct.name),
                         )}
                       />
@@ -628,15 +629,15 @@ export function SeriesRobotSelector({
                         fill
                         sizes="(max-width: 1024px) 110vw, 1180px"
                         className={cn(
-                          "relative z-10 object-contain object-bottom object-right drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
+                          "relative z-10 object-contain object-center drop-shadow-[0_34px_42px_rgba(1,31,64,.16)]",
                           selectorImageClass(activeProduct.name),
                         )}
                       />
                     )}
-                    <FloatingTags
+                    {/* <FloatingTags
                       product={activeProduct}
                       reducedMotion={Boolean(reducedMotion)}
-                    />
+                    /> */}
                   </m.div>
                 </AnimatePresence>
               </div>
@@ -705,13 +706,13 @@ const desktopTagPositionsByProduct: Record<
   Record<string, FloatingTagPosition>
 > = {
   "AR 250": {
-    Tugging: { left: "6%", top: "50%" },
-    Lifting: { left: "38%", top: "28%" },
-    Tunneling: { left: "85%", top: "58%" },
+    Tugging: { left: "15%", top: "50%" },
+    Lifting: { left: "38%", top: "35%" },
+    Tunneling: { left: "76%", top: "58%" },
   },
   "AR 500": {
-    Cobot: { left: "73%", top: "31%" },
-    Tugging: { left: "8%", top: "48%" },
+    Cobot: { left: "71%", top: "37%" },
+    Tugging: { left: "18%", top: "48%" },
   },
   "AR 650": {
     Tugging: { left: "6%", top: "48%" },

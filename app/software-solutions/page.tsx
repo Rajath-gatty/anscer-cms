@@ -367,9 +367,9 @@ function SoftwareHero() {
       <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.58)_42%,rgba(0,0,0,0)_86%)]" />
       <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
         <FadeRight className="max-w-[807px]">
-          <p className="text-sm md:text-base font-medium uppercase tracking-[0.14em] text-brand-blue">
+          {/* <p className="text-sm md:text-base font-medium uppercase tracking-[0.14em] text-brand-blue">
             Software solutions
-          </p>
+          </p> */}
           <h1 className="mt-4 max-w-[807px] text-[40px] font-bold leading-[1.12] text-white md:text-[60px] md:leading-[1.15]">
             Connect Robots, Workflows, and Operations in One Platform
           </h1>
