@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../home/assets";
@@ -8,7 +9,6 @@ import {
   SeriesApplicationsCarousel,
   SeriesRobotSelector,
 } from "./SeriesInteractive";
-import { cn } from "@/lib/utils";
 
 export function SeriesPage({ data }: { data: SeriesPageData }) {
   return (
@@ -102,7 +102,12 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               fill
               priority
               sizes="(max-width: 1024px) 92vw, 760px"
-              className={cn("object-contain object-right translate-y-[40px] md:translate-y-[100px] md:translate-x-[100px] drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]", data.slug === "psr-series" ? "md:translate-x-[180px] ": data.slug === "agv-series" && "md:translate-x-[180px]")}
+              className={cn(
+                "object-contain object-right translate-y-[40px] md:translate-y-[100px] md:translate-x-[100px] drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]",
+                data.slug === "psr-series"
+                  ? "md:translate-x-[180px] "
+                  : data.slug === "agv-series" && "md:translate-x-[180px]",
+              )}
             />
           </div>
           {/* <div className="pointer-events-none absolute inset-0 block">
@@ -212,7 +217,7 @@ function SeriesFaqs({ data }: { data: SeriesPageData }) {
     <section className="bg-[#fafafa] py-14">
       <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">
         <div>
-          <h2 className="mt-5 text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">
+          <h2 className="text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">
             FAQs
           </h2>
           <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
