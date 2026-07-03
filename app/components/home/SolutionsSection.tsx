@@ -41,7 +41,7 @@ export function SolutionsSection() {
           setHasAnimated(true);
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.08 },
     );
 
     observer.observe(sectionRef);
@@ -106,11 +106,11 @@ export function SolutionsSection() {
             </p>
           </div>
           <div className="">
-            <div className="divide-x flex flex-wrap justify-center md:justify-none sm:flex-nowrap md:items-center">
+            <div className="divide-x flex flex-wrap justify-center items-center  md:justify-none sm:flex-nowrap md:items-center">
               {displayStats.length > 0 &&
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
-                    <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[36px] flex items-center gap-1">
+                    <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[36px] flex items-center justify-center gap-1">
                       <span className="text-[#005ead]">{stat.value}</span>
                       <span className="text-[#005ead] md:mb-2 mb-1">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}

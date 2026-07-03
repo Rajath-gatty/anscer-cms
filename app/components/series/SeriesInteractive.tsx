@@ -818,7 +818,7 @@ function FloatingTags({
       {product.tags.map((tag, index) => (
         <m.span
           key={`${product.name}-${tag}`}
-          className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[16px] font-normal text-[#011f40] shadow-[0_10px_30px_rgba(1,31,64,.12)]"
+          className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[14px] font-normal text-[#011f40] shadow-[0_10px_30px_rgba(1,31,64,.12)]"
           style={getDesktopTagPosition(product.name, tag, index)}
           initial={reducedMotion ? false : { opacity: 0, y: 16, scale: 0.96 }}
           animate={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
