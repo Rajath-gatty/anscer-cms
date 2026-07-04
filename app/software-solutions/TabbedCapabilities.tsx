@@ -56,12 +56,13 @@ export function TabbedCapabilities({
               activeIndex={activeIndex}
               setActiveIndex={setActiveIndex}
               aspectRatio="aspect-[4/3]"
+              listClassName="min-h-[840px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-[660px]"
             />
 
             <div className="relative mt-8 hidden lg:mt-0 lg:block">
               <div
                 key={activeIndex}
-                className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[#dce7ef] animate-image"
+                className="relative aspect-[7/5] w-full overflow-hidden rounded-[18px] bg-[#dce7ef] animate-image"
               >
                 <Image
                   src={`${imagePath}${activeItem.image}`}
@@ -82,6 +83,7 @@ export function TabbedCapabilities({
                 setActiveIndex={setActiveIndex}
                 mobileOnly
                 aspectRatio="aspect-[721/464]"
+                listClassName="min-h-[560px] sm:min-h-[680px] md:min-h-[820px]"
               />
             </div>
 
@@ -151,15 +153,17 @@ function AccordionList({
   setActiveIndex,
   mobileOnly = false,
   aspectRatio = "aspect-[4/3]",
+  listClassName = "",
 }: {
   items: { title: string; copy: string; image: string }[];
   activeIndex: number;
   setActiveIndex: (idx: number) => void;
   mobileOnly?: boolean;
   aspectRatio?: string;
+  listClassName?: string;
 }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className={`flex flex-col gap-3 ${listClassName}`}>
       {items.map((item, index) => {
         const isActive = activeIndex === index;
         return (
