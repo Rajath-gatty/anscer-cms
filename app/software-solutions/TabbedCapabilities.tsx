@@ -50,16 +50,16 @@ export function TabbedCapabilities({
         </h2>
 
         {variant === "accordion" ? (
-          <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-stretch">
+          <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
             <AccordionList
               items={items}
               activeIndex={activeIndex}
               setActiveIndex={setActiveIndex}
               aspectRatio="aspect-[4/3]"
-              listClassName="min-h-[840px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
+              listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-[860px] xl:min-h-[720px] 2xl:min-h-[700px]"
             />
 
-            <div className="relative hidden w-full self-stretch overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block">
+            <div className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block lg:h-[780px] xl:h-[660px] 2xl:h-[640px]">
               {items.map((item, index) => {
                 const isActive = activeIndex === index;
                 return (
@@ -87,7 +87,7 @@ export function TabbedCapabilities({
                 setActiveIndex={setActiveIndex}
                 mobileOnly
                 aspectRatio="aspect-[721/464]"
-                listClassName="min-h-[560px] sm:min-h-[680px] md:min-h-[820px]"
+                listClassName="min-h-[600px] sm:min-h-[680px] md:min-h-[820px]"
               />
             </div>
 

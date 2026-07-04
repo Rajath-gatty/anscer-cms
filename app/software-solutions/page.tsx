@@ -81,32 +81,32 @@ const fleetCapabilities = [
   {
     title: "Multi-Robot Traffic Control",
     copy: "Coordinate and manage the movement of multiple robots operating simultaneously within the same environment. The ANSCER FMS intelligently controls robot traffic, optimizes routing paths, prevents congestion, and ensures safe navigation throughout the facility.",
-    image: "software_multi_robot_traffic_control.png",
+    image: "software_Multi-Robot_Traffic_Control.png",
   },
   {
     title: "Intelligent Task Allocation",
     copy: "Automatically assign transport missions and operational tasks to available robots based on factors such as robot location, battery status, workload, and task priority.",
-    image: "software_intelligent_task_allocation.png",
+    image: "software_intelligent_task_allocations.png",
   },
   {
     title: "Charging Management",
     copy: "Maintain continuous robot availability with automated charging management. The system monitors battery levels and autonomously dispatches robots to charging stations when required.",
-    image: "software_charging_management.png",
+    image: "software_charging-management.png",
   },
   {
     title: "Mission Scheduling & Execution",
     copy: "Configure, schedule, and monitor robot missions through a centralized management interface with priorities and execution tracking across the fleet.",
-    image: "software_mission_scheduling.png",
+    image: "software_mission_scheduling_execution.png",
   },
   {
     title: "Autonomous Fleet Orchestration",
     copy: "Manage robot operations autonomously across production lines, warehouses, staging zones, and logistics areas to keep material flow uninterrupted.",
-    image: "software_autonomous_fleet.png",
+    image: "software_Autonomous_Fleet_Orchestration.png",
   },
   {
     title: "Real-Time Monitoring & Control",
     copy: "Gain complete visibility into fleet performance through live dashboards and operational monitoring tools for status, missions, traffic, and system health.",
-    image: "software_realtimme_monitoring.png",
+    image: "software_realtimme_monitoring_control.png",
   },
   {
     title: "Web-Based User Interface",
