@@ -32,7 +32,7 @@ export function SiteHeader() {
     return false;
   };
   const isRobotsActive = [
-    "/products",
+    "/robots",
     "/ar-series",
     "/psr-series",
     "/agv-series",
@@ -69,7 +69,7 @@ export function SiteHeader() {
           <nav className="flex items-center gap-[40px] text-sm font-normal text-[#2f2f2f]">
             {navItems.map((item) => {
               if (item === "Robots") {
-                return <RobotsDropdown key={item} active={isRobotsActive} />;
+                return <RobotsDropdown key={pathname} active={isRobotsActive} />;
               }
               if (item === "Company") {
                 return <CompanyDropdown key={item} active={navActive(item)} />;
@@ -152,7 +152,7 @@ export function SiteHeader() {
                       <div className="overflow-hidden">
                         <div className="pb-4 pt-2">
                           <Link
-                            href="/products"
+                            href="/robots"
                             onClick={closeMenu}
                             className="cursor-pointer flex items-center gap-3 text-[16px] font-bold text-[#011f40] hover:underline"
                           >
@@ -259,14 +259,15 @@ export function SiteHeader() {
             })}
           </nav>
           {pathname !== '/contact-us' && (
-            <Link
-              className="mt-5 inline-flex h-12 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-[#0048ad]"
-              href={CONTACT_HREF}
-              onClick={closeMenu}
-            >
-              Contact us{" "}
-            <ArrowRight aria-hidden="true" className="size-5" strokeWidth={2} />
-          </Link>
+            <div className="mt-5">
+              <ArrowButton
+                target={CONTACT_HREF}
+                onClick={closeMenu}
+                className="h-12 w-full justify-center"
+              >
+                Contact us
+              </ArrowButton>
+            </div>
           )}
         </div>
       </div>
@@ -277,12 +278,6 @@ export function SiteHeader() {
 function RobotsDropdown({ active }: { active: boolean }) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-
-  // Close when pathname changes (after navigation)
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   // Close when clicking outside the dropdown
   useEffect(() => {
@@ -300,9 +295,13 @@ function RobotsDropdown({ active }: { active: boolean }) {
   }, [open]);
 
   return (
-    <div ref={containerRef} className="relative flex h-[60px] items-center">
+    <div
+      ref={containerRef}
+      className="relative flex h-[60px] items-center"
+      onMouseLeave={() => setOpen(false)}
+    >
       <Link
-        href="/products"
+        href="/robots"
         onMouseEnter={() => setOpen(true)}
         onClick={() => setOpen((o) => !o)}
         className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
@@ -314,7 +313,6 @@ function RobotsDropdown({ active }: { active: boolean }) {
         Robots
       </Link>
       <div
-        onMouseLeave={() => setOpen(false)}
         className={`absolute left-1/2 top-[60px] z-50 w-[400px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${
           open
             ? "visible opacity-100 translate-y-0"
@@ -323,7 +321,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
       >
         <div className="p-5">
           <Link
-            href="/products"
+            href="/robots"
             onClick={() => setOpen(false)}
             className="cursor-pointer group/link flex items-center gap-3 text-lg font-bold text-[#011f40] hover:underline underline-offset-4"
           >

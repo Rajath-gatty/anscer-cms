@@ -917,7 +917,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Operational Abstraction
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Separates business logic from robot control logic
                 </p>
               </div>
@@ -929,7 +929,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Scalability
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Supports multi-industry deployments
                 </p>
               </div>
@@ -944,7 +944,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Flexibility
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Multiple implementation approaches (prebuilt, low-code,
                   integrated)
                 </p>
@@ -957,7 +957,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Reduced Engineering Effort
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Minimizes need for custom coding
                 </p>
               </div>
@@ -972,7 +972,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   User-Centric Design
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Simplifies interaction for non-technical operators
                 </p>
               </div>
@@ -1036,7 +1036,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[0].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[0].copy}
                 </p>
               </div>
@@ -1052,7 +1052,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[1].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[1].copy}
                 </p>
               </div>
@@ -1071,7 +1071,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[2].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[2].copy}
                 </p>
               </div>
@@ -1087,7 +1087,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[3].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[3].copy}
                 </p>
               </div>
@@ -1106,7 +1106,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[4].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[4].copy}
                 </p>
               </div>

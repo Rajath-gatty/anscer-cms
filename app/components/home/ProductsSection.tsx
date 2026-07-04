@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { FadeLeft, FadeRight } from "../animation";
-import { seriesCards as productCards } from "../products/product-series-data";
+import { seriesCards as productCards } from "../robots/product-series-data";
 import { imagePath } from "./assets";
 import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
 

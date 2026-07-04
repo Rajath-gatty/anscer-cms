@@ -26,7 +26,7 @@ const footerColumns = [
     heading: "Insights",
     links: [
       { label: "Home", href: "/" },
-      { label: "Products", href: "/products" },
+      { label: "Products", href: "/robots" },
       { label: "Software", href: "/software-solutions" },
       { label: "Contact Us", href: CONTACT_HREF, external: true },
     ],

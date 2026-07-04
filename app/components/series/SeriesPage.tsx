@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
-import { ProductFaqAccordion } from "../products/ProductFaqAccordion";
+import { ProductFaqAccordion } from "../robots/ProductFaqAccordion";
 import type { SeriesPageData } from "./series-data";
 import {
   SeriesApplicationsCarousel,

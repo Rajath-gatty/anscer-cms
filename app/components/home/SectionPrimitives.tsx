@@ -1,19 +1,46 @@
+import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export function ArrowButton({ children, dark = false, target = "/contact-us" }: { children: string; dark?: boolean; target?: string }) {
+export function ArrowButton({
+  children,
+  dark = false,
+  target = "/contact-us",
+  className = "",
+  onClick,
+  asButton = false,
+}: {
+  children: ReactNode;
+  dark?: boolean;
+  target?: string;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  asButton?: boolean;
+}) {
+  const sharedClassName = `relative z-10 group/btn inline-flex h-10 items-center gap-3 rounded-sm px-4 text-[14px] font-medium uppercase tracking-wide transition ${
+    dark ? "bg-white text-[#005ead] hover:bg-[#edf6ff]" : "bg-[#005ead] text-white hover:bg-[#014f91]"
+  } ${className}`;
+
+  const arrow = (
+    <span className="relative flex size-4 overflow-hidden">
+      <ArrowRight aria-hidden="true" className="size-4 transition group-hover/btn:translate-x-5" strokeWidth={2} />
+      <ArrowRight aria-hidden="true" className="absolute size-4 -translate-x-5 transition group-hover/btn:translate-x-0" strokeWidth={2} />
+    </span>
+  );
+
+  if (asButton) {
+    return (
+      <button type="button" onClick={onClick as React.MouseEventHandler<HTMLButtonElement>} className={sharedClassName}>
+        {children}
+        {arrow}
+      </button>
+    );
+  }
+
   return (
-    <Link
-      href={target}
-      className={`relative z-10 group/btn inline-flex h-10 items-center gap-3 rounded-sm px-4 text-[14px] font-medium uppercase tracking-wide transition ${
-        dark ? "bg-white text-[#005ead] hover:bg-[#edf6ff]" : "bg-[#005ead] text-white hover:bg-[#014f91]"
-      }`}
-    >
+    <Link href={target} onClick={onClick} className={sharedClassName}>
       {children}
-      <span className="relative flex size-4 overflow-hidden">
-        <ArrowRight aria-hidden="true" className="size-4 transition group-hover/btn:translate-x-5" strokeWidth={2} />
-        <ArrowRight aria-hidden="true" className="absolute size-4 -translate-x-5 transition group-hover/btn:translate-x-0" strokeWidth={2} />
-      </span>
+      {arrow}
     </Link>
   );
 }

@@ -1,4 +1,4 @@
-import { seriesCards } from "../products/product-series-data";
+import { seriesCards } from "../robots/product-series-data";
 
 export const navItems = ["Home", "Robots", "Software", "Company"];
 
