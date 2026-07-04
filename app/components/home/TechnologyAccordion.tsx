@@ -16,25 +16,25 @@ const technologyItems = [
   {
     title: "Real-Time Monitoring & Control",
     copy: "Instantly view robot locations, task progress, and system status ensuring uninterrupted operations and proactive interventions.",
-    image: "our-technology-img-1-p-800.png",
+    image: "home_realtime.png",
     icon: "frame-18.png",
   },
   {
     title: "Smart Analytics & Reports",
     copy: "Gain complete visibility into robot utilization, mission performance, and operational trends, enabling data-driven decisions and continuous process optimization",
-    image: "our-technology-updated-p-1080.png",
+    image: "home_smartanalytics.png",
     icon: "frame-19.png",
   },
   {
     title: "Flexible System Integration",
     copy: "Seamlessly connects with ERP, MES, and WMS platforms, enabling automated workflows, synchronized operations, and efficient end-to-end material movement",
-    image: "our-technology-img-3-p-800.png",
+    image: "home_flexible.png",
     icon: "frame-20.png",
   },
   {
     title: "Alerts & Notifications",
     copy: "Delivers intelligent notifications on request patterns and performance trends to support proactive decision-making",
-    image: "our-technology-img-4-p-800.png",
+    image: "home_alerts.png",
     icon: "frame-21.png",
   },
 ];
@@ -64,7 +64,7 @@ export function TechnologyAccordion() {
                 key={item.title}
                 value={value}
                 className={cn(
-                  "shrink-0 transition-all duration-300",
+                  "shrink-0 transition-all duration-500 ease-in-out",
                   isOpen ? "py-4 lg:py-6" : "py-3 lg:py-5",
                 )}
               >
@@ -119,7 +119,7 @@ export function TechnologyAccordion() {
               loading="eager"
               aria-hidden={!isActive}
               className={cn(
-                "object-cover h-full transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                "object-cover h-full transition-opacity duration-500 ease-in-out motion-reduce:transition-none",
                 isActive ? "opacity-100" : "opacity-0",
               )}
             />
