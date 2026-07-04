@@ -126,7 +126,7 @@ export function ProductHeroSlider() {
 
   return (
     <section
-      // className="bg-[#fafafa]"
+      className="overflow-hidden"
       style={{
         backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
         backgroundSize: "cover",
@@ -205,37 +205,17 @@ export function ProductHeroSlider() {
           </div>
         </div>
 
-        <div className="relative min-h-[430px] md:min-h-[500px] xl:min-h-full w-full">
-          <AnimatePresence mode="popLayout" initial={false}>
-            <m.div
-              key={active.image}
-              className="absolute inset-0 w-full"
-              initial={{ x: 0, opacity: 0, scale: 1 }}
-              animate={{ x: 0, opacity: 1, scale: 1 }}
-              exit={{ x: 0, opacity: 0, scale: 1 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Image
-                src={`${imagePath}products/${active.image}`}
-                alt={`${active.title} ${active.accent}`}
-                fill
-                priority={activeIndex === 0}
-                sizes="(max-width: 600px) 50vw, 600px"
-                className={`object-contain w-full object-bottom-right drop-shadow-[0_26px_40px_rgba(1,31,64,.14)] ${active.imageClass}`}
-              />
-              {/* <div className="pointer-events-none absolute inset-0 z-20">
-                {active.tags.map((tag, index) => (
-                  <span
-                    key={`${active.id}-${tag}`}
-                    className="absolute rounded-[31px] bg-white/92 px-3 py-1 text-[13px] font-semibold text-[#011f40] shadow-[0_8px_24px_rgba(1,31,64,.14)] md:px-4 md:py-2 md:text-sm"
-                    style={getProductHeroTagPosition(active.id, tag, index)}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div> */}
-            </m.div>
-          </AnimatePresence>
+        <div className="relative self-stretch min-h-[300px] md:min-h-[500px] w-full">
+          <div className="absolute top-0 left-0 right-0 bottom-0 md:bottom-[-40px] w-full">
+            <Image
+              src={`${imagePath}products/grab.png`}
+              alt="ANSCER Robot"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-contain object-bottom drop-shadow-[0_26px_40px_rgba(1,31,64,.14)]"
+            />
+          </div>
         </div>
       </div>
     </section>
