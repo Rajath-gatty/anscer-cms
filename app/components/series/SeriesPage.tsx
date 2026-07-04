@@ -78,7 +78,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
           <ArrowButton
             as="a"
             href="#modals"
-            className="mt-7 h-11 font-bold rounded-[3px] px-5 hover:bg-[#0671cc]"
+            className="mt-7 h-11 font-bold rounded-[3px] px-5"
           >
             Explore
           </ArrowButton>

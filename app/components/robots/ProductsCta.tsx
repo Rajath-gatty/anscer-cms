@@ -26,7 +26,7 @@ export function ProductsCta() {
         </p>
         <ArrowButton
           target="/contact-us"
-          className="mt-8 h-11 bg-[#015EAD] px-5 hover:bg-[#046bc5]"
+          className="mt-8 h-11 px-5"
         >
           Talk to our experts
         </ArrowButton>

@@ -223,7 +223,9 @@ function AccordionList({
               type="button"
               onClick={() => handleSelect(index)}
               aria-expanded={isActive}
-              className="flex w-full cursor-pointer items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30"
+              className={`flex w-full items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30 ${
+                isActive ? "cursor-default" : "cursor-pointer"
+              }`}
             >
               <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
                 {item.title}

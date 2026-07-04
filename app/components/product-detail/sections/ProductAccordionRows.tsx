@@ -46,9 +46,15 @@ export function ProductAccordionRows({
           >
             <button
               type="button"
-              className="flex w-full cursor-pointer items-center justify-between gap-4 text-left"
+              className={cn(
+                "flex w-full items-center justify-between gap-4 text-left",
+                isOpen ? "cursor-default" : "cursor-pointer"
+              )}
               aria-expanded={isOpen}
-              onClick={() => onActiveChange(index)}
+              onClick={() => {
+                if (activeIndex === index) return;
+                onActiveChange(index);
+              }}
             >
               <h3
                 className={cn(
@@ -61,9 +67,10 @@ export function ProductAccordionRows({
               <ChevronDown
                 aria-hidden="true"
                 className={cn(
-                  "size-4 shrink-0 transition-transform duration-300",
-                  isOpen && "rotate-180",
+                  "size-5 shrink-0 text-[#011f40] transition-opacity duration-300",
+                  isOpen ? "opacity-0 pointer-events-none" : "opacity-100",
                 )}
+                strokeWidth={2}
               />
             </button>
             <div
