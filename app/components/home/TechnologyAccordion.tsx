@@ -56,38 +56,8 @@ export function TechnologyAccordion() {
                 <button
                   type="button"
                   onClick={() => {
-                    const siblingIndex = activeIndex;
-                    
-                    // Measure sibling height synchronously BEFORE changing activeIndex state
-                    let siblingHeightDiff = 0;
-                    if (siblingIndex !== index && siblingIndex < index) {
-                      const siblingElement = document.getElementById(`tech-accordion-item-${siblingIndex}`);
-                      if (siblingElement) {
-                        const siblingClosedHeight = siblingElement.querySelector("button")?.offsetHeight || 60;
-                        siblingHeightDiff = siblingElement.offsetHeight - siblingClosedHeight;
-                      }
-                    }
-
+                    if (activeIndex === index) return;
                     setActiveIndex(index);
-                    
-                    // Only scroll on mobile/tablet — desktop uses side-by-side layout
-                    if (window.innerWidth < 1024) {
-                      setTimeout(() => {
-                        const scrollMarginTop = 80;
-                        const targetElement = document.getElementById(`tech-accordion-item-${index}`);
-                        if (!targetElement) return;
-
-                        let targetY = targetElement.getBoundingClientRect().top + window.scrollY - scrollMarginTop;
-                        if (siblingHeightDiff > 0) {
-                          targetY -= siblingHeightDiff;
-                        }
-
-                        window.scrollTo({
-                          top: Math.max(0, targetY),
-                          behavior: "smooth",
-                        });
-                      }, 0);
-                    }
                   }}
                   aria-expanded={isOpen}
                   className="group/technology-accordion-trigger flex w-full cursor-pointer items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30"

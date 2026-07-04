@@ -166,6 +166,11 @@ function AccordionList({
   aspectRatio?: string;
   listClassName?: string;
 }) {
+  function handleSelect(index: number) {
+    if (activeIndex === index) return;
+    setActiveIndex(index);
+  }
+
   return (
     <div className={`flex flex-col gap-3 ${listClassName}`}>
       {items.map((item, index) => {
@@ -180,44 +185,13 @@ function AccordionList({
           >
             <button
               type="button"
-              onClick={() => {
-                const siblingIndex = activeIndex;
-                
-                // Measure sibling height synchronously BEFORE changing activeIndex state
-                let siblingHeightDiff = 0;
-                if (siblingIndex !== index && siblingIndex < index) {
-                  const siblingElement = document.getElementById(`software-accordion-item-${siblingIndex}`);
-                  if (siblingElement) {
-                    const siblingClosedHeight = siblingElement.querySelector("button")?.offsetHeight || 60;
-                    siblingHeightDiff = siblingElement.offsetHeight - siblingClosedHeight;
-                  }
-                }
-
-                setActiveIndex(index);
-                
-                // Only scroll on mobile/tablet — desktop uses side-by-side layout
-                if (window.innerWidth < 1024) {
-                  setTimeout(() => {
-                    const scrollMarginTop = 135; // combined sticky header offsets (navbar + subtabs)
-                    const targetElement = document.getElementById(`software-accordion-item-${index}`);
-                    if (!targetElement) return;
-
-                    let targetY = targetElement.getBoundingClientRect().top + window.scrollY - scrollMarginTop;
-                    if (siblingHeightDiff > 0) {
-                      targetY -= siblingHeightDiff;
-                    }
-
-                    window.scrollTo({
-                      top: Math.max(0, targetY),
-                      behavior: "smooth",
-                    });
-                  }, 0);
-                }
-              }}
+              onClick={() => handleSelect(index)}
               aria-expanded={isActive}
               className="flex w-full cursor-pointer items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30"
             >
-              <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">{item.title}</span>
+              <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
+                {item.title}
+              </span>
               <ChevronDown
                 aria-hidden="true"
                 className={`size-5 shrink-0 text-[#011f40] transition-opacity duration-300 ${
