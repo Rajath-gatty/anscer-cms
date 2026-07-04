@@ -90,12 +90,12 @@ export function SolutionsSection() {
     <section id="solutions" ref={setSectionRef} className="bg-[#fafafa] ">
       <div className="bg-[#BDE1FF2E]">
         <div className="md:flex grid items-center justify-between gap-6 md:gap-8 py-12 site-container ">
-          <div className=" pt-1 text-left ">
+          <div className="pt-1 text-center md:text-left">
             <Kicker>Solutions That Solve, Everywhere.</Kicker>
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
               Solutions That <span className="text-[#005ead]">Deliver</span>
             </h2>
-            <p className="text-left mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+            <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-base md:leading-[22px]">
               From tugging and lifting to robotic arm integration and conveyor
               automation, our AMRs are designed to streamline operations,
               enhance safety, and maximize efficiency.

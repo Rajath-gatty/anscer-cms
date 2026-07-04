@@ -81,32 +81,32 @@ const fleetCapabilities = [
   {
     title: "Multi-Robot Traffic Control",
     copy: "Coordinate and manage the movement of multiple robots operating simultaneously within the same environment. The ANSCER FMS intelligently controls robot traffic, optimizes routing paths, prevents congestion, and ensures safe navigation throughout the facility.",
-    image: "Frame-1321317434.jpg",
+    image: "software_multi_robot_traffic_control.png",
   },
   {
     title: "Intelligent Task Allocation",
     copy: "Automatically assign transport missions and operational tasks to available robots based on factors such as robot location, battery status, workload, and task priority.",
-    image: "Frame-1321317429-1.jpg",
+    image: "software_intelligent_task_allocation.png",
   },
   {
     title: "Charging Management",
     copy: "Maintain continuous robot availability with automated charging management. The system monitors battery levels and autonomously dispatches robots to charging stations when required.",
-    image: "Frame-1321317427.jpg",
+    image: "software_charging_management.png",
   },
   {
     title: "Mission Scheduling & Execution",
     copy: "Configure, schedule, and monitor robot missions through a centralized management interface with priorities and execution tracking across the fleet.",
-    image: "Frame-1321317431-1.jpg",
+    image: "software_mission_scheduling.png",
   },
   {
     title: "Autonomous Fleet Orchestration",
     copy: "Manage robot operations autonomously across production lines, warehouses, staging zones, and logistics areas to keep material flow uninterrupted.",
-    image: "Frame-1321317432.jpg",
+    image: "software_autonomous_fleet.png",
   },
   {
     title: "Real-Time Monitoring & Control",
     copy: "Gain complete visibility into fleet performance through live dashboards and operational monitoring tools for status, missions, traffic, and system health.",
-    image: "Frame-1321317430-1.jpg",
+    image: "software_realtimme_monitoring.png",
   },
   {
     title: "Web-Based User Interface",
