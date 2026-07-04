@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { FadeLeft, FadeRight } from "../animation";
-import { seriesCards as productCards } from "../products/product-series-data";
+import { seriesCards as productCards } from "../robots/product-series-data";
 import { imagePath } from "./assets";
 import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
 
@@ -69,12 +69,12 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
         </p>
         <Tags tags={product.tags} />
         <div className="mt-3 opacity-100 transition-opacity duration-300 md:mt-4 lg:opacity-0 lg:group-hover:opacity-100">
-          <div className="md:hidden">
-            <ProductExploreButton href={product.href} />
-          </div>
-          <div className="hidden md:block">
-            <ArrowButton target={product.href}>Explore</ArrowButton>
-          </div>
+          <ArrowButton 
+            target={product.href}
+            className="h-8 text-xs font-medium px-4 md:h-10 md:text-[14px]"
+          >
+            Explore
+          </ArrowButton>
         </div>
       </div>
       <div className={media.wrapperClass}>
@@ -114,14 +114,3 @@ function getHomeProductMedia(product: (typeof productCards)[number]) {
   };
 }
 
-function ProductExploreButton({ href = "#contact" }: { href?: string }) {
-  return (
-    <a
-      href={href}
-      className="relative z-10 inline-flex h-8 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
-    >
-      Explore{" "}
-      <ArrowRight aria-hidden="true" className="size-3.5" strokeWidth={2} />
-    </a>
-  );
-}

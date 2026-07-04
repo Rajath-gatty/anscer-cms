@@ -5,6 +5,31 @@ import Image from "next/image";
 import { useState } from "react";
 import { imagePath } from "../components/home/assets";
 
+type CapabilityItem = {
+  title: string;
+  copy: string;
+  image: string;
+};
+
+const layeredCapabilityImages: Record<
+  string,
+  { background: string; foreground: string; edge?: "left" | "right" }
+> = {
+  "Intelligent Task Allocation": {
+    background: "software_allocation_bg.png",
+    foreground: "software_allocation_img.png",
+  },
+  "Mission Scheduling & Execution": {
+    background: "software_scheduling_bg.png",
+    foreground: "software_scheduling_img.png",
+    edge: "right",
+  },
+  "Real-Time Monitoring & Control": {
+    background: "software_monitoring_bg.png",
+    foreground: "software_monitoring_img.png",
+  },
+};
+
 export function TabbedCapabilities({
   eyebrow,
   title,
@@ -14,7 +39,7 @@ export function TabbedCapabilities({
 }: {
   eyebrow: string;
   title: string;
-  items: { title: string; copy: string; image: string }[];
+  items: CapabilityItem[];
   pale?: boolean;
   variant?: "accordion" | "cards";
 }) {
@@ -40,6 +65,19 @@ export function TabbedCapabilities({
         .animate-card {
           animation: slide-card 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+        @keyframes layered-foreground-zoom {
+          from { transform: scale(1); }
+          to { transform: scale(1.2); }
+        }
+        .animate-layered-foreground {
+          animation: layered-foreground-zoom 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .layered-foreground-left {
+          transform-origin: top left;
+        }
+        .layered-foreground-right {
+          transform-origin: top right;
+        }
       `}</style>
       <div className="site-container">
         <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
@@ -63,17 +101,15 @@ export function TabbedCapabilities({
               {items.map((item, index) => {
                 const isActive = activeIndex === index;
                 return (
-                  <Image
-                    key={item.image}
-                    src={`${imagePath}${item.image}`}
-                    alt={isActive ? item.title : ""}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 720px"
+                  <div
+                    key={item.title}
                     aria-hidden={!isActive}
-                    className={`object-cover object-[50%_20%] transition-opacity duration-500 ease-in-out ${
+                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
                       isActive ? "opacity-100" : "opacity-0 pointer-events-none"
                     }`}
-                  />
+                  >
+                    <CapabilityImage item={item} isActive={isActive} />
+                  </div>
                 );
               })}
             </div>
@@ -159,7 +195,7 @@ function AccordionList({
   aspectRatio = "aspect-[4/3]",
   listClassName = "",
 }: {
-  items: { title: string; copy: string; image: string }[];
+  items: CapabilityItem[];
   activeIndex: number;
   setActiveIndex: (idx: number) => void;
   mobileOnly?: boolean;
@@ -218,13 +254,7 @@ function AccordionList({
                       mobileOnly ? "" : "lg:hidden"
                     }`}
                   >
-                    <Image
-                      src={`${imagePath}${item.image}`}
-                      alt={item.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 720px"
-                      className="object-cover object-[50%_20%]"
-                    />
+                    <CapabilityImage item={item} isActive={isActive} />
                   </div>
                 </div>
               </div>
@@ -233,5 +263,57 @@ function AccordionList({
         );
       })}
     </div>
+  );
+}
+
+function CapabilityImage({
+  item,
+  isActive,
+}: {
+  item: CapabilityItem;
+  isActive: boolean;
+}) {
+  const layeredImage = layeredCapabilityImages[item.title];
+
+  if (!layeredImage) {
+    return (
+      <Image
+        src={`${imagePath}${item.image}`}
+        alt={item.title}
+        fill
+        sizes="(max-width: 1024px) 100vw, 720px"
+        className="object-cover object-[50%_20%]"
+      />
+    );
+  }
+
+  const isRightEdge = layeredImage.edge === "right";
+  const foregroundPlacement = isRightEdge
+    ? "right-[1%] layered-foreground-right"
+    : "left-[-1%] layered-foreground-left";
+
+  return (
+    <>
+      <Image
+        src={`${imagePath}${layeredImage.background}`}
+        alt=""
+        fill
+        sizes="(max-width: 1024px) 100vw, 720px"
+        className="object-cover object-[50%_20%]"
+      />
+      <div
+        className={`absolute top-[1%] h-full w-full ${foregroundPlacement} ${
+          isActive ? "animate-layered-foreground" : ""
+        }`}
+      >
+        <Image
+          src={`${imagePath}${layeredImage.foreground}`}
+          alt={item.title}
+          fill
+          sizes="(max-width: 1024px) 100vw, 720px"
+          className="object-cover object-[50%_20%]"
+        />
+      </div>
+    </>
   );
 }

@@ -114,12 +114,13 @@ export function CaseStudiesSection() {
             </p>
             <div className="mt-3 md:mt-5">
               <div className="md:hidden">
-                <a
+                <ArrowButton
+                  as="a"
                   href="#contact"
-                  className="inline-flex h-9 w-full items-center justify-center gap-3 rounded-sm bg-[#005ead] px-4 text-sm font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                  className="h-9 w-full justify-center text-sm font-medium"
                 >
-                  Read their story <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2} />
-                </a>
+                  Read their story
+                </ArrowButton>
               </div>
               <div className="hidden md:block">
                 <ArrowButton>Read their story</ArrowButton>

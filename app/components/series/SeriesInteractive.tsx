@@ -10,6 +10,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
+import { ArrowButton } from "../home/SectionPrimitives";
 import type { SeriesPageData } from "./series-data";
 
 // Import Swiper styles
@@ -301,24 +302,13 @@ export function SeriesRobotSelector({
                         <p className="mt-2 text-[14px] leading-[22px] text-[#3a3a3a] line-clamp-3">
                           {product.description}
                         </p>
-                        <a
+                        <ArrowButton
+                          as="a"
                           href={product.href}
-                          className="group mt-4 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                          className="mt-4 font-bold rounded-[3px] px-5"
                         >
                           Explore
-                          <span className="relative flex size-4 overflow-hidden">
-                            <ArrowRight
-                              aria-hidden="true"
-                              className="size-4 transition group-hover:translate-x-5"
-                              strokeWidth={2}
-                            />
-                            <ArrowRight
-                              aria-hidden="true"
-                              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                              strokeWidth={2}
-                            />
-                          </span>
-                        </a>
+                        </ArrowButton>
                       </div>
 
                       {/* Robot image — sits inside the white card */}
@@ -514,26 +504,15 @@ export function SeriesRobotSelector({
                     <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">
                       {activeProduct.description}
                     </p>
-                    <m.a
+                    <ArrowButton
+                      as={m.a}
                       href={activeProduct.href}
-                      className="group mt-6 inline-flex h-10 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                      className="mt-6 font-bold rounded-[3px] px-5"
                       whileHover={reducedMotion ? undefined : { y: -2 }}
                       whileTap={reducedMotion ? undefined : { scale: 0.97 }}
                     >
                       Explore
-                      <span className="relative flex size-4 overflow-hidden">
-                        <ArrowRight
-                          aria-hidden="true"
-                          className="size-4 transition group-hover:translate-x-5"
-                          strokeWidth={2}
-                        />
-                        <ArrowRight
-                          aria-hidden="true"
-                          className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                          strokeWidth={2}
-                        />
-                      </span>
-                    </m.a>
+                    </ArrowButton>
                   </m.div>
                 </AnimatePresence>
 

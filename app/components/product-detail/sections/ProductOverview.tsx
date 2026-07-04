@@ -1,11 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { imagePath, videoPath } from "../../home/assets";
 import { ScrollReveal } from "../../home/ScrollReveal";
+import { ArrowButton } from "../../home/SectionPrimitives";
 import { ProductProfileRequestDialog } from "./ProductProfileRequestDialog";
 import type { ProductDetailData } from "../product-detail-data";
 
@@ -130,14 +130,13 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
               </ScrollReveal>
             ))}
           </dl>
-          <button
-            type="button"
-            className="mt-6 inline-flex cursor-pointer items-center gap-3 rounded-[3px] bg-[#005ead] py-2.5 pl-4 pr-2 text-[14px] font-semibold uppercase tracking-wide text-white"
+          <ArrowButton
+            asButton
+            className="mt-6"
             onClick={() => setIsDialogOpen(true)}
           >
             {data.overviewCtaLabel ?? "DOWNLOAD PRODUCT PROFILE"}
-            <ArrowRight aria-hidden="true" className="size-4" />
-          </button>
+          </ArrowButton>
         </div>
       </div>
 

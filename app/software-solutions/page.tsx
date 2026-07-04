@@ -25,6 +25,7 @@ import { AnalyticsSection } from "./AnalyticsSection";
 import { InteractiveWorkflow } from "./InteractiveWorkflow";
 import { SoftwareTabs } from "./SoftwareTabs";
 import { TabbedCapabilities } from "./TabbedCapabilities";
+import { ArrowButton } from "../components/home/SectionPrimitives";
 
 export const metadata: Metadata = {
   title: "Software Solutions | ANSCER Robotics",
@@ -373,29 +374,17 @@ function SoftwareHero() {
           <h1 className="mt-4 max-w-[807px] text-[40px] font-bold leading-[1.12] text-white md:text-[60px] md:leading-[1.15]">
             Connect Robots, Workflows, and Operations in One Platform
           </h1>
-          <p className="mt-5 max-w-[680px] text-sm md:text-lg font-medium leading-[1.3] text-[#fafafa]">
+          <p className="mt-5 max-w-[680px] text-sm md:text-lg font-bold leading-[1.3] text-[#fafafa]">
             ANSCER&apos;s software suite transforms autonomous mobile robots
             into synchronized, facility-wide operations - from real-time fleet
             control to industry-specific workflow automation.
           </p>
-          <Link
-            href="mailto:sales@anscer.com"
-            className="group mt-8 inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-brand-blue px-5 text-[14px] font-medium uppercase tracking-wide text-white"
+          <ArrowButton
+            target="mailto:sales@anscer.com"
+            className="mt-8 h-[46px] bg-brand-blue px-5"
           >
-            Request demo{" "}
-            <span className="relative flex size-4 overflow-hidden">
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition group-hover:translate-x-5"
-                strokeWidth={2}
-              />
-              <ArrowRight
-                aria-hidden="true"
-                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                strokeWidth={2}
-              />
-            </span>
-          </Link>
+            Request demo
+          </ArrowButton>
         </FadeRight>
       </div>
     </section>
@@ -815,24 +804,12 @@ function SoftwareCta() {
         <p className="max-w-[850px] text-[14px] font-medium leading-5 text-white md:text-[18px] md:leading-8">
           Book your demo now and experience ANSCER in action.
         </p>
-        <Link
-          href="mailto:sales@anscer.com"
-          className="group inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#005ead]/90"
+        <ArrowButton
+          target="mailto:sales@anscer.com"
+          className="h-[46px] bg-[#005ead] px-5 hover:bg-[#005ead]/90"
         >
-          Book a demo{" "}
-          <span className="relative flex size-4 overflow-hidden">
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition group-hover:translate-x-5"
-              strokeWidth={2}
-            />
-            <ArrowRight
-              aria-hidden="true"
-              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-              strokeWidth={2}
-            />
-          </span>
-        </Link>
+          Book a demo
+        </ArrowButton>
         </FadeRight>
       </div>
     </section>
@@ -917,7 +894,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Operational Abstraction
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Separates business logic from robot control logic
                 </p>
               </div>
@@ -929,7 +906,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Scalability
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Supports multi-industry deployments
                 </p>
               </div>
@@ -944,7 +921,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Flexibility
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Multiple implementation approaches (prebuilt, low-code,
                   integrated)
                 </p>
@@ -957,7 +934,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Reduced Engineering Effort
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Minimizes need for custom coding
                 </p>
               </div>
@@ -972,7 +949,7 @@ function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   User-Centric Design
                 </h3>
-                <p className="text-sm leading-[130%] text-[#000000]">
+                <p className="text-sm font-bold leading-[130%] text-[#000000]">
                   Simplifies interaction for non-technical operators
                 </p>
               </div>
@@ -1036,7 +1013,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[0].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[0].copy}
                 </p>
               </div>
@@ -1052,7 +1029,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[1].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[1].copy}
                 </p>
               </div>
@@ -1071,7 +1048,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[2].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[2].copy}
                 </p>
               </div>
@@ -1087,7 +1064,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[3].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[3].copy}
                 </p>
               </div>
@@ -1106,7 +1083,7 @@ function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[4].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-normal leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
                   {processBenefitCards[4].copy}
                 </p>
               </div>

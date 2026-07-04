@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { imagePath } from "../home/assets";
 import Link from "next/link";
+import { ArrowButton } from "../home/SectionPrimitives";
 
 export function MarketingHero({
   eyebrow,
@@ -25,9 +26,13 @@ export function MarketingHero({
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/80 md:text-base">{eyebrow}</p>
           <h1 className="mt-4 text-[42px] font-semibold leading-[1.1] md:text-[60px]">{title}</h1>
           <p className="mt-5 max-w-[590px] text-sm font-medium leading-6 text-white/88 md:text-lg md:leading-8">{copy}</p>
-          <a className="mt-8 inline-flex items-center gap-3 rounded-[3px] bg-[#005ead] py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-white" href="#content">
-            {cta} <ArrowRight aria-hidden="true" className="size-4" />
-          </a>
+          <ArrowButton
+            as="a"
+            href="#content"
+            className="mt-8 py-[13px] pl-5 pr-2 text-xs font-semibold rounded-[3px]"
+          >
+            {cta}
+          </ArrowButton>
         </div>
       </div>
     </section>
@@ -85,9 +90,12 @@ export function BlueCta({ title, copy }: { title: string; copy: string }) {
       <div className="site-container relative z-10">
         <h2 className="max-w-[780px] text-[40px] font-semibold leading-[1.1] md:text-[60px]">{title}</h2>
         <p className="mt-5 max-w-[570px] text-sm leading-6 text-white/86 md:text-lg">{copy}</p>
-        <Link href="/contact-us" className="mt-8 inline-flex items-center gap-3 rounded-[3px] bg-white py-[13px] pl-5 pr-2 text-xs font-semibold uppercase tracking-wide text-[#005ead]">
-          Contact Us <ArrowRight aria-hidden="true" className="size-4" />
-        </Link>
+        <ArrowButton
+          target="/contact-us"
+          className="mt-8 bg-white py-[13px] pl-5 pr-2 text-xs font-semibold text-[#005ead] rounded-[3px] hover:bg-gray-100"
+        >
+          Contact Us
+        </ArrowButton>
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ import type { FieldErrors } from "react-hook-form";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@/components/ui/button";
+import { ArrowButton } from "../components/home/SectionPrimitives";
 import {
   Field,
   FieldError,
@@ -365,13 +365,14 @@ export function ContactForm() {
       </div> */}
 
       <div className="pt-1 md:pt-0">
-        <Button
+        <ArrowButton
+          asButton
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex h-11 items-center gap-4 rounded-[3px] bg-[#005ead] px-6 text-[12px] font-bold uppercase tracking-wide text-white transition hover:bg-[#004f91] disabled:cursor-not-allowed disabled:opacity-70"
+          className="h-11 gap-4 rounded-[3px] px-6 text-[12px] font-bold disabled:cursor-not-allowed disabled:opacity-70"
         >
-          Submit <ArrowRight aria-hidden="true" data-icon="inline-end" />
-        </Button>
+          Submit
+        </ArrowButton>
       </div>
 
       {submitMessage ? (

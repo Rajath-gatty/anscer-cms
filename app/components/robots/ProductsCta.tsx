@@ -1,7 +1,7 @@
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../home/assets";
 import Link from "next/link";
+import { ArrowButton } from "../home/SectionPrimitives";
 
 export function ProductsCta() {
   return (
@@ -24,24 +24,12 @@ export function ProductsCta() {
           Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation
           solutions engineered to transform your operations.
         </p>
-        <Link
-          href="/contact-us"
-          className="group mt-8 inline-flex h-11 items-center gap-3 rounded-sm bg-[#015EAD] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#046bc5]"
+        <ArrowButton
+          target="/contact-us"
+          className="mt-8 h-11 bg-[#015EAD] px-5 hover:bg-[#046bc5]"
         >
           Talk to our experts
-          <span className="relative flex size-4 overflow-hidden">
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition group-hover:translate-x-5"
-              strokeWidth={2}
-            />
-            <ArrowRight
-              aria-hidden="true"
-              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-              strokeWidth={2}
-            />
-          </span>
-        </Link>
+        </ArrowButton>
       </div>
     </section>
   );

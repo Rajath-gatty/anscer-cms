@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductFaqAccordion } from "../../products/ProductFaqAccordion";
+import { ProductFaqAccordion } from "../../robots/ProductFaqAccordion";
 import type { ProductDetailData } from "../product-detail-data";
 
 export function FaqSection({ data }: { data: ProductDetailData }) {

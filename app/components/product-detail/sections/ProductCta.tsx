@@ -1,18 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../../home/assets";
 import { ProductProfileRequestDialog } from "./ProductProfileRequestDialog";
 import type { ProductDetailData } from "../product-detail-data";
+import { ArrowButton } from "../../home/SectionPrimitives";
 
 export function ProductCta({ data }: { data: ProductDetailData }) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <>
-      <section className="relative overflow-hidden flex items-center bg-[#005ead] py-20 text-white h-[500px]">
+      <section className="relative overflow-hidden flex items-center bg-[#005ead] py-20 text-white h-125">
         <Image
           src={`${imagePath}${data.footerBanner}`}
           alt=""
@@ -32,7 +32,7 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
             Access detailed specifications, features, and performance data for
             the {data.title} in one compact product datasheet.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          {/* <div className="mt-8 flex flex-wrap gap-3">
             <button
               type="button"
               onClick={() => setIsDialogOpen(true)}
@@ -41,6 +41,16 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
               Download Product Profile
               <ArrowRight aria-hidden="true" className="size-4" />
             </button>
+          </div> */}
+          <div className="mt-8">
+            <ArrowButton
+              asButton
+              onClick={() => {
+                setIsDialogOpen(true);
+              }}
+            >
+              Download Product Profile
+            </ArrowButton>
           </div>
         </div>
       </section>
