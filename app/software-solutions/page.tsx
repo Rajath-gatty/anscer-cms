@@ -381,7 +381,7 @@ function SoftwareHero() {
           </p>
           <ArrowButton
             target="mailto:sales@anscer.com"
-            className="mt-8 h-[46px] bg-brand-blue px-5"
+            className="mt-8 h-[46px] px-5"
           >
             Request demo
           </ArrowButton>
@@ -806,7 +806,7 @@ function SoftwareCta() {
         </p>
         <ArrowButton
           target="mailto:sales@anscer.com"
-          className="h-[46px] bg-[#005ead] px-5 hover:bg-[#005ead]/90"
+          className="h-[46px] px-5"
         >
           Book a demo
         </ArrowButton>

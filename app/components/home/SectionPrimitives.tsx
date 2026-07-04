@@ -25,7 +25,8 @@ export function ArrowButton({
 }) {
   const Component = as || (asButton ? "button" : Link);
 
-  const hasCustomBg = className.includes("bg-") || className.includes("bg-[");
+  // Only treat a bare bg- class (not a hover:/focus:/etc. variant) as a custom background
+  const hasCustomBg = /(?<![a-z]:)bg-/.test(className);
   
   let colorClasses = "";
   if (variant === "solid" && !hasCustomBg) {
@@ -42,7 +43,7 @@ export function ArrowButton({
     ? "h-10 px-4 gap-3 rounded-sm" 
     : "gap-2"; // for ghost
 
-  const sharedClassName = `relative z-10 group/btn inline-flex items-center text-[14px] font-medium uppercase tracking-wide transition ${baseClasses} ${colorClasses} ${className}`
+  const sharedClassName = `relative z-10 group/btn cursor-pointer inline-flex items-center text-[14px] font-medium uppercase tracking-wide transition ${baseClasses} ${colorClasses} ${className}`
     .replace(/\s+/g, " ")
     .trim();
 
