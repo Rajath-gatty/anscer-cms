@@ -374,7 +374,7 @@ function SoftwareHero() {
           <h1 className="mt-4 max-w-[807px] text-[40px] font-bold leading-[1.12] text-white md:text-[60px] md:leading-[1.15]">
             Connect Robots, Workflows, and Operations in One Platform
           </h1>
-          <p className="mt-5 max-w-[680px] text-sm md:text-lg font-medium leading-[1.3] text-[#fafafa]">
+          <p className="mt-5 max-w-[680px] text-sm md:text-lg font-bold leading-[1.3] text-[#fafafa]">
             ANSCER&apos;s software suite transforms autonomous mobile robots
             into synchronized, facility-wide operations - from real-time fleet
             control to industry-specific workflow automation.
