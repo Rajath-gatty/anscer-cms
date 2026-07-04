@@ -23,7 +23,7 @@ function TechnologyAccordionItem({
     <AccordionPrimitive.Item
       data-slot="technology-accordion-item"
       className={cn(
-        "overflow-hidden rounded-xl bg-white px-5 shadow-sm transition-all duration-300 ",
+        "overflow-hidden rounded-xl bg-white px-5 shadow-sm transition-all duration-500 ease-in-out",
         className,
       )}
       {...props}
@@ -49,7 +49,7 @@ function TechnologyAccordionTrigger({
         {children}
         <ChevronDownIcon
           aria-hidden="true"
-          className="size-5 shrink-0 text-[#011f40] group-aria-expanded/technology-accordion-trigger:rotate-180 transition-transform duration-300"
+          className="size-5 shrink-0 text-[#011f40] group-aria-expanded/technology-accordion-trigger:rotate-180 transition-transform duration-500 ease-in-out"
           strokeWidth={2}
         />
       </AccordionPrimitive.Trigger>
@@ -65,7 +65,7 @@ function TechnologyAccordionContent({
   return (
     <AccordionPrimitive.Panel
       data-slot="technology-accordion-content"
-      className="overflow-hidden transition-[height,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] data-closed:h-0 data-closed:opacity-0 data-open:h-(--accordion-panel-height) data-open:opacity-100 data-ending-style:h-0 data-starting-style:h-0 motion-reduce:transition-none"
+      className="overflow-hidden transition-[height,opacity] duration-500 ease-in-out data-closed:h-0 data-closed:opacity-0 data-open:h-(--accordion-panel-height) data-open:opacity-100 data-ending-style:h-0 data-starting-style:h-0 motion-reduce:transition-none"
       {...props}
       keepMounted
     >

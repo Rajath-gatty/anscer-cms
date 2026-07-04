@@ -64,7 +64,7 @@ export function TechnologyAccordion() {
                 key={item.title}
                 value={value}
                 className={cn(
-                  "shrink-0 transition-all duration-300",
+                  "shrink-0 transition-all duration-500 ease-in-out",
                   isOpen ? "py-4 lg:py-6" : "py-3 lg:py-5",
                 )}
               >
@@ -119,7 +119,7 @@ export function TechnologyAccordion() {
               loading="eager"
               aria-hidden={!isActive}
               className={cn(
-                "object-cover h-full transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                "object-cover h-full transition-opacity duration-500 ease-in-out motion-reduce:transition-none",
                 isActive ? "opacity-100" : "opacity-0",
               )}
             />
