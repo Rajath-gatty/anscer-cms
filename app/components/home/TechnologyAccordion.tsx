@@ -16,25 +16,25 @@ const technologyItems = [
   {
     title: "Real-Time Monitoring & Control",
     copy: "Instantly view robot locations, task progress, and system status ensuring uninterrupted operations and proactive interventions.",
-    image: "home_realtime.png",
+    image: "home_realtimes.png",
     icon: "frame-18.png",
   },
   {
     title: "Smart Analytics & Reports",
     copy: "Gain complete visibility into robot utilization, mission performance, and operational trends, enabling data-driven decisions and continuous process optimization",
-    image: "home_smartanalytics.png",
+    image: "home_smartanalytic.png",
     icon: "frame-19.png",
   },
   {
     title: "Flexible System Integration",
     copy: "Seamlessly connects with ERP, MES, and WMS platforms, enabling automated workflows, synchronized operations, and efficient end-to-end material movement",
-    image: "home_flexible.png",
+    image: "home_flexibles.png",
     icon: "frame-20.png",
   },
   {
     title: "Alerts & Notifications",
     copy: "Delivers intelligent notifications on request patterns and performance trends to support proactive decision-making",
-    image: "home_alerts.png",
+    image: "home_alert.png",
     icon: "frame-21.png",
   },
 ];
