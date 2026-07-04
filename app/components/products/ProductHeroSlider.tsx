@@ -213,7 +213,7 @@ export function ProductHeroSlider() {
               fill
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-contain object-bottom drop-shadow-[0_26px_40px_rgba(1,31,64,.14)]"
+              className="object-contain object-right-bottom drop-shadow-[0_26px_40px_rgba(1,31,64,.14)]"
             />
           </div>
         </div>
