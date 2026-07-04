@@ -25,6 +25,7 @@ import { AnalyticsSection } from "./AnalyticsSection";
 import { InteractiveWorkflow } from "./InteractiveWorkflow";
 import { SoftwareTabs } from "./SoftwareTabs";
 import { TabbedCapabilities } from "./TabbedCapabilities";
+import { ArrowButton } from "../components/home/SectionPrimitives";
 
 export const metadata: Metadata = {
   title: "Software Solutions | ANSCER Robotics",
@@ -378,24 +379,12 @@ function SoftwareHero() {
             into synchronized, facility-wide operations - from real-time fleet
             control to industry-specific workflow automation.
           </p>
-          <Link
-            href="mailto:sales@anscer.com"
-            className="group mt-8 inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-brand-blue px-5 text-[14px] font-medium uppercase tracking-wide text-white"
+          <ArrowButton
+            target="mailto:sales@anscer.com"
+            className="mt-8 h-[46px] bg-brand-blue px-5"
           >
-            Request demo{" "}
-            <span className="relative flex size-4 overflow-hidden">
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition group-hover:translate-x-5"
-                strokeWidth={2}
-              />
-              <ArrowRight
-                aria-hidden="true"
-                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                strokeWidth={2}
-              />
-            </span>
-          </Link>
+            Request demo
+          </ArrowButton>
         </FadeRight>
       </div>
     </section>
@@ -815,24 +804,12 @@ function SoftwareCta() {
         <p className="max-w-[850px] text-[14px] font-medium leading-5 text-white md:text-[18px] md:leading-8">
           Book your demo now and experience ANSCER in action.
         </p>
-        <Link
-          href="mailto:sales@anscer.com"
-          className="group inline-flex h-[46px] items-center gap-4 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#005ead]/90"
+        <ArrowButton
+          target="mailto:sales@anscer.com"
+          className="h-[46px] bg-[#005ead] px-5 hover:bg-[#005ead]/90"
         >
-          Book a demo{" "}
-          <span className="relative flex size-4 overflow-hidden">
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition group-hover:translate-x-5"
-              strokeWidth={2}
-            />
-            <ArrowRight
-              aria-hidden="true"
-              className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-              strokeWidth={2}
-            />
-          </span>
-        </Link>
+          Book a demo
+        </ArrowButton>
         </FadeRight>
       </div>
     </section>

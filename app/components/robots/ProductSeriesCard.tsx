@@ -3,6 +3,7 @@ import Image from "next/image";
 import { imagePath } from "../home/assets";
 import { seriesCards } from "./product-series-data";
 import { cn } from "@/lib/utils";
+import { ArrowButton } from "../home/SectionPrimitives";
 
 function ProductSeriesCard() {
   return (
@@ -44,24 +45,13 @@ function ProductSeriesCard() {
                   </div>
                 </div>
                 <div className="flex-none">
-                  <a
+                  <ArrowButton
+                    as="a"
                     href={series.href}
-                    className="inline-flex h-8 items-center gap-2 rounded-sm bg-[#005ead] px-3 text-[14px] font-medium uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+                    className="h-8 gap-2 px-3 text-[14px]"
                   >
                     Explore
-                    <span className="relative flex size-3 overflow-hidden">
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="size-3 transition group-hover:translate-x-4"
-                        strokeWidth={2}
-                      />
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="absolute size-3 -translate-x-4 transition group-hover:translate-x-0"
-                        strokeWidth={2}
-                      />
-                    </span>
-                  </a>
+                  </ArrowButton>
                 </div>
               </div>
             </article>

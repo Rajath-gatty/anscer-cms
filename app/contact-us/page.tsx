@@ -1,6 +1,5 @@
-import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
-
+import { ArrowButton } from "../components/home/SectionPrimitives";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -79,13 +78,13 @@ export default function ContactUsPage() {
                     ))}
                   </div>
                   {cta ? (
-                    <a
+                    <ArrowButton
+                      as="a"
                       href="mailto:service@anscer.com"
-                      className="mt-3.5 inline-flex h-8 items-center gap-4 rounded-[2px] border border-[#005ead] px-4 text-[12px] font-medium uppercase tracking-wide text-[#005ead] transition hover:bg-[#005ead] hover:text-white"
+                      className="mt-3.5 h-8 gap-4 rounded-[2px] border border-[#005ead] bg-transparent px-4 text-[12px] font-medium text-[#005ead] hover:bg-[#005ead] hover:text-white"
                     >
-                      {cta}{" "}
-                      <ArrowRight aria-hidden="true" className="size-3.5" />
-                    </a>
+                      {cta}
+                    </ArrowButton>
                   ) : null}
                 </article>
               ))}

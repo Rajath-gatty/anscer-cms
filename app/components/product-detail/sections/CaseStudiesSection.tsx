@@ -1,9 +1,9 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { imagePath } from "../../home/assets";
 import type { ProductDetailData } from "../product-detail-data";
+import { ArrowButton } from "../../home/SectionPrimitives";
 
 export function CaseStudiesSection({ data }: { data: ProductDetailData }) {
   return (
@@ -46,13 +46,13 @@ export function CaseStudiesSection({ data }: { data: ProductDetailData }) {
                 Address the change and scale of your warehouse operations with
                 robotic automation.
               </p>
-              <a
-                className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-[3px] bg-[#005ead] py-3 text-[14px] font-semibold uppercase text-white"
+              <ArrowButton
+                as="a"
                 href="#"
+                className="mt-5 w-full justify-center font-semibold rounded-[3px]"
               >
-                Read Their Story{" "}
-                <ArrowRight aria-hidden="true" className="size-4" />
-              </a>
+                Read Their Story
+              </ArrowButton>
             </div>
           </div>
           <div className="relative z-10 -mt-8 mx-4 rounded-[12px] bg-white p-5 text-[#011f40] shadow-md md:hidden">
@@ -65,12 +65,13 @@ export function CaseStudiesSection({ data }: { data: ProductDetailData }) {
               Address the change and scale of your warehouse operations with
               robotic automation.
             </p>
-            <a
-              className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-[3px] bg-[#005ead] py-3 text-[14px] font-semibold uppercase text-white"
+            <ArrowButton
+              as="a"
               href="#"
+              className="mt-5 w-full justify-center font-semibold rounded-[3px]"
             >
-              Read Their Story <ArrowRight aria-hidden="true" className="size-4" />
-            </a>
+              Read Their Story
+            </ArrowButton>
           </div>
         </div>
       </div>

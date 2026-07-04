@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { ArrowButton } from "../home/SectionPrimitives";
 import {
   m,
   type MotionValue,
@@ -169,21 +170,12 @@ function SeriesPanel({
               </span>
             ))}
           </div>
-          <span className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition group-hover:bg-[#014f91]">
-            Explore{" "}
-            <span className="relative flex size-4 overflow-hidden">
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition group-hover:translate-x-5"
-                strokeWidth={2}
-              />
-              <ArrowRight
-                aria-hidden="true"
-                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                strokeWidth={2}
-              />
-            </span>
-          </span>
+          <ArrowButton
+            as="span"
+            className="mt-6"
+          >
+            Explore
+          </ArrowButton>
         </div>
       </div>
     </Link>
@@ -254,21 +246,12 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
                 </span>
               ))}
             </div>
-            <span className="mt-6 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-medium uppercase tracking-wide text-white transition group-hover:bg-[#014f91]">
-              Explore{" "}
-              <span className="relative flex size-4 overflow-hidden">
-                <ArrowRight
-                  aria-hidden="true"
-                  className="size-4 transition group-hover:translate-x-5"
-                  strokeWidth={2}
-                />
-                <ArrowRight
-                  aria-hidden="true"
-                  className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                  strokeWidth={2}
-                />
-              </span>
-            </span>
+            <ArrowButton
+              as="span"
+              className="mt-6 font-medium"
+            >
+              Explore
+            </ArrowButton>
           </div>
         </div>
       </Link>

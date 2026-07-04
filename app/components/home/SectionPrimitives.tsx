@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -9,17 +9,42 @@ export function ArrowButton({
   className = "",
   onClick,
   asButton = false,
+  as = null,
+  variant = "solid",
+  ...props
 }: {
   children: ReactNode;
   dark?: boolean;
   target?: string;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  onClick?: any;
   asButton?: boolean;
+  as?: ElementType | null;
+  variant?: "solid" | "ghost";
+  [key: string]: any;
 }) {
-  const sharedClassName = `relative z-10 group/btn inline-flex h-10 items-center gap-3 rounded-sm px-4 text-[14px] font-medium uppercase tracking-wide transition ${
-    dark ? "bg-white text-[#005ead] hover:bg-[#edf6ff]" : "bg-[#005ead] text-white hover:bg-[#014f91]"
-  } ${className}`;
+  const Component = as || (asButton ? "button" : Link);
+
+  const hasCustomBg = className.includes("bg-") || className.includes("bg-[");
+  
+  let colorClasses = "";
+  if (variant === "solid" && !hasCustomBg) {
+    colorClasses = dark
+      ? "bg-white text-[#005ead] hover:bg-[#edf6ff]"
+      : "bg-[#005ead] text-white hover:bg-[#014f91]";
+  } else if (variant === "ghost" && !hasCustomBg) {
+    colorClasses = dark 
+      ? "text-white hover:text-gray-200" 
+      : "text-[#005ead] hover:text-[#014f91]";
+  }
+
+  const baseClasses = variant === "solid" 
+    ? "h-10 px-4 gap-3 rounded-sm" 
+    : "gap-2"; // for ghost
+
+  const sharedClassName = `relative z-10 group/btn inline-flex items-center text-[14px] font-medium uppercase tracking-wide transition ${baseClasses} ${colorClasses} ${className}`
+    .replace(/\s+/g, " ")
+    .trim();
 
   const arrow = (
     <span className="relative flex size-4 overflow-hidden">
@@ -28,20 +53,36 @@ export function ArrowButton({
     </span>
   );
 
-  if (asButton) {
+  const finalProps = {
+    className: sharedClassName,
+    onClick,
+    ...props,
+  };
+
+  if (Component === "button") {
     return (
-      <button type="button" onClick={onClick as React.MouseEventHandler<HTMLButtonElement>} className={sharedClassName}>
+      <button type="button" {...finalProps}>
         {children}
         {arrow}
       </button>
     );
   }
 
+  if (Component === Link || Component === "a") {
+    const linkHref = props.href || target;
+    return (
+      <Component href={linkHref} {...finalProps}>
+        {children}
+        {arrow}
+      </Component>
+    );
+  }
+
   return (
-    <Link href={target} onClick={onClick} className={sharedClassName}>
+    <Component {...finalProps}>
       {children}
       {arrow}
-    </Link>
+    </Component>
   );
 }
 

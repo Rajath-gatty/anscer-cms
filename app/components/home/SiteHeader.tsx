@@ -151,18 +151,15 @@ export function SiteHeader() {
                     >
                       <div className="overflow-hidden">
                         <div className="pb-4 pt-2">
-                          <Link
+                          <ArrowButton
+                            as={Link}
                             href="/robots"
                             onClick={closeMenu}
-                            className="cursor-pointer flex items-center gap-3 text-[16px] font-bold text-[#011f40] hover:underline"
+                            variant="ghost"
+                            className="text-[16px] gap-3 text-[#011f40] hover:underline px-0 h-auto font-bold"
                           >
                             Robot Overview
-                            <ArrowRight
-                              aria-hidden="true"
-                              className="size-5"
-                              strokeWidth={2}
-                            />
-                          </Link>
+                          </ArrowButton>
                           <p className="mt-2 max-w-[310px] text-[10px] leading-5 text-[#657382]">
                             Explore ANSCER&apos;s robotic platforms for flexible
                             industrial automation
@@ -320,18 +317,15 @@ function RobotsDropdown({ active }: { active: boolean }) {
         }`}
       >
         <div className="p-5">
-          <Link
+          <ArrowButton
+            as={Link}
             href="/robots"
             onClick={() => setOpen(false)}
-            className="cursor-pointer group/link flex items-center gap-3 text-lg font-bold text-[#011f40] hover:underline underline-offset-4"
+            variant="ghost"
+            className="text-lg gap-3 font-bold text-[#011f40] hover:underline underline-offset-4 px-0 h-auto"
           >
             Robot Overview
-            <ArrowRight
-              aria-hidden="true"
-              className="size-5 transition group-hover/link:translate-x-1"
-              strokeWidth={2}
-            />
-          </Link>
+          </ArrowButton>
           <p className="mt-2 text-[10px] leading-5 text-[#7b8794]">
             Explore ANSCER&apos;s robotic platforms for flexible industrial
             automation

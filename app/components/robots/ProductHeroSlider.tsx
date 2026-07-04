@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
+import { ArrowButton } from "../home/SectionPrimitives";
 
 const heroSlides = [
   {
@@ -158,24 +159,13 @@ export function ProductHeroSlider() {
               automation solutions engineered to transform your operations.
             </p>
           </ScrollReveal>
-          <a
+          <ArrowButton
+            as="a"
             href="#robot-series"
-            className="group mt-7 inline-flex h-10 items-center gap-3 rounded-sm bg-[#005ead] px-4 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#014f91]"
+            className="mt-7 font-bold"
           >
-            Explore{" "}
-            <span className="relative flex size-4 overflow-hidden">
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition group-hover:translate-x-5"
-                strokeWidth={2}
-              />
-              <ArrowRight
-                aria-hidden="true"
-                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                strokeWidth={2}
-              />
-            </span>
-          </a>
+            Explore
+          </ArrowButton>
           <div className="mt-8 flex items-center gap-3">
             <span className="relative grid h-8 min-w-[62px] place-items-center overflow-hidden rounded-full border border-[#b9c9d9] bg-white px-4 text-xs font-medium shadow-sm">
               <span className="relative z-20 text-[#011f40]">

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { imagePath } from "../home/assets";
 import { ScrollReveal } from "../home/ScrollReveal";
 import { ProductFaqAccordion } from "../robots/ProductFaqAccordion";
+import { ArrowButton } from "../home/SectionPrimitives";
 import type { SeriesPageData } from "./series-data";
 import {
   SeriesApplicationsCarousel,
@@ -74,24 +75,13 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               {data.description}
             </p>
           </ScrollReveal>
-          <a
+          <ArrowButton
+            as="a"
             href="#modals"
-            className="group mt-7 inline-flex h-11 items-center gap-3 rounded-[3px] bg-[#005ead] px-5 text-[14px] font-bold uppercase tracking-wide text-white transition hover:bg-[#0671cc]"
+            className="mt-7 h-11 font-bold rounded-[3px] px-5 hover:bg-[#0671cc]"
           >
             Explore
-            <span className="relative flex size-4 overflow-hidden">
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition group-hover:translate-x-5"
-                strokeWidth={2}
-              />
-              <ArrowRight
-                aria-hidden="true"
-                className="absolute size-4 -translate-x-5 transition group-hover:translate-x-0"
-                strokeWidth={2}
-              />
-            </span>
-          </a>
+          </ArrowButton>
         </div>
 
         <div className="relative ml-auto flex min-h-[360px] w-full items-center justify-end lg:min-h-[520px]">

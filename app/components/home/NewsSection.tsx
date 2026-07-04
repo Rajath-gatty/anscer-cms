@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { FadeLeft, FadeRight, FadeUp } from "../animation";
 import { newsItems } from "./home-data";
-import { Kicker } from "./SectionPrimitives";
+import { Kicker, ArrowButton } from "./SectionPrimitives";
 
 export function NewsSection() {
   return (
@@ -35,26 +35,16 @@ export function NewsSection() {
                   </div>
                   <h3 className="mt-4 h-[44px] line-clamp-2 text-base font-semibold leading-[22px] text-[#4a4a4a]">{item.title}</h3>
                   <p className="mt-4 h-[44px] line-clamp-2 text-sm font-normal leading-[22px] text-[#5b5f66]">{item.copy}</p>
-                  <a
-                    className="group/news mt-7 inline-flex items-center gap-4 text-sm font-medium uppercase tracking-wide text-[#09284a] transition-colors hover:text-[#005ead]"
+                  <ArrowButton
+                    as="a"
+                    variant="ghost"
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
+                    className="mt-7 gap-4 text-sm text-[#09284a] hover:text-[#005ead]"
                   >
                     Explore
-                    <span className="relative flex size-6 overflow-hidden">
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="size-6 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/news:translate-x-6"
-                        strokeWidth={1.8}
-                      />
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="absolute size-6 -translate-x-6 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/news:translate-x-0"
-                        strokeWidth={1.8}
-                      />
-                    </span>
-                  </a>
+                  </ArrowButton>
                 </article>
               </Wrapper>
             );
