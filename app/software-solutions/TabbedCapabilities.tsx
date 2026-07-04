@@ -50,28 +50,32 @@ export function TabbedCapabilities({
         </h2>
 
         {variant === "accordion" ? (
-          <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
+          <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-stretch">
             <AccordionList
               items={items}
               activeIndex={activeIndex}
               setActiveIndex={setActiveIndex}
               aspectRatio="aspect-[4/3]"
-              listClassName="min-h-[840px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-[660px]"
+              listClassName="min-h-[840px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
             />
 
-            <div className="relative mt-8 hidden lg:mt-0 lg:block">
-              <div
-                key={activeIndex}
-                className="relative aspect-[7/5] w-full overflow-hidden rounded-[18px] bg-[#dce7ef] animate-image"
-              >
-                <Image
-                  src={`${imagePath}${activeItem.image}`}
-                  alt={activeItem.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 720px"
-                  className="object-cover object-[50%_20%]"
-                />
-              </div>
+            <div className="relative hidden w-full self-stretch overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block">
+              {items.map((item, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <Image
+                    key={item.image}
+                    src={`${imagePath}${item.image}`}
+                    alt={isActive ? item.title : ""}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 720px"
+                    aria-hidden={!isActive}
+                    className={`object-cover object-[50%_20%] transition-opacity duration-500 ease-in-out ${
+                      isActive ? "opacity-100" : "opacity-0 pointer-events-none"
+                    }`}
+                  />
+                );
+              })}
             </div>
           </div>
         ) : (
@@ -169,42 +173,74 @@ function AccordionList({
         return (
           <article
             key={item.title}
-            className="overflow-hidden rounded-[12px] bg-white transition-all duration-300"
+            id={`software-accordion-item-${index}`}
+            className={`shrink-0 transition-all duration-500 ease-in-out scroll-mt-32 overflow-hidden rounded-[12px] bg-white px-5 shadow-sm ${
+              isActive ? "py-4 lg:py-6" : "py-3 lg:py-5"
+            }`}
           >
             <button
               type="button"
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                const siblingIndex = activeIndex;
+                
+                // Measure sibling height synchronously BEFORE changing activeIndex state
+                let siblingHeightDiff = 0;
+                if (siblingIndex !== index && siblingIndex < index) {
+                  const siblingElement = document.getElementById(`software-accordion-item-${siblingIndex}`);
+                  if (siblingElement) {
+                    const siblingClosedHeight = siblingElement.querySelector("button")?.offsetHeight || 60;
+                    siblingHeightDiff = siblingElement.offsetHeight - siblingClosedHeight;
+                  }
+                }
+
+                setActiveIndex(index);
+                
+                // Only scroll on mobile/tablet — desktop uses side-by-side layout
+                if (window.innerWidth < 1024) {
+                  setTimeout(() => {
+                    const scrollMarginTop = 135; // combined sticky header offsets (navbar + subtabs)
+                    const targetElement = document.getElementById(`software-accordion-item-${index}`);
+                    if (!targetElement) return;
+
+                    let targetY = targetElement.getBoundingClientRect().top + window.scrollY - scrollMarginTop;
+                    if (siblingHeightDiff > 0) {
+                      targetY -= siblingHeightDiff;
+                    }
+
+                    window.scrollTo({
+                      top: Math.max(0, targetY),
+                      behavior: "smooth",
+                    });
+                  }, 0);
+                }
+              }}
               aria-expanded={isActive}
-              className={`flex w-full cursor-pointer items-center justify-between gap-4 px-5 pt-[18px] text-left text-[16px] font-semibold transition-colors lg:text-[20px] ${
-                isActive ? "pb-0" : "pb-[18px]"
-              }`}
+              className="flex w-full cursor-pointer items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30"
             >
-              <span className="text-base md:text-xl leading-snug text-[#005ead]">{item.title}</span>
-              <span className="flex shrink-0 items-center justify-center transition-transform duration-300">
-                <ChevronDown
-                  aria-hidden="true"
-                  className={`text-brand-navy size-5 transition-transform duration-300 ${
-                    isActive ? "rotate-180" : "rotate-0"
-                  }`}
-                  strokeWidth={2}
-                />
-              </span>
+              <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">{item.title}</span>
+              <ChevronDown
+                aria-hidden="true"
+                className={`size-5 shrink-0 text-[#011f40] transition-opacity duration-300 ${
+                  isActive ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}
+                strokeWidth={2}
+              />
             </button>
 
             <div
               className={`grid transition-all duration-500 ease-in-out ${
                 isActive
-                  ? "grid-rows-[1fr] opacity-100"
-                  : "grid-rows-[0fr] opacity-0"
+                  ? "grid-rows-[1fr] opacity-100 mt-2"
+                  : "grid-rows-[0fr] opacity-0 mt-0"
               }`}
             >
               <div className="overflow-hidden">
-                <div className="px-5 pb-[18px] pt-[12px]">
-                  <p className="max-w-140 text-[15px] leading-[1.5] text-[#333333] text-[12px] md:text-[16px]">
+                <div className="pt-[12px]">
+                  <p className="max-w-140 text-sm leading-4 text-[#3a3a3a] md:text-base md:leading-6">
                     {item.copy}
                   </p>
                   <div
-                    className={`relative mt-5 ${aspectRatio} w-full overflow-hidden rounded-[12px] bg-[#dce7ef] ${
+                    className={`relative mt-4 ${aspectRatio} w-full overflow-hidden rounded-[12px] bg-[#dce7ef] ${
                       mobileOnly ? "" : "lg:hidden"
                     }`}
                   >

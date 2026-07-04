@@ -1,16 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { FadeLeft, FadeRight } from "../animation";
 import { imagePath } from "./assets";
-import {
-  TechnologyAccordionContent,
-  TechnologyAccordionItem,
-  TechnologyAccordionRoot,
-  TechnologyAccordionTrigger,
-} from "./TechnologyAccordionPrimitives";
 
 const technologyItems = [
   {
@@ -40,66 +35,111 @@ const technologyItems = [
 ];
 
 export function TechnologyAccordion() {
-  const [activeValue, setActiveValue] = useState<string[]>(["technology-0"]);
-  const activeIndex = Number(activeValue[0]?.replace("technology-", "") ?? 0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
     <div className="mt-7 grid items-stretch gap-5 md:mt-9   lg:grid-cols-[0.36fr_0.64fr]">
       <FadeRight className="h-full">
-        <TechnologyAccordionRoot
-          value={activeValue}
-          onValueChange={(nextValue) => {
-            if (Array.isArray(nextValue) && nextValue[0]) {
-              setActiveValue([nextValue[0]]);
-            }
-          }}
-          className="h-full"
-        >
+        <div className="h-full flex flex-col gap-3">
           {technologyItems.map((item, index) => {
-            const value = `technology-${index}`;
             const isOpen = activeIndex === index;
 
             return (
-              <TechnologyAccordionItem
+              <article
                 key={item.title}
-                value={value}
+                id={`tech-accordion-item-${index}`}
                 className={cn(
-                  "shrink-0 transition-all duration-500 ease-in-out",
+                  "shrink-0 transition-all duration-500 ease-in-out scroll-mt-20 overflow-hidden rounded-xl bg-white px-5 shadow-sm",
                   isOpen ? "py-4 lg:py-6" : "py-3 lg:py-5",
                 )}
               >
-                <TechnologyAccordionTrigger className="cursor-pointer">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const siblingIndex = activeIndex;
+                    
+                    // Measure sibling height synchronously BEFORE changing activeIndex state
+                    let siblingHeightDiff = 0;
+                    if (siblingIndex !== index && siblingIndex < index) {
+                      const siblingElement = document.getElementById(`tech-accordion-item-${siblingIndex}`);
+                      if (siblingElement) {
+                        const siblingClosedHeight = siblingElement.querySelector("button")?.offsetHeight || 60;
+                        siblingHeightDiff = siblingElement.offsetHeight - siblingClosedHeight;
+                      }
+                    }
+
+                    setActiveIndex(index);
+                    
+                    // Only scroll on mobile/tablet — desktop uses side-by-side layout
+                    if (window.innerWidth < 1024) {
+                      setTimeout(() => {
+                        const scrollMarginTop = 80;
+                        const targetElement = document.getElementById(`tech-accordion-item-${index}`);
+                        if (!targetElement) return;
+
+                        let targetY = targetElement.getBoundingClientRect().top + window.scrollY - scrollMarginTop;
+                        if (siblingHeightDiff > 0) {
+                          targetY -= siblingHeightDiff;
+                        }
+
+                        window.scrollTo({
+                          top: Math.max(0, targetY),
+                          behavior: "smooth",
+                        });
+                      }, 0);
+                    }
+                  }}
+                  aria-expanded={isOpen}
+                  className="group/technology-accordion-trigger flex w-full cursor-pointer items-center justify-between gap-4 text-left outline-none transition focus-visible:ring-3 focus-visible:ring-[#005ead]/30"
+                >
                   <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
                     {item.title}
                   </span>
-                </TechnologyAccordionTrigger>
+                  <ChevronDownIcon
+                    aria-hidden="true"
+                    className={cn(
+                      "size-5 shrink-0 text-[#011f40] transition-opacity duration-300",
+                      isOpen ? "opacity-0 pointer-events-none" : "opacity-100",
+                    )}
+                    strokeWidth={2}
+                  />
+                </button>
 
-                <TechnologyAccordionContent>
-                  <p className="mt-3 max-w-[470px] text-sm leading-4 text-[#3a3a3a] md:mt-6 md:text-base md:leading-6">
-                    {item.copy}
-                  </p>
-                  <div className="relative mt-4 aspect-[1.55] overflow-hidden rounded-md bg-[#d9e3eb] lg:hidden">
+                <div
+                  className={cn(
+                    "grid transition-all duration-500 ease-in-out",
+                    isOpen
+                      ? "grid-rows-[1fr] opacity-100 mt-2"
+                      : "grid-rows-[0fr] opacity-0 mt-0",
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <p className="mt-3 max-w-[470px] text-sm leading-4 text-[#3a3a3a] md:mt-6 md:text-base md:leading-6">
+                      {item.copy}
+                    </p>
+                    <div className="relative mt-4 aspect-[1.55] overflow-hidden rounded-md bg-[#d9e3eb] lg:hidden">
+                      <Image
+                        src={`${imagePath}${item.image}`}
+                        alt={`${item.title} interface`}
+                        fill
+                        sizes="100vw"
+                        className="object-cover"
+                        priority={index === 0}
+                      />
+                    </div>
                     <Image
-                      src={`${imagePath}${item.image}`}
-                      alt={`${item.title} interface`}
-                      fill
-                      sizes="100vw"
-                      className="object-cover"
-                      priority={index === 0}
+                      src={`${imagePath}${item.icon}`}
+                      alt=""
+                      width={52}
+                      height={52}
+                      className="mt-4 hidden size-[52px] lg:block"
                     />
                   </div>
-                  <Image
-                    src={`${imagePath}${item.icon}`}
-                    alt=""
-                    width={52}
-                    height={52}
-                    className="mt-4 hidden size-[52px] lg:block"
-                  />
-                </TechnologyAccordionContent>
-              </TechnologyAccordionItem>
+                </div>
+              </article>
             );
           })}
-        </TechnologyAccordionRoot>
+        </div>
       </FadeRight>
 
       <FadeLeft
@@ -120,7 +160,7 @@ export function TechnologyAccordion() {
               aria-hidden={!isActive}
               className={cn(
                 "object-cover h-full transition-opacity duration-500 ease-in-out motion-reduce:transition-none",
-                isActive ? "opacity-100" : "opacity-0",
+                isActive ? "opacity-100" : "opacity-0 pointer-events-none",
               )}
             />
           );
