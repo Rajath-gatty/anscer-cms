@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
+  ArrowLeft,
+  ArrowRight,
   BarChart2,
-  CircleArrowLeft,
-  CircleArrowRight,
   Code,
   ExternalLink,
   Eye,
@@ -19,6 +19,11 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { imagePath } from "../components/home/assets";
+import { useReducedMotion } from "motion/react";
+import type { Swiper as SwiperType } from "swiper";
+import { Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const benefitCards: { icon: LucideIcon; mobileIcon?: LucideIcon; title: string; copy: string }[] = [
   {
@@ -68,52 +73,62 @@ const benefitCards: { icon: LucideIcon; mobileIcon?: LucideIcon; title: string; 
 // site-container left edge: max(20px, (100vw - 1340px) / 2 + 20px) = max(20px, 50vw - 650px)
 const containerPadding = "max(20px, calc(50vw - 650px))";
 
-export function AnalyticsBenefitsSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+const AUTOPLAY_DURATION = 3000;
+const total = benefitCards.length;
 
-  const checkScrollLimits = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    setCanScrollLeft(scrollLeft > 5);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 15);
-  };
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
+
+export function AnalyticsBenefitsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [progressKey, setProgressKey] = useState(0);
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    checkScrollLimits();
-
-    const handleScroll = () => {
-      checkScrollLimits();
+    const updateVisibleCount = () => {
+      if (window.innerWidth < 640) setVisibleCount(1);
+      else if (window.innerWidth < 1024) setVisibleCount(2);
+      else if (window.innerWidth < 1340) setVisibleCount(3);
+      else setVisibleCount(4);
     };
 
-    el.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-
-    return () => {
-      el.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, clientWidth } = scrollRef.current;
-    scrollRef.current.scrollTo({
-      left:
-        direction === "left"
-          ? scrollLeft - clientWidth * 0.75
-          : scrollLeft + clientWidth * 0.75,
-      behavior: "smooth",
-    });
+  const handleSlideChangeTransitionStart = (swiper: SwiperType) => {
+    setActiveIndex(swiper.realIndex);
+    setProgressKey((prev) => prev + 1);
   };
+
+  const start = activeIndex + 1;
+  const end = Math.min(activeIndex + visibleCount, total);
+  const counter =
+    visibleCount > 1 && start !== end
+      ? `${pad(start)}-${pad(end)}/${pad(total)}`
+      : `${pad(start)}/${pad(total)}`;
+
+  const animationStyle = reducedMotion
+    ? { width: "0%" }
+    : {
+        animation: `benefitsLoader ${AUTOPLAY_DURATION}ms linear forwards`,
+      };
 
   return (
     <section>
+      {/* CSS keyframe for the progress bar */}
+      <style>{`
+        @keyframes benefitsLoader {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+      `}</style>
+
       {/* White header + Mobile Vertical Cards */}
       <div className="bg-white px-6 py-10 md:py-14">
         <div className="site-container">
@@ -161,63 +176,82 @@ export function AnalyticsBenefitsSection() {
         />
         <div className="absolute inset-0 bg-black/60" />
 
-        {/*
-          Navigation arrows — in normal document flow, above the cards.
-          Right-padded to match the right edge of the content.
-        */}
+        {/* Navigation controls — counter badge + prev/next arrows */}
         <div
-          className="relative z-10 mb-5 flex justify-end gap-2"
+          className="relative z-10 mb-5 flex items-center justify-end gap-4"
           style={{ paddingRight: containerPadding }}
         >
+          {/* Counter pill with animated progress fill */}
+          <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-white/40 px-4 text-[14px] font-semibold shadow-sm">
+            <span className="relative z-20 text-white">{counter}</span>
+            <div
+              key={progressKey}
+              className="absolute inset-y-0 left-0 z-10 h-full bg-white/25"
+              style={animationStyle}
+            />
+          </span>
+
+          {/* Prev button */}
           <button
-            onClick={() => scroll("left")}
-            disabled={!canScrollLeft}
-            aria-label="Scroll benefits left"
-            className="cursor-pointer text-white transition hover:text-white/80 disabled:opacity-35 disabled:cursor-not-allowed"
+            type="button"
+            onClick={() => swiperRef.current?.slidePrev()}
+            aria-label="Previous benefit"
+            className="grid size-11 cursor-pointer place-items-center rounded-full border border-white/40 text-white transition hover:border-white hover:text-white"
           >
-            <CircleArrowLeft className="size-11" strokeWidth={1} />
+            <ArrowLeft className="size-5" strokeWidth={1.8} />
           </button>
+
+          {/* Next button */}
           <button
-            onClick={() => scroll("right")}
-            disabled={!canScrollRight}
-            aria-label="Scroll benefits right"
-            className="cursor-pointer text-white transition hover:text-white/80 disabled:opacity-35 disabled:cursor-not-allowed"
+            type="button"
+            onClick={() => swiperRef.current?.slideNext()}
+            aria-label="Next benefit"
+            className="grid size-11 cursor-pointer place-items-center rounded-full border border-white/40 text-white transition hover:border-white hover:text-white"
           >
-            <CircleArrowRight className="size-11" strokeWidth={1} />
+            <ArrowRight className="size-5" strokeWidth={1.8} />
           </button>
         </div>
 
-        {/* Horizontally scrollable benefit cards */}
-        <div
-          ref={scrollRef}
-          className="relative z-10 flex gap-5 overflow-x-auto snap-x snap-mandatory"
-          style={{
-            paddingLeft: containerPadding,
-            paddingRight: containerPadding,
-            paddingBottom: "4px",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          {benefitCards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <article
-                key={card.title}
-                className="flex h-[224px] w-[300px] shrink-0 snap-start flex-col transition-colors items-start gap-3 rounded-[12px] bg-white p-5 group"
-              >
-                <div className="flex size-10 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
-                  <Icon className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
-                </div>
-                <h3 className="text-base font-semibold text-[#000000]">
-                  {card.title}
-                </h3>
-                <p className="text-sm leading-[150%] text-[#000000]">
-                  {card.copy}
-                </p>
-              </article>
-            );
-          })}
+        {/* Horizontally scrollable benefit cards via Swiper */}
+        <div className="relative z-10 overflow-hidden pl-[max(20px,calc(50vw-650px))] pr-5">
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSlideChangeTransitionStart={handleSlideChangeTransitionStart}
+            loop={true}
+            speed={500}
+            spaceBetween={20}
+            slidesPerView={"auto"}
+            autoplay={
+              reducedMotion
+                ? false
+                : {
+                    delay: AUTOPLAY_DURATION,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }
+            }
+            className="!overflow-visible"
+          >
+            {benefitCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <SwiperSlide key={card.title} className="!w-[300px]">
+                  <article className="flex h-[224px] w-[300px] shrink-0 flex-col transition-colors items-start gap-3 rounded-[12px] bg-white p-5 group">
+                    <div className="flex size-10 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                      <Icon className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+                    </div>
+                    <h3 className="text-base font-semibold text-[#000000]">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm leading-[150%] text-[#000000]">
+                      {card.copy}
+                    </p>
+                  </article>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </div>
       </div>
     </section>

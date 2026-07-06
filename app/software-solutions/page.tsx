@@ -242,7 +242,7 @@ export default function SoftwareSolutionsPage() {
           index="03"
           title="Process Flow Manager"
           intro="Build, configure, and modify robot workflows using a visual drag-and-drop interface without writing code."
-          image="1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg"
+          image="Frame-1321317565.png"
           body="The Process Flow Manager enables users to create, configure, and modify operational workflows for different business use cases within a facility. Designed for industries such as electrical and electronics, textiles, industrial automation, warehousing, and 3PL, the platform helps standardize and automate repetitive material handling operations across facilities."
           chipsTitle="Key Features"
           chips={[
@@ -296,7 +296,7 @@ function FleetManagementSection() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.52fr_0.48fr] lg:items-start">
           <FadeRight className="relative w-full aspect-[16/10] overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)]">
             <Image
-              src={`${imagePath}Frame-427322849.png`}
+              src={`${imagePath}Frame-1321317564.png`}
               alt="ANSCER fleet management system in operation"
               fill
               priority
@@ -428,7 +428,7 @@ function ProductModule({
           {intro}
         </p>
         <div className="mt-9 grid gap-10 lg:grid-cols-2 lg:items-start">
-          <FadeRight className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef]">
+          <FadeRight className="relative w-full aspect-[16/10] overflow-hidden rounded-xl bg-[#dce7ef]">
             <Image
               src={`${imagePath}${image}`}
               alt=""
@@ -740,7 +740,7 @@ function AnalyticsPlatformSection() {
             {/* Inline Image for Mobile (< lg) */}
             <div className="relative mt-6 w-full aspect-[1288/816] overflow-hidden rounded-[12px] bg-[#dce7ef] lg:hidden">
               <Image
-                src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
+                src={`${imagePath}Frame-427322850.png`}
                 alt="ANSCER analytics platform in use"
                 fill
                 quality={95}
@@ -772,7 +772,7 @@ function AnalyticsPlatformSection() {
             delay={0.08}
           >
             <Image
-              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
+              src={`${imagePath}Frame-427322850.png`}
               alt="ANSCER analytics platform in use"
               fill
               quality={95}
