@@ -404,3 +404,21 @@ html {
   --card-bottom: rgba(0, 94, 173, 0.18);
 }
 
+/* Workflow Image Zoom Styles for InteractiveWorkflow */
+.workflow-image {
+  transform: scale(1);
+  transition: opacity 500ms ease-in-out, transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.workflow-image.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.workflow-image.inactive {
+  opacity: 0;
+  transform: scale(1);
+}
+
+

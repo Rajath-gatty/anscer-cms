@@ -120,22 +120,22 @@ const businessCapabilities = [
   {
     title: "Workflow Orchestration",
     copy: "Configure and manage operational workflows with ease. The platform translates business processes into structured robotic task sequences.",
-    image: "Rectangle-18010.jpg",
+    image: "Rectangle-18010.png",
   },
   {
     title: "Industry-Specific Customization",
     copy: "Adapt workflows to meet the operational requirements of Electrical & Electronics, Automotive, Textile, Warehousing & 3PL, and Pharmaceuticals.",
-    image: "Rectangle-18007-1.jpg",
+    image: "Rectangle-18007-1.png",
   },
   {
     title: "Intuitive User Experience",
     copy: "Simplify automation for operators with user-friendly interfaces, calling stations, dashboards, and APIs that enable single-click task execution.",
-    image: "Rectangle-18008.jpg",
+    image: "Rectangle-18008.png",
   },
   {
     title: "Task Abstraction",
     copy: "Convert high-level operational commands into executable robotic actions, including navigation, routing, material handling, and load transfers.",
-    image: "Rectangle-18009.jpg",
+    image: "Rectangle-18009.png",
   },
 ];
 
@@ -239,7 +239,7 @@ export default function SoftwareSolutionsPage() {
           index="03"
           title="Process Flow Manager"
           intro="Build, configure, and modify robot workflows using a visual drag-and-drop interface without writing code."
-          image="1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg"
+          image="1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png"
           body="The Process Flow Manager enables users to create, configure, and modify operational workflows for different business use cases within a facility. Designed for industries such as electrical and electronics, textiles, industrial automation, warehousing, and 3PL, the platform helps standardize and automate repetitive material handling operations across facilities."
           chipsTitle="Key Features"
           chips={[
@@ -293,10 +293,11 @@ function FleetManagementSection() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.52fr_0.48fr] lg:items-start">
           <FadeRight className="relative min-h-80 overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)] lg:min-h-107.5">
             <Image
-              src={`${imagePath}Frame-427322849-2.jpg`}
+              src={`${imagePath}Frame-427322849.png`}
               alt="ANSCER fleet management system in operation"
               fill
               priority
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 720px"
               className="object-cover"
             />
@@ -429,6 +430,7 @@ function ProductModule({
               src={`${imagePath}${image}`}
               alt=""
               fill
+              quality={95}
               sizes="680px"
               className="object-cover"
             />
@@ -735,9 +737,10 @@ function AnalyticsPlatformSection() {
             {/* Inline Image for Mobile (< lg) */}
             <div className="relative mt-6 min-h-[260px] w-full overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[360px] lg:hidden">
               <Image
-                src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+                src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
                 alt="ANSCER analytics platform in use"
                 fill
+                quality={95}
                 sizes="(max-width: 1024px) 100vw, 640px"
                 className="object-cover"
               />
@@ -766,9 +769,10 @@ function AnalyticsPlatformSection() {
             delay={0.08}
           >
             <Image
-              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
               alt="ANSCER analytics platform in use"
               fill
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 640px"
               className="object-cover"
             />
@@ -957,9 +961,10 @@ function BusinessBenefitsSection() {
             delay={0.08}
           >
             <Image
-              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
               alt=""
               fill
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 560px"
               className="object-cover"
             />
@@ -1093,9 +1098,10 @@ function ProcessBenefitsSection({
             delay={0.08}
           >
             <Image
-              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
               alt=""
               fill
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 670px"
               className="object-cover"
             />
