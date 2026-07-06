@@ -130,7 +130,7 @@ export function AnalyticsBenefitsSection() {
       `}</style>
 
       {/* White header + Mobile Vertical Cards */}
-      <div className="bg-white px-6 py-10 md:py-14">
+      <div className="bg-white py-10 md:py-14">
         <div className="site-container">
           <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
             BENEFITS
