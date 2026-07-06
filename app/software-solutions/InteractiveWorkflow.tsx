@@ -170,8 +170,11 @@ export function InteractiveWorkflow() {
                               src={`${imagePath}${step.image}`}
                               alt={`${step.title} workflow - Process Flow Manager`}
                               fill
-                              sizes="(max-width: 1024px) 100vw, 600px"
-                              className="object-cover"
+                              quality={95}
+                              sizes="(max-width: 1024px) 100vw, 800px"
+                              className={`object-cover workflow-image ${
+                                isActive ? "active" : "inactive"
+                              }`}
                             />
                           </div>
                         </div>
@@ -190,9 +193,10 @@ export function InteractiveWorkflow() {
                 src={`${imagePath}${step.image}`}
                 alt={`${step.title} workflow - Process Flow Manager`}
                 fill
-                sizes="(max-width: 1024px) 100vw, 668px"
-                className={`object-cover transition-opacity duration-500 ${
-                  active === index ? "opacity-100" : "opacity-0"
+                quality={95}
+                sizes="(max-width: 1024px) 100vw, 1200px"
+                className={`object-cover workflow-image ${
+                  active === index ? "active" : "inactive"
                 }`}
                 priority={index === 0}
               />

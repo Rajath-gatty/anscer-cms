@@ -149,21 +149,18 @@ export function TabbedCapabilities({
               </div>
 
               <div className="relative mt-8 lg:mt-0 mb-12">
-                {/* Dark outer frame matching Webflow's device-screen effect */}
                 <div
                   key={activeIndex}
-                  className="relative w-full overflow-visible rounded-[21px] bg-[#252525] p-3 animate-image"
+                  className="relative aspect-[721/464] w-full overflow-visible animate-image"
                 >
-                  {/* Inner white image container */}
-                  <div className="relative aspect-[721/464] w-full overflow-hidden rounded-[21px] bg-[#252525]">
-                    <Image
-                      src={`${imagePath}${activeItem.image}`}
-                      alt={activeItem.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 720px"
-                      className="object-cover rounded-[21px]"
-                    />
-                  </div>
+                  <Image
+                    src={`${imagePath}${activeItem.image}`}
+                    alt={activeItem.title}
+                    fill
+                    quality={95}
+                    sizes="(max-width: 1024px) 100vw, 720px"
+                    className="object-contain"
+                  />
                   {/* Floating info card matching Webflow's overlap effect */}
                   <div
                     key={`card-${activeIndex}`}

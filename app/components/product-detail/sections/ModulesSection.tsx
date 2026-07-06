@@ -41,6 +41,16 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
     container.scrollTo({ left: scrollTarget, behavior: "smooth" });
   }, [activeIndex]);
 
+  useEffect(() => {
+    if (total <= 1) return;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % total);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, [total]);
+
   if (!modules.length || !active) return null;
 
   const move = (dir: 1 | -1) =>

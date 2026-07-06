@@ -127,7 +127,7 @@ export function ProductHeroSlider() {
 
   return (
     <section
-      className="overflow-hidden"
+      className="overflow-hidden relative"
       style={{
         backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
         backgroundSize: "cover",
@@ -135,6 +135,7 @@ export function ProductHeroSlider() {
         backgroundRepeat: "no-repeat",
       }}
     >
+      <div className="absolute inset-0 z-0 bg-linear-to-r from-white from-25% to-transparent"></div>
       <div className="site-container grid min-h-[88svh]  items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16">
         <div>
           <ScrollReveal>
@@ -178,7 +179,7 @@ export function ProductHeroSlider() {
             </span>
             <button
               type="button"
-              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
+              className="grid relative size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
               aria-label="Previous hero slide"
               onClick={() => goToSlide(-1)}
             >
@@ -186,7 +187,7 @@ export function ProductHeroSlider() {
             </button>
             <button
               type="button"
-              className="grid size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
+              className="grid relative size-8 cursor-pointer place-items-center rounded-full border border-[#b9c9d9] transition hover:bg-[#edf4fa]"
               aria-label="Next hero slide"
               onClick={() => goToSlide(1)}
             >

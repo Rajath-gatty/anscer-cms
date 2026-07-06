@@ -372,7 +372,12 @@ export function SeriesRobotSelector({
           </div>
 
           {/* Mobile navigation */}
-          <div className={cn("mt-6 flex items-center justify-center gap-4", data.slug === "agv-series" ? "md:hidden": "md:flex")}>
+          <div
+            className={cn(
+              "mt-6 flex items-center justify-center gap-4",
+              data.slug === "agv-series" ? "md:hidden" : "md:flex",
+            )}
+          >
             <span className="rounded-full border border-[#9bb9d2] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
               {pad(activeIndex + 1)}/{pad(total)}
             </span>
@@ -413,95 +418,111 @@ export function SeriesRobotSelector({
                   }}
                 >
                   {data.products.map((product, index) => {
-                      const isActive = activeIndex === index;
-                      
-                      // Define a consistent layout transition for both container and text components
-                      const layoutTransition = {
-                        duration: 0.35, // Increased slightly for a smoother, noticeable slide
-                        ease: [0.22, 1, 0.36, 1],
-                      };
+                    const isActive = activeIndex === index;
 
-                      return (
-                        <m.button
-                          key={product.name}
-                          layout // Animates the height change of the button
-                          type="button"
-                          onClick={() => setActiveIndex(index)}
-                          className={cn(
-                            "relative grid cursor-pointer overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
-                            isActive
-                              ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]"
-                              : "bg-white/55 hover:bg-white/86",
-                          )}
-                          whileHover={reducedMotion ? undefined : { x: 4 }}
-                          whileTap={reducedMotion ? undefined : { scale: 0.985 }}
-                          transition={layoutTransition as any}
-                        >
-                          {isActive ? (
-                            <m.span
-                              layoutId={`series-active-tab-${data.slug}`}
-                              className="absolute inset-0 rounded-lg bg-white"
-                              transition={transition}
-                            />
-                          ) : null}
-                          
+                    // Define a consistent layout transition for both container and text components
+                    const layoutTransition = {
+                      duration: 0.35, // Increased slightly for a smoother, noticeable slide
+                      ease: [0.22, 1, 0.36, 1],
+                    };
+
+                    return (
+                      <m.button
+                        key={product.name}
+                        layout // Animates the height change of the button
+                        type="button"
+                        onClick={() => setActiveIndex(index)}
+                        className={cn(
+                          "relative grid cursor-pointer overflow-hidden rounded-lg px-5 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-[#005ead]/25",
+                          isActive
+                            ? "bg-white shadow-[0_18px_42px_rgba(1,31,64,.1)]"
+                            : "bg-white/55 hover:bg-white/86",
+                        )}
+                        whileHover={reducedMotion ? undefined : { x: 4 }}
+                        whileTap={reducedMotion ? undefined : { scale: 0.985 }}
+                        transition={layoutTransition as any}
+                      >
+                        {isActive ? (
                           <m.span
-                            layout="position"
-                            transition={layoutTransition as any}
-                            className={cn(
-                              "relative z-10 text-[16px] font-normal",
-                              isActive ? "font-semibold text-[#005ead]" : "text-[#011f40]",
-                            )}
-                          >
-                            {product.name}
-                          </m.span>
+                            layoutId={`series-active-tab-${data.slug}`}
+                            className="absolute inset-0 rounded-lg bg-white"
+                            transition={transition}
+                          />
+                        ) : null}
 
-                          {/* Wrapping the AnimatePresence in a layout-bound container isolates height shifts */}
-                          <m.div layout="position" transition={layoutTransition as any} className="relative z-10">
-                            <AnimatePresence initial={false} mode="popLayout">
-                              {isActive ? (
-                                <m.span
-                                  key={`${product.name}-description`}
-                                  layout
-                                  className="mt-3 block text-[14px] font-normal leading-[22px] text-[#011f40]"
-                                  initial={
-                                    reducedMotion ? false : { opacity: 0, y: -10 }
-                                  }
-                                  animate={
-                                    reducedMotion ? undefined : { opacity: 1, y: 0 }
-                                  }
-                                  exit={
-                                    reducedMotion ? undefined : { opacity: 0, y: -10 }
-                                  }
-                                  transition={{
-                                    opacity: { duration: 0.2 },
-                                    // Make sure the structural layout matches the global timing
-                                    default: layoutTransition as any,
-                                  }}
-                                >
-                                  {product.tabDescription}
-                                </m.span>
-                              ) : null}
-                            </AnimatePresence>
-                          </m.div>
-                        </m.button>
-                      );
-                    })}
+                        <m.span
+                          layout="position"
+                          transition={layoutTransition as any}
+                          className={cn(
+                            "relative z-10 text-[16px] font-normal",
+                            isActive
+                              ? "font-semibold text-[#005ead]"
+                              : "text-[#011f40]",
+                          )}
+                        >
+                          {product.name}
+                        </m.span>
+
+                        {/* Wrapping the AnimatePresence in a layout-bound container isolates height shifts */}
+                        <m.div
+                          layout="position"
+                          transition={layoutTransition as any}
+                          className="relative z-10"
+                        >
+                          <AnimatePresence initial={false} mode="popLayout">
+                            {isActive ? (
+                              <m.span
+                                key={`${product.name}-description`}
+                                layout
+                                className="mt-3 block text-[14px] font-normal leading-[22px] text-[#011f40]"
+                                initial={
+                                  reducedMotion ? false : { opacity: 0, y: -10 }
+                                }
+                                animate={
+                                  reducedMotion
+                                    ? undefined
+                                    : { opacity: 1, y: 0 }
+                                }
+                                exit={
+                                  reducedMotion
+                                    ? undefined
+                                    : { opacity: 0, y: -10 }
+                                }
+                                transition={{
+                                  opacity: { duration: 0.2 },
+                                  // Make sure the structural layout matches the global timing
+                                  default: layoutTransition as any,
+                                }}
+                              >
+                                {product.tabDescription}
+                              </m.span>
+                            ) : null}
+                          </AnimatePresence>
+                        </m.div>
+                      </m.button>
+                    );
+                  })}
                 </m.div>
 
                 <AnimatePresence mode="popLayout" initial={false}>
                   <m.div
                     key={`${activeProduct.name}-details`}
-                    className="lg:pt-0"
-                    initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+                    className="lg:pt-0 w-full"
+                    initial={reducedMotion ? false : { opacity: 0, y: 15 }} // Reduced y distance from 18 to 15 for a subtler glide
                     animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                    exit={reducedMotion ? undefined : { opacity: 0, y: -12 }}
-                    transition={transition}
+                    transition={
+                      reducedMotion
+                        ? {}
+                        : {
+                            opacity: { duration: 0.65, ease: "linear" }, // Clean linear fade for opacity
+                            y: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }, // Ultra-smooth "easeOutExponential" curve
+                          }
+                    }
                   >
                     <h3 className="text-[20px] font-semibold text-[#011f40]">
                       {activeProduct.name}
                     </h3>
-                    <p className="mt-4 max-w-[370px] text-[16px] leading-[22px] text-[#3a3a3a]">
+                    <p className="mt-4 text-[16px] leading-[22px] text-[#3a3a3a]">
                       {activeProduct.description}
                     </p>
                     <ArrowButton
@@ -530,7 +551,7 @@ export function SeriesRobotSelector({
                         }
                         transition={{
                           ...transition,
-                          delay: reducedMotion ? 0 : index * 0.035,
+                          delay: reducedMotion ? 0 : index * 0.025,
                         }}
                       >
                         <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">

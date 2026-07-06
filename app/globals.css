@@ -341,3 +341,84 @@ html {
     gap: 8px !important;
   }
 }
+
+/* 3D Card styles for FleetBenefitCard */
+.card3d {
+  --card-depth: 18px;
+  --card-side: #bfbfbf;
+  --card-bottom: #c9c9c9;
+  z-index: 0;
+  isolation: isolate;
+  box-shadow: none;
+}
+
+.card3d::before,
+.card3d::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  transition: background-color 300ms ease;
+}
+
+.card3d::before {
+  top: 0;
+  right: calc(var(--card-depth) * -1);
+  width: var(--card-depth);
+  height: calc(100% + var(--card-depth));
+  background: var(--card-side);
+  clip-path: polygon(
+    0 0,
+    100% var(--card-depth),
+    100% 100%,
+    0 calc(100% - var(--card-depth))
+  );
+}
+
+.card3d::after {
+  bottom: calc(var(--card-depth) * -1);
+  left: 0;
+  width: calc(100% + var(--card-depth));
+  height: var(--card-depth);
+  background: var(--card-bottom);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--card-depth)) 0,
+    100% 100%,
+    var(--card-depth) 100%
+  );
+}
+
+.card3d > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card3d.mobile {
+  --card-depth: 14px;
+}
+
+.card3d.active,
+.card3d:hover {
+  --card-side: rgba(0, 94, 173, 0.26);
+  --card-bottom: rgba(0, 94, 173, 0.18);
+}
+
+/* Workflow Image Zoom Styles for InteractiveWorkflow */
+.workflow-image {
+  transform: scale(1);
+  transition: opacity 500ms ease-in-out, transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.workflow-image.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.workflow-image.inactive {
+  opacity: 0;
+  transform: scale(1);
+}
+
+
