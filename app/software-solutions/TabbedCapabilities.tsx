@@ -149,18 +149,28 @@ export function TabbedCapabilities({
               </div>
 
               <div className="relative mt-8 lg:mt-0 mb-12">
-                <div
-                  key={activeIndex}
-                  className="relative aspect-[721/464] w-full overflow-visible animate-image"
-                >
-                  <Image
-                    src={`${imagePath}${activeItem.image}`}
-                    alt={activeItem.title}
-                    fill
-                    quality={95}
-                    sizes="(max-width: 1024px) 100vw, 720px"
-                    className="object-contain"
-                  />
+                <div className="relative aspect-[721/464] w-full overflow-visible">
+                  {items.map((item, index) => (
+                    <div
+                      key={item.title}
+                      className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                        activeIndex === index
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-[0.98] pointer-events-none"
+                      }`}
+                    >
+                      <Image
+                        src={`${imagePath}${item.image}`}
+                        alt={item.title}
+                        fill
+                        quality={95}
+                        sizes="(max-width: 1024px) 100vw, 720px"
+                        className="object-contain"
+                        priority={index === 0}
+                      />
+                    </div>
+                  ))}
+
                   {/* Floating info card matching Webflow's overlap effect */}
                   <div
                     key={`card-${activeIndex}`}
