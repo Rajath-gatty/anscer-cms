@@ -14,6 +14,7 @@ import {
   ProductOverview,
   ProductTabs,
 } from "./sections";
+import { AdvancedFeaturesCarousal } from "./sections/AdvancedFeaturesCarousal";
 
 export type ProductDetailSectionKey =
   | "hero"
@@ -21,6 +22,7 @@ export type ProductDetailSectionKey =
   | "overview"
   | "advantages"
   | "features"
+  |"advancedFeatures"
   | "modules"
   | "applications"
   // | "case-studies"
@@ -35,6 +37,7 @@ export const defaultProductDetailSectionOrder: ProductDetailSectionKey[] = [
   "features",
   "modules",
   "applications",
+  "advancedFeatures",
   // "case-studies",
   "faqs",
   "cta",
@@ -49,6 +52,7 @@ const productDetailSections: Record<
   overview: ProductOverview,
   advantages: AdvantagesSection,
   features: FeaturesSection,
+  advancedFeatures: AdvancedFeaturesCarousal,
   modules: ProductDetailModulesSection,
   applications: ApplicationsSection,
   // "case-studies": CaseStudiesSection,

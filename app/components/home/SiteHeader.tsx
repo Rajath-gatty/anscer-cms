@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, ExternalLink, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -424,6 +424,15 @@ function CompanyDropdown({ active }: { active: boolean }) {
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
             >
               Newsroom
+            </Link>
+            <Link
+              href="https://career.anscer.com/jobs/Careers"
+              target="_blank"
+              onClick={() => setOpen(false)}
+              className="cursor-pointer rounded-xl flex justify-between group items-center w-full p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+            >
+              Career
+              <ExternalLink className="size-4 text-[#011f40]" />
             </Link>
           </div>
         </div>
