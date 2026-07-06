@@ -329,7 +329,7 @@ export function AnalyticsSection() {
       {/* ════════════════════════════════════════════════════════════
           MOBILE / TABLET fallback (< lg)
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="px-6 py-10 lg:hidden" style={{ background: BG }}>
+      <section className="py-10 lg:hidden" style={{ background: BG }}>
         <div className="site-container">
           <p className="mb-2 text-[12px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             Key Capabilities

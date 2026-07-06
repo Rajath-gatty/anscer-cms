@@ -109,7 +109,7 @@ export function InteractiveWorkflow() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-[#fafafa] px-6 py-10 md:py-14">
+    <section className="bg-[#fafafa] py-10 md:py-14">
       <div className="site-container">
         <div className="grid gap-0 lg:grid-cols-2 lg:gap-10">
           <div>

@@ -48,7 +48,7 @@ export function TabbedCapabilities({
 
   return (
     <section
-      className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} px-6 md:px-14 py-10 md:py-20`}
+      className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-10 md:py-20`}
     >
       <style>{`
         @keyframes fade-image {

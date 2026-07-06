@@ -1,6 +1,5 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  ArrowRight,
   CheckCircle2,
   CircleUserRound,
   Code,
@@ -19,7 +18,6 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { FadeLeft, FadeRight, FadeUp } from "../components/animation";
 import { imagePath } from "../components/home/assets";
 import { ScrollReveal } from "../components/home/ScrollReveal";
@@ -43,43 +41,43 @@ const fleetBenefits: {
   isActive?: boolean;
   position: string;
 }[] = [
-  {
-    title: "Centralized Fleet Control",
-    copy: "Manage multiple robots and workflows from a single unified platform.",
-    icon: Network,
-    position: "left-[0%] top-[89px]",
-  },
-  {
-    title: "Scalable Automation",
-    copy: "Easily expand robot fleets and operational workflows as facility requirements grow.",
-    icon: Expand,
-    position: "left-[33.08%] top-[179px]",
-  },
-  {
-    title: "Flexible Integration",
-    copy: "Supports integration with MES, WMS, ERP, and other industrial software systems.",
-    icon: PlugZap,
-    position: "left-[64.62%] top-[89px]",
-  },
-  {
-    title: "Enhanced Safety",
-    copy: "Controlled robot traffic flow reduces congestion and improves operational safety within shared environments.",
-    icon: ShieldCheck,
-    position: "left-[0%] top-[370px]",
-  },
-  {
-    title: "User-Friendly Operation",
-    copy: "The intuitive web-based interface simplifies fleet management for operators and supervisors without requiring advanced technical expertise.",
-    icon: LayoutGrid,
-    position: "left-[32.31%] top-[456px]",
-  },
-  {
-    title: "Improved Operational Efficiency",
-    copy: "Optimize robot utilization and availability through automated opportunistic charging and intelligent task scheduling.",
-    icon: Gauge,
-    position: "left-[64.62%] top-[376px]",
-  },
-];
+    {
+      title: "Centralized Fleet Control",
+      copy: "Manage multiple robots and workflows from a single unified platform.",
+      icon: Network,
+      position: "left-[0%] top-[60px]",
+    },
+    {
+      title: "Scalable Automation",
+      copy: "Easily expand robot fleets and operational workflows as facility requirements grow.",
+      icon: Expand,
+      position: "left-[33.08%] top-[160px]",
+    },
+    {
+      title: "Flexible Integration",
+      copy: "Supports integration with MES, WMS, ERP, and other industrial software systems.",
+      icon: PlugZap,
+      position: "left-[64.62%] top-[60px]",
+    },
+    {
+      title: "Enhanced Safety",
+      copy: "Controlled robot traffic flow reduces congestion and improves operational safety within shared environments.",
+      icon: ShieldCheck,
+      position: "left-[0%] top-[390px]",
+    },
+    {
+      title: "User-Friendly Operation",
+      copy: "The intuitive web-based interface simplifies fleet management for operators and supervisors without requiring advanced technical expertise.",
+      icon: LayoutGrid,
+      position: "left-[32.31%] top-[480px]",
+    },
+    {
+      title: "Improved Operational Efficiency",
+      copy: "Optimize robot utilization and availability through automated opportunistic charging and intelligent task scheduling.",
+      icon: Gauge,
+      position: "left-[64.62%] top-[390px]",
+    },
+  ];
 
 const fleetCapabilities = [
   {
@@ -277,7 +275,7 @@ function FleetManagementSection() {
   return (
     <section
       id="fleet-management"
-      className="scroll-mt-32 bg-[#fafafa] px-6 py-10 md:px-14 md:py-15"
+      className="scroll-mt-32 bg-[#fafafa] py-10 md:py-15"
     >
       <div className="site-container">
         <ScrollReveal>
@@ -415,7 +413,7 @@ function ProductModule({
   chipsTitle?: string;
 }) {
   return (
-    <section id={id} className="scroll-mt-32 bg-white px-6 py-10 md:py-14">
+    <section id={id} className="scroll-mt-32 bg-white py-10 md:py-14">
       <div className="site-container">
         <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
           <span className="text-xl md:text-[28px]">{index} </span>
@@ -483,7 +481,7 @@ function BenefitsSection({
 }) {
   if (fleetMap) {
     return (
-      <section className="bg-[#fafafa] px-6 py-10 md:pt-[60px] md:pb-[40px]">
+      <section className="bg-[#fafafa] py-10 md:pt-[60px] md:pb-[40px]">
         <div className="site-container">
           <div className="flex flex-col gap-6">
             <p className="text-[12px] md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
@@ -575,10 +573,10 @@ function BenefitsSection({
 function FleetBenefitsMap() {
   // Robot paths (invisible — used only for robot animateMotion, no track lines)
   const robotPaths = [
-    { id: "fleet-route-purple", d: "M0 314.5H471.125V105H913.625V300H1479.62" },
-    { id: "fleet-route-green", d: "M2 612H445.625V410.5H897.125V637.5H1505.12" },
-    { id: "fleet-route-red", d: "M907.125 699.818V345H1379.12V0" },
-    { id: "fleet-route-blue", d: "M1401.62 22V318H906.125V119.5H462.125V712" },
+    { id: "fleet-route-purple", d: "M0 350H471.125V90H913.625V350H1479.62" },
+    { id: "fleet-route-green", d: "M2 660H445.625V435H897.125V680H1505.12" },
+    { id: "fleet-route-red", d: "M895 699.818V350H1379.12V0" },
+    { id: "fleet-route-blue", d: "M1401.62 22V350H906.125V100H462.125V712" },
   ];
 
   const TOTAL_DUR = 22;
@@ -662,7 +660,7 @@ function FleetBenefitsMap() {
                   height="52"
                   x="-26"
                   y="-26"
-                  transform="rotate(90)"
+                  transform="rotate(-90)"
                 />
               </g>
             );
@@ -694,18 +692,16 @@ function FleetBenefitCard({
 
   return (
     <article
-      className={`group card3d ${cardDepthStyles} ${activeStyles} flex flex-col items-start gap-3 bg-white p-6 transition duration-300 ${positionStyles} ${
-        mobile
+      className={`group card3d ${cardDepthStyles} ${activeStyles} flex flex-col items-start gap-3 bg-white p-6 transition duration-300 ${positionStyles} ${mobile
           ? "min-h-[204px]"
           : "min-h-[186px]"
-      }`}
+        }`}
     >
       <span
-        className={`flex size-10 items-center justify-center rounded-[8px] transition ${
-          benefit.isActive
+        className={`flex size-10 items-center justify-center rounded-[8px] transition ${benefit.isActive
             ? "bg-[#005ead] text-white"
             : "bg-[#011f40]/5 text-[#011f40] group-hover:bg-[#005ead] group-hover:text-white"
-        }`}
+          }`}
       >
         <Icon aria-hidden="true" className="size-5" strokeWidth={1.7} />
       </span>
@@ -721,7 +717,7 @@ function AnalyticsPlatformSection() {
   return (
     <section
       id="analytics-platform"
-      className="scroll-mt-32 bg-[#fafafa] px-6 py-10 md:py-14"
+      className="scroll-mt-32 bg-[#fafafa] py-10 md:py-14"
     >
       <div className="site-container">
         <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
@@ -788,7 +784,7 @@ function AnalyticsPlatformSection() {
 
 function SoftwareCta() {
   return (
-    <section className="relative flex h-[580px] px-6 items-center overflow-hidden bg-[#005ead] text-white max-[991px]:mt-5">
+    <section className="relative flex h-[580px] items-center overflow-hidden bg-[#005ead] text-white max-[991px]:mt-5">
       <Image
         src={`${imagePath}Frame-1321317289.jpg`}
         alt=""
@@ -800,18 +796,18 @@ function SoftwareCta() {
       <div className="absolute inset-0 z-10 bg-black/80" />
       <div className="site-container relative z-20">
         <FadeRight className="flex max-w-[970px] flex-col items-start gap-6 max-[991px]:gap-2">
-        <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] text-white md:text-[60px] md:leading-[110%]">
-          Experience automation that understands your operations.
-        </h2>
-        <p className="max-w-[850px] text-[14px] font-medium leading-5 text-white md:text-[18px] md:leading-8">
-          Book your demo now and experience ANSCER in action.
-        </p>
-        <ArrowButton
-          target="mailto:sales@anscer.com"
-          className="h-[46px] px-5"
-        >
-          Book a demo
-        </ArrowButton>
+          <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] text-white md:text-[60px] md:leading-[110%]">
+            Experience automation that understands your operations.
+          </h2>
+          <p className="max-w-[850px] text-[14px] font-medium leading-5 text-white md:text-[18px] md:leading-8">
+            Book your demo now and experience ANSCER in action.
+          </p>
+          <ArrowButton
+            target="mailto:sales@anscer.com"
+            className="h-[46px] px-5"
+          >
+            Book a demo
+          </ArrowButton>
         </FadeRight>
       </div>
     </section>
@@ -875,7 +871,7 @@ function benefitCopy(title: string) {
 
 function BusinessBenefitsSection() {
   return (
-    <section className="bg-white py-10 px-6 md:py-14">
+    <section className="bg-white py-10 md:py-14">
       <div className="site-container">
         <p className="text-[12px] md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           BENEFITS
@@ -986,7 +982,7 @@ function ProcessBenefitsSection({
   const isImageLeft = imagePosition === "left";
 
   return (
-    <section className="bg-[#e6ebf0] px-6 py-10 md:py-14">
+    <section className="bg-[#e6ebf0] py-10 md:py-14">
       <div className="site-container">
         <p className="text-sm md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           BENEFITS
@@ -999,16 +995,15 @@ function ProcessBenefitsSection({
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           {/* Cards */}
           <FadeRight
-            className={`order-2 flex flex-col overflow-hidden border border-[#005ead]/20 ${
-              isImageLeft ? "lg:order-2" : "lg:order-1"
-            }`}
+            className={`order-2 flex flex-col overflow-hidden border border-[#005ead]/20 ${isImageLeft ? "lg:order-2" : "lg:order-1"
+              }`}
           >
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 0 */}
               <div className="flex flex-col gap-2 flex-1 border-b group border-[#005ead]/20 bg-white/50 p-6 lg:border-b-0 lg:border-r">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
-                <Layers className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
-              </div>
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Layers className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+                </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[0].title}
                 </h3>
@@ -1018,9 +1013,9 @@ function ProcessBenefitsSection({
               </div>
               {/* Card 1 */}
               <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6 group">
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
-                <Factory className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
-              </div>
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Factory className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+                </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[1].title}
                 </h3>
@@ -1033,9 +1028,9 @@ function ProcessBenefitsSection({
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 2 */}
               <div className="flex flex-col gap-2 flex-1 border-b border-[#005ead]/20 group bg-white/50 p-6 lg:border-b-0 lg:border-r">
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
-                <Workflow className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
-              </div>
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Workflow className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+                </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[2].title}
                 </h3>
@@ -1045,9 +1040,9 @@ function ProcessBenefitsSection({
               </div>
               {/* Card 3 */}
               <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6 group">
-                     <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
-                <Network className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
-              </div>
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Network className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+                </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[3].title}
                 </h3>
@@ -1059,7 +1054,7 @@ function ProcessBenefitsSection({
 
             {/* Card 4 (Wide) */}
             <div className="flex flex-col gap-2 bg-white/50 p-6 lg:flex-row lg:items-center lg:gap-6 group">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
                 <CircleUserRound className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
               </div>
               <div className="flex flex-col gap-2">
@@ -1075,9 +1070,8 @@ function ProcessBenefitsSection({
 
           {/* Image */}
           <FadeLeft
-            className={`relative order-1 min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px] ${
-              isImageLeft ? "lg:order-1" : "lg:order-2"
-            }`}
+            className={`relative order-1 min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px] ${isImageLeft ? "lg:order-1" : "lg:order-2"
+              }`}
             delay={0.08}
           >
             <Image
