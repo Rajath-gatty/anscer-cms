@@ -508,7 +508,7 @@ export function SeriesRobotSelector({
                   <m.div
                     key={`${activeProduct.name}-details`}
                     className="lg:pt-0 w-full"
-                    initial={reducedMotion ? false : { opacity: 0, y: 15 }} // Reduced y distance from 18 to 15 for a subtler glide
+                    initial={reducedMotion ? false : { opacity: 0 }} // Reduced y distance from 18 to 15 for a subtler glide
                     animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                     transition={
                       reducedMotion
@@ -540,27 +540,29 @@ export function SeriesRobotSelector({
                 <div className="grid grid-cols-2 w-full gap-x-14 gap-y-8 lg:pt-2 h-28">
                   <AnimatePresence mode="popLayout" initial={false}>
                     {specs.map((spec, index) => (
-                      <m.div
+                      <div
                         key={`${activeProduct.name}-${unit}-${spec.label}`}
-                        initial={reducedMotion ? false : { opacity: 0, y: 14 }}
-                        animate={
-                          reducedMotion ? undefined : { opacity: 1, y: 0 }
-                        }
-                        exit={
-                          reducedMotion ? undefined : { opacity: 0, y: -10 }
-                        }
-                        transition={{
-                          ...transition,
-                          delay: reducedMotion ? 0 : index * 0.025,
-                        }}
                       >
                         <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">
                           {spec.label}
                         </h4>
-                        <p className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]">
+                        <m.p
+                          className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]"
+                          initial={reducedMotion ? false : { opacity: 0, y: 14 }}
+                          animate={
+                            reducedMotion ? undefined : { opacity: 1, y: 0 }
+                          }
+                          exit={
+                            reducedMotion ? undefined : { opacity: 0, y: -4 }
+                          }
+                          transition={{
+                            ...transition,
+                            delay: reducedMotion ? 0 : index * 0.025,
+                          }}
+                        >
                           {spec.value}
-                        </p>
-                      </m.div>
+                        </m.p>
+                      </div>
                     ))}
                   </AnimatePresence>
                 </div>
