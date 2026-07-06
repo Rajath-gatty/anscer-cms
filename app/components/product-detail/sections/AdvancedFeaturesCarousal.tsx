@@ -16,6 +16,9 @@ import "swiper/css";
 import { imagePath } from "../../home/assets";
 
 export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) {
+  if(!data?.advancedFeatures || data.advancedFeatures.length === 0) {
+    return null;
+  }
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
   const [progressKey, setProgressKey] = useState(0); // Used to instantly reset CSS animation
