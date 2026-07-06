@@ -204,10 +204,10 @@ export function AnalyticsBenefitsSection() {
             return (
               <article
                 key={card.title}
-                className="flex h-[224px] w-[300px] shrink-0 snap-start flex-col items-start gap-3 rounded-[12px] bg-white p-5"
+                className="flex h-[224px] w-[300px] shrink-0 snap-start flex-col transition-colors items-start gap-3 rounded-[12px] bg-white p-5 group"
               >
-                <div className="flex size-10 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40]">
-                  <Icon className="size-5" strokeWidth={1.7} />
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Icon className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
                 </div>
                 <h3 className="text-base font-semibold text-[#000000]">
                   {card.title}

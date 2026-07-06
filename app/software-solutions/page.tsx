@@ -2,9 +2,11 @@ import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   CheckCircle2,
+  CircleUserRound,
   Code,
   Expand,
   ExternalLink,
+  Factory,
   Gauge,
   Layers,
   LayoutGrid,
@@ -13,6 +15,7 @@ import {
   ShieldCheck,
   TrendingUp,
   UserCircle2,
+  Workflow,
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -143,31 +146,31 @@ const processBenefitCards = [
   {
     title: "Flexible Workflow Configuration",
     copy: "Create and modify process flows quickly to adapt to changing operational requirements.",
-    icon: "Frame-1321316939.svg",
+    icon: Layers,
     wide: false,
   },
   {
     title: "Industry-Specific Adaptability",
     copy: "Support diverse material handling workflows across manufacturing, warehousing, and logistics environments.",
-    icon: "Frame-1321316939-4.svg",
+    icon: Factory,
     wide: false,
   },
   {
     title: "Simplified Automation",
     copy: "Transform complex operational activities into easy-to-manage robotic workflows.",
-    icon: "Frame-1321316939-3.svg",
+    icon: Workflow,
     wide: false,
   },
   {
     title: "Scalable Operations",
     copy: "Standardize and replicate workflows across multiple plants, production lines, or facilities.",
-    icon: "Frame-1321316938.svg",
+    icon: Network,
     wide: false,
   },
   {
     title: "Reduced Operational Dependency",
     copy: "Minimize manual coordination and improve process consistency through automated task execution.",
-    icon: "Frame-1321316951.svg",
+    icon: CircleUserRound,
     wide: true,
   },
 ] as const;
@@ -886,9 +889,9 @@ function BusinessBenefitsSection() {
           <FadeRight className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 1 */}
-              <div className="flex flex-col gap-2.5 flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
-                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
-                  <Layers className="size-5" strokeWidth={1.7} />
+              <div className="flex flex-col gap-2.5 flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r group">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Layers className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
                 </div>
                 <h3 className="text-base font-semibold text-[#000000]">
                   Operational Abstraction
@@ -898,9 +901,9 @@ function BusinessBenefitsSection() {
                 </p>
               </div>
               {/* Card 2 */}
-              <div className="flex flex-col gap-2.5 flex-1 p-6">
-                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
-                  <ExternalLink className="size-5" strokeWidth={1.7} />
+              <div className="flex flex-col gap-2.5 flex-1 p-6 group">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <ExternalLink className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
                 </div>
                 <h3 className="text-base font-semibold text-[#000000]">
                   Scalability
@@ -913,9 +916,9 @@ function BusinessBenefitsSection() {
 
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 3 */}
-              <div className="flex flex-col gap-2.5 flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
-                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
-                  <Network className="size-5" strokeWidth={1.7} />
+              <div className="flex flex-col gap-2.5 flex-1 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r group">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Network className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
                 </div>
                 <h3 className="text-base font-semibold text-[#000000]">
                   Flexibility
@@ -926,9 +929,9 @@ function BusinessBenefitsSection() {
                 </p>
               </div>
               {/* Card 4 */}
-              <div className="flex flex-col gap-2.5 flex-1 p-6">
-                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
-                  <Code className="size-5" strokeWidth={1.7} />
+              <div className="flex flex-col gap-2.5 flex-1 p-6 group">
+                <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                  <Code className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
                 </div>
                 <h3 className="text-base font-semibold text-[#000000]">
                   Reduced Engineering Effort
@@ -940,9 +943,9 @@ function BusinessBenefitsSection() {
             </div>
 
             {/* Card 5 (Full width) */}
-            <div className="flex flex-col lg:flex-row lg:items-center gap-6 p-6">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40]">
-                <UserCircle2 className="size-5" strokeWidth={1.7} />
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6 p-6 group">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                <UserCircle2 className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
               </div>
               <div className="flex flex-col gap-2.5">
                 <h3 className="text-base font-semibold text-[#000000]">
@@ -1002,14 +1005,10 @@ function ProcessBenefitsSection({
           >
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 0 */}
-              <div className="flex flex-col gap-2 flex-1 border-b border-[#005ead]/20 bg-white/50 p-6 lg:border-b-0 lg:border-r">
-                <Image
-                  src={`${imagePath}${processBenefitCards[0].icon}`}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="size-10 shrink-0"
-                />
+              <div className="flex flex-col gap-2 flex-1 border-b group border-[#005ead]/20 bg-white/50 p-6 lg:border-b-0 lg:border-r">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                <Layers className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+              </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[0].title}
                 </h3>
@@ -1018,14 +1017,10 @@ function ProcessBenefitsSection({
                 </p>
               </div>
               {/* Card 1 */}
-              <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6">
-                <Image
-                  src={`${imagePath}${processBenefitCards[1].icon}`}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="size-10 shrink-0"
-                />
+              <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6 group">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                <Factory className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+              </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[1].title}
                 </h3>
@@ -1037,14 +1032,10 @@ function ProcessBenefitsSection({
 
             <div className="flex flex-col lg:flex-row border-b border-[#005ead]/20">
               {/* Card 2 */}
-              <div className="flex flex-col gap-2 flex-1 border-b border-[#005ead]/20 bg-white/50 p-6 lg:border-b-0 lg:border-r">
-                <Image
-                  src={`${imagePath}${processBenefitCards[2].icon}`}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="size-10 shrink-0"
-                />
+              <div className="flex flex-col gap-2 flex-1 border-b border-[#005ead]/20 group bg-white/50 p-6 lg:border-b-0 lg:border-r">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                <Workflow className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+              </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[2].title}
                 </h3>
@@ -1053,14 +1044,10 @@ function ProcessBenefitsSection({
                 </p>
               </div>
               {/* Card 3 */}
-              <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6">
-                <Image
-                  src={`${imagePath}${processBenefitCards[3].icon}`}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="size-10 shrink-0"
-                />
+              <div className="flex flex-col gap-2 flex-1 bg-white/50 p-6 group">
+                     <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                <Network className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+              </div>
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[3].title}
                 </h3>
@@ -1071,14 +1058,10 @@ function ProcessBenefitsSection({
             </div>
 
             {/* Card 4 (Wide) */}
-            <div className="flex flex-col gap-2 bg-white/50 p-6 lg:flex-row lg:items-center lg:gap-6">
-              <Image
-                src={`${imagePath}${processBenefitCards[4].icon}`}
-                alt=""
-                width={40}
-                height={40}
-                className="size-10 shrink-0"
-              />
+            <div className="flex flex-col gap-2 bg-white/50 p-6 lg:flex-row lg:items-center lg:gap-6 group">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
+                <CircleUserRound className="size-5 group-hover:text-white transition-colors duration-300" strokeWidth={1.7} />
+              </div>
               <div className="flex flex-col gap-2">
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[4].title}
