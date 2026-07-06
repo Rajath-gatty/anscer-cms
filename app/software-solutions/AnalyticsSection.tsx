@@ -20,7 +20,7 @@ const capabilities: Capability[] = [
     copy: "Monitor robot activity, operational efficiency, and fleet performance through detailed utilization reports. The platform provides visibility into robot active time, idle time, mission execution, and utilization rates to help maximize fleet productivity.",
     chipsIntro: "",
     chips: [] as string[],
-    image: "0a650615d6addc613e5e73d23c9a69411bf9f542.png.jpg",
+    image: "0a650615d6addc613e5e73d23c9a69411bf9f542.png",
   },
   {
     title: "KPI Dashboards",
@@ -34,7 +34,7 @@ const capabilities: Capability[] = [
       "Fleet performance trends",
       "Operational efficiency metrics",
     ],
-    image: "Group-1321315891.jpg",
+    image: "Group-1321315891.png",
   },
   {
     title: "Request Overview Analytics",
@@ -48,7 +48,7 @@ const capabilities: Capability[] = [
       "High-demand stations and stores",
       "Workflow activity trends",
     ],
-    image: "Group-1321315892.jpg",
+    image: "Group-1321315892.png",
   },
   {
     title: "Heatmaps",
@@ -61,21 +61,21 @@ const capabilities: Capability[] = [
       "Connection interruptions",
       "Navigation bottlenecks",
     ],
-    image: "Group-1321315893.jpg",
+    image: "Group-1321315893.png",
   },
   {
     title: "Predictive Alerts",
     copy: "Receive proactive notifications and predictive alerts related to robot performance, traffic congestion, operational anomalies, and potential system issues. Predictive insights help reduce downtime and improve operational continuity.",
     chipsIntro: "",
     chips: [] as string[],
-    image: "Group-1321315894.jpg",
+    image: "Group-1321315894.png",
   },
   {
     title: "Historical Data Filtering",
     copy: "Filter analytics and operational reports based on custom date ranges, robots, locations, missions, or event types to support detailed performance analysis and reporting.",
     chipsIntro: "",
     chips: [] as string[],
-    image: "Group-1321315895.jpg",
+    image: "Group-1321315895.png",
   },
 ];
 
@@ -304,7 +304,8 @@ export function AnalyticsSection() {
                       alt={c.title}
                       fill
                       priority={idx === 0}
-                      sizes="600px"
+                      quality={95}
+                      sizes="(max-width: 1024px) 100vw, 1200px"
                       className="rounded-[27px] object-fill transition-opacity duration-150"
                       style={{ opacity: s.imageIndex === idx ? 1 : 0 }}
                     />
@@ -313,7 +314,7 @@ export function AnalyticsSection() {
                     src={`${imagePath}Tabletframe.png`}
                     alt=""
                     fill
-                    sizes="600px"
+                    sizes="(max-width: 1024px) 100vw, 1200px"
                     className="pointer-events-none object-fill"
                     style={{ zIndex: 2 }}
                   />
@@ -350,6 +351,7 @@ export function AnalyticsSection() {
                     src={`${imagePath}${c.image}`}
                     alt={c.title}
                     fill
+                    quality={95}
                     sizes="(max-width: 1024px) 80vw, 560px"
                     className="object-contain"
                   />

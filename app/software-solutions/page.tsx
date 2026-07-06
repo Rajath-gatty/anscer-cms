@@ -123,22 +123,22 @@ const businessCapabilities = [
   {
     title: "Workflow Orchestration",
     copy: "Configure and manage operational workflows with ease. The platform translates business processes into structured robotic task sequences.",
-    image: "Rectangle-18010.jpg",
+    image: "Rectangle-18010.png",
   },
   {
     title: "Industry-Specific Customization",
     copy: "Adapt workflows to meet the operational requirements of Electrical & Electronics, Automotive, Textile, Warehousing & 3PL, and Pharmaceuticals.",
-    image: "Rectangle-18007-1.jpg",
+    image: "Rectangle-18007-1.png",
   },
   {
     title: "Intuitive User Experience",
     copy: "Simplify automation for operators with user-friendly interfaces, calling stations, dashboards, and APIs that enable single-click task execution.",
-    image: "Rectangle-18008.jpg",
+    image: "Rectangle-18008.png",
   },
   {
     title: "Task Abstraction",
     copy: "Convert high-level operational commands into executable robotic actions, including navigation, routing, material handling, and load transfers.",
-    image: "Rectangle-18009.jpg",
+    image: "Rectangle-18009.png",
   },
 ];
 
@@ -294,12 +294,13 @@ function FleetManagementSection() {
           </p>
         </ScrollReveal>
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.52fr_0.48fr] lg:items-start">
-          <FadeRight className="relative min-h-80 overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)] lg:min-h-107.5">
+          <FadeRight className="relative w-full aspect-[16/10] overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)]">
             <Image
-              src={`${imagePath}Frame-427322849-2.jpg`}
+              src={`${imagePath}Frame-427322849.png`}
               alt="ANSCER fleet management system in operation"
               fill
               priority
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 720px"
               className="object-cover"
             />
@@ -432,6 +433,7 @@ function ProductModule({
               src={`${imagePath}${image}`}
               alt=""
               fill
+              quality={95}
               sizes="680px"
               className="object-cover"
             />
@@ -736,11 +738,12 @@ function AnalyticsPlatformSection() {
             </p>
 
             {/* Inline Image for Mobile (< lg) */}
-            <div className="relative mt-6 min-h-[260px] w-full overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[360px] lg:hidden">
+            <div className="relative mt-6 w-full aspect-[1288/816] overflow-hidden rounded-[12px] bg-[#dce7ef] lg:hidden">
               <Image
-                src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+                src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
                 alt="ANSCER analytics platform in use"
                 fill
+                quality={95}
                 sizes="(max-width: 1024px) 100vw, 640px"
                 className="object-cover"
               />
@@ -765,13 +768,14 @@ function AnalyticsPlatformSection() {
 
           {/* Right Column Image for Desktop (>= lg) */}
           <FadeLeft
-            className="relative hidden min-h-[420px] overflow-hidden rounded-[12px] bg-[#dce7ef] lg:block"
+            className="relative hidden w-full aspect-[1288/816] overflow-hidden rounded-[12px] bg-[#dce7ef] lg:block"
             delay={0.08}
           >
             <Image
-              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
+              src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.png`}
               alt="ANSCER analytics platform in use"
               fill
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 640px"
               className="object-cover"
             />
@@ -963,6 +967,7 @@ function BusinessBenefitsSection() {
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt=""
               fill
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 560px"
               className="object-cover"
             />
@@ -1079,6 +1084,7 @@ function ProcessBenefitsSection({
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt=""
               fill
+              quality={95}
               sizes="(max-width: 1024px) 100vw, 670px"
               className="object-cover"
             />
