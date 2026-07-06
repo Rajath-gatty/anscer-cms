@@ -493,18 +493,18 @@ function BenefitsSection({
               </p>
             ) : null}
             <FleetBenefitsMap />
-            <div className="grid gap-4 sm:grid-cols-2 lg:hidden">
+            <div className="grid gap-x-7 gap-y-8 sm:grid-cols-2 lg:hidden">
               {fleetBenefits.map((benefit) => (
                 <FleetBenefitCard key={benefit.title} benefit={benefit} mobile />
               ))}
             </div>
-            <Image
+            {/* <Image
               src={`${imagePath}benefirs-svg-element-2.svg`}
               alt=""
               width={173}
               height={38}
               className="w-[168px]"
-            />
+            /> */}
           </div>
         </div>
       </section>
@@ -586,13 +586,13 @@ function FleetBenefitsMap() {
 
   return (
     <div className="relative mt-6 hidden min-h-[714px] overflow-hidden lg:block">
-      <Image
+      {/* <Image
         src={`${imagePath}benefits-svg-element.svg`}
         alt=""
         width={76}
         height={173}
         className="absolute bottom-[76px] right-8 w-[58px] xl:w-[76px]"
-      />
+      /> */}
       <svg
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-[-70px] top-0 z-20 h-full w-[calc(100%+140px)]"
@@ -681,22 +681,17 @@ function FleetBenefitCard({
   mobile?: boolean;
 }) {
   const Icon = benefit.icon;
-  const activeStyles = benefit.isActive
-    ? mobile
-      ? "shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
-      : "shadow-[10px_10px_0px_10px_rgba(0,94,173,0.2)]"
-    : mobile
-      ? "shadow-[6px_6px_0px_6px_rgba(0,0,0,0.2)]"
-      : "shadow-[10px_10px_0px_10px_rgba(0,0,0,0.2)]";
+  const activeStyles = benefit.isActive ? "active" : "";
+  const cardDepthStyles = mobile ? "mobile" : "";
   const positionStyles = mobile
-    ? ""
+    ? "relative"
     : `absolute ${benefit.position} w-[min(300px,23.08vw)]`;
 
   return (
     <article
-      className={`group flex flex-col items-start gap-3 bg-white p-6 transition duration-300 hover:shadow-[10px_10px_0px_10px_rgba(0,94,173,0.2)] ${activeStyles} ${positionStyles} ${
+      className={`group card3d ${cardDepthStyles} ${activeStyles} flex flex-col items-start gap-3 bg-white p-6 transition duration-300 ${positionStyles} ${
         mobile
-          ? "min-h-[204px] hover:shadow-[6px_6px_0px_6px_rgba(0,94,173,0.2)]"
+          ? "min-h-[204px]"
           : "min-h-[186px]"
       }`}
     >
