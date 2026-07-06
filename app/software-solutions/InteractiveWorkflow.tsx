@@ -51,9 +51,9 @@ function DropIcon({ active }: { active: boolean }) {
 
 const steps = [
   { title: "Move", copy: "Navigate the robot between locations.", Icon: MoveIcon, image: "img-1.png" },
-  { title: "Pick", copy: "Execute material pickup operations.", Icon: PickIcon, image: "img-2.png" },
+  { title: "Pick", copy: "Execute material pickup operations.", Icon: PickIcon, image: "img-4.png" },
   { title: "Wait", copy: "Pause operations based on process conditions or timing requirements.", Icon: WaitIcon, image: "img-3.png" },
-  { title: "Drop", copy: "Perform material delivery or unloading actions.", Icon: DropIcon, image: "img-4.png" },
+  { title: "Drop", copy: "Perform material delivery or unloading actions.", Icon: DropIcon, image: "img-2.png" },
 ];
 
 function TimelineTrack({ active }: { active: number }) {
