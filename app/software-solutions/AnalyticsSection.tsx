@@ -305,7 +305,7 @@ export function AnalyticsSection() {
                       fill
                       priority={idx === 0}
                       quality={95}
-                      sizes="600px"
+                      sizes="(max-width: 1024px) 100vw, 1200px"
                       className="rounded-[27px] object-fill transition-opacity duration-150"
                       style={{ opacity: s.imageIndex === idx ? 1 : 0 }}
                     />
@@ -314,7 +314,7 @@ export function AnalyticsSection() {
                     src={`${imagePath}Tabletframe.png`}
                     alt=""
                     fill
-                    sizes="600px"
+                    sizes="(max-width: 1024px) 100vw, 1200px"
                     className="pointer-events-none object-fill"
                     style={{ zIndex: 2 }}
                   />
