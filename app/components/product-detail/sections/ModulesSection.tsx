@@ -2,7 +2,12 @@
 
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, m, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  m,
+  MotionConfig,
+  useReducedMotion,
+} from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { imagePath } from "../../home/assets";
@@ -49,7 +54,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
     }, 5000);
 
     return () => window.clearInterval(timer);
-  }, [total]);
+  }, [activeIndex, total]);
 
   if (!modules.length || !active) return null;
 
@@ -105,7 +110,9 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                 const shouldShowModuleBaseImage = Boolean(
                   baseImage && !module.hideBaseImage,
                 );
-                const isLayered = Boolean(shouldShowModuleBaseImage && module.image);
+                const isLayered = Boolean(
+                  shouldShowModuleBaseImage && module.image,
+                );
                 return (
                   <div key={module.title} className="w-full shrink-0">
                     <div className="relative mx-auto h-[200px] w-[300px]">
@@ -126,7 +133,10 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                           src={`${imagePath}${moduleImage}`}
                           alt={module.title}
                           fill
-                          sizes={modOverlay?.sizes ?? "(max-width: 1024px) 100vw, 240px"}
+                          sizes={
+                            modOverlay?.sizes ??
+                            "(max-width: 1024px) 100vw, 240px"
+                          }
                           className={cn(
                             "object-contain",
                             isLayered && "object-top",
@@ -176,7 +186,8 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
 
           <div className="mt-5 flex items-center gap-4">
             <span className="rounded-full border border-[#011f40] px-5 py-2 text-[14px] font-semibold text-[#011f40]">
-              {String(activeIndex + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
+              {String(activeIndex + 1).padStart(2, "0")}/
+              {String(total).padStart(2, "0")}
             </span>
             <button
               type="button"
@@ -217,33 +228,43 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
               ))}
             </div>
             <div className="relative mx-auto h-[200px] w-[300px]">
-              {shouldShowBaseImage ? (
-                <Image
-                  src={`${imagePath}${baseImage}`}
-                  alt=""
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 540px"
-                  className="z-10 translate-y-28 object-contain"
-                />
-              ) : null}
+              <AnimatePresence>
+                {shouldShowBaseImage ? (
+                  <m.div
+                    key="base-image-container" // 1. Added a unique key
+                    initial={{ opacity: 0, x: 120, scale: 0.88 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: -150, scale: 0.88 }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Image
+                      src={`${imagePath}${baseImage}`}
+                      alt=""
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 540px"
+                      className="z-10 translate-y-28 object-contain"
+                    />
+                  </m.div>
+                ) : null}
+              </AnimatePresence>
               <div className="absolute z-20" style={overlayStyle}>
-                <AnimatePresence initial={false} mode="popLayout">
+                <AnimatePresence initial={false} mode="wait">
                   <m.div
                     key={`${active.title}-${activeModuleImage}`}
                     className="absolute inset-0 will-change-transform"
                     initial={{
                       opacity: shouldReduceMotion ? 1 : 0,
-                      x: shouldReduceMotion ? 0 : 92,
-                      scale: shouldReduceMotion ? 1 : 0.98,
+                      x: shouldReduceMotion ? 0 : 120,
+                      scale: shouldReduceMotion ? 1 : 0.88,
                     }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     exit={{
                       opacity: shouldReduceMotion ? 1 : 0,
-                      x: shouldReduceMotion ? 0 : -44,
-                      scale: shouldReduceMotion ? 1 : 0.98,
+                      x: shouldReduceMotion ? 0 : -150,
+                      scale: shouldReduceMotion ? 1 : 0.88,
                     }}
                     transition={{
-                      duration: shouldReduceMotion ? 0 : 0.42,
+                      duration: shouldReduceMotion ? 0 : 0.8,
                       ease: [0.22, 1, 0.36, 1],
                     }}
                   >
@@ -251,7 +272,9 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                       src={`${imagePath}${activeModuleImage}`}
                       alt={active.title}
                       fill
-                      sizes={overlay?.sizes ?? "(max-width: 1024px) 100vw, 240px"}
+                      sizes={
+                        overlay?.sizes ?? "(max-width: 1024px) 100vw, 240px"
+                      }
                       className={cn(
                         "object-contain",
                         isLayeredModule && "object-top",
@@ -277,6 +300,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                   transition={{
                     duration: shouldReduceMotion ? 0 : 0.34,
                     ease: [0.22, 1, 0.36, 1],
+                    delay: shouldReduceMotion ? 0 : 0.8,
                   }}
                 >
                   <h3 className="text-2xl font-semibold leading-7 text-[#005ead]">

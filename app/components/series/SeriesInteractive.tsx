@@ -405,7 +405,7 @@ export function SeriesRobotSelector({
         {/* ── DESKTOP LAYOUT (hidden below md) ── */}
         <div className="hidden md:block">
           <div className="min-h-[700px] md:min-h-[calc(100vh-160px)]">
-            <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]">
+            <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]  lg:min-h-[calc(100vh-425px)]">
               <div className="relative z-20 grid gap-8 lg:grid-cols-[400px_390px_1fr]">
                 <m.div
                   className="flex flex-col gap-3"

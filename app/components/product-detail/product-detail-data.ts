@@ -41,6 +41,11 @@ export type ProductDetailData = {
       icon: string;
     }[];
   };
+  advancedFeatures?: {
+    title: string;
+    points: string[];
+    image: string;
+  }[],
   useCases: {
     title: string;
     copy: string;
@@ -1235,6 +1240,48 @@ export const productDetails: Record<string, ProductDetailData> = {
         },
       ],
     },
+    advancedFeatures: [
+      {
+        title: "Human-safe Operations",
+        points: ['PLd category 3 certified', 'Laser safety fields respond before a person gets close', 'No cages', 'No zone restrictions'],
+        image: 'individual-product/lbr-500/lbr-500-adf-1.jpg'
+      },
+      {
+        title: "Low Bed Trolley Handling",
+        points: ['100 mm (3.93 in) standard lift height', '500 kg (1102.31 lbs) payload capacity', 'Variable-width trolley handling capability from 550 mm to 1600 mm (21.65 in to 63 in)'],
+        image: 'individual-product/lbr-500/lbr-500-adf-2.jpg'
+      },
+      {
+        title: "Autonomous Navigation",
+        points: ['Detects obstacles in time, reroutes autonomously without interruption', 'No floor tape, no manual intervention, no downtime'],
+        image: 'individual-product/lbr-500/lbr-500-adf-3.jpg'
+      },
+      {
+        title: "Interoperable Architecture",
+        points: ['VDA 5050 compliant', 'Enables vendor-agnostic scalability'],
+        image: 'individual-product/lbr-500/lbr-500-adf-4.jpg'
+      },
+      {
+        title: "Real-Time Alerts & Status Indication",
+        points: ['Audio alerts for operator notification', 'No screen dependency'],
+        image: 'individual-product/lbr-500/lbr-500-adf-5.jpg'
+      },
+      {
+        title: "Multi-Side Status Lighting",
+        points: ['LED indicators', 'Workers know the robot\'s intent before it reaches them'],
+        image: 'individual-product/lbr-500/lbr-500-adf-6.jpg'
+      },
+      {
+        title: "Opportunity Charging",
+        points: ['Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime'],
+        image: 'individual-product/lbr-500/lbr-500-adf-7.jpg'
+      },
+      {
+        title: "Built-In Mission Creator",
+        points: ['Configure tasks, update routes, and adapt to layout changes on the fly', 'No programmer required, just an intuitive interface your team can own'],
+        image: 'individual-product/lbr-500/lbr-500-adf-8.jpg'
+      }
+    ],
     useCases: [
       {
         title: "Small Load & Cart Transport",
