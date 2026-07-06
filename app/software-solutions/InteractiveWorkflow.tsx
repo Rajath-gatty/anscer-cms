@@ -186,7 +186,7 @@ export function InteractiveWorkflow() {
             </div>
           </div>
 
-          <div className="relative hidden aspect-[668/424] w-full overflow-hidden lg:block">
+          <div className="relative hidden aspect-[668/424] w-full overflow-hidden rounded-[12px] lg:block">
             {steps.map((step, index) => (
               <Image
                 key={step.title}
