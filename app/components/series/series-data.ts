@@ -506,7 +506,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "QR-guided vehicle delivering reliable point-to-point transport for efficient material flow.",
         image: "series/agv/agv-100.png",
         bgText: "agv-background-text.png",
-        href: "series/agv/AGV100",
+        href: "/agv-series/agv-100",
         tags: ["Lifting", "Sorting"],
         tabDescription: "Carries loads up to 100kg.",
         specs: [
