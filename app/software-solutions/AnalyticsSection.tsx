@@ -324,7 +324,7 @@ export function AnalyticsSection() {
                       priority={idx === 0}
                       quality={95}
                       sizes="(max-width: 1024px) 100vw, 1800px"
-                      className="rounded-[27px] object-cover transition-opacity duration-150"
+                      className="rounded-[27px] object-cover transition-all duration-300"
                       style={{ opacity: s.imageIndex === idx ? 1 : 0 }}
                     />
                   ))}
