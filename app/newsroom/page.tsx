@@ -16,10 +16,11 @@ export const metadata: Metadata = {
 
 const latestNews = {
   category: "LATEST NEWS",
-  title: "Bengaluru-Based ANSCER Robotics Raises $2 Million in Seed Round",
+  title: "Join us at Automate 2026",
   excerpt:
-    "ANSCER Robotics, a Bengaluru-based autonomous mobile robot (AMR) startup, has successfully raised $2 million in a seed funding round led by IKP Eden. The funding will be used to scale its product portfolio and expand its market reach across India and Southeast Asia.",
-  image: "1850236eda6ba48b3a4bfe7084528816a27e9c32.jpg",
+    "Experience our cutting-edge automation solutions in person.",
+  image: "events/automate-2026.png",
+  link: "https://events.anscer.com/automate"
 };
 
 export default function NewsroomPage() {
@@ -162,7 +163,7 @@ export default function NewsroomPage() {
                 </p>
                 {/* Desktop button */}
                 <div className="latest-news-btn-desktop">
-                  <NavyButton href="#">read now</NavyButton>
+                  <NavyButton href={latestNews.link}>read now</NavyButton>
                 </div>
               </div>
 

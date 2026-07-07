@@ -288,7 +288,7 @@ function AccordionList({
               }`}
             >
               <div className="overflow-hidden">
-                <div className="pt-[12px]">
+                <div className="pt-3">
                   <p className="max-w-140 text-sm leading-4 text-[#3a3a3a] md:text-base md:leading-6">
                     {item.copy}
                   </p>

@@ -96,7 +96,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
               data.slug === "agv-series" ? "md:hidden" : "md:flex",
             )}
           >
-            <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+            <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
               <span className="relative z-20 text-white">{counter}</span>
               <div
                 key={progressKey} // Native React diffing key component reset
@@ -170,8 +170,8 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
                   </h3>
                   <div className="flex flex-col justify-center gap-1 mt-3 ">
                     {features.points.map((point) => (
-                    <div className="flex gap-3 items-center">
-                        <CircleCheck size={16} className="text-[#011F40] shrink-0" />
+                    <div className="flex gap-3 items-start">
+                        <CircleCheck size={16} className="text-[#011F40] shrink-0 mt-1" />
                         <p className="text-sm leading-5 text-[#011F40] md:text-base md:leading-6">
                         {point}
                         </p>
@@ -187,7 +187,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
 
       {/* Mobile Controls */}
       <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
-        <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+        <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
           <span className="relative z-20 text-white">{counter}</span>
           <div
             key={progressKey}

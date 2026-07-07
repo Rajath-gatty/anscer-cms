@@ -9,40 +9,52 @@ import { ScrollReveal } from "../components/home/ScrollReveal";
 const allArticles = [
   {
     id: 1,
-    category: "Press Release",
-    title: "Bengaluru-Based ANSCER Robotics Raises $2 Million in Seed Round",
-    image: "Frame-1321317238-1.jpg",
+    category: "Announcement",
+    title: "Join us at Automate 2026",
+    image: "events/automate-2026.png",
+    link: "https://events.anscer.com/automate",
   },
   {
     id: 2,
-    category: "In The News",
-    title: "ANSCER Robotics Raises $2 Million in Seed Funding Round",
-    image: "Frame-1321317238-2.jpg",
+    category: "Announcement",
+    title: "Join us at IWS 2026",
+    image: "events/iws-2026.png",
+    link: "https://events.anscer.com/iws"
   },
   {
     id: 3,
-    category: "Announcement",
+    category: "Press Release",
     title: "ANSCER Robotics Expands AMR Fleet With New AR-Series Models",
-    image: "Frame-1321317239-1.jpg",
+    image: "events/series-a-funding.png",
+    link: "https://manufacturing.economictimes.indiatimes.com/news/hi-tech/anscer-robotics-raises-5-4-million-in-series-a-led-by-ian-alpha-fund/131229847"
   },
   {
     id: 4,
-    category: "Event",
-    title: "ANSCER to Showcase Next-Gen AMRs at LogiMAT 2025",
-    image: "Frame-1321317240-1.jpg",
+    category: "Press Release",
+    title: "SAP Labs India Unveils 2026 Startup Studio Cohort Focused on Enterprise AI and Deep-Tech Innovation",
+    image: "article-images/image-4.avif",
+    link: "https://theprint.in/ani-press-releases/sap-labs-india-unveils-2026-startup-studio-cohort-focused-on-enterprise-ai-and-deep-tech-innovation/2948992/"
   },
   {
     id: 5,
     category: "Case Study",
-    title:
-      "How ANSCER AMRs Transformed Warehouse Operations for a Leading Retailer",
-    image: "Frame-1321317243.jpg",
+    title:"ANSCER's Real Play Isn’t Just Robots. It’s Overhauling the Entire Warehouse",
+    image: "article-images/image-3.webp",
+    link: "https://analyticsindiamag.com/deep-tech/anscers-real-play-isnt-just-robots-its-overhauling-the-entire-warehouse"
   },
   {
     id: 6,
-    category: "In The News",
-    title: "ANSCER Robotics Signs MoU with Leading Logistics Player in India",
-    image: "Frame-1321317244.jpg",
+    category: "Press Release",
+    title: "ANSCER Robotics launches LBR500",
+    image: "article-images/image-1.jpg",
+    link: "https://www.engineering.com/anscer-robotics-launches-lbr500/"
+  },
+  {
+    id: 7,
+    category: "Press Release",
+    title: "ANSCER Robotics Expands into the U.S. Market, Appointing Industry Veteran Mark Messina as CEO of Americas",
+    image: "article-images/image-2.jpg",
+    link: "https://www.prnewswire.com/news-releases/anscer-robotics-expands-into-the-us-market-appointing-industry-veteran-mark-messina-as-ceo-of-americas-302376136.html"
   },
 ];
 
@@ -171,7 +183,7 @@ function ArticleCard({ article }: { article: (typeof allArticles)[number] }) {
       <div
         style={{
           position: "relative",
-          aspectRatio: "16/9",
+          aspectRatio: "16/11",
           borderRadius: 12,
           overflow: "hidden",
         }}
@@ -180,8 +192,9 @@ function ArticleCard({ article }: { article: (typeof allArticles)[number] }) {
           src={`${imagePath}${article.image}`}
           alt={article.title}
           fill
-          sizes="(max-width: 768px) 100vw, 420px"
+          sizes="(max-width: 768px) 100vw, 450px"
           style={{ objectFit: "cover" }}
+          className="h-[400px] object-top"
         />
       </div>
 
@@ -223,7 +236,7 @@ function ArticleCard({ article }: { article: (typeof allArticles)[number] }) {
             {article.title}
           </h4>
         </div>
-        <ExploreLink href="#" />
+        <ExploreLink href={article.link} />
       </div>
     </article>
   );

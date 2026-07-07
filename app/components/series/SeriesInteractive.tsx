@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, m, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion, type Transition } from "motion/react";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
@@ -244,7 +244,7 @@ export function SeriesRobotSelector({
   return (
     <section
       id="modals"
-      className="relative overflow-hidden bg-[#e8f1f8] py-14 md:min-h-screen md:py-16 md:pb-10"
+      className="relative overflow-hidden bg-[#e8f1f8] py-14 md:py-16 md:pb-10"
     >
       <Image
         src={`${imagePath}series/ar/robots-bg.png`}
@@ -404,8 +404,8 @@ export function SeriesRobotSelector({
 
         {/* ── DESKTOP LAYOUT (hidden below md) ── */}
         <div className="hidden md:block">
-          <div className="min-h-[700px] md:min-h-[calc(100vh-160px)]">
-            <div className="relative mt-12 min-h-[560px] md:mt-[54px] md:min-h-[calc(100vh-315px)]  lg:min-h-[calc(100vh-425px)]">
+          <div className="min-h-[560px]">
+            <div className="relative mt-12 min-h-[560px] md:mt-[54px]">
               <div className="relative z-20 grid gap-8 lg:grid-cols-[400px_390px_1fr]">
                 <m.div
                   className="flex flex-col gap-3"
@@ -421,7 +421,7 @@ export function SeriesRobotSelector({
                     const isActive = activeIndex === index;
 
                     // Define a consistent layout transition for both container and text components
-                    const layoutTransition = {
+                    const layoutTransition: Transition = {
                       duration: 0.35, // Increased slightly for a smoother, noticeable slide
                       ease: [0.22, 1, 0.36, 1],
                     };
@@ -440,7 +440,7 @@ export function SeriesRobotSelector({
                         )}
                         whileHover={reducedMotion ? undefined : { x: 4 }}
                         whileTap={reducedMotion ? undefined : { scale: 0.985 }}
-                        transition={layoutTransition as any}
+                        transition={layoutTransition}
                       >
                         {isActive ? (
                           <m.span
@@ -452,7 +452,7 @@ export function SeriesRobotSelector({
 
                         <m.span
                           layout="position"
-                          transition={layoutTransition as any}
+                          transition={layoutTransition}
                           className={cn(
                             "relative z-10 text-[16px] font-normal",
                             isActive
@@ -466,7 +466,7 @@ export function SeriesRobotSelector({
                         {/* Wrapping the AnimatePresence in a layout-bound container isolates height shifts */}
                         <m.div
                           layout="position"
-                          transition={layoutTransition as any}
+                          transition={layoutTransition}
                           className="relative z-10"
                         >
                           <AnimatePresence initial={false} mode="popLayout">
@@ -491,7 +491,7 @@ export function SeriesRobotSelector({
                                 transition={{
                                   opacity: { duration: 0.2 },
                                   // Make sure the structural layout matches the global timing
-                                  default: layoutTransition as any,
+                                  default: layoutTransition,
                                 }}
                               >
                                 {product.tabDescription}
@@ -568,7 +568,7 @@ export function SeriesRobotSelector({
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute bottom-[-88px] left-0 right-0 z-10 h-[360px] md:bottom-[-126px] md:left-[300px] md:h-[430px] lg:bottom-[-180px] lg:left-[470px] lg:h-[500px]">
+              <div className="pointer-events-none absolute left-0 right-0 top-[145px] z-10 h-[360px] md:left-[300px] md:h-[430px] lg:left-[470px] lg:top-[19px] lg:h-[500px]">
                 <AnimatePresence mode="popLayout" initial={false}>
                   <m.div
                     key={`${activeProduct.name}-visual`}
