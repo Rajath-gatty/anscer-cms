@@ -70,37 +70,37 @@ export const fleetCapabilities: CapabilityItem[] = [
   {
     title: "Multi-Robot Traffic Control",
     copy: "Coordinate and manage the movement of multiple robots operating simultaneously within the same environment. The ANSCER FMS intelligently controls robot traffic, optimizes routing paths, prevents congestion, and ensures safe navigation throughout the facility.",
-    image: "software_Multi-Robot_Traffic_Control-new.png",
+    image: "software/software_Multi-Robot_Traffic_Control.png",
   },
   {
     title: "Intelligent Task Allocation",
     copy: "Automatically assign transport missions and operational tasks to available robots based on factors such as robot location, battery status, workload, and task priority. This ensures balanced fleet utilization and optimized operational efficiency.",
-    image: "software_intelligent_task_allocations.png",
+    image: "software/software_intelligent_task_allocations.png",
   },
   {
     title: "Charging Management",
     copy: "Maintain continuous robot availability with automated charging management. The system monitors robot battery levels in real time and autonomously dispatches robots to charging stations when required, minimizing downtime and maximizing operational uptime.",
-    image: "software_charging-management.png",
+    image: "software/software_charging-management.png",
   },
   {
     title: "Mission Scheduling & Execution",
     copy: "Configure, schedule, and monitor robot missions through a centralized management interface. Users can create transport workflows, assign priorities, and track mission execution across the entire fleet.",
-    image: "software_mission_scheduling_execution.png",
+    image: "software/software_mission_scheduling_execution.png",
   },
   {
     title: "Autonomous Fleet Orchestration",
     copy: "Manage robot operations autonomously across production lines, warehouses, staging zones, and logistics areas. The FMS coordinates robot activities to ensure smooth material flow and uninterrupted operations.",
-    image: "software_Autonomous_Fleet_Orchestration.png",
+    image: "software/software_Autonomous_Fleet_Orchestration.png",
   },
   {
     title: "Real-Time Monitoring & Control",
     copy: "Gain complete visibility into fleet performance through live dashboards and operational monitoring tools. Track robot status, mission progress, traffic flow, and system health in real time.",
-    image: "software_realtimme_monitoring_control.png",
+    image: "software/software_realtimme_monitoring_control.png",
   },
   {
     title: "Web-Based User Interface",
     copy: "Access the ANSCER FMS through a modern browser-based interface without requiring specialized software installation. The platform is compatible with Google Chrome, Mozilla Firefox, Microsoft Edge, Apple Safari",
-    image: "Frame-1321317428.jpg",
+    image: "software/web-based-user-interface.png",
   },
 ];
 
