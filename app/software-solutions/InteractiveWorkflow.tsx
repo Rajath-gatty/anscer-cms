@@ -234,7 +234,7 @@ function TimelineTrack({ active }: { active: number }) {
                   className={`size-[11.33px] rounded-full transition-all duration-300 ${
                     isActive
                       ? "bg-[#005ead] opacity-100"
-                      : "bg-[#011f40] opacity-20"
+                      : "bg-[#011f40] opacity-30"
                   }`}
                 />
               </div>
