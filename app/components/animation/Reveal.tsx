@@ -58,7 +58,7 @@ export function Reveal({
   children,
   variant = "fade-up",
   delay = 0,
-  duration = 1,
+  duration = 0.75,
   viewportAmount = 0.2,
   className,
 }: RevealProps) {
