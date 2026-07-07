@@ -190,7 +190,7 @@ function SolutionSlide({
   return (
     <article
       className={cn(
-        "grid min-h-[524px] pt-10 items-start gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity] lg:grid-cols-2",
+        "grid min-h-[524px] pt-10 items-start [@media_(min-width:1384px)]:mt-[8%] gap-6 bg-[#fafafa] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity] lg:grid-cols-2",
         "absolute inset-0",
       )}
       style={{
@@ -307,7 +307,7 @@ function ProgressRail({
       : 124 + (clampedProgress - 1) * (236 - 124);
 
   return (
-    <div className="absolute right-2 top-[170px] 2xl:top-[194px] z-30 flex w-[56px] justify-center">
+    <div className="absolute right-2 top-[170px] [@media_(min-width:1384px)]:mt-[13%]  z-30 flex w-[56px] justify-center">
       <div className="relative h-[310px] w-[42px] flex-col items-center justify-start">
         <ProgressRobot
           className="absolute left-1/2 top-0 z-20 -translate-x-1/2 transition-transform duration-300 ease-out"
