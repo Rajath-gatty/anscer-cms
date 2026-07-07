@@ -45,37 +45,37 @@ const fleetBenefits: {
       title: "Centralized Fleet Control",
       copy: "Manage multiple robots and workflows from a single unified platform.",
       icon: Network,
-      position: "left-[0%] top-[60px]",
+      position: "left-[0%] top-[89px]",
     },
     {
       title: "Scalable Automation",
       copy: "Easily expand robot fleets and operational workflows as facility requirements grow.",
       icon: Expand,
-      position: "left-[33.08%] top-[160px]",
+      position: "left-[33.08%] top-[179px]",
     },
     {
       title: "Flexible Integration",
       copy: "Supports integration with MES, WMS, ERP, and other industrial software systems.",
       icon: PlugZap,
-      position: "left-[64.62%] top-[60px]",
+      position: "left-[64.62%] top-[89px]",
     },
     {
       title: "Enhanced Safety",
       copy: "Controlled robot traffic flow reduces congestion and improves operational safety within shared environments.",
       icon: ShieldCheck,
-      position: "left-[0%] top-[390px]",
+      position: "left-[0%] top-[370px]",
     },
     {
       title: "User-Friendly Operation",
       copy: "The intuitive web-based interface simplifies fleet management for operators and supervisors without requiring advanced technical expertise.",
       icon: LayoutGrid,
-      position: "left-[32.31%] top-[480px]",
+      position: "left-[32.31%] top-[456px]",
     },
     {
       title: "Improved Operational Efficiency",
       copy: "Optimize robot utilization and availability through automated opportunistic charging and intelligent task scheduling.",
       icon: Gauge,
-      position: "left-[64.62%] top-[390px]",
+      position: "left-[64.62%] top-[376px]",
     },
   ];
 
@@ -210,7 +210,7 @@ export default function SoftwareSolutionsPage() {
           index="02"
           title="Business Application"
           intro="Transform operational workflows into structured, automated processes that seamlessly integrate with robotic operations."
-          image="Frame-1321317433.jpg"
+          image="Frame-1321317433.png"
           body="The ANSCER Business Application Layer bridges operational requirements and robotic execution, translating business processes into executable robotic workflows. Built on a library of configurable, industry-specific applications, it enables operators to interact through familiar business actions while automatically managing workflow execution and robot coordination. Organizations can automate material movement without complex software development or extensive engineering effort."
           chipsTitle="Supported Industries"
           chips={[
@@ -573,10 +573,10 @@ function BenefitsSection({
 function FleetBenefitsMap() {
   // Robot paths (invisible — used only for robot animateMotion, no track lines)
   const robotPaths = [
-    { id: "fleet-route-purple", d: "M0 350H471.125V90H913.625V350H1479.62" },
-    { id: "fleet-route-green", d: "M2 660H445.625V435H897.125V680H1505.12" },
-    { id: "fleet-route-red", d: "M895 699.818V350H1379.12V0" },
-    { id: "fleet-route-blue", d: "M1401.62 22V350H906.125V100H462.125V712" },
+    { id: "fleet-route-purple", d: "M0 332H471.125V120H913.625V332H1479.62" },
+    { id: "fleet-route-green", d: "M2 620H445.625V420H897.125V645H1505.12" },
+    { id: "fleet-route-red", d: "M907.125 699.818V332H1379.12V0" },
+    { id: "fleet-route-blue", d: "M1401.62 22V332H906.125V120H462.125V712" },
   ];
 
   const TOTAL_DUR = 22;
