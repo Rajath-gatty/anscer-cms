@@ -120,25 +120,31 @@ export function TabbedCapabilities({
                 listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
               />
             </FadeRight>
-            <div
-              className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block"
-              style={accordionHeight ? { height: accordionHeight } : undefined}
-            >
-              {items.map((item, index) => {
-                const isActive = activeIndex === index;
-                return (
-                  <div
-                    key={item.title}
-                    aria-hidden={!isActive}
-                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                      isActive ? "opacity-100" : "opacity-0 pointer-events-none"
-                    }`}
-                  >
-                    <CapabilityImage item={item} isActive={isActive} />
-                  </div>
-                );
-              })}
-            </div>
+            <FadeLeft>
+              <div
+                className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block"
+                style={
+                  accordionHeight ? { height: accordionHeight } : undefined
+                }
+              >
+                {items.map((item, index) => {
+                  const isActive = activeIndex === index;
+                  return (
+                    <div
+                      key={item.title}
+                      aria-hidden={!isActive}
+                      className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                        isActive
+                          ? "opacity-100"
+                          : "opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <CapabilityImage item={item} isActive={isActive} />
+                    </div>
+                  );
+                })}
+              </div>
+            </FadeLeft>
           </div>
         ) : (
           <>
