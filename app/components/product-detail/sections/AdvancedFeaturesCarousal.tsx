@@ -171,7 +171,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
                   <div className="flex flex-col justify-center gap-1 mt-3 ">
                     {features.points.map((point) => (
                     <div className="flex gap-3 items-start">
-                        <CircleCheck size={16} className="text-[#011F40] shrink-0" />
+                        <CircleCheck size={16} className="text-[#011F40] shrink-0 mt-1" />
                         <p className="text-sm leading-5 text-[#011F40] md:text-base md:leading-6">
                         {point}
                         </p>
