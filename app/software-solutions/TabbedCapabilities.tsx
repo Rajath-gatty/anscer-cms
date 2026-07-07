@@ -117,7 +117,7 @@ export function TabbedCapabilities({
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
                 aspectRatio="aspect-[4/3]"
-                listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
+                listClassName=" sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
               />
             </FadeRight>
             <FadeLeft>
@@ -155,7 +155,7 @@ export function TabbedCapabilities({
                 setActiveIndex={setActiveIndex}
                 mobileOnly
                 aspectRatio="aspect-[721/464]"
-                listClassName="min-h-[600px] sm:min-h-[680px] md:min-h-[820px]"
+                listClassName=" sm:min-h-[680px] md:min-h-[820px]"
               />
             </FadeRight>
 
