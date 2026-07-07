@@ -138,7 +138,7 @@ export function SolutionsStickyStack() {
       <div ref={wrapperRef} className="relative hidden h-[260vh] lg:block">
         <div
           ref={stickyRef}
-          className="sticky top-[72px] 2xl:top-[88px] h-[max(560px,calc(100vh-56px))] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[540px] overflow-hidden"
+          className="sticky top-[72px] 2xl:top-[88px] h-[max(654px,calc(100vh-76px))] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[540px] overflow-hidden"
         >
           <div className="absolute left-0 top-0 z-20">
             <Kicker>Robots Designed to Deliver</Kicker>

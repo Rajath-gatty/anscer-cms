@@ -307,7 +307,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR 2000",
         description:
           "Autonomous pallet stacking robot for precise high-reach pallet handling operations.",
-        image: "psr-2000_2.png",
+        image: "series/psr/PSR2000.png",
         bgText: "psr-2000.svg",
         href: "/psr-series/psr-2000",
         tags: ["Open Pallet", "Stacking"],
@@ -331,7 +331,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR 2000R",
         description:
           "Extended-reach heavy-duty pallet stacking robot capable of handling open and closed pallets.",
-        image: "psr-2000r-side-latest.png",
+        image: "series/psr/PSR2000R.png",
         bgText: "Group-1321315869.svg",
         href: "/psr-series/psr-2000r",
         tags: ["Open/Closed Pallet", "Lifting"],
@@ -355,7 +355,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR 1000R",
         description:
           "Extended-reach pallet stacking robot capable of handling open and closed pallets.",
-        image: "psr-1000r-side-latest.png",
+        image: "series/psr/PSR1000R.png",
         bgText: "1000r-bg-text.png",
         href: "/psr-series/psr-1000r",
         tags: ["Open/Closed Pallet", "Lifting"],
@@ -379,7 +379,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR G2G",
         description:
           "Autonomous pallet handling robot enabling efficient ground-to-ground material movement.",
-        image: "psr-g2g.png",
+        image: "series/psr/G2G.png",
         bgText: "psr-g2g.svg",
         href: "/psr-series/psr-g2g",
         tags: ["Open Pallet", "Stacking"],
@@ -403,7 +403,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "LBR 500",
         description:
           "Compact trolley transport AMR for low-clearance environments and seamless integration.",
-        image: "lbr-500_1.png",
+        image: "series/psr/LBR500.png",
         bgText: "LBR-501.svg",
         href: "/psr-series/lbr-500",
         tags: ["Trolley", "Lifting"],
