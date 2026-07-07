@@ -4,17 +4,13 @@ import type { LucideIcon } from "lucide-react";
 import {
   ArrowLeft,
   ArrowRight,
-  BarChart2,
+  BrainCircuit,
+  ChartNoAxesCombined,
   Code,
   ExternalLink,
-  Eye,
-  Gauge,
   Layers,
-  Monitor,
-  Network,
   RefreshCw,
-  TrendingUp,
-  Zap,
+  Workflow,
 } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 import Image from "next/image";
@@ -33,44 +29,44 @@ const benefitCards: {
   copy: string;
 }[] = [
   {
-    icon: Eye,
+    icon: Layers,
     mobileIcon: Layers,
     title: "Improved Operational Visibility",
     copy: "Gain real-time and historical insights into robot operations, fleet performance, and workflow efficiency.",
   },
   {
-    icon: TrendingUp,
+    icon: ExternalLink,
     mobileIcon: ExternalLink,
     title: "Data-Driven Optimization",
     copy: "Use operational analytics to identify bottlenecks, improve traffic flow, and optimize robot utilization.",
   },
   {
-    icon: Gauge,
-    mobileIcon: Network,
+    icon: Workflow,
+    mobileIcon: Workflow,
     title: "Increased Fleet Efficiency",
     copy: "Monitor utilization rates and mission trends to maximize robot productivity and reduce idle time.",
   },
   {
-    icon: Zap,
+    icon: Code,
     mobileIcon: Code,
     title: "Faster Issue Identification",
     copy: "Heatmaps and predictive alerts help quickly detect operational issues, congestion areas, and recurring system events.",
   },
   {
-    icon: BarChart2,
-    mobileIcon: Code,
+    icon: BrainCircuit,
+    mobileIcon: BrainCircuit,
     title: "Enhanced Decision Making",
     copy: "KPI dashboards and analytics reports support informed operational planning and continuous process improvement.",
   },
   {
-    icon: Monitor,
-    mobileIcon: Code,
+    icon: ChartNoAxesCombined,
+    mobileIcon: ChartNoAxesCombined,
     title: "Scalable Performance Monitoring",
     copy: "Analyze and manage performance across single or multi-site robotic deployments from a centralized platform.",
   },
   {
     icon: RefreshCw,
-    mobileIcon: Code,
+    mobileIcon: RefreshCw,
     title: "Continuous Improvement",
     copy: "Leverage historical operational data to refine workflows, improve system reliability, and enhance overall automation performance.",
   },
