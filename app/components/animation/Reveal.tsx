@@ -52,12 +52,13 @@ const revealVariants = {
 };
 
 const defaultViewportMargin = "-20% 0px -20% 0px";
+const premiumEase = [0.22, 1, 0.36, 1] as const;
 
 export function Reveal({
   children,
   variant = "fade-up",
   delay = 0,
-  duration = 1.2,
+  duration = 1,
   viewportAmount = 0.2,
   className,
 }: RevealProps) {
@@ -75,6 +76,7 @@ export function Reveal({
     "--motion-reveal-y": `${offset.y}px`,
     "--motion-reveal-scale": offset.scale,
     backfaceVisibility: "hidden",
+    willChange: "transform, opacity",
   };
 
   return (
@@ -88,7 +90,11 @@ export function Reveal({
       transition={{
         duration: shouldReduceMotion ? 0 : duration,
         delay: shouldReduceMotion ? 0 : delay,
-        ease: [0.16, 1, 0.3, 1],
+        ease: premiumEase,
+        opacity: { duration: shouldReduceMotion ? 0 : duration * 0.8 },
+        x: { duration: shouldReduceMotion ? 0 : duration },
+        y: { duration: shouldReduceMotion ? 0 : duration },
+        scale: { duration: shouldReduceMotion ? 0 : duration },
       }}
       style={revealStyle}
     >
