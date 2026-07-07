@@ -74,7 +74,7 @@ export function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[4].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
                   {processBenefitCards[4].copy}
                 </p>
               </div>
@@ -127,9 +127,7 @@ function ProcessBenefitCard({
       <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
         {title}
       </h3>
-      <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
-        {copy}
-      </p>
+      <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">{copy}</p>
     </div>
   );
 }

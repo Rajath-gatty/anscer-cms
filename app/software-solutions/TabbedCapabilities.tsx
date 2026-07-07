@@ -168,7 +168,7 @@ export function TabbedCapabilities({
                       type="button"
                       key={item.title}
                       onClick={() => setActiveIndex(index)}
-                      className={`cursor-pointer rounded-xl p-5 text-left text-xl font-semibold transition-colors duration-300 ${
+                      className={`cursor-pointer rounded-xl p-5 text-left text-xl transition-colors duration-300 ${
                         isActive
                           ? "bg-white font-semibold text-[#005ead]"
                           : "bg-white font-normal text-[#011f40] hover:bg-white/90"
