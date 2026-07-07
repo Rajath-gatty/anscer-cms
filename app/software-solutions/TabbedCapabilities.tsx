@@ -171,7 +171,7 @@ export function TabbedCapabilities({
               </div>
 
               <div className="relative mt-8 lg:mt-0 mb-12">
-                <div className="relative aspect-[721/464] w-full overflow-visible">
+                <div className="relative aspect-721/464 w-full overflow-visible">
                   {items.map((item, index) => (
                     <div
                       key={item.title}
@@ -278,7 +278,7 @@ function AccordionList({
               }`}
             >
               <div className="overflow-hidden">
-                <div className="pt-[12px]">
+                <div className="pt-3">
                   <p className="max-w-140 text-sm leading-4 text-[#3a3a3a] md:text-base md:leading-6">
                     {item.copy}
                   </p>

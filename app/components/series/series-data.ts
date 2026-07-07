@@ -331,7 +331,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR 2000R",
         description:
           "Extended-reach heavy-duty pallet stacking robot capable of handling open and closed pallets.",
-        image: "psr-2000r.png",
+        image: "psr-2000r-side-latest.png",
         bgText: "Group-1321315869.svg",
         href: "/psr-series/psr-2000r",
         tags: ["Open/Closed Pallet", "Lifting"],
@@ -355,7 +355,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "PSR 1000R",
         description:
           "Extended-reach pallet stacking robot capable of handling open and closed pallets.",
-        image: "psr-1000r.png",
+        image: "psr-1000r-side-latest.png",
         bgText: "1000r-bg-text.png",
         href: "/psr-series/psr-1000r",
         tags: ["Open/Closed Pallet", "Lifting"],
@@ -403,7 +403,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "LBR 500",
         description:
           "Compact trolley transport AMR for low-clearance environments and seamless integration.",
-        image: "lbr-500.png",
+        image: "lbr-500_1.png",
         bgText: "LBR-501.svg",
         href: "/psr-series/lbr-500",
         tags: ["Trolley", "Lifting"],
