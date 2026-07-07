@@ -3,6 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState, type Ref } from "react";
+import { FadeLeft, FadeRight } from "../components/animation";
 import { imagePath } from "../components/home/assets";
 
 type CapabilityItem = {
@@ -53,7 +54,9 @@ export function TabbedCapabilities({
 
     const accordionList = accordionListRef.current;
     const updateAccordionHeight = () => {
-      setAccordionHeight(Math.round(accordionList.getBoundingClientRect().height));
+      setAccordionHeight(
+        Math.round(accordionList.getBoundingClientRect().height),
+      );
     };
 
     updateAccordionHeight();
@@ -107,15 +110,16 @@ export function TabbedCapabilities({
 
         {variant === "accordion" ? (
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
-            <AccordionList
-              listRef={accordionListRef}
-              items={items}
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-              aspectRatio="aspect-[4/3]"
-              listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
-            />
-
+            <FadeRight>
+              <AccordionList
+                listRef={accordionListRef}
+                items={items}
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+                aspectRatio="aspect-[4/3]"
+                listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
+              />
+            </FadeRight>
             <div
               className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block"
               style={accordionHeight ? { height: accordionHeight } : undefined}
@@ -138,7 +142,7 @@ export function TabbedCapabilities({
           </div>
         ) : (
           <>
-            <div className="mt-10 lg:hidden">
+            <FadeRight className="mt-10 lg:hidden">
               <AccordionList
                 items={items}
                 activeIndex={activeIndex}
@@ -147,10 +151,10 @@ export function TabbedCapabilities({
                 aspectRatio="aspect-[721/464]"
                 listClassName="min-h-[600px] sm:min-h-[680px] md:min-h-[820px]"
               />
-            </div>
+            </FadeRight>
 
             <div className="mt-10 hidden gap-4 lg:grid lg:grid-cols-2 lg:items-center">
-              <div className="flex max-w-100 flex-col gap-3">
+              <FadeRight className="flex max-w-100 flex-col gap-3">
                 {items.map((item, index) => {
                   const isActive = activeIndex === index;
                   return (
@@ -168,9 +172,9 @@ export function TabbedCapabilities({
                     </button>
                   );
                 })}
-              </div>
+              </FadeRight>
 
-              <div className="relative mt-8 lg:mt-0 mb-12">
+              <FadeLeft className="relative mt-8 lg:mt-0 mb-12">
                 <div className="relative aspect-[721/464] w-full overflow-visible">
                   {items.map((item, index) => (
                     <div
@@ -207,7 +211,7 @@ export function TabbedCapabilities({
                     </p>
                   </div>
                 </div>
-              </div>
+              </FadeLeft>
             </div>
           </>
         )}
