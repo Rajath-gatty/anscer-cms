@@ -53,7 +53,10 @@ export function FleetManagementSection() {
                 const Icon = item.icon;
 
                 return (
-                  <article key={item.title} className="flex w-full flex-col gap-3">
+                  <article
+                    key={item.title}
+                    className="flex w-full flex-col gap-3"
+                  >
                     <span className="flex size-11 items-center justify-center rounded-md bg-[#011f40]/5 text-[#011f40]">
                       <Icon
                         aria-hidden="true"

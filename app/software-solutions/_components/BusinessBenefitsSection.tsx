@@ -26,7 +26,7 @@ export function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Operational Abstraction
                 </h3>
-                <p className="text-sm font-bold leading-[130%] text-[#000000]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Separates business logic from robot control logic
                 </p>
               </div>
@@ -40,7 +40,7 @@ export function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Scalability
                 </h3>
-                <p className="text-sm font-bold leading-[130%] text-[#000000]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Supports multi-industry deployments
                 </p>
               </div>
@@ -57,7 +57,7 @@ export function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Flexibility
                 </h3>
-                <p className="text-sm font-bold leading-[130%] text-[#000000]">
+                <p className="text-sm leading-[130%] text-[#000000]">
                   Multiple implementation approaches (prebuilt, low-code,
                   integrated)
                 </p>
@@ -72,7 +72,7 @@ export function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   Reduced Engineering Effort
                 </h3>
-                <p className="text-sm font-bold leading-[130%] text-[#000000]">
+                <p className="text-sm  leading-[130%] text-[#000000]">
                   Minimizes need for custom coding
                 </p>
               </div>
@@ -89,7 +89,7 @@ export function BusinessBenefitsSection() {
                 <h3 className="text-base font-semibold text-[#000000]">
                   User-Centric Design
                 </h3>
-                <p className="text-sm font-bold leading-[130%] text-[#000000]">
+                <p className="text-sm  leading-[130%] text-[#000000]">
                   Simplifies interaction for non-technical operators
                 </p>
               </div>

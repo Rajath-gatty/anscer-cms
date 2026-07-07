@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
 import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { FadeLeft, FadeRight } from "../../components/animation";
 import { imagePath } from "../../components/home/assets";
 import {
@@ -46,7 +46,11 @@ export function BenefitsSection({
             <FleetBenefitsMap />
             <div className="grid gap-x-7 gap-y-8 sm:grid-cols-2 lg:hidden">
               {fleetBenefits.map((benefit) => (
-                <FleetBenefitCard key={benefit.title} benefit={benefit} mobile />
+                <FleetBenefitCard
+                  key={benefit.title}
+                  benefit={benefit}
+                  mobile
+                />
               ))}
             </div>
           </div>
@@ -254,9 +258,9 @@ function FleetBenefitCard({
       <h3 className="text-[16px] font-semibold leading-snug text-black">
         {benefit.title}
       </h3>
-      <p className="text-[14px] leading-[1.5] text-[#333333]">
+      <div className="text-[14px] font-regular leading-[1.5] text-[#333333]">
         {benefit.copy}
-      </p>
+      </div>
     </article>
   );
 }
@@ -275,9 +279,12 @@ function benefitCopy(title: string) {
       "Browser-based controls make robot operations easier for non-technical teams.",
     "Improved Operational Efficiency":
       "Optimize task flow, routing, availability, and throughput across your facility.",
-    "Operational Abstraction": "Separate business logic from robot control logic.",
-    Scalability: "Support multi-industry deployments and growing automation footprints.",
-    Flexibility: "Use prebuilt, low-code, or integrated implementation approaches.",
+    "Operational Abstraction":
+      "Separate business logic from robot control logic.",
+    Scalability:
+      "Support multi-industry deployments and growing automation footprints.",
+    Flexibility:
+      "Use prebuilt, low-code, or integrated implementation approaches.",
     "Reduced Engineering Effort":
       "Minimize the need for custom coding and long engineering cycles.",
     "User-Centric Design": "Simplify interaction for non-technical operators.",
@@ -285,8 +292,10 @@ function benefitCopy(title: string) {
       "Create and adjust operational flows as requirements change.",
     "Industry-Specific Adaptability":
       "Configure workflows for the way each facility actually works.",
-    "Simplified Automation": "Turn repeatable operations into clear robot instructions.",
-    "Scalable Operations": "Extend workflows across robots, lines, sites, and use cases.",
+    "Simplified Automation":
+      "Turn repeatable operations into clear robot instructions.",
+    "Scalable Operations":
+      "Extend workflows across robots, lines, sites, and use cases.",
     "Reduced Operational Dependency":
       "Lower dependence on manual coordination and custom engineering.",
     "Improved Operational Visibility":
@@ -297,7 +306,8 @@ function benefitCopy(title: string) {
       "Monitor utilization rates and mission trends to maximize productivity.",
     "Faster Issue Identification":
       "Heatmaps and predictive alerts help detect recurring system events.",
-    "Enhanced Decision Making": "KPI dashboards support informed operational planning.",
+    "Enhanced Decision Making":
+      "KPI dashboards support informed operational planning.",
     "Scalable Performance Monitoring":
       "Analyze performance across single or multi-site deployments.",
     "Continuous Improvement":

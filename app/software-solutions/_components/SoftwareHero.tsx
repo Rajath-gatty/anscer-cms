@@ -18,12 +18,12 @@ export function SoftwareHero() {
       <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
         <FadeRight className="max-w-[807px]">
           <h1 className="mt-4 max-w-[807px] text-[40px] font-bold leading-[1.12] text-white md:text-[60px] md:leading-[1.15]">
-            Connect Robots, Workflows, and Operations in One Platform
+            Software That Understands Your Business, Not Just Your Robots
           </h1>
-          <p className="mt-5 max-w-[680px] text-sm md:text-lg font-bold leading-[1.3] text-[#fafafa]">
-            ANSCER&apos;s software suite transforms autonomous mobile robots
-            into synchronized, facility-wide operations - from real-time fleet
-            control to industry-specific workflow automation.
+          <p className="mt-5 max-w-[680px] text-sm md:text-lg font-medium leading-[1.3] text-[#fafafa]">
+            Robots move materials. Operations move businesses. ANSCER transforms
+            business requests into autonomous execution through
+            industry-specific business applications and configurable workflows.
           </p>
           <ArrowButton target="/contact-us" className="mt-8 h-[46px] px-5">
             Request demo

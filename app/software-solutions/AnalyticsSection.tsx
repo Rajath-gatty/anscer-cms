@@ -53,8 +53,8 @@ const capabilities: Capability[] = [
   },
   {
     title: "Heatmaps",
-    copy: "Visualize operational incidents and traffic patterns across facility maps using intelligent heatmap analytics. The Heatmap module helps identify high-activity and high-risk areas within the facility.",
-    chipsIntro: "Displaying:",
+    copy: "Visualize operational incidents and traffic patterns across facility maps using intelligent heatmap analytics. The Heatmap module helps identify high-activity and high-risk areas within the facility by displaying:",
+    chipsIntro: "",
     chips: [
       "Emergency stop locations",
       "Robot errors",
@@ -234,7 +234,7 @@ export function AnalyticsSection() {
           DESKTOP (lg+) – sticky scroll animation
       ═══════════════════════════════════════════════════════════════ */}
       <section
-        className="hidden lg:block"
+        className="hidden lg:block pb-10"
         style={{ background: BG }}
         ref={scrollZoneRef}
       >
@@ -287,7 +287,7 @@ export function AnalyticsSection() {
                       {cap.chips.map((chip) => (
                         <span
                           key={chip}
-                          className="rounded-full bg-white px-3 py-1.5 text-sm leading-none text-[#011f40] shadow-sm"
+                          className="rounded-full text-xs md:text-sm bg-white px-3 py-1.5  leading-none text-[#011f40] shadow-sm"
                         >
                           {chip}
                         </span>

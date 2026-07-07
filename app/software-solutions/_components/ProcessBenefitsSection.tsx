@@ -24,9 +24,7 @@ export function ProcessBenefitsSection({
           BENEFITS
         </p>
         <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
-          Turning Industry Workflows Into
-          <br />
-          Autonomous Operations
+          Designed for Flexible and <br /> Scalable Automation
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           <Reveal
@@ -74,7 +72,7 @@ export function ProcessBenefitsSection({
                 <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[4].title}
                 </h3>
-                <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
                   {processBenefitCards[4].copy}
                 </p>
               </div>
@@ -127,9 +125,7 @@ function ProcessBenefitCard({
       <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
         {title}
       </h3>
-      <p className="mt-2 text-[14px] font-bold leading-[130%] text-[#333333]">
-        {copy}
-      </p>
+      <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">{copy}</p>
     </div>
   );
 }
