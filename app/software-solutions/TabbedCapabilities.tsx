@@ -2,7 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState, type Ref } from "react";
 import { FadeLeft, FadeRight } from "../components/animation";
 import { imagePath } from "../components/home/assets";
 
@@ -45,7 +45,27 @@ export function TabbedCapabilities({
   variant?: "accordion" | "cards";
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [accordionHeight, setAccordionHeight] = useState<number>();
+  const accordionListRef = useRef<HTMLDivElement>(null);
   const activeItem = items[activeIndex];
+
+  useEffect(() => {
+    if (variant !== "accordion" || !accordionListRef.current) return;
+
+    const accordionList = accordionListRef.current;
+    const updateAccordionHeight = () => {
+      setAccordionHeight(
+        Math.round(accordionList.getBoundingClientRect().height),
+      );
+    };
+
+    updateAccordionHeight();
+
+    const resizeObserver = new ResizeObserver(updateAccordionHeight);
+    resizeObserver.observe(accordionList);
+
+    return () => resizeObserver.disconnect();
+  }, [variant]);
 
   return (
     <section
@@ -92,34 +112,33 @@ export function TabbedCapabilities({
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
             <FadeRight>
               <AccordionList
+                listRef={accordionListRef}
                 items={items}
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
                 aspectRatio="aspect-[4/3]"
-                listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-[860px] xl:min-h-[720px] 2xl:min-h-[700px]"
+                listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
               />
             </FadeRight>
-
-            <FadeLeft>
-              <div className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block lg:h-[780px] xl:h-[660px] 2xl:h-[640px]">
-                {items.map((item, index) => {
-                  const isActive = activeIndex === index;
-                  return (
-                    <div
-                      key={item.title}
-                      aria-hidden={!isActive}
-                      className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                        isActive
-                          ? "opacity-100"
-                          : "opacity-0 pointer-events-none"
-                      }`}
-                    >
-                      <CapabilityImage item={item} isActive={isActive} />
-                    </div>
-                  );
-                })}
-              </div>
-            </FadeLeft>
+            <div
+              className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block"
+              style={accordionHeight ? { height: accordionHeight } : undefined}
+            >
+              {items.map((item, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <div
+                    key={item.title}
+                    aria-hidden={!isActive}
+                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                      isActive ? "opacity-100" : "opacity-0 pointer-events-none"
+                    }`}
+                  >
+                    <CapabilityImage item={item} isActive={isActive} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         ) : (
           <>
@@ -202,6 +221,7 @@ export function TabbedCapabilities({
 }
 
 function AccordionList({
+  listRef,
   items,
   activeIndex,
   setActiveIndex,
@@ -209,6 +229,7 @@ function AccordionList({
   aspectRatio = "aspect-[4/3]",
   listClassName = "",
 }: {
+  listRef?: Ref<HTMLDivElement>;
   items: CapabilityItem[];
   activeIndex: number;
   setActiveIndex: (idx: number) => void;
@@ -222,7 +243,7 @@ function AccordionList({
   }
 
   return (
-    <div className={`flex flex-col gap-3 ${listClassName}`}>
+    <div ref={listRef} className={`flex flex-col gap-3 ${listClassName}`}>
       {items.map((item, index) => {
         const isActive = activeIndex === index;
         return (
