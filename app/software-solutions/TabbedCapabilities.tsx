@@ -195,7 +195,7 @@ export function TabbedCapabilities({
                         src={`${imagePath}${item.image}`}
                         alt={item.title}
                         fill
-                        quality={95}
+                        quality={100}
                         sizes="(max-width: 1024px) 100vw, 720px"
                         className="object-contain"
                         priority={index === 0}
@@ -324,6 +324,7 @@ function CapabilityImage({
         src={`${imagePath}${item.image}`}
         alt={item.title}
         fill
+        quality={100}
         sizes="(max-width: 1024px) 100vw, 720px"
         className="object-cover object-[50%_20%]"
       />
@@ -341,6 +342,7 @@ function CapabilityImage({
         src={`${imagePath}${layeredImage.background}`}
         alt=""
         fill
+        quality={100}
         sizes="(max-width: 1024px) 100vw, 720px"
         className="object-cover object-[50%_20%]"
       />
@@ -353,6 +355,7 @@ function CapabilityImage({
           src={`${imagePath}${layeredImage.foreground}`}
           alt={item.title}
           fill
+          quality={100}
           sizes="(max-width: 1024px) 100vw, 720px"
           className="object-cover object-[50%_20%]"
         />
