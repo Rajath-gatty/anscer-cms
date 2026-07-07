@@ -382,7 +382,7 @@ function SoftwareHero() {
             control to industry-specific workflow automation.
           </p>
           <ArrowButton
-            target="mailto:sales@anscer.com"
+            target="/contact-us"
             className="mt-8 h-[46px] px-5"
           >
             Request demo
@@ -803,7 +803,7 @@ function SoftwareCta() {
             Book your demo now and experience ANSCER in action.
           </p>
           <ArrowButton
-            target="mailto:sales@anscer.com"
+            target="/contact-us"
             className="h-[46px] px-5"
           >
             Book a demo
