@@ -283,7 +283,7 @@ export function InteractiveWorkflow() {
         <div className="mt-8 grid gap-4 lg:grid-cols-2 lg:items-start">
           <FadeRight className="flex w-full">
             <TimelineTrack active={active} />
-            <div className="flex flex-col gap-0">
+            <div className="flex flex-col w-full gap-0">
               {steps.map((step, index) => {
                 const isActive = active === index;
 
@@ -293,24 +293,27 @@ export function InteractiveWorkflow() {
                     type="button"
                     onClick={() => setActive(index)}
                     className={`flex w-full cursor-pointer flex-col gap-3 rounded-[12px] px-3 py-5 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${
-                      isActive ? "bg-[#005ead1a]" : "bg-transparent"
+                      isActive
+                        ? "bg-linear-to-r from-[#005EAD1A] to-[#005EAD00]"
+                        : "bg-transparent"
                     }`}
                     aria-current={isActive ? "step" : undefined}
                   >
                     <div className="flex items-center gap-3">
                       <step.Icon active={isActive} />
-                      <div className="flex flex-col gap-1">
+                      <div className="flex flex-col gap-1 w-full">
                         <h3
-                          className={`text-sm md:text-base font-semibold transition-colors duration-300 ${
+                          className={`text-sm md:text-base font-semibold transition-all duration-300 ${
                             isActive
-                              ? "text-[#005ead]"
-                              : "font-medium text-[#000000]"
+                              ? "text-[#005ead] transform translate-y-0"
+                              : "font-medium text-[#000000] translate-y-3"
                           }`}
                         >
                           {step.title}
                         </h3>
-                        <p className="text-[12px] md:text-sm leading-[150%] text-[#011F40]">
-                          {step.copy}
+
+                        <p className="text-[12px] md:text-sm leading-[150%] min-h-6 text-[#011F40] w-full">
+                          {isActive && step.copy}
                         </p>
                       </div>
                     </div>
