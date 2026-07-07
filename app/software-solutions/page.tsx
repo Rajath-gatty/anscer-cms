@@ -30,9 +30,8 @@ export const metadata: Metadata = {
 export default function SoftwareSolutionsPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
-      <FadeUp>
-        <SoftwareHero />
-      </FadeUp>
+      <SoftwareHero />
+
       <SoftwareTabs />
       <FadeUp>
         <FleetManagementSection />
@@ -86,12 +85,10 @@ export default function SoftwareSolutionsPage() {
         <AnalyticsPlatformSection />
       </FadeUp>
       <AnalyticsSection />
-      <FadeUp>
-        <AnalyticsBenefitsSection />
-      </FadeUp>
-      <FadeUp>
-        <SoftwareCta />
-      </FadeUp>
+
+      <AnalyticsBenefitsSection />
+
+      <SoftwareCta />
     </main>
   );
 }
