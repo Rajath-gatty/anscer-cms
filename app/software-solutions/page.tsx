@@ -89,9 +89,8 @@ export default function SoftwareSolutionsPage() {
       <FadeUp>
         <AnalyticsBenefitsSection />
       </FadeUp>
-      <FadeUp>
-        <SoftwareCta />
-      </FadeUp>
+
+      <SoftwareCta />
     </main>
   );
 }
