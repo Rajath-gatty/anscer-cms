@@ -96,7 +96,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               data.slug === "agv-series" ? "md:hidden" : "md:flex",
             )}
           >
-            <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+            <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
               <span className="relative z-20 text-[#011f40]">{counter}</span>
               <div
                 key={progressKey} // Native React diffing key component reset
@@ -180,7 +180,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
 
       {/* Mobile Controls */}
       <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
-        <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+        <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
           <span className="relative z-20 text-[#011f40]">{counter}</span>
           <div
             key={progressKey}

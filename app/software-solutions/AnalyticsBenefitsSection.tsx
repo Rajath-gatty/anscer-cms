@@ -182,7 +182,7 @@ export function AnalyticsBenefitsSection() {
           style={{ paddingRight: containerPadding }}
         >
           {/* Counter pill with animated progress fill */}
-          <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-white/40 px-4 text-[14px] font-semibold shadow-sm">
+          <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-white/40 px-4 text-[14px] font-semibold shadow-sm">
             <span className="relative z-20 text-white">{counter}</span>
             <div
               key={progressKey}

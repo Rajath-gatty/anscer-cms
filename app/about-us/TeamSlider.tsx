@@ -106,8 +106,8 @@ export function TeamSlider({
       <span
         className={`relative grid place-items-center overflow-hidden rounded-full border border-[#011f40] text-center tabular-nums shadow-sm ${
           isMobile
-            ? "h-8 min-w-24 px-4 text-[14px] font-medium"
-            : "min-w-21 px-5 py-2 text-[12px] font-medium md:min-w-30.5 md:py-3 md:text-[16px]"
+            ? "h-10 min-w-24 px-4 text-[14px] font-medium"
+            : "h-10 min-w-24 px-4 text-[14px] font-medium md:h-11 md:min-w-30.5 md:text-[16px]"
         }`}
       >
         <span className="relative z-20 text-[#011f40]">{counter}</span>
