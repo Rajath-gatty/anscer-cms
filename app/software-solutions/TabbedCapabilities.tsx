@@ -90,30 +90,36 @@ export function TabbedCapabilities({
 
         {variant === "accordion" ? (
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
-            <AccordionList
-              items={items}
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-              aspectRatio="aspect-[4/3]"
-              listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-[860px] xl:min-h-[720px] 2xl:min-h-[700px]"
-            />
+            <FadeRight>
+              <AccordionList
+                items={items}
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+                aspectRatio="aspect-[4/3]"
+                listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-[860px] xl:min-h-[720px] 2xl:min-h-[700px]"
+              />
+            </FadeRight>
 
-            <div className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block lg:h-[780px] xl:h-[660px] 2xl:h-[640px]">
-              {items.map((item, index) => {
-                const isActive = activeIndex === index;
-                return (
-                  <div
-                    key={item.title}
-                    aria-hidden={!isActive}
-                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                      isActive ? "opacity-100" : "opacity-0 pointer-events-none"
-                    }`}
-                  >
-                    <CapabilityImage item={item} isActive={isActive} />
-                  </div>
-                );
-              })}
-            </div>
+            <FadeLeft>
+              <div className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block lg:h-[780px] xl:h-[660px] 2xl:h-[640px]">
+                {items.map((item, index) => {
+                  const isActive = activeIndex === index;
+                  return (
+                    <div
+                      key={item.title}
+                      aria-hidden={!isActive}
+                      className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                        isActive
+                          ? "opacity-100"
+                          : "opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <CapabilityImage item={item} isActive={isActive} />
+                    </div>
+                  );
+                })}
+              </div>
+            </FadeLeft>
           </div>
         ) : (
           <>
