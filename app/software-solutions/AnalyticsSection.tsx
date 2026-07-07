@@ -40,7 +40,8 @@ const capabilities: Capability[] = [
     title: "Request Overview Analytics",
     copy: "Analyze all mission and transport requests generated across stations, production areas, and storage locations.",
     chipsIntro: "The Request Overview module provides detailed insights into:",
-    chipsOutro: "This data enables operators to identify operational patterns and optimize material flow processes.",
+    chipsOutro:
+      "This data enables operators to identify operational patterns and optimize material flow processes.",
     chips: [
       "Total request volume",
       "Completed and failed requests",
@@ -114,7 +115,7 @@ function getState(progress: number) {
 
   for (let i = 0; i < capabilities.length; i++) {
     const isLast = i === capabilities.length - 1;
-    const segLen = isLast ? 2.5 : 4; 
+    const segLen = isLast ? 2.5 : 4;
     const local = time - cursor;
     if (local < 0) break;
 
@@ -186,14 +187,26 @@ function getState(progress: number) {
 /* ─── Component ─────────────────────────────────────────────────────── */
 export function AnalyticsSection() {
   const scrollZoneRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   const [progress, setProgress] = useState(0);
 
   const updateProgress = useCallback(() => {
     const zone = scrollZoneRef.current;
     if (!zone) return;
-    const rect = zone.getBoundingClientRect();
     const scrollRoom = window.innerHeight * PIN_SCROLL_SCREENS;
+
+    // Prefer the header position so the animation starts when the first
+    // text becomes visible. Fallback to the scroll zone rect if header
+    // is not found.
+    const header = headerRef.current;
+    if (header) {
+      const rect = header.getBoundingClientRect();
+      setProgress(clamp((window.innerHeight - rect.top) / scrollRoom));
+      return;
+    }
+
+    const rect = zone.getBoundingClientRect();
     setProgress(clamp((PIN_TOP - rect.top) / scrollRoom));
   }, []);
 
@@ -220,9 +233,13 @@ export function AnalyticsSection() {
       {/* ════════════════════════════════════════════════════════════
           DESKTOP (lg+) – sticky scroll animation
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="hidden lg:block" style={{ background: BG }}>
+      <section
+        className="hidden lg:block"
+        style={{ background: BG }}
+        ref={scrollZoneRef}
+      >
         {/* Section header */}
-        <div className="site-container py-14">
+        <div className="site-container py-14" ref={headerRef}>
           <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             Key Capabilities
           </p>
@@ -233,9 +250,10 @@ export function AnalyticsSection() {
 
         {/* Scroll room */}
         <div
-          ref={scrollZoneRef}
           className="relative"
-          style={{ height: `calc(${PIN_SCROLL_SCREENS * 100}vh + 70vh)` }}
+          style={{
+            height: `calc(${PIN_SCROLL_SCREENS * 100}vh + 70vh)`,
+          }}
         >
           {/* Sticky stage */}
           <div
