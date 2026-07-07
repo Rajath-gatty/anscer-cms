@@ -588,7 +588,7 @@ function FleetBenefitsMap() {
   ];
 
   return (
-    <div className="relative mt-6 hidden min-h-[714px] overflow-hidden lg:block">
+    <div className="relative mt-6 hidden min-h-[714px] overflow-x-clip lg:block">
       {/* <Image
         src={`${imagePath}benefits-svg-element.svg`}
         alt=""
