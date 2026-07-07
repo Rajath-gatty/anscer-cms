@@ -130,7 +130,7 @@ export function AnalyticsBenefitsSection() {
       `}</style>
 
       {/* White header + Mobile Vertical Cards */}
-      <div className="bg-white px-6 py-10 md:py-14">
+      <div className="bg-white py-10 md:py-14">
         <div className="site-container">
           <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
             BENEFITS
@@ -182,7 +182,7 @@ export function AnalyticsBenefitsSection() {
           style={{ paddingRight: containerPadding }}
         >
           {/* Counter pill with animated progress fill */}
-          <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-white/40 px-4 text-[14px] font-semibold shadow-sm">
+          <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-white/40 px-4 text-[14px] font-semibold shadow-sm">
             <span className="relative z-20 text-white">{counter}</span>
             <div
               key={progressKey}
