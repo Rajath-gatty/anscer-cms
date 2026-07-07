@@ -3,6 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { FadeLeft, FadeRight } from "../components/animation";
 import { imagePath } from "../components/home/assets";
 
 type CapabilityItem = {
@@ -116,7 +117,7 @@ export function TabbedCapabilities({
           </div>
         ) : (
           <>
-            <div className="mt-10 lg:hidden">
+            <FadeRight className="mt-10 lg:hidden">
               <AccordionList
                 items={items}
                 activeIndex={activeIndex}
@@ -125,10 +126,10 @@ export function TabbedCapabilities({
                 aspectRatio="aspect-[721/464]"
                 listClassName="min-h-[600px] sm:min-h-[680px] md:min-h-[820px]"
               />
-            </div>
+            </FadeRight>
 
             <div className="mt-10 hidden gap-4 lg:grid lg:grid-cols-2 lg:items-center">
-              <div className="flex max-w-100 flex-col gap-3">
+              <FadeRight className="flex max-w-100 flex-col gap-3">
                 {items.map((item, index) => {
                   const isActive = activeIndex === index;
                   return (
@@ -146,9 +147,9 @@ export function TabbedCapabilities({
                     </button>
                   );
                 })}
-              </div>
+              </FadeRight>
 
-              <div className="relative mt-8 lg:mt-0 mb-12">
+              <FadeLeft className="relative mt-8 lg:mt-0 mb-12">
                 <div className="relative aspect-[721/464] w-full overflow-visible">
                   {items.map((item, index) => (
                     <div
@@ -185,7 +186,7 @@ export function TabbedCapabilities({
                     </p>
                   </div>
                 </div>
-              </div>
+              </FadeLeft>
             </div>
           </>
         )}

@@ -40,7 +40,8 @@ const capabilities: Capability[] = [
     title: "Request Overview Analytics",
     copy: "Analyze all mission and transport requests generated across stations, production areas, and storage locations.",
     chipsIntro: "The Request Overview module provides detailed insights into:",
-    chipsOutro: "This data enables operators to identify operational patterns and optimize material flow processes.",
+    chipsOutro:
+      "This data enables operators to identify operational patterns and optimize material flow processes.",
     chips: [
       "Total request volume",
       "Completed and failed requests",
@@ -114,7 +115,7 @@ function getState(progress: number) {
 
   for (let i = 0; i < capabilities.length; i++) {
     const isLast = i === capabilities.length - 1;
-    const segLen = isLast ? 2.5 : 4; 
+    const segLen = isLast ? 2.5 : 4;
     const local = time - cursor;
     if (local < 0) break;
 
@@ -235,7 +236,7 @@ export function AnalyticsSection() {
         <div
           ref={scrollZoneRef}
           className="relative"
-          style={{ height: `calc(${PIN_SCROLL_SCREENS * 100}vh + 70vh)` }}
+          style={{ height: `calc(${PIN_SCROLL_SCREENS * 100}vh + 0vh)` }}
         >
           {/* Sticky stage */}
           <div
