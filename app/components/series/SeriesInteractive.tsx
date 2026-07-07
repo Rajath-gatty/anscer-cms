@@ -629,7 +629,7 @@ export function SeriesRobotSelector({
                         width={800}
                         height={400}
                         className={cn(
-                          "relative z-10 object-contain object-center drop-shadow-[0_34px_42px_rgba(1,31,64,.16)] md:h-[90%]",
+                          "relative z-10 md:translate-y-4 lg:translate-y-0 object-contain object-center md:h-[90%]",
                           selectorImageClass(activeProduct.name),
                         )}
                       />
@@ -866,20 +866,20 @@ function FloatingTags({
 function selectorImageClass(name: string) {
   switch (name) {
     case "AR 250":
-      return "scale-[0.84] translate-y-[8%]";
+      return "scale-[0.84] translate-y-[7%]";
     case "AR 500":
-      return "scale-[0.84] translate-y-[6%]";
+      return "scale-[0.84] translate-y-[7%]";
     case "AR 650":
       return "scale-[0.84] translate-y-[7%]";
     case "AR 1250":
-      return "scale-[0.86] translate-y-[8%]";
+      return "scale-[0.84] translate-y-[7%]";
     case "PSR 2000":
     case "PSR 2000R":
     case "PSR 1000R":
     case "PSR G2G":
       return "scale-[0.84] translate-y-[4%]";
     case "LBR 500":
-      return "scale-[0.8] translate-y-[4%]";
+      return "scale-[0.84] translate-y-[4%]";
     case "AGV 100":
       return "scale-[0.88] translate-y-[9%]";
     default:
