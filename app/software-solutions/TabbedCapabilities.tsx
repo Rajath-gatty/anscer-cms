@@ -2,7 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState, type Ref } from "react";
 import { imagePath } from "../components/home/assets";
 
 type CapabilityItem = {
@@ -44,7 +44,25 @@ export function TabbedCapabilities({
   variant?: "accordion" | "cards";
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [accordionHeight, setAccordionHeight] = useState<number>();
+  const accordionListRef = useRef<HTMLDivElement>(null);
   const activeItem = items[activeIndex];
+
+  useEffect(() => {
+    if (variant !== "accordion" || !accordionListRef.current) return;
+
+    const accordionList = accordionListRef.current;
+    const updateAccordionHeight = () => {
+      setAccordionHeight(Math.round(accordionList.getBoundingClientRect().height));
+    };
+
+    updateAccordionHeight();
+
+    const resizeObserver = new ResizeObserver(updateAccordionHeight);
+    resizeObserver.observe(accordionList);
+
+    return () => resizeObserver.disconnect();
+  }, [variant]);
 
   return (
     <section
@@ -90,14 +108,18 @@ export function TabbedCapabilities({
         {variant === "accordion" ? (
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
             <AccordionList
+              listRef={accordionListRef}
               items={items}
               activeIndex={activeIndex}
               setActiveIndex={setActiveIndex}
               aspectRatio="aspect-[4/3]"
-              listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-[860px] xl:min-h-[720px] 2xl:min-h-[700px]"
+              listClassName="min-h-[980px] sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
             />
 
-            <div className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block lg:h-[780px] xl:h-[660px] 2xl:h-[640px]">
+            <div
+              className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block"
+              style={accordionHeight ? { height: accordionHeight } : undefined}
+            >
               {items.map((item, index) => {
                 const isActive = activeIndex === index;
                 return (
@@ -149,7 +171,7 @@ export function TabbedCapabilities({
               </div>
 
               <div className="relative mt-8 lg:mt-0 mb-12">
-                <div className="relative aspect-[721/464] w-full overflow-visible">
+                <div className="relative aspect-721/464 w-full overflow-visible">
                   {items.map((item, index) => (
                     <div
                       key={item.title}
@@ -195,6 +217,7 @@ export function TabbedCapabilities({
 }
 
 function AccordionList({
+  listRef,
   items,
   activeIndex,
   setActiveIndex,
@@ -202,6 +225,7 @@ function AccordionList({
   aspectRatio = "aspect-[4/3]",
   listClassName = "",
 }: {
+  listRef?: Ref<HTMLDivElement>;
   items: CapabilityItem[];
   activeIndex: number;
   setActiveIndex: (idx: number) => void;
@@ -215,7 +239,7 @@ function AccordionList({
   }
 
   return (
-    <div className={`flex flex-col gap-3 ${listClassName}`}>
+    <div ref={listRef} className={`flex flex-col gap-3 ${listClassName}`}>
       {items.map((item, index) => {
         const isActive = activeIndex === index;
         return (
@@ -254,7 +278,7 @@ function AccordionList({
               }`}
             >
               <div className="overflow-hidden">
-                <div className="pt-[12px]">
+                <div className="pt-3">
                   <p className="max-w-140 text-sm leading-4 text-[#3a3a3a] md:text-base md:leading-6">
                     {item.copy}
                   </p>
