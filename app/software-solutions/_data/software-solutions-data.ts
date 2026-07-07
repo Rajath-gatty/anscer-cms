@@ -70,7 +70,7 @@ export const fleetCapabilities: CapabilityItem[] = [
   {
     title: "Multi-Robot Traffic Control",
     copy: "Coordinate and manage the movement of multiple robots operating simultaneously within the same environment. The ANSCER FMS intelligently controls robot traffic, optimizes routing paths, prevents congestion, and ensures safe navigation throughout the facility.",
-    image: "software_Multi-Robot_Traffic_Control.png",
+    image: "software_Multi-Robot_Traffic_Control-new.png",
   },
   {
     title: "Intelligent Task Allocation",

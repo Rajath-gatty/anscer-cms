@@ -53,8 +53,8 @@ const capabilities: Capability[] = [
   },
   {
     title: "Heatmaps",
-    copy: "Visualize operational incidents and traffic patterns across facility maps using intelligent heatmap analytics. The Heatmap module helps identify high-activity and high-risk areas within the facility.",
-    chipsIntro: "Displaying:",
+    copy: "Visualize operational incidents and traffic patterns across facility maps using intelligent heatmap analytics. The Heatmap module helps identify high-activity and high-risk areas within the facility by displaying:",
+    chipsIntro: "",
     chips: [
       "Emergency stop locations",
       "Robot errors",

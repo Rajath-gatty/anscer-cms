@@ -20,10 +20,10 @@ export function SoftwareCta() {
           <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] text-white md:text-[60px] md:leading-[110%]">
             Experience automation that understands your operations.
           </h2>
-          <p className="max-w-[850px] text-[14px] font-medium leading-5 text-white md:text-[18px] md:leading-8">
+          <p className="max-w-[850px] text-sm leading-5 text-white md:text-lg md:leading-8">
             Book your demo now and experience ANSCER in action.
           </p>
-          <ArrowButton target="/contact-us" className="h-[46px] px-5">
+          <ArrowButton target="/contact-us" className="h-11.5 px-5">
             Book a demo
           </ArrowButton>
         </FadeRight>

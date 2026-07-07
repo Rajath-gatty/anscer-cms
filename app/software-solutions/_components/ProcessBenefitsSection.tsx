@@ -24,9 +24,7 @@ export function ProcessBenefitsSection({
           BENEFITS
         </p>
         <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
-          Turning Industry Workflows Into
-          <br />
-          Autonomous Operations
+          Designed for Flexible and <br /> Scalable Automation
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           <Reveal
