@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { FadeUp } from "../components/animation";
 import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
 import { AnalyticsSection } from "./AnalyticsSection";
-import { InteractiveWorkflow } from "./InteractiveWorkflow";
 import { SoftwareTabs } from "./SoftwareTabs";
 import { TabbedCapabilities } from "./TabbedCapabilities";
 import { AnalyticsPlatformSection } from "./_components/AnalyticsPlatformSection";
 import { BenefitsSection } from "./_components/BenefitsSection";
 import { BusinessBenefitsSection } from "./_components/BusinessBenefitsSection";
 import { FleetManagementSection } from "./_components/FleetManagementSection";
+import InteractiveWorkflowV2 from "./_components/InteractiveWorkflowV2";
 import { ProcessBenefitsSection } from "./_components/ProcessBenefitsSection";
 import { ProductModule } from "./_components/ProductModule";
 import { SoftwareCta } from "./_components/SoftwareCta";
@@ -76,8 +76,10 @@ export default function SoftwareSolutionsPage() {
         <ProductModule {...processFlowManagerModule} />
       </FadeUp>
       <FadeUp>
-        <InteractiveWorkflow />
+        {/* <InteractiveWorkflow /> */}
+        <InteractiveWorkflowV2 />
       </FadeUp>
+
       <FadeUp>
         <ProcessBenefitsSection imagePosition="left" />
       </FadeUp>
