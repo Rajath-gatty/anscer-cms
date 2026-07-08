@@ -9,6 +9,7 @@ import { AnalyticsPlatformSection } from "./_components/AnalyticsPlatformSection
 import { BenefitsSection } from "./_components/BenefitsSection";
 import { BusinessBenefitsSection } from "./_components/BusinessBenefitsSection";
 import { FleetManagementSection } from "./_components/FleetManagementSection";
+import InteractiveWorkflowV2 from "./_components/InteractiveWorkflowV2";
 import { ProcessBenefitsSection } from "./_components/ProcessBenefitsSection";
 import { ProductModule } from "./_components/ProductModule";
 import { SoftwareCta } from "./_components/SoftwareCta";
@@ -78,6 +79,8 @@ export default function SoftwareSolutionsPage() {
       <FadeUp>
         <InteractiveWorkflow />
       </FadeUp>
+
+      <InteractiveWorkflowV2 />
       <FadeUp>
         <ProcessBenefitsSection imagePosition="left" />
       </FadeUp>
