@@ -7,7 +7,7 @@ export function SoftwareHero() {
   return (
     <section className="relative min-h-[calc(100svh-60px)] overflow-hidden bg-[#011f40] text-white md:min-h-[calc(100svh-110px)]">
       <Image
-        src={`${imagePath}Desktop---27.jpg`}
+        src={`${imagePath}software-hero.png`}
         alt=""
         fill
         priority
