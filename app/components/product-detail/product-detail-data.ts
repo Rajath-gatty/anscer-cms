@@ -535,7 +535,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "No cages",
           "No zone restrictions",
         ],
-        image: "individual-product/ar-250/ar-250-adf-1.jpg",
+        image: "individual-product/ar-250/ar-250-adf-1.png",
       },
       {
         title: "Modular Load Handling",
@@ -544,7 +544,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Six configurations",
           "One platform, multi-application deployment",
         ],
-        image: "individual-product/ar-250/ar-250-adf-2.jpg",
+        image: "individual-product/ar-250/ar-250-adf-2.png",
       },
       {
         title: "Autonomous Navigation",
@@ -552,7 +552,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Detects obstacles in time, reroutes autonomously without interruption",
           "No floor tape, no manual intervention, no downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-3.jpg",
+        image: "individual-product/ar-250/ar-250-adf-3.png",
       },
       {
         title: "Interoperable Architecture",
@@ -560,7 +560,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "VDA 5050 compliant",
           "Enables vendor-agnostic scalability",
         ],
-        image: "individual-product/ar-250/ar-250-adf-4.jpg",
+        image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
         title: "Real-Time Alerts & Status Indication",
@@ -568,7 +568,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Audio alerts for operator notification",
           "No screen dependency",
         ],
-        image: "individual-product/ar-250/ar-250-adf-5.jpg",
+        image: "individual-product/ar-250/ar-250-adf-5.png",
       },
       {
         title: "Multi-Side Status Lighting",
@@ -576,14 +576,14 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Front and rear LED indicators",
           "Workers know the robot's intent before it reaches them",
         ],
-        image: "individual-product/ar-250/ar-250-adf-6.jpg",
+        image: "individual-product/ar-250/ar-250-adf-6.png",
       },
       {
         title: "Opportunity Charging",
         points: [
           "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-7.jpg",
+        image: "individual-product/ar-250/ar-250-adf-7.png",
       },
       {
         title: "Built-In Mission Creator",
@@ -591,7 +591,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Configure tasks, update routes, and adapt to layout changes on the fly",
           "No programmer required, just an intuitive interface your team can own",
         ],
-        image: "individual-product/ar-250/ar-250-adf-8.jpg",
+        image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
     useCases: arUseCases,
@@ -719,7 +719,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "No cages",
           "No zone restrictions",
         ],
-        image: "individual-product/ar-250/ar-250-adf-1.jpg",
+        image: "individual-product/ar-250/ar-250-adf-1.png",
       },
       {
         title: "Modular Load Handling",
@@ -728,7 +728,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Six configurations",
           "One platform, multi-application deployment",
         ],
-        image: "individual-product/ar-250/ar-250-adf-2.jpg",
+        image: "individual-product/ar-250/ar-250-adf-2.png",
       },
       {
         title: "Autonomous Navigation",
@@ -736,7 +736,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Detects obstacles in time, reroutes autonomously without interruption",
           "No floor tape, no manual intervention, no downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-3.jpg",
+        image: "individual-product/ar-250/ar-250-adf-3.png",
       },
       {
         title: "Interoperable Architecture",
@@ -744,7 +744,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "VDA 5050 compliant",
           "Enables vendor-agnostic scalability",
         ],
-        image: "individual-product/ar-250/ar-250-adf-4.jpg",
+        image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
         title: "Real-Time Alerts & Status Indication",
@@ -752,7 +752,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Audio alerts for operator notification",
           "No screen dependency",
         ],
-        image: "individual-product/ar-250/ar-250-adf-5.jpg",
+        image: "individual-product/ar-250/ar-250-adf-5.png",
       },
       {
         title: "Multi-Side Status Lighting",
@@ -760,14 +760,14 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Front and rear LED indicators",
           "Workers know the robot's intent before it reaches them",
         ],
-        image: "individual-product/ar-250/ar-250-adf-6.jpg",
+        image: "individual-product/ar-250/ar-250-adf-6.png",
       },
       {
         title: "Opportunity Charging",
         points: [
           "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-7.jpg",
+        image: "individual-product/ar-250/ar-250-adf-7.png",
       },
       {
         title: "Built-In Mission Creator",
@@ -775,7 +775,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Configure tasks, update routes, and adapt to layout changes on the fly",
           "No programmer required, just an intuitive interface your team can own",
         ],
-        image: "individual-product/ar-250/ar-250-adf-8.jpg",
+        image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
     useCases: arUseCases,
@@ -904,7 +904,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "No cages",
           "No zone restrictions",
         ],
-        image: "individual-product/ar-250/ar-250-adf-1.jpg",
+        image: "individual-product/ar-250/ar-250-adf-1.png",
       },
       {
         title: "Modular Load Handling",
@@ -913,7 +913,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Seven configurations",
           "One platform, multi-application deployment",
         ],
-        image: "individual-product/ar-250/ar-250-adf-2.jpg",
+        image: "individual-product/ar-250/ar-250-adf-2.png",
       },
       {
         title: "Autonomous Navigation",
@@ -921,7 +921,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Detects obstacles in time, reroutes autonomously without interruption",
           "No floor tape, no manual intervention, no downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-3.jpg",
+        image: "individual-product/ar-250/ar-250-adf-3.png",
       },
       {
         title: "Interoperable Architecture",
@@ -929,7 +929,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "VDA 5050 compliant",
           "Enables vendor-agnostic scalability",
         ],
-        image: "individual-product/ar-250/ar-250-adf-4.jpg",
+        image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
         title: "Real-Time Alerts & Status Indication",
@@ -937,7 +937,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Audio alerts for operator notification",
           "No screen dependency",
         ],
-        image: "individual-product/ar-250/ar-250-adf-5.jpg",
+        image: "individual-product/ar-250/ar-250-adf-5.png",
       },
       {
         title: "Multi-Side Status Lighting",
@@ -945,14 +945,14 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Front and rear LED indicators",
           "Workers know the robot's intent before it reaches them",
         ],
-        image: "individual-product/ar-250/ar-250-adf-6.jpg",
+        image: "individual-product/ar-250/ar-250-adf-6.png",
       },
       {
         title: "Opportunity Charging",
         points: [
           "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-7.jpg",
+        image: "individual-product/ar-250/ar-250-adf-7.png",
       },
       {
         title: "Built-In Mission Creator",
@@ -960,7 +960,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Configure tasks, update routes, and adapt to layout changes on the fly",
           "No programmer required, just an intuitive interface your team can own",
         ],
-        image: "individual-product/ar-250/ar-250-adf-8.jpg",
+        image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
     useCases: arUseCases,
@@ -1080,6 +1080,73 @@ export const productDetails: Record<string, ProductDetailData> = {
         },
       ],
     },
+    advancedFeatures: [
+      {
+        title: "Human-safe Operations",
+        points: [
+          "PLd category 3 certified",
+          "Laser safety fields respond before a person gets close",
+          "No cages",
+          "No zone restrictions",
+        ],
+        image: "individual-product/psr-2000/psr-2000-adf-1.png",
+      },
+      {
+        title: "Precision Pallet Stacking",
+        points: [
+          "1.6 m (62.9 in) standard lift height, configurable up to 3.4 m (133.5 in)",
+          "2000 kg (4409.2 lbs) payload capacity",
+        ],
+        image: "individual-product/psr-2000/psr-2000-adf-2.png",
+      },
+      {
+        title: "Autonomous Navigation",
+        points: [
+          "Detects obstacles in time, reroutes autonomously without interruption",
+          "No floor tape, no manual intervention, no downtime",
+        ],
+        image: "individual-product/psr-2000/psr-2000-adf-3.png",
+      },
+      {
+        title: "Interoperable Architecture",
+        points: [
+          "VDA 5050 compliant",
+          "Enables vendor-agnostic scalability",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-4.png",
+      },
+      {
+        title: "Real-Time Alerts & Status Indication",
+        points: [
+          "Audio alerts for operator notification",
+          "No screen dependency",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-5.png",
+      },
+      {
+        title: "Multi-Side Status Lighting",
+        points: [
+          "LED indicators",
+          "Workers know the robot's intent before it reaches them",
+        ],
+        image: "individual-product/psr-2000/psr-2000-adf-6.png",
+      },
+      {
+        title: "Opportunity Charging",
+        points: [
+          "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-7.png",
+      },
+      {
+        title: "Built-In Mission Creator",
+        points: [
+          "Configure tasks, update routes, and adapt to layout changes on the fly",
+          "No programmer required, just an intuitive interface your team can own",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-8.png",
+      },
+    ],
     useCases: psrUseCases,
     faqs: [
       {
@@ -1406,6 +1473,73 @@ export const productDetails: Record<string, ProductDetailData> = {
         },
       ],
     },
+    advancedFeatures: [
+      {
+        title: "Human-safe Operations",
+        points: [
+          "PLd category 3 certified",
+          "Laser safety fields respond before a person gets close",
+          "No cages",
+          "No zone restrictions",
+        ],
+        image: "individual-product/psr-g2g/psr-g2g-adf-1.png",
+      },
+      {
+        title: "Precision Pallet Stacking",
+        points: [
+          "400 mm (15.75 in) standard lift height",
+          "2000 kg (4409.2 lbs) payload capacity",
+        ],
+        image: "individual-product/psr-g2g/psr-g2g-adf-2.png",
+      },
+      {
+        title: "Autonomous Navigation",
+        points: [
+          "Detects obstacles in time, reroutes autonomously without interruption",
+          "No floor tape, no manual intervention, no downtime",
+        ],
+        image: "individual-product/psr-g2g/psr-g2g-adf-3.png",
+      },
+      {
+        title: "Interoperable Architecture",
+        points: [
+          "VDA 5050 compliant",
+          "Enables vendor-agnostic scalability",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-4.png",
+      },
+      {
+        title: "Real-Time Alerts & Status Indication",
+        points: [
+          "Audio alerts for operator notification",
+          "No screen dependency",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-5.png",
+      },
+      {
+        title: "Multi-Side Status Lighting",
+        points: [
+          "LED indicators",
+          "Workers know the robot's intent before it reaches them",
+        ],
+        image: "individual-product/psr-g2g/psr-g2g-adf-6.png",
+      },
+      {
+        title: "Opportunity Charging",
+        points: [
+          "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-7.png",
+      },
+      {
+        title: "Built-In Mission Creator",
+        points: [
+          "Configure tasks, update routes, and adapt to layout changes on the fly",
+          "No programmer required, just an intuitive interface your team can own",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-8.png",
+      },
+    ],
     useCases: psrUseCases,
     faqs: [
       {
@@ -1718,3 +1852,4 @@ export const productDetails: Record<string, ProductDetailData> = {
     ],
   },
 };
+
