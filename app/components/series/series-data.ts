@@ -274,7 +274,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
       {
         title: "Low-Clearance Trolley Handling",
         copy: "Tows trolleys through spaces with limited overhead or structural clearance access.",
-        image: "Frame-427322848.jpg",
+        image: "low-clearance-trolley-latest.jpg",
       },
       {
         title: "Raw Material/Inbound Handling",
@@ -289,7 +289,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
       {
         title: "Small Load & Cart Transport",
         copy: "Moves lightweight individual loads or small carts for frequent internal transport.",
-        image: "updated-image.jpg",
+        image: "carton-transfer-latest.jpg",
       },
       {
         title: "Dock/Inbound to Storage",
