@@ -66,7 +66,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
   return (
     <section
       id="applications"
-      className="overflow-hidden bg-[linear-gradient(74.23deg,#011F40_-1.19%,#005EAD_120.16%)] py-15"
+      className="overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.06),rgba(255,255,255,0.06)),linear-gradient(74.23deg,#011F40_-1.19%,#005EAD_120.16%)] py-[60px]"
     >
       {/* Global CSS keyframe declaration injection safely contained */}
       <style>{`
@@ -96,7 +96,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
               data.slug === "agv-series" ? "md:hidden" : "md:flex",
             )}
           >
-            <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+            <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
               <span className="relative z-20 text-white">{counter}</span>
               <div
                 key={progressKey} // Native React diffing key component reset
@@ -189,7 +189,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
 
       {/* Mobile Controls */}
       <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
-        <span className="relative grid h-8 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
+        <span className="relative grid h-11 min-w-24 place-items-center overflow-hidden rounded-full border border-[#9bb9d2] px-4 text-[14px] font-semibold shadow-sm">
           <span className="relative z-20 text-white">{counter}</span>
           <div
             key={progressKey}
