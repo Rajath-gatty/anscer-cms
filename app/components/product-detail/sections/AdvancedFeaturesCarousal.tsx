@@ -147,11 +147,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
           {data?.advancedFeatures && data.advancedFeatures.map((features) => (
             <SwiperSlide
               key={features.title}
-              className={cn(
-                data.slug === "agv-series"
-                  ? "!w-[390px] md:!w-[clamp(290px,26.4vw,416px)] lg:!w-[416px]"
-                  : "!w-[min(390px,82vw)]",
-              )}
+              className="!w-[min(350px,82vw)]"
             >
               <article className="flex flex-col gap-6 p-6 h-[460px] w-full rounded-xl border bg-white">
                 {features.image ? (
@@ -160,7 +156,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
                     alt={features.title}
                     width={1040}
                     height={900}
-                    sizes="(max-width: 640px) 82vw, 390px"
+                    sizes="(max-width: 640px) 82vw, 350px"
                     className="object-contain h-[200px] w-full shrink-0"
                   />
                 ) : null}
