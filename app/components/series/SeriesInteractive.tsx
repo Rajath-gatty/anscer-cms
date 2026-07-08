@@ -265,9 +265,9 @@ export function SeriesRobotSelector({
             viewport={{ once: true, margin: "-80px" }}
             transition={transition}
           >
-            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+            {/* <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
               Modals
-            </p>
+            </p> */}
             <h2 className="mt-5 text-[28px] font-bold leading-[1.08] tracking-[-0.01em] md:text-[36px]">
               Explore <span className="text-[#005ead]">{data.eyebrow}</span>{" "}
               Robots

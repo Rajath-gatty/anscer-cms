@@ -74,9 +74,7 @@ export function ProductProfileRequestDialog({
 
     if (!company) nextErrors.company = "Company name is required.";
 
-    if (!contactNumber) {
-      nextErrors.contactNumber = "Contact number is required.";
-    } else {
+    if (contactNumber) {
       const phoneError = validatePhoneNumber(contactNumber);
       if (phoneError) nextErrors.contactNumber = phoneError;
     }
@@ -171,7 +169,7 @@ export function ProductProfileRequestDialog({
               <DialogTitle className="text-[30px] font-bold leading-tight tracking-tight text-[#011f40] sm:text-[36px]">
                 Request Product Profile
               </DialogTitle>
-              <DialogDescription className="max-w-md text-sm leading-6 text-slate-600 sm:text-base">
+              <DialogDescription className="max-w-sm text-sm leading-6 text-slate-600 sm:text-base">
                 Complete the form below and our team will send the requested
                 product datasheet to your email.
               </DialogDescription>
@@ -241,7 +239,7 @@ export function ProductProfileRequestDialog({
               </div>
 
               <label className="text-sm font-medium uppercase tracking-wide text-slate-700">
-                Contact number *
+                Contact number
                 <input
                   name="contactNumber"
                   type="number"
