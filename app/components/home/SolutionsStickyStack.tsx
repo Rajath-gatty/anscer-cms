@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
-import { imagePath } from "./assets";
+import { imagePath, videoPath } from "./assets";
 import { ArrowButton, Kicker } from "./SectionPrimitives";
 
 const solutions = [
@@ -24,7 +24,7 @@ const solutions = [
     image: "our-solutions-image-2.png",
     imageHeight: 1024,
     video:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Trolley%20movement%20With%20bg.mp4",
+      "trolley-movement-latest.mp4",
   },
   {
     title: "Tugging",
@@ -242,7 +242,7 @@ function SolutionSlide({
           playsInline
           preload="metadata"
         >
-          <source src={solution.video} type="video/mp4" />
+          <source src={solution.video.startsWith('https') ? solution.video : `${videoPath}${solution.video}`} type="video/mp4" />
         </video>
       </div>
     </article>

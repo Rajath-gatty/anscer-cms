@@ -629,7 +629,7 @@ export function SeriesRobotSelector({
                         width={800}
                         height={400}
                         className={cn(
-                          "relative z-10 md:translate-y-4 lg:translate-y-0 object-contain object-bottom md:h-[90%]",
+                          "relative z-10 object-contain object-bottom md:h-[90%]",
                           selectorImageClass(activeProduct.name),
                         )}
                       />
@@ -866,22 +866,22 @@ function FloatingTags({
 function selectorImageClass(name: string) {
   switch (name) {
     case "AR 250":
-      return "scale-[0.84] translate-y-[11%]";
+      return "scale-[0.84] translate-y-[14%] 2xl:translate-y-[8%]";
     case "AR 500":
-      return "scale-[0.84] translate-y-[11%]";
+      return "scale-[0.84] translate-y-[14%] 2xl:translate-y-[8%]";
     case "AR 650":
-      return "scale-[0.84] translate-y-[11%]";
+      return "scale-[0.84] translate-y-[14%] 2xl:translate-y-[8%]";
     case "AR 1250":
-      return "scale-[0.84] translate-y-[11%]";
+      return "scale-[0.84] translate-y-[14%] 2xl:translate-y-[8%]";
     case "PSR 2000":
     case "PSR 2000R":
     case "PSR 1000R":
     case "PSR G2G":
-      return "scale-[0.84] translate-y-[4%]";
+      return "scale-[0.84] translate-y-[4%] 2xl:translate-y-[2%]";
     case "LBR 500":
-      return "scale-[0.84] translate-y-[4%]";
+      return "scale-[0.84] translate-y-[4%] 2xl:translate-y-[2%]";
     case "AGV 100":
-      return "scale-[0.88] translate-y-[9%]";
+      return "scale-[0.88] translate-y-[0%] 2xl:-translate-y-[11%]";
     default:
       return "scale-[1.2] translate-y-[8%]";
   }
