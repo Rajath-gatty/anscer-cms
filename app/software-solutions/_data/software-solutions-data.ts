@@ -70,7 +70,7 @@ export const fleetCapabilities: CapabilityItem[] = [
   {
     title: "Multi-Robot Traffic Control",
     copy: "Coordinate and manage the movement of multiple robots operating simultaneously within the same environment. The ANSCER FMS intelligently controls robot traffic, optimizes routing paths, prevents congestion, and ensures safe navigation throughout the facility.",
-    image: "software/software_Multi-Robot_Traffic_Control.png",
+    image: "Multi-Robot Traffic Control 2.mp4",
   },
   {
     title: "Intelligent Task Allocation",
@@ -90,7 +90,7 @@ export const fleetCapabilities: CapabilityItem[] = [
   {
     title: "Autonomous Fleet Orchestration",
     copy: "Manage robot operations autonomously across production lines, warehouses, staging zones, and logistics areas. The FMS coordinates robot activities to ensure smooth material flow and uninterrupted operations.",
-    image: "software/software_Autonomous_Fleet_Orchestration.png",
+    image: "Autonomous Fleet Orchestration.mp4",
   },
   {
     title: "Real-Time Monitoring & Control",
@@ -100,7 +100,7 @@ export const fleetCapabilities: CapabilityItem[] = [
   {
     title: "Web-Based User Interface",
     copy: "Access the ANSCER FMS through a modern browser-based interface without requiring specialized software installation. The platform is compatible with Google Chrome, Mozilla Firefox, Microsoft Edge, Apple Safari",
-    image: "software/web-based-user-interface.png",
+    image: "Web-Based User Interface.mp4",
   },
 ];
 
