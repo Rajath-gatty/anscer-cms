@@ -165,7 +165,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
                   />
                 ) : null}
                 <div className="p-6 text-white h-[175px]">
-                  <h3 className="text-xl font-bold leading-tight md:text-2xl text-[#005ead]">
+                  <h3 className="text-xl font-bold leading-tight text-[#005ead]">
                     {features.title}
                   </h3>
                   <div className="flex flex-col justify-center gap-1 mt-3 ">
