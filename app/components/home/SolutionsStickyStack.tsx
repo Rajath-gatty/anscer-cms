@@ -201,7 +201,7 @@ function SolutionSlide({
       aria-hidden={activeIndex !== index}
     >
       <div className="relative z-10 max-w-none -translate-y-8">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 4xl:pb-5">
           <Image
             src={`${imagePath}${solution.icon}`}
             alt=""
@@ -209,14 +209,14 @@ function SolutionSlide({
             height={42}
             className="h-[42px] w-auto"
           />
-          <h3 className="text-xs font-bold uppercase text-[#005ead]">
+          <h3 className="text-xs 3xl:text-base  font-bold uppercase text-[#005ead]">
             {solution.title}
           </h3>
         </div>
-        <p className="mt-[18px] max-w-[640px] text-base leading-[22px] text-[#3a3a3a]">
+        <p className="mt-[18px] max-w-[640px] text-base leading-[22px] text-[#3a3a3a] 4xl:pb-5">
           {solution.copy}
         </p>
-        <div className="mt-[18px] w-[350px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee]">
+        <div className="mt-[18px] w-[350px] 4xl:w-[500px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee] ">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
@@ -227,7 +227,7 @@ function SolutionSlide({
           />
         </div>
         {index === 2 ? (
-          <div className="mt-5">
+          <div className="mt-5 4xl:mt-12">
             <ArrowButton>Talk to us</ArrowButton>
           </div>
         ) : null}
@@ -235,7 +235,7 @@ function SolutionSlide({
 
       <div className="relative flex min-h-[485px] items-start justify-start overflow-hidden">
         <video
-          className="size-[485px] max-h-full max-w-full object-contain"
+          className="size-[485px] 4xl:size-[550px] max-h-full max-w-full object-contain"
           autoPlay
           loop
           muted
