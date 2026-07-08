@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { FadeUp } from "../components/animation";
 import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
 import { AnalyticsSection } from "./AnalyticsSection";
-import { InteractiveWorkflow } from "./InteractiveWorkflow";
 import { SoftwareTabs } from "./SoftwareTabs";
 import { TabbedCapabilities } from "./TabbedCapabilities";
 import { AnalyticsPlatformSection } from "./_components/AnalyticsPlatformSection";
@@ -77,10 +76,10 @@ export default function SoftwareSolutionsPage() {
         <ProductModule {...processFlowManagerModule} />
       </FadeUp>
       <FadeUp>
-        <InteractiveWorkflow />
+        {/* <InteractiveWorkflow /> */}
+        <InteractiveWorkflowV2 />
       </FadeUp>
 
-      <InteractiveWorkflowV2 />
       <FadeUp>
         <ProcessBenefitsSection imagePosition="left" />
       </FadeUp>

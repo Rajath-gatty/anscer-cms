@@ -257,7 +257,7 @@ function InteractiveWorkflowV2() {
                   </div>
                 </div>
                 <div
-                  className={`flex md:items-center w-full cursor-pointer gap-3 rounded-[12px] px-3 py-5 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${
+                  className={`flex md:items-center w-full cursor-pointer gap-3 rounded-[12px] px-3 py-5 text-left transition-all duration-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${
                     isActive(index)
                       ? "bg-linear-to-r from-[#005EAD1A] to-[#005EAD00] md:h-[94px] h-[260px]"
                       : "bg-transparent h-[94px]"
