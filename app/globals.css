@@ -88,6 +88,11 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@theme {
+  --breakpoint-3xl: 120rem;
+  --breakpoint-4xl: 130rem;
+}
+
 /* Ensure interactive buttons/anchors are on top of decorative overlays so clicks register */
 a[class*="group/btn"],
 a[class*="inline-flex"][class*="h-10"],
