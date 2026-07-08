@@ -128,13 +128,15 @@ export function ProductHeroSlider() {
   return (
     <section
       className="overflow-hidden relative"
+    >
+      <div 
+      className="absolute inset-0 w-full h-full"
       style={{
         backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
-      }}
-    >
+      }}></div>
       <div className="absolute inset-0 z-0 bg-linear-to-r from-white from-25% to-transparent"></div>
       <div className="site-container grid min-h-[88svh]  items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16">
         <div>
@@ -197,14 +199,16 @@ export function ProductHeroSlider() {
         </div>
 
         <div className="relative self-stretch min-h-[300px] md:min-h-[500px] w-full">
-          <div className="absolute top-0 right-0 lg:right-0 [@media(min-width:1184px)]:right-20 2xl:right-0  bottom-0 md:bottom-[-40px] w-full">
+          <div className="absolute right-0 lg:right-0 [@media(min-width:1184px)]:right-20 md:bottom-0 lg:-bottom-8 2xl:right-0 2xl:-bottom-16  w-full h-full">
             <Image
               src={`${imagePath}products/grab.png`}
               alt="ANSCER Robot"
-              fill
+              width={1080}
+              height={1000}
+              quality={95}
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-contain object-right-bottom drop-shadow-[0_26px_40px_rgba(1,31,64,.14)]"
+              className="object-contain object-right-bottom w-full h-full"
             />
           </div>
         </div>

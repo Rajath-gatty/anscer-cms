@@ -203,7 +203,7 @@ function FeatureCard({
 
 function SeriesFaqs({ data }: { data: SeriesPageData }) {
   return (
-    <section className="bg-[#fafafa] py-14">
+    <section className="bg-[#fafafa] py-14 lg:py-24">
       <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">
         <div>
           <h2 className="text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">
