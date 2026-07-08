@@ -319,18 +319,6 @@ function InteractiveWorkflowV2() {
                 </div>
               </div>
             ))}
-            {/* <div className="relative aspect-[668/424] w-full">
-              <Image
-                src={`${imagePath}${steps[active].image}`}
-                alt={`${steps[active].title} workflow - Process Flow Manager`}
-                fill
-                quality={95}
-                sizes="(max-width: 1024px) 100vw, 800px"
-                className={`object-cover workflow-image ${
-                  isActive(active) ? "active" : "inactive"
-                }`}
-              />
-            </div> */}
           </div>
         </div>
       </div>
