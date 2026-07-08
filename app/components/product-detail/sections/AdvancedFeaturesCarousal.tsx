@@ -66,7 +66,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
   return (
     <section
       id="applications"
-      className="overflow-hidden bg-linear-to-r from-[#011F40] to-[#005ead] py-16 md:py-24"
+      className="overflow-hidden bg-[linear-gradient(74.23deg,#011F40_-1.19%,#005EAD_120.16%)] py-15"
     >
       {/* Global CSS keyframe declaration injection safely contained */}
       <style>{`
@@ -153,7 +153,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
                   : "!w-[min(390px,82vw)]",
               )}
             >
-              <article className="relative h-[460px] w-full overflow-hidden rounded-lg bg-white">
+              <article className="flex flex-col gap-6 p-6 h-[460px] w-full rounded-xl border bg-white">
                 {features.image ? (
                   <Image
                     src={`${imagePath}${features.image}`}
@@ -161,22 +161,24 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
                     width={1040}
                     height={900}
                     sizes="(max-width: 640px) 82vw, 390px"
-                    className="object-contain h-[240px]"
+                    className="object-contain h-[200px] w-full shrink-0"
                   />
                 ) : null}
-                <div className="p-6 text-white h-[175px]">
-                  <h3 className="text-xl font-bold leading-tight md:text-2xl text-[#005ead]">
-                    {features.title}
-                  </h3>
-                  <div className="flex flex-col justify-center gap-1 mt-3 ">
-                    {features.points.map((point, idx) => (
-                    <div key={idx} className="flex gap-3 items-start">
-                        <CircleCheck size={16} className="text-[#011F40] shrink-0 mt-1" />
-                        <p className="text-sm leading-5 text-[#011F40] md:text-base md:leading-6">
-                        {point}
-                        </p>
+                <div className="flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 className="text-xl font-bold leading-tight text-[#005ead]">
+                      {features.title}
+                    </h3>
+                    <div className="flex flex-col justify-center gap-1 mt-3">
+                      {features.points.map((point, idx) => (
+                        <div key={idx} className="flex gap-3 items-start">
+                          <CircleCheck size={16} className="text-[#011F40] shrink-0 mt-1" />
+                          <p className="text-sm leading-5 text-[#011F40] md:text-base md:leading-6">
+                            {point}
+                          </p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
                   </div>
                 </div>
               </article>

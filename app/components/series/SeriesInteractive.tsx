@@ -866,13 +866,13 @@ function FloatingTags({
 function selectorImageClass(name: string) {
   switch (name) {
     case "AR 250":
-      return "scale-[0.84] translate-y-[7%]";
+      return "scale-[0.84] translate-y-[11%]";
     case "AR 500":
-      return "scale-[0.84] translate-y-[7%]";
+      return "scale-[0.84] translate-y-[11%]";
     case "AR 650":
-      return "scale-[0.84] translate-y-[7%]";
+      return "scale-[0.84] translate-y-[11%]";
     case "AR 1250":
-      return "scale-[0.84] translate-y-[7%]";
+      return "scale-[0.84] translate-y-[11%]";
     case "PSR 2000":
     case "PSR 2000R":
     case "PSR 1000R":

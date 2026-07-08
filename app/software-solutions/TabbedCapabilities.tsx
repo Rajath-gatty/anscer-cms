@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState, type Ref } from "react";
 import { FadeLeft, FadeRight } from "../components/animation";
-import { imagePath } from "../components/home/assets";
+import { imagePath, videoPath } from "../components/home/assets";
 
 type CapabilityItem = {
   title: string;
@@ -191,15 +191,26 @@ export function TabbedCapabilities({
                           : "opacity-0 scale-[0.98] pointer-events-none"
                       }`}
                     >
-                      <Image
-                        src={`${imagePath}${item.image}`}
-                        alt={item.title}
-                        fill
-                        quality={100}
-                        sizes="(max-width: 1024px) 100vw, 720px"
-                        className="object-contain"
-                        priority={index === 0}
-                      />
+                      {item.image.endsWith(".mp4") ? (
+                        <video
+                          src={`${videoPath}${item.image}`}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="h-full w-full object-contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`${imagePath}${item.image}`}
+                          alt={item.title}
+                          fill
+                          quality={100}
+                          sizes="(max-width: 1024px) 100vw, 720px"
+                          className="object-contain"
+                          priority={index === 0}
+                        />
+                      )}
                     </div>
                   ))}
 
@@ -317,6 +328,19 @@ function CapabilityImage({
   isActive: boolean;
 }) {
   const layeredImage = layeredCapabilityImages[item.title];
+
+  if (item.image.endsWith(".mp4")) {
+    return (
+      <video
+        src={`${videoPath}${item.image}`}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="h-full w-full object-cover object-[50%_20%]"
+      />
+    );
+  }
 
   if (!layeredImage) {
     return (
