@@ -228,6 +228,10 @@ function InteractiveWorkflowV2() {
         </div>
         <div className="grid relative md:grid-cols-2 gap-6 mt-8">
           <div className="absolute top-0 left-2.5 h-full w-0.5 rounded bg-[#011f40] opacity-30"></div>
+          <div
+            className="absolute top-0 left-2.5  w-0.5 rounded bg-[#005EAD] transition-all duration-600"
+            style={{ height: `${(active + 1) * (100 / steps.length)}%` }}
+          ></div>
           <div className="flex flex-col h-full justify-between gap-4 z-10">
             {steps.map((step, index) => (
               <div
@@ -235,13 +239,13 @@ function InteractiveWorkflowV2() {
                 onClick={() => setActive(index)}
                 key={index}
               >
-                <div>
+                <div id={`step-${index}`}>
                   <div className="relative flex size-6 items-center justify-center">
                     <div
                       className={`absolute z-0 size-[25px] rounded-full bg-white`}
                     />
                     <div
-                      className={`absolute size-[23px] z-1 rounded-full border border-[#005ead] transition-all duration-300 ${
+                      className={`absolute size-[23px] z-1 rounded-full border border-[#005EAD] transition-all duration-300 ${
                         isActive(index)
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-90"
@@ -250,7 +254,7 @@ function InteractiveWorkflowV2() {
                     <div
                       className={`size-[11.33px] z-1 rounded-full transition-all duration-300 ${
                         isActive(index)
-                          ? "bg-[#005ead] opacity-100"
+                          ? "bg-[#005EAD] opacity-100"
                           : "bg-[#011f40] opacity-30"
                       }`}
                     />
