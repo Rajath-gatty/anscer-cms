@@ -504,7 +504,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "AGV 100",
         description:
           "QR-guided vehicle delivering reliable point-to-point transport for efficient material flow.",
-        image: "agv-100-product-image-latest.png",
+        image: "series/agv/agv-100.png",
         bgText: "agv-background-text.png",
         href: "/agv-series/agv-100",
         tags: ["Lifting", "Sorting"],

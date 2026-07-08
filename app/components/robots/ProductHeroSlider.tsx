@@ -197,7 +197,7 @@ export function ProductHeroSlider() {
         </div>
 
         <div className="relative self-stretch min-h-[300px] md:min-h-[500px] w-full">
-          <div className="absolute top-0 left-0 right-0 bottom-0 md:bottom-[-40px] w-full">
+          <div className="absolute top-0 right-0 lg:right-0 [@media(min-width:1184px)]:right-20 2xl:right-0  bottom-0 md:bottom-[-40px] w-full">
             <Image
               src={`${imagePath}products/grab.png`}
               alt="ANSCER Robot"
