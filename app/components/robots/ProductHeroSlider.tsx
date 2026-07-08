@@ -126,17 +126,16 @@ export function ProductHeroSlider() {
   }, [activeIndex]);
 
   return (
-    <section
-      className="overflow-hidden relative"
-    >
-      <div 
-      className="absolute inset-0 w-full h-full"
-      style={{
-        backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-      }}></div>
+    <section className="overflow-hidden relative">
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url('${imagePath}/products/hero-bg.png')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center bottom",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
       <div className="absolute inset-0 z-0 bg-linear-to-r from-white from-25% to-transparent"></div>
       <div className="site-container grid min-h-[88svh]  items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16">
         <div>
@@ -162,11 +161,7 @@ export function ProductHeroSlider() {
               automation solutions engineered to transform your operations.
             </p>
           </ScrollReveal>
-          <ArrowButton
-            as="a"
-            href="#robot-series"
-            className="mt-7 font-bold"
-          >
+          <ArrowButton as="a" href="#robot-series" className="mt-7 font-bold">
             Explore
           </ArrowButton>
           <div className="mt-8 flex items-center gap-3">
@@ -199,7 +194,7 @@ export function ProductHeroSlider() {
         </div>
 
         <div className="relative self-stretch min-h-[300px] md:min-h-[500px] w-full">
-          <div className="absolute right-0 lg:right-0 [@media(min-width:1184px)]:right-20 md:bottom-0 lg:-bottom-8 2xl:right-0 2xl:-bottom-16  w-full h-full">
+          <div className="absolute right-0 lg:right-0 [@media(max-width:1184px)]:right-20 md:bottom-0 lg:-bottom-8 2xl:right-0 2xl:-bottom-16 4xl:bottom-[5%] aligh-items-right text-right  w-full md:max-w-[450px] h-full">
             <Image
               src={`${imagePath}products/grab.png`}
               alt="ANSCER Robot"
@@ -207,7 +202,7 @@ export function ProductHeroSlider() {
               height={1000}
               quality={95}
               priority
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 650px) 100vw, 50vw"
               className="object-contain object-right-bottom w-full h-full"
             />
           </div>
