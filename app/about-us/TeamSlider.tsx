@@ -175,10 +175,7 @@ export function TeamSlider({
               ? false
               : { delay: AUTOPLAY_DELAY, disableOnInteraction: false }
           }
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
+          navigation={true}
           onBeforeInit={(swiper) => {
             if (
               typeof swiper.params.navigation !== "boolean" &&
