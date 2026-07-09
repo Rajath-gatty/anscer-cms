@@ -1,7 +1,5 @@
 import { Code, ExternalLink, Layers, Network, UserCircle2 } from "lucide-react";
-import Image from "next/image";
 import { FadeLeft, FadeRight } from "../../components/animation";
-import { imagePath } from "../../components/home/assets";
 
 export function BusinessBenefitsSection() {
   return (
@@ -100,14 +98,15 @@ export function BusinessBenefitsSection() {
             className="relative order-1 min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef] sm:min-h-[440px] lg:order-2"
             delay={0.08}
           >
-            <Image
+            {/* <Image
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt=""
               fill
               quality={95}
               sizes="(max-width: 1024px) 100vw, 560px"
               className="object-cover"
-            />
+            /> */}
+            <div className="w-full h-full bg-[#005EAD]/20"></div>
           </FadeLeft>
         </div>
       </div>
