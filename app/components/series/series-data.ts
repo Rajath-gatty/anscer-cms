@@ -297,7 +297,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         image: "Frame-427322855.jpg",
       },
       {
-        title: "Storage/Rack to Outbound",
+        title: "Storage to Outbound",
         copy: "Retrieves stored or racked goods and transports them to outbound dispatch staging.",
         image: "Frame-427322852.jpg",
       },

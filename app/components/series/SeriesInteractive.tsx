@@ -615,6 +615,7 @@ export function SeriesRobotSelector({
                         src={`${imagePath}${activeProduct.image}`}
                         alt={activeProduct.name}
                         loading="eager"
+                        priority
                         width={750}
                         height={400}
                         className={cn(
@@ -626,6 +627,7 @@ export function SeriesRobotSelector({
                       <Image
                         src={`${imagePath}${activeProduct.image}`}
                         alt={activeProduct.name}
+                        loading="eager"
                         width={800}
                         height={400}
                         className={cn(
@@ -637,6 +639,8 @@ export function SeriesRobotSelector({
                       <Image
                         src={`${imagePath}${activeProduct.image}`}
                         alt={activeProduct.name}
+                        loading="eager"
+                        priority
                         fill
                         sizes="(max-width: 1024px) 110vw, 1180px"
                         className={cn(

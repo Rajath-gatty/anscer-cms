@@ -612,7 +612,28 @@ export const productDetails: Record<string, ProductDetailData> = {
         image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
-    useCases: arUseCases,
+    useCases: [
+      {
+        title: "Auto Tugger",
+        copy: "Efficient autonomous transport of trolleys across facilities.",
+        image: "individual-product/ar-500/applications/image-1.jpg",
+      },
+      {
+        title: "Pallet Lifter",
+        copy: "Supports safe and reliable pallet movement operations.",
+        image: "individual-product/ar-500/applications/image-2.jpg",
+      },
+      {
+        title: "Conveyor Transfer",
+        copy: "Autonomous trolley lifting and transport operations",
+        image: "individual-product/ar-500/applications/image-3.jpg",
+      },
+      {
+        title: "Cart Tugging",
+        copy: "Automated trolley material flow",
+        image: "individual-product/ar-500/applications/image-4.jpg",
+      },
+    ],
     faqs: [
       {
         question:
@@ -793,7 +814,33 @@ export const productDetails: Record<string, ProductDetailData> = {
         image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
-    useCases: arUseCases,
+    useCases: [
+      {
+        title: "Shelf Lifter",
+        copy: "Designed for transporting compact and irregular light loads.",
+        image: "individual-product/ar-650/applications/image-1.jpg",
+      },
+      {
+        title: "Pallet Lifter",
+        copy: "Supports safe and reliable pallet movement operations.",
+        image: "individual-product/ar-650/applications/image-2.jpg",
+      },
+      {
+        title: "Conveyor Transfer",
+        copy: "Autonomous trolley lifting and transport operations",
+        image: "individual-product/ar-650/applications/image-3.jpg",
+      },
+      {
+        title: "Cart Tugging",
+        copy: "Automated trolley material flow",
+        image: "individual-product/ar-650/applications/image-4.jpg",
+      },
+      {
+        title: "Cobot Integration Module",
+        copy: "Enables robotic handling applications with cobot integration module.",
+        image: "individual-product/ar-650/applications/image-5.jpg",
+      }
+    ],
     faqs: [
       {
         question: "What makes the AR 650 different from the AR 500?",
@@ -975,7 +1022,28 @@ export const productDetails: Record<string, ProductDetailData> = {
         image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
-    useCases: arUseCases,
+    useCases: [
+      {
+        title: "Shelf Lifter",
+        copy: "Designed for transporting compact and irregular light loads.",
+        image: "individual-product/ar-1250/applications/image-1.jpg",
+      },
+      {
+        title: "Pallet Lifter",
+        copy: "Supports safe and reliable pallet movement operations.",
+        image: "individual-product/ar-1250/applications/image-2.jpg",
+      },
+      {
+        title: "Conveyor Transfer",
+        copy: "Autonomous trolley lifting and transport operations",
+        image: "individual-product/ar-1250/applications/image-3.jpg",
+      },
+      {
+        title: "Cart Tugging",
+        copy: "Automated trolley material flow",
+        image: "individual-product/ar-1250/applications/image-4.jpg",
+      },
+    ],
     faqs: [
       {
         question: "What is the AR 1250 designed for and who typically uses it?",
@@ -1288,7 +1356,23 @@ export const productDetails: Record<string, ProductDetailData> = {
         },
       ],
     },
-    useCases: psrUseCases,
+    useCases: [
+      {
+        title: "High-Bay Putaway & Retrieval",
+        copy: "Automates storage and retrieval tasks in elevated racking environments.",
+        image: "individual-product/psr-2000r/applications/image-1.jpg",
+      },
+      {
+        title: "Rack to Outbound Retrieval",
+        copy: "Retrieves pallets from racks and delivers them to shipping or staging areas.",
+        image: "individual-product/psr-2000r/applications/image-2.jpg",
+      },
+      {
+        title: "Conveyor Loading & Unloading",
+        copy: "Enables seamless pallet transfer between conveyors and warehouse systems.",
+        image: "individual-product/psr-2000r/applications/image-3.jpg",
+      },
+    ],
     faqs: [
       {
         question: "When do I need the PSR 2000R instead of the PSR 1000R?",
@@ -1396,7 +1480,23 @@ export const productDetails: Record<string, ProductDetailData> = {
         },
       ],
     },
-    useCases: psrUseCases,
+    useCases: [
+      {
+        title: "High-Bay Putaway & Retrieval",
+        copy: "Automates storage and retrieval tasks in elevated racking environments.",
+        image: "individual-product/psr-1000r/applications/image-1.jpg",
+      },
+      {
+        title: "Rack to Outbound Retrieval",
+        copy: "Retrieves pallets from racks and delivers them to shipping or staging areas.",
+        image: "individual-product/psr-1000r/applications/image-2.jpg",
+      },
+      {
+        title: "Conveyor Loading & Unloading",
+        copy: "Enables seamless pallet transfer between conveyors and warehouse systems.",
+        image: "individual-product/psr-1000r/applications/image-3.jpg",
+      },
+    ],
     faqs: [
       {
         question:
@@ -1767,18 +1867,28 @@ export const productDetails: Record<string, ProductDetailData> = {
     useCases: [
       {
         title: "Small Load & Cart Transport",
-        copy: "Moves small loads and carts across shop-floor workflows.",
-        image: "Frame-427322841.jpg",
+        copy: "Handles lightweight loads and carts with smooth autonomous navigation.",
+        image: "individual-product/lbr-500/applications/image-1.jpg",
       },
       {
         title: "Low-Clearance Trolley Handling",
-        copy: "Handles trolley transport where clearance is constrained.",
-        image: "updated-image.jpg",
+        copy: "Enables reliable movement of trolleys with limited ground clearance.",
+        image: "individual-product/lbr-500/applications/image-2.jpg",
       },
       {
-        title: "Assembly Line Feeding",
-        copy: "Feeds workstations and assembly lines with predictable material flow.",
-        image: "Frame-427322849_1.jpg",
+        title: "Inbound to Storage Movement",
+        copy: "Transfers incoming materials from receiving areas to storage locations.",
+        image: "individual-product/lbr-500/applications/image-3.jpg",
+      },
+      {
+        title: "Assembly Line & Workstation Feeding",
+        copy: "Delivers components and materials directly to production stations.",
+        image: "individual-product/lbr-500/applications/image-4.jpg",
+      },
+      {
+        title: "e-Kanban Rack Replenishment",
+        copy: "Ensures continuous material availability through automated replenishment of e-Kanban racks.",
+        image: "individual-product/lbr-500/applications/image-5.jpg",
       },
     ],
     faqs: [
