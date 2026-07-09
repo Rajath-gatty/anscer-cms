@@ -282,11 +282,6 @@ export const seriesPages: Record<string, SeriesPageData> = {
         image: "Frame-427322849_1.jpg",
       },
       {
-        title: "Storage/Rack to Outbound",
-        copy: "Retrieves stored or racked goods and transports them to outbound dispatch staging.",
-        image: "Frame-427322852.jpg",
-      },
-      {
         title: "Small Load & Cart Transport",
         copy: "Moves lightweight individual loads or small carts for frequent internal transport.",
         image: "carton-transfer-latest.jpg",
@@ -300,7 +295,12 @@ export const seriesPages: Record<string, SeriesPageData> = {
         title: "Staging/Buffer Holding",
         copy: "Temporarily holds palletized or finished goods before the next movement stage.",
         image: "Frame-427322855.jpg",
-      }
+      },
+      {
+        title: "Storage/Rack to Outbound",
+        copy: "Retrieves stored or racked goods and transports them to outbound dispatch staging.",
+        image: "Frame-427322852.jpg",
+      },
     ],
     products: [
       {

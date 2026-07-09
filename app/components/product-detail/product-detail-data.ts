@@ -45,7 +45,7 @@ export type ProductDetailData = {
     title: string;
     points: string[];
     image: string;
-  }[],
+  }[];
   useCases: {
     title: string;
     copy: string;
@@ -135,7 +135,13 @@ const topModules = [
     title: "Shelf Lifter",
     copy: "Autonomous trolley lifting and transport operations.",
     image: "ar-250-shelf-lifter.png",
-    overlay: { width: "340px", height: "250px", sizes: "300px", top: "5px" },
+    overlay: {
+      width: "340px",
+      height: "250px",
+      sizes: "300px",
+      top: "5px",
+      left: "-20px",
+    },
   },
   {
     title: "Belt Conveyor",
@@ -153,19 +159,37 @@ const topModules = [
     title: "Combined Lifter & Tunneling",
     copy: "Combined lifting and under-load movement in one module.",
     image: "combinedlifter.png",
-    overlay: { width: "250px", height: "200px", sizes: "300px", top: "30px" },
+    overlay: {
+      width: "250px",
+      height: "200px",
+      sizes: "300px",
+      top: "30px",
+      left: "25px",
+    },
   },
   {
     title: "Pallet Lifter",
     copy: "Pallet pickup and transfer for flexible intralogistics.",
     image: "ar-250-pallet-lifter.png",
-    overlay: { width: "250px", height: "200px", sizes: "300px", top: "45px" },
+    overlay: {
+      width: "250px",
+      height: "200px",
+      sizes: "300px",
+      top: "45px",
+      left: "25px",
+    },
   },
   {
     title: "Roller Conveyor",
     copy: "Automated handoff between mobile robots and conveyor lines.",
     image: "roller.png",
-    overlay: { width: "327px", height: "200px", sizes: "400px", top: "46px" },
+    overlay: {
+      width: "327px",
+      height: "200px",
+      sizes: "400px",
+      top: "46px",
+      left: "-14px",
+    },
   },
   {
     title: "Manual Tugger",
@@ -373,10 +397,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       {
         title: "Interoperable Architecture",
-        points: [
-          "VDA 5050 compliant",
-          "Enables vendor-agnostic scalability",
-        ],
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
         image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
@@ -556,10 +577,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       {
         title: "Interoperable Architecture",
-        points: [
-          "VDA 5050 compliant",
-          "Enables vendor-agnostic scalability",
-        ],
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
         image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
@@ -740,10 +758,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       {
         title: "Interoperable Architecture",
-        points: [
-          "VDA 5050 compliant",
-          "Enables vendor-agnostic scalability",
-        ],
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
         image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
@@ -925,10 +940,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       {
         title: "Interoperable Architecture",
-        points: [
-          "VDA 5050 compliant",
-          "Enables vendor-agnostic scalability",
-        ],
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
         image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
@@ -1109,10 +1121,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       {
         title: "Interoperable Architecture",
-        points: [
-          "VDA 5050 compliant",
-          "Enables vendor-agnostic scalability",
-        ],
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
         image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
@@ -1147,7 +1156,33 @@ export const productDetails: Record<string, ProductDetailData> = {
         image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
-    useCases: psrUseCases,
+    useCases: [
+       {
+        title: "Heavy Payload Pallet Transport",
+        copy: "Safely moves large and heavy palletized loads across facilities.",
+        image: "individual-product/psr-2000/applications/image-1.jpg",
+      },
+       {
+        title: "Pallet Stacking in Buffer Zones",
+        copy: "Organizes pallets efficiently in temporary storage and staging areas.",
+        image: "individual-product/psr-2000/applications/image-2.jpg",
+      },
+       {
+        title: "Raw Material Handling",
+        copy: "Automates the movement of raw materials to production or storage locations.",
+        image: "individual-product/psr-2000/applications/image-3.jpg",
+      },
+       {
+        title: "Finished Goods Stacking",
+        copy: "Supports systematic stacking and handling of completed products.",
+        image: "individual-product/psr-2000/applications/image-4.jpg",
+      },
+       {
+        title: "Multi-Level Racking",
+        copy: "Facilitates pallet placement and retrieval across multiple rack levels.",
+        image: "individual-product/psr-2000/applications/image-5.jpg",
+      },
+    ],
     faqs: [
       {
         question: "What types of pallets can the PSR 2000 handle?",
@@ -1502,10 +1537,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       {
         title: "Interoperable Architecture",
-        points: [
-          "VDA 5050 compliant",
-          "Enables vendor-agnostic scalability",
-        ],
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
         image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
@@ -1540,7 +1572,28 @@ export const productDetails: Record<string, ProductDetailData> = {
         image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
-    useCases: psrUseCases,
+    useCases: [
+      {
+        title: "Dock to Storage Movement",
+        copy: "Transfers incoming pallets from receiving docks to designated storage areas automatically.",
+        image: "individual-product/psr-g2g/applications/image-1.jpg",
+      },
+      {
+        title: "Storage to Dispatch Staging",
+        copy: "Moves stored goods to dispatch zones for faster order fulfillment.",
+        image: "individual-product/psr-g2g/applications/image-2.jpg",
+      },
+      {
+        title: "Cross-Docking Operations",
+        copy: "Supports direct movement of goods between inbound and outbound areas with minimal storage time.",
+        image: "individual-product/psr-g2g/applications/image-3.jpg",
+      },
+      {
+        title: "Line-Side Pallet Feeding",
+        copy: "Supplies production lines with pallets and materials exactly when needed.",
+        image: "individual-product/psr-g2g/applications/image-4.jpg",
+      },
+    ],
     faqs: [
       {
         question:
@@ -1649,44 +1702,67 @@ export const productDetails: Record<string, ProductDetailData> = {
     advancedFeatures: [
       {
         title: "Human-safe Operations",
-        points: ['PLd category 3 certified', 'Laser safety fields respond before a person gets close', 'No cages', 'No zone restrictions'],
-        image: 'individual-product/lbr-500/lbr-500-adf-1.jpg'
+        points: [
+          "PLd category 3 certified",
+          "Laser safety fields respond before a person gets close",
+          "No cages",
+          "No zone restrictions",
+        ],
+        image: "individual-product/lbr-500/lbr-500-adf-1.jpg",
       },
       {
         title: "Low Bed Trolley Handling",
-        points: ['100 mm (3.93 in) standard lift height', '500 kg (1102.31 lbs) payload capacity', 'Variable-width trolley handling capability from 550 mm to 1600 mm (21.65 in to 63 in)'],
-        image: 'individual-product/lbr-500/lbr-500-adf-2.jpg'
+        points: [
+          "100 mm (3.93 in) standard lift height",
+          "500 kg (1102.31 lbs) payload capacity",
+          "Variable-width trolley handling capability from 550 mm to 1600 mm (21.65 in to 63 in)",
+        ],
+        image: "individual-product/lbr-500/lbr-500-adf-2.jpg",
       },
       {
         title: "Autonomous Navigation",
-        points: ['Detects obstacles in time, reroutes autonomously without interruption', 'No floor tape, no manual intervention, no downtime'],
-        image: 'individual-product/lbr-500/lbr-500-adf-3.jpg'
+        points: [
+          "Detects obstacles in time, reroutes autonomously without interruption",
+          "No floor tape, no manual intervention, no downtime",
+        ],
+        image: "individual-product/lbr-500/lbr-500-adf-3.jpg",
       },
       {
         title: "Interoperable Architecture",
-        points: ['VDA 5050 compliant', 'Enables vendor-agnostic scalability'],
-        image: 'individual-product/lbr-500/lbr-500-adf-4.jpg'
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
+        image: "individual-product/lbr-500/lbr-500-adf-4.jpg",
       },
       {
         title: "Real-Time Alerts & Status Indication",
-        points: ['Audio alerts for operator notification', 'No screen dependency'],
-        image: 'individual-product/lbr-500/lbr-500-adf-5.jpg'
+        points: [
+          "Audio alerts for operator notification",
+          "No screen dependency",
+        ],
+        image: "individual-product/lbr-500/lbr-500-adf-5.jpg",
       },
       {
         title: "Multi-Side Status Lighting",
-        points: ['LED indicators', 'Workers know the robot\'s intent before it reaches them'],
-        image: 'individual-product/lbr-500/lbr-500-adf-6.jpg'
+        points: [
+          "LED indicators",
+          "Workers know the robot's intent before it reaches them",
+        ],
+        image: "individual-product/lbr-500/lbr-500-adf-6.jpg",
       },
       {
         title: "Opportunity Charging",
-        points: ['Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime'],
-        image: 'individual-product/lbr-500/lbr-500-adf-7.jpg'
+        points: [
+          "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
+        ],
+        image: "individual-product/lbr-500/lbr-500-adf-7.jpg",
       },
       {
         title: "Built-In Mission Creator",
-        points: ['Configure tasks, update routes, and adapt to layout changes on the fly', 'No programmer required, just an intuitive interface your team can own'],
-        image: 'individual-product/lbr-500/lbr-500-adf-8.jpg'
-      }
+        points: [
+          "Configure tasks, update routes, and adapt to layout changes on the fly",
+          "No programmer required, just an intuitive interface your team can own",
+        ],
+        image: "individual-product/lbr-500/lbr-500-adf-8.jpg",
+      },
     ],
     useCases: [
       {
@@ -1841,10 +1917,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       {
         title: "Interoperable Architecture",
-        points: [
-          "VDA 5050 compliant",
-          "Enables vendor-agnostic scalability",
-        ],
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
         image: "individual-product/ar-250/ar-250-adf-4.png",
       },
       {
@@ -1921,4 +1994,3 @@ export const productDetails: Record<string, ProductDetailData> = {
     ],
   },
 };
-

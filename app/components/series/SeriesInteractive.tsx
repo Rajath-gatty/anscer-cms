@@ -149,8 +149,8 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
               key={application.title}
               className={cn(
                 data.slug === "agv-series"
-                  ? "!w-[390px] md:!w-[clamp(290px,26.4vw,416px)] lg:!w-[416px]"
-                  : "!w-[min(390px,82vw)]",
+                  ? "!w-[400px] md:!w-[clamp(290px,26.4vw,416px)] lg:!w-[416px]"
+                  : "!w-[min(400px,82vw)]",
               )}
             >
               <article className="relative h-[460px] w-full overflow-hidden rounded-lg bg-[#dfe7ee]">
@@ -165,10 +165,10 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
                 ) : null}
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,0)_30%,rgba(1,31,64,.82)_100%)]" />
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <h3 className="text-xl font-extrabold leading-tight md:text-2xl">
+                  <h3 className="text-xl font-bold leading-tight ">
                     {application.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-5 text-white/88 md:text-base md:leading-6">
+                  <p className="mt-2 text-sm leading-5 text-white/88 md:text-base md:leading-6 tracking-[-1%]">
                     {application.copy}
                   </p>
                 </div>

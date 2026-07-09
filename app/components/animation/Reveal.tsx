@@ -9,7 +9,8 @@ export type RevealVariant =
   | "fade-down"
   | "fade-left"
   | "fade-right"
-  | "scale-up";
+  | "scale-up"
+  | "scale-down";
 
 type RevealProps = {
   children: ReactNode;
@@ -33,7 +34,8 @@ const variantOffsets: Record<RevealVariant, RevealOffset> = {
   "fade-down": { x: 0, y: -80, scale: 1 },
   "fade-left": { x: 80, y: 0, scale: 1 },
   "fade-right": { x: -80, y: 0, scale: 1 },
-  "scale-up": { x: 0, y: 14, scale: 0.7 },
+  "scale-up": { x: 0, y: 0, scale: 0.7 },
+  "scale-down": { x: 0, y: 0, scale: 1.3 },
 };
 
 const revealVariants = {
@@ -125,4 +127,7 @@ export function FadeRight(props: Omit<RevealProps, "variant">) {
 
 export function ScaleUp(props: Omit<RevealProps, "variant">) {
   return <Reveal {...props} variant="scale-up" />;
+}
+export function ScaleDown(props: Omit<RevealProps, "variant">) {
+  return <Reveal {...props} variant="scale-down" />;
 }

@@ -5,6 +5,7 @@ export {
   FadeRight,
   FadeUp,
   Reveal,
+  ScaleDown,
   ScaleUp,
 } from "./Reveal";
 export type { RevealVariant } from "./Reveal";

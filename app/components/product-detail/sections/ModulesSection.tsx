@@ -2,12 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import {
-  AnimatePresence,
-  m,
-  MotionConfig,
-  useReducedMotion,
-} from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { imagePath } from "../../home/assets";
@@ -24,15 +19,15 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
   const isLayeredModule = Boolean(shouldShowBaseImage && active?.image);
   const overlay = active?.overlay;
   const total = modules.length;
-  const overlayStyle = {
-    height: overlay?.height ?? "100%",
-    left: overlay?.left ?? "50%",
-    top: overlay?.top ?? "0",
-    transform: `translate(${overlay?.translateX ?? "-50%"}, ${
-      overlay?.translateY ?? "0"
-    })`,
-    width: overlay?.width ?? "100%",
-  };
+  // const overlayStyle = {
+  //   height: overlay?.height ?? "100%",
+  //   left: overlay?.left ?? "50%",
+  //   top: overlay?.top ?? "0",
+  //   transform: `translate(${overlay?.translateX ?? "-50%"}, ${
+  //     overlay?.translateY ?? "0"
+  //   })`,
+  //   width: overlay?.width ?? "100%",
+  // };
 
   const pillScrollRef = useRef<HTMLDivElement>(null);
   const pillRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -229,25 +224,28 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
             </div>
             <div className="relative mx-auto h-[200px] w-[300px]">
               <AnimatePresence>
-                {shouldShowBaseImage ? (
-                  <m.div
-                    key="base-image-container" // 1. Added a unique key
-                    initial={{ opacity: 0, x: 120, scale: 0.88 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: -150, scale: 0.88 }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <Image
-                      src={`${imagePath}${baseImage}`}
-                      alt=""
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 540px"
-                      className="z-10 translate-y-28 object-contain"
-                    />
-                  </m.div>
-                ) : null}
+                <m.div
+                  key="base-image-container" // 1. Added a unique key
+                  initial={{ opacity: 0, x: 120, scale: 1 }}
+                  animate={{
+                    opacity: shouldShowBaseImage ? 1 : 0,
+                    x: 0,
+                    scale: 1,
+                  }}
+                  exit={{ opacity: 0, x: -150, scale: 1 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Image
+                    src={`${imagePath}${baseImage}`}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 540px"
+                    className="z-10 translate-y-28 object-contain"
+                  />
+                </m.div>
               </AnimatePresence>
-              <div className="absolute z-20" style={overlayStyle}>
+
+              <div className="absolute z-20">
                 <AnimatePresence initial={false} mode="wait">
                   <m.div
                     key={`${active.title}-${activeModuleImage}`}
@@ -255,17 +253,24 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                     initial={{
                       opacity: shouldReduceMotion ? 1 : 0,
                       x: shouldReduceMotion ? 0 : 120,
-                      scale: shouldReduceMotion ? 1 : 0.88,
                     }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    animate={{ opacity: 1, x: 0 }}
                     exit={{
-                      opacity: shouldReduceMotion ? 1 : 0,
-                      x: shouldReduceMotion ? 0 : -150,
-                      scale: shouldReduceMotion ? 1 : 0.88,
+                      x: -150,
+                      opacity: 0,
                     }}
                     transition={{
                       duration: shouldReduceMotion ? 0 : 0.8,
                       ease: [0.22, 1, 0.36, 1],
+                    }}
+                    style={{
+                      height: active?.overlay?.height ?? "100%",
+                      left: active?.overlay?.left ?? "50%",
+                      top: active?.overlay?.top ?? "0",
+                      transform: `translate(${active?.overlay?.translateX ?? "-50%"}, ${
+                        active?.overlay?.translateY ?? "0"
+                      })`,
+                      width: active?.overlay?.width ?? "100%",
                     }}
                   >
                     <Image
@@ -273,7 +278,8 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                       alt={active.title}
                       fill
                       sizes={
-                        overlay?.sizes ?? "(max-width: 1024px) 100vw, 240px"
+                        active?.overlay?.sizes ??
+                        "(max-width: 1024px) 100vw, 240px"
                       }
                       className={cn(
                         "object-contain",
