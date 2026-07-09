@@ -255,13 +255,11 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                     initial={{
                       opacity: shouldReduceMotion ? 1 : 0,
                       x: shouldReduceMotion ? 0 : 120,
-                      scale: shouldReduceMotion ? 1 : 0.88,
                     }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    animate={{ opacity: 1, x: 0 }}
                     exit={{
                       opacity: shouldReduceMotion ? 1 : 0,
                       x: shouldReduceMotion ? 0 : -150,
-                      scale: shouldReduceMotion ? 1 : 0.88,
                     }}
                     transition={{
                       duration: shouldReduceMotion ? 0 : 0.8,

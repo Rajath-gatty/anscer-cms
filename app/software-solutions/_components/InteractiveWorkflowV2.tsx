@@ -269,7 +269,7 @@ function InteractiveWorkflowV2() {
                       : "bg-transparent h-[94px]"
                   }`}
                 >
-                  <div className={cn("shrink-0 p-3 rounded-md", isActive(index) ? "bg-[#005ead]" : "bg-[#005ead]/[0.05]")}>
+                  <div className={cn("shrink-0 self-start p-3 rounded-md", isActive(index) ? "bg-[#005ead]" : "bg-[#005ead]/[0.05]")}>
                     <step.Icon strokeWidth={1} className={cn("w-6 h-6", isActive(index) ? "text-white" : "text-[#011f40]")} />
                   </div>
                   <div className="flex flex-col gap-1 w-full">
@@ -287,8 +287,8 @@ function InteractiveWorkflowV2() {
                       {isActive(index) && step.copy}
                     </p>
                     {isActive(index) && (
-                      <div className="md:hidden overflow-hidden h-[150px] w-full rounded-xl">
-                        <div className="relative aspect-[668/424] w-full scale-110 rounded-xl">
+                      <div className="md:hidden overflow-hidden h-[150px] -translate-x-12 w-full rounded-xl">
+                        <div className="relative aspect-[668/424] w-full h-full scale-100 rounded-xl">
                           <Image
                             src={`${imagePath}${step.image}`}
                             alt={`${step.title} workflow - Process Flow Manager`}
