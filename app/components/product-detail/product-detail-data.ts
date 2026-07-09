@@ -1156,7 +1156,33 @@ export const productDetails: Record<string, ProductDetailData> = {
         image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
-    useCases: psrUseCases,
+    useCases: [
+       {
+        title: "Heavy Payload Pallet Transport",
+        copy: "Safely moves large and heavy palletized loads across facilities.",
+        image: "individual-product/psr-2000/applications/image-1.jpg",
+      },
+       {
+        title: "Pallet Stacking in Buffer Zones",
+        copy: "Organizes pallets efficiently in temporary storage and staging areas.",
+        image: "individual-product/psr-2000/applications/image-2.jpg",
+      },
+       {
+        title: "Raw Material Handling",
+        copy: "Automates the movement of raw materials to production or storage locations.",
+        image: "individual-product/psr-2000/applications/image-3.jpg",
+      },
+       {
+        title: "Finished Goods Stacking",
+        copy: "Supports systematic stacking and handling of completed products.",
+        image: "individual-product/psr-2000/applications/image-4.jpg",
+      },
+       {
+        title: "Multi-Level Racking",
+        copy: "Facilitates pallet placement and retrieval across multiple rack levels.",
+        image: "individual-product/psr-2000/applications/image-5.jpg",
+      },
+    ],
     faqs: [
       {
         question: "What types of pallets can the PSR 2000 handle?",
@@ -1546,7 +1572,28 @@ export const productDetails: Record<string, ProductDetailData> = {
         image: "individual-product/ar-250/ar-250-adf-8.png",
       },
     ],
-    useCases: psrUseCases,
+    useCases: [
+      {
+        title: "Dock to Storage Movement",
+        copy: "Transfers incoming pallets from receiving docks to designated storage areas automatically.",
+        image: "individual-product/psr-g2g/applications/image-1.jpg",
+      },
+      {
+        title: "Storage to Dispatch Staging",
+        copy: "Moves stored goods to dispatch zones for faster order fulfillment.",
+        image: "individual-product/psr-g2g/applications/image-2.jpg",
+      },
+      {
+        title: "Cross-Docking Operations",
+        copy: "Supports direct movement of goods between inbound and outbound areas with minimal storage time.",
+        image: "individual-product/psr-g2g/applications/image-3.jpg",
+      },
+      {
+        title: "Line-Side Pallet Feeding",
+        copy: "Supplies production lines with pallets and materials exactly when needed.",
+        image: "individual-product/psr-g2g/applications/image-4.jpg",
+      },
+    ],
     faqs: [
       {
         question:
