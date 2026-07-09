@@ -23,8 +23,7 @@ const solutions = [
     icon: "trolley-movement.svg",
     image: "our-solutions-image-2.png",
     imageHeight: 1024,
-    video:
-      "trolley-movement-latest.mp4",
+    video: "trolley-movement-latest.mp4",
   },
   {
     title: "Tugging",
@@ -216,7 +215,7 @@ function SolutionSlide({
         <p className="mt-[18px] max-w-[640px] text-base leading-[22px] text-[#3a3a3a] 4xl:pb-5">
           {solution.copy}
         </p>
-        <div className="mt-[18px] w-[350px] 4xl:w-[500px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee] ">
+        <div className="mt-[18px] w-[350px]  3xl:w-[400px] 4xl:w-[500px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee] ">
           <Image
             src={`${imagePath}${solution.image}`}
             alt={`${solution.title} application`}
@@ -242,7 +241,14 @@ function SolutionSlide({
           playsInline
           preload="metadata"
         >
-          <source src={solution.video.startsWith('https') ? solution.video : `${videoPath}${solution.video}`} type="video/mp4" />
+          <source
+            src={
+              solution.video.startsWith("https")
+                ? solution.video
+                : `${videoPath}${solution.video}`
+            }
+            type="video/mp4"
+          />
         </video>
       </div>
     </article>
