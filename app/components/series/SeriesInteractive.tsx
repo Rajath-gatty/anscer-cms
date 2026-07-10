@@ -217,6 +217,12 @@ export function SeriesRobotSelector({
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const reducedMotion = useReducedMotion();
   const activeProduct = data.products[activeIndex] ?? data.products[0];
 
@@ -486,7 +492,13 @@ export function SeriesRobotSelector({
                   <m.div
                     key={`${activeProduct.name}-details`}
                     className="lg:pt-0 w-full"
-                    initial={reducedMotion ? false : { opacity: 0 }} // Reduced y distance from 18 to 15 for a subtler glide
+                    initial={
+                      !isMounted
+                        ? false
+                        : reducedMotion
+                        ? false
+                        : { opacity: 0 }
+                    } // Reduced y distance from 18 to 15 for a subtler glide
                     animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                     transition={
                       reducedMotion
@@ -541,7 +553,9 @@ export function SeriesRobotSelector({
                     key={`${activeProduct.name}-visual`}
                     className="absolute top-[14%] left-0 w-full h-full "
                     initial={
-                      reducedMotion
+                      !isMounted
+                        ? false
+                        : reducedMotion
                         ? false
                         : { opacity: 0, x: 170, rotateY: -8, scale: 0.96 }
                     }
@@ -626,6 +640,54 @@ export function SeriesRobotSelector({
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Hidden preloader to cache all robot images and prevent flickering on tab changes */}
+      <div className="hidden" aria-hidden="true">
+        {data.products.map((product) => (
+          <div key={product.name}>
+            {product.bgText && (
+              <Image
+                src={`${imagePath}${product.bgText}`}
+                alt=""
+                width={650}
+                height={400}
+                priority
+                loading="eager"
+              />
+            )}
+            {series === "psr-series" ? (
+              <Image
+                src={`${imagePath}${product.image}`}
+                alt=""
+                width={750}
+                height={400}
+                priority
+                loading="eager"
+              />
+            ) : series === "agv-series" ? (
+              <Image
+                src={`${imagePath}${product.image}`}
+                alt=""
+                width={800}
+                height={400}
+                priority
+                loading="eager"
+              />
+            ) : (
+              <div className="relative w-[1180px] h-[500px]">
+                <Image
+                  src={`${imagePath}${product.image}`}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 110vw, 1180px"
+                  priority
+                  loading="eager"
+                />
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );
