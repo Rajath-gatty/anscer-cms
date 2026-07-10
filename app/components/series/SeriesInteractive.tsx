@@ -232,7 +232,7 @@ export function SeriesRobotSelector({
 
   const transition = reducedMotion
     ? { duration: 0 }
-    : { duration: 0.48, ease: [0.22, 1, 0.36, 1] as const };
+    : { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const };
 
   const total = data.products.length;
   const mobileMove = (direction: 1 | -1) => {
@@ -516,33 +516,22 @@ export function SeriesRobotSelector({
                 </AnimatePresence>
 
                 <div className="grid grid-cols-2 w-full gap-x-14 gap-y-8 lg:pt-2 h-28">
-                  <AnimatePresence mode="popLayout" initial={false}>
-                    {specs.map((spec, index) => (
-                      <div
-                        key={`${activeProduct.name}-${unit}-${spec.label}`}
-                      >
-                        <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">
-                          {spec.label}
-                        </h4>
-                        <m.p
-                          className="mt-2 text-[14px] font-semibold leading-5 text-[#011f40]"
-                          initial={reducedMotion ? false : { opacity: 0, y: 14 }}
-                          animate={
-                            reducedMotion ? undefined : { opacity: 1, y: 0 }
-                          }
-                          exit={
-                            reducedMotion ? undefined : { opacity: 0, y: -4 }
-                          }
-                          transition={{
-                            ...transition,
-                            delay: reducedMotion ? 0 : index * 0.025,
-                          }}
-                        >
-                          {spec.value}
-                        </m.p>
-                      </div>
-                    ))}
-                  </AnimatePresence>
+                  {specs.map((spec, index) => (
+                    <div
+                      key={spec.label}
+                    >
+                      <h4 className="text-[12px] font-medium uppercase leading-5 tracking-[0.08em] text-[#3a3a3a99]">
+                        {spec.label}
+                      </h4>
+                      <SplitText
+                        key={`${activeProduct.name}-${unit}-${spec.value}`}
+                        text={spec.value}
+                        className="mt-2 block text-[14px] font-semibold leading-5 text-[#011f40]"
+                        reducedMotion={Boolean(reducedMotion)}
+                        delay={reducedMotion ? 0 : index * 0.03}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -554,7 +543,7 @@ export function SeriesRobotSelector({
                     initial={
                       reducedMotion
                         ? false
-                        : { opacity: 0, x: 70, rotateY: -8, scale: 0.96 }
+                        : { opacity: 0, x: 170, rotateY: -8, scale: 0.96 }
                     }
                     animate={
                       reducedMotion
@@ -564,7 +553,7 @@ export function SeriesRobotSelector({
                     exit={
                       reducedMotion
                         ? undefined
-                        : { opacity: 0, x: -45, rotateY: 8, scale: 0.98 }
+                        : { opacity: 0, x: -35, rotateY: 8, scale: 0.98 }
                     }
                     transition={transition}
                     style={{ transformPerspective: 1200 }}
@@ -868,3 +857,83 @@ function selectorImageClass(name: string) {
       return "scale-[1.2] translate-y-[8%]";
   }
 }
+
+interface SplitTextProps {
+  text: string;
+  className?: string;
+  reducedMotion: boolean;
+  delay?: number;
+}
+
+function SplitText({ text, className, reducedMotion, delay = 0 }: SplitTextProps) {
+  if (reducedMotion) {
+    return <span className={className}>{text}</span>;
+  }
+
+  const words = text.split(" ");
+
+  const characterVariants = {
+    initial: { 
+      opacity: 0, 
+      y: 6
+    },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.15,
+        ease: [0.22, 1, 0.36, 1] as const,
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      y: -4,
+      transition: {
+        duration: 0.1,
+        ease: [0.22, 1, 0.36, 1] as const,
+      }
+    }
+  };
+
+  return (
+    <m.span 
+      className={cn("inline-block", className)}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={{
+        initial: {},
+        animate: {
+          transition: {
+            staggerChildren: 0.008,
+            delayChildren: delay,
+          }
+        },
+        exit: {
+          transition: {
+            staggerChildren: 0.01,
+            staggerDirection: -1,
+          }
+        }
+      }}
+    >
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {word.split("").map((char, charIndex) => (
+            <m.span
+              key={charIndex}
+              variants={characterVariants}
+              className="inline-block"
+            >
+              {char}
+            </m.span>
+          ))}
+          {wordIndex < words.length - 1 && (
+            <span className="inline-block">&nbsp;</span>
+          )}
+        </span>
+      ))}
+    </m.span>
+  );
+}
+
