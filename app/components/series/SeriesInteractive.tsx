@@ -463,41 +463,19 @@ export function SeriesRobotSelector({
                           {product.name}
                         </m.span>
 
-                        {/* Wrapping the AnimatePresence in a layout-bound container isolates height shifts */}
                         <m.div
-                          layout="position"
-                          transition={layoutTransition}
-                          className="relative z-10"
+                          layout
+                          transition={reducedMotion ? { duration: 0 } : layoutTransition}
+                          className="relative z-10 overflow-hidden"
+                          initial={false}
+                          animate={{
+                            height: isActive ? "auto" : 0,
+                            opacity: isActive ? 1 : 0,
+                          }}
                         >
-                          <AnimatePresence initial={false} mode="popLayout">
-                            {isActive ? (
-                              <m.span
-                                key={`${product.name}-description`}
-                                layout
-                                className="mt-3 block text-[14px] font-normal leading-[22px] text-[#011f40]"
-                                initial={
-                                  reducedMotion ? false : { opacity: 0, y: -10 }
-                                }
-                                animate={
-                                  reducedMotion
-                                    ? undefined
-                                    : { opacity: 1, y: 0 }
-                                }
-                                exit={
-                                  reducedMotion
-                                    ? undefined
-                                    : { opacity: 0, y: -10 }
-                                }
-                                transition={{
-                                  opacity: { duration: 0.2 },
-                                  // Make sure the structural layout matches the global timing
-                                  default: layoutTransition,
-                                }}
-                              >
-                                {product.tabDescription}
-                              </m.span>
-                            ) : null}
-                          </AnimatePresence>
+                          <span className="pt-3 block text-[14px] font-normal leading-[22px] text-[#011f40]">
+                            {product.tabDescription}
+                          </span>
                         </m.div>
                       </m.button>
                     );
