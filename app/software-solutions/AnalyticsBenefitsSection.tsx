@@ -177,7 +177,7 @@ export function AnalyticsBenefitsSection() {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-[50%_20%] blur"
+          className="object-cover object-[50%_20%] blur-[3px]"
         />
         <div className="absolute inset-0 bg-black/60" />
 
