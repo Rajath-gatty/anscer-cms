@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FadeLeft, FadeRight } from "../../components/animation";
+import { FadeUp } from "../../components/animation";
 import { imagePath } from "../../components/home/assets";
 import { ScrollReveal } from "../../components/home/ScrollReveal";
 import { fleetHighlights } from "../_data/software-solutions-data";
@@ -27,7 +27,7 @@ export function FleetManagementSection() {
           </p>
         </ScrollReveal>
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.52fr_0.48fr] lg:items-start">
-          <FadeRight className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)]">
+          <FadeUp className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#dce7ef] shadow-[0_18px_50px_rgba(1,31,64,.08)]">
             <Image
               src={`${imagePath}Frame-1321317564.png`}
               alt="ANSCER fleet management system in operation"
@@ -37,8 +37,8 @@ export function FleetManagementSection() {
               sizes="(max-width: 1024px) 100vw, 720px"
               className="object-cover"
             />
-          </FadeRight>
-          <FadeLeft className="pt-1 lg:pt-2" delay={0.08}>
+          </FadeUp>
+          <FadeUp className="pt-1 lg:pt-2" delay={0.08}>
             <p className="max-w-170 text-sm leading-6 text-brand-charcoal md:text-base md:leading-6">
               The ANSCER Fleet Management System (FMS) is the intelligent
               orchestration platform that coordinates, monitors, and manages the
@@ -74,7 +74,7 @@ export function FleetManagementSection() {
                 );
               })}
             </div>
-          </FadeLeft>
+          </FadeUp>
         </div>
       </div>
     </section>

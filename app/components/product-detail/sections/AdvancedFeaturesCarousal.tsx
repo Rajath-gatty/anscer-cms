@@ -107,7 +107,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
             <button
               type="button"
               onClick={() => swiperRef.current?.slidePrev()}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead]"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:text-[#005ead] hover:bg-white/20"
               aria-label="Previous application"
             >
               <ArrowLeft className="size-5 text-white" strokeWidth={1.8} />
@@ -115,7 +115,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
             <button
               type="button"
               onClick={() => swiperRef.current?.slideNext()}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:border-[#005ead] hover:text-[#005ead]"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-[#9bb9d2] text-[#011f40] transition hover:text-[#005ead] hover:bg-white/20"
               aria-label="Next application"
             >
               <ArrowRight className="size-5 text-white" strokeWidth={1.8} />

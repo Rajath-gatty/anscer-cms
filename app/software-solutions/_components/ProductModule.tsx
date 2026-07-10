@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FadeLeft, FadeRight } from "../../components/animation";
+import { FadeLeft, FadeUp } from "../../components/animation";
 import { imagePath } from "../../components/home/assets";
 
 type ProductModuleProps = {
@@ -39,7 +39,7 @@ export function ProductModule({
           {intro}
         </p>
         <div className="mt-9 grid gap-10 lg:grid-cols-2 lg:items-start">
-          <FadeRight className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#dce7ef]">
+          <FadeUp className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#dce7ef]">
             <Image
               src={`${imagePath}${image}`}
               alt=""
@@ -48,8 +48,8 @@ export function ProductModule({
               sizes="680px"
               className="object-cover"
             />
-          </FadeRight>
-          <FadeLeft delay={0.08}>
+          </FadeUp>
+          <FadeUp delay={0.08}>
             <p className="text-base leading-6 text-brand-charcoal">{body}</p>
             {chipsTitle ? (
               <p className="mb-4 mt-8 text-base font-medium text-brand-charcoal">
@@ -70,7 +70,7 @@ export function ProductModule({
                 </span>
               ))}
             </div>
-          </FadeLeft>
+          </FadeUp>
         </div>
       </div>
     </section>

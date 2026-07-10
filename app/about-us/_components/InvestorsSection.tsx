@@ -11,11 +11,11 @@ export function InvestorsSection() {
           Our <span className="text-[#005ead]">Investors</span>
         </SectionHeading>
 
-        <div className="grid min-h-[100px] grid-cols-3 place-items-center gap-x-8 gap-y-7 md:min-h-[210px] md:translate-y-4 lg:min-h-[260px] lg:grid-cols-3 lg:grid-rows-1 lg:gap-10">
+        <div className="grid min-h-[100px] grid-cols-3 items-center md:min-h-[210px] md:translate-y-4 lg:min-h-[260px] lg:grid-cols-3 lg:grid-rows-1 md:divide-x md:divide-foreground/20">
           {[...investorLogos].map((logo, index) => (
             <div
               key={`${logo.image}-${index}`}
-              className="flex min-h-[42px] items-center justify-center md:min-h-[52px]"
+              className="flex min-h-[42px] w-full items-center justify-center px-4 md:min-h-[52px] md:px-6"
             >
               <Image
                 src={`${imagePath}${logo.image}`}

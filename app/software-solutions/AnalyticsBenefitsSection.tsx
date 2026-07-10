@@ -177,7 +177,7 @@ export function AnalyticsBenefitsSection() {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-[50%_20%]"
+          className="object-cover object-[50%_20%] blur"
         />
         <div className="absolute inset-0 bg-black/60" />
 
@@ -202,7 +202,7 @@ export function AnalyticsBenefitsSection() {
               type="button"
               onClick={() => swiperRef.current?.slidePrev()}
               aria-label="Previous benefit"
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-white/40 text-white transition hover:border-white hover:text-white"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-white/40 text-white transition  hover:text-white hover:bg-white/20"
             >
               <ArrowLeft className="size-5" strokeWidth={1.8} />
             </button>
@@ -212,7 +212,7 @@ export function AnalyticsBenefitsSection() {
               type="button"
               onClick={() => swiperRef.current?.slideNext()}
               aria-label="Next benefit"
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-white/40 text-white transition hover:border-white hover:text-white"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-white/40 text-white transition hover:text-white hover:bg-white/20"
             >
               <ArrowRight className="size-5" strokeWidth={1.8} />
             </button>
@@ -244,7 +244,7 @@ export function AnalyticsBenefitsSection() {
                 const Icon = card.icon;
                 return (
                   <SwiperSlide key={card.title} className="!w-[300px]">
-                    <article className="flex h-[224px] w-[300px] shrink-0 flex-col transition-colors items-start gap-3 rounded-[12px] bg-white p-5 group">
+                    <article className="flex h-[224px] w-[300px] shrink-0 flex-col transition-colors items-start gap-3 rounded-[12px] bg-white p-5 group hover:bg-[#E6EFF7]">
                       <div className="flex size-10 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40] group-hover:bg-[#005EAD] transition-all duration-300">
                         <Icon
                           className="size-5 group-hover:text-white transition-colors duration-300"

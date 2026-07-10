@@ -288,7 +288,7 @@ function InteractiveWorkflowV2() {
                     </p>
                     {isActive(index) && (
                       <div className="md:hidden overflow-hidden h-[150px] -translate-x-12 w-full rounded-xl">
-                        <div className="relative aspect-[668/424] w-full h-full scale-100 rounded-xl">
+                        <div className="relative aspect-[668/424]  w-full h-full scale-100 rounded-xl">
                           <Image
                             src={`${imagePath}${step.image}`}
                             alt={`${step.title} workflow - Process Flow Manager`}
@@ -311,7 +311,7 @@ function InteractiveWorkflowV2() {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className={`transition-all duration-600 absolute top-0 left-0 w-full h-full ${isActive(index) ? "opacity-100 scale-110" : "opacity-0 scale-100"}`}
+                className={`transition-all duration-600 absolute top-0 left-0 w-full h-full ${isActive(index) ? "opacity-100 scale-150" : "opacity-0 scale-100"}`}
               >
                 <div className="relative aspect-[668/424] w-full">
                   <Image

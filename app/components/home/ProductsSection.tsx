@@ -109,7 +109,7 @@ function getHomeProductMedia(product: (typeof productCards)[number]) {
         : "60ea9badfafa109779007ff36fd0cf87881840a1.png",
     wrapperClass: "relative mt-5 h-full w-full flex items-center  lg:flex-1",
     imageClass:
-      "object-contain object-center transition-transform duration-500 origin-[50%_85%] ease-[cubic-bezier(0.22,1,0.36,1)] scale-196 group-hover:scale-206 md:scale-136 md:group-hover:scale-146",
+      `object-contain object-center transition-transform duration-500 origin-[50%_85%] ease-[cubic-bezier(0.22,1,0.36,1)] ${product.marker === "AGV" ? "scale-100 group-hover:scale-110 md:scale-90 md:group-hover:scale-100" : "scale-120 group-hover:scale-130 md:scale-100 md:group-hover:scale-110"}`,
     sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 22vw",
   };
 }

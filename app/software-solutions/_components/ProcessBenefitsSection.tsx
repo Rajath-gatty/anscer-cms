@@ -26,7 +26,6 @@ export function ProcessBenefitsSection({
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           <Reveal
-            variant={isImageLeft ? "fade-left" : "fade-right"}
             className={`order-2 flex flex-col overflow-hidden border border-[#005ead]/20 ${
               isImageLeft ? "lg:order-2" : "lg:order-1"
             }`}
@@ -59,7 +58,7 @@ export function ProcessBenefitsSection({
               />
             </div>
 
-            <div className="group flex flex-col gap-2 bg-white/50 p-6 lg:flex-row lg:items-center lg:gap-6">
+            <div className="group flex flex-col gap-2 bg-white/50 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 lg:flex-row lg:items-center lg:gap-6">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
                 <CircleUserRound
                   className="size-5 transition-colors duration-300 group-hover:text-white"
@@ -78,7 +77,6 @@ export function ProcessBenefitsSection({
           </Reveal>
 
           <Reveal
-            variant={isImageLeft ? "fade-right" : "fade-left"}
             className={`relative order-1 min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px] ${
               isImageLeft ? "lg:order-1" : "lg:order-2"
             }`}
@@ -113,9 +111,9 @@ function ProcessBenefitCard({
 }) {
   return (
     <div
-      className={`group flex flex-1 flex-col gap-2 bg-white/50 p-6 ${className}`}
+      className={`group flex flex-1 flex-col gap-2 bg-white/50 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 ${className}`}
     >
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
+      <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-colors duration-300 group-hover:bg-[#005EAD]">
         <Icon
           className="size-5 transition-colors duration-300 group-hover:text-white"
           strokeWidth={1.7}

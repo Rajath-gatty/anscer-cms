@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FadeLeft, FadeRight } from "../../components/animation";
+import { FadeLeft, FadeRight, FadeUp } from "../../components/animation";
 import { imagePath } from "../../components/home/assets";
 
 export function AnalyticsPlatformSection() {
@@ -10,7 +10,7 @@ export function AnalyticsPlatformSection() {
     >
       <div className="site-container">
         <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
-          <FadeRight>
+          <FadeUp>
             <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
               <span className="text-xl md:text-[28px]">04 </span>
               <span className="text-sm text-[#005ead]/50 md:text-[16px]">
@@ -50,9 +50,9 @@ export function AnalyticsPlatformSection() {
               identify operational bottlenecks, and proactively improve
               automation performance across facilities.
             </p>
-          </FadeRight>
+          </FadeUp>
 
-          <FadeLeft
+          <FadeUp
             className="relative hidden aspect-[1288/816] w-full overflow-hidden rounded-[12px] bg-[#dce7ef] lg:block"
             delay={0.08}
           >
@@ -64,7 +64,7 @@ export function AnalyticsPlatformSection() {
               sizes="(max-width: 1024px) 100vw, 640px"
               className="object-cover"
             />
-          </FadeLeft>
+          </FadeUp>
         </div>
       </div>
     </section>

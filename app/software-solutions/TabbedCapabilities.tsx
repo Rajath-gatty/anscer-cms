@@ -3,7 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState, type Ref } from "react";
-import { FadeLeft, FadeRight } from "../components/animation";
+import { FadeLeft, FadeRight, FadeUp } from "../components/animation";
 import { imagePath, videoPath } from "../components/home/assets";
 
 type CapabilityItem = {
@@ -110,7 +110,7 @@ export function TabbedCapabilities({
 
         {variant === "accordion" ? (
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
-            <FadeRight>
+            <FadeUp>
               <AccordionList
                 listRef={accordionListRef}
                 items={items}
@@ -119,8 +119,8 @@ export function TabbedCapabilities({
                 aspectRatio="aspect-[4/3]"
                 listClassName=" sm:min-h-[980px] md:min-h-[1080px] lg:min-h-0"
               />
-            </FadeRight>
-            <FadeLeft>
+            </FadeUp>
+            <FadeUp>
               <div
                 className="relative hidden w-full overflow-hidden rounded-[18px] bg-[#dce7ef] lg:block"
                 style={
@@ -144,11 +144,11 @@ export function TabbedCapabilities({
                   );
                 })}
               </div>
-            </FadeLeft>
+            </FadeUp>
           </div>
         ) : (
           <>
-            <FadeRight className="mt-10 lg:hidden">
+            <FadeUp className="mt-10 lg:hidden">
               <AccordionList
                 items={items}
                 activeIndex={activeIndex}
@@ -157,10 +157,10 @@ export function TabbedCapabilities({
                 aspectRatio="aspect-[721/464]"
                 listClassName=" sm:min-h-[680px] md:min-h-[820px]"
               />
-            </FadeRight>
+            </FadeUp>
 
             <div className="mt-10 hidden gap-4 lg:grid lg:grid-cols-2 lg:items-center">
-              <FadeRight className="flex max-w-100 flex-col gap-3">
+              <FadeUp className="flex max-w-100 flex-col gap-3">
                 {items.map((item, index) => {
                   const isActive = activeIndex === index;
                   return (
@@ -178,9 +178,9 @@ export function TabbedCapabilities({
                     </button>
                   );
                 })}
-              </FadeRight>
+              </FadeUp>
 
-              <FadeLeft className="relative mt-8 lg:mt-0 mb-12">
+              <FadeUp className="relative mt-8 lg:mt-0 mb-12">
                 <div className="relative aspect-[721/464] w-full overflow-visible">
                   {items.map((item, index) => (
                     <div
@@ -228,7 +228,7 @@ export function TabbedCapabilities({
                     </p>
                   </div>
                 </div>
-              </FadeLeft>
+              </FadeUp>
             </div>
           </>
         )}

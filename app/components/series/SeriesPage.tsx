@@ -95,7 +95,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               className={cn(
                 "object-contain self-end object-right -translate-y-[40px] md:translate-y-[-60px] origin-right scale-100 md:scale-140   drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]",
                 data.slug === "psr-series" &&
-                  "md:-translate-y-[100px] md:scale-130 scale-100 w-[90%] translate-y-0",
+                  "md:-translate-y-[75px] md:scale-130 scale-100 w-[90%] translate-y-0 2xl:-translate-y-[50px] 3xl:translate-y-[0px]",
               )}
             />
           </div>

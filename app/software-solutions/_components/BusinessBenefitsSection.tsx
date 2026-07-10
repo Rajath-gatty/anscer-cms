@@ -1,5 +1,5 @@
 import { Code, ExternalLink, Layers, Network, UserCircle2 } from "lucide-react";
-import { FadeLeft, FadeRight } from "../../components/animation";
+import { FadeLeft, FadeRight, FadeUp } from "../../components/animation";
 
 export function BusinessBenefitsSection() {
   return (
@@ -12,9 +12,9 @@ export function BusinessBenefitsSection() {
           Turning Industry Workflows Into Autonomous Operations
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
-          <FadeRight className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
+          <FadeUp  className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
             <div className="flex flex-col border-b border-[#005ead]/20 lg:flex-row">
-              <div className="group flex flex-1 flex-col gap-2.5 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
+              <div className="group flex flex-1 flex-col gap-2.5 border-b border-[#005ead]/20 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 lg:border-b-0 lg:border-r">
                 <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
                   <Layers
                     className="size-5 transition-colors duration-300 group-hover:text-white"
@@ -28,7 +28,7 @@ export function BusinessBenefitsSection() {
                   Separates business logic from robot control logic
                 </p>
               </div>
-              <div className="group flex flex-1 flex-col gap-2.5 p-6">
+              <div className="group flex flex-1 flex-col gap-2.5 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6">
                 <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
                   <ExternalLink
                     className="size-5 transition-colors duration-300 group-hover:text-white"
@@ -45,7 +45,7 @@ export function BusinessBenefitsSection() {
             </div>
 
             <div className="flex flex-col border-b border-[#005ead]/20 lg:flex-row">
-              <div className="group flex flex-1 flex-col gap-2.5 border-b border-[#005ead]/20 p-6 lg:border-b-0 lg:border-r">
+              <div className="group flex flex-1 flex-col gap-2.5 border-b border-[#005ead]/20 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 lg:border-b-0 lg:border-r">
                 <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
                   <Network
                     className="size-5 transition-colors duration-300 group-hover:text-white"
@@ -60,7 +60,7 @@ export function BusinessBenefitsSection() {
                   integrated)
                 </p>
               </div>
-              <div className="group flex flex-1 flex-col gap-2.5 p-6">
+              <div className="group flex flex-1 flex-col gap-2.5 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6">
                 <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
                   <Code
                     className="size-5 transition-colors duration-300 group-hover:text-white"
@@ -76,7 +76,7 @@ export function BusinessBenefitsSection() {
               </div>
             </div>
 
-            <div className="group flex flex-col gap-6 p-6 lg:flex-row lg:items-center">
+            <div className="group flex flex-col gap-6 p-6 lg:flex-row lg:items-center duration-300 transition-colors hover:bg-[#005EAD]/5">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
                 <UserCircle2
                   className="size-5 transition-colors duration-300 group-hover:text-white"
@@ -92,9 +92,9 @@ export function BusinessBenefitsSection() {
                 </p>
               </div>
             </div>
-          </FadeRight>
+          </FadeUp>
 
-          <FadeLeft
+          <FadeUp 
             className="relative order-1 min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef] sm:min-h-[440px] lg:order-2"
             delay={0.08}
           >
@@ -107,7 +107,7 @@ export function BusinessBenefitsSection() {
               className="object-cover"
             /> */}
             <div className="w-full h-full bg-[#005EAD]/20"></div>
-          </FadeLeft>
+          </FadeUp>
         </div>
       </div>
     </section>
