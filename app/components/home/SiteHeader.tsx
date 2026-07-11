@@ -263,7 +263,6 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          {pathname !== '/contact-us' && (
             <div className="mt-5">
               <ArrowButton
                 target={CONTACT_HREF}
@@ -273,7 +272,6 @@ export function SiteHeader() {
                 Contact us
               </ArrowButton>
             </div>
-          )}
         </div>
       </div>
     </header>
