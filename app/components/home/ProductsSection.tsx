@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { FadeLeft, FadeRight } from "../animation";
+import { FadeLeft, FadeRight, FadeUp } from "../animation";
 import { seriesCards as productCards } from "../robots/product-series-data";
 import { imagePath } from "./assets";
 import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
@@ -15,7 +15,7 @@ export function ProductsSection() {
       className="scroll-mt-10 overflow-hidden bg-[#fafafa] pb-10 pt-10 md:scroll-mt-16 md:pb-14 md:pt-14 lg:pb-16 lg:pt-16 xl:pb-20 xl:pt-8"
     >
       <div className="site-container">
-        <FadeRight className="max-w-3xl">
+        <FadeUp className="max-w-3xl">
           <Kicker>Robots Designed to Deliver</Kicker>
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
             Our products <span className="text-[#005ead]">Line-Up</span>
@@ -25,21 +25,21 @@ export function ProductsSection() {
             meet different operational needs. Explore our innovative solutions
             designed for seamless automation and efficiency.
           </p>
-        </FadeRight>
+        </FadeUp>
         <div className="mt-7 grid gap-3 md:gap-4 lg:grid-cols-2 lg:items-stretch">
           {featuredProduct ? (
-            <FadeRight className="lg:h-full" delay={0.08}>
+            <FadeUp className="lg:h-full" delay={0.08}>
               <ProductCard product={featuredProduct} />
-            </FadeRight>
+            </FadeUp>
           ) : null}
-          <FadeLeft
+          <FadeUp
             className="grid gap-3 md:gap-4 lg:h-full lg:grid-rows-2"
             delay={0.14}
           >
             {secondaryProducts.map((product) => (
               <ProductCard key={product.title} product={product} />
             ))}
-          </FadeLeft>
+          </FadeUp>
         </div>
       </div>
     </section>

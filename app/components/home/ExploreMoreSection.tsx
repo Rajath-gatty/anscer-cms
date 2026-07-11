@@ -19,7 +19,7 @@ export function ExploreMoreSection() {
   return (
     <section className="overflow-hidden bg-[#efefef] py-14">
       <div className="site-container">
-        <FadeRight>
+        <FadeUp>
           <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
             Your Gateway to All Things ANSCER
           </p>
@@ -32,10 +32,10 @@ export function ExploreMoreSection() {
             what makes our tech stand out&mdash;your journey into the future of
             smart automation starts here.
           </p>
-        </FadeRight>
+        </FadeUp>
 
         <div className="mt-12 grid gap-6 md:grid-cols-[1.05fr_.5fr_1.05fr]">
-          <FadeRight className="grid gap-6" delay={0.08}>
+          <FadeUp className="grid gap-6" delay={0.08}>
             <article className="rounded-xl bg-white p-5">
               <Image
                 src={`${imagePath}diamond-plus.svg`}
@@ -73,7 +73,7 @@ export function ExploreMoreSection() {
                 </p>
               </div>
             </article>
-          </FadeRight>
+          </FadeUp>
 
           <FadeUp className="rounded-xl bg-white p-5" delay={0.14}>
             <Image
@@ -92,7 +92,7 @@ export function ExploreMoreSection() {
             </p>
           </FadeUp>
 
-          <FadeLeft
+          <FadeUp
             className="group relative min-h-[470px] overflow-hidden rounded-xl bg-[#011f40] p-5 text-white md:min-h-[532px] lg:min-h-[470px]"
             delay={0.2}
           >
@@ -132,7 +132,7 @@ export function ExploreMoreSection() {
                 ))}
               </div>
             </div>
-          </FadeLeft>
+          </FadeUp>
         </div>
       </div>
     </section>

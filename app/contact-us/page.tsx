@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowButton } from "../components/home/SectionPrimitives";
 import { ContactForm } from "./ContactForm";
+import { FadeUp } from "../components/animation";
 
 export const metadata: Metadata = {
   title: "Contact Us | ANSCER Robotics",
@@ -34,7 +35,7 @@ export default function ContactUsPage() {
   return (
     <main className="bg-white text-[#011f40]">
       <section className="pb-14 pt-12 md:pb-14 md:pt-15">
-        <div className="site-container">
+        <FadeUp className="site-container">
           <div className="flex max-w-[760px] flex-col gap-6 pt-10">
             <p className="text-base font-medium uppercase tracking-[0.16em] text-[#005ead]">
               Contact us
@@ -90,7 +91,7 @@ export default function ContactUsPage() {
               ))}
             </aside>
           </div>
-        </div>
+        </FadeUp>
       </section>
     </main>
   );

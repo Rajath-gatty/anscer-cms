@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { FadeLeft, FadeRight } from "../animation";
+import { FadeLeft, FadeRight, FadeUp } from "../animation";
 import { imagePath } from "./assets";
 
 const technologyItems = [
@@ -39,7 +39,7 @@ export function TechnologyAccordion() {
 
   return (
     <div className="mt-7 grid items-stretch gap-5 md:mt-9   lg:grid-cols-[0.36fr_0.64fr]">
-      <FadeRight className="h-full">
+      <FadeUp className="h-full">
         <div className="h-full flex flex-col gap-3">
           {technologyItems.map((item, index) => {
             const isOpen = activeIndex === index;
@@ -113,9 +113,9 @@ export function TechnologyAccordion() {
             );
           })}
         </div>
-      </FadeRight>
+      </FadeUp>
 
-      <FadeLeft
+      <FadeUp
         className="relative hidden min-h-75 h-full overflow-hidden rounded-xl bg-[#d9e3eb] lg:block"
         delay={0.08}
       >
@@ -138,7 +138,7 @@ export function TechnologyAccordion() {
             />
           );
         })}
-      </FadeLeft>
+      </FadeUp>
     </div>
   );
 }

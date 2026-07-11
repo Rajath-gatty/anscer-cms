@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { AnnouncementBanner } from "./components/AnnouncementBanner";
 import { MotionProvider } from "./components/animation/MotionProvider";
 import { ScrollBehaviorManager } from "./components/animation/ScrollBehaviorManager";
 import { SiteFooter } from "./components/home/SiteFooter";

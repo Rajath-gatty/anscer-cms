@@ -6,7 +6,7 @@ export function TechnologySection() {
   return (
     <section id="software" className="overflow-hidden bg-[#e7eef4] py-14">
       <div className="site-container">
-        <FadeRight className="max-w-[610px]">
+        <FadeUp className="max-w-[610px]">
           <Kicker>Engineering the Future of Automation</Kicker>
           <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
             Our <span className="text-[#005ead]">Technology</span>
@@ -15,7 +15,7 @@ export function TechnologySection() {
             By combining fundamental research with applied engineering, we create breakthroughs that redefine autonomous
             service.
           </p>
-        </FadeRight>
+        </FadeUp>
         <FadeUp delay={0.08}>
           <TechnologyAccordion />
         </FadeUp>

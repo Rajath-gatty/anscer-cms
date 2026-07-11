@@ -6,6 +6,7 @@ import { imagePath } from "../../home/assets";
 import { ProductProfileRequestDialog } from "./ProductProfileRequestDialog";
 import type { ProductDetailData } from "../product-detail-data";
 import { ArrowButton } from "../../home/SectionPrimitives";
+import { FadeUp } from "../../animation";
 
 export function ProductCta({ data }: { data: ProductDetailData }) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -23,7 +24,7 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_48%,rgba(0,0,0,.28)_100%)]" />
         <div className="absolute inset-0 w-full h-full bg-black/70" />
         <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
-        <div className="site-container relative z-10">
+        <FadeUp className="site-container relative z-10">
           <h2 className=" text-[48px] font-semibold leading-[1.1] md:text-[60px]">
             {data.ctaTitle ??
               `Know More About The ${data.title.replaceAll(" ", "")}`}
@@ -52,7 +53,7 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
               Download Product Profile
             </ArrowButton>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       <ProductProfileRequestDialog

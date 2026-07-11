@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { imagePath } from "../../home/assets";
 import type { ProductDetailData } from "../product-detail-data";
+import { FadeUp } from "../../animation";
 
 export function ModulesSection({ data }: { data: ProductDetailData }) {
   const modules = data.modules?.filter((module) => !module.hidden) ?? [];
@@ -70,7 +71,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
           className="pointer-events-none absolute left-1/2 top-[45%] z-0 h-[220px] w-[600px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.72] md:top-2/3"
         />
       ) : null}
-      <div className="site-container relative z-10">
+      <FadeUp className="site-container relative z-10">
         <div className="max-w-[760px]">
           <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
             Top Modules
@@ -320,7 +321,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
             </div>
           </div>
         </div>
-      </div>
+      </FadeUp>
     </section>
   );
 }

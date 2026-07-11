@@ -11,6 +11,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { useReducedMotion } from "motion/react";
 
 import "swiper/css";
+import { FadeUp } from "../components/animation";
 
 type TeamSlide = {
   image: string;
@@ -139,7 +140,7 @@ export function TeamSlider({
   return (
     <div ref={sectionRef}>
       <div className="site-container">
-        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <FadeUp className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-162.5">
             <p className="text-[9px] font-medium uppercase tracking-[0.12em] text-[#005ead] md:text-[16px]">
               {eyebrow}
@@ -152,7 +153,7 @@ export function TeamSlider({
             </p>
           </div>
           {renderControls(false)}
-        </div>
+        </FadeUp>
       </div>
 
       <div

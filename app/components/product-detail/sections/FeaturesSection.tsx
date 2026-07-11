@@ -24,6 +24,7 @@ import { ScrollReveal } from "../../home/ScrollReveal";
 import type { ProductDetailData } from "../product-detail-data";
 import { ArrowButton } from "../../home/SectionPrimitives";
 import { ProductProfileRequestDialog } from "./ProductProfileRequestDialog";
+import { FadeUp } from "../../animation";
 
 const featureIcons = {
   Layers,
@@ -53,7 +54,7 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
         className="scroll-mt-28 bg-[#fafafa] py-12 md:py-14"
       >
         <div className="site-container">
-          <ScrollReveal className="max-w-190" direction="left">
+          <FadeUp className="max-w-190">
             <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
               Features
             </p>
@@ -61,7 +62,7 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
             <p className="mt-4 max-w-172.5 text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6.5">
               {data.features.content}
             </p>
-          </ScrollReveal>
+          </FadeUp>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {data.features.features.slice(0, 2).map((feature, index) => (
               <ScrollReveal key={feature.title} delay={index * 200}>

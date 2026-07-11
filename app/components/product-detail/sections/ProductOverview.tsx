@@ -8,6 +8,7 @@ import { ScrollReveal } from "../../home/ScrollReveal";
 import { ArrowButton } from "../../home/SectionPrimitives";
 import { ProductProfileRequestDialog } from "./ProductProfileRequestDialog";
 import type { ProductDetailData } from "../product-detail-data";
+import { FadeUp } from "../../animation";
 
 export function ProductOverview({ data }: { data: ProductDetailData }) {
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
@@ -21,7 +22,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
     >
       <div className="site-container grid gap-9 lg:grid-cols-[0.56fr_0.44fr]">
         <div>
-          <ScrollReveal direction="right">
+          <FadeUp>
             <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
               Overview
             </p>
@@ -31,8 +32,8 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
             <p className="mt-4 max-w-155 text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6.5">
               {data.overview}
             </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={300}>
+          </FadeUp>
+          <FadeUp delay={300}>
           <div className="relative mt-8 aspect-[1.72] overflow-hidden rounded-[12px] bg-[#e6ebf0]">
             {
               data.overviewVideo ? (
@@ -55,11 +56,11 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
               )
             }
           </div>
-          </ScrollReveal>
+          </FadeUp>
         </div>
 
         <div className="pt-1">
-          <div className="mb-7">
+          <FadeUp className="mb-7">
             <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
               Key Applications
             </p>
@@ -73,8 +74,8 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
                 </span>
               ))}
             </div>
-          </div>
-          <div className="mb-2 flex items-center justify-between gap-4">
+          </FadeUp>
+          <FadeUp className="mb-2 flex items-center justify-between gap-4">
             <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
               Key Specifications
             </p>
@@ -109,13 +110,11 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
                 Imperial
               </span>
             </button>
-          </div>
-          <dl>
-            {data.specs.map((spec, index) => (
-              <ScrollReveal
+          </FadeUp>
+          <FadeUp>
+            {data.specs.map((spec) => (
+              <div
                 key={spec.label}
-                direction="right"
-                delay={index * 45}
                 className="grid grid-cols-[0.75fr_1fr] border-b border-[#dfe6ee] py-3.5"
               >
                 <dt className="text-[12px] font-semibold uppercase leading-5 text-[#3a3a3a]/65 md:text-[14px]">
@@ -127,9 +126,9 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
                 >
                   {isImperial ? (spec.imperial ?? spec.value) : spec.value}
                 </dd>
-              </ScrollReveal>
+              </div>
             ))}
-          </dl>
+          </FadeUp>
           <ArrowButton
             asButton
             className="mt-6"

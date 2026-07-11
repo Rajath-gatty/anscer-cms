@@ -4,6 +4,7 @@ import { imagePath } from "../home/assets";
 import { seriesCards } from "./product-series-data";
 import { cn } from "@/lib/utils";
 import { ArrowButton } from "../home/SectionPrimitives";
+import { FadeUp } from "../animation";
 
 function ProductSeriesCard() {
   return (
@@ -11,6 +12,7 @@ function ProductSeriesCard() {
       <div className="site-container">
         <div className="grid gap-5 md:grid-cols-3">
           {seriesCards.map((series) => (
+            <FadeUp>
             <article
               key={series.title}
               className={cn(
@@ -55,6 +57,7 @@ function ProductSeriesCard() {
                 </div>
               </div>
             </article>
+            </FadeUp>
           ))}
         </div>
       </div>

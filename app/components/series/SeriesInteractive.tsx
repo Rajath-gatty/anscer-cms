@@ -15,6 +15,7 @@ import type { SeriesPageData } from "./series-data";
 
 // Import Swiper styles
 import "swiper/css";
+import { FadeUp } from "../animation";
 export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
@@ -74,20 +75,20 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
       `}</style>
 
       <div className="site-container">
-        <ScrollReveal>
-          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
-            Applications
-          </p>
-        </ScrollReveal>
+        <FadeUp>
+        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+          Applications
+        </p>
+        </FadeUp>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <ScrollReveal delay={80} className="max-w-[700px]">
+          <FadeUp delay={80} className="max-w-[700px]">
             <h2 className="text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
               {data.applicationsHeading}
             </h2>
             <p className="mt-4 max-w-[610px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
               {data.applicationsIntro}
             </p>
-          </ScrollReveal>
+          </FadeUp>
 
           {/* Desktop Controls */}
           <div
@@ -125,7 +126,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
       </div>
 
       {/* Swiper Slider Wrapper */}
-      <div className="mt-10 overflow-hidden pl-[max(20px,calc((100vw-1340px)/2+20px))] pr-5">
+      <FadeUp className="mt-10 overflow-hidden pl-[max(20px,calc((100vw-1340px)/2+20px))] pr-5">
         <Swiper
           modules={[Autoplay, Navigation]}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -176,7 +177,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </FadeUp>
 
       {/* Mobile Controls */}
       <div className="site-container mt-7 flex items-center justify-center gap-4 md:hidden">
@@ -262,7 +263,7 @@ export function SeriesRobotSelector({
       />
       {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_72%,rgba(232,241,248,.08)_0%,rgba(232,241,248,.6)_48%,rgba(232,241,248,.92)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(232,241,248,.86)_0%,rgba(232,241,248,.34)_46%,rgba(214,230,242,.9)_100%)]" /> */}
-      <div className="site-container relative z-10">
+      <FadeUp className="site-container relative z-10">
         {/* Header — always visible */}
         <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
           <m.div
@@ -640,7 +641,7 @@ export function SeriesRobotSelector({
             </div>
           </div>
         </div>
-      </div>
+      </FadeUp>
 
       {/* Hidden preloader to cache all robot images and prevent flickering on tab changes */}
       <div className="hidden" aria-hidden="true">

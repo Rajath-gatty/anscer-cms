@@ -14,6 +14,7 @@ import { ProductDetailData } from "../product-detail-data";
 // Import Swiper styles
 import "swiper/css";
 import { imagePath } from "../../home/assets";
+import { FadeUp } from "../../animation";
 
 export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) {
   if(!data?.advancedFeatures || data.advancedFeatures.length === 0) {
@@ -76,7 +77,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
         }
       `}</style>
 
-      <div className="site-container">
+      <FadeUp className="site-container">
         <ScrollReveal>
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-white md:text-base">
             {data.title}
@@ -122,7 +123,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
             </button>
           </div>
         </div>
-      </div>
+      </FadeUp>
 
       {/* Swiper Slider Wrapper */}
       <div className="mt-10 overflow-hidden pl-[max(20px,calc((100vw-1340px)/2+20px))] pr-5">

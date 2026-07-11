@@ -8,16 +8,16 @@ export function NewsSection() {
   return (
     <section className="overflow-hidden bg-white py-14 md:py-20">
       <div className="site-container">
-        <FadeRight>
+        <FadeUp>
           <Kicker>We are always up to something</Kicker>
           <h2 className="mt-[10px] text-[28px] font-bold tracking-tight md:text-[38px]">Events & News</h2>
-        </FadeRight>
+        </FadeUp>
         <div className="mt-9 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {newsItems.map((item, index) => {
-            const Wrapper = index === 0 ? FadeRight : index === 2 ? FadeLeft : FadeUp;
+            // const Wrapper = index === 0 ? FadeRight : index === 2 ? FadeLeft : FadeUp;
 
             return (
-              <Wrapper
+              <FadeUp
                 key={item.title}
                 className={index === 2 ? "md:col-span-2 lg:col-span-1" : undefined}
                 delay={0.08 + index * 0.04}
@@ -46,7 +46,7 @@ export function NewsSection() {
                     Explore
                   </ArrowButton>
                 </article>
-              </Wrapper>
+              </FadeUp>
             );
           })}
         </div>

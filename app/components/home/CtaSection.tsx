@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FadeRight } from "../animation";
+import { FadeUp } from "../animation";
 
 export function CtaSection() {
   return (
@@ -7,7 +7,7 @@ export function CtaSection() {
       <Image src="/anscer/images/banner-home-final.jpg" alt="" fill sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 z-10 bg-black/70" />
       <div className="absolute inset-0 z-20 bg-[#005ead] mix-blend-color" />
-      <FadeRight className="site-container relative z-30 flex flex-col items-start gap-6">
+      <FadeUp className="site-container relative z-30 flex flex-col items-start gap-6">
         <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] tracking-normal md:leading-[70px] lg:text-[60px] lg:leading-[1.1]">
           Dive Into The Future Factory
         </h2>
@@ -18,7 +18,7 @@ export function CtaSection() {
         <div>
           {/* <ArrowButton dark>Explore Solutions</ArrowButton> */}
         </div>
-      </FadeRight>
+      </FadeUp>
     </section>
   );
 }

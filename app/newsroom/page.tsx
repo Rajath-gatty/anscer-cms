@@ -7,6 +7,7 @@ import {
   NavyButton,
   NewsletterSection,
 } from "./NewsroomClient";
+import { FadeUp } from "../components/animation";
 
 export const metadata: Metadata = {
   title: "Newsroom | ANSCER Robotics",
@@ -27,142 +28,55 @@ export default function NewsroomPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
       {/* ══ 1. HERO ════════════════════════════════════════════════════════ */}
-      <section style={{ height: 580, position: "relative" }}>
+      <section className="h-[580px] relative">
         <Image
           src={`${imagePath}newsroom-final.jpeg`}
           alt="Newsroom hero"
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          className="object-cover object-center"
         />
         {/* Bottom-up dark gradient */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(13deg, #000 0%, transparent 100%)",
-            zIndex: 1,
-          }}
-        />
+        <div className="absolute inset-0 bg-[linear-gradient(13deg,#000_0%,transparent_100%)] z-[1]" />
 
         {/* Content anchored to bottom-left */}
-        <div
-          className="site-container"
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 2,
-            display: "flex",
-            justifyContent: "center",
-            height: "100%",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            paddingBottom: 48,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 24,
-              maxWidth: 732,
-              lineHeight: "110%",
-            }}
-          >
-            <p
-              className="hero-sub-heading"
-              style={{
-                fontSize: 16,
-                fontWeight: 500,
-                textTransform: "uppercase",
-                letterSpacing: "0.18em",
-                color: "#005ead",
-                margin: 0,
-              }}
-            >
+        <FadeUp className="site-container absolute inset-0 z-[2] flex flex-col justify-center items-start h-full pb-12">
+          <div className="flex flex-col gap-6 max-w-[732px] leading-[110%]">
+            <p className="hero-sub-heading hidden md:block text-[16px] font-medium uppercase tracking-[0.18em] text-[#005ead] m-0">
               Newsroom
             </p>
-            <h1
-              style={{
-                fontSize: "clamp(36px, 5vw, 60px)",
-                fontWeight: 600,
-                color: "#fff",
-                margin: 0,
-                lineHeight: "110%",
-              }}
-            >
+            <h1 className="text-[clamp(36px,5vw,60px)] font-semibold text-white m-0 leading-[110%]">
               The Latest from Our Robotics Ecosystem
             </h1>
-            <p
-              style={{
-                fontSize: 18,
-                fontWeight: 500,
-                color: "#fff",
-                margin: 0,
-              }}
-            >
+            <p className="text-[18px] font-medium text-white m-0">
               Explore our latest news, press releases, events, and business
               updates.
             </p>
             <NavyButton href="#">Download media kit</NavyButton>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ══ 2. LATEST NEWS ════════════════════════════════════════════════ */}
-      <section
-        style={{
-          paddingTop: 56,
-          paddingBottom: 56,
-          background: "#fafafa",
-        }}
-      >
+      <section className="py-14 bg-[#fafafa]">
         <div className="site-container">
-          <ScrollReveal>
+          <FadeUp>
             {/* 2-col layout: text | image */}
-            <div
-              className="latest-news-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 16,
-                alignItems: "center",
-              }}
-            >
+            <div className="latest-news-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               {/* Left */}
-              <div
-                style={{ display: "flex", flexDirection: "column", gap: 24 }}
-              >
-                <p
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 500,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.18em",
-                    color: "#005ead",
-                    margin: 0,
-                  }}
-                >
+              <div className="flex flex-col gap-6">
+                <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-[#005ead] m-0">
                   {latestNews.category}
                 </p>
-                <h2
-                  style={{
-                    fontSize: "clamp(24px, 3vw, 36px)",
-                    fontWeight: 600,
-                    color: "#011f40",
-                    margin: 0,
-                    lineHeight: "120%",
-                    overflowWrap: "anywhere" as const,
-                  }}
-                >
+                <h2 className="text-[clamp(24px,3vw,36px)] font-semibold text-[#011f40] m-0 leading-[120%] [overflow-wrap:anywhere]">
                   {latestNews.title}
                 </h2>
-                <p style={{ fontSize: 16, color: "#3a3a3a", margin: 0 }}>
+                <p className="text-[16px] text-[#3a3a3a] m-0">
                   {latestNews.excerpt}
                 </p>
                 {/* Desktop button */}
-                <div className="latest-news-btn-desktop">
+                <div className="latest-news-btn-desktop hidden md:block">
                   <NavyButton href={latestNews.link}>read now</NavyButton>
                 </div>
               </div>
@@ -174,21 +88,16 @@ export default function NewsroomPage() {
                   alt={latestNews.title}
                   width={600}
                   height={400}
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: 12,
-                    width: "100%",
-                    height: 400,
-                  }}
+                  className="object-cover rounded-xl w-full h-[400px]"
                 />
               </div>
             </div>
 
             {/* Mobile read-now button */}
-            <div className="latest-news-btn-mobile" style={{ marginTop: 24 }}>
+            <div className="latest-news-btn-mobile block md:hidden mt-6">
               <NavyButton href="#">read now</NavyButton>
             </div>
-          </ScrollReveal>
+          </FadeUp>
         </div>
       </section>
 
@@ -199,106 +108,34 @@ export default function NewsroomPage() {
       <NewsletterSection />
 
       {/* ══ 5. BANNER CTA ══════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: "relative",
-          width: "100%",
-          height: 580,
-          display: "flex",
-          overflow: "hidden",
-        }}
-      >
+      <section className="relative w-full h-[580px] flex overflow-hidden">
         {/* Blue colour-blend layer */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 10,
-            mixBlendMode: "color",
-            background: "#005ead",
-          }}
-        />
+        <div className="absolute inset-0 z-[10] mix-blend-color bg-[#005ead]" />
         {/* Dark semi-transparent overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 9,
-            background: "rgba(0,0,0,0.8)",
-          }}
-        />
+        <div className="absolute inset-0 z-[9] bg-black/80" />
         {/* Background image */}
         <Image
           src={`${imagePath}f7334de79d3b0b0e61bc3d16b89c879619ad77fb.png`}
           alt=""
           fill
           sizes="100vw"
-          style={{
-            objectFit: "cover",
-            objectPosition: "center",
-            zIndex: 1,
-          }}
+          className="object-cover object-center z-[1]"
         />
 
         {/* Content */}
-        <div
-          className="site-container"
-          style={{ position: "relative", zIndex: 15, alignSelf: "center" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: 24,
-              maxWidth: 970,
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(32px, 4vw, 60px)",
-                fontWeight: 600,
-                color: "#fff",
-                lineHeight: "110%",
-                margin: 0,
-              }}
-            >
+        <div className="site-container relative z-[15] self-center">
+          <FadeUp className="flex flex-col items-start gap-6 max-w-[870px]">
+            <h2 className="text-[clamp(32px,4vw,60px)] font-semibold text-white leading-[110%] m-0">
               Everything You Need to Tell Our Story
             </h2>
-            <p
-              style={{
-                maxWidth: 850,
-                color: "#fff",
-                fontSize: 18,
-                fontWeight: 500,
-                lineHeight: "32px",
-                margin: 0,
-              }}
-            >
+            <p className="max-w-[850px] text-white text-[18px] font-medium leading-[32px] m-0">
               Official brand assets, company information, and press
               resources—all available in one convenient package.
             </p>
             <NavyButton href="#">Download media kit</NavyButton>
-          </div>
+          </FadeUp>
         </div>
       </section>
-
-      {/* Responsive helpers */}
-      <style>{`
-        .hero-sub-heading { display: block; }
-        @media (max-width: 767px) {
-          .hero-sub-heading { display: none !important; }
-          .latest-news-btn-desktop { display: none !important; }
-          .latest-news-btn-mobile { display: block !important; }
-          .latest-news-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        @media (min-width: 768px) {
-          .latest-news-btn-desktop { display: block !important; }
-          .latest-news-btn-mobile { display: none !important; }
-        }
-      `}</style>
     </main>
   );
 }

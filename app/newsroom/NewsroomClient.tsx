@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { imagePath } from "../components/home/assets";
 import { ScrollReveal } from "../components/home/ScrollReveal";
+import { FadeUp } from "../components/animation";
 
 /* ─── Data ─────────────────────────────────────────────────────────── */
 const allArticles = [
@@ -257,7 +258,7 @@ export function ExploreMoreSection() {
       }}
     >
       <div className="site-container">
-        <ScrollReveal>
+        <FadeUp>
           <h2
             style={{
               fontSize: "clamp(28px, 3vw, 36px)",
@@ -272,7 +273,7 @@ export function ExploreMoreSection() {
           <p style={{ color: "#3a3a3a", fontSize: 16, margin: 0 }}>
             Access all news updates conveniently in a single location
           </p>
-        </ScrollReveal>
+        </FadeUp>
 
         {/* Grid */}
         <div
@@ -360,49 +361,17 @@ export function NewsletterSection() {
   }
 
   return (
-    <section
-      style={{
-        background: "#e6ebf0",
-        paddingTop: 80,
-        paddingBottom: 80,
-      }}
-    >
-      <div
-        className="site-container newsletter-grid"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 16,
-          alignItems: "center",
-        }}
-      >
+    <FadeUp className="bg-[#e6ebf0] py-20">
+      <div className="site-container newsletter-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         {/* Left: copy */}
         <div>
-          <p
-            style={{
-              fontSize: 16,
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.18em",
-              color: "#005ead",
-              marginBottom: 0,
-            }}
-          >
+          <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-[#005ead] mb-0">
             Newsletter
           </p>
-          <h3
-            style={{
-              fontSize: "clamp(28px, 3vw, 36px)",
-              fontWeight: 600,
-              color: "#011f40",
-              marginTop: 24,
-              marginBottom: 24,
-              lineHeight: "110%",
-            }}
-          >
+          <h3 className="text-[clamp(28px,3vw,36px)] font-semibold text-[#011f40] mt-6 mb-6 leading-[110%]">
             Subscribe to our Newsletter
           </h3>
-          <p style={{ fontSize: 16, color: "#3a3a3a", margin: 0 }}>
+          <p className="text-[16px] text-[#3a3a3a] m-0">
             Get latest updates from ANSCER
           </p>
         </div>
@@ -410,24 +379,13 @@ export function NewsletterSection() {
         {/* Right: form */}
         <div>
           {submitted ? (
-            <p
-              style={{
-                color: "#011f40",
-                fontWeight: 600,
-                fontSize: 16,
-              }}
-            >
+            <p className="text-[#011f40] font-semibold text-[16px]">
               Thank you! Your submission has been received!
             </p>
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="newsletter-form"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 16,
-              }}
+              className="newsletter-form flex flex-col items-stretch md:flex-row md:items-center gap-4"
             >
               <input
                 type="email"
@@ -435,39 +393,14 @@ export function NewsletterSection() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email Address"
                 required
-                style={{
-                  flex: 1,
-                  height: 46,
-                  border: "1px solid #011f40",
-                  borderRadius: 4,
-                  padding: "16px 14px",
-                  fontSize: 14,
-                  color: "#011f40",
-                  outline: "none",
-                  background: "#fff",
-                }}
+                className="flex-1 w-full h-[46px] border border-[#011f40] rounded-[4px] py-[16px] px-[14px] text-[14px] text-[#011f40] outline-none bg-white"
               />
               <SubscribeButton />
             </form>
           )}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .newsletter-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .newsletter-form {
-            flex-direction: column !important;
-            align-items: stretch !important;
-          }
-          .newsletter-form input {
-            width: 100% !important;
-          }
-        }
-      `}</style>
-    </section>
+    </FadeUp>
   );
 }
 

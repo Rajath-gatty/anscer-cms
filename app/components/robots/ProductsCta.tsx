@@ -2,6 +2,7 @@ import Image from "next/image";
 import { imagePath } from "../home/assets";
 import Link from "next/link";
 import { ArrowButton } from "../home/SectionPrimitives";
+import { FadeUp } from "../animation";
 
 export function ProductsCta() {
   return (
@@ -16,7 +17,7 @@ export function ProductsCta() {
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_48%,rgba(0,0,0,.28)_100%)] mix-blend-color" />
       <div className="absolute inset-0 w-full h-full bg-black/70" />
       <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
-      <div className="site-container relative z-10">
+      <FadeUp className="site-container relative z-10">
         <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] tracking-normal md:leading-[70px] lg:text-[60px] lg:leading-[1.1]">
           Dive Into The Future Factory
         </h2>
@@ -30,7 +31,7 @@ export function ProductsCta() {
         >
           Talk to our experts
         </ArrowButton>
-      </div>
+      </FadeUp>
     </section>
   );
 }

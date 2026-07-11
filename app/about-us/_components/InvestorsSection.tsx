@@ -2,11 +2,12 @@ import Image from "next/image";
 import { imagePath } from "../../components/home/assets";
 import { investorLogos } from "../_data/about-us-data";
 import { SectionHeading } from "./SectionPrimitives";
+import { FadeUp } from "@/app/components/animation";
 
 export function InvestorsSection() {
   return (
     <section className="bg-white pb-10 pt-4 md:pb-28 md:pt-8">
-      <div className="site-container grid gap-10 pt-10 lg:grid-cols-[260px_1fr] lg:items-center">
+      <FadeUp className="site-container grid gap-10 pt-10 lg:grid-cols-[260px_1fr] lg:items-center">
         <SectionHeading>
           Our <span className="text-[#005ead]">Investors</span>
         </SectionHeading>
@@ -27,7 +28,7 @@ export function InvestorsSection() {
             </div>
           ))}
         </div>
-      </div>
+      </FadeUp>
     </section>
   );
 }

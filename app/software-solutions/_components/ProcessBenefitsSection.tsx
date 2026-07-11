@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { Reveal } from "../../components/animation";
 import { processBenefitCards } from "../_data/software-solutions-data";
+import Image from "next/image";
+import { imagePath } from "@/app/components/home/assets";
 
 export function ProcessBenefitsSection({
   imagePosition = "left",
@@ -82,15 +84,15 @@ export function ProcessBenefitsSection({
             }`}
             delay={0.08}
           >
-            {/* <Image
+            <Image
               src={`${imagePath}1369b1d9491c23604e01cf3a0ed8ab6fd984e0e3.jpg`}
               alt=""
               fill
               quality={95}
               sizes="(max-width: 1024px) 100vw, 670px"
               className="object-cover"
-            /> */}
-            <div className="w-full h-full bg-[#005EAD]/20"></div>
+            />
+            {/* <div className="w-full h-full bg-[#005EAD]/20"></div> */}
           </Reveal>
         </div>
       </div>
