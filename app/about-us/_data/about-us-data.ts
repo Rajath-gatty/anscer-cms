@@ -49,14 +49,14 @@ export const values = [
 export const testimonials = [
   {
     quote:
-      "â€œANSCER consistently demonstrated exceptional customer service, meticulous attention to detail, and outstanding accountability throughout our project. Their deployment teamâ€™s perseverance and enthusiasm were instrumental to a successful implementation. We greatly value their professionalism and collaborative approach.â€",
+      "ANSCER consistently demonstrated exceptional customer service, meticulous attention to detail, and outstanding accountability throughout our project. Their deployment team’s perseverance and enthusiasm were instrumental to a successful implementation. We greatly value their professionalism and collaborative approach.",
     name: "Sarath",
     role: "Automation Head",
     avatar: "Ellipse-369.jpg",
   },
   {
     quote:
-      "â€œANSCERâ€™s robots have become an integral part ofour team, working tirelessly and reliably. In the first three months, we saw a clear drop in manual errors and our through put went up. The safety features are excellent, and our staff quickly grew comfortable working alongside the robots.â€",
+      "ANSCER's robots have become an integral part ofour team, working tirelessly and reliably. In the first three months, we saw a clear drop in manual errors and our through put went up. The safety features are excellent, and our staff quickly grew comfortable working alongside the robots.",
     name: "Ganesh P",
     role: "Sr.Manager",
     avatar: "Ellipse-369.jpg",

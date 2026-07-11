@@ -234,6 +234,14 @@ export function SiteHeader() {
                             >
                               Newsroom
                             </Link>
+                            <Link
+                              href="https://career.anscer.com/jobs/Careers"
+                              onClick={closeMenu}
+                              className="cursor-pointer transition hover:text-[#005ead] flex items-center gap-2"
+                            >
+                              Careers
+                              <ExternalLink className="size-4 text-[#011f40]" />
+                            </Link>
                           </div>
                         </div>
                       </div>

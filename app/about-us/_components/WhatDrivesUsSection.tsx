@@ -17,7 +17,7 @@ export function WhatDrivesUsSection() {
         </FadeUp>
         <FadeUp>
           <p className="mt-3 max-w-[640px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[16px] md:leading-[1.55]">
-            We launched ANSCER to redefine mobile roboticsâ€”delivering next-gen
+            We launched ANSCER to redefine mobile robotics delivering next-gen
             AMR solutions that prioritize safety, simplicity, and global
             scalability.
           </p>
@@ -28,7 +28,7 @@ export function WhatDrivesUsSection() {
             className="order-1 lg:order-none lg:col-span-1 lg:row-span-1"
             icon="crosshair.svg"
             title="What Drives Us"
-            copy="We launched ANSCER to redefine mobile roboticsâ€”delivering next-gen AMR solutions that prioritize safety, simplicity, and global scalability."
+            copy="We launched ANSCER to redefine mobile robotics delivering next-gen AMR solutions that prioritize safety, simplicity, and global scalability."
           />
 
           <FeatureImageCard />
@@ -99,7 +99,7 @@ function FeatureImageCard() {
           Redefining logistics through robotics
         </h3>
         <p className="mt-2 text-[10px] leading-[1.35] text-white/86 md:mt-3 md:text-[16px] md:leading-[1.55]">
-          With an intuitive setup, configuring AMR workflows is quickâ€”start
+          With an intuitive setup, configuring AMR workflows is quick start
           autonomous payload movement within hours, if not minutes.
         </p>
       </div>
