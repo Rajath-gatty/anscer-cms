@@ -87,7 +87,8 @@ const PIN_SCROLL_SCREENS = 14;
 const TIMELINE_DURATION = 24;
 
 const TABLET_SHIFT = 250; // px rightward for even, leftward for odd
-const CONTENT_SHIFT = 300; // px leftward for even, rightward for odd
+const getContentShift = () =>
+  typeof window !== "undefined" && window.innerWidth >= 2080 ? 450 : 300;
 
 const clamp = (v: number, lo = 0, hi = 1) => Math.min(Math.max(v, lo), hi);
 const ease = (t: number) => 0.5 - Math.cos(clamp(t) * Math.PI) / 2;
@@ -122,6 +123,7 @@ function getState(progress: number) {
     if (local <= segLen || isLast) {
       const isEven = i % 2 === 0;
       const tgtTabletX = isEven ? TABLET_SHIFT : -TABLET_SHIFT;
+      const CONTENT_SHIFT = getContentShift();
       const tgtContentX = isEven ? -CONTENT_SHIFT : CONTENT_SHIFT;
 
       // Phase 1 – slide out from centre (0 → 1.5 s)
@@ -178,7 +180,7 @@ function getState(progress: number) {
     tabletScale: 1,
     tabletOp: 1,
     contentOp: 1,
-    contentX: isLastEven ? -CONTENT_SHIFT : CONTENT_SHIFT,
+    contentX: isLastEven ? -getContentShift() : getContentShift(),
     slideIndex: last,
     imageIndex: last,
   };
@@ -304,13 +306,11 @@ export function AnalyticsSection() {
 
               {/* ── Tablet frame + images ─────────────────────────── */}
               <div
-                className="absolute top-1/2 left-1/2"
+                className="absolute top-1/2 4xl:top-[60%] left-1/2 w-[600px] origin-center 4xl:w-[900px] 4xl:"
                 style={{
-                  width: 600,
                   overflow: "hidden",
                   opacity: s.tabletOp,
                   transform: `translate(calc(-50% + ${s.tabletX}px), calc(-50% + ${s.tabletY}%)) scale(${s.tabletScale})`,
-                  transformOrigin: "center center",
                   willChange: "transform, opacity",
                 }}
               >

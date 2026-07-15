@@ -1,7 +1,7 @@
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import NewsletterForm from "./NewsletterForm";
 import { imagePath } from "./assets";
 
 const CONTACT_HREF = "/contact-us";
@@ -196,24 +196,7 @@ export function SiteFooter() {
                 Sign up for our newsletter!
               </p>
 
-              <form className="relative mt-10">
-                <label htmlFor="footer-email" className="sr-only">
-                  Enter your email address
-                </label>
-                <input
-                  id="footer-email"
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="w-full border-0 border-b border-[#fafafa99] bg-transparent pb-[14px] pr-12 text-sm text-[#fafafa] outline-none placeholder:text-[#fafafa4d]"
-                />
-                <button
-                  type="submit"
-                  aria-label="Submit newsletter form"
-                  className="absolute right-0 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-white text-[#222228] transition hover:opacity-80"
-                >
-                  <ArrowRight className="size-5" strokeWidth={2} />
-                </button>
-              </form>
+              <NewsletterForm />
             </div>
           </div>
         </div>
