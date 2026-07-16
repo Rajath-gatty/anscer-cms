@@ -12,7 +12,7 @@ export function WhatDrivesUsSection() {
         </FadeUp>
         <FadeUp>
           <SectionHeading>
-            What does <span className="text-[#005ead]">ANSCER</span> stand for?
+            What Does <span className="text-[#005ead]">ANSCER</span> Stand For?
           </SectionHeading>
         </FadeUp>
         <FadeUp>
