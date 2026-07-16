@@ -9,7 +9,7 @@ export function TeamSection() {
         eyebrow="The Team Behind the Tech"
         title="Built by"
         highlightedTitle="Believers"
-        copy="All the Answers You Need About ANSCER Robotics right at your Fingertips. From how our autonomous robots transform industries to what makes our tech stand out your journey into the future of smart automation starts here."
+        copy="Built on the belief that automation should be practical, scalable, and accessible, our founders created ANSCER Robotics to develop intelligent mobile robots that solve real material handling challenges, bringing world-class, Indian-built innovation to factories and warehouses across the globe."
       />
     </section>
   );
