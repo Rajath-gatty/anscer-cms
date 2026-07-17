@@ -1,6 +1,6 @@
 "use client";
 
-import { imagePath } from "@/app/components/home/assets";
+import { imagePath } from "@/app/(app)/components/home/assets";
 import { cn } from "@/lib/utils";
 import { CirclePile, ClockFading, Forklift, Move } from "lucide-react";
 import Image from "next/image";
@@ -247,38 +247,34 @@ function InteractiveWorkflowV2() {
                       className={`absolute z-0 size-[25px] rounded-full bg-white`}
                     />
                     <div
-                      className={`absolute size-[23px] z-1 rounded-full border border-[#005EAD] transition-all duration-300 ${
-                        isActive(index)
+                      className={`absolute size-[23px] z-1 rounded-full border border-[#005EAD] transition-all duration-300 ${isActive(index)
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-90"
-                      }`}
+                        }`}
                     />
                     <div
-                      className={`size-[11.33px] z-1 rounded-full transition-all duration-300 ${
-                        isActive(index)
+                      className={`size-[11.33px] z-1 rounded-full transition-all duration-300 ${isActive(index)
                           ? "bg-[#005EAD] opacity-100"
                           : "bg-[#011f40] opacity-30"
-                      }`}
+                        }`}
                     />
                   </div>
                 </div>
                 <div
-                  className={`flex md:items-center w-full cursor-pointer gap-3 rounded-[12px] px-3 py-5 text-left transition-all duration-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${
-                    isActive(index)
+                  className={`flex md:items-center w-full cursor-pointer gap-3 rounded-[12px] px-3 py-5 text-left transition-all duration-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005ead] ${isActive(index)
                       ? "bg-linear-to-r from-[#005EAD1A] to-[#005EAD00] md:h-[94px] h-[260px]"
                       : "bg-transparent h-[94px]"
-                  }`}
+                    }`}
                 >
                   <div className={cn("shrink-0 self-start p-3 rounded-md", isActive(index) ? "bg-[#005ead]" : "bg-[#005ead]/[0.05]")}>
                     <step.Icon strokeWidth={1} className={cn("w-6 h-6", isActive(index) ? "text-white" : "text-[#011f40]")} />
                   </div>
                   <div className="flex flex-col gap-1 w-full">
                     <h3
-                      className={`text-sm md:text-base font-semibold transition-all duration-300 ${
-                        isActive(index)
+                      className={`text-sm md:text-base font-semibold transition-all duration-300 ${isActive(index)
                           ? "text-[#005ead] transform translate-y-0"
                           : "font-medium text-[#000000] translate-y-3"
-                      }`}
+                        }`}
                     >
                       {step.title}
                     </h3>
@@ -295,9 +291,8 @@ function InteractiveWorkflowV2() {
                             fill
                             quality={95}
                             sizes="(max-width: 1024px) 100vw, 800px"
-                            className={`object-cover ${
-                              isActive(index) ? "active" : "inactive"
-                            }`}
+                            className={`object-cover ${isActive(index) ? "active" : "inactive"
+                              }`}
                           />
                         </div>
                       </div>
@@ -320,9 +315,8 @@ function InteractiveWorkflowV2() {
                     fill
                     quality={100}
                     sizes="(max-width: 1024px) 100vw, 800px"
-                    className={`object-cover ${
-                      isActive(index) ? "active" : "inactive"
-                    }`}
+                    className={`object-cover ${isActive(index) ? "active" : "inactive"
+                      }`}
                   />
                 </div>
               </div>

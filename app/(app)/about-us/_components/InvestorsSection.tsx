@@ -2,7 +2,7 @@ import Image from "next/image";
 import { imagePath } from "../../components/home/assets";
 import { investorLogos } from "../_data/about-us-data";
 import { SectionHeading } from "./SectionPrimitives";
-import { FadeUp } from "@/app/components/animation";
+import { FadeUp } from "@/app/(app)/components/animation";
 
 export function InvestorsSection() {
   return (

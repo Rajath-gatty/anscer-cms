@@ -1,4 +1,4 @@
-import { FadeUp } from "@/app/components/animation";
+import { FadeUp } from "@/app/(app)/components/animation";
 import Image from "next/image";
 import { imagePath } from "../../components/home/assets";
 

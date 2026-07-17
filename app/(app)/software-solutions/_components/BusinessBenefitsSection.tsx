@@ -1,7 +1,7 @@
 import { Code, ExternalLink, Layers, Network, UserCircle2 } from "lucide-react";
 import { FadeLeft, FadeRight, FadeUp } from "../../components/animation";
 import Image from "next/image";
-import { imagePath } from "@/app/components/home/assets";
+import { imagePath } from "@/app/(app)/components/home/assets";
 
 export function BusinessBenefitsSection() {
   return (
@@ -14,7 +14,7 @@ export function BusinessBenefitsSection() {
           Turning Industry Workflows Into Autonomous Operations
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
-          <FadeUp  className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
+          <FadeUp className="order-2 flex flex-col overflow-hidden border border-[#005ead]/20 lg:order-1">
             <div className="flex flex-col border-b border-[#005ead]/20 lg:flex-row">
               <div className="group flex flex-1 flex-col gap-2.5 border-b border-[#005ead]/20 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 lg:border-b-0 lg:border-r">
                 <div className="flex size-10 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
@@ -96,7 +96,7 @@ export function BusinessBenefitsSection() {
             </div>
           </FadeUp>
 
-          <FadeUp 
+          <FadeUp
             className="relative order-1 min-h-[300px] overflow-hidden rounded-xl bg-[#dce7ef] sm:min-h-[440px] lg:order-2"
             delay={0.08}
           >

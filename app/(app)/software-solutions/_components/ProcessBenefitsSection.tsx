@@ -8,7 +8,7 @@ import {
 import { Reveal } from "../../components/animation";
 import { processBenefitCards } from "../_data/software-solutions-data";
 import Image from "next/image";
-import { imagePath } from "@/app/components/home/assets";
+import { imagePath } from "@/app/(app)/components/home/assets";
 
 export function ProcessBenefitsSection({
   imagePosition = "left",
@@ -28,9 +28,8 @@ export function ProcessBenefitsSection({
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           <Reveal
-            className={`order-2 flex flex-col overflow-hidden border border-[#005ead]/20 ${
-              isImageLeft ? "lg:order-2" : "lg:order-1"
-            }`}
+            className={`order-2 flex flex-col overflow-hidden border border-[#005ead]/20 ${isImageLeft ? "lg:order-2" : "lg:order-1"
+              }`}
           >
             <div className="flex flex-col border-b border-[#005ead]/20 lg:flex-row">
               <ProcessBenefitCard
@@ -79,9 +78,8 @@ export function ProcessBenefitsSection({
           </Reveal>
 
           <Reveal
-            className={`relative order-1 min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px] ${
-              isImageLeft ? "lg:order-1" : "lg:order-2"
-            }`}
+            className={`relative order-1 min-h-[300px] overflow-hidden rounded-[12px] bg-[#dce7ef] sm:min-h-[440px] ${isImageLeft ? "lg:order-1" : "lg:order-2"
+              }`}
             delay={0.08}
           >
             <Image
