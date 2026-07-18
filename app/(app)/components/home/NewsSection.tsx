@@ -13,7 +13,6 @@ interface ArticleMedia {
 interface Article {
   id: string;
   postTitle: string;
-  category: string;
   summary?: string;
   articleLink?: string;
   thumbnailImage?: ArticleMedia;
@@ -60,47 +59,46 @@ export function NewsSection() {
         <div className="mt-9 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {isLoading
             ? Array.from({ length: 3 }).map((_, i) => (
-                <NewsCardSkeleton key={`skeleton-${i}`} index={i} />
-              ))
+              <NewsCardSkeleton key={`skeleton-${i}`} index={i} />
+            ))
             : articles.map((article, index) => {
-                const imageUrl = article.thumbnailImage?.url ?? article.mainImage?.url;
-                const href = article.articleLink ?? "#";
+              const imageUrl = article.thumbnailImage?.url ?? article.mainImage?.url;
+              const href = article.articleLink ?? "#";
 
-                return (
-                  <FadeUp
-                    key={article.id}
-                    className={index === 2 ? "md:col-span-2 lg:col-span-1" : undefined}
-                    delay={0.08 + index * 0.04}
-                  >
-                    <article className="group">
-                      <div className={`relative overflow-hidden rounded-lg bg-[#dfe7ee] lg:h-[300px] ${getNewsImageFrameClass(index)}`}>
-                        {imageUrl && (
-                          <Image 
-                            src={imageUrl} 
-                            alt={article.postTitle} 
-                            fill 
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" 
-                            className="object-contain lg:object-cover"
-                            style={{ objectPosition: index < 2 ? "50% 18%" : "center" }}
-                          />
-                        )}
-                      </div>
-                      <h3 className="mt-4 h-[44px] line-clamp-2 text-base font-semibold leading-[22px] text-[#4a4a4a]">{article.postTitle}</h3>
-                      <p className="mt-4 h-[44px] line-clamp-2 text-sm font-normal leading-[22px] text-[#5b5f66]">{article.summary || ""}</p>
-                      <ArrowButton
-                        as="a"
-                        variant="ghost"
-                        href={href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-7 gap-4 text-sm text-[#09284a] hover:text-[#005ead]"
-                      >
-                        Explore
-                      </ArrowButton>
-                    </article>
-                  </FadeUp>
-                );
-              })}
+              return (
+                <FadeUp
+                  key={article.id}
+                  className={index === 2 ? "md:col-span-2 lg:col-span-1" : undefined}
+                  delay={0.08 + index * 0.04}
+                >
+                  <article className="group">
+                    <div className={`relative overflow-hidden rounded-lg bg-[#dfe7ee] lg:h-[300px] ${getNewsImageFrameClass(index)}`}>
+                      {imageUrl && (
+                        <Image
+                          src={imageUrl}
+                          alt={article.postTitle}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-contain lg:object-cover"
+                          style={{ objectPosition: index < 2 ? "50% 18%" : "center" }}
+                        />
+                      )}
+                    </div>
+                    <h3 className="mt-4 h-[44px] line-clamp-2 text-base font-semibold leading-[22px] text-[#4a4a4a]">{article.postTitle}</h3>
+                    <p className="mt-4 h-[44px] line-clamp-2 text-sm font-normal leading-[22px] text-[#5b5f66]">{article.summary || ""}</p>
+                    <ArrowButton
+                      as="a"
+                      variant="ghost"
+                      href={href}
+                      newTab
+                      className="mt-7 gap-4 text-sm text-[#09284a] hover:text-[#005ead]"
+                    >
+                      Explore
+                    </ArrowButton>
+                  </article>
+                </FadeUp>
+              );
+            })}
         </div>
       </div>
     </section>

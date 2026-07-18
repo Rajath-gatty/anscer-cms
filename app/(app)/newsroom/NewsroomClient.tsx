@@ -14,7 +14,6 @@ interface ArticleMedia {
 interface Article {
   id: string;
   postTitle: string;
-  category: string;
   summary?: string;
   articleLink?: string;
   thumbnailImage?: ArticleMedia;
@@ -60,6 +59,7 @@ export function NavyButton({
   return (
     <a
       href={href}
+      target="_blank"
       className={`inline-flex items-center gap-3 rounded-[3px] py-[13px] pr-[5px] pl-5 text-[12px] font-medium uppercase tracking-[0.08em] no-underline w-fit transition-[background-color,background-image] duration-200 ${white
         ? "bg-white text-brand-navy hover:bg-white/90"
         : "bg-brand-blue text-white hover:bg-[linear-gradient(rgba(255,255,255,0.05),rgba(255,255,255,0.05))]"
@@ -76,6 +76,7 @@ function ExploreLink({ href }: { href: string }) {
   return (
     <a
       href={href}
+      target="_blank"
       className="inline-flex items-center gap-3 text-brand-navy py-[13px] pr-[5px] pl-0 text-[13px] font-medium no-underline uppercase tracking-[0.06em]"
     >
       Explore
@@ -106,15 +107,9 @@ function ArticleCard({ article }: { article: Article }) {
 
       {/* Content area */}
       <div className="h-[146px] flex flex-col">
-        {article.category && (
-          <p className="text-[12px] font-medium opacity-50 text-brand-charcoal mt-3 mb-0 line-clamp-1">
-            {article.category}
-          </p>
-        )}
         <div className="flex-[1_0_auto]">
           <h4
-            className={`text-brand-charcoal text-[16px] font-semibold mb-0 break-words line-clamp-2 ${article.summary ? "mt-0" : "mt-3"
-              }`}
+            className={`text-brand-charcoal text-[16px] font-semibold mb-0 wrap-break-word line-clamp-2 ${"mt-3"}`}
           >
             {article.postTitle}
           </h4>
