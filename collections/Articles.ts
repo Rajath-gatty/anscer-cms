@@ -5,12 +5,29 @@ export const Articles: CollectionConfig = {
   admin: {
     useAsTitle: "postTitle",
   },
+  access: {
+    read: () => true,
+    create: ({ req: { user } }) => Boolean(user),
+    update: ({ req: { user } }) => Boolean(user),
+    delete: ({ req: { user } }) => Boolean(user),
+  },
   fields: [
     {
       name: "postTitle",
       label: "Post Title",
       type: "text",
       required: true,
+    },
+    {
+      name: "category",
+      label: "Category",
+      type: 'select',
+      required: true,
+      options: [
+        { label: 'Press Release', value: 'Press Release' },
+        { label: 'Announcement', value: 'Announcement' },
+        { label: 'Case Study', value: 'Case Study' },
+      ]
     },
     {
       name: "postBody",

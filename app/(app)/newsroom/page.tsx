@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { imagePath } from "../components/home/assets";
-import { ScrollReveal } from "../components/home/ScrollReveal";
 import {
   ExploreMoreSection,
+  LatestNewsSection,
   NavyButton,
   NewsletterSection,
 } from "./NewsroomClient";
@@ -13,15 +13,6 @@ export const metadata: Metadata = {
   title: "Newsroom | ANSCER Robotics",
   description:
     "Explore our latest news, press releases, events, and business updates from ANSCER Robotics.",
-};
-
-const latestNews = {
-  category: "LATEST NEWS",
-  title: "Join us at Automate 2026",
-  excerpt:
-    "Experience our cutting-edge automation solutions in person.",
-  image: "events/automate-2026.png",
-  link: "https://events.anscer.com/automate"
 };
 
 export default function NewsroomPage() {
@@ -59,47 +50,8 @@ export default function NewsroomPage() {
       </section>
 
       {/* ══ 2. LATEST NEWS ════════════════════════════════════════════════ */}
-      <section className="py-14 bg-[#fafafa]">
-        <div className="site-container">
-          <FadeUp>
-            {/* 2-col layout: text | image */}
-            <div className="latest-news-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-              {/* Left */}
-              <div className="flex flex-col gap-6">
-                <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-[#005ead] m-0">
-                  {latestNews.category}
-                </p>
-                <h2 className="text-[clamp(24px,3vw,36px)] font-semibold text-[#011f40] m-0 leading-[120%] [overflow-wrap:anywhere]">
-                  {latestNews.title}
-                </h2>
-                <p className="text-[16px] text-[#3a3a3a] m-0">
-                  {latestNews.excerpt}
-                </p>
-                {/* Desktop button */}
-                <div className="latest-news-btn-desktop hidden md:block">
-                  <NavyButton href={latestNews.link}>read now</NavyButton>
-                </div>
-              </div>
+      <LatestNewsSection />
 
-              {/* Right */}
-              <div>
-                <Image
-                  src={`${imagePath}${latestNews.image}`}
-                  alt={latestNews.title}
-                  width={600}
-                  height={400}
-                  className="object-cover rounded-xl w-full h-[400px]"
-                />
-              </div>
-            </div>
-
-            {/* Mobile read-now button */}
-            <div className="latest-news-btn-mobile block md:hidden mt-6">
-              <NavyButton href="#">read now</NavyButton>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
 
       {/* ══ 3. EXPLORE MORE (client component for load-more) ══════════════ */}
       <ExploreMoreSection />

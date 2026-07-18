@@ -4,6 +4,7 @@ import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
+import { articlesSeed } from "./seeds/articles";
 
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
@@ -32,4 +33,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [],
+  onInit: async (payload) => {
+    await articlesSeed(payload)
+  },
 });

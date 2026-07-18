@@ -1,86 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { imagePath } from "../components/home/assets";
+import { useState, useEffect, useCallback } from "react";
 import { ScrollReveal } from "../components/home/ScrollReveal";
 import { FadeUp } from "../components/animation";
 
-/* ─── Data ─────────────────────────────────────────────────────────── */
-const allArticles = [
-  {
-    id: 1,
-    category: "Announcement",
-    title: "Join us at Automate 2026",
-    image: "events/automate-2026.png",
-    link: "https://events.anscer.com/automate",
-  },
-  {
-    id: 2,
-    category: "Announcement",
-    title: "Join us at IWS 2026",
-    image: "events/iws-2026.png",
-    link: "https://events.anscer.com/iws"
-  },
-  {
-    id: 3,
-    category: "Press Release",
-    title: "ANSCER Robotics Expands AMR Fleet With New AR-Series Models",
-    image: "events/series-a-funding.png",
-    link: "https://manufacturing.economictimes.indiatimes.com/news/hi-tech/anscer-robotics-raises-5-4-million-in-series-a-led-by-ian-alpha-fund/131229847"
-  },
-  {
-    id: 4,
-    category: "Press Release",
-    title: "SAP Labs India Unveils 2026 Startup Studio Cohort Focused on Enterprise AI and Deep-Tech Innovation",
-    image: "article-images/image-4.avif",
-    link: "https://theprint.in/ani-press-releases/sap-labs-india-unveils-2026-startup-studio-cohort-focused-on-enterprise-ai-and-deep-tech-innovation/2948992/"
-  },
-  {
-    id: 5,
-    category: "Case Study",
-    title:"ANSCER's Real Play Isn’t Just Robots. It’s Overhauling the Entire Warehouse",
-    image: "article-images/image-3.webp",
-    link: "https://analyticsindiamag.com/deep-tech/anscers-real-play-isnt-just-robots-its-overhauling-the-entire-warehouse"
-  },
-  {
-    id: 6,
-    category: "Press Release",
-    title: "ANSCER Robotics launches LBR500",
-    image: "article-images/image-1.jpg",
-    link: "https://www.engineering.com/anscer-robotics-launches-lbr500/"
-  },
-  {
-    id: 7,
-    category: "Press Release",
-    title: "ANSCER Robotics Expands into the U.S. Market, Appointing Industry Veteran Mark Messina as CEO of Americas",
-    image: "article-images/image-2.jpg",
-    link: "https://www.prnewswire.com/news-releases/anscer-robotics-expands-into-the-us-market-appointing-industry-veteran-mark-messina-as-ceo-of-americas-302376136.html"
-  },
-];
+/* ─── Types ─────────────────────────────────────────────────────────── */
+interface ArticleMedia {
+  url: string;
+  alt?: string;
+}
+
+interface Article {
+  id: string;
+  postTitle: string;
+  category: string;
+  summary?: string;
+  articleLink?: string;
+  thumbnailImage?: ArticleMedia;
+  mainImage?: ArticleMedia;
+}
 
 const PAGE_SIZE = 3;
 
 /* ─── Shared arrow icon ──────────────────────────────────────────────── */
 function ArrowIcon({ dark = false }: { dark?: boolean }) {
   return (
-    <span
-      style={{
-        display: "inline-block",
-        width: 30,
-        height: 20,
-        position: "relative",
-        overflow: "hidden",
-        flexShrink: 0,
-      }}
-    >
+    <span className="inline-block w-[30px] h-[20px] relative overflow-hidden shrink-0">
       <svg
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-        }}
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${dark ? "text-brand-navy" : "text-white"
+          }`}
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -89,7 +38,7 @@ function ArrowIcon({ dark = false }: { dark?: boolean }) {
       >
         <path
           d="M3.33325 7.9987H12.6666M7.99992 12.6654L12.6666 7.9987L7.99992 3.33203"
-          stroke={dark ? "#011f40" : "#fff"}
+          stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -108,37 +57,13 @@ export function NavyButton({
   children: React.ReactNode;
   white?: boolean;
 }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <a
       href={href}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 12,
-        background: white
-          ? hovered
-            ? "rgba(255,255,255,0.9)"
-            : "#fff"
-          : "#005ead",
-        backgroundImage:
-          !white && hovered
-            ? "linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05))"
-            : undefined,
-        color: white ? "#011f40" : "#fff",
-        borderRadius: 3,
-        padding: "13px 5px 13px 20px",
-        fontSize: 12,
-        fontWeight: 500,
-        textTransform: "uppercase" as const,
-        letterSpacing: "0.08em",
-        textDecoration: "none",
-        transition: "background-image 0.2s",
-        width: "fit-content",
-      }}
+      className={`inline-flex items-center gap-3 rounded-[3px] py-[13px] pr-[5px] pl-5 text-[12px] font-medium uppercase tracking-[0.08em] no-underline w-fit transition-[background-color,background-image] duration-200 ${white
+        ? "bg-white text-brand-navy hover:bg-white/90"
+        : "bg-brand-blue text-white hover:bg-[linear-gradient(rgba(255,255,255,0.05),rgba(255,255,255,0.05))]"
+        }`}
     >
       {children}
       <ArrowIcon dark={white} />
@@ -151,18 +76,7 @@ function ExploreLink({ href }: { href: string }) {
   return (
     <a
       href={href}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 12,
-        color: "#011f40",
-        padding: "13px 5px 13px 0",
-        fontSize: 13,
-        fontWeight: 500,
-        textDecoration: "none",
-        textTransform: "uppercase" as const,
-        letterSpacing: "0.06em",
-      }}
+      className="inline-flex items-center gap-3 text-brand-navy py-[13px] pr-[5px] pl-0 text-[13px] font-medium no-underline uppercase tracking-[0.06em]"
     >
       Explore
       <ArrowIcon dark />
@@ -171,181 +85,175 @@ function ExploreLink({ href }: { href: string }) {
 }
 
 /* ─── Article card ───────────────────────────────────────────────────── */
-function ArticleCard({ article }: { article: (typeof allArticles)[number] }) {
+function ArticleCard({ article }: { article: Article }) {
+  const imageUrl = article.thumbnailImage?.url ?? article.mainImage?.url;
+  const link = article.articleLink ?? "#";
+
   return (
-    <article
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-      }}
-    >
-      {/* Image with border-radius (matches Webflow .image-74) */}
-      <div
-        style={{
-          position: "relative",
-          aspectRatio: "16/11",
-          borderRadius: 12,
-          overflow: "hidden",
-        }}
-      >
-        <Image
-          src={`${imagePath}${article.image}`}
-          alt={article.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 450px"
-          style={{ objectFit: "cover" }}
-          className="h-[400px] object-top"
-        />
+    <article className="flex flex-col h-full">
+      {/* Image with border-radius */}
+      <div className="relative aspect-[16/11] rounded-xl overflow-hidden bg-[#e4ecf3]">
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={article.postTitle}
+            fill
+            sizes="(max-width: 768px) 100vw, 450px"
+            className="h-[400px] object-top object-cover"
+          />
+        )}
       </div>
 
-      {/* Content area (matches Webflow .div-block-281: height 146px, flex col) */}
-      <div
-        style={{
-          height: 146,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <p
-          style={{
-            fontSize: 12,
-            fontWeight: 500,
-            opacity: 0.5,
-            color: "#363636",
-            marginTop: 12,
-            marginBottom: 0,
-          }}
-        >
-          {article.category}
-        </p>
-        <div style={{ flex: "1 0 auto" }}>
+      {/* Content area */}
+      <div className="h-[146px] flex flex-col">
+        {article.category && (
+          <p className="text-[12px] font-medium opacity-50 text-brand-charcoal mt-3 mb-0 line-clamp-1">
+            {article.category}
+          </p>
+        )}
+        <div className="flex-[1_0_auto]">
           <h4
-            style={{
-              color: "#363636",
-              fontSize: 16,
-              fontWeight: 600,
-              marginTop: 0,
-              marginBottom: 0,
-              overflowWrap: "break-word",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
+            className={`text-brand-charcoal text-[16px] font-semibold mb-0 break-words line-clamp-2 ${article.summary ? "mt-0" : "mt-3"
+              }`}
           >
-            {article.title}
+            {article.postTitle}
           </h4>
         </div>
-        <ExploreLink href={article.link} />
+        <ExploreLink href={link} />
       </div>
     </article>
   );
 }
 
+/* ─── Article card skeleton ──────────────────────────────────────────── */
+function ArticleCardSkeleton() {
+  return (
+    <div className="flex flex-col h-full animate-pulse">
+      {/* Image skeleton */}
+      <div className="aspect-[16/11] rounded-xl bg-[#e4ecf3]" />
+      {/* Content skeleton */}
+      <div className="h-[146px] flex flex-col pt-3">
+        <div className="h-3 w-2/5 rounded bg-[#e4ecf3]" />
+        <div className="flex-[1_0_auto] pt-2">
+          <div className="h-4 w-full rounded bg-[#e4ecf3]" />
+          <div className="h-4 w-[70%] rounded bg-[#e4ecf3] mt-1.5" />
+        </div>
+        <div className="h-[14px] w-[80px] rounded bg-[#e4ecf3]" />
+      </div>
+    </div>
+  );
+}
+
 /* ─── Explore More section (client, for load-more state) ─────────────── */
 export function ExploreMoreSection() {
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const visibleArticles = allArticles.slice(0, visibleCount);
-  const hasMore = visibleCount < allArticles.length;
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const [page, setPage] = useState(1);
+
+  const fetchArticles = useCallback(async (pageNum: number) => {
+    try {
+      const res = await fetch(
+        `/api/articles?depth=1&limit=${PAGE_SIZE}&page=${pageNum}&sort=-createdAt`,
+      );
+      if (!res.ok) throw new Error("Failed to fetch articles");
+      const data = await res.json();
+      return data;
+    } catch (err) {
+      console.error("Error fetching articles:", err);
+      return null;
+    }
+  }, []);
+
+  // Initial fetch
+  useEffect(() => {
+    async function loadInitial() {
+      setIsLoading(true);
+      const data = await fetchArticles(1);
+      if (data) {
+        setArticles(data.docs ?? []);
+        setHasMore(data.hasNextPage ?? false);
+        setPage(1);
+      }
+      setIsLoading(false);
+    }
+    loadInitial();
+  }, [fetchArticles]);
+
+  // Load more handler
+  const handleLoadMore = async () => {
+    const nextPage = page + 1;
+    setIsLoadingMore(true);
+    const data = await fetchArticles(nextPage);
+    if (data) {
+      setArticles((prev) => [...prev, ...(data.docs ?? [])]);
+      setHasMore(data.hasNextPage ?? false);
+      setPage(nextPage);
+    }
+    setIsLoadingMore(false);
+  };
 
   return (
-    <section
-      style={{
-        paddingTop: 56,
-        paddingBottom: 56,
-        background: "#fafafa",
-      }}
-    >
+    <section className="py-14 bg-[#fafafa]">
       <div className="site-container">
         <FadeUp>
-          <h2
-            style={{
-              fontSize: "clamp(28px, 3vw, 36px)",
-              fontWeight: 600,
-              color: "#011f40",
-              marginTop: 0,
-              marginBottom: 8,
-            }}
-          >
+          <h2 className="text-[clamp(28px,3vw,36px)] font-semibold text-brand-navy mt-0 mb-2">
             Explore More
           </h2>
-          <p style={{ color: "#3a3a3a", fontSize: 16, margin: 0 }}>
+          <p className="text-[#3a3a3a] text-[16px] m-0">
             Access all news updates conveniently in a single location
           </p>
         </FadeUp>
 
         {/* Grid */}
-        <div
-          style={{
-            marginTop: 40,
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 16,
-            marginBottom: 56,
-          }}
-          className="articles-grid-responsive"
-        >
-          {visibleArticles.map((article) => (
-            <ScrollReveal key={article.id}>
-              <ArticleCard article={article} />
-            </ScrollReveal>
-          ))}
+        <div className="mt-10 grid grid-cols-1 min-[601px]:grid-cols-2 min-[901px]:grid-cols-3 gap-4 mb-14">
+          {isLoading
+            ? Array.from({ length: PAGE_SIZE }).map((_, i) => (
+              <ArticleCardSkeleton key={`skeleton-${i}`} />
+            ))
+            : articles.map((article) => (
+              <ScrollReveal key={article.id}>
+                <ArticleCard article={article} />
+              </ScrollReveal>
+            ))}
+
+          {/* Skeleton cards appended during load-more */}
+          {isLoadingMore &&
+            Array.from({ length: PAGE_SIZE }).map((_, i) => (
+              <ArticleCardSkeleton key={`load-more-skeleton-${i}`} />
+            ))}
         </div>
 
         {/* Load more */}
-        {hasMore && (
-          <div style={{ display: "flex", justifyContent: "center" }}>
+        {!isLoading && hasMore && (
+          <div className="flex justify-center">
             <LoadMoreButton
-              onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+              onClick={handleLoadMore}
+              loading={isLoadingMore}
             />
           </div>
         )}
       </div>
-
-      {/* Responsive CSS */}
-      <style>{`
-        .articles-grid-responsive {
-          grid-template-columns: repeat(3, 1fr) !important;
-        }
-        @media (max-width: 900px) {
-          .articles-grid-responsive {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 600px) {
-          .articles-grid-responsive {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
 
 /* ─── Load More button ──────────────────────────────────────────────── */
-function LoadMoreButton({ onClick }: { onClick: () => void }) {
-  const [hovered, setHovered] = useState(false);
+function LoadMoreButton({ onClick, loading }: { onClick: () => void; loading?: boolean }) {
   return (
     <button
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: hovered ? "#011f40" : "#005ead",
-        color: "#fff",
-        border: "none",
-        borderRadius: 3,
-        padding: "13px 24px",
-        fontSize: 12,
-        fontWeight: 600,
-        textTransform: "uppercase",
-        letterSpacing: "0.08em",
-        cursor: "pointer",
-        transition: "background 0.2s",
-      }}
+      disabled={loading}
+      className={`text-white border-none rounded-[3px] py-[13px] px-6 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors duration-200 inline-flex items-center gap-2 ${loading
+        ? "bg-[#7faecf] cursor-not-allowed opacity-80"
+        : "bg-brand-blue hover:bg-brand-navy cursor-pointer opacity-100"
+        }`}
     >
-      Load more
+      {loading && (
+        <span className="inline-block w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+      )}
+      {loading ? "Loading..." : "Load more"}
     </button>
   );
 }
@@ -365,10 +273,10 @@ export function NewsletterSection() {
       <div className="site-container newsletter-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         {/* Left: copy */}
         <div>
-          <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-[#005ead] mb-0">
+          <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-brand-blue mb-0">
             Newsletter
           </p>
-          <h3 className="text-[clamp(28px,3vw,36px)] font-semibold text-[#011f40] mt-6 mb-6 leading-[110%]">
+          <h3 className="text-[clamp(28px,3vw,36px)] font-semibold text-brand-navy mt-6 mb-6 leading-[110%]">
             Subscribe to our Newsletter
           </h3>
           <p className="text-[16px] text-[#3a3a3a] m-0">
@@ -379,7 +287,7 @@ export function NewsletterSection() {
         {/* Right: form */}
         <div>
           {submitted ? (
-            <p className="text-[#011f40] font-semibold text-[16px]">
+            <p className="text-brand-navy font-semibold text-[16px]">
               Thank you! Your submission has been received!
             </p>
           ) : (
@@ -393,7 +301,7 @@ export function NewsletterSection() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email Address"
                 required
-                className="flex-1 w-full h-[46px] border border-[#011f40] rounded-[4px] py-[16px] px-[14px] text-[14px] text-[#011f40] outline-none bg-white"
+                className="flex-1 w-full h-[46px] border border-brand-navy rounded-[4px] py-[16px] px-[14px] text-[14px] text-brand-navy outline-none bg-white"
               />
               <SubscribeButton />
             </form>
@@ -405,30 +313,125 @@ export function NewsletterSection() {
 }
 
 function SubscribeButton() {
-  const [hovered, setHovered] = useState(false);
   return (
     <button
       type="submit"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: hovered ? "#011f40" : "#005EAD",
-        color: "#fff",
-        border: "none",
-        borderRadius: 3,
-        padding: "0 20px",
-        height: 46,
-        minWidth: 110,
-        fontSize: 12,
-        fontWeight: 600,
-        textTransform: "uppercase",
-        letterSpacing: "0.08em",
-        cursor: "pointer",
-        whiteSpace: "nowrap",
-        transition: "background 0.2s",
-      }}
+      className="bg-brand-blue hover:bg-brand-navy text-white border-none rounded-[3px] px-5 h-[46px] min-w-[110px] text-[12px] font-semibold uppercase tracking-[0.08em] cursor-pointer whitespace-nowrap transition-colors duration-200"
     >
       Subscribe
     </button>
   );
 }
+
+/* ─── Latest News Section (client, for fetching latest article) ─────────── */
+export function LatestNewsSection() {
+  const [latestArticle, setLatestArticle] = useState<Article | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchLatest() {
+      try {
+        const res = await fetch(
+          "/api/articles?depth=1&limit=1&sort=-createdAt"
+        );
+        if (!res.ok) throw new Error("Failed to fetch latest article");
+        const data = await res.json();
+        if (data.docs && data.docs.length > 0) {
+          setLatestArticle(data.docs[0]);
+        }
+      } catch (err) {
+        console.error("Error fetching latest article:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchLatest();
+  }, []);
+
+  const imageUrl = latestArticle?.mainImage?.url ?? latestArticle?.thumbnailImage?.url;
+  const link = latestArticle?.articleLink ?? "#";
+
+  return (
+    <section className="py-14 bg-[#fafafa]">
+      <div className="site-container">
+        {isLoading ? (
+          <LatestNewsSkeleton />
+        ) : latestArticle ? (
+          <FadeUp>
+            {/* 2-col layout: text | image */}
+            <div className="latest-news-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+              {/* Left */}
+              <div className="flex flex-col gap-6">
+                <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-[#005ead] m-0">
+                  LATEST NEWS
+                </p>
+                <h2 className="text-[clamp(24px,3vw,36px)] font-semibold text-[#011f40] m-0 leading-[120%] [overflow-wrap:anywhere]">
+                  {latestArticle.postTitle}
+                </h2>
+                {latestArticle.summary && (
+                  <p className="text-[16px] text-[#3a3a3a] m-0">
+                    {latestArticle.summary}
+                  </p>
+                )}
+                {/* Desktop button */}
+                <div className="latest-news-btn-desktop hidden md:block">
+                  <NavyButton href={link}>read now</NavyButton>
+                </div>
+              </div>
+
+              {/* Right */}
+              <div>
+                {imageUrl && (
+                  <Image
+                    src={imageUrl}
+                    alt={latestArticle.postTitle}
+                    width={600}
+                    height={400}
+                    className="object-cover rounded-xl w-full h-[400px]"
+                  />
+                )}
+              </div>
+            </div>
+
+            {/* Mobile read-now button */}
+            <div className="latest-news-btn-mobile block md:hidden mt-6">
+              <NavyButton href={link}>read now</NavyButton>
+            </div>
+          </FadeUp>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+/* ─── Latest News Section Skeleton ───────────────────────────────────────── */
+function LatestNewsSkeleton() {
+  return (
+    <div className="latest-news-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center animate-pulse">
+      {/* Left side */}
+      <div className="flex flex-col gap-6">
+        {/* Category */}
+        <div className="h-4 w-28 rounded bg-[#e4ecf3]" />
+        {/* Title */}
+        <div className="space-y-2">
+          <div className="h-8 w-full rounded bg-[#e4ecf3]" />
+          <div className="h-8 w-3/4 rounded bg-[#e4ecf3]" />
+        </div>
+        {/* Excerpt */}
+        <div className="space-y-2">
+          <div className="h-4 w-full rounded bg-[#e4ecf3]" />
+          <div className="h-4 w-5/6 rounded bg-[#e4ecf3]" />
+        </div>
+        {/* Button */}
+        <div className="h-[46px] w-[140px] rounded bg-[#e4ecf3] hidden md:block" />
+      </div>
+
+      {/* Right side (Image) */}
+      <div className="h-[400px] w-full rounded-xl bg-[#e4ecf3]" />
+
+      {/* Mobile Button */}
+      <div className="h-[46px] w-full rounded bg-[#e4ecf3] block md:hidden mt-6" />
+    </div>
+  );
+}
+
