@@ -43,9 +43,9 @@ export default buildConfig({
       clientUploads: true,
     }),
   ],
-  onInit: async (payload) => {
-    if (process.env.NODE_ENV !== "production") {
-      await articlesSeed(payload)
-    }
-  },
+  // onInit: async (payload) => {
+  //   if (process.env.NODE_ENV !== "production") {
+  //     await articlesSeed(payload)
+  //   }
+  // },
 });

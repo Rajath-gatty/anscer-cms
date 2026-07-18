@@ -11,6 +11,7 @@ export function ArrowButton({
   asButton = false,
   as = null,
   variant = "solid",
+  newTab = true,
   ...props
 }: {
   children: ReactNode;
@@ -21,26 +22,27 @@ export function ArrowButton({
   asButton?: boolean;
   as?: ElementType | null;
   variant?: "solid" | "ghost";
+  newTab?: boolean;
   [key: string]: any;
 }) {
   const Component = as || (asButton ? "button" : Link);
 
   // Only treat a bare bg- class (not a hover:/focus:/etc. variant) as a custom background
   const hasCustomBg = /(?<![a-z]:)bg-/.test(className);
-  
+
   let colorClasses = "";
   if (variant === "solid" && !hasCustomBg) {
     colorClasses = dark
       ? "bg-white text-[#005ead] hover:bg-[#edf6ff]"
       : "bg-[#005ead] text-white hover:bg-[#014f91]";
   } else if (variant === "ghost" && !hasCustomBg) {
-    colorClasses = dark 
-      ? "text-white hover:text-gray-200" 
+    colorClasses = dark
+      ? "text-white hover:text-gray-200"
       : "text-[#005ead] hover:text-[#014f91]";
   }
 
-  const baseClasses = variant === "solid" 
-    ? "h-10 px-4 gap-3 rounded-sm" 
+  const baseClasses = variant === "solid"
+    ? "h-10 px-4 gap-3 rounded-sm"
     : "gap-2"; // for ghost
 
   const sharedClassName = `relative z-10 group/btn cursor-pointer inline-flex items-center text-[14px] font-medium uppercase tracking-wide transition ${baseClasses} ${colorClasses} ${className}`
@@ -72,7 +74,7 @@ export function ArrowButton({
   if (Component === Link || Component === "a") {
     const linkHref = props.href || target;
     return (
-      <Component href={linkHref} {...finalProps}>
+      <Component href={linkHref} target={newTab ? "_blank" : "_self"} {...finalProps}>
         {children}
         {arrow}
       </Component>

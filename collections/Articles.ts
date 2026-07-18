@@ -22,26 +22,9 @@ export const Articles: CollectionConfig = {
       required: true,
     },
     {
-      name: "category",
-      label: "Category",
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Press Release', value: 'Press Release' },
-        { label: 'Announcement', value: 'Announcement' },
-        { label: 'Case Study', value: 'Case Study' },
-      ]
-    },
-    {
       name: "postBody",
       label: "Post Body",
       type: "richText",
-    },
-    {
-      name: "mainImage",
-      label: "Main image",
-      type: "upload",
-      relationTo: "media",
     },
     {
       name: "thumbnailImage",
