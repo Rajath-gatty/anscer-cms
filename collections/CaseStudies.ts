@@ -11,6 +11,9 @@ export const CaseStudies: CollectionConfig = {
     update: ({ req: { user } }) => Boolean(user),
     delete: ({ req: { user } }) => Boolean(user),
   },
+  versions: {
+    drafts: true
+  },
   fields: [
     {
       name: "title",
