@@ -44,6 +44,8 @@ export default buildConfig({
     }),
   ],
   onInit: async (payload) => {
-    await articlesSeed(payload)
+    if (process.env.NODE_ENV !== "production") {
+      await articlesSeed(payload)
+    }
   },
 });

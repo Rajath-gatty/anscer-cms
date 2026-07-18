@@ -56,9 +56,9 @@ export function CaseStudiesSection() {
   };
 
   return (
-    <section className="overflow-hidden bg-[#eef5fb] py-8 md:bg-white md:py-20">
+    <section className={cn("overflow-hidden py-8 md:bg-white", caseStudies.length !== 0 ? "md:py-20" : "md:py-0")}>
       <div className="site-container">
-        <FadeRight>
+        {caseStudies.length !== 0 && <FadeRight>
           <Kicker>Transforming Workplaces With Intelligence</Kicker>
           <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
             Our <span className="text-[#005ead]">Case Studies</span>
@@ -67,7 +67,7 @@ export function CaseStudiesSection() {
             From factory floors to fulfillment centers, discover how industry leaders have partnered with ANSCER to elevate
             efficiency, safety, and productivity through automation.
           </p>
-        </FadeRight>
+        </FadeRight>}
 
         {isLoading ? (
           <CaseStudiesLoadingSkeleton />
