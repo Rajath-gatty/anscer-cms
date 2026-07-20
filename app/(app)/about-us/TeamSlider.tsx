@@ -1,6 +1,5 @@
 "use client";
 
-import { imagePath } from "../components/home/assets";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -13,6 +12,23 @@ import { useReducedMotion } from "motion/react";
 import "swiper/css";
 import { FadeUp } from "../components/animation";
 
+/* ------------------------------------------------------------------ */
+/*  Types                                                              */
+/* ------------------------------------------------------------------ */
+
+interface TeamMedia {
+  url: string;
+  alt?: string;
+}
+
+interface TeamMember {
+  id: string;
+  fullName: string;
+  designation?: string;
+  photo?: TeamMedia;
+  linkedin?: string;
+}
+
 type TeamSlide = {
   image: string;
   name: string;
@@ -22,17 +38,24 @@ type TeamSlide = {
 };
 
 type TeamSliderProps = {
-  slides: readonly TeamSlide[];
   eyebrow: string;
   title: string;
   highlightedTitle: string;
   copy: string;
 };
 
+/* ------------------------------------------------------------------ */
+/*  Constants                                                          */
+/* ------------------------------------------------------------------ */
+
 const AUTOPLAY_DELAY = 3000;
+const SKELETON_COUNT = 5;
+
+/* ------------------------------------------------------------------ */
+/*  Component                                                          */
+/* ------------------------------------------------------------------ */
 
 export function TeamSlider({
-  slides,
   eyebrow,
   title,
   highlightedTitle,
@@ -47,6 +70,44 @@ export function TeamSlider({
   const [progressKey, setProgressKey] = useState(0);
   const reducedMotion = useReducedMotion();
 
+  // ---------- Data fetching ----------
+  const [slides, setSlides] = useState<TeamSlide[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchTeams = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/teams?depth=1&limit=50&sort=createdAt`);
+      if (!res.ok) throw new Error("Failed to fetch team members");
+      const data = await res.json();
+      return data;
+    } catch (err) {
+      console.error("Error fetching team members:", err);
+      return null;
+    }
+  }, []);
+
+  useEffect(() => {
+    async function loadTeam() {
+      setIsLoading(true);
+      const data = await fetchTeams();
+      if (data?.docs) {
+        const mapped: TeamSlide[] = (data.docs as TeamMember[]).map(
+          (member) => ({
+            image: member.photo?.url ?? "",
+            name: member.fullName,
+            role: member.designation ?? "",
+            alt: `${member.fullName} portrait`,
+            linkedIn: member.linkedin ?? "#",
+          }),
+        );
+        setSlides(mapped);
+      }
+      setIsLoading(false);
+    }
+    loadTeam();
+  }, [fetchTeams]);
+
+  // ---------- Derived state ----------
   const total = slides.length;
   const isLoopable = total > 1;
   const hasProgress = !reducedMotion && isLoopable;
@@ -152,7 +213,7 @@ export function TeamSlider({
               {copy}
             </p>
           </div>
-          {renderControls(false)}
+          {!isLoading && slides.length > 0 && renderControls(false)}
         </FadeUp>
       </div>
 
@@ -160,101 +221,113 @@ export function TeamSlider({
         className="mt-6 overflow-hidden pb-4 pl-[max(20px,calc((100vw-1300px)/2))] pr-5 md:mt-10"
         aria-label="Team members"
       >
-        <Swiper
-          modules={[Autoplay, Navigation]}
-          onSwiper={(swiper) => {
-            swiper.autoplay?.stop?.();
-            setSwiperInstance(swiper); // Safely register instance into React state
-          }}
-          onSlideChange={handleSlideChange}
-          loop={isLoopable}
-          speed={500}
-          spaceBetween={18}
-          slidesPerView="auto"
-          autoplay={
-            reducedMotion || !isLoopable
-              ? false
-              : { delay: AUTOPLAY_DELAY, disableOnInteraction: false }
-          }
-          navigation={true}
-          onBeforeInit={(swiper) => {
-            if (
-              typeof swiper.params.navigation !== "boolean" &&
-              swiper.params.navigation
-            ) {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
+        {isLoading ? (
+          <div className="flex gap-[18px]">
+            {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+              <TeamCardSkeleton key={`skeleton-${i}`} />
+            ))}
+          </div>
+        ) : slides.length === 0 ? null : (
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            onSwiper={(swiper) => {
+              swiper.autoplay?.stop?.();
+              setSwiperInstance(swiper); // Safely register instance into React state
+            }}
+            onSlideChange={handleSlideChange}
+            loop={isLoopable}
+            speed={500}
+            spaceBetween={18}
+            slidesPerView="auto"
+            autoplay={
+              reducedMotion || !isLoopable
+                ? false
+                : { delay: AUTOPLAY_DELAY, disableOnInteraction: false }
             }
-          }}
-          className="overflow-visible!"
-        >
-          {slides.map((slide) => (
-            <SwiperSlide
-              key={slide.image}
-              className="w-56.25! md:w-105! xl:w-120!"
-            >
-              <article className="relative h-71.25 overflow-hidden rounded-md bg-white text-white md:h-100">
-                <Image
-                  src={`${imagePath}${slide.image}`}
-                  alt={slide.alt}
-                  fill
-                  sizes="(min-width: 1280px) 480px, (min-width: 768px) 420px, 225px"
-                  className="object-contain object-top"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_34%,rgba(0,0,0,.84))]" />
-                <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 md:p-7">
-                  <div>
-                    <h3 className="text-[13px] font-semibold leading-tight text-white md:text-[18px]">
-                      {slide.name}
-                    </h3>
-                    <p className="mt-2 text-[9px] font-normal text-white/92 md:text-[14px]">
-                      {slide.role}
-                    </p>
+            navigation={true}
+            onBeforeInit={(swiper) => {
+              if (
+                typeof swiper.params.navigation !== "boolean" &&
+                swiper.params.navigation
+              ) {
+                swiper.params.navigation.prevEl = prevRef.current;
+                swiper.params.navigation.nextEl = nextRef.current;
+              }
+            }}
+            className="overflow-visible!"
+          >
+            {slides.map((slide) => (
+              <SwiperSlide
+                key={slide.name}
+                className="w-56.25! md:w-105! xl:w-120!"
+              >
+                <article className="relative h-71.25 overflow-hidden rounded-md bg-white text-white md:h-100">
+                  {slide.image && (
+                    <Image
+                      src={slide.image}
+                      alt={slide.alt}
+                      fill
+                      sizes="(min-width: 1280px) 480px, (min-width: 768px) 420px, 225px"
+                      className="object-contain object-top"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_34%,rgba(0,0,0,.84))]" />
+                  <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 md:p-7">
+                    <div>
+                      <h3 className="text-[13px] font-semibold leading-tight text-white md:text-[18px]">
+                        {slide.name}
+                      </h3>
+                      <p className="mt-2 text-[9px] font-normal text-white/92 md:text-[14px]">
+                        {slide.role}
+                      </p>
+                    </div>
+                    {slide.linkedIn && slide.linkedIn !== "#" && (
+                      <div className="flex items-center gap-3" aria-hidden="true">
+                        <Link
+                          href={slide.linkedIn}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="grid size-6 place-items-center rounded-full bg-white md:size-8"
+                        >
+                          <svg
+                            width="28"
+                            height="28"
+                            viewBox="0 0 28 28"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect width="28" height="28" rx="14" fill="#F2F4F7" />
+                            <path
+                              d="M16.6654 10.8877C17.7262 10.8877 18.7436 11.3091 19.4938 12.0593C20.2439 12.8094 20.6654 13.8268 20.6654 14.8877V19.5544H17.9987V14.8877C17.9987 14.5341 17.8582 14.1949 17.6082 13.9449C17.3581 13.6948 17.019 13.5544 16.6654 13.5544C16.3117 13.5544 15.9726 13.6948 15.7226 13.9449C15.4725 14.1949 15.332 14.5341 15.332 14.8877V19.5544H12.6654V14.8877C12.6654 13.8268 13.0868 12.8094 13.8369 12.0593C14.5871 11.3091 15.6045 10.8877 16.6654 10.8877Z"
+                              stroke="#1E1E1E"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M9.9987 11.5544H7.33203V19.5544H9.9987V11.5544Z"
+                              stroke="#1E1E1E"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M8.66536 9.55436C9.40174 9.55436 9.9987 8.95741 9.9987 8.22103C9.9987 7.48465 9.40174 6.8877 8.66536 6.8877C7.92898 6.8877 7.33203 7.48465 7.33203 8.22103C7.33203 8.95741 7.92898 9.55436 8.66536 9.55436Z"
+                              stroke="#1E1E1E"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </Link>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex items-center gap-3" aria-hidden="true">
-                    <Link
-                      href={slide.linkedIn}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="grid size-6 place-items-center rounded-full bg-white md:size-8"
-                    >
-                      <svg
-                        width="28"
-                        height="28"
-                        viewBox="0 0 28 28"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect width="28" height="28" rx="14" fill="#F2F4F7" />
-                        <path
-                          d="M16.6654 10.8877C17.7262 10.8877 18.7436 11.3091 19.4938 12.0593C20.2439 12.8094 20.6654 13.8268 20.6654 14.8877V19.5544H17.9987V14.8877C17.9987 14.5341 17.8582 14.1949 17.6082 13.9449C17.3581 13.6948 17.019 13.5544 16.6654 13.5544C16.3117 13.5544 15.9726 13.6948 15.7226 13.9449C15.4725 14.1949 15.332 14.5341 15.332 14.8877V19.5544H12.6654V14.8877C12.6654 13.8268 13.0868 12.8094 13.8369 12.0593C14.5871 11.3091 15.6045 10.8877 16.6654 10.8877Z"
-                          stroke="#1E1E1E"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M9.9987 11.5544H7.33203V19.5544H9.9987V11.5544Z"
-                          stroke="#1E1E1E"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M8.66536 9.55436C9.40174 9.55436 9.9987 8.95741 9.9987 8.22103C9.9987 7.48465 9.40174 6.8877 8.66536 6.8877C7.92898 6.8877 7.33203 7.48465 7.33203 8.22103C7.33203 8.95741 7.92898 9.55436 8.66536 9.55436Z"
-                          stroke="#1E1E1E"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                </article>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
 
-      {renderControls(true)}
+      {!isLoading && slides.length > 0 && renderControls(true)}
 
       <style>{`
         @keyframes teamLoader {
@@ -262,6 +335,24 @@ export function TeamSlider({
           to { width: 100%; }
         }
       `}</style>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Skeleton                                                           */
+/* ------------------------------------------------------------------ */
+
+function TeamCardSkeleton() {
+  return (
+    <div className="w-56.25 shrink-0 md:w-105 xl:w-120 animate-pulse">
+      <div className="relative h-71.25 overflow-hidden rounded-md bg-[#e4ecf3] md:h-100">
+        <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 md:p-7">
+          <div className="h-4 w-3/4 rounded bg-[#cdd8e3]" />
+          <div className="mt-1 h-3 w-1/2 rounded bg-[#cdd8e3]" />
+          <div className="mt-2 size-6 rounded-full bg-[#cdd8e3] md:size-8" />
+        </div>
+      </div>
     </div>
   );
 }
