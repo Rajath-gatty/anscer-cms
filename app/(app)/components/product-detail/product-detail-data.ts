@@ -232,8 +232,13 @@ export const productDetails: Record<string, ProductDetailData> = {
       "The AR-250 is a lightweight AMR that carries up to 250kg, perfect for warehouses and factories. It navigates safely with smart routing and obstacle detection, boosting productivity and easing material handling.",
     heroImage: "ar-250-hero-latest.png",
     modelUrl:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/ar-250.glb",
-    modelViewerConfig: defaultSideViewModelConfig,
+      "/anscer/3d-models/ar-250-v1.glb",
+    modelViewerConfig: {
+        cameraOrbit: "-35deg 76deg 20m",
+        minCameraOrbit: "auto 76deg auto",
+        maxCameraOrbit: "auto 76deg auto",
+        fieldOfView: "30deg",
+    },
     backgroundText: "AR-250.svg",
     overviewVideo: "AR-250-overview.mp4",
     overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
@@ -466,15 +471,15 @@ export const productDetails: Record<string, ProductDetailData> = {
     overview:
       "The AR 500 is a compact, flexible AMR that automates diverse material movement through interchangeable top modules, ensuring scalable, flexible intralogistics automation across facilities.",
     heroImage: "ar-500-hero-latest.png",
-    modelUrl:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/TR%20500.glb",
+    // modelUrl:
+    //   "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/TR%20500.glb",
     backgroundText: "AR-500-bg-text.png",
     overviewVideo: "AR-500-overview.mp4",
     overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
     advantageImage: "Frame-1321316064_1.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
-    applications: ["Tugging", "Lifting", "Tunneling"],
+    applications: ["Tugging", "Lifting"],
     footerBanner: "footer-banner.png",
     productProfileUrl:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AR/AR-PP-AR500-A-26-EN-P.pdf",
@@ -668,14 +673,14 @@ export const productDetails: Record<string, ProductDetailData> = {
     overview:
       "The AR 650 is a powerful and precise AMR designed to automate demanding material movement applications with modular flexibility, enabling scalable intralogistics automation across manufacturing and warehouse operations.",
     heroImage: "ar-650.png",
-    modelUrl:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/AR_650%20render.glb",
+    // modelUrl:
+    //   "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/AR_650%20render.glb",
     backgroundText: "ar-650-bg-text.png",
     overviewImage: "AR-650-overview.png",
     advantageImage: "Frame-1321316064_1.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
-    applications: ["Tugging", "Lifting", "Tunneling"],
+    applications: ["Lifting"],
     footerBanner: "footer-banner.png",
     productProfileUrl:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AR/AR-PP-AR650-A-26-EN-P.pdf",
@@ -875,15 +880,15 @@ export const productDetails: Record<string, ProductDetailData> = {
     overview:
       "The AR 1250 is a heavy-payload autonomous mobile robot built to automate intensive material movement applications with modular flexibility, enabling scalable, high-throughput intralogistics operations.",
     heroImage: "ar-1250.png",
-    modelUrl:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/AR%201250.glb",
+    // modelUrl:
+    //   "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/AR%201250.glb",
     backgroundText: "ar-1250-bg-text.png",
     overviewVideo: "AR-1250_mp4.mp4",
     overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
     advantageImage: "Frame-1321316064_1.jpg",
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
-    applications: ["Tugging", "Lifting", "Tunneling"],
+    applications: ["Tugging", "Lifting"],
     footerBanner: "footer-banner.png",
     productProfileUrl:
       "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/Product%20Profile/AR/AR-PP-AR1250-A-26-EN-P.pdf",
@@ -1078,8 +1083,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     overview:
       "The PSR 2000 is a heavy-duty pallet stacking AMR designed for automated pickup, lifting, and placement, enabling precise pallet handling and efficient intralogistics operations.",
     heroImage: "psr-2000-product-hero.png",
-    modelUrl:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/PSR%202000.glb",
+    // modelUrl:
+    //   "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/PSR%202000.glb",
     backgroundText: "psr-2000.svg",
     overviewVideo: "PSR-2000-overview.mp4",
     overviewImage: "psr-advantages-image.jpg",
@@ -1110,6 +1115,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Charging Time", value: "1 hr" },
       { label: " BATTERY Runtime", value: "8 Hrs" },
       { label: "BATTERY Voltage", value: "48V" },
+      { label: "Lift Height", value: "1600 mm", imperial: "62.99 in" },
+      { label: "Horizontal Reach", value: "NA", imperial: "NA" },
     ],
     advantages: {
       content:
@@ -1314,6 +1321,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Charging Time", value: "1 hr" },
       { label: " BATTERY Runtime", value: "8 Hrs" },
       { label: "BATTERY Voltage", value: "48 V" },
+      { label: "Lift Height", value: "1600 mm", imperial: "62.99 in" },
+      { label: "Horizontal Reach", value: "600 mm", imperial: "23.62 in" },
     ],
     advantages: {
       content:
@@ -1406,8 +1415,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     overview:
       "The PSR 1000R is a pallet stacking AMR with extended fork reach, designed to optimize high-density storage through precise pallet handling and automated retrieval operations.",
     heroImage: "PSR1000R-final.png",
-    modelUrl:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/PSR%201000_R.glb",
+    // modelUrl:
+    //   "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/PSR%201000_R.glb",
     backgroundText: "1000r-bg-text.png",
     overviewVideo: "PSR-1000R-overview.mp4",
     overviewImage: "advantages-psr1000r.jpg",
@@ -1438,6 +1447,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Charging Time", value: "1 hr" },
       { label: " BATTERY Runtime", value: "8 Hrs" },
       { label: "BATTERY Voltage", value: "48 V" },
+      { label: "Lift Height", value: "1600 mm", imperial: "62.99 in" },
+      { label: "Horizontal Reach", value: "600 mm", imperial: "23.62 in" },
     ],
     advantages: {
       content:
@@ -1562,6 +1573,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Charging Time", value: "1 hr" },
       { label: " BATTERY Runtime", value: "8 Hrs" },
       { label: "BATTERY Voltage", value: "48 V" },
+      { label: "Lift Height", value: "400 mm", imperial: "15.74 in" },
+      { label: "Horizontal Reach", value: "NA" },
     ],
     advantages: {
       content:
@@ -1727,8 +1740,8 @@ export const productDetails: Record<string, ProductDetailData> = {
     overview:
       "The LBR 500 is a compact free-lift AMR designed to automate trolley movement in low-clearance environments, delivering flexible, reliable, and efficient material transport across dynamic shop floors.",
     heroImage: "lbr-500_1.png",
-    modelUrl:
-      "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/LBR%20500.glb",
+    // modelUrl:
+    //   "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/LBR%20500.glb",
     backgroundText: "LBR-501.svg",
     overviewVideo: "LBR-overview.mp4",
     overviewImage: "updated-image.jpg",
@@ -1757,6 +1770,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Charging Time", value: "1 hr" },
       { label: "Runtime", value: "8 Hrs" },
       { label: "Voltage", value: "48 V" },
+      { label: "Lift Height", value: "100 mm", imperial: "3.93 in" },
+      { label: "Horizontal Reach", value: "NA", imperial: "NA" },
     ],
     advantages: {
       content:

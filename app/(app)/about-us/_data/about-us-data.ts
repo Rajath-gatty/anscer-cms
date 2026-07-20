@@ -56,14 +56,14 @@ export const testimonials = [
   },
   {
     quote:
-      "ANSCER's robots have become an integral part ofour team, working tirelessly and reliably. In the first three months, we saw a clear drop in manual errors and our through put went up. The safety features are excellent, and our staff quickly grew comfortable working alongside the robots.",
+      "ANSCER's robots have become an integral part of our team, working tirelessly and reliably. In the first three months, we saw a clear drop in manual errors and our through put went up. The safety features are excellent, and our staff quickly grew comfortable working alongside the robots.",
     name: "Ganesh P",
     role: "Sr.Manager",
     avatar: "Ellipse-369.jpg",
   },
   {
     quote:
-      '"They\'ve helped us scale and expand  across multiple APAC international plants with satisfactory support and timely issue resolution. What started as FG movement has evolved into multiple use cases for our smart factroy  and warehouses. One standout deplomyent is Kanban material repenishment in our Chennai Plant"',
+      '"They\'ve helped us scale and expand  across multiple APAC international plants with satisfactory support and timely issue resolution. What started as FG movement has evolved into multiple use cases for our smart factroy  and warehouses. One standout deplomyent is Kanban material replenishment in our Chennai Plant"',
     name: "Vishnu",
     role: "Regional Lead - Automation and AI",
     avatar: "Ellipse-369.jpg",
