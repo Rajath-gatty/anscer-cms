@@ -373,6 +373,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
             imperial: "Up to 2,204 lb",
           },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
+          { label: "Lift Height", value: "1600 mm", imperial: "62.99 in" },
+          { label: "Horizontal Reach", value: "600 mm", imperial: "23.62 in" },
         ],
       },
       {
@@ -396,7 +398,9 @@ export const seriesPages: Record<string, SeriesPageData> = {
             value: "Up to 2000 kg",
             imperial: "Up to 4,409 lbs",
           },
-          { label: "Ground clearance", value: "40 mm", imperial: "1.57 in" },
+        { label: "Ground clearance", value: "40 mm", imperial: "1.57 in" },
+        { label: "Lift Height", value: "400 mm", imperial: "15.74 in" },
+        { label: "Horizontal Reach", value: "NA" },
         ],
       },
       {
@@ -421,6 +425,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
             imperial: "Up to 1,102 lbs",
           },
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
+          { label: "Lift Height", value: "100 mm", imperial: "3.93 in" },
+          { label: "Horizontal Reach", value: "NA", imperial: "NA" },
         ],
       },
     ],

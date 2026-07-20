@@ -102,18 +102,20 @@ export function ProductHeroModel({
             "--poster-color": "transparent",
           },
         })
-      ) : (
-        <div className="relative size-full">
-          <Image
-            src={poster}
-            alt={title}
-            fill
-            priority
-            sizes="(max-width: 1024px) 90vw, 760px"
-            className="object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
-          />
-        </div>
-      )}
+      ) : null
+        // (
+        //   <div className="relative size-full">
+        //     <Image
+        //       src={poster}
+        //       alt={title}
+        //       priority
+        //       width={600}
+        //       height={400}
+        //       className="z-10 absolute top-1/2 left-1/2 h-[90%] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_26px_44px_rgba(1,31,64,.16)]"
+        //     />
+        //   </div>
+        // )
+      }
     </div>
   );
 }
