@@ -1,11 +1,9 @@
 import { TeamSlider } from "../TeamSlider";
-import { teamSlides } from "../_data/about-us-data";
 
 export function TeamSection() {
   return (
     <section id="team-section" className="bg-[#fafafa] py-7 md:py-20">
       <TeamSlider
-        slides={teamSlides}
         eyebrow="The Team Behind the Tech"
         title="Built by"
         highlightedTitle="Believers"

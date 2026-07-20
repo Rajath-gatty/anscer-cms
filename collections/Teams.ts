@@ -34,20 +34,5 @@ export const Teams: CollectionConfig = {
       label: "LinkedIn",
       type: "text",
     },
-    {
-      name: "facebook",
-      label: "Facebook",
-      type: "text",
-    },
-    {
-      name: "twitter",
-      label: "Twitter",
-      type: "text",
-    },
-    {
-      name: "instagram",
-      label: "Instagram",
-      type: "text",
-    },
   ],
 };
