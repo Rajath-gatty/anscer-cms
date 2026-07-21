@@ -1960,15 +1960,16 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
       { label: "Type of Payload", value: "Bins and Totes" },
       { label: "Max Speed", value: "2 m/s", imperial: "4.47 mph" },
-      {
-        label: "Accuracy",
-        value: "X,Y: 10 mm, Yaw: 1.5 degrees",
-        imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees",
-      },
+      // {
+      //   label: "Accuracy",
+      //   value: "X,Y: 10 mm, Yaw: 1.5 degrees",
+      //   imperial: "X,Y: 0.39 in , Yaw: 1.5 degrees",
+      // },
       { label: "BATTERY TYPE", value: "LFP" },
       { label: "Charging Time", value: "1.5 hrs" },
       { label: " BATTERY Runtime", value: "8 Hrs" },
       { label: "BATTERY Voltage", value: "48V" },
+      { label: "Lift Height", value: "130 mm", imperial: "5.11 in" }
     ],
     advantages: {
       content:
