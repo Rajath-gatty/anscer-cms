@@ -1116,7 +1116,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: " BATTERY Runtime", value: "8 Hrs" },
       { label: "BATTERY Voltage", value: "48V" },
       { label: "Lift Height", value: "1600 mm", imperial: "62.99 in" },
-      { label: "Horizontal Reach", value: "NA", imperial: "NA" },
+      // { label: "Horizontal Reach", value: "NA", imperial: "NA" },
     ],
     advantages: {
       content:
@@ -1574,7 +1574,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: " BATTERY Runtime", value: "8 Hrs" },
       { label: "BATTERY Voltage", value: "48 V" },
       { label: "Lift Height", value: "400 mm", imperial: "15.74 in" },
-      { label: "Horizontal Reach", value: "NA" },
+      // { label: "Horizontal Reach", value: "NA" },
     ],
     advantages: {
       content:
@@ -1771,7 +1771,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Runtime", value: "8 Hrs" },
       { label: "Voltage", value: "48 V" },
       { label: "Lift Height", value: "100 mm", imperial: "3.93 in" },
-      { label: "Horizontal Reach", value: "NA", imperial: "NA" },
+      // { label: "Horizontal Reach", value: "NA", imperial: "NA" },
     ],
     advantages: {
       content:
