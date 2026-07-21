@@ -28,49 +28,49 @@ const benefitCards: {
   title: string;
   copy: string;
 }[] = [
-  {
-    icon: Layers,
-    mobileIcon: Layers,
-    title: "Improved Operational Visibility",
-    copy: "Gain real-time and historical insights into robot operations, fleet performance, and workflow efficiency.",
-  },
-  {
-    icon: ExternalLink,
-    mobileIcon: ExternalLink,
-    title: "Data-Driven Optimization",
-    copy: "Use operational analytics to identify bottlenecks, improve traffic flow, and optimize robot utilization.",
-  },
-  {
-    icon: Workflow,
-    mobileIcon: Workflow,
-    title: "Increased Fleet Efficiency",
-    copy: "Monitor utilization rates and mission trends to maximize robot productivity and reduce idle time.",
-  },
-  {
-    icon: Code,
-    mobileIcon: Code,
-    title: "Faster Issue Identification",
-    copy: "Heatmaps and predictive alerts help quickly detect operational issues, congestion areas, and recurring system events.",
-  },
-  {
-    icon: BrainCircuit,
-    mobileIcon: BrainCircuit,
-    title: "Enhanced Decision Making",
-    copy: "KPI dashboards and analytics reports support informed operational planning and continuous process improvement.",
-  },
-  {
-    icon: ChartNoAxesCombined,
-    mobileIcon: ChartNoAxesCombined,
-    title: "Scalable Performance Monitoring",
-    copy: "Analyze and manage performance across single or multi-site robotic deployments from a centralized platform.",
-  },
-  {
-    icon: RefreshCw,
-    mobileIcon: RefreshCw,
-    title: "Continuous Improvement",
-    copy: "Leverage historical operational data to refine workflows, improve system reliability, and enhance overall automation performance.",
-  },
-];
+    {
+      icon: Layers,
+      mobileIcon: Layers,
+      title: "Improved Operational Visibility",
+      copy: "Gain real-time and historical insights into robot operations, fleet performance, and workflow efficiency.",
+    },
+    {
+      icon: ExternalLink,
+      mobileIcon: ExternalLink,
+      title: "Data-Driven Optimization",
+      copy: "Use operational analytics to identify bottlenecks, improve traffic flow, and optimize robot utilization.",
+    },
+    {
+      icon: Workflow,
+      mobileIcon: Workflow,
+      title: "Increased Fleet Efficiency",
+      copy: "Monitor utilization rates and mission trends to maximize robot productivity and reduce idle time.",
+    },
+    {
+      icon: Code,
+      mobileIcon: Code,
+      title: "Faster Issue Identification",
+      copy: "Heatmaps and predictive alerts help quickly detect operational issues, congestion areas, and recurring system events.",
+    },
+    {
+      icon: BrainCircuit,
+      mobileIcon: BrainCircuit,
+      title: "Enhanced Decision Making",
+      copy: "KPI dashboards and analytics reports support informed operational planning and continuous process improvement.",
+    },
+    {
+      icon: ChartNoAxesCombined,
+      mobileIcon: ChartNoAxesCombined,
+      title: "Scalable Performance Monitoring",
+      copy: "Analyze and manage performance across single or multi-site robotic deployments from a centralized platform.",
+    },
+    {
+      icon: RefreshCw,
+      mobileIcon: RefreshCw,
+      title: "Continuous Improvement",
+      copy: "Leverage historical operational data to refine workflows, improve system reliability, and enhance overall automation performance.",
+    },
+  ];
 
 // site-container left edge: max(20px, (100vw - 1340px) / 2 + 20px) = max(20px, 50vw - 650px)
 const containerPadding = "max(20px, calc(50vw - 650px))";
@@ -118,8 +118,8 @@ export function AnalyticsBenefitsSection() {
   const animationStyle = reducedMotion
     ? { width: "0%" }
     : {
-        animation: `benefitsLoader ${AUTOPLAY_DURATION}ms linear forwards`,
-      };
+      animation: `benefitsLoader ${AUTOPLAY_DURATION}ms linear forwards`,
+    };
 
   return (
     <section>
@@ -233,10 +233,10 @@ export function AnalyticsBenefitsSection() {
                 reducedMotion
                   ? false
                   : {
-                      delay: AUTOPLAY_DURATION,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
-                    }
+                    delay: AUTOPLAY_DURATION,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }
               }
               className="!overflow-visible"
             >

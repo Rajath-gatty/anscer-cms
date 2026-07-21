@@ -22,6 +22,16 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    meta: {
+      titleSuffix: " - ANSCER Robotics",
+      icons: [{ url: "/anscer/images/favicon-light.png" }],
+    },
+    components: {
+      graphics: {
+        Logo: "/components/admin/Logo",
+        Icon: "/components/admin/Icon",
+      },
+    },
   },
   collections: [Users, Media, Articles, CaseStudies, Teams],
   editor: lexicalEditor(),
