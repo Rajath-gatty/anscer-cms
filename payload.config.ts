@@ -1,0 +1,61 @@
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import path from "path";
+import { buildConfig } from "payload";
+import { fileURLToPath } from "url";
+import sharp from "sharp";
+import { articlesSeed } from "./seeds/articles";
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+
+import { Users } from "./collections/Users";
+import { Media } from "./collections/Media";
+import { Articles } from "./collections/Articles";
+import { CaseStudies } from "./collections/CaseStudies";
+import { Teams } from "./collections/Teams";
+
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+export default buildConfig({
+  admin: {
+    user: Users.slug,
+    importMap: {
+      baseDir: path.resolve(dirname),
+    },
+    meta: {
+      titleSuffix: " - ANSCER Robotics",
+      icons: [{ url: "/anscer/images/favicon-light.png" }],
+    },
+    components: {
+      graphics: {
+        Logo: "/components/admin/Logo",
+        Icon: "/components/admin/Icon",
+      },
+    },
+  },
+  collections: [Users, Media, Articles, CaseStudies, Teams],
+  editor: lexicalEditor(),
+  secret: process.env.PAYLOAD_SECRET || "",
+  typescript: {
+    outputFile: path.resolve(dirname, "payload-types.ts"),
+  },
+  db: mongooseAdapter({
+    url: process.env.DATABASE_URL || "",
+  }),
+  sharp,
+  plugins: [
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+      clientUploads: true,
+    }),
+  ],
+  // onInit: async (payload) => {
+  //   if (process.env.NODE_ENV !== "production") {
+  //     await articlesSeed(payload)
+  //   }
+  // },
+});
