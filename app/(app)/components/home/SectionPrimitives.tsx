@@ -11,7 +11,7 @@ export function ArrowButton({
   asButton = false,
   as = null,
   variant = "solid",
-  newTab = true,
+  newTab = false,
   ...props
 }: {
   children: ReactNode;
