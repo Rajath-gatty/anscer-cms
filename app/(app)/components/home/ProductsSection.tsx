@@ -16,8 +16,8 @@ export function ProductsSection() {
     >
       <div className="site-container">
         <FadeUp className="max-w-3xl">
-          <Kicker>Robots Designed to Deliver</Kicker>
-          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
+          {/* <Kicker>Robots Designed to Deliver</Kicker> */}
+          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
             Our products <span className="text-[#005ead]">Line-Up</span>
           </h2>
           <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
@@ -52,11 +52,10 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
 
   return (
     <article
-      className={`group relative flex overflow-hidden rounded-lg bg-[#e6edf3] p-4 md:p-5 ${
-        isFeatured
-          ? "min-h-[430px] flex-col md:min-h-[560px] lg:h-full lg:min-h-[620px]"
-          : "min-h-[340px] flex-col md:min-h-[350px] lg:min-h-0 lg:flex-row lg:items-center lg:gap-5"
-      }`}
+      className={`group relative flex overflow-hidden rounded-lg bg-[#e6edf3] p-4 md:p-5 ${isFeatured
+        ? "min-h-[430px] flex-col md:min-h-[560px] lg:h-full lg:min-h-[620px]"
+        : "min-h-[340px] flex-col md:min-h-[350px] lg:min-h-0 lg:flex-row lg:items-center lg:gap-5"
+        }`}
     >
       <div
         className={`relative z-10 ${isFeatured ? "" : "lg:w-[52%] lg:shrink-0"}`}
@@ -69,7 +68,7 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
         </p>
         <Tags tags={product.tags} />
         <div className="mt-3 opacity-100 transition-opacity duration-300 md:mt-4 lg:opacity-0 lg:group-hover:opacity-100">
-          <ArrowButton 
+          <ArrowButton
             target={product.href}
             className="h-8 text-xs font-medium px-4 md:h-10 md:text-[14px]"
           >

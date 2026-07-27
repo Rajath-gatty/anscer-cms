@@ -41,7 +41,7 @@ export function TrustSection() {
         </video>
       </div>
       <div className="relative z-10 mt-[clamp(14px,4vw,24px)] overflow-hidden py-3 md:absolute md:inset-x-0 md:bottom-3 md:mt-0">
-        <div className="logo-marquee flex w-max items-center gap-20 grayscale contrast-[1.4] brightness-75">
+        <div className="logo-marquee flex w-max items-center gap-20 contrast-[1.4] brightness-75">
           {[...clientLogos, ...clientLogos, ...clientLogos].map(
             (logo, index) => (
               <Image

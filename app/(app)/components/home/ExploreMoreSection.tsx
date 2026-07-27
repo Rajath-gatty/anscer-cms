@@ -20,10 +20,10 @@ export function ExploreMoreSection() {
     <section className="overflow-hidden bg-[#efefef] py-14">
       <div className="site-container">
         <FadeUp>
-          <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
+          {/* <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
             Your Gateway to All Things ANSCER
-          </p>
-          <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[36px]">
+          </p> */}
+          <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[40px]">
             Explore <span className="text-[#005ead]">More</span>
           </h2>
           <p className="mt-6 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
@@ -36,24 +36,7 @@ export function ExploreMoreSection() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-[1.05fr_.5fr_1.05fr]">
           <FadeUp className="grid gap-6" delay={0.08}>
-            <article className="rounded-xl bg-white p-5">
-              <Image
-                src={`${imagePath}diamond-plus.svg`}
-                alt=""
-                width={44}
-                height={44}
-                className="size-11"
-              />
-              <h3 className="mt-5 text-[20px] font-semibold text-[#005ead]">
-                Globally Safety-Compliant Robots
-              </h3>
-              <p className="mt-5 max-w-[560px] text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-[22px]">
-                Designed to meet international safety standards for industrial
-                deployment across manufacturing and warehousing environments.
-              </p>
-            </article>
-
-            <article className="group relative min-h-[222px] overflow-hidden rounded-xl bg-[#011f40] p-5 text-white">
+            <article className="group relative overflow-hidden rounded-xl bg-[#011f40] p-5 text-white">
               <Image
                 src={`${imagePath}explore-more-img-1.png`}
                 alt=""
@@ -63,7 +46,63 @@ export function ExploreMoreSection() {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_52%,rgba(0,0,0,.68))]" />
               <div className="relative">
-                <h3 className="text-[20px] font-semibold leading-[30px]">
+                <Image
+                  src={`${imagePath}diamond-plus.svg`}
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="size-11 brightness-0 invert"
+                />
+                <h3 className="mt-4 text-[20px] font-semibold text-white">
+                  Globally Safety-Compliant Robots
+                </h3>
+                <p className="mt-3 max-w-[560px] text-sm leading-5 text-white/90 md:text-base md:leading-[22px]">
+                  Designed to meet international safety standards for industrial
+                  deployment across manufacturing and warehousing environments.
+                </p>
+              </div>
+            </article>
+
+            <article className="group relative overflow-hidden rounded-xl bg-[#011f40] p-5 text-white">
+              <Image
+                src={`${imagePath}explore-more-img-2.png`}
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 520px"
+                className="object-cover opacity-55 transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_52%,rgba(0,0,0,.68))]" />
+              <div className="relative">
+                <Image
+                  src={`${imagePath}lightbulb.svg`}
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="size-11 brightness-0 invert"
+                />
+                <h3 className="mt-4 text-[20px] font-semibold leading-tight text-white">
+                  Lower Total Cost of Ownership (TCO)
+                </h3>
+                <p className="mt-3 text-sm leading-5 text-white/90 md:text-base md:leading-6">
+                  Optimized hardware, scalable software, predictive maintenance, and
+                  operational efficiency reduce long-term automation costs.
+                </p>
+              </div>
+            </article>
+          </FadeUp>
+
+          <FadeUp delay={0.14}>
+            <article className="group relative h-full w-full overflow-hidden rounded-xl bg-[#011f40] p-5" >
+              <Image
+                src={`${imagePath}explore-more-img-1.png`}
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 520px"
+                className="object-cover opacity-65 transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_52%,rgba(0,0,0,.68))]" />
+              <div className="relative">
+                <h3 className="text-[20px] font-semibold leading-[30px] text-white">
                   Multi-Brand Interoperability
                 </h3>
                 <p className="mt-4 max-w-[560px] text-sm leading-5 text-white md:text-base md:leading-6">
@@ -73,23 +112,6 @@ export function ExploreMoreSection() {
                 </p>
               </div>
             </article>
-          </FadeUp>
-
-          <FadeUp className="rounded-xl bg-white p-5" delay={0.14}>
-            <Image
-              src={`${imagePath}lightbulb.svg`}
-              alt=""
-              width={44}
-              height={44}
-              className="size-11"
-            />
-            <h3 className="mt-10 text-[20px] font-semibold leading-tight text-[#005ead]">
-              Lower Total Cost of Ownership (TCO)
-            </h3>
-            <p className="mt-10 text-sm leading-5 text-[#1e1e1e] md:text-base md:leading-6">
-              Optimized hardware, scalable software, predictive maintenance, and
-              operational efficiency reduce long-term automation costs.
-            </p>
           </FadeUp>
 
           <FadeUp
@@ -118,7 +140,7 @@ export function ExploreMoreSection() {
                     />
                     <p className="text-sm font-normal leading-5 text-white md:text-base md:leading-6">
                       {label ===
-                      "After-sales infrastructure across India and global partner regions." ? (
+                        "After-sales infrastructure across India and global partner regions." ? (
                         <>
                           After-sales infrastructure across India
                           <br />
@@ -135,6 +157,6 @@ export function ExploreMoreSection() {
           </FadeUp>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

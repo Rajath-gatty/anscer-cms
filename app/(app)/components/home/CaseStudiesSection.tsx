@@ -60,7 +60,7 @@ export function CaseStudiesSection() {
       <div className="site-container">
         {caseStudies.length !== 0 && <FadeRight>
           <Kicker>Transforming Workplaces With Intelligence</Kicker>
-          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
+          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[40px]">
             Our <span className="text-[#005ead]">Case Studies</span>
           </h2>
           <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">

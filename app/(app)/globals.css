@@ -50,6 +50,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-sans);
+  --font-inter: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -323,6 +324,9 @@ html {
   }
   html {
     @apply font-sans;
+  }
+  p, span {
+    @apply font-inter;
   }
 }
 .model-viewer::part(default-progress-bar) {
