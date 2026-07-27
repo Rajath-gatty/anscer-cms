@@ -9,8 +9,9 @@ import { SiteHeader } from "./components/home/SiteHeader";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-montserrat",
 });
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,7 +34,6 @@ export default function RootLayout({
       lang="en"
       className={cn(
         "h-full scroll-smooth",
-        "font-sans",
         montserrat.variable,
         inter.variable
       )}
