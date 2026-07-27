@@ -115,8 +115,8 @@ export function SolutionsStickyStack() {
     <>
       <div className="pt-14 lg:hidden">
         <div className="mb-10">
-          <Kicker>Robots Designed to Deliver</Kicker>
-          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
+          {/* <Kicker>Robots Designed to Deliver</Kicker> */}
+          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
             Our <span className="text-[#005ead]">Solutions</span>
           </h2>
         </div>
@@ -140,7 +140,7 @@ export function SolutionsStickyStack() {
           className="sticky top-[72px] 2xl:top-[88px] h-[max(654px,calc(100vh-76px))] 2xl:h-[calc(100vh-96px)] min-h-[460px] 2xl:min-h-[540px] overflow-hidden"
         >
           <div className="absolute left-0 top-0 z-20">
-            <Kicker>Robots Designed to Deliver</Kicker>
+            {/* <Kicker>Robots Designed to Deliver</Kicker> */}
             <h2 className="mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
               Our <span className="text-[#005ead]">Solutions</span>
             </h2>

@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { MotionProvider } from "./components/animation/MotionProvider";
 import { ScrollBehaviorManager } from "./components/animation/ScrollBehaviorManager";
 import { SiteFooter } from "./components/home/SiteFooter";
 import { SiteHeader } from "./components/home/SiteHeader";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
   title: "ANSCER Robotics | Autonomous Industrial Automation",
@@ -29,7 +34,8 @@ export default function RootLayout({
       className={cn(
         "h-full scroll-smooth",
         "font-sans",
-        plusJakartaSans.variable,
+        montserrat.variable,
+        inter.variable
       )}
     >
       <body className="min-h-full bg-[#fafafa] text-[#011f40]">

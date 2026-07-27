@@ -65,7 +65,7 @@ export function TechnologyAccordion() {
                     isOpen ? "cursor-default" : "cursor-pointer",
                   )}
                 >
-                  <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
+                  <span className="text-base font-semibold leading-5 md:text-xl md:leading-7">
                     {item.title}
                   </span>
                   <ChevronDownIcon
@@ -87,7 +87,7 @@ export function TechnologyAccordion() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="mt-3 max-w-[470px] text-sm leading-4 text-[#3a3a3a] md:mt-6 md:text-base md:leading-6">
+                    <p className="mt-3 max-w-[470px] text-sm leading-4 text-[#3a3a3a] md:mt-1 md:text-base md:leading-6">
                       {item.copy}
                     </p>
                     <div className="relative mt-4 aspect-[1.55] overflow-hidden rounded-md bg-[#d9e3eb] lg:hidden">
@@ -100,13 +100,13 @@ export function TechnologyAccordion() {
                         priority={index === 0}
                       />
                     </div>
-                    <Image
+                    {/* <Image
                       src={`${imagePath}${item.icon}`}
                       alt=""
                       width={52}
                       height={52}
                       className="mt-4 hidden size-[52px] lg:block"
-                    />
+                    /> */}
                   </div>
                 </div>
               </article>

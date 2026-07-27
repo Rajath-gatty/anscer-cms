@@ -3,11 +3,13 @@ import { seriesCards } from "../robots/product-series-data";
 export const navItems = ["Home", "Robots", "Software", "Company"];
 
 export const clientLogos = [
-  "updated-logo-2.png",
-  "updated-logo-5.png",
-  "updated-logo-4.png",
-  "updated-logo-6.png",
   "updated-logo-1.png",
+  "updated-logo-2.png",
+  "updated-logo-3.png",
+  "updated-logo-4.png",
+  "updated-logo-5.png",
+  "updated-logo-6.png",
+  "updated-logo-7.png",
 ];
 
 export const productCards = seriesCards;
