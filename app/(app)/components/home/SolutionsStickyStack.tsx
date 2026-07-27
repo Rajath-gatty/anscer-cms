@@ -117,7 +117,7 @@ export function SolutionsStickyStack() {
         <div className="mb-10">
           {/* <Kicker>Robots Designed to Deliver</Kicker> */}
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
-            Our <span className="text-[#005ead]">Solutions</span>
+            Our <span className="text-[#005ead] font-montserrat">Solutions</span>
           </h2>
         </div>
         <div className="flex flex-col gap-[34px] md:gap-5">
@@ -142,7 +142,7 @@ export function SolutionsStickyStack() {
           <div className="absolute left-0 top-0 z-20">
             {/* <Kicker>Robots Designed to Deliver</Kicker> */}
             <h2 className="mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
-              Our <span className="text-[#005ead]">Solutions</span>
+              Our <span className="text-[#005ead] font-montserrat">Solutions</span>
             </h2>
           </div>
 
