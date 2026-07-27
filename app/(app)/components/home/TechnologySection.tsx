@@ -9,7 +9,7 @@ export function TechnologySection() {
         <FadeUp className="max-w-[610px]">
           {/* <Kicker>Engineering the Future of Automation</Kicker> */}
           <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[40px]">
-            Our <span className="text-[#005ead]">Technology</span>
+            Our <span className="text-[#005ead] font-montserrat">Technology</span>
           </h2>
           <p className="mt-4 max-w-[590px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
             By combining fundamental research with applied engineering, we create breakthroughs that redefine autonomous

@@ -93,7 +93,7 @@ export function SolutionsSection() {
           <div className="pt-1 text-center md:text-left">
             {/* <Kicker>Solutions That Solve, Everywhere.</Kicker> */}
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
-              Solutions That <span className="text-[#005ead]">Deliver</span>
+              Solutions That <span className="text-[#005ead] font-montserrat">Deliver</span>
             </h2>
             <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-base md:leading-[22px]">
               From tugging and lifting to robotic arm integration and conveyor
@@ -107,8 +107,8 @@ export function SolutionsSection() {
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
                     <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[30px] flex items-center justify-center gap-1">
-                      <span className="text-[#005ead]">{stat.value}</span>
-                      <span className="text-[#005ead] md:mb-2 mb-1">
+                      <span className="text-[#005ead] font-montserrat">{stat.value}</span>
+                      <span className="text-[#005ead] md:mb-2 mb-1 font-montserrat">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
                       </span>
                     </h3>

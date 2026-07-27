@@ -14,7 +14,7 @@ export function TrustSection() {
           <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[60px]">
             Engineered in India.
             <br />
-            Trusted <span className="text-[#005ead]">Everywhere.</span>
+            Trusted <span className="text-[#005ead] font-montserrat">Everywhere.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#4d4d4d] md:text-base">
             Born in India, for the world, we deliver precision-engineered

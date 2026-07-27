@@ -18,7 +18,7 @@ export function ProductsSection() {
         <FadeUp className="max-w-3xl">
           {/* <Kicker>Robots Designed to Deliver</Kicker> */}
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
-            Our products <span className="text-[#005ead]">Line-Up</span>
+            Our products <span className="text-[#005ead] font-montserrat">Line-Up</span>
           </h2>
           <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
             At ANSCER Robotics, we offer specialized robot series tailored to

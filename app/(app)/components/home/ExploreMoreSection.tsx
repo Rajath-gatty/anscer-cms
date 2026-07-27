@@ -24,7 +24,7 @@ export function ExploreMoreSection() {
             Your Gateway to All Things ANSCER
           </p> */}
           <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[40px]">
-            Explore <span className="text-[#005ead]">More</span>
+            Explore <span className="text-[#005ead] font-montserrat">More</span>
           </h2>
           <p className="mt-6 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
             All the Answers You Need About ANSCER Robotics&mdash;Right at Your
