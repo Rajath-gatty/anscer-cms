@@ -45,7 +45,7 @@ export function ArrowButton({
     ? "h-10 px-4 gap-3 rounded-sm"
     : "gap-2"; // for ghost
 
-  const sharedClassName = `relative z-10 group/btn cursor-pointer inline-flex items-center text-[14px] font-medium uppercase tracking-wide transition ${baseClasses} ${colorClasses} ${className}`
+  const sharedClassName = `relative font-montserrat z-10 group/btn cursor-pointer inline-flex items-center text-[14px] font-medium uppercase tracking-wide transition ${baseClasses} ${colorClasses} ${className}`
     .replace(/\s+/g, " ")
     .trim();
 
