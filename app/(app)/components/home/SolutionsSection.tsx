@@ -106,7 +106,7 @@ export function SolutionsSection() {
               {displayStats.length > 0 &&
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
-                    <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[30px] flex items-center justify-center gap-1">
+                    <h3 className="text-[18px] font-bold leading-none text-[#011f40] md:text-[30px] flex items-center justify-center gap-1">
                       <span className="text-[#005ead] font-montserrat">{stat.value}</span>
                       <span className="text-[#005ead] md:mb-2 mb-1 font-montserrat">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
@@ -125,7 +125,7 @@ export function SolutionsSection() {
           </div>
         </div>
       </div>
-      <div className="site-container py-14 md:py-20 lg:pb-0">
+      <div className="site-container py-14 md:pb-0 md:pt-20 ">
         <SolutionsStickyStack />
       </div>
     </section>

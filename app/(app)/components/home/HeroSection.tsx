@@ -24,7 +24,7 @@ export function HeroSection() {
       </video>
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,20,40,.74)_0%,rgba(1,20,40,.44)_48%,rgba(1,20,40,.16)_100%)]" />
       <FadeUp className="site-container relative z-10">
-        <h1 className="max-w-4xl text-[48px] font-bold leading-[1.06] tracking-tight md:text-[60px]">
+        <h1 className="max-w-5xl text-[48px] font-bold leading-[1.06] tracking-tight md:text-[clamp(60px,2.2vw,100px)]">
           Automate Smarter With ANSCER
           {/* <span className="block">Lead the future with ANSCER</span> */}
         </h1>
