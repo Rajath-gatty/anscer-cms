@@ -66,7 +66,7 @@ export function SiteHeader() {
           />
         </Link>
         <div className="hidden items-center gap-[40px] lg:flex">
-          <nav className="flex items-center gap-[40px] text-sm font-normal text-[#2f2f2f]">
+          <nav className="flex items-center gap-[40px] text-sm md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] font-normal text-[#2f2f2f]">
             {navItems.map((item) => {
               if (item === "Robots") {
                 return <RobotsDropdown key={pathname} active={isRobotsActive} />;
@@ -319,20 +319,20 @@ function RobotsDropdown({ active }: { active: boolean }) {
             href="/robots"
             onClick={() => setOpen(false)}
             variant="ghost"
-            className="text-lg gap-3 font-bold text-[#011f40] hover:underline underline-offset-4 px-0 h-auto"
+            className="text-lg md:text-[clamp(18px,0.9vw,26px)] gap-3 font-bold text-[#011f40] hover:underline underline-offset-4 px-0 h-auto"
           >
             Robot Overview
           </ArrowButton>
-          <p className="mt-2 text-[10px] leading-5 text-[#7b8794]">
+          <p className="mt-2 text-[10px] md:text-[clamp(12px,0.6vw,18px)] leading-5 text-[#7b8794]">
             Explore ANSCER&apos;s robotic platforms for flexible industrial
             automation
           </p>
         </div>
         <div className="border-t border-[#e7eaf0] px-5 pb-7 pt-4">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
+          <p className="text-[10px] md:text-[clamp(12px,0.6vw,18px)] font-medium uppercase tracking-wide text-[#9aa3ad]">
             Robot Series
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-sm font-medium text-[#011f40] font-montserrat">
+          <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-sm md:text-[clamp(14px,0.7vw,22px)] font-medium text-[#011f40] font-montserrat">
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
               href="/ar-series"
@@ -402,10 +402,10 @@ function CompanyDropdown({ active }: { active: boolean }) {
           }`}
       >
         <div className="p-6">
-          <p className="mb-4 text-[10px] font-medium uppercase font-montserrat tracking-wide text-[#9aa3ad]">
+          <p className="mb-4 text-[10px] md:text-[clamp(12px,0.6vw,18px)] font-medium uppercase font-montserrat tracking-wide text-[#9aa3ad]">
             Company
           </p>
-          <div className="flex flex-col text-sm font-medium text-[#011f40] font-montserrat">
+          <div className="flex flex-col text-sm md:text-[clamp(14px,0.7vw,22px)] font-medium text-[#011f40] font-montserrat">
             <Link
               href="/about-us"
               onClick={() => setOpen(false)}

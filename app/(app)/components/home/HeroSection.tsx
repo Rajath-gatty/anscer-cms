@@ -24,11 +24,11 @@ export function HeroSection() {
       </video>
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,20,40,.74)_0%,rgba(1,20,40,.44)_48%,rgba(1,20,40,.16)_100%)]" />
       <FadeUp className="site-container relative z-10">
-        <h1 className="max-w-5xl text-[48px] font-bold leading-[1.06] tracking-tight md:text-[clamp(60px,2.2vw,100px)]">
+        <h1 className="max-w-5xl 2xl:max-w-7xl text-[48px] font-bold leading-[1.06] tracking-tight md:text-[clamp(48px,4vw,80px)]">
           Automate Smarter With ANSCER
           {/* <span className="block">Lead the future with ANSCER</span> */}
         </h1>
-        <p className="mt-3 max-w-xl text-sm font-medium leading-6 text-white/88 md:text-[18px]">
+        <p className="mt-3 max-w-xl 2xl:max-w-2xl text-sm font-medium leading-6 text-white/88 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
           Join the robotics revolution, where innovation meets execution.
         </p>
         <div className="mt-8">

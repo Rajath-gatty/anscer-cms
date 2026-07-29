@@ -65,7 +65,7 @@ export function TechnologyAccordion() {
                     isOpen ? "cursor-default" : "cursor-pointer",
                   )}
                 >
-                  <span className="text-base font-semibold leading-5 md:text-xl md:leading-7">
+                  <span className="text-base font-semibold leading-5 md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)] md:leading-[130%]">
                     {item.title}
                   </span>
                   <ChevronDownIcon
@@ -87,7 +87,7 @@ export function TechnologyAccordion() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="mt-3 max-w-[470px] text-sm leading-4 text-[#3a3a3a] md:mt-1 md:text-base md:leading-6">
+                    <p className="mt-3 max-w-[470px] 4xl:max-w-[90%] text-sm leading-4 text-[#3a3a3a] md:mt-1    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
                       {item.copy}
                     </p>
                     <div className="relative mt-4 aspect-[1.55] overflow-hidden rounded-md bg-[#d9e3eb] lg:hidden">

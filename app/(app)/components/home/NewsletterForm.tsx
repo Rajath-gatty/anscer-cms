@@ -30,7 +30,7 @@ export default function NewsletterForm() {
         type="email"
         required
         placeholder="Enter your email address"
-        className="w-full border-0 border-b border-[#fafafa99] bg-transparent pb-[14px] pr-12 text-sm text-[#fafafa] outline-none placeholder:text-[#fafafa4d]"
+        className="w-full border-0 border-b border-[#fafafa99] bg-transparent pb-[14px] pr-12 text-sm md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] text-[#fafafa] outline-none placeholder:text-[#fafafa4d]"
       />
       <button
         type="submit"

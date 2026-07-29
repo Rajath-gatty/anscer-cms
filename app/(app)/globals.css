@@ -95,16 +95,6 @@
   --breakpoint-4xl: 130rem;
 }
 
-@utility text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-
-  @media (min-width: 768px) {
-    font-size: clamp(16px,0.8vw,30px);
-    line-height: 1.4;
-  }
-}
-
 /* Ensure interactive buttons/anchors are on top of decorative overlays so clicks register */
 a[class*="group/btn"],
 a[class*="inline-flex"][class*="h-10"],

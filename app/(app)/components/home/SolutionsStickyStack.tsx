@@ -139,7 +139,7 @@ export function SolutionsStickyStack() {
       {/* Mobile layout */}
       <div className="pt-14 lg:hidden">
         <div className="mb-10">
-          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
+          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Our{" "}
             <span className="text-[#005ead] font-montserrat">Solutions</span>
           </h2>
@@ -178,7 +178,7 @@ export function SolutionsStickyStack() {
                   )}
                   aria-hidden={activeIndex !== index}
                 >
-                  <div className="mb-6 w-[400px] xl:w-[550px,30vw,700px] 3xl:w-[600px] 4xl:w-[650px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee]">
+                  <div className="mb-6 w-[400px] xl:w-[550px,30vw,700px] 3xl:w-[600px] 4xl:w-[750px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee]">
                     <Image
                       src={`${imagePath}${solution.image}`}
                       alt={`${solution.title} application`}
@@ -203,7 +203,7 @@ export function SolutionsStickyStack() {
                     </div>
                     <FillText
                       text={solution.copy}
-                      className="mt-[18px] max-w-[640px] text-base font-medium md:text-[clamp(20px,1.4vw,44px)] leading-[130%]"
+                      className="mt-[18px] max-w-[640px] 4xl:max-w-[750px] text-base font-medium md:text-[clamp(20px,1.4vw,44px)] 4xl:text-[clamp(28px,1.7vw,44px)] leading-[130%]"
                       scrollProgress={activeIndex === index ? panelProgress[index] ?? 0 : 0}
                     />
                   </div>
@@ -223,9 +223,9 @@ export function SolutionsStickyStack() {
                 ref={setVideoRef(index)}
                 className="flex items-center justify-center min-h-[clamp(600px,70vh,980px)] 2xl:min-h-[clamp(700px,70vh,980px)]"
               >
-                <div className="w-full max-w-[550px] 4xl:max-w-[620px]">
+                <div className="w-full max-w-[550px] 3xl:max-w-[620px] 4xl:max-w-[750px]">
                   <div className={cn(
-                    "rounded-2xl overflow-hidden transition-all duration-500 min-h-[70vh]", index % 2 == 0 ? "bg-[#f0f4f8]" : "bg-[#EFEFEF]")}>
+                    "rounded-2xl overflow-hidden transition-all duration-500 min-h-[70vh] flex flex-col justify-center", index % 2 == 0 ? "bg-[#f0f4f8]" : "bg-[#EFEFEF]")}>
                     <Image
                       src={`${imagePath}${solution.image2}`}
                       alt={`${solution.title} application`}
@@ -289,11 +289,11 @@ function StaticSolutionCard({
           height={42}
           className="h-[42px] w-auto shrink-0"
         />
-        <h3 className="text-xs font-bold uppercase tracking-wide text-[#005ead]">
+        <h3 className="text-xs font-bold uppercase tracking-wide text-[#005ead] md:text-[clamp(18px,0.9vw,28px)] 3xl:text-[clamp(22px,1.1vw,30px)]">
           {solution.title}
         </h3>
       </div>
-      <p className="mt-6 text-sm leading-5 text-[#011f40]">{solution.copy}</p>
+      <p className="mt-6 text-sm leading-5 text-[#011f40] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">{solution.copy}</p>
 
       {showButton && (
         <div className="mt-4 flex">

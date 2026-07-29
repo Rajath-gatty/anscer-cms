@@ -63,7 +63,7 @@ export function CaseStudiesSection() {
           <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Our <span className="text-[#005ead] font-montserrat">Case Studies</span>
           </h2>
-          <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+          <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[120%]">
             From factory floors to fulfillment centers, discover how industry leaders have partnered with ANSCER to elevate
             efficiency, safety, and productivity through automation.
           </p>
@@ -92,7 +92,7 @@ export function CaseStudiesSection() {
                 />
               ))}
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,.18),rgba(1,31,64,.02)_45%,rgba(1,31,64,.22))] md:bg-[linear-gradient(90deg,rgba(1,31,64,.36),rgba(1,31,64,.08))]" />
-              <h3 className="absolute left-5 top-5 text-base font-semibold text-white md:left-7 md:top-7 md:text-2xl">
+              <h3 className="absolute left-5 top-5 text-base font-semibold text-white md:left-7 md:top-7 md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)]">
                 {activeCase.title}
               </h3>
             </FadeRight>
@@ -109,7 +109,7 @@ export function CaseStudiesSection() {
                 className="h-7 w-auto object-contain md:h-12"
               />
               {/* <h4 className="mt-3 text-sm font-semibold text-[#011f40] md:mt-4 md:text-lg">{activeCase.title}</h4> */}
-              <p className="mt-2 text-sm leading-4 text-[#536171] md:mt-3 md:text-base md:leading-6">
+              <p className="mt-2 text-sm leading-4 text-[#536171] md:mt-3    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[120%]">
                 {activeCase.description}
               </p>
               <div className="mt-3 md:mt-5">
