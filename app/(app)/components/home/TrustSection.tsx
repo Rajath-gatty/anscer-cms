@@ -11,12 +11,12 @@ export function TrustSection() {
     >
       <FadeUp className="site-container relative z-10">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[60px]">
+          <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[clamp(60px,3.5vw,73px)]">
             Engineered in India.
             <br />
             Trusted <span className="text-[#005ead] font-montserrat">Everywhere.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#4d4d4d] md:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-[120%] text-[#4d4d4d] md:text-[clamp(16px,0.8vw,30px)]">
             Born in India, for the world, we deliver precision-engineered
             automation trusted by industry leaders. Our homegrown innovation
             powers global performance with reliability, intelligence, and

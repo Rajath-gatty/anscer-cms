@@ -23,7 +23,7 @@ export function ExploreMoreSection() {
           {/* <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
             Your Gateway to All Things ANSCER
           </p> */}
-          <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[40px]">
+          <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Explore <span className="text-[#005ead] font-montserrat">More</span>
           </h2>
           <p className="mt-6 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">

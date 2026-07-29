@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { imagePath, videoPath } from "./assets";
 import { ArrowButton, Kicker } from "./SectionPrimitives";
 
@@ -41,7 +41,7 @@ const solutions = [
 
 export function SolutionsStickyStack() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [panelProgress, setPanelProgress] = useState<number[]>(() => solutions.map(() => 0));
 
@@ -53,34 +53,47 @@ export function SolutionsStickyStack() {
     return () => media.removeEventListener("change", updateReducedMotion);
   }, []);
 
-  // Track scroll progress from the section container for desktop
+  // Track scroll progress for each video panel + detect active index
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const refs = videoRefs.current;
+    if (!refs.length) return;
 
     let frame = 0;
 
     const updateProgress = () => {
-      const rect = section.getBoundingClientRect();
       const viewportHeight = window.innerHeight || 1;
-      const scrollableDistance = rect.height - viewportHeight;
+      const newProgress: number[] = [];
+      let maxRatio = 0;
+      let maxIndex = 0;
 
-      if (scrollableDistance <= 0) return;
+      for (let i = 0; i < refs.length; i++) {
+        const ref = refs[i];
+        if (!ref) {
+          newProgress.push(0);
+          continue;
+        }
 
-      // How far we've scrolled through the section (0 to 1)
-      const sectionProgress = clamp(-rect.top / scrollableDistance, 0, 1);
+        const rect = ref.getBoundingClientRect();
 
-      // Determine active index from scroll position
-      const slideCount = solutions.length;
-      const rawIndex = Math.floor(sectionProgress * slideCount);
-      setActiveIndex(clamp(rawIndex, 0, slideCount - 1));
+        // Scroll progress: 0 when panel top enters viewport bottom, 1 when panel bottom exits viewport top
+        const panelTravel = viewportHeight + rect.height;
+        const raw = (viewportHeight - rect.top) / panelTravel;
+        newProgress.push(clamp(raw, 0, 1));
 
-      // Per-panel progress for the text fill animation
-      const newProgress = solutions.map((_, i) => {
-        const slideStart = i / slideCount;
-        const slideEnd = (i + 1) / slideCount;
-        return clamp((sectionProgress - slideStart) / (slideEnd - slideStart), 0, 1);
-      });
+        // Also compute intersection ratio for active index
+        const top = Math.max(rect.top, 0);
+        const bottom = Math.min(rect.bottom, viewportHeight);
+        const visible = Math.max(0, bottom - top);
+        const ratio = visible / rect.height;
+        if (ratio > maxRatio) {
+          maxRatio = ratio;
+          maxIndex = i;
+        }
+      }
+
+      if (maxRatio > 0) {
+        setActiveIndex(maxIndex);
+      }
       setPanelProgress(newProgress);
     };
 
@@ -99,6 +112,13 @@ export function SolutionsStickyStack() {
       window.removeEventListener("resize", onScroll);
     };
   }, []);
+
+  const setVideoRef = useCallback(
+    (index: number) => (el: HTMLDivElement | null) => {
+      videoRefs.current[index] = el;
+    },
+    [],
+  );
 
   if (reducedMotion) {
     return (
@@ -135,12 +155,12 @@ export function SolutionsStickyStack() {
         </div>
       </div>
 
-      {/* Desktop layout: both sides sticky, right images crossfade */}
-      <div ref={sectionRef} className="relative hidden lg:block" style={{ height: '300vh' }}>
-        <div className="sticky top-[54px] h-screen flex gap-8 xl:gap-12 items-start">
-          {/* Left side: heading + content + image */}
-          <div className="w-[45%] shrink-0">
-            <h2 className="mb-2 2xl:mb-2 mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
+      {/* Desktop layout: sticky left + scrollable right */}
+      <div className="relative hidden lg:block">
+        <div className="flex gap-8 xl:gap-12 items-start">
+          {/* Left sticky side: heading + content + image */}
+          <div className="sticky top-[65px] w-[45%] shrink-0 self-start">
+            <h2 className="mb-2 2xl:mb-[clamp(20px,3.5vh,80px)] mt-3 2xl:mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
               Our{" "}
               <span className="text-[#005ead] font-montserrat">Solutions</span>
             </h2>
@@ -153,12 +173,12 @@ export function SolutionsStickyStack() {
                     activeIndex === index
                       ? "opacity-100 translate-y-0"
                       : activeIndex > index
-                        ? "opacity-0 -translate-y-4 pointer-events-none"
-                        : "opacity-0 translate-y-4 pointer-events-none",
+                        ? "opacity-0 pointer-events-none"
+                        : "opacity-0 pointer-events-none",
                   )}
                   aria-hidden={activeIndex !== index}
                 >
-                  <div className="mb-6 w-[400px] 2xl:w-[500px] 3xl:w-[650px] 4xl:w-[750px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee]">
+                  <div className="mb-6 w-[400px] xl:w-[550px,30vw,700px] 3xl:w-[600px] 4xl:w-[650px] max-w-full overflow-hidden rounded-xl bg-[#dfe7ee]">
                     <Image
                       src={`${imagePath}${solution.image}`}
                       alt={`${solution.title} application`}
@@ -168,7 +188,7 @@ export function SolutionsStickyStack() {
                       className="h-auto w-full"
                     />
                   </div>
-                  <div className="flex flex-col gap-2 my-[clamp(24px,5vh,84px)]">
+                  <div className="flex flex-col gap-2 my-[clamp(15px,2vw,44px)] md:my-[clamp(20px,1.5vw,44px)] 2xl:my-[clamp(28px,2.2vw,80px)]">
                     <div className="flex items-center gap-4">
                       <Image
                         src={`${imagePath}${solution.icon}`}
@@ -183,7 +203,7 @@ export function SolutionsStickyStack() {
                     </div>
                     <FillText
                       text={solution.copy}
-                      className="mt-[18px] max-w-[640px] 2xl:max-w-[750px] text-base font-medium md:text-[clamp(20px,1.5vw,64px)] 2xl:text-[clamp(28px,1.5vw,64px)] leading-[130%]"
+                      className="mt-[18px] max-w-[640px] text-base font-medium md:text-[clamp(20px,1.4vw,44px)] leading-[130%]"
                       scrollProgress={activeIndex === index ? panelProgress[index] ?? 0 : 0}
                     />
                   </div>
@@ -195,26 +215,17 @@ export function SolutionsStickyStack() {
             </div>
           </div>
 
-          {/* Right side: fixed at center, images crossfade */}
-          <div className="flex-1 flex items-center justify-center h-full">
-            <div className="relative w-full max-w-[550px] 2xl:max-w-[650px] 3xl:max-w-[750px] 4xl:max-w-[850px]">
-              {solutions.map((solution, index) => (
-                <div
-                  key={solution.title}
-                  className={cn(
-                    "transition-opacity duration-700 ease-in-out flex-1",
-                    index === 0 ? "relative" : "absolute inset-0",
-                    activeIndex === index
-                      ? "opacity-100"
-                      : "opacity-0 pointer-events-none",
-                  )}
-                >
-                  <div
-                    className={cn(
-                      "rounded-2xl overflow-hidden",
-                      "bg-[#f0f4f8]",
-                    )}
-                  >
+          {/* Right scrollable side: videos */}
+          <div className="flex-1 flex flex-col gap-0 mt-[70px] 3xl:gap-10">
+            {solutions.map((solution, index) => (
+              <div
+                key={solution.title}
+                ref={setVideoRef(index)}
+                className="flex items-center justify-center min-h-[clamp(600px,70vh,980px)] 2xl:min-h-[clamp(700px,70vh,980px)]"
+              >
+                <div className="w-full max-w-[550px] 4xl:max-w-[620px]">
+                  <div className={cn(
+                    "rounded-2xl overflow-hidden transition-all duration-500 min-h-[70vh]", index % 2 == 0 ? "bg-[#f0f4f8]" : "bg-[#EFEFEF]")}>
                     <Image
                       src={`${imagePath}${solution.image2}`}
                       alt={`${solution.title} application`}
@@ -222,10 +233,27 @@ export function SolutionsStickyStack() {
                       height={solution.imageHeight}
                       className="h-auto w-full"
                     />
+                    {/* <video
+                      className="w-full h-auto object-contain"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                    >
+                      <source
+                        src={
+                          solution.video.startsWith("https")
+                            ? solution.video
+                            : `${videoPath}${solution.video}`
+                        }
+                        type="video/mp4"
+                      />
+                    </video> */}
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

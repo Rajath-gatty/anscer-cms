@@ -17,7 +17,7 @@ export function ProductsSection() {
       <div className="site-container">
         <FadeUp className="max-w-3xl">
           {/* <Kicker>Robots Designed to Deliver</Kicker> */}
-          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
+          <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Our products <span className="text-[#005ead] font-montserrat">Line-Up</span>
           </h2>
           <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
