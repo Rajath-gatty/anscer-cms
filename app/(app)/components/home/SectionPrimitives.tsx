@@ -90,17 +90,18 @@ export function ArrowButton({
 }
 
 export function Kicker({ children }: { children: string }) {
-  return <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">{children}</p>;
+  return <p className="text-xs font-medium uppercase text-[#005ead]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">{children}</p>;
 }
 
 export function Tags({ tags }: { tags: string[] }) {
   return (
     <div className="mt-3 flex flex-wrap gap-2">
       {tags.map((tag) => (
-        <span key={tag} className="rounded-md bg-white px-3 py-1.5 text-xs font-normal text-[#011f40] md:px-4 md:py-2 md:text-base">
+        <span key={tag} className="rounded-md bg-white px-3 py-1.5 text-xs font-normal text-[#011f40] md:px-4 md:py-2    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
           {tag}
         </span>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   );
 }

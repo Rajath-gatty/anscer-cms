@@ -4,6 +4,7 @@ import { FadeLeft, FadeRight, FadeUp } from "../animation";
 import { seriesCards as productCards } from "../robots/product-series-data";
 import { imagePath } from "./assets";
 import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
+import { cn } from "@/lib/utils";
 
 export function ProductsSection() {
   const featuredProduct = productCards.find((product) => product.featured);
@@ -20,7 +21,7 @@ export function ProductsSection() {
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Our products <span className="text-[#005ead] font-montserrat">Line-Up</span>
           </h2>
-          <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+          <p className="mt-4 max-w-[640px] 2xl:max-w-[750px] text-sm leading-5 text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
             At ANSCER Robotics, we offer specialized robot series tailored to
             meet different operational needs. Explore our innovative solutions
             designed for seamless automation and efficiency.
@@ -54,16 +55,16 @@ function ProductCard({ product }: { product: (typeof productCards)[number] }) {
     <article
       className={`group relative flex overflow-hidden rounded-lg bg-[#e6edf3] p-4 md:p-5 ${isFeatured
         ? "min-h-[430px] flex-col md:min-h-[560px] lg:h-full lg:min-h-[620px]"
-        : "min-h-[340px] flex-col md:min-h-[350px] lg:min-h-0 lg:flex-row lg:items-center lg:gap-5"
+        : "min-h-[340px] flex-col md:min-h-[350px] lg:min-h-0 lg:flex-row lg:gap-5"
         }`}
     >
       <div
         className={`relative z-10 ${isFeatured ? "" : "lg:w-[52%] lg:shrink-0"}`}
       >
-        <h3 className="text-xl font-semibold md:text-[24px]">
+        <h3 className="text-xl font-semibold md:text-[clamp(24px,1.1vw,40px)] 3xl:text-[clamp(26px,1.3vw,44px)]">
           {product.title}
         </h3>
-        <p className="mt-2 max-w-xl text-sm leading-4 text-[#27384b] md:mt-3 md:text-base md:leading-6">
+        <p className={cn("mt-2 max-w-xl text-sm leading-4 text-[#27384b] md:mt-3    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]", isFeatured && "4xl:max-w-[90%]")}>
           {product.copy}
         </p>
         <Tags tags={product.tags} />

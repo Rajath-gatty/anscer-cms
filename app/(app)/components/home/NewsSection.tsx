@@ -84,8 +84,8 @@ export function NewsSection() {
                         />
                       )}
                     </div>
-                    <h3 className="mt-4 h-[44px] line-clamp-2 text-base font-semibold leading-[22px] text-[#4a4a4a]">{article.postTitle}</h3>
-                    <p className="mt-4 h-[44px] line-clamp-2 text-sm font-normal leading-[22px] text-[#5b5f66]">{article.summary || ""}</p>
+                    <h3 className="mt-4 min-h-[44px] line-clamp-2 text-base font-semibold text-[#4a4a4a] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)] md:leading-[130%]">{article.postTitle}</h3>
+                    <p className="mt-4 min-h-[44px] line-clamp-2 text-sm font-normal text-[#5b5f66] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">{article.summary || ""}</p>
                     <ArrowButton
                       as="a"
                       variant="ghost"

@@ -93,10 +93,10 @@ export function SiteFooter() {
             </Link>
 
             <div>
-              <h3 className="text-sm font-semibold md:text-base">
+              <h3 className="text-sm font-semibold    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                 India Office
               </h3>
-              <p className="mt-1 text-xs leading-6 md:text-sm md:leading-[1.25]">
+              <p className="mt-1 text-xs leading-6 md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] md:leading-[1.25]">
                 28B, 4th Main, Industrial Area, Bommasandra, Bengaluru,
                 <br />
                 Karnataka 560099
@@ -109,8 +109,8 @@ export function SiteFooter() {
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold md:text-base">USA Office</h3>
-              <p className="mt-1 text-xs leading-6 md:text-sm md:leading-[1.25]">
+              <h3 className="text-sm font-semibold    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">USA Office</h3>
+              <p className="mt-1 text-xs leading-6 md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] md:leading-[1.25]">
                 400 Chisholm Pl, PlanoTX 75075,
                 <br />
                 United States
@@ -167,7 +167,7 @@ export function SiteFooter() {
               key={column.heading}
               className="flex flex-col items-start gap-4"
             >
-              <h3 className="text-base font-semibold md:text-xl">
+              <h3 className="text-base font-semibold md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                 {column.heading}
               </h3>
               <ul className="space-y-2">
@@ -176,7 +176,7 @@ export function SiteFooter() {
                     <FooterLink
                       href={link.href}
                       external={link.external}
-                      className="text-sm text-white/60 transition hover:text-white"
+                      className="text-sm text-white/60 transition hover:text-white md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)]"
                     >
                       {link.label}
                     </FooterLink>
@@ -189,10 +189,10 @@ export function SiteFooter() {
           <div>
             <div className="relative overflow-hidden rounded-2xl bg-[#2a2a2f] px-5 py-6 md:px-7 md:py-7">
               <div className="footer-card-reflection" />
-              <h2 className="text-base font-semibold md:text-xl">
+              <h2 className="text-base font-semibold md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                 Get the latest in news about ANSCER
               </h2>
-              <p className="mt-4 text-xs md:text-sm">
+              <p className="mt-4 text-xs md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)]">
                 Sign up for our newsletter!
               </p>
 
@@ -201,7 +201,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[34px] py-5 text-sm md:flex-row md:items-center md:justify-between md:gap-6">
+        <div className="flex flex-col gap-[34px] py-5 text-sm md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] md:flex-row md:items-center md:justify-between md:gap-6">
           <p className="order-2 w-full text-center md:order-1 md:w-auto md:text-left">
             &copy; ANSCER Robotics 2026 | All rights reserved
           </p>
@@ -218,7 +218,7 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
-      </div>
-    </footer>
+      </div >
+    </footer >
   );
 }

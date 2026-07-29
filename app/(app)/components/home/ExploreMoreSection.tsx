@@ -20,13 +20,13 @@ export function ExploreMoreSection() {
     <section className="overflow-hidden bg-[#efefef] py-14">
       <div className="site-container">
         <FadeUp>
-          {/* <p className="text-xs font-medium uppercase text-[#005ead] md:text-base">
+          {/* <p className="text-xs font-medium uppercase text-[#005ead]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
             Your Gateway to All Things ANSCER
           </p> */}
           <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Explore <span className="text-[#005ead] font-montserrat">More</span>
           </h2>
-          <p className="mt-6 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+          <p className="mt-6 max-w-[640px] 3xl:max-w-[750px] text-sm leading-5 text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             All the Answers You Need About ANSCER Robotics&mdash;Right at Your
             Fingertips. From how our autonomous robots transform industries to
             what makes our tech stand out&mdash;your journey into the future of
@@ -53,10 +53,10 @@ export function ExploreMoreSection() {
                   height={44}
                   className="size-11 brightness-0 invert"
                 />
-                <h3 className="mt-4 text-[20px] font-semibold text-white">
+                <h3 className="mt-4 text-[20px] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)] font-semibold text-white">
                   Globally Safety-Compliant Robots
                 </h3>
-                <p className="mt-3 max-w-[560px] text-sm leading-5 text-white/90 md:text-base md:leading-[22px]">
+                <p className="mt-3 text-sm leading-5 text-white/90    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
                   Designed to meet international safety standards for industrial
                   deployment across manufacturing and warehousing environments.
                 </p>
@@ -80,10 +80,10 @@ export function ExploreMoreSection() {
                   height={44}
                   className="size-11 brightness-0 invert"
                 />
-                <h3 className="mt-4 text-[20px] font-semibold leading-tight text-white">
+                <h3 className="mt-4 text-[20px] font-semibold leading-tight text-white md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)]">
                   Lower Total Cost of Ownership (TCO)
                 </h3>
-                <p className="mt-3 text-sm leading-5 text-white/90 md:text-base md:leading-6">
+                <p className="mt-3 text-sm leading-5 text-white/90    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
                   Optimized hardware, scalable software, predictive maintenance, and
                   operational efficiency reduce long-term automation costs.
                 </p>
@@ -102,10 +102,10 @@ export function ExploreMoreSection() {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_52%,rgba(0,0,0,.68))]" />
               <div className="relative">
-                <h3 className="text-[20px] font-semibold leading-[30px] text-white">
+                <h3 className="text-[20px] font-semibold leading-[30px] text-white md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)]">
                   Multi-Brand Interoperability
                 </h3>
-                <p className="mt-4 max-w-[560px] text-sm leading-5 text-white md:text-base md:leading-6">
+                <p className="mt-4 max-w-[560px] text-sm leading-5 text-white    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
                   Ability to integrate and operate with diverse automation
                   ecosystems, third-party robots, ERP, WMS, conveyors, doors,
                   and factory systems.
@@ -127,7 +127,7 @@ export function ExploreMoreSection() {
             />
             <div className="absolute inset-0 bg-black/45" />
             <div className="relative">
-              <h3 className="text-[20px] font-semibold leading-[30px]">
+              <h3 className="text-[20px] font-semibold leading-[30px] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)]">
                 Strong Support & Service Model
               </h3>
               <div className="mt-7 flex flex-col gap-6">
@@ -138,7 +138,7 @@ export function ExploreMoreSection() {
                       className="mt-0.5 size-6 shrink-0 text-white"
                       strokeWidth={1.8}
                     />
-                    <p className="text-sm font-normal leading-5 text-white md:text-base md:leading-6">
+                    <p className="text-sm font-normal leading-5 text-white    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
                       {label ===
                         "After-sales infrastructure across India and global partner regions." ? (
                         <>

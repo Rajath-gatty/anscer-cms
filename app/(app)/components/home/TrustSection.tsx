@@ -7,16 +7,16 @@ export function TrustSection() {
   return (
     <section
       id="client-section"
-      className="relative flex flex-col justify-between overflow-hidden bg-white pb-[clamp(16px,4vw,24px)] pt-[clamp(24px,7vw,40px)] md:block md:min-h-[720px] md:pb-0 md:pt-16 lg:min-h-[840px] lg:pt-28"
+      className="relative flex flex-col justify-between overflow-hidden bg-white pb-[clamp(16px,4vw,24px)] pt-[clamp(24px,7vw,40px)] md:block md:min-h-[720px] md:pb-0 md:pt-16 lg:min-h-[840px] 2xl:min-h-[900px] 3xl:min-h-[1000px] 4xl:min-h-[1100px] 5xl:min-h-[1200px] lg:pt-28"
     >
       <FadeUp className="site-container relative z-10">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[clamp(60px,3.5vw,73px)]">
+        <div className="mx-auto max-w-3xl 2xl:max-w-4xl 3xl:max-w-5xl text-center">
+          <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[clamp(60px,3.5vw,73px)] 4xl:text-[clamp(60px,4vw,80px)]">
             Engineered in India.
             <br />
             Trusted <span className="text-[#005ead] font-montserrat">Everywhere.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-[120%] text-[#4d4d4d] md:text-[clamp(16px,0.8vw,30px)]">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-[120%] text-[#4d4d4d]   md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
             Born in India, for the world, we deliver precision-engineered
             automation trusted by industry leaders. Our homegrown innovation
             powers global performance with reliability, intelligence, and
@@ -50,7 +50,7 @@ export function TrustSection() {
                 alt=""
                 width={210}
                 height={82}
-                className="h-16 w-auto object-contain md:h-20"
+                className="h-16 w-auto object-contain md:h-20 3xl:h-24 4xl:h-28"
               />
             ),
           )}
@@ -75,7 +75,7 @@ export function TrustSection() {
 //             <br />
 //             Trusted <span className="text-[#005ead]">Everywhere.</span>
 //           </h2>
-//           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#4d4d4d] md:text-base">
+//           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#4d4d4d]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
 //             Born in India, for the world, we deliver precision-engineered
 //             automation trusted by industry leaders. Our homegrown innovation
 //             powers global performance with reliability, intelligence, and

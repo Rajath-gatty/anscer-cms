@@ -95,7 +95,7 @@ export function SolutionsSection() {
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
               Solutions That <span className="text-[#005ead] font-montserrat">Deliver</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-[clamp(16px,0.8vw,30px)] md:leading-[150%]">
+            <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               From tugging and lifting to robotic arm integration and conveyor
               automation, our AMRs are designed to streamline operations,
               enhance safety, and maximize efficiency.
@@ -106,13 +106,13 @@ export function SolutionsSection() {
               {displayStats.length > 0 &&
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
-                    <h3 className="text-[18px] font-bold leading-none text-[#011f40] md:text-[30px] flex items-center justify-center gap-1">
+                    <h3 className="text-[18px] font-bold leading-none text-[#011f40] md:text-[clamp(24px,1.5vw,40px)] 3xl:text-[clamp(28px,1.8vw,48px)] flex items-center justify-center gap-1">
                       <span className="text-[#005ead] font-montserrat">{stat.value}</span>
                       <span className="text-[#005ead] md:mb-2 mb-1 font-montserrat">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
                       </span>
                     </h3>
-                    <p className="mt-2 text-[12px] font-medium text-[#011f40] md:mt-4 md:text-[20px]">
+                    <p className="mt-2 text-[12px] font-medium text-[#011f40] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                       {stat.label}
                     </p>
                     {/* <p className="mx-auto mt-2 max-w-65 text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-85 md:text-[13px] md:leading-[1.6]">
@@ -125,7 +125,7 @@ export function SolutionsSection() {
           </div>
         </div>
       </div>
-      <div className="site-container py-14 md:pb-0 md:pt-24 2xl:pb-30 [@media(min-width:1740px)]:pb-[clamp(280px,36vh,800px)] 3xl:pb-110">
+      <div className="site-container py-14 md:pb-0 md:pt-24 2xl:pb-30  3xl:pb-110 4xl:pb-[700px]">
         <SolutionsStickyStack />
       </div>
     </section>
