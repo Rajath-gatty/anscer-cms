@@ -38,7 +38,7 @@ export function TechnologyAccordion() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <div className="mt-7 grid items-stretch gap-5 md:mt-9   lg:grid-cols-[0.36fr_0.64fr]">
+    <div className="mt-7 grid items-stretch gap-5 3xl:gap-[10vw] md:mt-9   lg:grid-cols-[0.36fr_0.64fr]">
       <FadeUp className="h-full">
         <div className="h-full flex flex-col gap-3">
           {technologyItems.map((item, index) => {
@@ -50,7 +50,7 @@ export function TechnologyAccordion() {
                 id={`tech-accordion-item-${index}`}
                 className={cn(
                   "shrink-0 transition-all duration-500 ease-in-out scroll-mt-20 overflow-hidden rounded-xl bg-white px-5 shadow-sm",
-                  isOpen ? "py-4 lg:py-6" : "py-3 lg:py-5",
+                  isOpen ? "py-4 lg:py-6 4xl:py-8" : "py-3 lg:py-5 4xl:py-6",
                 )}
               >
                 <button
@@ -116,7 +116,7 @@ export function TechnologyAccordion() {
       </FadeUp>
 
       <FadeUp
-        className="relative hidden min-h-75 h-full overflow-hidden rounded-xl bg-[#d9e3eb] lg:block"
+        className="relative hidden min-h-75 3xl:min-h-[600px] h-full overflow-hidden rounded-xl bg-[#d9e3eb] lg:block"
         delay={0.08}
       >
         {technologyItems.map((item, index) => {
