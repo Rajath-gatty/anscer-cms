@@ -54,7 +54,7 @@ export function NewsSection() {
       <div className="site-container">
         <FadeUp>
           {/* <Kicker>We are always up to something</Kicker> */}
-          <h2 className="mt-[10px] text-[28px] font-bold tracking-tight md:text-[40px]">Events & News</h2>
+          <h2 className="mt-[10px] text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">Events & News</h2>
         </FadeUp>
         <div className="mt-9 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {isLoading

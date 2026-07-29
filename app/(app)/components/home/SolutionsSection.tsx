@@ -92,10 +92,10 @@ export function SolutionsSection() {
         <div className="md:flex grid items-center justify-between gap-6 md:gap-8 py-12 site-container ">
           <div className="pt-1 text-center md:text-left">
             {/* <Kicker>Solutions That Solve, Everywhere.</Kicker> */}
-            <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[40px]">
+            <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
               Solutions That <span className="text-[#005ead] font-montserrat">Deliver</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-base md:leading-[22px]">
+            <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-[clamp(16px,0.8vw,30px)] md:leading-[150%]">
               From tugging and lifting to robotic arm integration and conveyor
               automation, our AMRs are designed to streamline operations,
               enhance safety, and maximize efficiency.
@@ -125,7 +125,7 @@ export function SolutionsSection() {
           </div>
         </div>
       </div>
-      <div className="site-container py-14 md:pb-0 md:pt-20 ">
+      <div className="site-container py-14 md:pb-0 md:pt-24 2xl:pb-30 [@media(min-width:1740px)]:pb-[clamp(280px,36vh,800px)] 3xl:pb-110">
         <SolutionsStickyStack />
       </div>
     </section>

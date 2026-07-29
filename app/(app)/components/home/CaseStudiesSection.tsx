@@ -56,11 +56,11 @@ export function CaseStudiesSection() {
   };
 
   return (
-    <section className={cn("overflow-hidden py-8 md:bg-white", caseStudies.length !== 0 ? "md:py-20" : "md:py-0")}>
+    <section className={cn("overflow-hidden py-8 md:bg-white", (caseStudies.length !== 0 || isLoading) ? "md:py-20" : "md:py-0")}>
       <div className="site-container">
         {caseStudies.length !== 0 && <FadeRight>
           <Kicker>Transforming Workplaces With Intelligence</Kicker>
-          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[40px]">
+          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Our <span className="text-[#005ead] font-montserrat">Case Studies</span>
           </h2>
           <p className="mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
