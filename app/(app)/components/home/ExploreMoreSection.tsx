@@ -38,13 +38,13 @@ export function ExploreMoreSection() {
           <FadeUp className="grid gap-6" delay={0.08}>
             <article className="group relative overflow-hidden rounded-xl bg-[#011f40] p-5 3xl:py-7 4xl:py-9 text-white">
               <Image
-                src={`${imagePath}explore-more-img-1.png`}
+                src={`${imagePath}explore-more-img-1.jpg`}
                 alt=""
                 fill
                 sizes="(max-width: 1024px) 100vw, 520px"
                 className="object-cover opacity-65 transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.18)_52%,rgba(0,0,0,.68))]" />
+              <div className="absolute inset-0 " />
               <div className="relative">
                 <Image
                   src={`${imagePath}diamond-plus.svg`}
@@ -65,7 +65,7 @@ export function ExploreMoreSection() {
 
             <article className="group relative overflow-hidden rounded-xl bg-[#011f40] p-5 3xl:py-7 4xl:py-9 text-white">
               <Image
-                src={`${imagePath}explore-more-img-2.png`}
+                src={`${imagePath}explore-more-img-3.png`}
                 alt=""
                 fill
                 sizes="(max-width: 1024px) 100vw, 520px"

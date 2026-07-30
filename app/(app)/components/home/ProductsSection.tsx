@@ -18,7 +18,7 @@ export function ProductsSection() {
       <div className="site-container">
         {/* <Kicker>Robots Designed to Deliver</Kicker> */}
         <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
-          Our products <span className="text-[#005ead] font-montserrat">Line-Up</span>
+          Our Products <span className="text-[#005ead] font-montserrat">Line-Up</span>
         </h2>
         <p className="mt-4 max-w-[640px] 2xl:max-w-[750px] text-sm leading-5 text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
           At ANSCER Robotics, we offer specialized robot series tailored to
