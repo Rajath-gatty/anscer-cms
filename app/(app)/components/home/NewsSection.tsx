@@ -72,7 +72,7 @@ export function NewsSection() {
                   delay={0.08 + index * 0.04}
                 >
                   <article className="group">
-                    <div className={`relative overflow-hidden rounded-lg bg-[#dfe7ee] lg:h-[300px] ${getNewsImageFrameClass(index)}`}>
+                    <div className={`relative overflow-hidden rounded-lg bg-[#dfe7ee] lg:h-[300px] 2xl:h-[350px] 3xl:h-[420px] ${getNewsImageFrameClass(index)}`}>
                       {imageUrl && (
                         <Image
                           src={imageUrl}

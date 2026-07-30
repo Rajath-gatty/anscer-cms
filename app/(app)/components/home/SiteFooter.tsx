@@ -40,7 +40,11 @@ const footerColumns = [
   },
 ];
 
-const legalLinks = ["Policy", "Terms & Conditions", "Cookie settings"];
+const legalLinks = [
+  { label: "Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "EO Policy", href: "/eo-policy" },
+];
 
 function FooterLink({
   href,
@@ -206,14 +210,15 @@ export function SiteFooter() {
             &copy; ANSCER Robotics 2026 | All rights reserved
           </p>
           <ul className="order-1 flex flex-col items-start gap-2 text-white/60 md:order-2 md:flex-row md:items-center md:gap-[30px]">
+
             {legalLinks.map((link) => (
-              <li key={link}>
-                <span
-                  className="cursor-default transition"
-                  aria-disabled="true"
+              <li key={link.label}>
+                <FooterLink
+                  href={link.href}
+                  className="transition duration-300 cursor-pointer hover:text-white"
                 >
-                  {link}
-                </span>
+                  {link.label}
+                </FooterLink>
               </li>
             ))}
           </ul>
