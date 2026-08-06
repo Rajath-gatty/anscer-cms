@@ -126,21 +126,21 @@ export function SiteFooter() {
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <a
                 href="https://youtube.com/@anscertv"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="ANSCER on YouTube"
-                className="text-[#bababa] transition hover:text-white"
+                className="flex size-10 items-center justify-center rounded-lg bg-[#333339] text-[#bababa] transition hover:bg-[#44444c] hover:text-white"
               >
                 <svg
-                  width="28"
-                  height="28"
+                  width="24"
+                  height="24"
                   viewBox="0 0 28 28"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="size-7 fill-current"
+                  className="size-5 fill-current"
                 >
                   <path d="M14.2848 4.6665C14.9078 4.67 16.4665 4.68517 18.1232 4.75167L18.7112 4.77734C20.3783 4.8555 22.0443 4.99084 22.8715 5.22067C23.974 5.531 24.8397 6.434 25.1325 7.57967C25.5992 9.39967 25.6575 12.9487 25.6645 13.8085L25.6657 13.9858V14.1888C25.6575 15.0487 25.5992 18.5988 25.1325 20.4177C24.8362 21.5668 23.9693 22.471 22.8715 22.7767C22.0443 23.0065 20.3783 23.1418 18.7112 23.22L18.1232 23.2468C16.4665 23.3122 14.9078 23.3285 14.2848 23.3308L14.0107 23.332H13.7132C12.3948 23.3238 6.88116 23.2643 5.1265 22.7767C4.02516 22.4663 3.15833 21.5633 2.8655 20.4177C2.39883 18.5977 2.3405 15.0487 2.3335 14.1888V13.8085C2.3405 12.9487 2.39883 9.3985 2.8655 7.57967C3.16183 6.4305 4.02866 5.52634 5.12766 5.22184C6.88116 4.733 12.396 4.6735 13.7143 4.6665H14.2848ZM11.6657 9.9165V18.0832L18.6657 13.9998L11.6657 9.9165Z" />
                 </svg>
@@ -150,15 +150,15 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="ANSCER on LinkedIn"
-                className="text-[#bababa] transition hover:text-white"
+                className="flex size-10 items-center justify-center rounded-lg bg-[#333339] text-[#bababa] transition hover:bg-[#44444c] hover:text-white"
               >
                 <svg
-                  width="28"
-                  height="28"
+                  width="24"
+                  height="24"
                   viewBox="0 0 28 28"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="size-7 fill-current"
+                  className="size-5 fill-current"
                 >
                   <path d="M23.8569 23.8636H19.7093V17.3648C19.7093 15.8152 19.6813 13.8217 17.5516 13.8217C15.3924 13.8217 15.0638 15.5066 15.0638 17.252V23.8636H10.9162V10.5059H14.8995V12.33H14.9549C15.5095 11.2782 16.8646 10.167 18.8866 10.167C23.0895 10.167 23.8626 12.9338 23.8626 16.5323V23.8636H23.8569ZM6.23368 8.67653C4.89877 8.67653 3.82324 7.59527 3.82324 6.26609C3.82324 4.93692 4.9045 3.85565 6.23368 3.85565C7.56285 3.85565 8.64412 4.93692 8.64412 6.26609C8.64412 7.60099 7.56858 8.67653 6.23368 8.67653ZM8.31038 23.8636H4.15137V10.5059H8.31038V23.8636Z" />
                 </svg>
