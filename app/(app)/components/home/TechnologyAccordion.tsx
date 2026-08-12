@@ -11,13 +11,13 @@ const technologyItems = [
   {
     title: "Real-Time Monitoring & Control",
     copy: "Instantly view robot locations, task progress, and system status ensuring uninterrupted operations and proactive interventions.",
-    image: "home_realtimes.png",
+    image: "home_realtimes.avif",
     icon: "frame-18.svg",
   },
   {
     title: "Smart Analytics & Reports",
     copy: "Gain complete visibility into robot utilization, mission performance, and operational trends, enabling data-driven decisions and continuous process optimization",
-    image: "home_smartanalytic.png",
+    image: "home_smartanalytic.avif",
     icon: "frame-19.svg",
   },
   {
@@ -27,9 +27,9 @@ const technologyItems = [
     icon: "frame-20.svg",
   },
   {
-    title: "Alerts & Notifications",
+    title: "Proactive Insights & Alerts",
     copy: "Delivers intelligent notifications on request patterns and performance trends to support proactive decision-making",
-    image: "home_alert.png",
+    image: "home_alert.avif",
     icon: "frame-21.svg",
   },
 ];
@@ -94,8 +94,8 @@ export function TechnologyAccordion() {
                       <Image
                         src={`${imagePath}${item.image}`}
                         alt={`${item.title} interface`}
-                        fill
-                        sizes="100vw"
+                        width={1400}
+                        height={1050}
                         className="object-cover"
                         priority={index === 0}
                       />
