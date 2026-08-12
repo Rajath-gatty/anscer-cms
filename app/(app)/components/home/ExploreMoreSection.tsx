@@ -24,13 +24,10 @@ export function ExploreMoreSection() {
             Your Gateway to All Things ANSCER
           </p> */}
           <h2 className="mt-8 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
-            Explore <span className="text-[#005ead] font-montserrat">More</span>
+            WHY <span className="text-[#005ead] font-montserrat">ANSCER</span> ?
           </h2>
           <p className="mt-6 max-w-[640px] 3xl:max-w-[750px] 4xl:max-w-[1000px] text-sm leading-5 text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
-            All the Answers You Need About ANSCER Robotics&mdash;Right at Your
-            Fingertips. From how our autonomous robots transform industries to
-            what makes our tech stand out&mdash;your journey into the future of
-            smart automation starts here.
+            ANSCER brings together Autonomous Mobile Robots, multi-system integration, global safety standards and lifecycle support for scalable material handling automation.
           </p>
         </FadeUp>
 

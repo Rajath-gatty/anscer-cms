@@ -9,27 +9,27 @@ import { ArrowButton, Kicker } from "./SectionPrimitives";
 
 const solutions = [
   {
-    title: "PALLET Stacking",
-    copy: "A pallet stacking AMR for precise pallet pickup, lifting, and placement, enabling repeatable stacking operations and efficient intralogistics flow.",
+    title: "AUTONOMOUS PALLET STACKING",
+    copy: "Automate pallet pickup, transport, lifting and stacking with precise, repeatable placement across manufacturing and warehouse operations.",
     icon: "pallet-stacking-svg.svg",
-    image: "our-solutions-image-1.png",
+    image: "our-solutions-image-1.avif",
     image2: "home/our-solutions-img-1.png",
     imageHeight: 1024,
     // video:
     //   "https://pub-3529b8dc90d544c3a0d5ab70a1840a1a.r2.dev/files/With%20BG/Pallet%20Stacking%20With%20bg.mp4",
   },
   {
-    title: "TROLLEY MOVEMENT",
-    copy: "A compact, free-lift AMR with universal trolley compatibility, designed for trolley movement in low-clearance environments and the demands of dynamic shop floors.",
+    title: "AUTONOMOUS TROLLEY MOVEMENT",
+    copy: "Move trolleys autonomously between production, storage and workstations, reducing manual transport across everyday material flows.",
     icon: "trolley-movement.svg",
-    image: "our-solutions-image-2.png",
+    image: "our-solutions-image-2.avif",
     image2: "home/our-solutions-img-2.png",
     imageHeight: 1024,
     // video: "trolley-movement-latest.mp4",
   },
   {
-    title: "Tugging",
-    copy: "An AMR with a Tugger top module for automated trolley and cart transport, ensuring safe and flexible automation across production and intralogistics operations.",
+    title: "AUTONOMOUS TUGGING",
+    copy: "Automate cart and trolley transport across factories and warehouses for consistent, efficient material movement.",
     icon: "tugging-svg.svg",
     image: "our-solutions-image-3.png",
     image2: "home/our-solutions-img-3.png",
@@ -184,7 +184,6 @@ export function SolutionsStickyStack() {
                       alt={`${solution.title} application`}
                       width={1600}
                       height={solution.imageHeight}
-                      sizes="350px"
                       className="h-auto w-full"
                     />
                   </div>

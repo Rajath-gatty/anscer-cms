@@ -93,12 +93,10 @@ export function SolutionsSection() {
           <div className="pt-1 text-center md:text-left">
             {/* <Kicker>Solutions That Solve, Everywhere.</Kicker> */}
             <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
-              Solutions That <span className="text-[#005ead] font-montserrat">Deliver</span>
+              Autonomous Material Handling. Proven at <span className="text-[#005ead] font-montserrat">Scale</span>
             </h2>
             <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
-              From tugging and lifting to robotic arm integration and conveyor
-              automation, our AMRs are designed to streamline operations,
-              enhance safety, and maximize efficiency.
+              From pallet and trolley movement to tugging, lifting and mobile manipulation, ANSCER’s Autonomous Mobile Robots automate material movement across industrial operations.
             </p>
           </div>
           <div className="">

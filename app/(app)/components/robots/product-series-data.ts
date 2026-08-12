@@ -3,7 +3,7 @@ export const seriesCards = [
     index: "01",
     title: "PSR Series",
     copy: "Automates pallet stacking, transport, and trolley movement for efficient warehouse and intralogistics operations.",
-    tags: ["Stacking", "G2G"],
+    tags: ["Stacking", "Ground to Ground"],
     backgroundImage: "products/psr-bg.jpg",
     image: "psr-2000-r.png",
     href: "/psr-series",

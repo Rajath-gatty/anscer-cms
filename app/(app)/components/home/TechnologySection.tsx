@@ -12,8 +12,7 @@ export function TechnologySection() {
             Our <span className="text-[#005ead] font-montserrat">Technology</span>
           </h2>
           <p className="mt-4 max-w-[590px] text-sm leading-[130%] text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
-            By combining fundamental research with applied engineering, we create breakthroughs that redefine autonomous
-            service.
+            ANSCER connects AMR operations through real-time monitoring, analytics, system integration, alerts and notifications, giving teams greater visibility and control over autonomous material flow.
           </p>
         </FadeUp>
         <FadeUp delay={0.08}>

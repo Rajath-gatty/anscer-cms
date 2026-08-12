@@ -14,13 +14,10 @@ export function TrustSection() {
           <h2 className="text-[36px] font-bold leading-tight tracking-tight md:text-[clamp(60px,3.5vw,73px)] 4xl:text-[clamp(60px,4vw,80px)]">
             Engineered in India.
             <br />
-            Trusted <span className="text-[#005ead] font-montserrat">Everywhere.</span>
+            Built for the <span className="text-[#005ead] font-montserrat">World.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-[120%] text-[#4d4d4d]   md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
-            Born in India, for the world, we deliver precision-engineered
-            automation trusted by industry leaders. Our homegrown innovation
-            powers global performance with reliability, intelligence, and
-            impact.
+            Designed, engineered and validated in India, ANSCER’s Autonomous Mobile Robots are built for reliable, scalable material movement across global industrial operations.
           </p>
         </div>
       </FadeUp>
