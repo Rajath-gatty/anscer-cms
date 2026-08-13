@@ -20,10 +20,10 @@ export function ProcessBenefitsSection({
   return (
     <section className="bg-[#e6ebf0] py-10 md:py-14">
       <div className="site-container">
-        <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#005ead] md:text-[16px]">
+        <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
           BENEFITS
         </p>
-        <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
+        <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
           Designed for Flexible and <br /> Scalable Automation
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
@@ -59,7 +59,7 @@ export function ProcessBenefitsSection({
               />
             </div>
 
-            <div className="group flex flex-col gap-2 bg-white/50 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 lg:flex-row lg:items-center lg:gap-6">
+            <div className="group flex flex-col gap-2 bg-white/50 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 3xl:p-8 4xl:p-10 lg:flex-row lg:items-center lg:gap-6">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-all duration-300 group-hover:bg-[#005EAD]">
                 <CircleUserRound
                   className="size-5 transition-colors duration-300 group-hover:text-white"
@@ -67,10 +67,10 @@ export function ProcessBenefitsSection({
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+                <h3 className="text-[16px] md:text-[clamp(16px,0.8vw,30px)] font-semibold leading-tight text-[#011f40]">
                   {processBenefitCards[4].title}
                 </h3>
-                <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">
+                <p className="mt-2 text-[14px] md:text-[clamp(14px,0.7vw,24px)] 3xl:text-[clamp(16px,0.8vw,28px)] leading-[130%] text-[#333333]">
                   {processBenefitCards[4].copy}
                 </p>
               </div>
@@ -111,7 +111,7 @@ function ProcessBenefitCard({
 }) {
   return (
     <div
-      className={`group flex flex-1 flex-col gap-2 bg-white/50 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 ${className}`}
+      className={`group flex flex-1 flex-col gap-2 bg-white/50 duration-300 transition-colors hover:bg-[#005EAD]/5 p-6 3xl:p-8 4xl:p-10 ${className}`}
     >
       <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-brand-navy/5 text-[#011f40] transition-colors duration-300 group-hover:bg-[#005EAD]">
         <Icon
@@ -119,10 +119,10 @@ function ProcessBenefitCard({
           strokeWidth={1.7}
         />
       </div>
-      <h3 className="text-[16px] font-semibold leading-tight text-[#011f40]">
+      <h3 className="text-[16px] md:text-[clamp(16px,0.8vw,30px)] font-semibold leading-tight text-[#011f40]">
         {title}
       </h3>
-      <p className="mt-2 text-[14px] leading-[130%] text-[#333333]">{copy}</p>
+      <p className="mt-2 text-[14px] md:text-[clamp(14px,0.7vw,24px)] 3xl:text-[clamp(16px,0.8vw,28px)] leading-[130%] text-[#333333]">{copy}</p>
     </div>
   );
 }

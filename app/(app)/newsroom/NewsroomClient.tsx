@@ -109,7 +109,7 @@ function ArticleCard({ article }: { article: Article }) {
       <div className="h-[146px] flex flex-col">
         <div className="flex-[1_0_auto]">
           <h4
-            className={`text-brand-charcoal text-[16px] font-semibold mb-0 wrap-break-word line-clamp-2 ${"mt-3"}`}
+            className={`text-brand-charcoal text-[16px] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] font-semibold mb-0 wrap-break-word line-clamp-2 ${"mt-3"}`}
           >
             {article.postTitle}
           </h4>
@@ -190,13 +190,13 @@ export function ExploreMoreSection() {
   };
 
   return (
-    <section className="py-14 bg-[#fafafa]">
+    <section className="py-14 3xl:py-20 4xl:py-28 bg-[#fafafa]">
       <div className="site-container">
         <FadeUp>
-          <h2 className="text-[clamp(28px,3vw,36px)] font-semibold text-brand-navy mt-0 mb-2">
+          <h2 className="text-[clamp(28px,3vw,36px)] md:text-[clamp(40px,2.4vw,80px)] font-semibold text-brand-navy mt-0 mb-2">
             Explore More
           </h2>
-          <p className="text-[#3a3a3a] text-[16px] m-0">
+          <p className="text-[#3a3a3a] text-[16px] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] m-0">
             Access all news updates conveniently in a single location
           </p>
         </FadeUp>
@@ -268,13 +268,13 @@ export function NewsletterSection() {
       <div className="site-container newsletter-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         {/* Left: copy */}
         <div>
-          <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-brand-blue mb-0">
+          <p className="text-[16px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.18em] text-brand-blue mb-0">
             Newsletter
           </p>
-          <h3 className="text-[clamp(28px,3vw,36px)] font-semibold text-brand-navy mt-6 mb-6 leading-[110%]">
+          <h3 className="text-[clamp(28px,3vw,36px)] md:text-[clamp(40px,2.4vw,80px)] font-semibold text-brand-navy mt-6 mb-6 leading-[110%]">
             Subscribe to our Newsletter
           </h3>
-          <p className="text-[16px] text-[#3a3a3a] m-0">
+          <p className="text-[16px] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] text-[#3a3a3a] m-0">
             Get latest updates from ANSCER
           </p>
         </div>
@@ -347,7 +347,7 @@ export function LatestNewsSection() {
   const link = latestArticle?.articleLink ?? "#";
 
   return (
-    <section className="py-14 bg-[#fafafa]">
+    <section className="py-14 3xl:py-20 4xl:py-28 bg-[#fafafa]">
       <div className="site-container">
         {isLoading ? (
           <LatestNewsSkeleton />
@@ -357,14 +357,14 @@ export function LatestNewsSection() {
             <div className="latest-news-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               {/* Left */}
               <div className="flex flex-col gap-6">
-                <p className="text-[16px] font-medium uppercase tracking-[0.18em] text-[#005ead] m-0">
+                <p className="text-[16px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.18em] text-[#005ead] m-0">
                   LATEST NEWS
                 </p>
-                <h2 className="text-[clamp(24px,3vw,36px)] font-semibold text-[#011f40] m-0 leading-[120%] [overflow-wrap:anywhere]">
+                <h2 className="text-[clamp(24px,3vw,36px)] md:text-[clamp(40px,2.4vw,80px)] font-semibold text-[#011f40] m-0 leading-[120%] [overflow-wrap:anywhere]">
                   {latestArticle.postTitle}
                 </h2>
                 {latestArticle.summary && (
-                  <p className="text-[16px] text-[#3a3a3a] m-0">
+                  <p className="text-[16px] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] text-[#3a3a3a] m-0">
                     {latestArticle.summary}
                   </p>
                 )}

@@ -23,13 +23,13 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
       <div className="site-container grid gap-9 lg:grid-cols-[0.56fr_0.44fr]">
         <div>
           <FadeUp>
-            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Overview
             </p>
-            <h2 className="mt-3 text-[28px] font-bold leading-[1.15] md:text-4xl">
+            <h2 className="mt-3 text-[28px] font-bold leading-[1.15] md:text-[clamp(40px,2.4vw,80px)]">
               {data.subtitle}
             </h2>
-            <p className="mt-4 max-w-155 text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6.5">
+            <p className="mt-4 max-w-155 text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.overview}
             </p>
           </FadeUp>
@@ -61,14 +61,14 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
 
         <div className="pt-1">
           <FadeUp className="mb-7">
-            <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Key Applications
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {data.applications.map((application) => (
                 <span
                   key={application}
-                  className="rounded-lg bg-[#e6ebf0] px-4 py-1.5 text-base font-medium text-[#011f40]"
+                  className="rounded-lg bg-[#e6ebf0] px-4 py-1.5 text-base md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] font-medium text-[#011f40]"
                 >
                   {application}
                 </span>
@@ -76,7 +76,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
             </div>
           </FadeUp>
           <FadeUp className="mb-2 flex items-center justify-between gap-4">
-            <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Key Specifications
             </p>
             <button

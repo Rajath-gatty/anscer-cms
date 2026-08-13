@@ -21,14 +21,14 @@ export function ApplicationsSection({ data }: { data: ProductDetailData }) {
       <ScrollReveal>
         <div className="site-container">
           <div className="max-w-[760px]">
-            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Applications
             </p>
-            <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
+            <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-[clamp(40px,2.4vw,80px)]">
               Built For Smart{" "}
               <span className="text-[#005ead]">Material</span> Movement
             </h2>
-            <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
+            <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               Designed to automate internal transport across warehouses,
               production floors, and distribution environments with safe and
               efficient autonomous navigation.
@@ -45,7 +45,7 @@ export function ApplicationsSection({ data }: { data: ProductDetailData }) {
                 className="object-cover opacity-85 transition-opacity duration-300"
               />
               <div className="absolute inset-0 bg-[linear-gradient(360deg,rgba(0,0,0,.86),rgba(255,255,255,0)_60%)]" />
-              <h3 className="absolute bottom-6 left-6 text-base font-semibold md:text-2xl">
+              <h3 className="absolute bottom-6 left-6 text-base font-semibold md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
                 {active?.title}
               </h3>
             </article>

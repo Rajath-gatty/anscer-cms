@@ -63,15 +63,15 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
       <div className="site-container relative z-10 grid min-h-[calc(100vh-108px)] items-center gap-8 py-14 md:py-16 lg:grid-cols-[0.46fr_0.54fr]">
         <div className="max-w-[590px]">
           <ScrollReveal>
-            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+            <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               {data.eyebrow} Robots
             </p>
-            <h1 className="mt-5 text-[48px] font-extrabold leading-[1.04] tracking-[-0.02em] text-[#011f40] md:text-[60px]">
+            <h1 className="mt-5 text-[48px] font-extrabold leading-[1.04] tracking-[-0.02em] text-[#011f40] md:text-[clamp(48px,4vw,80px)]">
               {data.title}
               <br />
               <span className="text-[#005ead]">{data.titleAccent}</span>
             </h1>
-            <p className="mt-5 max-w-[520px] text-sm font-medium leading-5 text-[#4b5563] md:text-[18px] md:leading-[26px]">
+            <p className="mt-5 max-w-[520px] text-sm font-medium leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.description}
             </p>
           </ScrollReveal>
@@ -85,7 +85,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
         </div>
 
         <div className="relative ml-auto flex min-h-[360px] w-full items-center justify-end lg:min-h-[520px]">
-          <div className="relative flex justify-end h-[340px] w-full max-w-[760px] md:h-[440px] lg:h-[560px]">
+          <div className="relative flex justify-end h-[340px] w-full max-w-[760px] md:h-[440px] lg:h-[560px] 3xl:h-[700px] 4xl:h-[800px]">
             <Image
               src={`${imagePath}${data.heroRobot}`}
               alt={`${data.eyebrow} robot`}
@@ -118,17 +118,17 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
 
 function SeriesFeatures({ data }: { data: SeriesPageData }) {
   return (
-    <section className="bg-[#fafafa] py-16 md:py-24">
+    <section className="bg-[#fafafa] py-16 md:py-24 3xl:py-32 4xl:py-40">
       <div className="site-container">
         <ScrollReveal className="max-w-[720px]">
-          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-base">
+          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
             How Our Robots Deliver Excellence
           </p>
-          <h2 className="mt-4 text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
+          <h2 className="mt-4 text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[clamp(40px,2.4vw,80px)]">
             Key Features of{" "}
             <span className="text-[#005ead]">{data.eyebrow}</span> Robots
           </h2>
-          <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+          <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             {data.featureIntro}
           </p>
         </ScrollReveal>
@@ -191,10 +191,10 @@ function FeatureCard({
           className="h-10 w-10 object-contain"
         />
       ) : null}
-      <h3 className="mt-5 max-w-[270px] text-xl font-extrabold leading-[1.08] text-[#005ead] md:text-2xl">
+      <h3 className="mt-5 max-w-[270px] text-xl font-extrabold leading-[1.08] text-[#005ead] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
         {feature.title}
       </h3>
-      <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+      <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
         {feature.copy}
       </p>
     </article>
@@ -206,10 +206,10 @@ function SeriesFaqs({ data }: { data: SeriesPageData }) {
     <section className="bg-[#fafafa] py-14 lg:py-24">
       <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">
         <div>
-          <h2 className="text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[36px] md:leading-[1.15]">
+          <h2 className="text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)] md:leading-[1.15]">
             FAQs
           </h2>
-          <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
+          <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             We&apos;ve heard it all - here&apos;s what people are really asking
             behind the scenes.
           </p>

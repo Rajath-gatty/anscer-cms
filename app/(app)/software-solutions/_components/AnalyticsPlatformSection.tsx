@@ -17,10 +17,10 @@ export function AnalyticsPlatformSection() {
                 / 04
               </span>
             </p>
-            <h2 className="mt-4 text-[28px] font-bold leading-tight text-[#011f40] md:text-4xl">
+            <h2 className="mt-4 text-[28px] font-bold leading-tight text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
               Analytics Platform
             </h2>
-            <p className="mt-2.5 text-base leading-normal text-brand-charcoal md:text-[20px]">
+            <p className="mt-2.5 text-base leading-normal text-brand-charcoal md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
               Turn Operational Data Into Actionable Intelligence
             </p>
 
@@ -35,7 +35,7 @@ export function AnalyticsPlatformSection() {
               />
             </div>
 
-            <p className="mt-6 text-[14px] leading-[150%] text-brand-charcoal lg:mt-8 lg:text-[16px]">
+            <p className="mt-6 text-[14px] leading-[150%] text-brand-charcoal lg:mt-8 lg:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
               The ANSCER Analytics Platform provides comprehensive operational
               insights into robot fleets, missions, and facility workflows.
               Designed to support data-driven decision-making, the Analytics
@@ -43,7 +43,7 @@ export function AnalyticsPlatformSection() {
               intelligence that helps optimize robot performance, improve
               workflow efficiency, and enhance overall facility productivity.
             </p>
-            <p className="mt-5 text-[14px] leading-[150%] text-brand-charcoal lg:text-[16px]">
+            <p className="mt-5 text-[14px] leading-[150%] text-brand-charcoal lg:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
               By continuously collecting and analyzing data from robot
               operations, mission requests, traffic flow, and system events, the
               platform enables users to monitor key performance indicators,

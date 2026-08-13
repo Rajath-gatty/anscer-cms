@@ -24,7 +24,7 @@ export function ProductModule({
   chipsTitle,
 }: ProductModuleProps) {
   return (
-    <section id={id} className="scroll-mt-32 bg-white py-10 md:py-14">
+    <section id={id} className="scroll-mt-32 bg-white py-10 md:py-14 3xl:py-20 4xl:py-28">
       <div className="site-container">
         <p className="mb-2.5 flex items-baseline text-[32px] font-medium text-[#005ead]">
           <span className="text-xl md:text-[28px]">{index} </span>
@@ -32,10 +32,10 @@ export function ProductModule({
             / 04
           </span>
         </p>
-        <h2 className="mt-4 max-w-[648px] text-[28px] font-bold leading-tight md:text-4xl">
+        <h2 className="mt-4 max-w-[648px] text-[28px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
           {title}
         </h2>
-        <p className="mt-4 max-w-[648px] text-base leading-[120%] text-[#333333] md:text-xl">
+        <p className="mt-4 max-w-[648px] text-base leading-[120%] text-[#333333] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
           {intro}
         </p>
         <div className="mt-9 grid gap-10 lg:grid-cols-2 lg:items-start">
@@ -50,7 +50,7 @@ export function ProductModule({
             />
           </FadeUp>
           <FadeUp delay={0.08}>
-            <p className="text-base leading-6 text-brand-charcoal">{body}</p>
+            <p className="text-base leading-6 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%] text-brand-charcoal">{body}</p>
             {chipsTitle ? (
               <p className="mb-4 mt-8 text-base font-medium text-brand-charcoal">
                 {chipsTitle}
@@ -64,7 +64,7 @@ export function ProductModule({
               {chips.map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-[8px] bg-[#e6ebf0] px-5 py-[7px] text-base font-normal text-[#011f40]"
+                  className="rounded-[8px] bg-[#e6ebf0] px-5 py-[7px] text-base md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] font-normal text-[#011f40]"
                 >
                   {chip}
                 </span>

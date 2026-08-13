@@ -8,7 +8,7 @@ export function FleetManagementSection() {
   return (
     <section
       id="fleet-management"
-      className="scroll-mt-32 bg-[#fafafa] py-10 md:py-15"
+      className="scroll-mt-32 bg-[#fafafa] py-10 md:py-15 3xl:py-20 4xl:py-28"
     >
       <div className="site-container">
         <ScrollReveal>
@@ -18,10 +18,10 @@ export function FleetManagementSection() {
               / 04
             </span>
           </p>
-          <h2 className="mt-4 max-w-[648px] text-[28px] font-bold leading-tight md:text-4xl">
+          <h2 className="mt-4 max-w-[648px] text-[28px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
             Fleet Management System
           </h2>
-          <p className="mt-4 max-w-[648px] text-xl leading-6 text-[#363636]">
+          <p className="mt-4 max-w-[648px] text-xl leading-6 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%] text-[#363636]">
             Centralized intelligence for monitoring, controlling, and optimizing
             every robot operation from a single platform.
           </p>
@@ -39,7 +39,7 @@ export function FleetManagementSection() {
             />
           </FadeUp>
           <FadeUp className="pt-1 lg:pt-2" delay={0.08}>
-            <p className="max-w-170 text-sm leading-6 text-brand-charcoal md:text-base md:leading-6">
+            <p className="max-w-170 text-sm leading-6 text-brand-charcoal md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               The ANSCER Fleet Management System (FMS) is the intelligent
               orchestration platform that coordinates, monitors, and manages the
               operations of multiple autonomous mobile robots (AMRs) within a
@@ -64,10 +64,10 @@ export function FleetManagementSection() {
                         strokeWidth={1.8}
                       />
                     </span>
-                    <h3 className="text-sm font-semibold leading-snug text-[#011f40] md:text-base">
+                    <h3 className="text-sm font-semibold leading-snug text-[#011f40] md:text-[clamp(16px,0.8vw,30px)]">
                       {item.title}
                     </h3>
-                    <p className="text-sm leading-6 text-brand-charcoal md:text-base">
+                    <p className="text-sm leading-6 text-brand-charcoal md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                       {item.copy}
                     </p>
                   </article>
