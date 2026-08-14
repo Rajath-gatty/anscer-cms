@@ -32,10 +32,10 @@ export function ProductModule({
             / 04
           </span>
         </p>
-        <h2 className="mt-4 max-w-[648px] text-[28px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
+        <h2 className="mt-4 max-w-[648px] 3xl:max-w-[800px] 4xl:max-w-[1000px] text-[28px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
           {title}
         </h2>
-        <p className="mt-4 max-w-[648px] text-base leading-[120%] text-[#333333] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
+        <p className="mt-4 max-w-[648px] 3xl:max-w-[800px] 4xl:max-w-[1000px] text-base leading-[120%] text-[#333333] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
           {intro}
         </p>
         <div className="mt-9 grid gap-10 lg:grid-cols-2 lg:items-start">

@@ -218,7 +218,7 @@ function InteractiveWorkflowV2() {
             <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
               WORKFLOW CONFIGURATION
             </p>
-            <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
+            <h2 className="mt-6 max-w-[648px] 3xl:max-w-[800px] 4xl:max-w-[1000px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[36px]">
               Build Robot Workflows Without Writing Code
             </h2>
           </div>

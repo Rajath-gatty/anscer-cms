@@ -20,7 +20,7 @@ export function ApplicationsSection({ data }: { data: ProductDetailData }) {
     >
       <ScrollReveal>
         <div className="site-container">
-          <div className="max-w-[760px]">
+          <div className="max-w-[760px] 3xl:max-w-[900px] 4xl:max-w-[1100px]">
             <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Applications
             </p>
@@ -28,7 +28,7 @@ export function ApplicationsSection({ data }: { data: ProductDetailData }) {
               Built For Smart{" "}
               <span className="text-[#005ead]">Material</span> Movement
             </h2>
-            <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+            <p className="mt-4 max-w-[670px] 3xl:max-w-[830px] 4xl:max-w-[1000px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               Designed to automate internal transport across warehouses,
               production floors, and distribution environments with safe and
               efficient autonomous navigation.

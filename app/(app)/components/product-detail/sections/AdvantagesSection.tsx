@@ -19,14 +19,14 @@ export function AdvantagesSection({ data }: { data: ProductDetailData }) {
     >
       <ScrollReveal>
         <div className="site-container">
-          <div className="max-w-190">
+          <div className="max-w-190 3xl:max-w-[900px] 4xl:max-w-[1100px]">
             <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Advantages
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-[clamp(40px,2.4vw,80px)]">
               Why <span className="text-[#005ead]">Choose</span> {data.title}
             </h2>
-            <p className="mt-4 max-w-170 text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+            <p className="mt-4 max-w-170 3xl:max-w-[830px] 4xl:max-w-[1000px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.advantageIntro ?? `${data.advantages.content}`}
             </p>
           </div>

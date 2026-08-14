@@ -54,12 +54,12 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
         className="scroll-mt-28 bg-[#fafafa] py-12 md:py-14"
       >
         <div className="site-container">
-          <FadeUp className="max-w-190">
+          <FadeUp className="max-w-190 3xl:max-w-[900px] 4xl:max-w-[1100px]">
             <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Features
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-[clamp(40px,2.4vw,80px)]" dangerouslySetInnerHTML={{ __html: data.features.title }} />
-            <p className="mt-4 max-w-172.5 text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+            <p className="mt-4 max-w-172.5 3xl:max-w-[830px] 4xl:max-w-[1000px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.features.content}
             </p>
           </FadeUp>

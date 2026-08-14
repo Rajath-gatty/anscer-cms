@@ -18,10 +18,10 @@ export function FleetManagementSection() {
               / 04
             </span>
           </p>
-          <h2 className="mt-4 max-w-[648px] text-[28px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
+          <h2 className="mt-4 max-w-[648px] 3xl:max-w-[800px] 4xl:max-w-[1000px] text-[28px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
             Fleet Management System
           </h2>
-          <p className="mt-4 max-w-[648px] text-xl leading-6 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%] text-[#363636]">
+          <p className="mt-4 max-w-[648px] 3xl:max-w-[800px] 4xl:max-w-[1000px] text-xl leading-6 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%] text-[#363636]">
             Centralized intelligence for monitoring, controlling, and optimizing
             every robot operation from a single platform.
           </p>

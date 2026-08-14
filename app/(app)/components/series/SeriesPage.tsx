@@ -61,7 +61,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,.88)_0%,rgba(250,250,250,.0)_80%,rgba(250,250,250,.22)_100%)]" />
       <div className="site-container relative z-10 grid min-h-[calc(100vh-108px)] items-center gap-8 py-14 md:py-16 lg:grid-cols-[0.46fr_0.54fr]">
-        <div className="max-w-[590px]">
+        <div className="max-w-[590px] 3xl:max-w-[720px] 4xl:max-w-[880px]">
           <ScrollReveal>
             <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               {data.eyebrow} Robots
@@ -71,7 +71,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               <br />
               <span className="text-[#005ead]">{data.titleAccent}</span>
             </h1>
-            <p className="mt-5 max-w-[520px] text-sm font-medium leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+            <p className="mt-5 max-w-[520px] 3xl:max-w-[640px] 4xl:max-w-[780px] text-sm font-medium leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.description}
             </p>
           </ScrollReveal>
@@ -120,7 +120,7 @@ function SeriesFeatures({ data }: { data: SeriesPageData }) {
   return (
     <section className="bg-[#fafafa] py-16 md:py-24 3xl:py-32 4xl:py-40">
       <div className="site-container">
-        <ScrollReveal className="max-w-[720px]">
+        <ScrollReveal className="max-w-[720px] 3xl:max-w-[900px] 4xl:max-w-[1100px]">
           <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
             How Our Robots Deliver Excellence
           </p>
@@ -128,7 +128,7 @@ function SeriesFeatures({ data }: { data: SeriesPageData }) {
             Key Features of{" "}
             <span className="text-[#005ead]">{data.eyebrow}</span> Robots
           </h2>
-          <p className="mt-4 max-w-[620px] text-sm leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+          <p className="mt-4 max-w-[620px] 3xl:max-w-[750px] 4xl:max-w-[900px] text-sm leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             {data.featureIntro}
           </p>
         </ScrollReveal>
@@ -209,7 +209,7 @@ function SeriesFaqs({ data }: { data: SeriesPageData }) {
           <h2 className="text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)] md:leading-[1.15]">
             FAQs
           </h2>
-          <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+          <p className="mt-4 max-w-[380px] 3xl:max-w-[480px] 4xl:max-w-[600px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             We&apos;ve heard it all - here&apos;s what people are really asking
             behind the scenes.
           </p>

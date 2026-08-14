@@ -33,7 +33,7 @@ export default function NewsroomPage() {
 
         {/* Content anchored to bottom-left */}
         <FadeUp className="site-container absolute inset-0 z-[2] flex flex-col justify-center items-start h-full pb-12">
-          <div className="flex flex-col gap-6 max-w-[732px] leading-[110%]">
+          <div className="flex flex-col gap-6 max-w-[732px] 3xl:max-w-[900px] 4xl:max-w-[1100px] leading-[110%]">
             <p className="hero-sub-heading hidden md:block text-[16px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.18em] text-[#005ead] m-0">
               Newsroom
             </p>
@@ -76,11 +76,11 @@ export default function NewsroomPage() {
 
         {/* Content */}
         <div className="site-container relative z-[15] self-center">
-          <FadeUp className="flex flex-col items-start gap-6 max-w-[870px]">
+          <FadeUp className="flex flex-col items-start gap-6 max-w-[870px] 3xl:max-w-[1050px] 4xl:max-w-[1250px]">
             <h2 className="text-[clamp(32px,4vw,60px)] font-semibold text-white leading-[110%] m-0">
               Everything You Need to Tell Our Story
             </h2>
-            <p className="max-w-[850px] text-white text-[18px] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] font-medium leading-[32px] m-0">
+            <p className="max-w-[850px] 3xl:max-w-[1000px] 4xl:max-w-[1200px] text-white text-[18px] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] font-medium leading-[32px] m-0">
               Official brand assets, company information, and press
               resources—all available in one convenient package.
             </p>

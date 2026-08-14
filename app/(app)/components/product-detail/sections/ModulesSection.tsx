@@ -72,7 +72,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
         />
       ) : null}
       <FadeUp className="site-container relative z-10">
-        <div className="max-w-[760px]">
+        <div className="max-w-[760px] 3xl:max-w-[900px] 4xl:max-w-[1100px]">
           <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
             Top Modules
           </p>
@@ -80,7 +80,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
             {data.title} <span className="text-[#005ead]">Compatible</span> With
             The Top Modules
           </h2>
-          <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+          <p className="mt-4 max-w-[670px] 3xl:max-w-[830px] 4xl:max-w-[1000px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             The {data.title} seamlessly integrates with leading top modules and
             attachments, enabling flexible material handling for diverse
             warehouse and industrial operations.

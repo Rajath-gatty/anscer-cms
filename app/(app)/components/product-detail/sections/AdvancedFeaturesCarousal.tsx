@@ -84,7 +84,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
           </p>
         </ScrollReveal>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <ScrollReveal delay={80} className="max-w-[750px]">
+          <ScrollReveal delay={80} className="max-w-[750px] 3xl:max-w-[920px] 4xl:max-w-[1100px]">
             <h2 className="text-[28px] font-bold text-white leading-tight tracking-[-0.02em] md:text-[clamp(40px,2.4vw,80px)]">
              Advanced Features for Industrial Automation
             </h2>

@@ -26,7 +26,7 @@ export function ProductFeaturesSection() {
   return (
     <section className="bg-[#fafafa] py-14 md:py-20">
       <div className="site-container">
-        <ScrollReveal className="max-w-[600px]">
+        <ScrollReveal className="max-w-[600px] 3xl:max-w-[750px] 4xl:max-w-[920px]">
           <p className="text-[12px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             How Our Robots Deliver Excellence
           </p>
@@ -76,7 +76,7 @@ export function ProductFeaturesSection() {
                 sizes="680px"
                 className="object-cover"
               />
-              <div className="relative z-10 max-w-[340px]">
+              <div className="relative z-10 max-w-[340px] 3xl:max-w-[420px] 4xl:max-w-[520px]">
                 <h3 className="text-xl font-bold md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
                   Let&apos;s Build Together
                 </h3>
@@ -89,7 +89,7 @@ export function ProductFeaturesSection() {
                 alt="AGV robot"
                 width={420}
                 height={250}
-                className="absolute bottom-0 right-6 w-[54%] max-w-[430px] object-contain"
+                className="absolute bottom-0 right-6 w-[54%] max-w-[430px] 3xl:max-w-[540px] 4xl:max-w-[650px] object-contain"
               /> */}
             </article>
           </ScrollReveal>

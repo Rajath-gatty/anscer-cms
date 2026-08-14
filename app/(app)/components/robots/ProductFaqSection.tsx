@@ -31,7 +31,7 @@ export function ProductFaqSection() {
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             FAQs
           </h2>
-          <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] md:leading-6 3xl:text-[clamp(20px,0.9vw,28px)]">
+          <p className="mt-4 max-w-[380px] 3xl:max-w-[480px] 4xl:max-w-[600px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] md:leading-6 3xl:text-[clamp(20px,0.9vw,28px)]">
             We&apos;ve heard it all - here&apos;s what people are really asking
             behind the scenes.
           </p>

@@ -245,7 +245,7 @@ export function AnalyticsSection() {
           <p className="text-[16px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             Key Capabilities
           </p>
-          <h2 className="mt-3 max-w-[680px] text-[30px] font-bold leading-tight text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
+          <h2 className="mt-3 max-w-[680px] 3xl:max-w-[850px] 4xl:max-w-[1000px] text-[30px] font-bold leading-tight text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
             Turning Industry Workflows Into Autonomous Operations
           </h2>
         </div>
@@ -352,7 +352,7 @@ export function AnalyticsSection() {
           <p className="mb-2 text-[12px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             Key Capabilities
           </p>
-          <h2 className="mb-12 max-w-[680px] text-[28px] font-bold leading-tight text-[#011f40]">
+          <h2 className="mb-12 max-w-[680px] 3xl:max-w-[850px] 4xl:max-w-[1000px] text-[28px] font-bold leading-tight text-[#011f40]">
             Turning Industry Workflows Into Autonomous Operations
           </h2>
 
@@ -360,7 +360,7 @@ export function AnalyticsSection() {
             {capabilities.map((c) => (
               <article
                 key={c.title}
-                className="mx-auto flex max-w-[560px] flex-col items-center"
+                className="mx-auto flex max-w-[560px] 3xl:max-w-[680px] 4xl:max-w-[800px] flex-col items-center"
               >
                 <div
                   className="relative w-4/5 overflow-hidden rounded-[26px] max-[479px]:rounded-[12px]"

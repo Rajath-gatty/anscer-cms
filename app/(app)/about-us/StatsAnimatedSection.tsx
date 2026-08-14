@@ -154,7 +154,7 @@ function StatCardContent({
       <p className="mt-2 text-[10px] font-bold text-[#011f40] md:mt-4 md:text-[18px]">
         {stat.label}
       </p>
-      <p className="mx-auto mt-2 max-w-[260px] text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-[340px] md:text-[16px] md:leading-[1.6]">
+      <p className="mx-auto mt-2 max-w-[260px] text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-[340px] 3xl:max-w-[420px] 4xl:max-w-[520px] md:text-[16px] md:leading-[1.6]">
         {stat.copy}
       </p>
     </>

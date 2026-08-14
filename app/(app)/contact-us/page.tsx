@@ -36,15 +36,15 @@ export default function ContactUsPage() {
     <main className="bg-white text-[#011f40]">
       <section className="pb-14 pt-12 md:pb-14 md:pt-15">
         <FadeUp className="site-container">
-          <div className="flex max-w-[760px] flex-col gap-6 pt-10">
+          <div className="flex max-w-[760px] 3xl:max-w-[900px] 4xl:max-w-[1100px] flex-col gap-6 pt-10">
             <p className="text-base md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.16em] text-[#005ead]">
               Contact us
             </p>
-            <h1 className="max-w-[760px] text-[36px] md:text-[clamp(40px,2.4vw,80px)] font-bold leading-[1.12] text-[#011f40]">
+            <h1 className="max-w-[760px] 3xl:max-w-[900px] 4xl:max-w-[1100px] text-[36px] md:text-[clamp(40px,2.4vw,80px)] font-bold leading-[1.12] text-[#011f40]">
               Every question has an{" "}
               <span className="text-[#005ead]">ANSCER</span>
             </h1>
-            <p className="max-w-[640px] text-base md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] leading-[22px] text-[#3a3a3a]">
+            <p className="max-w-[640px] 3xl:max-w-[780px] 4xl:max-w-[950px] text-base md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] leading-[22px] text-[#3a3a3a]">
               Need technical support, warranty help, or advice on the best
               automation solution? Our team is here to keep your operations
               running smoothly. Just fill out the form below, and we&apos;ll get

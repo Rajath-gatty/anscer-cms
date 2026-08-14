@@ -29,7 +29,7 @@ export function ProductOverview({ data }: { data: ProductDetailData }) {
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] md:text-[clamp(40px,2.4vw,80px)]">
               {data.subtitle}
             </h2>
-            <p className="mt-4 max-w-155 text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+            <p className="mt-4 max-w-155 3xl:max-w-[750px] 4xl:max-w-[900px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.overview}
             </p>
           </FadeUp>

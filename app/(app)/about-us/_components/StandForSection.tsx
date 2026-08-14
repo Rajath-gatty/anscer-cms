@@ -10,13 +10,13 @@ export function StandForSection() {
       <div className="site-container">
         <SectionEyebrow>Core. Clear. Committed.</SectionEyebrow>
         <SectionHeading>What We Stand For</SectionHeading>
-        <p className="mt-3 max-w-[640px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[15px] md:leading-[1.55]">
+        <p className="mt-3 max-w-[640px] 3xl:max-w-[750px] 4xl:max-w-[900px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[15px] md:leading-[1.55]">
           We deliver next-gen Autonomous Mobile Robots (AMRs) from India to the
           world, prioritizing safety, ergonomics, and ease of use to meet every
           automation need with cutting-edge, user-friendly solutions.
         </p>
 
-        <div className="relative mx-auto mt-12 hidden min-h-[680px] max-w-[1120px] lg:mt-0 lg:block">
+        <div className="relative mx-auto mt-12 hidden min-h-[680px] max-w-[1120px] 3xl:max-w-[1400px] 4xl:max-w-[1600px] lg:mt-0 lg:block">
           <div className="mx-auto grid aspect-square w-[min(78vw,430px)] place-items-center rounded-full border border-[#c9d3df] bg-white lg:absolute lg:left-1/2 lg:top-[330px] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <div className="absolute inset-[11%] rounded-full border border-[#c9d3df]" />
             <div className="absolute inset-[22%] rounded-full border border-[#c9d3df]" />

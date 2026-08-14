@@ -18,10 +18,10 @@ export function ProductsCta() {
       <div className="absolute inset-0 w-full h-full bg-black/70" />
       <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
       <FadeUp className="site-container relative z-10">
-        <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] tracking-normal md:text-[clamp(48px,4vw,80px)] md:leading-[70px] lg:leading-[1.1]">
+        <h2 className="max-w-[970px] 3xl:max-w-[1100px] 4xl:max-w-[1300px] text-[48px] font-semibold leading-[60px] tracking-normal md:text-[clamp(48px,4vw,80px)] md:leading-[70px] lg:leading-[1.1]">
           Dive Into The Future Factory
         </h2>
-        <p className="mt-4 max-w-[850px] text-[14px] font-medium leading-[20px] text-white/85 md:text-[clamp(16px,0.8vw,30px)] md:leading-[32px] 3xl:text-[clamp(20px,0.9vw,28px)]">
+        <p className="mt-4 max-w-[850px] 3xl:max-w-[1000px] 4xl:max-w-[1200px] text-[14px] font-medium leading-[20px] text-white/85 md:text-[clamp(16px,0.8vw,30px)] md:leading-[32px] 3xl:text-[clamp(20px,0.9vw,28px)]">
           Explore ANSCER&apos;s cutting-edge lineup: powerful, smart automation
           solutions engineered to transform your operations.
         </p>

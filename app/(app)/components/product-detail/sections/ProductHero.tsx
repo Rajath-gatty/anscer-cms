@@ -19,7 +19,7 @@ export function ProductHero({ data }: { data: ProductDetailData }) {
         <h1 className="relative z-10 text-[38px] font-bold leading-none tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
           {data.title}
         </h1>
-        <div className="relative mt-7 h-[240px] w-full max-w-[960px] md:h-[430px] 3xl:h-[550px] 4xl:h-[650px]">
+        <div className="relative mt-7 h-[240px] w-full max-w-[960px] 3xl:max-w-[1200px] 4xl:max-w-[1400px] md:h-[430px] 3xl:h-[550px] 4xl:h-[650px]">
           {data.backgroundText ? (
             <Image
               src={`${imagePath}${data.backgroundText}`}

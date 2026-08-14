@@ -16,7 +16,7 @@ export function AboutHero() {
 
       <div className="absolute inset-0 bg-[linear-gradient(59deg,rgba(0,0,0,.82),rgba(0,0,0,.18)_66%,rgba(0,0,0,0))]" />
       <div className="site-container relative z-10 flex h-full items-end pb-8 md:items-center md:pb-0">
-        <div className="max-w-[680px] md:pt-10">
+        <div className="max-w-[680px] 3xl:max-w-[850px] 4xl:max-w-[1000px] md:pt-10">
           <FadeUp>
             <h1 className="max-w-[270px] text-[28px] font-bold leading-[1.08] text-white md:max-w-none md:text-[clamp(48px,4vw,80px)]">
               Powering What&rsquo;s Next, Today

@@ -23,7 +23,7 @@ export function ProcessBenefitsSection({
         <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
           BENEFITS
         </p>
-        <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
+        <h2 className="mt-6 max-w-[648px] 3xl:max-w-[800px] 4xl:max-w-[1000px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
           Designed for Flexible and <br /> Scalable Automation
         </h2>
         <div className="mt-10 grid gap-4 lg:grid-cols-2">

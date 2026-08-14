@@ -35,11 +35,11 @@ export function BenefitsSection({
             <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               {eyebrow}
             </p>
-            <h2 className="max-w-[760px] text-[28px] font-bold leading-[1.2] md:text-[clamp(40px,2.4vw,80px)]">
+            <h2 className="max-w-[760px] 3xl:max-w-[900px] 4xl:max-w-[1100px] text-[28px] font-bold leading-[1.2] md:text-[clamp(40px,2.4vw,80px)]">
               {title}
             </h2>
             {copy ? (
-              <p className="max-w-[690px] text-sm leading-6 text-[#333333] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
+              <p className="max-w-[690px] 3xl:max-w-[850px] 4xl:max-w-[1000px] text-sm leading-6 text-[#333333] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                 {copy}
               </p>
             ) : null}
@@ -69,7 +69,7 @@ export function BenefitsSection({
         <p className="text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
           {eyebrow}
         </p>
-        <h2 className="mt-10 max-w-[720px] text-[30px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
+        <h2 className="mt-10 max-w-[720px] 3xl:max-w-[900px] 4xl:max-w-[1100px] text-[30px] font-bold leading-tight md:text-[clamp(40px,2.4vw,80px)]">
           {title}
         </h2>
         {copy ? (
