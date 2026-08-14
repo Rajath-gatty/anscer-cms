@@ -26,15 +26,15 @@ export function ProductFeaturesSection() {
   return (
     <section className="bg-[#fafafa] py-14 md:py-20">
       <div className="site-container">
-        <ScrollReveal className="max-w-[600px]">
-          <p className="text-[12px] md:text-[16px] font-medium uppercase tracking-[0.14em] text-[#005ead]">
+        <ScrollReveal className="max-w-[600px] 3xl:max-w-[750px] 4xl:max-w-[920px]">
+          <p className="text-[12px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.14em] text-[#005ead]">
             How Our Robots Deliver Excellence
           </p>
-          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[36px]">
+          <h2 className="mt-4 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
             Key Features of All Our{" "}
             <span className="text-[#005ead]">Robots</span>
           </h2>
-          <p className="mt-4 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+          <p className="mt-4 text-sm leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] md:leading-6 3xl:text-[clamp(20px,0.9vw,28px)]">
             Never worry about maintenance. ANSCER Robotics ensures seamless
             software updates, reliable hardware, and ongoing support to keep
             your robots operating at peak performance.
@@ -57,10 +57,10 @@ export function ProductFeaturesSection() {
                       strokeWidth={2}
                     />
                   </div>
-                  <h3 className="mt-5 text-xl font-semibold text-[#005ead] md:text-xl">
+                  <h3 className="mt-5 text-xl font-semibold text-[#005ead] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
                     {feature.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+                  <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] md:leading-6 3xl:text-[clamp(20px,0.9vw,28px)]">
                     {feature.copy}
                   </p>
                 </article>
@@ -76,11 +76,11 @@ export function ProductFeaturesSection() {
                 sizes="680px"
                 className="object-cover"
               />
-              <div className="relative z-10 max-w-[340px]">
-                <h3 className="text-xl font-bold md:text-2xl">
+              <div className="relative z-10 max-w-[340px] 3xl:max-w-[420px] 4xl:max-w-[520px]">
+                <h3 className="text-xl font-bold md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
                   Let&apos;s Build Together
                 </h3>
-                <p className="mt-3 text-sm leading-5 text-white/84 md:text-base md:leading-6">
+                <p className="mt-3 text-sm leading-5 text-white/84 md:text-[clamp(16px,0.8vw,30px)] md:leading-6 3xl:text-[clamp(20px,0.9vw,28px)]">
                   Join us in shaping the future of robotics.
                 </p>
               </div>
@@ -89,7 +89,7 @@ export function ProductFeaturesSection() {
                 alt="AGV robot"
                 width={420}
                 height={250}
-                className="absolute bottom-0 right-6 w-[54%] max-w-[430px] object-contain"
+                className="absolute bottom-0 right-6 w-[54%] max-w-[430px] 3xl:max-w-[540px] 4xl:max-w-[650px] object-contain"
               /> */}
             </article>
           </ScrollReveal>

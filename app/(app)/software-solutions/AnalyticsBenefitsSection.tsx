@@ -136,10 +136,10 @@ export function AnalyticsBenefitsSection() {
       <div className="bg-white py-10 md:py-14">
         <FadeUp>
           <div className="site-container">
-            <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
+            <p className="text-[12px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.14em] text-[#005ead]">
               BENEFITS
             </p>
-            <h2 className="mt-6 max-w-[648px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-4xl">
+            <h2 className="mt-6 max-w-[648px] 3xl:max-w-[800px] 4xl:max-w-[1000px] text-[28px] font-bold leading-[120%] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
               Turning Operational Data Into Actionable Insights
             </h2>
 
@@ -155,10 +155,10 @@ export function AnalyticsBenefitsSection() {
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-[8px] bg-[#011f40]/5 text-[#011f40]">
                       <Icon className="size-5" strokeWidth={1.7} />
                     </div>
-                    <h3 className="text-base font-semibold text-[#000000]">
+                    <h3 className="text-base md:text-[clamp(16px,0.8vw,30px)] font-semibold text-[#000000]">
                       {card.title}
                     </h3>
-                    <p className="text-[14px] leading-[150%] text-[#000000]">
+                    <p className="text-[14px] md:text-[clamp(14px,0.7vw,24px)] 3xl:text-[clamp(16px,0.8vw,28px)] leading-[150%] text-[#000000]">
                       {card.copy}
                     </p>
                   </div>
@@ -251,10 +251,10 @@ export function AnalyticsBenefitsSection() {
                           strokeWidth={1.7}
                         />
                       </div>
-                      <h3 className="text-base font-semibold text-[#000000]">
+                      <h3 className="text-base md:text-[clamp(16px,0.8vw,30px)] font-semibold text-[#000000]">
                         {card.title}
                       </h3>
-                      <p className="text-sm leading-[150%] text-[#000000]">
+                      <p className="text-sm md:text-[clamp(14px,0.7vw,24px)] 3xl:text-[clamp(16px,0.8vw,28px)] leading-[150%] text-[#000000]">
                         {card.copy}
                       </p>
                     </article>

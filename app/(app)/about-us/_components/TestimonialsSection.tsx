@@ -20,9 +20,9 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial) => (
             <article
               key={testimonial.name}
-              className="flex min-h-[190px] w-[255px] shrink-0 flex-col rounded-md bg-white p-4 shadow-[0_12px_30px_rgba(1,31,64,.04)] md:min-h-[260px] md:w-auto md:p-6"
+              className="flex min-h-[190px] w-[255px] shrink-0 flex-col rounded-md bg-white p-4 shadow-[0_12px_30px_rgba(1,31,64,.04)] md:min-h-[260px] 3xl:min-h-[320px] 4xl:min-h-[400px] md:w-auto md:p-6 3xl:p-8 4xl:p-10"
             >
-              <p className="mt-3 flex-1 text-[10px] font-normal leading-[1.45] text-[#011f40] md:mt-4 md:text-[18px] md:leading-[1.55]">
+              <p className="mt-3 flex-1 text-[10px] font-normal leading-[1.45] text-[#011f40] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
                 {testimonial.quote}
               </p>
               <div className="mt-4 flex items-center gap-3 md:mt-5">
@@ -34,10 +34,10 @@ export function TestimonialsSection() {
                   className="size-8 rounded-full object-cover md:size-11"
                 />
                 <div>
-                  <h3 className="text-[10px] font-medium text-[#011f40] md:text-[18px]">
+                  <h3 className="text-[10px] font-medium text-[#011f40] md:text-[clamp(16px,0.8vw,30px)]">
                     {testimonial.name}
                   </h3>
-                  <p className="text-[9px] text-[#3a3a3a]/72 md:text-[16px]">
+                  <p className="text-[9px] text-[#3a3a3a]/72 md:text-[clamp(14px,0.7vw,24px)]">
                     {testimonial.role}
                   </p>
                 </div>

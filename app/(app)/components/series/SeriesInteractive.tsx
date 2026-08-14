@@ -81,11 +81,11 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
         </p>
         </FadeUp>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <FadeUp delay={80} className="max-w-[700px]">
+          <FadeUp delay={80} className="max-w-[700px] 3xl:max-w-[880px] 4xl:max-w-[1050px]">
             <h2 className="text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
               {data.applicationsHeading}
             </h2>
-            <p className="mt-4 max-w-[610px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+            <p className="mt-4 max-w-[610px] 3xl:max-w-[750px] 4xl:max-w-[900px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
               {data.applicationsIntro}
             </p>
           </FadeUp>

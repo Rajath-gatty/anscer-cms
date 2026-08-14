@@ -16,12 +16,12 @@ export function WhatDrivesUsSection() {
           </SectionHeading>
         </FadeUp>
         <FadeUp>
-          <p className="mt-3 max-w-[640px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[16px] md:leading-[1.55]">
+          <p className="mt-3 max-w-[640px] 3xl:max-w-[750px] 4xl:max-w-[900px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             ANSCER stands for “Autonomous Navigation Systems with Cognitive and Efficient Robotics" - reflecting our commitment to intelligent, reliable automation
           </p>
         </FadeUp>
 
-        <FadeUp className="mt-6 grid gap-4 md:mt-11 md:gap-6 lg:grid-cols-[1fr_.25fr_.25fr_1.25fr] lg:auto-rows-[240px]">
+        <FadeUp className="mt-6 grid gap-4 md:mt-11 md:gap-6 lg:grid-cols-[1fr_.25fr_.25fr_1.25fr] lg:auto-rows-[240px] 3xl:auto-rows-[320px] 4xl:auto-rows-[400px]">
           <InfoCard
             className="order-1 lg:order-none lg:col-span-1 lg:row-span-1"
             icon="crosshair.svg"
@@ -69,12 +69,12 @@ function InfoCard({
         alt=""
         width={34}
         height={34}
-        className="size-7 md:size-[34px]"
+        className="size-7 md:size-[34px] 3xl:size-10 4xl:size-12"
       />
-      <h3 className="mt-4 text-[15px] font-semibold leading-tight text-[#005ead] md:mt-5 md:text-[24px]">
+      <h3 className="mt-4 text-[15px] font-semibold leading-tight text-[#005ead] md:mt-5 md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
         {title}
       </h3>
-      <p className="mt-2 max-w-[460px] text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:text-[16px] md:leading-[1.55]">
+      <p className="mt-2 max-w-[460px] 3xl:max-w-[560px] 4xl:max-w-[680px] text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
         {copy}
       </p>
     </article>
@@ -92,11 +92,11 @@ function FeatureImageCard() {
         className="object-cover object-[50%_70%]"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.68),rgba(0,0,0,0))]" />
-      <div className="absolute left-4 right-4 top-4 max-w-[640px] md:left-6 md:right-auto md:top-6">
-        <h3 className="text-[13px] font-bold leading-tight md:text-[24px]">
+      <div className="absolute left-4 right-4 top-4 max-w-[640px] 3xl:max-w-[750px] 4xl:max-w-[900px] md:left-6 md:right-auto md:top-6">
+        <h3 className="text-[13px] font-bold leading-tight md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
           Redefining logistics through robotics
         </h3>
-        <p className="mt-2 text-[10px] leading-[1.35] text-white/86 md:mt-3 md:text-[16px] md:leading-[1.55]">
+        <p className="mt-2 text-[10px] leading-[1.35] text-white/86 md:mt-3 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
           With an intuitive setup, configuring AMR workflows is quick start
           autonomous payload movement within hours, if not minutes.
         </p>

@@ -12,7 +12,7 @@ export function InvestorsSection() {
           Our <span className="text-[#005ead]">Investors</span>
         </SectionHeading>
 
-        <div className="grid min-h-[100px] grid-cols-3 items-center md:min-h-[210px] md:translate-y-4 lg:min-h-[260px] lg:grid-cols-3 lg:grid-rows-1 md:divide-x md:divide-foreground/20">
+        <div className="grid min-h-[100px] grid-cols-3 items-center md:min-h-[210px] md:translate-y-4 lg:min-h-[260px] 3xl:min-h-[340px] 4xl:min-h-[420px] lg:grid-cols-3 lg:grid-rows-1 md:divide-x md:divide-foreground/20">
           {[...investorLogos].map((logo, index) => (
             <div
               key={`${logo.image}-${index}`}
@@ -23,7 +23,7 @@ export function InvestorsSection() {
                 alt="Investor logo"
                 width={190}
                 height={90}
-                className="max-h-[42px] w-auto max-w-[118px] object-contain md:max-h-[72px] md:max-w-[180px]"
+                className="max-h-[42px] w-auto max-w-[118px] object-contain md:max-h-[72px] 3xl:max-h-[90px] 4xl:max-h-[110px] md:max-w-[180px]"
               />
             </div>
           ))}

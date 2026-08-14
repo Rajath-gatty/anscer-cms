@@ -73,7 +73,7 @@ export function CaseStudiesSection({ data }: { data: ProductDetailData }) {
             <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
               {data.title} <span className="text-[#005ead]">Success</span> Stories
             </h2>
-            <p className="mt-4 max-w-[700px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
+            <p className="mt-4 max-w-[700px] 3xl:max-w-[880px] 4xl:max-w-[1050px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
               Discover how manufacturers, warehouses, and industrial facilities use
               ANSCER robots to improve workflow efficiency and reduce manual
               handling.

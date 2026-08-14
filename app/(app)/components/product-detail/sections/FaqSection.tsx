@@ -11,7 +11,7 @@ export function FaqSection({ data }: { data: ProductDetailData }) {
           <h2 className="mt-5 text-[28px] font-bold leading-[1.2] text-[#011f40] md:text-[32px] md:leading-9">
             FAQs
           </h2>
-          <p className="mt-4 max-w-[380px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
+          <p className="mt-4 max-w-[380px] 3xl:max-w-[480px] 4xl:max-w-[600px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
             We&apos;ve heard it all - here&apos;s what people are really asking
             behind the scenes.
           </p>

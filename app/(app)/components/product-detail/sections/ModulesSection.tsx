@@ -60,7 +60,7 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
   return (
     <section
       id="attachments"
-      className="relative scroll-mt-28 overflow-hidden bg-[#e6ebf0] py-16 md:py-[84px] md:h-[720px]"
+      className="relative scroll-mt-28 overflow-hidden bg-[#e6ebf0] py-16 md:py-[84px] md:h-[720px] 3xl:h-[900px] 4xl:h-[1050px]"
     >
       {data.backgroundText ? (
         <Image
@@ -72,15 +72,15 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
         />
       ) : null}
       <FadeUp className="site-container relative z-10">
-        <div className="max-w-[760px]">
-          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+        <div className="max-w-[760px] 3xl:max-w-[900px] 4xl:max-w-[1100px]">
+          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
             Top Modules
           </p>
-          <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl">
+          <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-[clamp(40px,2.4vw,80px)]">
             {data.title} <span className="text-[#005ead]">Compatible</span> With
             The Top Modules
           </h2>
-          <p className="mt-4 max-w-[670px] text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-[26px]">
+          <p className="mt-4 max-w-[670px] 3xl:max-w-[830px] 4xl:max-w-[1000px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
             The {data.title} seamlessly integrates with leading top modules and
             attachments, enabling flexible material handling for diverse
             warehouse and industrial operations.
@@ -310,10 +310,10 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                     delay: shouldReduceMotion ? 0 : 0.8,
                   }}
                 >
-                  <h3 className="text-2xl font-semibold leading-7 text-[#005ead]">
+                  <h3 className="text-2xl font-semibold leading-7 text-[#005ead] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
                     {active.title}
                   </h3>
-                  <p className="mt-3 text-[18px] leading-[26px] text-[#3a3a3a]">
+                  <p className="mt-3 text-[18px] leading-[26px] text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
                     {active.copy}
                   </p>
                 </m.div>
