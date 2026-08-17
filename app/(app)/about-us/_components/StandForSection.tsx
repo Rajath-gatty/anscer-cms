@@ -71,7 +71,7 @@ function ValuePoint({
             <Icon className="size-4" strokeWidth={2.25} />
           </span>
           <div>
-            <h3 className="text-[16px] font-extrabold leading-tight tracking-[0.01em] text-[#005ead] lg:text-[22px]">
+            <h3 className="text-[16px] font-bold leading-tight tracking-[0.01em] text-[#005ead] lg:text-[22px]">
               {title}
             </h3>
             <p className="mt-1 text-[12px] font-medium leading-[1.35] text-[#011f40] lg:text-[14px]">

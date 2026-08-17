@@ -141,7 +141,7 @@ function StatCardContent({
 }) {
   return (
     <>
-      <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[40px]">
+      <h3 className="text-[18px] font-bold leading-none text-[#011f40] md:text-[40px]">
         <div className="inline-flex gap-1 items-center">
           <span className="text-[#005ead]">
           {stat.value}

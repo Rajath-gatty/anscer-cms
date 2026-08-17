@@ -36,6 +36,7 @@ export function SiteHeader() {
     "/ar-series",
     "/psr-series",
     "/agv-series",
+    "/psr-trail"
   ].some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
   useEffect(() => {
@@ -168,6 +169,7 @@ export function SiteHeader() {
                               ["AR Series", "/ar-series"],
                               ["PSR Series", "/psr-series"],
                               ["AGV Series", "/agv-series"],
+                              ["PSR Trail", "/psr-trail"]
                             ].map(([series, href]) => (
                               <Link
                                 key={series}
@@ -353,6 +355,13 @@ function RobotsDropdown({ active }: { active: boolean }) {
               onClick={() => setOpen(false)}
             >
               AGV Series
+            </Link>
+            <Link
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+              href="/psr-trail"
+              onClick={() => setOpen(false)}
+            >
+              PSRTrail
             </Link>
           </div>
         </div>

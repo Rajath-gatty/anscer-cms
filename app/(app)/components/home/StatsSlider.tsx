@@ -81,12 +81,12 @@ function StatsSlider() {
                   : "pointer-events-none absolute inset-0 translate-y-4 opacity-0"
               }`}
             >
-              <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[clamp(24px,1.5vw,40px)] 3xl:text-[clamp(28px,1.8vw,48px)]">
+              <h3 className="text-[18px] font-bold leading-none text-[#011f40] md:text-[clamp(24px,1.5vw,40px)] 3xl:text-[clamp(28px,1.8vw,48px)]">
                 <span className="text-[#005ead]">
                   {index === activeSlide ? displayValue : stat.value}
                 </span>
               </h3>
-              <p className="mt-2 text-[10px] font-extrabold text-[#011f40] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
+              <p className="mt-2 text-[10px] font-bold text-[#011f40] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                 {stat.label}
               </p>
               {/* <p className="mx-auto mt-2 max-w-65 text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-85 md:text-[13px] md:leading-[1.6]">
