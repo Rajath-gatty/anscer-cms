@@ -82,7 +82,7 @@ export function SeriesApplicationsCarousel({ data }: { data: SeriesPageData }) {
         </FadeUp>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <FadeUp delay={80} className="max-w-[700px] 3xl:max-w-[880px] 4xl:max-w-[1050px]">
-            <h2 className="text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[36px]">
+            <h2 className="text-[28px] font-bold leading-tight tracking-[-0.02em] md:text-[36px]">
               {data.applicationsHeading}
             </h2>
             <p className="mt-4 max-w-[610px] 3xl:max-w-[750px] 4xl:max-w-[900px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
@@ -705,7 +705,7 @@ function UnitToggle({
     <button
       type="button"
       onClick={() => onChange(unit === "metric" ? "imperial" : "metric")}
-      className="inline-flex cursor-pointer items-center gap-2 self-start text-[12px] font-extrabold uppercase tracking-wide text-[#011f40]"
+      className="inline-flex cursor-pointer items-center gap-2 self-start text-[12px] font-bold uppercase tracking-wide text-[#011f40]"
       aria-label="Toggle metric and imperial units"
     >
       <span className={unit === "metric" ? "opacity-100" : "opacity-45"}>

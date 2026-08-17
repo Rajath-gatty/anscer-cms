@@ -66,10 +66,10 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
             <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               {data.eyebrow} Robots
             </p>
-            <h1 className="mt-5 text-[48px] font-extrabold leading-[1.04] tracking-[-0.02em] text-[#011f40] md:text-[clamp(48px,4vw,80px)]">
+            <h1 className="mt-5 text-[48px] font-bold leading-[1.04] tracking-[-0.02em] text-[#011f40] md:text-[clamp(48px,4vw,80px)]">
               {data.title}
               <br />
-              <span className="text-[#005ead]">{data.titleAccent}</span>
+              <span className="text-[#005ead] font-montserrat">{data.titleAccent}</span>
             </h1>
             <p className="mt-5 max-w-[520px] 3xl:max-w-[640px] 4xl:max-w-[780px] text-sm font-medium leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.description}
@@ -95,7 +95,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               className={cn(
                 "object-contain self-end object-right -translate-y-[40px] md:translate-y-[-60px] origin-right scale-100 md:scale-140   drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]",
                 data.slug === "psr-series" &&
-                  "md:-translate-y-[75px] md:scale-130 scale-100 w-[90%] translate-y-0 2xl:-translate-y-[50px] 3xl:translate-y-[0px]",
+                "md:-translate-y-[75px] md:scale-130 scale-100 w-[90%] translate-y-0 2xl:-translate-y-[50px] 3xl:translate-y-[0px]",
               )}
             />
           </div>
@@ -124,7 +124,7 @@ function SeriesFeatures({ data }: { data: SeriesPageData }) {
           <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
             How Our Robots Deliver Excellence
           </p>
-          <h2 className="mt-4 text-[28px] font-extrabold leading-tight tracking-[-0.02em] md:text-[clamp(40px,2.4vw,80px)]">
+          <h2 className="mt-4 text-[28px] font-bold leading-tight tracking-[-0.02em] md:text-[clamp(40px,2.4vw,80px)]">
             Key Features of{" "}
             <span className="text-[#005ead]">{data.eyebrow}</span> Robots
           </h2>
@@ -158,7 +158,7 @@ function SeriesFeatures({ data }: { data: SeriesPageData }) {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,.48),rgba(1,31,64,.08)_48%,rgba(1,31,64,.18))]" />
               <div className="relative z-10 p-6 md:p-7">
-                <h3 className="text-xl font-extrabold leading-tight md:text-2xl">
+                <h3 className="text-xl font-bold leading-tight md:text-2xl">
                   Let&apos;s Build Together
                 </h3>
                 <p className="mt-2 text-sm font-medium text-white/86 md:text-base">
@@ -191,7 +191,7 @@ function FeatureCard({
           className="h-10 w-10 object-contain"
         />
       ) : null}
-      <h3 className="mt-5 max-w-[270px] text-xl font-extrabold leading-[1.08] text-[#005ead] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
+      <h3 className="mt-5 max-w-[270px] 2xl:max-w-full text-xl font-bold leading-[1.08] text-[#005ead] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
         {feature.title}
       </h3>
       <p className="mt-3 text-sm leading-5 text-[#4b5563] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
