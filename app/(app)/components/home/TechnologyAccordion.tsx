@@ -11,13 +11,13 @@ const technologyItems = [
   {
     title: "Real-Time Monitoring & Control",
     copy: "Instantly view robot locations, task progress, and system status ensuring uninterrupted operations and proactive interventions.",
-    image: "home_realtimes.avif",
+    image: "home_realtimes.png",
     icon: "frame-18.svg",
   },
   {
     title: "Smart Analytics & Reports",
     copy: "Gain complete visibility into robot utilization, mission performance, and operational trends, enabling data-driven decisions and continuous process optimization",
-    image: "home_smartanalytic.avif",
+    image: "home_smartanalytic.png",
     icon: "frame-19.svg",
   },
   {
@@ -29,7 +29,7 @@ const technologyItems = [
   {
     title: "Proactive Insights & Alerts",
     copy: "Delivers intelligent notifications on request patterns and performance trends to support proactive decision-making",
-    image: "home_alert.avif",
+    image: "home_alert.png",
     icon: "frame-21.svg",
   },
 ];
