@@ -10,11 +10,16 @@ import {
   SeriesApplicationsCarousel,
   SeriesRobotSelector,
 } from "./SeriesInteractive";
+import { topModules } from "../product-detail/product-detail-data";
+import { ArSeriesModules } from "../product-detail/sections/ArSeriesModules";
 
 export function SeriesPage({ data }: { data: SeriesPageData }) {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
       <SeriesHero data={data} />
+      <ArSeriesModules
+        data={{ modules: topModules, modulesBaseImage: "ar-250-base.png" }}
+      />
       <SeriesFeatures data={data} />
       <SeriesApplicationsCarousel data={data} />
       <SeriesRobotSelector data={data} series={data.slug} />
@@ -61,7 +66,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,.88)_0%,rgba(250,250,250,.0)_80%,rgba(250,250,250,.22)_100%)]" />
       <div className="site-container relative z-10 grid min-h-[calc(100vh-108px)] items-center gap-8 py-14 md:py-16 lg:grid-cols-[0.46fr_0.54fr]">
-        <div className="max-w-[590px] 3xl:max-w-[720px] 4xl:max-w-[880px]">
+        <div className="max-w-[590px] 2xl:max-w-[720px] 4xl:max-w-[880px]">
           <ScrollReveal>
             <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               {data.eyebrow} Robots
@@ -94,8 +99,9 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
               priority
               className={cn(
                 "object-contain self-end object-right -translate-y-[40px] md:translate-y-[-60px] origin-right scale-100 md:scale-140   drop-shadow-[0_30px_45px_rgba(1,31,64,.18)] max-w-[400px]",
-                data.slug === "psr-series" &&
-                "md:-translate-y-[75px] md:scale-130 scale-100 w-[90%] translate-y-0 2xl:-translate-y-[50px] 3xl:translate-y-[0px]",
+                data.slug === "psr-series" ?
+                  "md:-translate-y-[75px] md:scale-130 scale-100 w-[90%] translate-y-0 2xl:-translate-y-[50px] 3xl:translate-y-[0px]" :
+                  data.slug === "ar-series" && "md:translate-x-[180px] 2xl:translate-x-[80px]",
               )}
             />
           </div>
