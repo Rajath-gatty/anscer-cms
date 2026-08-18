@@ -17,9 +17,9 @@ export function SeriesPage({ data }: { data: SeriesPageData }) {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
       <SeriesHero data={data} />
-      <ArSeriesModules
+      {data.slug === "ar-series" && <ArSeriesModules
         data={{ modules: topModules, modulesBaseImage: "ar-250-base.png" }}
-      />
+      />}
       <SeriesFeatures data={data} />
       <SeriesApplicationsCarousel data={data} />
       <SeriesRobotSelector data={data} series={data.slug} />

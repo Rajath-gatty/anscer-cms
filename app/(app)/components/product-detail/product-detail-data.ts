@@ -371,7 +371,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
     ],
     modulesBaseImage: "ar-250-base.png",
-    modules: topModules,
+    // modules: topModules,
     advancedFeatures: [
       {
         title: "Human-safe Operations",
