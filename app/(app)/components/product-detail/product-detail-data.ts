@@ -130,7 +130,7 @@ const psrUseCases = [
   },
 ];
 
-const topModules = [
+export const topModules = [
   {
     title: "Shelf Lifter",
     copy: "Autonomous trolley lifting and transport operations.",

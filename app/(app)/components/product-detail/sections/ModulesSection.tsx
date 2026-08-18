@@ -268,9 +268,8 @@ export function ModulesSection({ data }: { data: ProductDetailData }) {
                       height: active?.overlay?.height ?? "100%",
                       left: active?.overlay?.left ?? "50%",
                       top: active?.overlay?.top ?? "0",
-                      transform: `translate(${active?.overlay?.translateX ?? "-50%"}, ${
-                        active?.overlay?.translateY ?? "0"
-                      })`,
+                      transform: `translate(${active?.overlay?.translateX ?? "-50%"}, ${active?.overlay?.translateY ?? "0"
+                        })`,
                       width: active?.overlay?.width ?? "100%",
                     }}
                   >
