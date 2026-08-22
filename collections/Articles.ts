@@ -22,6 +22,16 @@ export const Articles: CollectionConfig = {
       required: true,
     },
     {
+      name: "metaTitle",
+      label: "Meta Title",
+      type: "text",
+    },
+    {
+      name: "metaDescription",
+      label: "Meta Description",
+      type: "text",
+    },
+    {
       name: "postBody",
       label: "Post Body",
       type: "richText",
@@ -31,6 +41,11 @@ export const Articles: CollectionConfig = {
       label: "Thumbnail image",
       type: "upload",
       relationTo: "media",
+    },
+    {
+      name: "thumbnailAltText",
+      label: "Thumbnail Alt Text",
+      type: "text",
     },
     {
       name: "featured",
