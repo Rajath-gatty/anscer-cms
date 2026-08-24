@@ -6,6 +6,7 @@ import { MotionProvider } from "./components/animation/MotionProvider";
 import { ScrollBehaviorManager } from "./components/animation/ScrollBehaviorManager";
 import { SiteFooter } from "./components/home/SiteFooter";
 import { SiteHeader } from "./components/home/SiteHeader";
+import Script from "next/script";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_TRACKING_ID = 'G-P437PMBZPF';
   return (
     <html
       lang="en"
@@ -39,6 +41,18 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full bg-[#fafafa] text-[#011f40]">
+        {process.env.NODE_ENV === 'production' && <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          strategy="afterInteractive"
+        />}
+        {process.env.NODE_ENV === 'production' && <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}');
+          `}
+        </Script>}
         <MotionProvider>
           <ScrollBehaviorManager />
           {/* <AnnouncementBanner /> */}
