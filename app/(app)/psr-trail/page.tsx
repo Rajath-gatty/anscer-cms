@@ -78,7 +78,7 @@ const techStackPills = [
 
 const performanceStats = [
   {
-    value: "26–30",
+    value: "26-30",
     unit: "/hr",
     label: "Pallets / Hour",
     subtext: "Target throughput",
@@ -324,7 +324,7 @@ export default function PsrTrailPage() {
                     Dock Success
                   </span>
                 </div>
-                <div className="p-4 border-r border-white/10 text-center">
+                <div className="col-span-2 sm:col-span-1 p-4 text-center">
                   <span className="text-2xl md:text-3xl font-bold text-white block">
                     24<sup className="text-xs font-normal text-white/70">/7</sup>
                   </span>
@@ -332,14 +332,6 @@ export default function PsrTrailPage() {
                     Operation
                   </span>
                 </div>
-                {/* <div className="p-4 text-center">
-                  <span className="text-2xl md:text-3xl font-bold text-white block">
-                    85<sup className="text-xs font-normal text-white/70">+</sup>
-                  </span>
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-white/70 mt-1 block">
-                    Sites Live
-                  </span>
-                </div> */}
               </div>
             </FadeUp>
           </div>
@@ -348,11 +340,11 @@ export default function PsrTrailPage() {
 
       {/* TRUST BANNER */}
       <section className="border-b border-[#dfe6ee] bg-[#e6ebf0] py-6">
-        <div className="site-container flex items-center gap-8 flex-wrap justify-between">
+        <div className="site-container flex flex-col sm:flex-row items-center gap-4 sm:gap-8 justify-center sm:justify-between text-center sm:text-left">
           <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#005ead]">
             Trusted By
           </span>
-          <div className="flex items-center gap-8 md:gap-12 flex-wrap">
+          <div className="flex items-center justify-center gap-6 sm:gap-8 md:gap-12 flex-wrap">
             {trustLogos.map((logo) => (
               <span
                 key={logo}
@@ -448,7 +440,7 @@ export default function PsrTrailPage() {
 
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Standard Model */}
-            {/* <FadeUp delay={100}>
+      {/* <FadeUp delay={100}>
               <div className="rounded-2xl border border-[#dfe6ee] bg-white overflow-hidden shadow-sm hover:shadow-md transition-all">
                 <div className="p-6 md:p-8 bg-[#e6ebf0] border-b border-[#dfe6ee]">
                   <span className="inline-block bg-white text-[#005ead] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-3">
@@ -508,8 +500,8 @@ export default function PsrTrailPage() {
               </div>
             </FadeUp> */}
 
-            {/* Heavy Model */}
-            {/* <FadeUp delay={200}>
+      {/* Heavy Model */}
+      {/* <FadeUp delay={200}>
               <div className="rounded-2xl border border-[#005ead]/30 bg-white overflow-hidden shadow-md transition-all">
                 <div className="p-6 md:p-8 bg-[#011f40] text-white border-b border-[#011f40]">
                   <span className="inline-block bg-[#005ead] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-3">
@@ -583,7 +575,7 @@ export default function PsrTrailPage() {
                 </p>
                 <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
                   Autonomous Trailer Unloading,<br />
-                  <span className="text-[#005ead]">From Dock Check To Pallet Drop.</span>
+                  From Dock Check To Pallet <span className="text-[#005ead]">Drop.</span>
                 </h2>
               </div>
               <p className="text-sm md:text-base leading-relaxed text-[#4b5563]">
@@ -697,11 +689,10 @@ export default function PsrTrailPage() {
                 ].map((item, index) => (
                   <div
                     key={item.layer}
-                    className={`p-4 rounded-[16px] border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(0,94,173,0.08)] ${
-                      index === 0
+                    className={`p-4 rounded-[16px] border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(0,94,173,0.08)] ${index === 0
                         ? "bg-[#edf6ff] border-[#005ead]/30"
                         : "bg-white border-[#dfe6ee] hover:bg-[#edf6ff]/40 hover:border-[#005ead]/25"
-                    }`}
+                      }`}
                   >
                     <span className="text-[10px] font-bold text-[#005ead] uppercase tracking-wider block">
                       {item.layer}
@@ -751,7 +742,7 @@ export default function PsrTrailPage() {
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
               Built For The Hardest<br />
-              <span className="text-[#005ead]">Environment In Logistics</span>
+              Environment In <span className="text-[#005ead]">Logistics</span>
             </h2>
           </FadeUp>
 
@@ -821,9 +812,13 @@ export default function PsrTrailPage() {
             </h2>
           </FadeUp>
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
             {performanceStats.map((stat, i) => (
-              <FadeUp key={stat.label} delay={i * 80} className="h-full">
+              <FadeUp
+                key={stat.label}
+                delay={i * 80}
+                className={`h-full ${i === 2 ? "col-span-2 md:col-span-1" : ""}`}
+              >
                 <div className="h-full rounded-xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm hover:border-[#005ead] transition-all flex flex-col justify-center">
                   <div className="text-3xl md:text-4xl font-bold text-white leading-none">
                     {stat.value}
