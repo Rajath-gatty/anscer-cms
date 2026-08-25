@@ -1,0 +1,36 @@
+export const seriesCards = [
+  {
+    index: "01",
+    title: "PSR Series",
+    copy: "Automates pallet stacking, transport, and trolley movement for efficient warehouse and intralogistics operations.",
+    tags: ["Stacking", "Ground to Ground"],
+    backgroundImage: "products/psr-bg.jpg",
+    image: "psr-2000-r.png",
+    href: "/psr-series",
+    marker: "PSR",
+    featured: true,
+  },
+  {
+    index: "02",
+    title: "AR Series",
+    copy: "Automates multiple material handling applications through a modular platform with interchangeable top modules.",
+    tags: ["Tugging", "Lifting", "Tunneling"],
+    backgroundImage: "products/ar-bg.jpg",
+    image:
+      "bcbedcb1052074b00bb60d9f0fe5e0bb_60ea9badfafa109779007ff36fd0cf87881840a1-p-1080.png",
+    href: "/ar-series",
+    marker: "AR",
+    featured: false,
+  },
+  {
+    index: "03",
+    title: "AGV Series",
+    copy: "Automates point-to-point material transport through compact, QR-guided navigation for efficient operations.",
+    tags: ["Lifting", "Sorting"],
+    backgroundImage: "products/agv-bg.jpg",
+    image: "agv-100-new-p-500.png",
+    href: "/agv-series",
+    marker: "AGV",
+    featured: false,
+  },
+];

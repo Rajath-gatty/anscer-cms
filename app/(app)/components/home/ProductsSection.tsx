@@ -1,0 +1,111 @@
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { FadeLeft, FadeRight, FadeUp } from "../animation";
+import { seriesCards as productCards } from "../robots/product-series-data";
+import { imagePath } from "./assets";
+import { ArrowButton, Kicker, Tags } from "./SectionPrimitives";
+import { cn } from "@/lib/utils";
+
+export function ProductsSection() {
+  const featuredProduct = productCards.find((product) => product.featured);
+  const secondaryProducts = productCards.filter((product) => !product.featured);
+
+  return (
+    <section
+      id="robots"
+      className="scroll-mt-10 overflow-hidden bg-[#fafafa] pb-10 pt-10 md:scroll-mt-16 md:pb-14 md:pt-14 lg:pb-16 lg:pt-16 xl:pb-20 xl:pt-8"
+    >
+      <div className="site-container">
+        {/* <Kicker>Robots Designed to Deliver</Kicker> */}
+        <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
+          Our Product <span className="text-[#005ead] font-montserrat">Line-Up</span>
+        </h2>
+        <p className="mt-4 max-w-[640px] 2xl:max-w-[750px] text-sm leading-5 text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">
+          Explore ANSCER’s Autonomous Mobile Robot portfolio, designed for different payloads, load types and material handling applications across industrial operations.
+        </p>
+        <div className="mt-7 grid gap-3 md:gap-4 lg:grid-cols-2 lg:items-stretch">
+          {featuredProduct ? (
+            <div className="lg:h-full">
+              <ProductCard product={featuredProduct} />
+            </div>
+          ) : null}
+          <div
+            className="grid gap-3 md:gap-4 lg:h-full lg:grid-rows-2"
+          >
+            {secondaryProducts.map((product) => (
+              <ProductCard key={product.title} product={product} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProductCard({ product }: { product: (typeof productCards)[number] }) {
+  const media = getHomeProductMedia(product);
+  const isFeatured = product.featured;
+
+  return (
+    <article
+      className={`group relative flex overflow-hidden rounded-lg bg-[#e6edf3] p-4 md:p-5 3xl:py-6 4xl:py-8 ${isFeatured
+        ? "min-h-[430px] flex-col md:min-h-[560px] lg:h-full lg:min-h-[620px] 4xl:min-h-[750px]"
+        : "min-h-[340px] flex-col md:min-h-[350px] lg:min-h-0 lg:flex-row lg:gap-5"
+        }`}
+    >
+      <div
+        className={`relative z-10 ${isFeatured ? "" : "lg:w-[52%] lg:shrink-0"}`}
+      >
+        <h3 className="text-xl font-semibold md:text-[clamp(24px,1.1vw,40px)] 3xl:text-[clamp(26px,1.3vw,44px)]">
+          {product.title}
+        </h3>
+        <p className={cn("mt-2 max-w-xl text-sm leading-4 text-[#27384b] md:mt-3 3xl:mt-4 4xl:mt-5   md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]", isFeatured && "4xl:max-w-[90%]")}>
+          {product.copy}
+        </p>
+        <Tags tags={product.tags} />
+        <div className="mt-3 opacity-100 transition-opacity duration-300 md:mt-4 3xl:mt-5 4xl:mt-6 lg:opacity-0 lg:group-hover:opacity-100">
+          <ArrowButton
+            target={product.href}
+            className="h-8 text-xs font-medium px-4 md:h-10 md:text-[14px]"
+          >
+            Explore
+          </ArrowButton>
+        </div>
+      </div>
+      <div className={media.wrapperClass}>
+        <Image
+          src={`${imagePath}${media.image}`}
+          alt=""
+          fill
+          sizes={media.sizes}
+          className={media.imageClass}
+        />
+      </div>
+    </article>
+  );
+}
+
+function getHomeProductMedia(product: (typeof productCards)[number]) {
+  if (product.featured) {
+    return {
+      image: "psr-image-final.png",
+      wrapperClass:
+        "relative mt-auto h-[235px] w-full overflow-visible sm:h-[275px] md:h-[350px] lg:h-[410px] 3xl:h-[550px] 3xl:translate-x-20",
+      imageClass:
+        "object-contain object-bottom transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110",
+      sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, (max-width:1900px) 80vw, 33vw",
+    };
+  }
+
+  return {
+    image:
+      product.marker === "AGV"
+        ? "eca609825c9ed12d6eab777cf34ae51efee25114.png"
+        : "60ea9badfafa109779007ff36fd0cf87881840a1.png",
+    wrapperClass: "relative mt-5 h-full w-full flex items-center  lg:flex-1 3xl:flex-none 3xl:w-[42%]",
+    imageClass:
+      `object-contain object-center transition-transform duration-500 origin-[50%_85%] ease-[cubic-bezier(0.22,1,0.36,1)] ${product.marker === "AGV" ? "scale-100 group-hover:scale-110 md:scale-90 md:group-hover:scale-100" : "scale-120 3xl:scale-100 group-hover:scale-130 3xl:group-hover:scale-110 md:scale-100 md:group-hover:scale-110"}`,
+    sizes: "(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 22vw",
+  };
+}
+

@@ -1,0 +1,35 @@
+import Image from "next/image";
+import { FadeUp } from "../../components/animation";
+import { imagePath } from "../../components/home/assets";
+import { ArrowButton } from "../../components/home/SectionPrimitives";
+
+export function SoftwareHero() {
+  return (
+    <section className="relative min-h-[calc(100svh-60px)] overflow-hidden bg-[#011f40] text-white md:min-h-[calc(100svh-110px)]">
+      <Image
+        src={`${imagePath}software-hero.png`}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.58)_42%,rgba(0,0,0,0)_86%)]" />
+      <div className="site-container relative z-10 flex min-h-[calc(100svh-60px)] items-center py-16 md:min-h-[calc(100svh-110px)]">
+        <FadeUp className="max-w-[807px] xl:max-w-[850px] 2xl:max-w-[900px] 3xl:max-w-[1000px] 4xl:max-w-[1200px]">
+          <h1 className="mt-4 max-w-[807px] xl:max-w-[850px] 2xl:max-w-[900px] 3xl:max-w-[1000px] 4xl:max-w-[1200px] text-[40px] font-bold leading-[1.12] text-white md:text-[clamp(48px,4vw,80px)] md:leading-[1.15]">
+            Software That Understands Your Business, Not Just Your Robots
+          </h1>
+          <p className="mt-5 max-w-[680px] 3xl:max-w-[850px] 4xl:max-w-[1000px] text-sm md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] font-medium leading-[1.3] text-[#fafafa]">
+            Robots move materials. Operations move businesses. ANSCER transforms
+            business requests into autonomous execution through
+            industry-specific business applications and configurable workflows.
+          </p>
+          <ArrowButton target="/contact-us" className="mt-8 h-[46px] px-5">
+            Request demo
+          </ArrowButton>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
