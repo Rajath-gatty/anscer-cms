@@ -101,12 +101,12 @@ const performanceStats = [
   //   label: "Human Interventions",
   //   subtext: "Per cycle",
   // },
-  {
-    value: "0",
-    unit: "",
-    label: "Safety Incidents",
-    subtext: "Target per deployment",
-  },
+  // {
+  //   value: "0",
+  //   unit: "",
+  //   label: "Safety Incidents",
+  //   subtext: "Target per deployment",
+  // },
 ];
 
 const useCases = [
@@ -428,7 +428,7 @@ export default function PsrTrailPage() {
       </section>
 
       {/* MODEL COMPARISON */}
-      <section className="py-16 md:py-24 bg-white border-t border-b border-[#dfe6ee]" id="models">
+      {/* <section className="py-16 md:py-24 bg-white border-t border-b border-[#dfe6ee]" id="models">
         <div className="site-container">
           <FadeUp>
             <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
@@ -445,7 +445,7 @@ export default function PsrTrailPage() {
 
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Standard Model */}
-            <FadeUp delay={100}>
+            {/* <FadeUp delay={100}>
               <div className="rounded-2xl border border-[#dfe6ee] bg-white overflow-hidden shadow-sm hover:shadow-md transition-all">
                 <div className="p-6 md:p-8 bg-[#e6ebf0] border-b border-[#dfe6ee]">
                   <span className="inline-block bg-white text-[#005ead] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-3">
@@ -488,10 +488,10 @@ export default function PsrTrailPage() {
                       <Check className="size-4 text-[#005ead] shrink-0 mt-0.5" />
                       <span>Built for controlled trailer unloading up to 2,000 kg payload</span>
                     </li>
-                    {/* <li className="flex items-start gap-2.5">
+                    <li className="flex items-start gap-2.5">
                       <Check className="size-4 text-[#005ead] shrink-0 mt-0.5" />
                       <span>Compact profile — navigates tight trailer interiors</span>
-                    </li> */}
+                    </li>
                     <li className="flex items-start gap-2.5">
                       <Check className="size-4 text-[#005ead] shrink-0 mt-0.5" />
                       <span>Best suited for 3PL, retail DC, and FMCG operations</span>
@@ -503,7 +503,7 @@ export default function PsrTrailPage() {
                   </ul>
                 </div>
               </div>
-            </FadeUp>
+            </FadeUp> */}
 
             {/* Heavy Model */}
             {/* <FadeUp delay={200}>
@@ -564,10 +564,10 @@ export default function PsrTrailPage() {
                   </ul>
                 </div>
               </div>
-            </FadeUp> */}
+            </FadeUp> 
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* HOW IT WORKS */}
       <section id="how" className="py-16 md:py-24 bg-[#fafafa]">
@@ -818,7 +818,7 @@ export default function PsrTrailPage() {
             </h2>
           </FadeUp>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
             {performanceStats.map((stat, i) => (
               <FadeUp key={stat.label} delay={i * 80}>
                 <div className="rounded-xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm hover:border-[#005ead] transition-all">
@@ -956,7 +956,7 @@ export default function PsrTrailPage() {
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
               Up and running<br />
-              <span className="text-[#005ead]">in hours — not months.</span>
+              <span className="text-[#005ead]">in hours - not months.</span>
             </h2>
             <p className="mt-4 max-w-[640px] 3xl:max-w-[750px] text-sm leading-relaxed text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               TRail is positioned for low-disruption pilot deployments, with site mapping, WMS coordination, safety validation, and operator training planned as part of commissioning.

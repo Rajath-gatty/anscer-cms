@@ -121,7 +121,7 @@ export function SiteFooter() {
                 <br />
                 Phone:{" "}
                 <a href="tel:+19714318811" className="font-bold">
-                  (+1) 971-431-8811
+                  (+1) 971-341-8811
                 </a>
               </p>
             </div>
