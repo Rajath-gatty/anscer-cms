@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { FadeUp } from "../components/animation";
 import { ArrowButton } from "../components/home/SectionPrimitives";
 
@@ -172,7 +172,7 @@ const whyTrailBenefits = [
   },
   {
     icon: "🏗️",
-    title: "Less on Infrastructure",
+    title: "Less On Infrastructure",
     description:
       "Designed to reduce dependency on floor markers or QR codes, subject to site validation and safety requirements.",
   },
@@ -211,7 +211,7 @@ const safetyFeatures = [
   },
   {
     num: "06",
-    title: "Auto-Stop on System Fault",
+    title: "Auto-Stop On System Fault",
     description:
       "Automatic safe stop on localization loss, network drop, battery low, or any safety sensor fault.",
   },
@@ -276,8 +276,8 @@ export default function PsrTrailPage() {
             </FadeUp>
             <FadeUp delay={100}>
               <h1 className="text-[38px] font-bold leading-[1.05] tracking-tight text-white md:text-[clamp(44px,3.8vw,76px)] mb-6">
-                Unload every trailer.
-                <span className="block text-[#005ead]">Autonomously.</span>
+                Unload Every Trailer.
+                <span className="block">Autonomously.</span>
               </h1>
             </FadeUp>
             <FadeUp delay={200}>
@@ -286,8 +286,11 @@ export default function PsrTrailPage() {
               </p>
             </FadeUp>
             <FadeUp delay={300}>
-              <div className="flex items-center gap-4 flex-wrap mb-12">
-                <ArrowButton target="/contact-us" className="h-11 px-6 text-sm font-bold">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-12">
+                <ArrowButton
+                  target="/contact-us"
+                  className="w-full sm:w-auto justify-center h-11 px-6 text-sm font-bold"
+                >
                   Request a Pilot
                 </ArrowButton>
                 <ArrowButton
@@ -295,7 +298,7 @@ export default function PsrTrailPage() {
                   href="#how"
                   variant="ghost"
                   dark
-                  className="h-11 px-5 border border-white/20 rounded-sm hover:bg-white/10 text-sm"
+                  className="w-full sm:w-auto justify-center h-11 px-6 border border-white/20 rounded-sm hover:bg-white/10 text-sm font-medium"
                 >
                   See How It Works
                 </ArrowButton>
@@ -347,7 +350,7 @@ export default function PsrTrailPage() {
       <section className="border-b border-[#dfe6ee] bg-[#e6ebf0] py-6">
         <div className="site-container flex items-center gap-8 flex-wrap justify-between">
           <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#005ead]">
-            Trusted by
+            Trusted By
           </span>
           <div className="flex items-center gap-8 md:gap-12 flex-wrap">
             {trustLogos.map((logo) => (
@@ -370,7 +373,7 @@ export default function PsrTrailPage() {
               The Product
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
-              Meet the <span className="text-[#005ead]">ANSCER TRail</span>
+              Meet The <span className="text-[#005ead]">ANSCER TRail</span>
             </h2>
             <p className="mt-4 max-w-[640px] 3xl:max-w-[750px] text-sm leading-relaxed text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               TRail is an ANSCER solution for autonomous trailer unloading, built on ANSCER&apos;s proven mobile robot platform and fleet intelligence for dock and warehouse operations.
@@ -400,7 +403,7 @@ export default function PsrTrailPage() {
                   Platform
                 </p>
                 <h3 className="mt-2 text-2xl md:text-3xl font-bold text-[#011f40] leading-snug">
-                  A proven forklift.<br />An extraordinary brain.
+                  A Proven Forklift.<br />An Extraordinary Brain.
                 </h3>
                 <p className="mt-4 text-sm md:text-base leading-relaxed text-[#4b5563]">
                   We start with the battle-tested ANSCER TRail CB 2000 and equip it with Safety certified LiDARs, Navigation Sensor, depth cameras, and our autonomy stack to enable it to navigate unmapped trailer interiors and retrieve every pallet without human direction.
@@ -579,8 +582,8 @@ export default function PsrTrailPage() {
                   How It Works
                 </p>
                 <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
-                  Autonomous trailer unloading,<br />
-                  <span className="text-[#005ead]">from dock check to pallet drop.</span>
+                  Autonomous Trailer Unloading,<br />
+                  <span className="text-[#005ead]">From Dock Check To Pallet Drop.</span>
                 </h2>
               </div>
               <p className="text-sm md:text-base leading-relaxed text-[#4b5563]">
@@ -596,10 +599,10 @@ export default function PsrTrailPage() {
               <div className="border border-[#dfe6ee] bg-white shadow-[0_18px_60px_rgba(1,31,64,0.06)] rounded-[24px] p-[1.65rem] flex flex-col justify-between gap-[1.35rem] h-full">
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-[#005ead] block">
-                    System overview
+                    System Overview
                   </span>
                   <h3 className="text-xl font-bold text-[#011f40] mt-3 leading-snug">
-                    One command starts a controlled dock-to-staging workflow.
+                    One Command Starts A Controlled Dock-To-Staging Workflow.
                   </h3>
                   <p className="text-sm text-[#4b5563] mt-3 leading-relaxed">
                     The system verifies the bay, understands the trailer and pallet position, aligns the equipment, confirms pickup, and delivers the pallet to the assigned staging lane.
@@ -607,7 +610,7 @@ export default function PsrTrailPage() {
                 </div>
                 <div className="rounded-[18px] p-[1.1rem_1.15rem] border border-[#005ead]/20 bg-[#edf6ff]">
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#005ead]">
-                    Operator command
+                    Operator Command
                   </span>
                   <strong className="block my-1.5 text-[#011f40] font-bold text-base">
                     Unload Trailer · Bay 03
@@ -617,7 +620,7 @@ export default function PsrTrailPage() {
                   </span>
                 </div>
                 <div className="grid gap-2.5">
-                  {["Dock safety verified", "Trailer geometry acquired", "Pallet pose confirmed", "Pickup and exit monitored"].map(
+                  {["Dock Safety Verified", "Trailer Geometry Acquired", "Pallet Pose Confirmed", "Pickup And Exit Monitored"].map(
                     (step, i) => (
                       <div
                         key={step}
@@ -639,10 +642,10 @@ export default function PsrTrailPage() {
                   <div className="flex items-center gap-2.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#005ead] shadow-[0_0_0_5px_rgba(0,94,173,0.12)]" />
                     <span className="text-xs font-bold uppercase tracking-wider text-[#011f40]">
-                      TRail perception stack
+                      TRail Perception Stack
                     </span>
                   </div>
-                  <span className="text-xs font-medium text-[#4b5563]">Live sensor view</span>
+                  <span className="text-xs font-medium text-[#4b5563]">Live Sensor View</span>
                 </div>
                 <div className="bg-white p-2 flex-1 flex items-center justify-center">
                   <Image
@@ -668,27 +671,27 @@ export default function PsrTrailPage() {
             <FadeUp delay={0.3} className="h-full max-lg:col-span-full">
               <div className="border border-[#dfe6ee] bg-white shadow-[0_18px_60px_rgba(1,31,64,0.06)] rounded-[24px] p-[1.4rem] flex flex-col gap-3.5 h-full">
                 <span className="text-xs font-semibold uppercase tracking-wider text-[#005ead]">
-                  Control layers
+                  Control Layers
                 </span>
                 {[
                   {
                     layer: "Layer 01",
-                    title: "Dock readiness",
+                    title: "Dock Readiness",
                     desc: "Checks trailer presence, restraint, door, dock leveler and operator enable before entry.",
                   },
                   {
                     layer: "Layer 02",
-                    title: "Trailer navigation",
+                    title: "Trailer Navigation",
                     desc: "Tracks trailer walls, dock plate transition, pitch, roll and available reverse path.",
                   },
                   {
                     layer: "Layer 03",
-                    title: "Pallet engagement",
+                    title: "Pallet Engagement",
                     desc: "Detects pallet face, fork pockets, yaw angle, insertion depth and load confirmation.",
                   },
                   {
                     layer: "Layer 04",
-                    title: "Safety supervision",
+                    title: "Safety Supervision",
                     desc: "Human detection, obstacle stop, speed zones, localization fault stop and recovery mode.",
                   },
                 ].map((item, index) => (
@@ -747,8 +750,8 @@ export default function PsrTrailPage() {
               Technology
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
-              Built for the hardest<br />
-              <span className="text-[#005ead]">environment in logistics</span>
+              Built For The Hardest<br />
+              <span className="text-[#005ead]">Environment In Logistics</span>
             </h2>
           </FadeUp>
 
@@ -813,15 +816,15 @@ export default function PsrTrailPage() {
               Performance Benchmarks
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-white md:text-[clamp(40px,2.4vw,80px)]">
-              Real numbers.<br />
-              <span className="text-[#005ead]">Not estimates.</span>
+              Real Numbers.<br />
+              <span>Not Estimates.</span>
             </h2>
           </FadeUp>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {performanceStats.map((stat, i) => (
-              <FadeUp key={stat.label} delay={i * 80}>
-                <div className="rounded-xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm hover:border-[#005ead] transition-all">
+              <FadeUp key={stat.label} delay={i * 80} className="h-full">
+                <div className="h-full rounded-xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm hover:border-[#005ead] transition-all flex flex-col justify-center">
                   <div className="text-3xl md:text-4xl font-bold text-white leading-none">
                     {stat.value}
                     {stat.unit && <span className="text-lg font-normal text-white/70">{stat.unit}</span>}
@@ -845,8 +848,8 @@ export default function PsrTrailPage() {
               Applications
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
-              Three ways TRail <span className="text-[#005ead]">transforms</span><br />
-              your operation
+              Three Ways TRail <span className="text-[#005ead]">Transforms</span><br />
+              Your Operation
             </h2>
           </FadeUp>
 
@@ -893,7 +896,7 @@ export default function PsrTrailPage() {
               Why TRail
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
-              Built for <span className="text-[#005ead]">best performance</span>
+              Built For <span className="text-[#005ead]">Best Performance</span>
             </h2>
             <p className="mt-4 max-w-[640px] 3xl:max-w-[750px] text-sm leading-relaxed text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               Five measurable outcomes every TRail deployment delivers — from day one.
@@ -924,7 +927,7 @@ export default function PsrTrailPage() {
               Safety & Compliance
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
-              Engineered safer.
+              Engineered <span className="text-[#005ead]">Safer.</span>
             </h2>
             <p className="mt-4 max-w-[640px] 3xl:max-w-[750px] text-sm leading-relaxed text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               TRail should be deployed with safety architecture designed around ISO 3691-4 principles for unmanned industrial vehicles.
@@ -955,8 +958,8 @@ export default function PsrTrailPage() {
               Deployment Approach
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-[#011f40] md:text-[clamp(40px,2.4vw,80px)]">
-              Up and running<br />
-              <span className="text-[#005ead]">in hours - not months.</span>
+              Up And Running<br />
+              <span className="text-[#005ead]">In Hours - Not Months.</span>
             </h2>
             <p className="mt-4 max-w-[640px] 3xl:max-w-[750px] text-sm leading-relaxed text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               TRail is positioned for low-disruption pilot deployments, with site mapping, WMS coordination, safety validation, and operator training planned as part of commissioning.
@@ -982,7 +985,7 @@ export default function PsrTrailPage() {
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1">
-                  Designed to reduce operator dependency from the first pallet to the last.
+                  Designed To Reduce Operator Dependency From The First Pallet To The Last.
                 </h3>
                 <p className="text-xs md:text-sm text-white/70 leading-relaxed">
                   TRail is positioned as a complete-cycle autonomous trailer unloading, with exception handling, dock interlocks, and controlled validation during pilot deployment.
@@ -1009,8 +1012,8 @@ export default function PsrTrailPage() {
               Get Started
             </p>
             <h2 className="mt-3 text-[28px] font-bold leading-[1.15] text-white md:text-[clamp(40px,2.4vw,80px)]">
-              Ready to automate<br />
-              <span className="text-[#005ead]">your trailer dock?</span>
+              Ready To Automate<br />
+              <span>Your Trailer Dock?</span>
             </h2>
             <p className="mt-4 max-w-[540px] text-sm text-white/70 leading-relaxed">
               We work with 3PL operators, retail DCs, and manufacturers globally. Talk to our team about a pilot deployment at your facility.
