@@ -111,7 +111,7 @@ const performanceStats = [
 
 const useCases = [
   {
-    image: "/anscer/images/trial-product/application-1.jpg",
+    image: "/anscer/images/trial-product/application-1.webp",
     title: "Trailer Loading & Unloading",
     description:
       "Unload a full 53 ft trailer in 55 minutes or less — 24 hours a day, every day. No forklift operator, no dock attendant, no waiting for shift change.",
@@ -122,7 +122,7 @@ const useCases = [
     ],
   },
   {
-    image: "/anscer/images/trial-product/application-2.jpg",
+    image: "/anscer/images/trial-product/application-2.webp",
     title: "Warehouse Labor Augmentation",
     description:
       "Meet peak demand at any time. Build resiliency against labor shortages with clear ROI potential compared with manual dock operations and imported automation alternatives.",
@@ -133,7 +133,7 @@ const useCases = [
     ],
   },
   {
-    image: "/anscer/images/trial-product/application-3.jpg",
+    image: "/anscer/images/trial-product/application-3.webp",
     title: "Workforce Enhancement",
     description:
       "Move workers away from high-injury dock unloading into higher-value roles. Dock operations are a high-risk area in warehouses; TRail is designed to move people away from repetitive dock unloading tasks into higher-value roles.",
@@ -251,7 +251,7 @@ export default function PsrTrailPage() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#011f40] text-white">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/anscer/images/trial-product/hero.jpg"
+            src="/anscer/images/trial-product/hero.webp"
             alt="ANSCER TRail autonomous trailer unloading robot"
             fill
             priority
@@ -381,7 +381,7 @@ export default function PsrTrailPage() {
             <FadeUp>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#dfe6ee] bg-[#e6ebf0] shadow-sm">
                 <Image
-                  src="/anscer/images/trial-product/platform-section.jpg"
+                  src="/anscer/images/trial-product/platform-section.webp"
                   alt="ANSCER TRail CB2000 autonomous forklift front view"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -646,7 +646,7 @@ export default function PsrTrailPage() {
                 </div>
                 <div className="bg-white p-2 flex-1 flex items-center justify-center">
                   <Image
-                    src="/anscer/images/trial-product/system-overview.jpg"
+                    src="/anscer/images/trial-product/system-overview.webp"
                     alt="ANSCER TRail CB2000 sensor canopy and trailer-unloading perception stack"
                     width={720}
                     height={460}
@@ -773,7 +773,7 @@ export default function PsrTrailPage() {
               <div className="sticky top-28 space-y-6">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#dfe6ee] bg-[#e6ebf0] shadow-sm">
                   <Image
-                    src="/anscer/images/trial-product/technology-section.jpg"
+                    src="/anscer/images/trial-product/technology-section.webp"
                     alt="ANSCER TRail CB2000 side profile with forks lowered"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
