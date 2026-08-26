@@ -152,12 +152,12 @@ function SeriesPanel({
         {/* <div className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(0deg,rgba(250,250,250,.2),rgba(250,250,250,0))]" /> */}
       </div>
       <div className="site-container relative z-10 grid min-h-[720px] items-center py-16 lg:min-h-[calc(100vh-60px)]">
-        <div className="max-w-[455px]">
+        <div className="max-w-[455px] 3xl:max-w-[570px] 4xl:max-w-[700px]">
           <p className="text-xs font-semibold text-[#005ead]">{series.index}</p>
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
             {series.title}
           </h2>
-          <p className="mt-4 max-w-[430px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
+          <p className="mt-4 max-w-[430px] 3xl:max-w-[540px] 4xl:max-w-[660px] text-sm leading-5 text-[#4b5563] md:text-base md:leading-6">
             {series.copy}
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -228,12 +228,12 @@ function PanelContent({ series }: { series: (typeof seriesCards)[number] }) {
         className="site-container relative z-10 block no-underline"
       >
         <div className="grid min-h-[720px] items-center py-16 lg:min-h-[calc(100vh-60px)]">
-          <div className="max-w-[455px]">
+          <div className="max-w-[455px] 3xl:max-w-[570px] 4xl:max-w-[700px]">
             <p className="text-xs md:text-lg font-medium text-[#005ead]">{series.index}</p>
             <h2 className="mt-5 text-[36px] font-bold tracking-tight">
               {series.title}
             </h2>
-            <p className="mt-4 max-w-[430px] text-base leading-6 text-[#4b5563]">
+            <p className="mt-4 max-w-[430px] 3xl:max-w-[540px] 4xl:max-w-[660px] text-base leading-6 text-[#4b5563]">
               {series.copy}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FadeUp } from "../animation";
+import { ArrowButton } from "./SectionPrimitives";
 
 export function CtaSection() {
   return (
@@ -8,15 +9,14 @@ export function CtaSection() {
       <div className="absolute inset-0 z-10 bg-black/70" />
       <div className="absolute inset-0 z-20 bg-[#005ead] mix-blend-color" />
       <FadeUp className="site-container relative z-30 flex flex-col items-start gap-6">
-        <h2 className="max-w-[970px] text-[48px] font-semibold leading-[60px] tracking-normal md:leading-[70px] lg:text-[60px] lg:leading-[1.1]">
-          Dive Into The Future Factory
+        <h2 className="max-w-[970px] text-[36px] font-bold tracking-tight text-white md:text-[clamp(40px,2.4vw,80px)] leading-tight md:leading-[1.1]">
+          Ready to Automate Your Material Flow?
         </h2>
-        <p className="max-w-[850px] text-[14px] font-medium leading-[20px] text-white md:leading-[32px] lg:text-[18px] lg:leading-[32px]">
-          Explore ANSCER&apos;s cutting-edge lineup, powerful smart automation solutions engineered to transform your
-          operations.
+        <p className="max-w-[850px] text-sm font-medium leading-5 text-white md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+          See how ANSCER’s Autonomous Mobile Robots can turn repetitive material handling into reliable, scalable autonomous flow.
         </p>
         <div>
-          {/* <ArrowButton dark>Explore Solutions</ArrowButton> */}
+          <ArrowButton>Talk to Our Experts</ArrowButton>
         </div>
       </FadeUp>
     </section>

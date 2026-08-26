@@ -15,11 +15,11 @@ const ProductHeroModel = dynamic(
 export function ProductHero({ data }: { data: ProductDetailData }) {
   return (
     <section className="relative overflow-hidden bg-[#fafafa] pt-10 md:pt-12 ">
-      <div className="site-container flex min-h-[430px] flex-col items-center justify-center text-center md:min-h-[680px]">
-        <h1 className="relative z-10 text-[38px] font-bold leading-none tracking-tight md:text-[40px]">
+      <div className="site-container flex min-h-[430px] flex-col items-center justify-center text-center md:min-h-[680px] 3xl:min-h-[850px] 4xl:min-h-[1000px]">
+        <h1 className="relative z-10 text-[38px] font-bold leading-none tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
           {data.title}
         </h1>
-        <div className="relative mt-7 h-[240px] w-full max-w-[960px] md:h-[430px]">
+        <div className="relative mt-7 h-[240px] w-full max-w-[960px] 3xl:max-w-[1200px] 4xl:max-w-[1400px] md:h-[430px] 3xl:h-[550px] 4xl:h-[650px]">
           {data.backgroundText ? (
             <Image
               src={`${imagePath}${data.backgroundText}`}

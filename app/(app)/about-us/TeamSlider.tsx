@@ -203,13 +203,13 @@ export function TeamSlider({
       <div className="site-container">
         <FadeUp className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-162.5">
-            <p className="text-[9px] font-medium uppercase tracking-[0.12em] text-[#005ead] md:text-[16px]">
+            <p className="text-[9px] font-medium uppercase tracking-[0.12em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               {eyebrow}
             </p>
-            <h2 className="mt-2 text-[20px] font-bold leading-tight text-[#011f40] md:mt-3 md:text-[36px]">
+            <h2 className="mt-2 text-[20px] font-bold leading-tight text-[#011f40] md:mt-3 md:text-[clamp(40px,2.4vw,80px)]">
               {title} <span className="text-[#005ead]">{highlightedTitle}</span>
             </h2>
-            <p className="mt-3 max-w-160 text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[16px] md:leading-[1.55]">
+            <p className="mt-3 max-w-160 text-[11px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {copy}
             </p>
           </div>
@@ -274,10 +274,10 @@ export function TeamSlider({
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_34%,rgba(0,0,0,.84))]" />
                   <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 md:p-7">
                     <div>
-                      <h3 className="text-[13px] font-semibold leading-tight text-white md:text-[18px]">
+                      <h3 className="text-[13px] font-semibold leading-tight text-white md:text-[clamp(16px,0.8vw,30px)]">
                         {slide.name}
                       </h3>
-                      <p className="mt-2 text-[9px] font-normal text-white/92 md:text-[14px]">
+                      <p className="mt-2 text-[9px] font-normal text-white/92 md:text-[clamp(14px,0.7vw,24px)]">
                         {slide.role}
                       </p>
                     </div>

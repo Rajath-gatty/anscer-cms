@@ -69,7 +69,7 @@ export function TabbedCapabilities({
 
   return (
     <section
-      className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-10 md:py-20`}
+      className={`${pale ? "bg-[#e6ebf0]" : "bg-[#fafafa]"} py-10 md:py-20 3xl:py-24 4xl:py-32`}
     >
       <style>{`
         @keyframes fade-image {
@@ -101,10 +101,10 @@ export function TabbedCapabilities({
         }
       `}</style>
       <div className="site-container">
-        <p className="text-[12px] md:text-base font-medium uppercase tracking-[0.14em] text-[#005ead]">
+        <p className="text-[12px] md:text-[clamp(16px,0.8vw,30px)] font-medium uppercase tracking-[0.14em] text-[#005ead]">
           {eyebrow}
         </p>
-        <h2 className="mt-3 text-[28px] md:text-4xl font-bold capitalize leading-tight">
+        <h2 className="mt-3 text-[28px] md:text-[clamp(40px,2.4vw,80px)] font-bold capitalize leading-tight">
           {title}
         </h2>
 
@@ -168,7 +168,7 @@ export function TabbedCapabilities({
                       type="button"
                       key={item.title}
                       onClick={() => setActiveIndex(index)}
-                      className={`cursor-pointer rounded-xl p-5 text-left text-xl transition-colors duration-300 ${
+                      className={`cursor-pointer rounded-xl p-5 text-left text-xl md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] transition-colors duration-300 ${
                         isActive
                           ? "bg-white font-semibold text-[#005ead]"
                           : "bg-white font-normal text-[#011f40] hover:bg-white/90"
@@ -220,10 +220,10 @@ export function TabbedCapabilities({
                     className="absolute -bottom-10 -right-6 z-10 w-90 max-w-[calc(100%-3rem)] rounded-xl bg-white p-5 shadow-[0_12px_30px_rgba(1,31,64,.12)] animate-card"
                     style={{ animationDelay: "0.1s", opacity: 0 }}
                   >
-                    <h3 className="text-lg font-semibold text-[#005ead]">
+                    <h3 className="text-lg md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] font-semibold text-[#005ead]">
                       {activeItem.title}
                     </h3>
-                    <p className="mt-3 leading-normal text-brand-charcoal text-base">
+                    <p className="mt-3 leading-normal text-brand-charcoal text-base md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                       {activeItem.copy}
                     </p>
                   </div>
@@ -279,7 +279,7 @@ function AccordionList({
                 isActive ? "cursor-default" : "cursor-pointer"
               }`}
             >
-              <span className="text-base font-semibold leading-5 text-[#005ead] md:text-xl md:leading-7">
+              <span className="text-base font-semibold leading-5 text-[#005ead] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-7">
                 {item.title}
               </span>
               <ChevronDown
@@ -300,7 +300,7 @@ function AccordionList({
             >
               <div className="overflow-hidden">
                 <div className="pt-3">
-                  <p className="max-w-140 text-sm leading-4 text-[#3a3a3a] md:text-base md:leading-6">
+                  <p className="max-w-140 text-sm leading-4 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-6">
                     {item.copy}
                   </p>
                   <div

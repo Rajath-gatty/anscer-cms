@@ -130,7 +130,7 @@ const psrUseCases = [
   },
 ];
 
-const topModules = [
+export const topModules = [
   {
     title: "Shelf Lifter",
     copy: "Autonomous trolley lifting and transport operations.",
@@ -371,7 +371,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       },
     ],
     modulesBaseImage: "ar-250-base.png",
-    modules: topModules,
+    // modules: topModules,
     advancedFeatures: [
       {
         title: "Human-safe Operations",

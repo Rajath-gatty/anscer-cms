@@ -57,7 +57,7 @@ export function PathToPowerInteractive() {
               type="button"
               onClick={() => selectYear(index)}
               data-path-year-mobile={year}
-              className={`relative z-10 shrink-0 text-left font-extrabold outline-none transition-colors duration-300 focus-visible:rounded-sm focus-visible:ring-4 focus-visible:ring-[#005ead]/20 ${
+              className={`relative z-10 shrink-0 text-left font-bold outline-none transition-colors duration-300 focus-visible:rounded-sm focus-visible:ring-4 focus-visible:ring-[#005ead]/20 ${
                 isActive
                   ? "text-[28px] leading-none text-[#005ead]"
                   : "text-[16px] text-[#a7a7a7] hover:text-[#005ead]"
@@ -97,7 +97,7 @@ export function PathToPowerInteractive() {
               type="button"
               onClick={() => selectYear(index)}
               data-path-year-desktop={year}
-              className={`absolute left-0 z-10 w-[78px] -translate-y-1/2 text-right font-extrabold tabular-nums outline-none transition-colors duration-300 focus-visible:rounded-sm focus-visible:ring-4 focus-visible:ring-[#005ead]/20 ${
+              className={`absolute left-0 z-10 w-[78px] -translate-y-1/2 text-right font-bold tabular-nums outline-none transition-colors duration-300 focus-visible:rounded-sm focus-visible:ring-4 focus-visible:ring-[#005ead]/20 ${
                 isActive
                   ? "text-[28px] leading-none text-[#005ead]"
                   : "text-[16px] text-[#a7a7a7] hover:text-[#005ead]"

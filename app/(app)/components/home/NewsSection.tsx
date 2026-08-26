@@ -53,8 +53,8 @@ export function NewsSection() {
     <section className="overflow-hidden bg-white py-14 md:py-20">
       <div className="site-container">
         <FadeUp>
-          <Kicker>We are always up to something</Kicker>
-          <h2 className="mt-[10px] text-[28px] font-bold tracking-tight md:text-[38px]">Events & News</h2>
+          {/* <Kicker>We are always up to something</Kicker> */}
+          <h2 className="mt-[10px] text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">Events & News</h2>
         </FadeUp>
         <div className="mt-9 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {isLoading
@@ -72,7 +72,7 @@ export function NewsSection() {
                   delay={0.08 + index * 0.04}
                 >
                   <article className="group">
-                    <div className={`relative overflow-hidden rounded-lg bg-[#dfe7ee] lg:h-[300px] ${getNewsImageFrameClass(index)}`}>
+                    <div className={`relative overflow-hidden rounded-lg bg-[#dfe7ee] lg:h-[300px] 2xl:h-[350px] 3xl:h-[420px] ${getNewsImageFrameClass(index)}`}>
                       {imageUrl && (
                         <Image
                           src={imageUrl}
@@ -84,8 +84,8 @@ export function NewsSection() {
                         />
                       )}
                     </div>
-                    <h3 className="mt-4 h-[44px] line-clamp-2 text-base font-semibold leading-[22px] text-[#4a4a4a]">{article.postTitle}</h3>
-                    <p className="mt-4 h-[44px] line-clamp-2 text-sm font-normal leading-[22px] text-[#5b5f66]">{article.summary || ""}</p>
+                    <h3 className="mt-4 min-h-[44px] line-clamp-2 text-base font-semibold text-[#4a4a4a] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.1vw,28px)] md:leading-[130%]">{article.postTitle}</h3>
+                    <p className="mt-4 min-h-[44px] line-clamp-2 text-sm font-normal text-[#5b5f66] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[130%]">{article.summary || ""}</p>
                     <ArrowButton
                       as="a"
                       variant="ghost"

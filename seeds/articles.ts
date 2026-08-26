@@ -29,7 +29,7 @@ export const articlesSeed = async (payload: BasePayload) => {
         {
           id: 6,
           category: "Press Release",
-          title: "ANSCER Robotics launches LBR500",
+          title: "ANSCER Robotics launches LBR 500",
           image: "article-images/image-1.jpg",
           link: "https://www.engineering.com/anscer-robotics-launches-lbr500/"
         },

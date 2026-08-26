@@ -150,7 +150,7 @@ export function SolutionsCardDeckSection() {
           <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
             Solutions That <span className="text-[#005ead]">Deliver</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-[22px]">
+          <p className="mx-auto mt-4 max-w-[640px] text-sm leading-5 text-[#3a3a3a]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[22px]">
             From tugging and lifting to robotic arm integration and conveyor automation, our AMRs are designed to
             streamline operations, enhance safety, and maximize efficiency.
           </p>

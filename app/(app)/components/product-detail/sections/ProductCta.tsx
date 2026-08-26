@@ -13,7 +13,7 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
 
   return (
     <>
-      <section className="relative overflow-hidden flex items-center bg-[#005ead] py-20 text-white h-125">
+      <section className="relative overflow-hidden flex items-center bg-[#005ead] py-20 text-white h-125 3xl:h-[600px] 4xl:h-[720px]">
         <Image
           src={`${imagePath}${data.footerBanner}`}
           alt=""
@@ -25,11 +25,11 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
         <div className="absolute inset-0 w-full h-full bg-black/70" />
         <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
         <FadeUp className="site-container relative z-10">
-          <h2 className=" text-[48px] font-semibold leading-[1.1] md:text-[60px]">
+          <h2 className=" text-[48px] font-semibold leading-[1.1] md:text-[clamp(48px,4vw,80px)]">
             {data.ctaTitle ??
               `Know More About The ${data.title.replaceAll(" ", "")}`}
           </h2>
-          <p className="mt-5 max-w-140 text-sm leading-6 text-white/85 md:text-lg">
+          <p className="mt-5 max-w-140 text-sm leading-6 text-white/85 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
             Access detailed specifications, features, and performance data for
             the {data.title} in one compact product datasheet.
           </p>

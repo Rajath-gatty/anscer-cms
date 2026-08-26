@@ -91,14 +91,12 @@ export function SolutionsSection() {
       <div className="bg-[#BDE1FF2E]">
         <div className="md:flex grid items-center justify-between gap-6 md:gap-8 py-12 site-container ">
           <div className="pt-1 text-center md:text-left">
-            <Kicker>Solutions That Solve, Everywhere.</Kicker>
-            <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[36px]">
-              Solutions That <span className="text-[#005ead]">Deliver</span>
+            {/* <Kicker>Solutions That Solve, Everywhere.</Kicker> */}
+            <h2 className="mt-5 text-[28px] font-bold tracking-tight md:text-[clamp(40px,2.4vw,80px)]">
+              Autonomous Material Handling. <br /> Proven at <span className="text-[#005ead] font-montserrat">Scale</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-base md:leading-[22px]">
-              From tugging and lifting to robotic arm integration and conveyor
-              automation, our AMRs are designed to streamline operations,
-              enhance safety, and maximize efficiency.
+            <p className="mx-auto mt-4 max-w-[640px] text-center text-sm leading-5 text-[#3a3a3a] md:mx-0 md:text-left md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
+              From pallet and trolley movement to tugging, lifting and mobile manipulation, ANSCER’s Autonomous Mobile Robots automate material movement across industrial operations.
             </p>
           </div>
           <div className="">
@@ -106,13 +104,13 @@ export function SolutionsSection() {
               {displayStats.length > 0 &&
                 displayStats.map((stat, index) => (
                   <div key={index} className="mb-4 px-4 text-center">
-                    <h3 className="text-[18px] font-extrabold leading-none text-[#011f40] md:text-[30px] flex items-center justify-center gap-1">
-                      <span className="text-[#005ead]">{stat.value}</span>
-                      <span className="text-[#005ead] md:mb-2 mb-1">
+                    <h3 className="text-[18px] font-bold leading-none text-[#011f40] md:text-[clamp(24px,1.5vw,40px)] 3xl:text-[clamp(28px,1.8vw,48px)] flex items-center justify-center gap-1">
+                      <span className="text-[#005ead] font-montserrat">{stat.value}</span>
+                      <span className="text-[#005ead] md:mb-2 mb-1 font-montserrat">
                         {stats[index]?.value.endsWith("+") ? "+" : ""}
                       </span>
                     </h3>
-                    <p className="mt-2 text-[12px] font-medium text-[#011f40] md:mt-4 md:text-[20px]">
+                    <p className="mt-2 text-[12px] font-medium text-[#011f40] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
                       {stat.label}
                     </p>
                     {/* <p className="mx-auto mt-2 max-w-65 text-[9px] leading-[1.45] text-[#3a3a3a] md:mt-3 md:max-w-85 md:text-[13px] md:leading-[1.6]">
@@ -125,7 +123,7 @@ export function SolutionsSection() {
           </div>
         </div>
       </div>
-      <div className="site-container py-14 md:py-20 lg:pb-0">
+      <div className="site-container py-14 md:pb-0 md:pt-24 2xl:pb-30  3xl:pb-110 4xl:pb-[700px]">
         <SolutionsStickyStack />
       </div>
     </section>

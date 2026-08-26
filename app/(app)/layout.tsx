@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { MotionProvider } from "./components/animation/MotionProvider";
 import { ScrollBehaviorManager } from "./components/animation/ScrollBehaviorManager";
 import { SiteFooter } from "./components/home/SiteFooter";
 import { SiteHeader } from "./components/home/SiteHeader";
+import Script from "next/script";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-montserrat",
 });
+
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
   title: "ANSCER Robotics | Autonomous Industrial Automation",
@@ -23,16 +30,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_TRACKING_ID = 'G-P437PMBZPF';
   return (
     <html
       lang="en"
       className={cn(
         "h-full scroll-smooth",
-        "font-sans",
-        plusJakartaSans.variable,
+        montserrat.variable,
+        inter.variable
       )}
     >
       <body className="min-h-full bg-[#fafafa] text-[#011f40]">
+        {process.env.NODE_ENV === 'production' && <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          strategy="afterInteractive"
+        />}
+        {process.env.NODE_ENV === 'production' && <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}');
+          `}
+        </Script>}
         <MotionProvider>
           <ScrollBehaviorManager />
           {/* <AnnouncementBanner /> */}

@@ -17,7 +17,7 @@ import { imagePath } from "../../home/assets";
 import { FadeUp } from "../../animation";
 
 export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) {
-  if(!data?.advancedFeatures || data.advancedFeatures.length === 0) {
+  if (!data?.advancedFeatures || data.advancedFeatures.length === 0) {
     return null;
   }
   const [activeIndex, setActiveIndex] = useState(0);
@@ -61,8 +61,8 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
   const animationStyle = reducedMotion
     ? { width: "0%" }
     : {
-        animation: `swiperLoader ${AUTOPLAY_DURATION}ms linear forwards`,
-      };
+      animation: `swiperLoader ${AUTOPLAY_DURATION}ms linear forwards`,
+    };
 
   return (
     <section
@@ -79,14 +79,14 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
 
       <FadeUp className="site-container">
         <ScrollReveal>
-          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-white md:text-base">
+          <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-white md:text-[clamp(16px,0.8vw,30px)]">
             {data.title}
           </p>
         </ScrollReveal>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <ScrollReveal delay={80} className="max-w-[750px]">
-            <h2 className="text-[28px] font-bold text-white leading-tight tracking-[-0.02em] md:text-[36px]">
-             Advanced Features for Industrial Automation
+          <ScrollReveal delay={80} className="max-w-[750px] 3xl:max-w-[920px] 4xl:max-w-[1100px]">
+            <h2 className="text-[28px] font-bold text-white leading-tight tracking-[-0.02em] md:text-[clamp(40px,2.4vw,80px)]">
+              Advanced Features for Industrial Automation
             </h2>
           </ScrollReveal>
 
@@ -139,9 +139,9 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
             reducedMotion
               ? false
               : {
-                  delay: AUTOPLAY_DURATION,
-                  disableOnInteraction: false,
-                }
+                delay: AUTOPLAY_DURATION,
+                disableOnInteraction: false,
+              }
           }
           className="!overflow-visible"
         >
@@ -150,7 +150,7 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
               key={features.title}
               className="!w-[min(350px,82vw)]"
             >
-              <article className="flex flex-col gap-6 p-6 h-[460px] w-full rounded-xl border bg-white">
+              <article className="flex flex-col gap-6 p-6 h-[460px] 2xl:h-[550px] w-full rounded-xl border bg-white">
                 {features.image ? (
                   <Image
                     src={`${imagePath}${features.image}`}
@@ -163,14 +163,14 @@ export function AdvancedFeaturesCarousal({ data }: { data: ProductDetailData }) 
                 ) : null}
                 <div className="flex flex-col justify-between flex-grow">
                   <div>
-                    <h3 className="text-xl font-bold leading-tight text-[#005ead]">
+                    <h3 className="text-xl font-bold leading-tight text-[#005ead] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)]">
                       {features.title}
                     </h3>
                     <div className="flex flex-col justify-center gap-1 mt-3">
                       {features.points.map((point, idx) => (
                         <div key={idx} className="flex gap-3 items-start">
                           <CircleCheck size={16} className="text-[#011F40] shrink-0 mt-1" />
-                          <p className="text-sm leading-5 text-[#011F40] md:text-base md:leading-6">
+                          <p className="text-sm leading-5 text-[#011F40] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
                             {point}
                           </p>
                         </div>

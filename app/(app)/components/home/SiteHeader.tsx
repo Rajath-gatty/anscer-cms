@@ -36,6 +36,7 @@ export function SiteHeader() {
     "/ar-series",
     "/psr-series",
     "/agv-series",
+    "/psr-trail"
   ].some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
   useEffect(() => {
@@ -66,7 +67,7 @@ export function SiteHeader() {
           />
         </Link>
         <div className="hidden items-center gap-[40px] lg:flex">
-          <nav className="flex items-center gap-[40px] text-sm font-normal text-[#2f2f2f]">
+          <nav className="flex items-center gap-[40px] text-sm md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] font-normal text-[#2f2f2f]">
             {navItems.map((item) => {
               if (item === "Robots") {
                 return <RobotsDropdown key={pathname} active={isRobotsActive} />;
@@ -77,11 +78,10 @@ export function SiteHeader() {
               return (
                 <Link
                   key={item}
-                  className={`relative flex h-[60px] items-center cursor-pointer transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
-                    navActive(item)
-                      ? "font-bold text-[#005ead]"
-                      : "text-[#2f2f2f]"
-                  }`}
+                  className={`relative flex h-[60px] font-montserrat items-center cursor-pointer transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${navActive(item)
+                    ? "font-bold text-[#005ead]"
+                    : "text-[#2f2f2f]"
+                    }`}
                   href={navHref(item)}
                 >
                   {item}
@@ -89,12 +89,12 @@ export function SiteHeader() {
               );
             })}
           </nav>
-            <ArrowButton
+          <ArrowButton
 
 
-            >
-              Contact us
-            </ArrowButton>
+          >
+            Contact us
+          </ArrowButton>
         </div>
         <button
           type="button"
@@ -115,11 +115,10 @@ export function SiteHeader() {
       </div>
       <div
         id="mobile-navigation"
-        className={`absolute inset-x-0 top-full overflow-hidden border-t border-black/5 bg-[#e5e5e5]/98 shadow-[0_18px_38px_rgba(1,31,64,.16)] transition-[max-height,opacity] duration-300 lg:hidden ${
-          menuOpen
-            ? "max-h-[calc(100vh-56px)] opacity-100"
-            : "max-h-0 opacity-0"
-        }`}
+        className={`absolute inset-x-0 top-full overflow-hidden border-t border-black/5 bg-[#e5e5e5]/98 shadow-[0_18px_38px_rgba(1,31,64,.16)] transition-[max-height,opacity] duration-300 lg:hidden ${menuOpen
+          ? "max-h-[calc(100vh-56px)] opacity-100"
+          : "max-h-0 opacity-0"
+          }`}
       >
         <div className="site-container max-h-[calc(100vh-60px)] overflow-y-auto py-5">
           <nav className="flex flex-col text-base font-normal text-[#011f40]">
@@ -129,11 +128,10 @@ export function SiteHeader() {
                   <div key={item} className="border-b border-[#cfd7df] py-1">
                     <button
                       type="button"
-                      className={`cursor-pointer flex min-h-12 w-full items-center justify-between text-left ${
-                        isRobotsActive
-                          ? "font-bold text-[#005ead]"
-                          : "text-[#011f40]"
-                      }`}
+                      className={`cursor-pointer flex min-h-12 w-full items-center justify-between text-left ${isRobotsActive
+                        ? "font-bold text-[#005ead]"
+                        : "text-[#011f40]"
+                        }`}
                       aria-expanded={robotsOpen}
                       onClick={() => setRobotsOpen((open) => !open)}
                     >
@@ -145,9 +143,8 @@ export function SiteHeader() {
                       />
                     </button>
                     <div
-                      className={`grid transition-[grid-template-rows] duration-300 ${
-                        robotsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                      }`}
+                      className={`grid transition-[grid-template-rows] duration-300 ${robotsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                        }`}
                     >
                       <div className="overflow-hidden">
                         <div className="pb-4 pt-2">
@@ -172,6 +169,7 @@ export function SiteHeader() {
                               ["AR Series", "/ar-series"],
                               ["PSR Series", "/psr-series"],
                               ["AGV Series", "/agv-series"],
+                              ["PSR Trail", "/psr-trail"]
                             ].map(([series, href]) => (
                               <Link
                                 key={series}
@@ -194,11 +192,10 @@ export function SiteHeader() {
                   <div key={item} className="border-b border-[#cfd7df] py-1">
                     <button
                       type="button"
-                      className={`cursor-pointer flex min-h-12 w-full items-center justify-between text-left ${
-                        navActive(item)
-                          ? "font-bold text-[#005ead]"
-                          : "text-[#011f40]"
-                      }`}
+                      className={`cursor-pointer font-montserrat flex min-h-12 w-full items-center justify-between text-left ${navActive(item)
+                        ? "font-bold text-[#005ead]"
+                        : "text-[#011f40]"
+                        }`}
                       aria-expanded={companyOpen}
                       onClick={() => setCompanyOpen((open) => !open)}
                     >
@@ -210,34 +207,33 @@ export function SiteHeader() {
                       />
                     </button>
                     <div
-                      className={`grid transition-[grid-template-rows] duration-300 ${
-                        companyOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                      }`}
+                      className={`grid transition-[grid-template-rows] duration-300 ${companyOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                        }`}
                     >
                       <div className="overflow-hidden">
                         <div className="pb-4 pt-2 pl-2">
-                          <p className="mt-2 mb-4 text-[10px] font-medium uppercase tracking-wide text-[#8b96a3]">
+                          <p className="mt-2 mb-4 text-[10px] font-montserrat font-medium uppercase tracking-wide text-[#8b96a3]">
                             Company
                           </p>
-                          <div className="flex flex-col gap-4 text-sm font-medium text-[#011f40]">
+                          <div className="flex flex-col gap-4 text-sm font-medium text-[#011f40] font-montserrat">
                             <Link
                               href="/about-us"
                               onClick={closeMenu}
-                              className="cursor-pointer transition hover:text-[#005ead]"
+                              className="cursor-pointer transition hover:text-[#005ead] font-montserrat"
                             >
                               About us
                             </Link>
                             <Link
                               href="/newsroom"
                               onClick={closeMenu}
-                              className="cursor-pointer transition hover:text-[#005ead]"
+                              className="cursor-pointer transition hover:text-[#005ead] font-montserrat"
                             >
                               Newsroom
                             </Link>
                             <Link
                               href="https://career.anscer.com/jobs/Careers"
                               onClick={closeMenu}
-                              className="cursor-pointer transition hover:text-[#005ead] flex items-center gap-2"
+                              className="cursor-pointer transition hover:text-[#005ead] font-montserrat flex items-center gap-2"
                             >
                               Careers
                               <ExternalLink className="size-4 text-[#011f40]" />
@@ -252,9 +248,8 @@ export function SiteHeader() {
               return (
                 <Link
                   key={item}
-                  className={`cursor-pointer flex min-h-12 items-center border-b border-[#cfd7df] transition hover:text-[#005ead] ${
-                    navActive(item) ? "font-bold text-[#005ead]" : ""
-                  }`}
+                  className={`cursor-pointer flex min-h-12 items-center border-b border-[#cfd7df] transition hover:text-[#005ead] ${navActive(item) ? "font-bold text-[#005ead]" : ""
+                    }`}
                   href={navHref(item)}
                   onClick={closeMenu}
                 >
@@ -263,15 +258,15 @@ export function SiteHeader() {
               );
             })}
           </nav>
-            <div className="mt-5">
-              <ArrowButton
-                target={CONTACT_HREF}
-                onClick={closeMenu}
-                className="h-12 w-full justify-center"
-              >
-                Contact us
-              </ArrowButton>
-            </div>
+          <div className="mt-5">
+            <ArrowButton
+              target={CONTACT_HREF}
+              onClick={closeMenu}
+              className="h-12 w-full justify-center"
+            >
+              Contact us
+            </ArrowButton>
+          </div>
         </div>
       </div>
     </header>
@@ -307,41 +302,39 @@ function RobotsDropdown({ active }: { active: boolean }) {
         href="/robots"
         onMouseEnter={() => setOpen(true)}
         onClick={() => setOpen((o) => !o)}
-        className={`relative cursor-pointer flex h-[60px] items-center px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
-          open || active
-            ? "font-bold text-[#005ead] after:scale-x-100"
-            : "text-[#2f2f2f]"
-        }`}
+        className={`relative cursor-pointer font-montserrat flex h-[60px] items-center px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${open || active
+          ? "font-bold text-[#005ead] after:scale-x-100"
+          : "text-[#2f2f2f]"
+          }`}
       >
         Robots
       </Link>
       <div
-        className={`absolute left-1/2 top-[60px] z-50 w-[400px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${
-          open
-            ? "visible opacity-100 translate-y-0"
-            : "invisible opacity-0 -translate-y-2"
-        }`}
+        className={`absolute left-1/2 top-[60px] z-50 w-[400px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${open
+          ? "visible opacity-100 translate-y-0"
+          : "invisible opacity-0 -translate-y-2"
+          }`}
       >
-        <div className="p-5">
+        <div className="p-5 font-montserrat">
           <ArrowButton
             as={Link}
             href="/robots"
             onClick={() => setOpen(false)}
             variant="ghost"
-            className="text-lg gap-3 font-bold text-[#011f40] hover:underline underline-offset-4 px-0 h-auto"
+            className="text-lg md:text-[clamp(18px,0.9vw,26px)] gap-3 font-bold text-[#011f40] hover:underline underline-offset-4 px-0 h-auto"
           >
             Robot Overview
           </ArrowButton>
-          <p className="mt-2 text-[10px] leading-5 text-[#7b8794]">
+          <p className="mt-2 text-[10px] md:text-[clamp(12px,0.6vw,18px)] leading-5 text-[#7b8794]">
             Explore ANSCER&apos;s robotic platforms for flexible industrial
             automation
           </p>
         </div>
         <div className="border-t border-[#e7eaf0] px-5 pb-7 pt-4">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
+          <p className="text-[10px] md:text-[clamp(12px,0.6vw,18px)] font-medium uppercase tracking-wide text-[#9aa3ad]">
             Robot Series
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-sm font-medium text-[#011f40]">
+          <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-sm md:text-[clamp(14px,0.7vw,22px)] font-medium text-[#011f40] font-montserrat">
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
               href="/ar-series"
@@ -362,6 +355,13 @@ function RobotsDropdown({ active }: { active: boolean }) {
               onClick={() => setOpen(false)}
             >
               AGV Series
+            </Link>
+            <Link
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+              href="/psr-trail"
+              onClick={() => setOpen(false)}
+            >
+              PSRTrail
             </Link>
           </div>
         </div>
@@ -394,9 +394,8 @@ function CompanyDropdown({ active }: { active: boolean }) {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`relative cursor-pointer flex h-[60px] items-center gap-1 px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${
-          open || active ? "font-bold text-[#005ead]" : "text-[#2f2f2f]"
-        }`}
+        className={`relative font-montserrat cursor-pointer flex h-[60px] items-center gap-1 px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${open || active ? "font-bold text-[#005ead]" : "text-[#2f2f2f]"
+          }`}
       >
         Company
         <ChevronDown
@@ -406,17 +405,16 @@ function CompanyDropdown({ active }: { active: boolean }) {
         />
       </button>
       <div
-        className={`absolute left-1/2 top-[60px] z-50 w-[220px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${
-          open
-            ? "visible opacity-100 translate-y-0"
-            : "invisible opacity-0 -translate-y-2"
-        }`}
+        className={`absolute left-1/2 top-[60px] z-50 w-[220px] -translate-x-1/2 rounded-xl bg-white shadow-[0_18px_45px_rgba(1,31,64,.22)] transition-[opacity,visibility,transform] duration-200 ${open
+          ? "visible opacity-100 translate-y-0"
+          : "invisible opacity-0 -translate-y-2"
+          }`}
       >
         <div className="p-6">
-          <p className="mb-4 text-[10px] font-medium uppercase tracking-wide text-[#9aa3ad]">
+          <p className="mb-4 text-[10px] md:text-[clamp(12px,0.6vw,18px)] font-medium uppercase font-montserrat tracking-wide text-[#9aa3ad]">
             Company
           </p>
-          <div className="flex flex-col text-sm font-medium text-[#011f40]">
+          <div className="flex flex-col text-sm md:text-[clamp(14px,0.7vw,22px)] font-medium text-[#011f40] font-montserrat">
             <Link
               href="/about-us"
               onClick={() => setOpen(false)}

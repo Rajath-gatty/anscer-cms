@@ -54,12 +54,12 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
         className="scroll-mt-28 bg-[#fafafa] py-12 md:py-14"
       >
         <div className="site-container">
-          <FadeUp className="max-w-190">
-            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-base">
+          <FadeUp className="max-w-190 3xl:max-w-[900px] 4xl:max-w-[1100px]">
+            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               Features
             </p>
-            <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-4xl" dangerouslySetInnerHTML={{ __html: data.features.title }} />
-            <p className="mt-4 max-w-172.5 text-sm leading-5 text-[#3a3a3a] md:text-[18px] md:leading-6.5">
+            <h2 className="mt-3 text-[28px] font-bold leading-[1.2] md:text-[clamp(40px,2.4vw,80px)]" dangerouslySetInnerHTML={{ __html: data.features.title }} />
+            <p className="mt-4 max-w-172.5 3xl:max-w-[830px] 4xl:max-w-[1000px] text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
               {data.features.content}
             </p>
           </FadeUp>
@@ -83,7 +83,7 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,31,64,.04),rgba(1,31,64,.86))]" />
               <div className="absolute bottom-5 left-5 right-5">
-                <h3 className="text-xl font-bold leading-6 md:text-3xl md:leading-[1.1]">
+                <h3 className="text-xl font-bold leading-6 md:text-[clamp(24px,1.3vw,40px)] 3xl:text-[clamp(28px,1.6vw,48px)]">
                   Ready To Automate Your Workflow?
                 </h3>
                 <div className="mt-6">
@@ -132,16 +132,16 @@ function FeatureCard({
   Icon: (typeof featureIcons)[keyof typeof featureIcons];
 }) {
   return (
-    <article className="min-h-42.5 rounded-[12px] bg-[#FFFFFF] p-5">
+    <article className="min-h-42.5 3xl:min-h-52 4xl:min-h-60 rounded-[12px] bg-[#FFFFFF] p-5">
       <Icon
         aria-hidden="true"
-        className="size-8 text-[#005ead]"
+        className="size-8 3xl:size-10 4xl:size-12 text-[#005ead]"
         strokeWidth={1.7}
       />
-      <h3 className="mt-5 text-xl font-semibold leading-6 text-[#005ead] md:text-2xl md:leading-7">
+      <h3 className="mt-5 text-xl font-semibold leading-6 text-[#005ead] md:text-[clamp(20px,0.9vw,30px)] 3xl:text-[clamp(24px,1.3vw,36px)] md:leading-[130%]">
         {title}
       </h3>
-      <p className="mt-3 text-sm leading-5 text-[#3a3a3a] md:text-base md:leading-5.5">
+      <p className="mt-3 text-sm leading-5 text-[#3a3a3a] md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
         {copy}
       </p>
     </article>

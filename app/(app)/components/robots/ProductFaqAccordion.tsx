@@ -59,7 +59,7 @@ export function ProductFaqAccordion({ items }: { items: ProductFaq[] }) {
             >
               <div className="overflow-hidden">
                 <div className="px-3 pb-3 md:px-6">
-                  <p className="max-w-[760px] pt-2.5 text-[12px] leading-[18px] text-[#222228] md:text-base md:leading-6">
+                  <p className="max-w-[760px] 3xl:max-w-[900px] 4xl:max-w-[1100px] pt-2.5 text-[12px] leading-[18px] text-[#222228] md:text-base md:leading-6">
                     {item.answer}
                   </p>
                 </div>

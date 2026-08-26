@@ -137,10 +137,10 @@ export function ProductHeroSlider() {
         }}
       ></div>
       <div className="absolute inset-0 z-0 bg-linear-to-r from-white from-25% to-transparent"></div>
-      <div className="site-container grid min-h-[88svh]  items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16">
+      <div className="site-container grid min-h-[88svh] 3xl:min-h-[90svh] 4xl:min-h-[92svh] items-center gap-8 lg:gap-2 py-12  md:grid-cols-2 md:py-16 3xl:py-20 4xl:py-28">
         <div>
           <ScrollReveal>
-            <h1 className="text-[48px] font-bold leading-[2] tracking-tight md:text-[60px] xl:whitespace-nowrap">
+            <h1 className="text-[48px] font-bold leading-[2] tracking-tight md:text-[clamp(48px,4vw,80px)] xl:whitespace-nowrap">
               {active.title}{" "}
               <span className="relative inline-grid overflow-hidden align-bottom text-[#005ead]">
                 <AnimatePresence mode="popLayout" initial={false}>
@@ -156,7 +156,7 @@ export function ProductHeroSlider() {
                 </AnimatePresence>
               </span>
             </h1>
-            <p className="mt-5 max-w-[470px] text-sm leading-5 text-[#3f4b57] md:text-[18px] md:leading-[26px]">
+            <p className="mt-5 max-w-[470px] 3xl:max-w-[580px] 4xl:max-w-[700px] text-sm leading-5 text-[#3f4b57] md:text-[clamp(16px,0.8vw,30px)] md:leading-[26px] 3xl:text-[clamp(20px,0.9vw,28px)]">
               Explore ANSCER&apos;s cutting-edge lineup: powerful, smart
               automation solutions engineered to transform your operations.
             </p>
@@ -194,7 +194,7 @@ export function ProductHeroSlider() {
         </div>
 
         <div className="relative self-stretch min-h-[300px] md:min-h-[500px] w-full">
-          <div className="absolute right-0 lg:right-0 [@media(max-width:1184px)]:right-20 md:bottom-0 lg:-bottom-8 2xl:right-0 2xl:bottom-0  aligh-items-right text-right  w-full md:max-w-[450px] h-full">
+          <div className="absolute right-0 lg:right-0 [@media(max-width:1184px)]:right-20 md:bottom-0 lg:-bottom-8 2xl:right-0 2xl:bottom-0  aligh-items-right text-right  w-full md:max-w-[450px] 3xl:max-w-[560px] 4xl:max-w-[680px] h-full">
             <Image
               src={`${imagePath}products/grab.png`}
               alt="ANSCER Robot"
