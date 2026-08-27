@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CaseStudiesSection } from "./components/home/CaseStudiesSection";
 import { CtaSection } from "./components/home/CtaSection";
 import { ExploreMoreSection } from "./components/home/ExploreMoreSection";
@@ -7,6 +8,12 @@ import { ProductsSection } from "./components/home/ProductsSection";
 import { SolutionsSection } from "./components/home/SolutionsSection";
 import { TechnologySection } from "./components/home/TechnologySection";
 import { TrustSection } from "./components/home/TrustSection";
+
+export const metadata: Metadata = {
+  title: "Autonomous Mobile Robots (AMRs) | ANSCER Robotics",
+  description:
+    "Automate factory material movement with modular AMRs, pallet stackers, and fleet software. Boost throughput and cut labor costs. Book a demo.",
+};
 
 export default function Home() {
   return (

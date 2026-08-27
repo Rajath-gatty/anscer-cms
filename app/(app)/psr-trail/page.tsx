@@ -6,9 +6,9 @@ import { FadeUp } from "../components/animation";
 import { ArrowButton } from "../components/home/SectionPrimitives";
 
 export const metadata: Metadata = {
-  title: "PSR TRail | Autonomous Trailer Unloading | ANSCER Robotics",
+  title: "PSR Trail Autonomous Tugger Robot | ANSCER Robotics",
   description:
-    "ANSCER TRail is the next generation autonomous trailer unloading robot. Built on the proven TRail platform — it enters the trailer, picks every pallet, and exits.",
+    "Automate multi-cart milk runs and assembly line towing with the PSR Trail autonomous tugger robot. Maximize line feeding throughput. Book a demo.",
 };
 
 const trustLogos = [

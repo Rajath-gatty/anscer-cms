@@ -5,8 +5,9 @@ import { seriesPages } from "../components/series/series-data";
 const data = seriesPages["ar-series"];
 
 export const metadata: Metadata = {
-  title: "AR Series | ANSCER Robotics",
-  description: data.description,
+  title: "Modular Autonomous Mobile Robots | ANSCER AR Series",
+  description:
+    "Discover ANSCER AR Series modular AMRs (250kg-1250kg). Features LiDAR SLAM navigation and swappable top modules for flexible intralogistics.",
 };
 
 export default function ArSeriesPage() {

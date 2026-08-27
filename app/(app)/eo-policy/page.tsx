@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { FadeUp } from "../components/animation";
 
 export const metadata: Metadata = {
-  title: "Equal Opportunity & Non-Discrimination Policy | ANSCER Robotics",
+  title: "Equal Opportunity Policy | ANSCER Robotics",
   description:
-    "Read the Equal Opportunity & Non-Discrimination Policy of ANSCER Robotics.",
+    "Learn about ANSCER Robotics' commitment to diversity, equity, inclusion, and equal opportunity employment across our global operations.",
 };
 
 export default function EqualOpportunityPolicyPage() {

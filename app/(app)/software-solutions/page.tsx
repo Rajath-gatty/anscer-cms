@@ -22,9 +22,9 @@ import {
 } from "./_data/software-solutions-data";
 
 export const metadata: Metadata = {
-  title: "Software Solutions | ANSCER Robotics",
+  title: "AMR Fleet Management System (FMS) | ANSCER",
   description:
-    "ANSCER software transforms autonomous mobile robots into synchronized, facility-wide operations.",
+    "Orchestrate multi-robot AMR fleets with ANSCER FMS. Features VDA 5050 compliance, dynamic traffic routing, and turnkey WMS/MES integration.",
 };
 
 export default function SoftwareSolutionsPage() {
