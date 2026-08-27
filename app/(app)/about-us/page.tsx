@@ -9,8 +9,9 @@ import { TestimonialsSection } from "./_components/TestimonialsSection";
 import { WhatDrivesUsSection } from "./_components/WhatDrivesUsSection";
 
 export const metadata: Metadata = {
-  title: "About Us | ANSCER Robotics",
-  description: "Built to transform industries. Driven by vision.",
+  title: "About ANSCER Robotics | Mobile Robotics & Automation",
+  description:
+    "Learn about ANSCER Robotics' mission to empower industries with modular autonomous mobile robots, smart software, and next-gen warehouse automation.",
 };
 
 export default function AboutUsPage() {

@@ -5,8 +5,9 @@ import { productDetails } from "../../components/product-detail/product-detail-d
 const data = productDetails["agv-100"];
 
 export const metadata: Metadata = {
-  title: `${data.title} | ANSCER Robotics`,
-  description: data.overview,
+  title: "AGV 100 QR-Guided Material Handling Robot | ANSCER",
+  description:
+    "Transport totes, bins, and small parts up to 100kg with the AGV 100. High-speed QR-code navigation for flexible manufacturing lines. Learn more.",
 };
 
 export default function Agv100Page() {

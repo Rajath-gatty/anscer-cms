@@ -4,9 +4,9 @@ import { ContactForm } from "./ContactForm";
 import { FadeUp } from "../components/animation";
 
 export const metadata: Metadata = {
-  title: "Contact Us | ANSCER Robotics",
+  title: "Contact ANSCER Robotics | Request a Demo",
   description:
-    "Contact ANSCER Robotics for product inquiries, demonstrations, technical support, service, maintenance, and deployment discussions.",
+    "Get in touch with ANSCER's automation experts. Request a site evaluation, book a live robot demo, or ask about custom fleet solutions today.",
 };
 
 const contactCards = [
