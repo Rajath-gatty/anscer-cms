@@ -5,8 +5,9 @@ import { seriesPages } from "../components/series/series-data";
 const data = seriesPages["psr-series"];
 
 export const metadata: Metadata = {
-  title: "PSR Series | ANSCER Robotics",
-  description: data.description,
+  title: "Autonomous Pallet Stacker Robots | ANSCER PSR Series",
+  description:
+    "Automate pallet transport, stacking, and racking with ANSCER PSR Series AMRs. Eliminate forklift hazards and accelerate dock-to-stock workflows.",
 };
 
 export default function PsrSeriesPage() {

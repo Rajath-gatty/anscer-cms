@@ -6,9 +6,9 @@ import { ProductsCta } from "../components/robots/ProductsCta";
 import ProductSeriesCard from "../components/robots/ProductSeriesCard";
 
 export const metadata: Metadata = {
-  title: "Products | ANSCER Robotics",
+  title: "Industrial AMRs & AGVs | ANSCER Robotics",
   description:
-    "Explore ANSCER Robotics platforms for lifting, pulling, grasping, and moving material across industrial workflows.",
+    "Explore ANSCER's full fleet of autonomous mobile robots and AGVs for payload handling from 100kg to 2000kg. Compare models and find your fit.",
 };
 
 export default function ProductsPage() {

@@ -5,7 +5,7 @@ import { FadeUp } from "../components/animation";
 export const metadata: Metadata = {
   title: "Privacy Policy | ANSCER Robotics",
   description:
-    "Learn how ANSCER Robotics collects, uses, discloses, and safeguards your information when you visit our website.",
+    "Read the official ANSCER Robotics privacy policy. Understand how we collect, protect, and handle your data across our platforms and digital services.",
 };
 
 export default function PrivacyPolicyPage() {

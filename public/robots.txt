@@ -1,0 +1,12 @@
+# robots.txt for https://anscer.com
+# Crawling is allowed for the public website. CMS admin and API routes are excluded.
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# Structured resources
+Sitemap: https://anscer.com/sitemap.xml
+
+# LLM-readable site summary: https://anscer.com/llms.txt

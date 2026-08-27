@@ -3,9 +3,9 @@ import Link from "next/link";
 import { FadeUp } from "../components/animation";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | ANSCER Robotics",
+  title: "Terms & Conditions | ANSCER Robotics",
   description:
-    "Read the Terms and Conditions governing your access to and use of ANSCER Robotics website and services.",
+    "Review the terms and conditions governing the use of ANSCER Robotics' website, products, and online automation advisory services.",
 };
 
 export default function TermsAndConditionsPage() {
