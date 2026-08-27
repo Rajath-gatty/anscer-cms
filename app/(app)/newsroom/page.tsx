@@ -10,9 +10,9 @@ import {
 import { FadeUp } from "../components/animation";
 
 export const metadata: Metadata = {
-  title: "Newsroom | ANSCER Robotics",
+  title: "ANSCER Robotics Newsroom | News, Press & Insights",
   description:
-    "Explore our latest news, press releases, events, and business updates from ANSCER Robotics.",
+    "Stay updated on the latest autonomous robotics innovations, product launches, case studies, and industry press releases from ANSCER Robotics.",
 };
 
 export default function NewsroomPage() {
