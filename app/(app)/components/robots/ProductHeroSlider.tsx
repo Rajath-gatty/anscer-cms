@@ -157,8 +157,7 @@ export function ProductHeroSlider() {
               </span>
             </h1>
             <p className="mt-5 max-w-[470px] 3xl:max-w-[580px] 4xl:max-w-[700px] text-sm leading-5 text-[#3f4b57] md:text-[clamp(16px,0.8vw,30px)] md:leading-[26px] 3xl:text-[clamp(20px,0.9vw,28px)]">
-              Explore ANSCER&apos;s cutting-edge lineup: powerful, smart
-              automation solutions engineered to transform your operations.
+              Explore ANSCER’s industrial autonomous mobile robots for material handling and intralogistics across manufacturing facilities and warehouses.
             </p>
           </ScrollReveal>
           <ArrowButton as="a" href="#robot-series" className="mt-7 font-bold">
