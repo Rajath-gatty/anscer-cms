@@ -274,7 +274,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
       {
         title: "Low-Clearance Trolley Handling",
         copy: "Tows trolleys through spaces with limited overhead or structural clearance access.",
-        image: "low-clearance-trolley-latest.jpg",
+        image: "low-clearance-trolley-latest.png",
       },
       {
         title: "Raw Material/Inbound Handling",
@@ -458,10 +458,10 @@ export const seriesPages: Record<string, SeriesPageData> = {
   "agv-series": {
     slug: "agv-series",
     eyebrow: "AGV Series",
-    title: "Ready for",
-    titleAccent: "Continuous Material Flow",
+    title: "Automated Guided Vehicles for",
+    titleAccent: "Reliable Material Transport",
     description:
-      "Discover ANSCER's AGV Series: smart vehicles for fast material transport and inventory handling in warehouses and factories.",
+      "ANSCER’s AGV Series automates repetitive material movement across production lines, factories and warehouses, enabling consistent and predictable internal transport.",
     heroImage: "series/ar/hero-bg.png",
     heroRobot: "series/agv-series-hero-foreground.png",
     tags: ["Lifting", "Sorting"],
