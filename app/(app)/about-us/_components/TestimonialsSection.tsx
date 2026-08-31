@@ -11,10 +11,10 @@ export function TestimonialsSection() {
         <SectionHeading>
           What Our Client <span className="text-[#005ead]">Says</span>
         </SectionHeading>
-        <p className="mt-3 max-w-[620px] text-[11px] leading-[1.45] text-[#3a3a3a] md:hidden">
+        {/* <p className="mt-3 max-w-[620px] text-[11px] leading-[1.45] text-[#3a3a3a] md:hidden">
           Lorem ipsum dolor sit amet consectetur. Vivamus eget iaculis nulla ut
           interdum pharetra sagittis lacus luctus.
-        </p>
+        </p> */}
 
         <div className="-mx-5 mt-5 flex gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:mt-10 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
           {testimonials.map((testimonial) => (
