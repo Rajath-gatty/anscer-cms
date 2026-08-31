@@ -26,8 +26,8 @@ export function ProductCta({ data }: { data: ProductDetailData }) {
         <div className="absolute inset-0 w-full h-full bg-[#005ead] mix-blend-color" />
         <FadeUp className="site-container relative z-10">
           <h2 className=" text-[48px] font-semibold leading-[1.1] md:text-[clamp(48px,4vw,80px)]">
-            {data.ctaTitle ??
-              `Know More About The ${data.title.replaceAll(" ", "")}`}
+            {data.ctaTitle && data.title === "AR 250" ? `Know More About The ${data.title}` : data.ctaTitle ??
+              `Know More About The ${data.title}`}
           </h2>
           <p className="mt-5 max-w-140 text-sm leading-6 text-white/85 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">
             Access detailed specifications, features, and performance data for

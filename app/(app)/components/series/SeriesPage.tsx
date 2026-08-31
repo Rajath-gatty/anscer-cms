@@ -66,7 +66,7 @@ function SeriesHero({ data }: { data: SeriesPageData }) {
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,250,.88)_0%,rgba(250,250,250,.0)_80%,rgba(250,250,250,.22)_100%)]" />
       <div className="site-container relative z-10 grid min-h-[calc(100vh-108px)] items-center gap-8 py-14 md:py-16 lg:grid-cols-[0.46fr_0.54fr]">
-        <div className="max-w-[590px] 2xl:max-w-[720px] 4xl:max-w-[880px]">
+        <div className="max-w-[590px] 2xl:max-w-[720px] 3xl:max-w-[880px] 4xl:max-w-[980px]">
           <ScrollReveal>
             <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#005ead] md:text-[clamp(16px,0.8vw,30px)]">
               {data.eyebrow} Robots

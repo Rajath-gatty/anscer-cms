@@ -70,7 +70,7 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
                   title={feature.title}
                   copy={feature.copy}
                   Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
-              />
+                />
               </ScrollReveal>
             ))}
             <article className="relative order-last row-span-2 min-h-80 overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:order-0 lg:min-h-95">
@@ -100,12 +100,12 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
             </article>
             {data.features.features.slice(2, 4).map((feature, index) => (
               <ScrollReveal key={feature.title} delay={index * 200}>
-              <FeatureCard
-                key={feature.title}
-                title={feature.title}
-                copy={feature.copy}
-                Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
-              />
+                <FeatureCard
+                  key={feature.title}
+                  title={feature.title}
+                  copy={feature.copy}
+                  Icon={featureIcons[feature.icon as keyof typeof featureIcons] ?? Layers}
+                />
               </ScrollReveal>
             ))}
           </div>
@@ -132,7 +132,7 @@ function FeatureCard({
   Icon: (typeof featureIcons)[keyof typeof featureIcons];
 }) {
   return (
-    <article className="min-h-42.5 3xl:min-h-52 4xl:min-h-60 rounded-[12px] bg-[#FFFFFF] p-5">
+    <article className="min-h-42.5 3xl:min-h-52 4xl:min-h-full rounded-[12px] bg-[#FFFFFF] p-5">
       <Icon
         aria-hidden="true"
         className="size-8 3xl:size-10 4xl:size-12 text-[#005ead]"
