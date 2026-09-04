@@ -116,7 +116,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Compact AMR supporting diverse top modules for flexible material movement.",
         image: "series/ar/AR250.png",
         bgText: "AR-250.svg",
-        href: "/ar-series/ar-250",
+        href: "/products/ar/ar250",
         tags: ["Tugging", "Lifting", "Tunneling"],
         tabDescription: "Carries loads up to 250kg.",
         specs: [
@@ -140,7 +140,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Compact AMR supporting diverse top modules for flexible material movement.",
         image: "series/ar/AR500.png",
         bgText: "AR-500.png",
-        href: "/ar-series/ar-500",
+        href: "/products/ar/ar500",
         tags: ["Cobot", "Tugging"],
         tabDescription: "Carries loads up to 500kg.",
         specs: [
@@ -164,7 +164,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Versatile AMR enabling safe, adaptable automation across dynamic intralogistics operations.",
         image: "series/ar/AR650.png",
         bgText: "AR-650.svg",
-        href: "/ar-series/ar-650",
+        href: "/products/ar/ar650",
         tags: ["Tugging", "Lifting", "Tunneling"],
         tabDescription: "Carries loads up to 650kg.",
         specs: [
@@ -188,7 +188,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Heavy-duty AMR delivering flexible automation for demanding material handling applications.",
         image: "series/ar/AR1250.png",
         bgText: "AR-1250.svg",
-        href: "/ar-series/ar-1250",
+        href: "/products/ar/ar1250",
         tags: ["Tugging", "Lifting", "Tunneling"],
         tabDescription: "Carries loads up to 1250kg.",
         specs: [
@@ -309,7 +309,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Autonomous pallet stacking robot for precise high-reach pallet handling operations.",
         image: "series/psr/PSR2000.png",
         bgText: "psr-2000.svg",
-        href: "/psr-series/psr-2000",
+        href: "/products/psr/psr2000",
         tags: ["Open Pallet", "Stacking"],
         tabDescription: "Carries loads up to 2000 kg.",
         specs: [
@@ -333,7 +333,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Extended-reach heavy-duty pallet stacking robot capable of handling open and closed pallets.",
         image: "series/psr/PSR2000R.png",
         bgText: "Group-1321315869.svg",
-        href: "/psr-series/psr-2000r",
+        href: "/products/psr/psr2000r",
         tags: ["Open/Closed Pallet", "Lifting"],
         tabDescription: "Carries loads up to 2000 kg.",
         specs: [
@@ -357,7 +357,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Extended-reach pallet stacking robot capable of handling open and closed pallets.",
         image: "series/psr/PSR1000R.png",
         bgText: "1000r-bg-text.png",
-        href: "/psr-series/psr-1000r",
+        href: "/products/psr/psr1000r",
         tags: ["Open/Closed Pallet", "Lifting"],
         tabDescription: "Carries loads up to 1000 kg.",
         specs: [
@@ -383,7 +383,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Autonomous pallet handling robot enabling efficient ground-to-ground material movement.",
         image: "series/psr/G2G.png",
         bgText: "psr-g2g.svg",
-        href: "/psr-series/psr-g2g",
+        href: "/products/psr/psrg2g",
         tags: ["Open Pallet", "Stacking"],
         tabDescription: "Carries loads up to 2000 kg.",
         specs: [
@@ -409,7 +409,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "Compact trolley transport AMR for low-clearance environments and seamless integration.",
         image: "series/psr/LBR500.png",
         bgText: "LBR-501.svg",
-        href: "/psr-series/lbr-500",
+        href: "/products/psr/lbr500",
         tags: ["Trolley", "Lifting"],
         tabDescription: "Carries loads up to 500 kg.",
         specs: [
@@ -512,7 +512,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           "QR-guided vehicle delivering reliable point-to-point transport for efficient material flow.",
         image: "series/agv/agv-100.png",
         bgText: "agv-background-text.png",
-        href: "/agv-series/agv-100",
+        href: "/products/agv/agv100",
         tags: ["Lifting", "Sorting"],
         tabDescription: "Carries loads up to 100kg.",
         specs: [

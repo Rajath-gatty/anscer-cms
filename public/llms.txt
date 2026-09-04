@@ -12,35 +12,35 @@ Product families:
 ## Core pages
 
 - [Home](https://anscer.com/): Automate factory material movement with modular AMRs, pallet stackers, and fleet software.
-- [All Robots](https://anscer.com/robots): Full fleet of autonomous mobile robots and AGVs for payload handling from 100kg to 2000kg. Compare models and specifications.
-- [Software Solutions — AMR Fleet Management System (FMS)](https://anscer.com/software-solutions): Orchestrate multi-robot AMR fleets. VDA 5050 compliance, dynamic traffic routing, and turnkey WMS/MES integration.
+- [All Robots](https://anscer.com/products): Full fleet of autonomous mobile robots and AGVs for payload handling from 100kg to 2000kg. Compare models and specifications.
+- [Software Solutions — AMR Fleet Management System (FMS)](https://anscer.com/solutions): Orchestrate multi-robot AMR fleets. VDA 5050 compliance, dynamic traffic routing, and turnkey WMS/MES integration.
 
 ## AR Series (modular AMRs)
 
-- [AR Series Overview](https://anscer.com/ar-series): Modular AMRs from 250kg to 1250kg with LiDAR SLAM navigation and swappable top modules for flexible intralogistics.
-- [AR 250](https://anscer.com/ar-series/ar-250): 250kg payload AMR for light load transport. Compact footprint, dynamic obstacle avoidance, WMS integration.
-- [AR 500](https://anscer.com/ar-series/ar-500): 500kg payload AMR for mid-weight factory transport of bins, totes, and carts.
-- [AR 650](https://anscer.com/ar-series/ar-650): 650kg payload AMR for medium-to-heavy shop floor logistics, sub-assembly lines, cart towing, and roller conveyors.
-- [AR 1250](https://anscer.com/ar-series/ar-1250): 1250kg heavy payload AMR with industrial-grade LiDAR SLAM and robust chassis engineering.
+- [AR Series Overview](https://anscer.com/products/ar): Modular AMRs from 250kg to 1250kg with LiDAR SLAM navigation and swappable top modules for flexible intralogistics.
+- [AR 250](https://anscer.com/products/ar/ar250): 250kg payload AMR for light load transport. Compact footprint, dynamic obstacle avoidance, WMS integration.
+- [AR 500](https://anscer.com/products/ar/ar500): 500kg payload AMR for mid-weight factory transport of bins, totes, and carts.
+- [AR 650](https://anscer.com/products/ar/ar650): 650kg payload AMR for medium-to-heavy shop floor logistics, sub-assembly lines, cart towing, and roller conveyors.
+- [AR 1250](https://anscer.com/products/ar/ar1250): 1250kg heavy payload AMR with industrial-grade LiDAR SLAM and robust chassis engineering.
 
 ## PSR Series (pallet stackers & tuggers)
 
-- [PSR Series Overview](https://anscer.com/psr-series): Automate pallet transport, stacking, and racking. Eliminate forklift hazards and accelerate dock-to-stock workflows.
-- [PSR G2G](https://anscer.com/psr-series/psr-g2g): Ground-to-ground autonomous pallet mover for receiving, staging, and assembly transfers.
-- [PSR 2000](https://anscer.com/psr-series/psr-2000): Heavy-duty pallet stacking AMR up to 2000kg, built for continuous 24/7 warehouse operations and ERP dispatch.
-- [PSR 2000R](https://anscer.com/psr-series/psr-2000r): Autonomous reach stacker up to 2000kg for high-density vertical pallet storage and zero-accident racking.
-- [PSR 1000R](https://anscer.com/psr-series/psr-1000r): Autonomous pallet reach stacker for 1000kg vertical stacking in narrow aisles with high-rack precision sensors.
-- [LBR 500](https://anscer.com/psr-series/lbr-500): Low-bay lifter AMR, 500kg payload, for low-clearance warehouse racks.
+- [PSR Series Overview](https://anscer.com/products/psr): Automate pallet transport, stacking, and racking. Eliminate forklift hazards and accelerate dock-to-stock workflows.
+- [PSR G2G](https://anscer.com/products/psr/psrg2g): Ground-to-ground autonomous pallet mover for receiving, staging, and assembly transfers.
+- [PSR 2000](https://anscer.com/products/psr/psr2000): Heavy-duty pallet stacking AMR up to 2000kg, built for continuous 24/7 warehouse operations and ERP dispatch.
+- [PSR 2000R](https://anscer.com/products/psr/psr2000r): Autonomous reach stacker up to 2000kg for high-density vertical pallet storage and zero-accident racking.
+- [PSR 1000R](https://anscer.com/products/psr/psr1000r): Autonomous pallet reach stacker for 1000kg vertical stacking in narrow aisles with high-rack precision sensors.
+- [LBR 500](https://anscer.com/products/psr/lbr500): Low-bay lifter AMR, 500kg payload, for low-clearance warehouse racks.
 - [PSR Trail](https://anscer.com/psr-trail): Autonomous tugger robot for multi-cart milk runs and assembly line towing, with hybrid sensor fusion localization and deep learning pallet perception.
 
 ## AGV Series (guided vehicles)
 
-- [AGV Series Overview](https://anscer.com/agv-series): Cost-effective, high-reliability AGVs for fixed-path line feeding and carton handling.
-- [AGV 100](https://anscer.com/agv-series/agv-100): QR-guided material handling robot for totes, bins, and small parts up to 100kg.
+- [AGV Series Overview](https://anscer.com/products/agv): Cost-effective, high-reliability AGVs for fixed-path line feeding and carton handling.
+- [AGV 100](https://anscer.com/products/agv/agv100): QR-guided material handling robot for totes, bins, and small parts up to 100kg.
 
 ## Company
 
-- [About Us](https://anscer.com/about-us): ANSCER Robotics' mission to empower industries with modular autonomous mobile robots, smart software, and warehouse automation.
+- [About Us](https://anscer.com/about): ANSCER Robotics' mission to empower industries with modular autonomous mobile robots, smart software, and warehouse automation.
 - [Newsroom](https://anscer.com/newsroom): Product launches, case studies, press releases, and industry insights.
 - [Contact Us](https://anscer.com/contact-us): Request a site evaluation, book a live robot demo, or ask about custom fleet solutions.
 
@@ -48,7 +48,7 @@ Product families:
 
 - [Privacy Policy](https://anscer.com/privacy-policy): How ANSCER Robotics collects, protects, and handles data across its platforms and digital services.
 - [Terms & Conditions](https://anscer.com/terms-and-conditions): Terms governing use of the website, products, and online automation advisory services.
-- [Equal Opportunity Policy](https://anscer.com/eo-policy): Commitment to diversity, equity, inclusion, and equal opportunity employment.
+- [Equal Opportunity Policy](https://anscer.com/equal-opportunity-policy): Commitment to diversity, equity, inclusion, and equal opportunity employment.
 
 ## Optional
 
