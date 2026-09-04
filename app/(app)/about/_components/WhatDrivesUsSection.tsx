@@ -17,7 +17,9 @@ export function WhatDrivesUsSection() {
         </FadeUp>
         <FadeUp>
           <p className="mt-3 max-w-[640px] 3xl:max-w-[750px] 4xl:max-w-[900px] text-[12px] leading-[1.45] text-[#3a3a3a] md:mt-4 md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)] md:leading-[150%]">
-            ANSCER stands for “Autonomous Navigation Systems with Cognitive and Efficient Robotics" - reflecting our commitment to intelligent, reliable automation
+            {`ANSCER stands for “Autonomous Navigation Systems for Controlled
+            Environment Robots" - reflecting our commitment to intelligent,
+            reliable automation`}
           </p>
         </FadeUp>
 
