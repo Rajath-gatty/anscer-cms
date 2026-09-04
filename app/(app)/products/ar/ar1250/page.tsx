@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { ProductDetailPage } from "../../components/product-detail/ProductDetailPage";
-import { productDetails } from "../../components/product-detail/product-detail-data";
+import { ProductDetailPage } from "../../../components/product-detail/ProductDetailPage";
+import { productDetails } from "../../../components/product-detail/product-detail-data";
 
 const data = productDetails["ar-1250"];
 

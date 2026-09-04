@@ -18,24 +18,21 @@ export function SiteHeader() {
   const [companyOpen, setCompanyOpen] = useState(false);
   const navHref = (item: string) => {
     if (item === "Home") return "/";
-    if (item === "Software") return "/software-solutions";
-    if (item === "Company") return "/about-us";
+    if (item === "Software") return "/solutions";
+    if (item === "Company") return "/about";
     return `/#${item.toLowerCase()}`;
   };
   const navActive = (item: string) => {
     if (item === "Home") return pathname === "/";
-    if (item === "Software") return pathname.startsWith("/software-solutions");
+    if (item === "Software") return pathname.startsWith("/solutions");
     if (item === "Company")
       return (
-        pathname.startsWith("/about-us") || pathname.startsWith("/newsroom")
+        pathname.startsWith("/about") || pathname.startsWith("/newsroom")
       );
     return false;
   };
   const isRobotsActive = [
-    "/robots",
-    "/ar-series",
-    "/psr-series",
-    "/agv-series",
+    "/products",
     "/psr-trail"
   ].some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
@@ -150,7 +147,7 @@ export function SiteHeader() {
                         <div className="pb-4 pt-2">
                           <ArrowButton
                             as={Link}
-                            href="/robots"
+                            href="/products"
                             onClick={closeMenu}
                             variant="ghost"
                             className="text-[16px] gap-3 text-[#011f40] hover:underline px-0 h-auto font-bold"
@@ -166,10 +163,10 @@ export function SiteHeader() {
                           </p>
                           <div className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 text-sm font-medium">
                             {[
-                              ["AR Series", "/ar-series"],
-                              ["PSR Series", "/psr-series"],
-                              ["AGV Series", "/agv-series"],
-                              ["PSR Trail", "/psr-trail"]
+                              ["AR Series", "/products/ar"],
+                              ["PSR Series", "/products/psr"],
+                              ["AGV Series", "/products/agv"],
+                              ["TRail", "/psr-trail"]
                             ].map(([series, href]) => (
                               <Link
                                 key={series}
@@ -217,7 +214,7 @@ export function SiteHeader() {
                           </p>
                           <div className="flex flex-col gap-4 text-sm font-medium text-[#011f40] font-montserrat">
                             <Link
-                              href="/about-us"
+                              href="/about"
                               onClick={closeMenu}
                               className="cursor-pointer transition hover:text-[#005ead] font-montserrat"
                             >
@@ -299,7 +296,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
       onMouseLeave={() => setOpen(false)}
     >
       <Link
-        href="/robots"
+        href="/products"
         onMouseEnter={() => setOpen(true)}
         onClick={() => setOpen((o) => !o)}
         className={`relative cursor-pointer font-montserrat flex h-[60px] items-center px-0 transition-colors duration-200 hover:text-[#005ead] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#005ead] after:transition-transform after:duration-200 after:origin-bottom after:scale-x-0 hover:after:scale-x-100 ${open || active
@@ -318,7 +315,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
         <div className="p-5 font-montserrat">
           <ArrowButton
             as={Link}
-            href="/robots"
+            href="/products"
             onClick={() => setOpen(false)}
             variant="ghost"
             className="text-lg md:text-[clamp(18px,0.9vw,26px)] gap-3 font-bold text-[#011f40] hover:underline underline-offset-4 px-0 h-auto"
@@ -337,21 +334,21 @@ function RobotsDropdown({ active }: { active: boolean }) {
           <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-3 text-sm md:text-[clamp(14px,0.7vw,22px)] font-medium text-[#011f40] font-montserrat">
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
-              href="/ar-series"
+              href="/products/ar"
               onClick={() => setOpen(false)}
             >
               AR Series
             </Link>
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
-              href="/psr-series"
+              href="/products/psr"
               onClick={() => setOpen(false)}
             >
               PSR Series
             </Link>
             <Link
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
-              href="/agv-series"
+              href="/products/agv"
               onClick={() => setOpen(false)}
             >
               AGV Series
@@ -361,7 +358,7 @@ function RobotsDropdown({ active }: { active: boolean }) {
               href="/psr-trail"
               onClick={() => setOpen(false)}
             >
-              PSRTrail
+              TRail
             </Link>
           </div>
         </div>
@@ -416,7 +413,7 @@ function CompanyDropdown({ active }: { active: boolean }) {
           </p>
           <div className="flex flex-col text-sm md:text-[clamp(14px,0.7vw,22px)] font-medium text-[#011f40] font-montserrat">
             <Link
-              href="/about-us"
+              href="/about"
               onClick={() => setOpen(false)}
               className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
             >
