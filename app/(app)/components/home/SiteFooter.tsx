@@ -10,31 +10,31 @@ const footerColumns = [
   {
     heading: "Products",
     links: [
-      { label: "AR 250", href: "/ar-series/ar-250" },
-      { label: "AR 500", href: "/ar-series/ar-500" },
-      { label: "AR 650", href: "/ar-series/ar-650" },
-      { label: "AR 1250", href: "/ar-series/ar-1250" },
-      { label: "PSR G2G", href: "/psr-series/psr-g2g" },
-      { label: "PSR 2000", href: "/psr-series/psr-2000" },
-      { label: "PSR 1000R", href: "/psr-series/psr-1000r" },
-      { label: "PSR 2000R", href: "/psr-series/psr-2000r" },
-      { label: "LBR 500", href: "/psr-series/lbr-500" },
-      { label: "AGV 100", href: "/agv-series/agv-100" },
+      { label: "AR 250", href: "/products/ar/ar250" },
+      { label: "AR 500", href: "/products/ar/ar500" },
+      { label: "AR 650", href: "/products/ar/ar650" },
+      { label: "AR 1250", href: "/products/ar/ar1250" },
+      { label: "PSR G2G", href: "/products/psr/psrg2g" },
+      { label: "PSR 2000", href: "/products/psr/psr2000" },
+      { label: "PSR 1000R", href: "/products/psr/psr1000r" },
+      { label: "PSR 2000R", href: "/products/psr/psr2000r" },
+      { label: "LBR 500", href: "/products/psr/lbr500" },
+      { label: "AGV 100", href: "/products/agv/agv100" },
     ],
   },
   {
     heading: "Insights",
     links: [
       { label: "Home", href: "/" },
-      { label: "Products", href: "/robots" },
-      { label: "Software", href: "/software-solutions" },
+      { label: "Products", href: "/products" },
+      { label: "Software", href: "/solutions" },
       { label: "Contact Us", href: CONTACT_HREF, external: true },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About us", href: "/about-us" },
+      { label: "About us", href: "/about" },
       { label: "Newsroom", href: "/newsroom" },
     ],
   },
@@ -43,7 +43,7 @@ const footerColumns = [
 const legalLinks = [
   { label: "Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
-  { label: "EO Policy", href: "/eo-policy" },
+  { label: "EO Policy", href: "/equal-opportunity-policy" },
 ];
 
 function FooterLink({
