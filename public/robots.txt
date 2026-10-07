@@ -8,5 +8,6 @@ Disallow: /api/
 
 # Structured resources
 Sitemap: https://anscer.com/sitemap.xml
+Sitemap: https://www.anscer.com/blog/sitemap.xml
 
 # LLM-readable site summary: https://anscer.com/llms.txt

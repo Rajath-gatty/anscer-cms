@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/blog",
+      "destination": "https://anscerrobotics.superblog.click/"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "https://anscerrobotics.superblog.click/:path*"
+    }
+  ]
+}
