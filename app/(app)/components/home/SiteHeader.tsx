@@ -227,6 +227,13 @@ export function SiteHeader() {
                             >
                               Newsroom
                             </Link>
+                            <a
+                              href="/blog"
+                              onClick={closeMenu}
+                              className="cursor-pointer transition hover:text-[#005ead] font-montserrat"
+                            >
+                              Blog
+                            </a>
                             <Link
                               href="https://career.anscer.com/jobs/Careers"
                               onClick={closeMenu}
@@ -426,6 +433,13 @@ function CompanyDropdown({ active }: { active: boolean }) {
             >
               Newsroom
             </Link>
+            <a
+              href="/blog"
+              onClick={() => setOpen(false)}
+              className="block cursor-pointer rounded-xl p-2 transition-colors hover:bg-[#011f40]/[0.05]"
+            >
+              Blog
+            </a>
             <Link
               href="https://career.anscer.com/jobs/Careers"
               target="_blank"

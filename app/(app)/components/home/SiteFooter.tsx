@@ -36,6 +36,7 @@ const footerColumns = [
     links: [
       { label: "About us", href: "/about" },
       { label: "Newsroom", href: "/newsroom" },
+      { label: "Blog", href: "/blog", external: true },
     ],
   },
 ];
