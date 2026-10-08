@@ -18,13 +18,13 @@ export function SiteHeader() {
   const [companyOpen, setCompanyOpen] = useState(false);
   const navHref = (item: string) => {
     if (item === "Home") return "/";
-    if (item === "Software") return "/solutions";
+    if (item === "Software") return "/software-solutions";
     if (item === "Company") return "/about";
     return `/#${item.toLowerCase()}`;
   };
   const navActive = (item: string) => {
     if (item === "Home") return pathname === "/";
-    if (item === "Software") return pathname.startsWith("/solutions");
+    if (item === "Software") return pathname.startsWith("/software-solutions");
     if (item === "Company")
       return (
         pathname.startsWith("/about") || pathname.startsWith("/newsroom")

@@ -27,7 +27,7 @@ const footerColumns = [
     links: [
       { label: "Home", href: "/" },
       { label: "Products", href: "/products" },
-      { label: "Software", href: "/solutions" },
+      { label: "Software", href: "/software-solutions" },
       { label: "Contact Us", href: CONTACT_HREF, external: true },
     ],
   },
