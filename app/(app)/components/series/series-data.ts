@@ -206,6 +206,30 @@ export const seriesPages: Record<string, SeriesPageData> = {
           { label: "Ground clearance", value: "30 mm", imperial: "1.18 in" },
         ],
       },
+      {
+        name: "ATR 1000",
+        description:
+          "Turntable AMR that lifts and rotates loads a full 360° for aligned station-to-station handoffs.",
+        image: "series/ar/atr-1000/hero.png",
+        bgText: "series/ar/atr-1000/atr-100-bg-text.svg",
+        href: "/products/ar/atr1000",
+        tags: ["Lifting", "Rotating"],
+        tabDescription: "Carries loads up to 1000kg.",
+        specs: [
+          {
+            label: "Dimensions",
+            value: "940 * 740 * 255 mm",
+            imperial: "37 x 29.1 x 10 in",
+          },
+          { label: "Max speed", value: "1.5 m/s", imperial: "3.35 mph" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 1000 kg",
+            imperial: "Up to 2204.6 lbs",
+          },
+          { label: "Ground clearance", value: "25 mm", imperial: "0.98 in" },
+        ],
+      },
     ],
     faqs: [
       {

@@ -11,6 +11,11 @@ export function AdvantagesSection({ data }: { data: ProductDetailData }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeAdvantage =
     data.advantages.advantages[activeIndex] ?? data.advantages.advantages[0];
+  const activeAdvantageImage =
+    activeAdvantage?.image ??
+    data.advantageImage ??
+    data.overviewImage ??
+    data.heroImage;
 
   return (
     <section
@@ -36,12 +41,12 @@ export function AdvantagesSection({ data }: { data: ProductDetailData }) {
               activeIndex={activeIndex}
               onActiveChange={setActiveIndex}
               surface="white"
-              imageUrl={`${imagePath}${data.advantageImage ?? data.overviewImage ?? data.heroImage}`}
+              imageUrl={`${imagePath}${activeAdvantageImage}`}
             />
             <div className="relative aspect-[1.75] overflow-hidden rounded-[12px] bg-white hidden md:block">
               <Image
                 key={activeAdvantage?.title}
-                src={`${imagePath}${data.advantageImage ?? data.overviewImage ?? data.heroImage}`}
+                src={`${imagePath}${activeAdvantageImage}`}
                 alt={`${data.title} advantage`}
                 loading="eager"
                 fill

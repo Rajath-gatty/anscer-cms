@@ -22,6 +22,7 @@ Product families:
 - [AR 500](https://anscer.com/products/ar/ar500): 500kg payload AMR for mid-weight factory transport of bins, totes, and carts.
 - [AR 650](https://anscer.com/products/ar/ar650): 650kg payload AMR for medium-to-heavy shop floor logistics, sub-assembly lines, cart towing, and roller conveyors.
 - [AR 1250](https://anscer.com/products/ar/ar1250): 1250kg heavy payload AMR with industrial-grade LiDAR SLAM and robust chassis engineering.
+- [ATR 1000](https://anscer.com/products/ar/atr1000): 1000kg autonomous turntable robot that lifts and rotates loads a full 360° in place, so trolleys and pallets arrive aligned for the next station.
 
 ## PSR Series (pallet stackers & tuggers)
 
