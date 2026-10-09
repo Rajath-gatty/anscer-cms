@@ -12,6 +12,7 @@ export type ProductDetailData = {
   overviewVideo?: string;
   overviewImage?: string;
   advantageImage?: string;
+  featuresCtaImage?: string;
   advantageIntro?: string;
   useCaseImage?: string;
   caseStudyImage?: string;
@@ -30,6 +31,7 @@ export type ProductDetailData = {
     advantages: {
       title: string;
       copy: string;
+      image?: string;
     }[];
   };
   features: {
@@ -1071,6 +1073,211 @@ export const productDetails: Record<string, ProductDetailData> = {
           "How difficult is it to scale from one AR 1250 to a larger fleet?",
         answer:
           "The platform is designed for fleet scalability through standardized navigation and mission software.",
+      },
+    ],
+  },
+  "atr-1000": {
+    slug: "atr-1000",
+    seriesSlug: "ar-series",
+    seriesLabel: "AR Series",
+    title: "ATR 1000",
+    subtitle: "360° Turntable Automation",
+    overview:
+      "The ATR 1000 is an autonomous turntable robot that lifts up to 1000 kg and rotates the load a full 360° on the spot. Trolleys, pallets and fixtures reach the next station already facing the right way, with no operator repositioning, and no maneuvering the whole robot to square up a handoff.",
+    heroImage: "series/ar/atr-1000/hero.png",
+    backgroundText: "series/ar/atr-1000/atr-100-bg-text.svg",
+    overviewVideo: "ATR-1000-overview.mp4",
+    overviewImage: "0165993d3d4996b571e9d54c992b729915629ee4.jpg",
+    advantageImage: "Frame-1321316064_1.jpg",
+    featuresCtaImage: "series/ar/atr-1000/ready-to-automate.png",
+    useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
+    caseStudyImage: "case-study-manufacturing.jpg",
+    applications: ["Lifting", "Rotating", "Trolley transport", "Pallet movement"],
+    footerBanner: "footer-banner.png",
+    productProfileUrl: "",
+    specs: [
+      { label: "Payload Capacity", value: "1000 kg", imperial: "2204.6 lbs" },
+      { label: "Navigation", value: "SLAM Navigation (QR Navigation optional)" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      {
+        label: "Dimensions",
+        value: "940 * 740 * 255 mm",
+        imperial: "37 x 29.1 x 10 in",
+      },
+      {
+        label: "Type of Payload",
+        value:
+          "Suitable for handling pallets, trolleys, carts, and various unit loads",
+      },
+      { label: "Max Speed", value: "1.5 m/s", imperial: "3.35 mph" },
+      {
+        label: "Accuracy",
+        value: "X,Y: 15 mm, Yaw: 1.5 degrees",
+        imperial: "X,Y: 0.59 in , Yaw: 1.5 degrees",
+      },
+      { label: "BATTERY TYPE", value: "LFP" },
+      { label: "Charging Time", value: "1.5 hrs" },
+      { label: " BATTERY Runtime", value: "7 Hrs" },
+      { label: "Lift Height", value: "60 mm", imperial: "2.3 in" },
+      { label: "Rotation", value: "360 degrees" },
+      { label: "Ground Clearance", value: "25 mm", imperial: "0.98 in" },
+    ],
+    advantages: {
+      content:
+        "Choose the ATR 1000 when load orientation matters as much as load movement. One platform that lifts, turns and delivers without adding a manual handling step at either end of the route.",
+      advantages: [
+        {
+          title: "Automatic Load Orientation",
+          copy: "Rotates the payload 360° in place, so trolleys and pallets arrive at the next station already aligned.",
+          image: "series/ar/atr-1000/advantages/automatic-load-orientation.png",
+        },
+        {
+          title: "Heavy Payload, Compact Footprint",
+          copy: "Moves up to 1000 kg on a low-profile chassis that turns within its own footprint.",
+          image: "series/ar/atr-1000/advantages/heavy-payload-compact-footprint.png",
+        },
+        {
+          title: "Deploy Without Rebuilding",
+          copy: "SLAM navigation maps the floor you already have. No tape, magnets or facility modification required.",
+          image: "series/ar/atr-1000/advantages/deploy-without-rebuilding.png",
+        },
+      ],
+    },
+    features: {
+      title: `Engineered For <span class="text-[#005ead]">Precise</span> Load Orientation`,
+      content:
+        "The ATR 1000 combines a compact form factor with a powered turntable and a 60 mm lifter, enabling automated lifting, pickup, rotation and drop-off in a single uninterrupted mission.",
+      features: [
+        {
+          title: "360° Powered Turntable",
+          copy: "Turns the load independently of the chassis for aligned handoffs in tight aisles.",
+          icon: "RotateCw",
+        },
+        {
+          title: "60 mm Automated Lift",
+          copy: "Engages and releases trolleys, pallets and fixtures without operator assistance.",
+          icon: "ArrowUpDown",
+        },
+        {
+          title: "Precision Docking",
+          copy: "Accurate positioning for seamless pickup and drop-off.",
+          icon: "DiamondPlus",
+        },
+        {
+          title: "Full-Perimeter Safety Fields",
+          copy: "Two diagonally mounted scanners provide 360° coverage around the robot.",
+          icon: "ScanSearch",
+        },
+      ],
+    },
+    advancedFeatures: [
+      {
+        title: "Human-safe Operations",
+        points: [
+          "PLd category 3 certified",
+          "Laser safety fields respond before a person gets close",
+          "No cages",
+          "No zone restrictions",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-1.png",
+      },
+      {
+        title: "Turntable Load Handling",
+        points: [
+          "Lift, move and rotate loads",
+          "360° orientation control",
+          "Seamless station-to-station transfer",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-2.png",
+      },
+      {
+        title: "Autonomous Navigation",
+        points: [
+          "Detects obstacles in time, reroutes autonomously without interruption",
+          "No floor tape, no manual intervention, no downtime",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-3.png",
+      },
+      {
+        title: "Interoperable Architecture",
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
+        image: "individual-product/ar-250/ar-250-adf-4.png",
+      },
+      {
+        title: "Real-Time Alerts & Status Indication",
+        points: [
+          "Audio alerts for operator notification",
+          "No screen dependency",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-5.png",
+      },
+      {
+        title: "Multi-Side Status Lighting",
+        points: [
+          "Front and rear LED indicators",
+          "Workers know the robot's intent before it reaches them",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-6.png",
+      },
+      {
+        title: "Opportunity Charging",
+        points: [
+          "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-7.png",
+      },
+      {
+        title: "Built-In Mission Creator",
+        points: [
+          "Configure tasks, update routes, and adapt to layout changes on the fly",
+          "No programmer required, just an intuitive interface your team can own",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-8.png",
+      },
+    ],
+    useCases: [
+      {
+        title: "Trolley Handling",
+        copy: "Lift, turn and transport trolleys between production cells.",
+        image: "series/ar/atr-1000/applications/trolley-handling.png",
+      },
+      {
+        title: "Pallet Movement",
+        copy: "Move loaded pallets across warehouse and staging areas.",
+        image: "series/ar/atr-1000/applications/pallet-movement.png",
+      },
+      {
+        title: "Line-Side Feeding",
+        copy: "Deliver kits and components to the line in the correct orientation.",
+        image: "series/ar/atr-1000/applications/line-side-feeding.png",
+      },
+      {
+        title: "Conveyor Transfer",
+        copy: "Rotate to square up with fixed conveyors for an automated handoff.",
+        image: "series/ar/atr-1000/applications/conveyor-transfer.png",
+      },
+    ],
+    faqs: [
+      {
+        question:
+          "What makes the ATR 1000 different from a standard lifting AMR?",
+        answer:
+          "Its turntable rotates the payload a full 360° independently of the chassis. Loads can be re-oriented in place rather than repositioned by an operator or by maneuvering the whole robot into line, which matters most in tight aisles and at fixed conveyor handoffs.",
+      },
+      {
+        question: "What can the ATR 1000 carry?",
+        answer:
+          "Up to 1000 kg - trolleys, pallets, carts, fixtures and other unit loads, engaged by a 60 mm automated lift.",
+      },
+      {
+        question: "Does the facility need modification before deployment?",
+        answer:
+          "No. SLAM navigation maps the existing layout, so no floor tape, magnets or reflectors are required. Floors should be clean, dry and non-slippery.",
+      },
+      {
+        question: "How is the ATR 1000 kept safe around people?",
+        answer:
+          "Two diagonally mounted laser scanners give full 360° field coverage at PLd Category 3 (EN ISO 13849), supported by a 3D depth camera, LED status lighting at all four corners and audible alerts. The robot complies with ISO 3691-4, ISO 13849-1, ISO 12100, EN 1175 and ANSI RIA R15.08-1.",
       },
     ],
   },

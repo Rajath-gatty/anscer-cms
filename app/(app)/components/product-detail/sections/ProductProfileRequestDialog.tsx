@@ -148,7 +148,9 @@ export function ProductProfileRequestDialog({
       }
 
       // --- 6. Success Fallback Flow (Open Product Profile & Reset) ---
-      window.open(productProfileUrl, "_blank", "noopener,noreferrer");
+      if (productProfileUrl) {
+        window.open(productProfileUrl, "_blank", "noopener,noreferrer");
+      }
       onOpenChange(false);
       formElement.reset();
 

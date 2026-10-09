@@ -14,6 +14,7 @@ const footerColumns = [
       { label: "AR 500", href: "/products/ar/ar500" },
       { label: "AR 650", href: "/products/ar/ar650" },
       { label: "AR 1250", href: "/products/ar/ar1250" },
+      { label: "ATR 1000", href: "/products/ar/atr1000" },
       { label: "PSR G2G", href: "/products/psr/psrg2g" },
       { label: "PSR 2000", href: "/products/psr/psr2000" },
       { label: "PSR 1000R", href: "/products/psr/psr1000r" },
@@ -27,7 +28,7 @@ const footerColumns = [
     links: [
       { label: "Home", href: "/" },
       { label: "Products", href: "/products" },
-      { label: "Software", href: "/solutions" },
+      { label: "Software", href: "/software-solutions" },
       { label: "Contact Us", href: CONTACT_HREF, external: true },
     ],
   },
@@ -36,6 +37,7 @@ const footerColumns = [
     links: [
       { label: "About us", href: "/about" },
       { label: "Newsroom", href: "/newsroom" },
+      { label: "Blog", href: "/blog", external: true },
     ],
   },
 ];
