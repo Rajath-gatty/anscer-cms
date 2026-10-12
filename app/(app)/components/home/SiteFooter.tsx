@@ -130,7 +130,7 @@ export function SiteFooter() {
 
             <div className="flex items-center gap-3">
               <a
-                href="https://youtube.com/@anscertv"
+                href="https://www.youtube.com/@ANSCERRobotics"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="ANSCER on YouTube"

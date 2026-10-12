@@ -210,7 +210,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
         name: "ATR 1000",
         description:
           "Turntable AMR that lifts and rotates loads a full 360° for aligned station-to-station handoffs.",
-        image: "series/ar/atr-1000/hero.png",
+        image: "series/ar/ATR1000.png",
         bgText: "series/ar/atr-1000/atr-100-bg-text.svg",
         href: "/products/ar/atr1000",
         tags: ["Lifting", "Rotating"],
