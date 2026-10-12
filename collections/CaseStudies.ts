@@ -57,6 +57,7 @@ export const CaseStudies: CollectionConfig = {
         { label: 'AR 500', value: 'ar-500' },
         { label: 'AR 650', value: 'ar-650' },
         { label: 'AR 1250', value: 'ar-1250' },
+        { label: 'ATR 1000', value: 'atr-1000' },
         { label: 'PSR G2G', value: 'psr-g2g' },
         { label: 'PSR 2000', value: 'psr-2000' },
         { label: 'PSR 2000R', value: 'psr-2000r' },

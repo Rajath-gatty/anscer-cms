@@ -1,96 +1,52 @@
 import type { Metadata } from "next";
-import { FadeUp } from "../components/animation";
-import { AnalyticsBenefitsSection } from "./AnalyticsBenefitsSection";
-import { AnalyticsSection } from "./AnalyticsSection";
-import { SoftwareTabs } from "./SoftwareTabs";
-import { TabbedCapabilities } from "./TabbedCapabilities";
-import { AnalyticsPlatformSection } from "./_components/AnalyticsPlatformSection";
-import { BenefitsSection } from "./_components/BenefitsSection";
-import { BusinessBenefitsSection } from "./_components/BusinessBenefitsSection";
-import { FleetManagementSection } from "./_components/FleetManagementSection";
-import InteractiveWorkflowV2 from "./_components/InteractiveWorkflowV2";
-import { ProcessBenefitsSection } from "./_components/ProcessBenefitsSection";
-import { ProductModule } from "./_components/ProductModule";
-import { SoftwareCta } from "./_components/SoftwareCta";
-import { SoftwareHero } from "./_components/SoftwareHero";
+import { AutomationIndustriesSection } from "./_components/AutomationIndustriesSection";
+import { AutomationSolutionsSection } from "./_components/AutomationSolutionsSection";
+import { IntelligentAutomationSection } from "./_components/IntelligentAutomationSection";
+import { MaterialMovementSection } from "./_components/MaterialMovementSection";
+import { SolutionsCta } from "./_components/SolutionsCta";
+import { SolutionsFaqSection } from "./_components/SolutionsFaqSection";
+import { SolutionHighlights } from "./_components/SolutionHighlights";
+import { SolutionsHero } from "./_components/SolutionsHero";
+import { WorkflowTabsSection } from "./_components/WorkflowTabsSection";
+import { WorkflowAutomationSection } from "./_components/WorkflowAutomationSection";
 import {
-  businessApplicationModule,
-  businessCapabilities,
-  fleetBenefits,
-  fleetCapabilities,
-  processFlowManagerModule,
-} from "./_data/software-solutions-data";
+  manufacturingMapMarkers,
+  manufacturingWorkflows,
+  warehouseMapMarkers,
+  warehouseWorkflows,
+} from "./_data/solutions-data";
 
 export const metadata: Metadata = {
-  title: "AMR Fleet Management System (FMS) | ANSCER",
+  title: "Intelligent Automation Solutions | ANSCER",
   description:
-    "Orchestrate multi-robot AMR fleets with ANSCER FMS. Features VDA 5050 compliance, dynamic traffic routing, and turnkey WMS/MES integration.",
+    "Transform complex warehouse workflows with ANSCER. Autonomous robotics designed for seamless integration, scalable deployment, and measurable operational gains.",
 };
 
-export default function SoftwareSolutionsPage() {
+export default function SolutionsPage() {
   return (
     <main className="bg-[#fafafa] text-[#011f40]">
-      <SoftwareHero />
-
-      <SoftwareTabs />
-      <FadeUp>
-        <FleetManagementSection />
-      </FadeUp>
-      <FadeUp>
-        <TabbedCapabilities
-          eyebrow="Key Capabilities"
-          title="Core Fleet Management Capabilities"
-          items={fleetCapabilities}
-          pale={true}
-          variant="accordion"
-        />
-      </FadeUp>
-      <FadeUp>
-        <BenefitsSection
-          eyebrow="Benefits"
-          title={
-            <>
-              Benefits of Intelligent <br /> Fleet Management
-            </>
-          }
-          fleetMap
-          cards={fleetBenefits.map((benefit) => benefit.title)}
-        />
-      </FadeUp>
-      <FadeUp>
-        <ProductModule {...businessApplicationModule} />
-      </FadeUp>
-      <FadeUp>
-        <TabbedCapabilities
-          eyebrow="Key Capabilities"
-          title="Core Business Application Capabilities"
-          items={businessCapabilities}
-          pale
-          variant="cards"
-        />
-      </FadeUp>
-      <FadeUp>
-        <BusinessBenefitsSection />
-      </FadeUp>
-      <FadeUp>
-        <ProductModule {...processFlowManagerModule} />
-      </FadeUp>
-      <FadeUp>
-        {/* <InteractiveWorkflow /> */}
-        <InteractiveWorkflowV2 />
-      </FadeUp>
-
-      <FadeUp>
-        <ProcessBenefitsSection imagePosition="left" />
-      </FadeUp>
-      <FadeUp>
-        <AnalyticsPlatformSection />
-      </FadeUp>
-      <AnalyticsSection />
-
-      <AnalyticsBenefitsSection />
-
-      <SoftwareCta />
+      <SolutionsHero />
+      <SolutionHighlights />
+      <WorkflowAutomationSection />
+      <AutomationSolutionsSection />
+      <MaterialMovementSection />
+      <WorkflowTabsSection
+        id="warehouse-workflows"
+        title="Warehouse Workflows"
+        workflows={warehouseWorkflows}
+        markers={warehouseMapMarkers}
+      />
+      <WorkflowTabsSection
+        id="manufacturing-workflows"
+        title="Manufacturing Workflow"
+        workflows={manufacturingWorkflows}
+        markers={manufacturingMapMarkers}
+        className="pt-0 md:pt-0 3xl:pt-0 4xl:pt-0"
+      />
+      <AutomationIndustriesSection />
+      <IntelligentAutomationSection />
+      <SolutionsFaqSection />
+      <SolutionsCta />
     </main>
   );
 }

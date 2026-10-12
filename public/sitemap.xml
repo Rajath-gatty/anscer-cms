@@ -47,6 +47,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://anscer.com/products/ar/atr1000</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- PSR Series -->
   <url>
@@ -109,7 +115,7 @@
 
   <!-- Solutions & Company -->
   <url>
-    <loc>https://anscer.com/solutions</loc>
+    <loc>https://anscer.com/software-solutions</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

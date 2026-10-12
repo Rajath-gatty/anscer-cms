@@ -907,6 +907,8 @@ function selectorImageClass(name: string) {
       return "scale-[0.84] translate-y-[14%] 2xl:translate-y-[8%]";
     case "AR 1250":
       return "scale-[0.84] translate-y-[14%] 2xl:translate-y-[8%]";
+    case "ATR 1000":
+      return "scale-[0.84] translate-y-[14%] 2xl:translate-y-[8%]";
     case "PSR 2000":
     case "PSR 2000R":
     case "PSR 1000R":

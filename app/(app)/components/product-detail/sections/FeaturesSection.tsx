@@ -15,6 +15,7 @@ import {
   MoveHorizontal,
   PackageCheck,
   QrCode,
+  RotateCw,
   ScanSearch,
   PackagePlus
 } from "lucide-react";
@@ -41,7 +42,8 @@ const featureIcons = {
   Boxes,
   Minimize,
   Minimize2,
-  PackagePlus
+  PackagePlus,
+  RotateCw,
 } as const;
 
 export function FeaturesSection({ data }: { data: ProductDetailData }) {
@@ -75,7 +77,7 @@ export function FeaturesSection({ data }: { data: ProductDetailData }) {
             ))}
             <article className="relative order-last row-span-2 min-h-80 overflow-hidden rounded-[12px] bg-[#011f40] p-5 text-white lg:order-0 lg:min-h-95">
               <Image
-                src={`${imagePath}Frame-1321317289.jpg`}
+                src={`${imagePath}${data.featuresCtaImage ?? "Frame-1321317289.jpg"}`}
                 alt=""
                 fill
                 sizes="(max-width: 1024px) 100vw, 430px"
