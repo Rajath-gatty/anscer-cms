@@ -1094,7 +1094,7 @@ export const productDetails: Record<string, ProductDetailData> = {
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Lifting", "Rotating", "Trolley transport", "Pallet movement"],
     footerBanner: "footer-banner.png",
-    productProfileUrl: "",
+    productProfileUrl: "/anscer/product-profiles/ATR1000.pdf",
     specs: [
       { label: "Payload Capacity", value: "1000 kg", imperial: "2204.6 lbs" },
       { label: "Navigation", value: "SLAM Navigation (QR Navigation optional)" },
@@ -1179,7 +1179,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "No cages",
           "No zone restrictions",
         ],
-        image: "individual-product/ar-250/ar-250-adf-1.png",
+        image: "individual-product/atr-1000/atr-1000-adf-1.jpg",
       },
       {
         title: "Turntable Load Handling",
@@ -1188,7 +1188,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "360° orientation control",
           "Seamless station-to-station transfer",
         ],
-        image: "individual-product/ar-250/ar-250-adf-2.png",
+        image: "individual-product/atr-1000/atr-1000-adf-2.png",
       },
       {
         title: "Autonomous Navigation",
@@ -1196,7 +1196,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Detects obstacles in time, reroutes autonomously without interruption",
           "No floor tape, no manual intervention, no downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-3.png",
+        image: "individual-product/atr-1000/atr-1000-adf-3.jpg",
       },
       {
         title: "Interoperable Architecture",
