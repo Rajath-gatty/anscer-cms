@@ -78,7 +78,7 @@ export function ProductDetailPage({
 }
 
 function ProductDetailTabsSection({ data }: { data: ProductDetailData }) {
-  return <ProductTabs hasModules={Boolean(data.modules)} showApplication={data.slug !== 'ar-250'} />;
+  return <ProductTabs hasModules={Boolean(data.modules)} showApplication={data.slug !== 'ar-250' && data.slug !== 'atr-1000'} />;
 }
 
 function ProductDetailModulesSection({ data }: { data: ProductDetailData }) {

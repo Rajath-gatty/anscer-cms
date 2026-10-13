@@ -218,8 +218,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
         specs: [
           {
             label: "Dimensions",
-            value: "940 * 740 * 255 mm",
-            imperial: "37 x 29.1 x 10 in",
+            value: "980 * 780 * 260 mm",
+            imperial: "38.6 x 30.7 x 10.2 in",
           },
           { label: "Max speed", value: "1.5 m/s", imperial: "3.35 mph" },
           {
