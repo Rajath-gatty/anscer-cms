@@ -1188,7 +1188,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "360° orientation control",
           "Seamless station-to-station transfer",
         ],
-        image: "individual-product/atr-1000/atr-1000-adf-2.png",
+        image: "individual-product/atr-1000/atr-1000-adf-2.jpg",
       },
       {
         title: "Autonomous Navigation",
@@ -1217,7 +1217,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Front and rear LED indicators",
           "Workers know the robot's intent before it reaches them",
         ],
-        image: "individual-product/ar-250/ar-250-adf-6.png",
+        image: "individual-product/atr-1000/atr-1000-adf-6.png",
       },
       {
         title: "Opportunity Charging",
