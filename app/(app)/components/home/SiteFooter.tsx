@@ -117,7 +117,7 @@ export function SiteFooter() {
             <div>
               <h3 className="text-sm font-semibold    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">USA Office</h3>
               <p className="mt-1 text-xs leading-6 md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] md:leading-[1.25]">
-                400 Chisholm Pl, PlanoTX 75075,
+                400 Chisholm Pl, Plano, TX 75075,
                 <br />
                 United States
                 <br />
