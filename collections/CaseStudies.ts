@@ -63,6 +63,7 @@ export const CaseStudies: CollectionConfig = {
         { label: 'PSR 2000R', value: 'psr-2000r' },
         { label: 'PSR 1000R', value: 'psr-1000r' },
         { label: 'LBR 500', value: 'lbr-500' },
+        { label: 'GPR 1000', value: 'gpr-1000' },
         { label: 'AGV 100', value: 'agv-100' },
       ]
     },

@@ -789,6 +789,10 @@ const desktopTagPositionsByProduct: Record<
     Trolley: { left: "40%", top: "30%" },
     Lifting: { left: "80%", top: "78%" },
   },
+  "GPR 1000": {
+    "Open/Closed Pallet": { left: "17%", top: "38%" },
+    Lifting: { left: "72%", top: "78%" },
+  },
   "AGV 100": {
     Lifting: { left: "40%", top: "48%" },
     Sorting: { left: "70%", top: "58%" },
@@ -837,6 +841,10 @@ const mobileTagPositionsByProduct: Record<
   "LBR 500": {
     Trolley: { left: "20%", top: "30%" },
     Lifting: { left: "65%", top: "75%" },
+  },
+  "GPR 1000": {
+    "Open/Closed Pallet": { left: "1%", top: "38%" },
+    Lifting: { left: "60%", top: "75%" },
   },
   "AGV 100": {
     Lifting: { left: "38%", top: "48%" },
@@ -913,6 +921,7 @@ function selectorImageClass(name: string) {
     case "PSR 2000R":
     case "PSR 1000R":
     case "PSR G2G":
+    case "GPR 1000":
       return "scale-[0.84] translate-y-[4%] 2xl:translate-y-[2%]";
     case "LBR 500":
       return "scale-[0.84] translate-y-[4%] 2xl:translate-y-[2%]";

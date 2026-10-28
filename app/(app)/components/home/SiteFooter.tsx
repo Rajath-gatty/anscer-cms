@@ -20,6 +20,7 @@ const footerColumns = [
       { label: "PSR 1000R", href: "/products/psr/psr1000r" },
       { label: "PSR 2000R", href: "/products/psr/psr2000r" },
       { label: "LBR 500", href: "/products/psr/lbr500" },
+      { label: "GPR 1000", href: "/products/psr/gpr1000" },
       { label: "AGV 100", href: "/products/agv/agv100" },
     ],
   },

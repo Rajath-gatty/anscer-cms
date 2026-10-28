@@ -453,6 +453,30 @@ export const seriesPages: Record<string, SeriesPageData> = {
           { label: "Horizontal Reach", value: "NA", imperial: "NA" },
         ],
       },
+      {
+        name: "GPR 1000",
+        description:
+          "Underride pallet robot that picks, transports and drops closed and open pallets in space-constrained aisles.",
+        image: "series/psr/GPR1000.png",
+        bgText: "series/psr/gpr-1000/hero-bg-text.png",
+        href: "/products/psr/gpr1000",
+        tags: ["Open/Closed Pallet", "Lifting"],
+        tabDescription: "Carries loads up to 1000 kg.",
+        specs: [
+          {
+            label: "Dimensions",
+            value: "1780 x 1200 x 1390 mm",
+            imperial: "70.07 x 47.24 x 54.72 in",
+          },
+          { label: "Max speed", value: "1.1 m/s", imperial: "2.46 mph" },
+          {
+            label: "Pay-load capacity",
+            value: "Up to 1000 kg",
+            imperial: "Up to 2,204 lb",
+          },
+          { label: "Lift Height", value: "200 mm", imperial: "7.87 in" },
+        ],
+      },
     ],
     faqs: [
       {
