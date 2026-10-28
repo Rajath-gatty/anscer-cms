@@ -53,6 +53,8 @@ export type ProductDetailData = {
     copy: string;
     image: string;
   }[];
+  applicationsTitle?: string;
+  applicationsContent?: string;
   applicationRows?: {
     title: string;
     copy: string;
@@ -1094,15 +1096,15 @@ export const productDetails: Record<string, ProductDetailData> = {
     caseStudyImage: "case-study-manufacturing.jpg",
     applications: ["Lifting", "Rotating", "Trolley transport", "Pallet movement"],
     footerBanner: "footer-banner.png",
-    productProfileUrl: "",
+    productProfileUrl: "/anscer/product-profiles/ATR1000.pdf",
     specs: [
       { label: "Payload Capacity", value: "1000 kg", imperial: "2204.6 lbs" },
       { label: "Navigation", value: "SLAM Navigation (QR Navigation optional)" },
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
       {
         label: "Dimensions",
-        value: "940 * 740 * 255 mm",
-        imperial: "37 x 29.1 x 10 in",
+        value: "980 * 780 * 260 mm",
+        imperial: "38.6 x 30.7 x 10.2 in",
       },
       {
         label: "Type of Payload",
@@ -1179,7 +1181,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "No cages",
           "No zone restrictions",
         ],
-        image: "individual-product/ar-250/ar-250-adf-1.png",
+        image: "individual-product/atr-1000/atr-1000-adf-1.jpg",
       },
       {
         title: "Turntable Load Handling",
@@ -1188,7 +1190,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "360° orientation control",
           "Seamless station-to-station transfer",
         ],
-        image: "individual-product/ar-250/ar-250-adf-2.png",
+        image: "individual-product/atr-1000/atr-1000-adf-2.jpg",
       },
       {
         title: "Autonomous Navigation",
@@ -1196,7 +1198,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Detects obstacles in time, reroutes autonomously without interruption",
           "No floor tape, no manual intervention, no downtime",
         ],
-        image: "individual-product/ar-250/ar-250-adf-3.png",
+        image: "individual-product/atr-1000/atr-1000-adf-3.jpg",
       },
       {
         title: "Interoperable Architecture",
@@ -1217,7 +1219,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Front and rear LED indicators",
           "Workers know the robot's intent before it reaches them",
         ],
-        image: "individual-product/ar-250/ar-250-adf-6.png",
+        image: "individual-product/atr-1000/atr-1000-adf-6.png",
       },
       {
         title: "Opportunity Charging",
@@ -1937,6 +1939,190 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Fleet size depends on travel distances, throughput targets, shifts, and process timing.",
       },
     ],
+  },
+  "gpr-1000": {
+    slug: "gpr-1000",
+    seriesSlug: "psr-series",
+    seriesLabel: "PSR Series",
+    title: "GPR 1000",
+    subtitle: "Ground-Level Pallet Automation",
+    overview:
+      "The GPR 1000 is an autonomous underride pallet robot designed to pick, transport and drop standard closed and open pallets. Its compact footprint and integrated lifter enable reliable pallet movement in space-constrained, high-throughput warehouses.",
+    heroImage: "series/psr/gpr-1000/hero.png",
+    backgroundText: "series/psr/gpr-1000/hero-bg-text.png",
+    overviewVideo: "GPR-1000-overview.mp4",
+    advantageImage: "series/psr/gpr-1000/advantage.jpg",
+    useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
+    caseStudyImage: "case-study-manufacturing.jpg",
+    footerBanner: "series/psr/gpr-1000/footer-banner.jpg",
+    applications: [
+      "Pallet Handling",
+      "Ground-to-Ground Transfer",
+      "Low-Height Conveyor Transfer",
+    ],
+    productProfileUrl: "",
+    specs: [
+      { label: "Payload Capacity", value: "1000 kg", imperial: "2204.6 lbs" },
+      { label: "Navigation", value: "SLAM Navigation" },
+      { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
+      {
+        label: "Dimensions",
+        value: "1780 * 1200 * 1390 mm",
+        imperial: "70.07 x 47.24 x 54.72 in",
+      },
+      { label: "Type of Payload", value: "Closed pallet movement" },
+      { label: "Max Speed", value: "1.1 m/s", imperial: "2.46 mph" },
+      {
+        label: "Accuracy",
+        value: "X,Y: 15 mm, Yaw: 1.5 degrees",
+        imperial: "X,Y: 0.59 in , Yaw: 1.5 degrees",
+      },
+      { label: "BATTERY TYPE", value: "LFP" },
+      {
+        label: "Battery Charging Time (20% to 80% with 48 V)",
+        value: "1.5 hrs",
+      },
+      { label: " BATTERY Runtime", value: "8 Hrs" },
+      { label: "BATTERY Voltage", value: "48 V" },
+      { label: "Lift Height", value: "200 mm", imperial: "7.87 in" },
+    ],
+    advantages: {
+      content:
+        "Choose the GPR 1000 when pallet movement needs to be automated without sacrificing floor space. It combines a compact chassis, integrated lifting and infrastructure-free navigation to move up to 1000 kg through existing warehouse environments.",
+      advantages: [
+        {
+          title: "Autonomous Pallet Handling",
+          copy: "Slides beneath, lifts and transports pallets up to 1000 kg without a driver or fixed guide paths.",
+        },
+        {
+          title: "Closed & Open Pallet Handling",
+          copy: "Handles both closed and open standard pallets, supporting diverse pallet flows without changing the handling method.",
+        },
+        {
+          title: "Heavy Payload, Compact Footprint",
+          copy: "Moves load up to 1000 kg while operating efficiently in aisles under 3 m.",
+        },
+      ],
+    },
+    features: {
+      title: `Engineered for <span class="text-[#005ead]">Compact</span> Pallet Movement`,
+      content:
+        "The GPR 1000 combines an underride design with an integrated lifter and horizontal reach, enabling autonomous pallet pickup, transport and drop-off in a single mission.",
+      features: [
+        {
+          title: "Integrated Pallet Lifter",
+          copy: "Slides beneath pallets for automated lifting and secure transport.",
+          icon: "ArrowUpDown",
+        },
+        {
+          title: "Open & Closed Pallet Compatibility",
+          copy: "Handles GMA, CHEP and other standard closed and open pallet types.",
+          icon: "PackageCheck",
+        },
+        {
+          title: "Horizontal Reach",
+          copy: "Extends horizontally to enable ground-to-ground and low-height conveyor pallet transfers.",
+          icon: "MoveHorizontal",
+        },
+        {
+          title: "Compact Footprint",
+          copy: "Operates efficiently in space-constrained warehouse aisles under 3 m.",
+          icon: "Minimize2",
+        },
+      ],
+    },
+    advancedFeatures: [
+      {
+        title: "Human-safe Operations",
+        points: [
+          "PLd category 3 certified",
+          "Laser safety fields respond before a person gets close",
+          "No cages",
+          "No zone restrictions",
+        ],
+        image: "individual-product/gpr-1000/gpr-1000-adf-1.png",
+      },
+      {
+        title: "Underride Pallet Handling",
+        points: [
+          "30 mm (1.18 in) ground clearance for pallet engagement",
+          "200 mm (7.87 in) lift stroke for pallet clearance",
+          "1000 kg (2204.62 lb) payload capacity",
+          "Compatible with open and closed standard pallets",
+        ],
+        image: "individual-product/gpr-1000/gpr-1000-adf-2.png",
+      },
+      {
+        title: "Autonomous Navigation",
+        points: [
+          "Detects obstacles in time, reroutes autonomously without interruption",
+          "No floor tape, no manual intervention, no down-time",
+        ],
+        image: "individual-product/gpr-1000/gpr-1000-adf-3.png",
+      },
+      {
+        title: "Interoperable Architecture",
+        points: ["VDA 5050 compliant", "Enables vendor-agnostic scalability"],
+        image: "individual-product/ar-250/ar-250-adf-4.png",
+      },
+      {
+        title: "Real-Time Alerts & Status Indication",
+        points: [
+          "Audio alerts for operator notification",
+          "No screen dependency",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-5.png",
+      },
+      {
+        title: "Multi-Side Status Lighting",
+        points: [
+          "Front and rear LED indicators",
+          "Workers know the robot's intent before it reaches them",
+        ],
+        image: "individual-product/gpr-1000/gpr-1000-adf-6.png",
+      },
+      {
+        title: "Opportunity Charging",
+        points: [
+          "Autonomous opportunity charging during task intervals sustains continuous operation without scheduled downtime",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-7.png",
+      },
+      {
+        title: "Built-In Mission Creator",
+        points: [
+          "Configure tasks, update routes, and adapt to layout changes on the fly",
+          "No programmer required, just an intuitive interface your team can own",
+        ],
+        image: "individual-product/ar-250/ar-250-adf-8.png",
+      },
+    ],
+    applicationsTitle: `Built for <span class="text-[#005ead]">Space-Optimised</span> Pallet Movement`,
+    applicationsContent:
+      "Designed to automate pallet transport across warehouses, production floors, staging areas and material flow routes.",
+    useCases: [
+      {
+        title: "Warehouse Pallet Transport",
+        copy: "Move pallets autonomously between storage, staging and dispatch areas.",
+        image: "series/psr/gpr-1000/applications/application.jpg",
+      },
+      {
+        title: "Production Supply",
+        copy: "Deliver pallets and materials from warehouses to production lines.",
+        image: "series/psr/gpr-1000/applications/application.jpg",
+      },
+      {
+        title: "Ground-to-Conveyor Transfer",
+        copy: "Transfer pallets between the floor and low-height conveyors for automated material flow.",
+        image: "series/psr/gpr-1000/applications/application.jpg",
+      },
+      {
+        title: "High-Throughput Pallet Movement",
+        copy: "Support continuous pallet movement in facilities where floor space and throughput are critical.",
+        image: "series/psr/gpr-1000/applications/application.jpg",
+      },
+    ],
+    faqs: [],
   },
   "lbr-500": {
     slug: "lbr-500",

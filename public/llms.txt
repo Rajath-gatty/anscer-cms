@@ -32,6 +32,7 @@ Product families:
 - [PSR 2000R](https://anscer.com/products/psr/psr2000r): Autonomous reach stacker up to 2000kg for high-density vertical pallet storage and zero-accident racking.
 - [PSR 1000R](https://anscer.com/products/psr/psr1000r): Autonomous pallet reach stacker for 1000kg vertical stacking in narrow aisles with high-rack precision sensors.
 - [LBR 500](https://anscer.com/products/psr/lbr500): Low-bay lifter AMR, 500kg payload, for low-clearance warehouse racks.
+- [GPR 1000](https://anscer.com/products/psr/gpr1000): 1000kg autonomous underride pallet robot that picks, transports and drops closed and open pallets in aisles under 3 m, with ground-to-ground and low-height conveyor transfer.
 - [PSR Trail](https://anscer.com/psr-trail): Autonomous tugger robot for multi-cart milk runs and assembly line towing, with hybrid sensor fusion localization and deep learning pallet perception.
 
 ## AGV Series (guided vehicles)

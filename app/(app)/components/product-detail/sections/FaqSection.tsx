@@ -4,6 +4,8 @@ import { ProductFaqAccordion } from "../../robots/ProductFaqAccordion";
 import type { ProductDetailData } from "../product-detail-data";
 
 export function FaqSection({ data }: { data: ProductDetailData }) {
+  if (data.faqs.length === 0) return null;
+
   return (
     <section id="faqs" className="scroll-mt-28 bg-[#fafafa] py-14">
       <div className="site-container grid gap-4 md:grid-cols-[0.6fr_1fr] xl:grid-cols-[0.5fr_1fr]">

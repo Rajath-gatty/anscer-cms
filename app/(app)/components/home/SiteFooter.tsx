@@ -20,6 +20,7 @@ const footerColumns = [
       { label: "PSR 1000R", href: "/products/psr/psr1000r" },
       { label: "PSR 2000R", href: "/products/psr/psr2000r" },
       { label: "LBR 500", href: "/products/psr/lbr500" },
+      { label: "GPR 1000", href: "/products/psr/gpr1000" },
       { label: "AGV 100", href: "/products/agv/agv100" },
     ],
   },
@@ -117,7 +118,7 @@ export function SiteFooter() {
             <div>
               <h3 className="text-sm font-semibold    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">USA Office</h3>
               <p className="mt-1 text-xs leading-6 md:text-[clamp(14px,0.7vw,22px)] 3xl:text-[clamp(16px,0.8vw,24px)] md:leading-[1.25]">
-                400 Chisholm Pl, PlanoTX 75075,
+                400 Chisholm Pl, Plano, TX 75075,
                 <br />
                 United States
                 <br />
