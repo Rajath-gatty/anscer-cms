@@ -123,7 +123,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           {
             label: "Dimensions",
             value: "900 * 580 * 275 mm",
-            imperial: "35.43 x 22.83 x 10.83 in",
+            imperial: "35.43 * 22.83 * 10.83 in",
           },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
           {
@@ -147,7 +147,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           {
             label: "Dimensions",
             value: "900 * 580 * 295 mm",
-            imperial: "35.43 x 22.83 x 11.61 in",
+            imperial: "35.43 * 22.83 * 11.61 in",
           },
           { label: "Max speed", value: "1.5 m/s", imperial: "3.35 mph" },
           {
@@ -171,7 +171,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           {
             label: "Dimensions",
             value: "1400 * 950 * 300 mm",
-            imperial: "55.12 x 37.40 x 11.81 in",
+            imperial: "55.12 * 37.40 * 11.81 in",
           },
           { label: "Max speed", value: "1.5 m/s", imperial: "3.35 mph" },
           {
@@ -195,7 +195,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           {
             label: "Dimensions",
             value: "1400 * 950 * 300 mm",
-            imperial: "55.12 x 37.40 x 11.81 in",
+            imperial: "55.12 * 37.40 * 11.81 in",
           },
           { label: "Max speed", value: "1.7 m/s", imperial: "3.80 mph" },
           {
@@ -219,7 +219,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           {
             label: "Dimensions",
             value: "980 * 780 * 260 mm",
-            imperial: "38.6 x 30.7 x 10.2 in",
+            imperial: "38.6 * 30.7 * 10.2 in",
           },
           { label: "Max speed", value: "1.5 m/s", imperial: "3.35 mph" },
           {
@@ -339,8 +339,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
         specs: [
           {
             label: "Dimensions",
-            value: "2050 x 1000 x 1500 mm",
-            imperial: "80.71 x 41.34 x 59.06 in",
+            value: "2050 * 1000 * 1500 mm",
+            imperial: "80.71 * 41.34 * 59.06 in",
           },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
           {
@@ -363,8 +363,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
         specs: [
           {
             label: "Dimensions",
-            value: "2700 * 1700 * 2100 mm",
-            imperial: "106.3 x 66.9 x 82.7 in",
+            value: "2750 * 1200 * 1500 mm",
+            imperial: "108.26 * 47.24 * 59.09 in",
           },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
           {
@@ -387,8 +387,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
         specs: [
           {
             label: "Dimensions",
-            value: "2750 * 1350 * 1500 mm",
-            imperial: "108.27 x 53.15 x 59.06 in",
+            value: "2750 * 1200 * 1500 mm",
+            imperial: "108.26 * 47.24 * 59.09 in",
           },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
           {
@@ -413,8 +413,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
         specs: [
           {
             label: "Dimensions",
-            value: "2050 x 1000 x 1500 mm",
-            imperial: "80.71 x 39.37 x 59.06 in",
+            value: "2150 * 1050 * 1500 mm",
+            imperial: "84.65 * 41.33 * 59.05 in",
           },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
           {
@@ -439,8 +439,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
         specs: [
           {
             label: "Dimensions",
-            value: "1260 x 655 x 1270 mm",
-            imperial: "49.61 x 25.79 x 50 in",
+            value: "1260 * 655 * 1270 mm",
+            imperial: "49.61 * 25.79 * 50 in",
           },
           { label: "Max speed", value: "1.2 m/s", imperial: "2.68 mph" },
           {
@@ -465,8 +465,8 @@ export const seriesPages: Record<string, SeriesPageData> = {
         specs: [
           {
             label: "Dimensions",
-            value: "1780 x 1200 x 1390 mm",
-            imperial: "70.07 x 47.24 x 54.72 in",
+            value: "1780 * 1200 * 1390 mm",
+            imperial: "70.07 * 47.24 * 54.72 in",
           },
           { label: "Max speed", value: "1.1 m/s", imperial: "2.46 mph" },
           {
@@ -567,7 +567,7 @@ export const seriesPages: Record<string, SeriesPageData> = {
           {
             label: "Dimensions",
             value: "680 * 600 * 235 mm",
-            imperial: "26.8 x 23.6 x 9.3 inches",
+            imperial: "26.8 * 23.6 * 9.3 inches",
           },
           { label: "Max speed", value: "2 m/s", imperial: "4.47 mph" },
           {

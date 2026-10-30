@@ -268,7 +268,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "900 * 580 * 275 mm",
-        imperial: "35.43 x 22.83 x 10.83 in",
+        imperial: "35.43 * 22.83 * 10.83 in",
       },
       {
         label: "Type of Payload",
@@ -494,7 +494,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "900 * 580 * 295 mm",
-        imperial: "35.43 x 22.83 x 11.61 in",
+        imperial: "35.43 * 22.83 * 11.61 in",
       },
       {
         label: "Type of Payload",
@@ -695,7 +695,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1400 * 950 * 300 mm",
-        imperial: "55.12 x 37.40 x 11.81 in",
+        imperial: "55.12 * 37.40 * 11.81 in",
       },
       {
         label: "Type of Payload",
@@ -903,7 +903,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1400 * 950 * 300 mm",
-        imperial: "55.12 x 37.40 x 11.81 in",
+        imperial: "55.12 * 37.40 * 11.81 in",
       },
       {
         label: "Type of Payload",
@@ -1104,7 +1104,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "980 * 780 * 260 mm",
-        imperial: "38.6 x 30.7 x 10.2 in",
+        imperial: "38.6 * 30.7 * 10.2 in",
       },
       {
         label: "Type of Payload",
@@ -1311,7 +1311,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "2050 * 1050 * 1500 mm",
-        imperial: "80.71 x 41.34 x 59.06 in",
+        imperial: "80.71 * 41.34 * 59.06 in",
       },
       { label: "Type of Payload", value: "Open Pallet" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1516,8 +1516,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
       {
         label: "Dimensions",
-        value: "2700 * 1700 * 2100 mm",
-        imperial: "106.30 x 66.93 x 82.68 in",
+        value: "2750 * 1200 * 1500 mm",
+        imperial: "108.26 * 47.24 * 59.09 in",
       },
       { label: "Type of Payload", value: "Open/Closed Pallet" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1642,8 +1642,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
       {
         label: "Dimensions",
-        value: "2750 * 1300 * 1500 mm",
-        imperial: "108.27 x 51.18 x 59.06 in",
+        value: "2750 * 1200 * 1500 mm",
+        imperial: "108.26 * 47.24 * 59.09 in",
       },
       { label: "Type of Payload", value: "Open/Closed Pallet" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1768,8 +1768,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
       {
         label: "Dimensions",
-        value: "2050 * 1050 * 1500 mm",
-        imperial: "80.71 x 41.34 x 59.06 in",
+        value: "2150 * 1050 * 1500 mm",
+        imperial: "84.65 * 41.33 * 59.05 in",
       },
       { label: "Type of Payload", value: "Trolley, Carts" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1968,7 +1968,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1780 * 1200 * 1390 mm",
-        imperial: "70.07 x 47.24 x 54.72 in",
+        imperial: "70.07 * 47.24 * 54.72 in",
       },
       { label: "Type of Payload", value: "Closed pallet movement" },
       { label: "Max Speed", value: "1.1 m/s", imperial: "2.46 mph" },
@@ -2149,7 +2149,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1260 * 655 * 1270 mm",
-        imperial: "49.61 x 25.83 x 49.61 in",
+        imperial: "49.61 * 25.83 * 49.61 in",
       },
       { label: "Payload Capacity", value: "500 kg", imperial: "1102.31 lbs" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -2349,7 +2349,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "680 * 600 * 235 mm",
-        imperial: "26.77 x 23.62 x 9.25 in",
+        imperial: "26.77 * 23.62 * 9.25 in",
       },
       { label: "Type of Payload", value: "Bins and Totes" },
       { label: "Max Speed", value: "2 m/s", imperial: "4.47 mph" },
