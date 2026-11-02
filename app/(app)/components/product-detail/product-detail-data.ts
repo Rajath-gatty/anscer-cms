@@ -1955,12 +1955,13 @@ export const productDetails: Record<string, ProductDetailData> = {
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     footerBanner: "series/psr/gpr-1000/footer-banner.jpg",
+    ctaTitle: "Know more about the GPR 1000",
     applications: [
       "Pallet Handling",
       "Ground-to-Ground Transfer",
       "Low-Height Conveyor Transfer",
     ],
-    productProfileUrl: "",
+    productProfileUrl: "/anscer/product-profiles/PSR-PP-GPR1000-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "1000 kg", imperial: "2204.6 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -2040,7 +2041,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "No cages",
           "No zone restrictions",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-1.png",
+        image: "series/psr/gpr-1000/advanced/GPR 1000 human safe.png",
       },
       {
         title: "Underride Pallet Handling",
@@ -2050,7 +2051,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "1000 kg (2204.62 lb) payload capacity",
           "Compatible with open and closed standard pallets",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-2.png",
+        image: "series/psr/gpr-1000/advanced/underride pallet handling.png",
       },
       {
         title: "Autonomous Navigation",
@@ -2058,7 +2059,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Detects obstacles in time, reroutes autonomously without interruption",
           "No floor tape, no manual intervention, no down-time",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-3.png",
+        image: "series/psr/gpr-1000/advanced/GPR 1000 autonomous navigation.png",
       },
       {
         title: "Interoperable Architecture",
@@ -2079,7 +2080,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Front and rear LED indicators",
           "Workers know the robot's intent before it reaches them",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-6.png",
+        image: "series/psr/gpr-1000/advanced/GPR 1000 multiside status lightning.png",
       },
       {
         title: "Opportunity Charging",
