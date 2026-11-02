@@ -268,7 +268,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "900 * 580 * 275 mm",
-        imperial: "35.43 x 22.83 x 10.83 in",
+        imperial: "35.43 * 22.83 * 10.83 in",
       },
       {
         label: "Type of Payload",
@@ -494,7 +494,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "900 * 580 * 295 mm",
-        imperial: "35.43 x 22.83 x 11.61 in",
+        imperial: "35.43 * 22.83 * 11.61 in",
       },
       {
         label: "Type of Payload",
@@ -695,7 +695,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1400 * 950 * 300 mm",
-        imperial: "55.12 x 37.40 x 11.81 in",
+        imperial: "55.12 * 37.40 * 11.81 in",
       },
       {
         label: "Type of Payload",
@@ -903,7 +903,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1400 * 950 * 300 mm",
-        imperial: "55.12 x 37.40 x 11.81 in",
+        imperial: "55.12 * 37.40 * 11.81 in",
       },
       {
         label: "Type of Payload",
@@ -1104,7 +1104,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "980 * 780 * 260 mm",
-        imperial: "38.6 x 30.7 x 10.2 in",
+        imperial: "38.6 * 30.7 * 10.2 in",
       },
       {
         label: "Type of Payload",
@@ -1311,7 +1311,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "2050 * 1050 * 1500 mm",
-        imperial: "80.71 x 41.34 x 59.06 in",
+        imperial: "80.71 * 41.34 * 59.06 in",
       },
       { label: "Type of Payload", value: "Open Pallet" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1516,8 +1516,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
       {
         label: "Dimensions",
-        value: "2700 * 1700 * 2100 mm",
-        imperial: "106.30 x 66.93 x 82.68 in",
+        value: "2750 * 1200 * 1500 mm",
+        imperial: "108.26 * 47.24 * 59.09 in",
       },
       { label: "Type of Payload", value: "Open/Closed Pallet" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1642,8 +1642,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
       {
         label: "Dimensions",
-        value: "2750 * 1300 * 1500 mm",
-        imperial: "108.27 x 51.18 x 59.06 in",
+        value: "2750 * 1200 * 1500 mm",
+        imperial: "108.26 * 47.24 * 59.09 in",
       },
       { label: "Type of Payload", value: "Open/Closed Pallet" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1768,8 +1768,8 @@ export const productDetails: Record<string, ProductDetailData> = {
       { label: "Safety Scanners", value: "Pld cat. 3 Safety Scanners" },
       {
         label: "Dimensions",
-        value: "2050 * 1050 * 1500 mm",
-        imperial: "80.71 x 41.34 x 59.06 in",
+        value: "2150 * 1050 * 1500 mm",
+        imperial: "84.65 * 41.33 * 59.05 in",
       },
       { label: "Type of Payload", value: "Trolley, Carts" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -1955,12 +1955,13 @@ export const productDetails: Record<string, ProductDetailData> = {
     useCaseImage: "c989ee7908ff88713a0b7b9c5a5af83892ea9edc.png",
     caseStudyImage: "case-study-manufacturing.jpg",
     footerBanner: "series/psr/gpr-1000/footer-banner.jpg",
+    ctaTitle: "Know more about the GPR 1000",
     applications: [
       "Pallet Handling",
       "Ground-to-Ground Transfer",
       "Low-Height Conveyor Transfer",
     ],
-    productProfileUrl: "",
+    productProfileUrl: "/anscer/product-profiles/PSR-PP-GPR1000-A-26-EN-P.pdf",
     specs: [
       { label: "Payload Capacity", value: "1000 kg", imperial: "2204.6 lbs" },
       { label: "Navigation", value: "SLAM Navigation" },
@@ -1968,7 +1969,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1780 * 1200 * 1390 mm",
-        imperial: "70.07 x 47.24 x 54.72 in",
+        imperial: "70.07 * 47.24 * 54.72 in",
       },
       { label: "Type of Payload", value: "Closed pallet movement" },
       { label: "Max Speed", value: "1.1 m/s", imperial: "2.46 mph" },
@@ -2040,7 +2041,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "No cages",
           "No zone restrictions",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-1.png",
+        image: "series/psr/gpr-1000/advanced/GPR 1000 human safe.png",
       },
       {
         title: "Underride Pallet Handling",
@@ -2050,7 +2051,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "1000 kg (2204.62 lb) payload capacity",
           "Compatible with open and closed standard pallets",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-2.png",
+        image: "series/psr/gpr-1000/advanced/underride pallet handling.png",
       },
       {
         title: "Autonomous Navigation",
@@ -2058,7 +2059,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Detects obstacles in time, reroutes autonomously without interruption",
           "No floor tape, no manual intervention, no down-time",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-3.png",
+        image: "series/psr/gpr-1000/advanced/GPR 1000 autonomous navigation.png",
       },
       {
         title: "Interoperable Architecture",
@@ -2079,7 +2080,7 @@ export const productDetails: Record<string, ProductDetailData> = {
           "Front and rear LED indicators",
           "Workers know the robot's intent before it reaches them",
         ],
-        image: "individual-product/gpr-1000/gpr-1000-adf-6.png",
+        image: "series/psr/gpr-1000/advanced/GPR 1000 multiside status lightning.png",
       },
       {
         title: "Opportunity Charging",
@@ -2149,7 +2150,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "1260 * 655 * 1270 mm",
-        imperial: "49.61 x 25.83 x 49.61 in",
+        imperial: "49.61 * 25.83 * 49.61 in",
       },
       { label: "Payload Capacity", value: "500 kg", imperial: "1102.31 lbs" },
       { label: "Max Speed", value: "1.2 m/s", imperial: "2.68 mph" },
@@ -2349,7 +2350,7 @@ export const productDetails: Record<string, ProductDetailData> = {
       {
         label: "Dimensions",
         value: "680 * 600 * 235 mm",
-        imperial: "26.77 x 23.62 x 9.25 in",
+        imperial: "26.77 * 23.62 * 9.25 in",
       },
       { label: "Type of Payload", value: "Bins and Totes" },
       { label: "Max Speed", value: "2 m/s", imperial: "4.47 mph" },
