@@ -1,6 +1,7 @@
 import type { ElementType, ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export function ArrowButton({
   children,
@@ -89,8 +90,8 @@ export function ArrowButton({
   );
 }
 
-export function Kicker({ children }: { children: string }) {
-  return <p className="text-xs font-medium uppercase text-[#005ead]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]">{children}</p>;
+export function Kicker({ children, className }: { children: string; className?: string }) {
+  return <p className={cn("text-xs font-medium uppercase text-[#005ead]    md:text-[clamp(16px,0.8vw,30px)] 3xl:text-[clamp(20px,0.9vw,28px)]", className)}>{children}</p>;
 }
 
 export function Tags({ tags }: { tags: string[] }) {

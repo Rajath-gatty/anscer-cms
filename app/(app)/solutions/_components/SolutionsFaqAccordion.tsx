@@ -9,15 +9,23 @@ type Faq = {
   answer: string;
 };
 
-export function SolutionsFaqAccordion({ items }: { items: Faq[] }) {
+export function SolutionsFaqAccordion({
+  items,
+  idPrefix = "solutions-faq",
+  className,
+}: {
+  items: Faq[];
+  idPrefix?: string;
+  className?: string;
+}) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <div className="flex w-full flex-col">
+    <div className={cn("flex w-full flex-col", className)}>
       {items.map((item, index) => {
         const isOpen = activeIndex === index;
-        const panelId = `solutions-faq-panel-${index}`;
-        const buttonId = `solutions-faq-button-${index}`;
+        const panelId = `${idPrefix}-panel-${index}`;
+        const buttonId = `${idPrefix}-button-${index}`;
 
         return (
           <article key={item.question}>
